@@ -1,1185 +1,2695 @@
+// --- Professional Portfolio Website ---
+// Vanilla JavaScript - No Framework
+
+// Load External Resources
+function loadResources() {
+  // Google Fonts
+  const fonts = document.createElement('link');
+  fonts.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap';
+  fonts.rel = 'stylesheet';
+  document.head.appendChild(fonts);
+
+  // IonIcons
+  const ionicons = document.createElement('script');
+  ionicons.src = 'https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js';
+  ionicons.type = 'module';
+  document.head.appendChild(ionicons);
+
+  // Devicon for tech logos
+  const devicon = document.createElement('link');
+  devicon.href = 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/devicon.min.css';
+  devicon.rel = 'stylesheet';
+  devicon.type = 'text/css';
+  document.head.appendChild(devicon);
+
+  // Simple Icons for brand logos
+  const simpleIcons = document.createElement('link');
+  simpleIcons.href = 'https://cdn.jsdelivr.net/npm/simple-icons@v10/font/simple-icons.min.css';
+  simpleIcons.rel = 'stylesheet';
+  document.head.appendChild(simpleIcons);
+
+  // Stylesheet
+  const style = document.createElement('link');
+  style.rel = 'stylesheet';
+  style.href = 'style.css';
+  document.head.appendChild(style);
+
+  document.title = 'Sayed Ahmed Husain | Electrical Engineer & Full-Stack Developer';
+}
+
+loadResources();
+
+// --- Portfolio Data ---
+const data = {
+  // Profile Information
+  name: 'SAYED AHMED HUSAIN',
+  title: 'Electrical Engineer | Full-stack Developer | "Solar PV - CRPEP – Wireman" Licensed',
+  nationality: 'Bahrain',
+  address: 'Northen Governorate, Kingdom of Bahrain',
+  qualification: 'Bachelor Degree',
+  mobile: '+97333115351',
+  email: 'sayedahmed97.sad@gmail.com',
+  linkedin: 'linkedin.com/in/97ahm',
+  github: 'github.com/sahmedhusain',
+  avatar: 'Personal_picture.JPG',
+
+  // Summary
+  summary: `Electrical Engineer and Sales Strategist with specialized expertise in Electrical Engineering for Fire Safety Systems. I bridge the gap between complex technical requirements and business growth, leveraging deep knowledge of NFPA standards and fire alarm system design to secure high-value contracts and manage government tenders across Bahrain.
+
+Currently advancing into Full-Stack Development, I apply this same engineering precision to build robust, scalable software solutions using Go and JavaScript. My goal is to leverage this dual-competency—industrial engineering insight combined with modern software architecture—to develop efficient tools that solve complex real-world challenges.`,
+
+  // Professional Tagline
+  tagline: 'Electrical Engineer | Full-stack Developer',
+
+  // Contact Information
+  contact: {
+    email: 'sayedahmed97.sad@gmail.com',
+    phone: '+97333115351',
+    location: 'Bahrain',
+    linkedin: 'https://linkedin.com/in/97ahm',
+    github: 'https://github.com/sahmedhusain',
+    twitter: 'https://x.com/_97ahm',
+    discord: 'https://discord.com/users/s_97ahm'
+  },
+
+  // Technical Skills
+  technicalSkills: {
+    coreEngineering: ['Fire Alarm & Fighting Systems Design (NFPA/GCC Codes)', 'Electrical Installation', 'Solar PV Systems'],
+    engineeringSoftware: ['AutoCAD', 'MATLAB', 'Digital Coding', 'SolidWorks', 'Fusion 360', 'Everycircuit', 'Oracle CRM', 'Oracle DB', 'SAP System'],
+    languages: ['JavaScript', 'TypeScript', 'Python', 'Go (Golang)', 'Rust', 'PHP', 'C', 'Cpp', 'SQL (SQLite)', 'CSS', 'HTML'],
+    webTechnologies: ['React', 'Next.js', 'Node.js', 'Flutter', 'Tailwind CSS', 'GraphQL', 'Apollo Client', 'WebSockets', 'PostgreSQL', 'MySQL', 'Firebase', 'Laravel'],
+    systemsAndTools: ['Git', 'GitHub', 'VS Code', 'Docker', 'AWS', 'Postman', 'Figma', 'Mermaid', 'Markdown', 'Linux', 'WSL', 'macOS', 'Windows', 'Android', 'Xcode', 'Android Studio', 'TCP/IP', 'JSON', 'REST APIs', 'OAuth2', 'JWT'],
+    computerScienceConcepts: ['Algorithms & Data Structures', 'Concurrency & Parallelism', 'Virtual DOM', 'State Management']
+  },
+
+  // Personal Skills
+  personalSkills: ['Adaptability', 'Communication', 'Fast Learner', 'Decision Making', 'Teamwork', 'Problem-solving', 'Time Management', 'Leadership', 'Training and Development', 'Project Management'],
+
+  // Professional Experience
+  experience: [
+    {
+      title: 'Public Relations In-Charge',
+      company: 'Lichfield Fire and Safety Equipment Co., Ltd. (LIFECO)',
+      location: 'Bahrain/UAE',
+      date: 'May 2024 — February 2026',
+      sections: {
+        strategicSalesLeadership: [
+          'Formulate and execute comprehensive Strategic Sales plans and quotas for the Bahrain market, ensuring strict alignment with corporate management objectives.',
+          'Drive profitability by analyzing market dynamics, tracking competitor activities, and identifying new opportunities to increase revenue and market share.',
+          'Lead and mentor sales teams, setting clear targets and monitoring performance to ensure sales goals are consistently met or exceeded.'
+        ],
+        tenderAndProcurementManagement: [
+          'Secure high-value deals with public and private sectors by actively managing bids on the Bahrain Tender Board and Procural (Tenders & Auctions Platform).',
+          'Oversee the end-to-end Vendor Management process, obtaining and maintaining industrial vendor pre-qualifications with key government and private entities.',
+          'Identify and pursue public and private Government Tenders, managing the submission process to ensure compliance and competitiveness.'
+        ],
+        clientRelationsAndBusinessGrowth: [
+          'Cultivate robust relationships with key accounts and expand the customer base by identifying and counseling district sales representatives.',
+          'Conduct regular client visits to diagnose evolving needs, assess relationship quality, and negotiate pricing to close and renew orders.',
+          'Establish and nurture critical relationships with Civil Defense and government ministries to facilitate smooth project execution and compliance.'
+        ],
+        marketIntelligenceAndOperations: [
+          'Monitor key economic indicators, emerging market trends, and supply and demand shifts to optimize product mix and sales volume.',
+          'Recommend new product lines and service improvements based on comprehensive market analysis and consumer needs surveys.',
+          'Maintain technical expertise by participating in professional networks and reviewing industry publications to stay ahead of the curve.'
+        ]
+      }
+    },
+    {
+      title: 'Electrical Engineer',
+      company: 'Super Fire and Safety Services W.L.L',
+      location: 'Bahrain',
+      date: 'October 2022 — October 2023',
+      points: [
+        'System Design & Engineering: Completed detailed Fire Alarm System Designs and technical drawings utilizing current Bahrain CDFSD, GCC Fire Codes, NFPA standards, and project specifications.',
+        'Installation & Commissioning: Directed electrical teams in the installation, programming, maintenance, testing, and commissioning of fire alarm control panels and suppression systems, ensuring full compliance with NFPA and EWA regulations.',
+        'Quality Assurance: Conducted rigorous inspections and system tests to ensure all components met Electrical Engineering safety requirements and performance standards.'
+      ],
+      keyProjects: [
+        'Bahrain Aluminium Company (ALBA): Deluge fire fighting system.',
+        'Bahrain Steel Company: Fire suppression systems.',
+        'Ministry of Education: Fire alarm systems.',
+        'MCSIX: Fire alarm and firefighting systems for the Ministry of Works STP.'
+      ]
+    },
+    {
+      title: 'Retail Sales Specialist',
+      company: 'Channels by STC',
+      location: 'Bahrain',
+      date: 'April 2022 — September 2022',
+      sections: {
+        salesStrategy: [
+          'Served as a Retail Sales Advisor, expertly executing cross-selling and upselling strategies for a wide range of telecommunications products and services.'
+        ],
+        customerManagement: [
+          'Managed complex customer inquiries and resolved complaints efficiently using the Oracle CRM enterprise system, ensuring high levels of customer satisfaction and retention.'
+        ]
+      }
+    },
+    {
+      title: 'Retail Marketing and Customer Service',
+      company: 'Zain Bahrain B.S.C',
+      location: 'Bahrain',
+      date: 'February 2019 — March 2022',
+      sections: {
+        operationsManagement: [
+          'Served as Acting Branch Manager, overseeing sales team performance and optimizing retail shop operations to meet company standards.'
+        ],
+        salesExcellence: [
+          'consistently exceeded targets by cross-selling and upselling telecommunication services and products as a frontline agent.'
+        ],
+        technicalSupport: [
+          'acted as a Service Center Representative, troubleshooting service issues and resolving technical claims to minimize downtime for customers.'
+        ],
+        customerEngagement: [
+          'Resolved high-volume customer complaints and requests with a focus on problem resolution and conducted outbound tele-sales calls to drive promotion uptake.'
+        ]
+      }
+    }
+  ],
+
+  // Education
+  education: [
+    {
+      degree: 'Full Stack Development Specialized Program (High Diploma)',
+      institution: 'Reboot01 Coding Institute, Bahrain',
+      date: 'March 2024 — March 2026'
+    },
+    {
+      degree: 'Bachelor of Science in Electrical Engineering',
+      institution: 'University of Bahrain, Bahrain',
+      date: 'June 2022',
+      certificate: 'Graduation_certificate.jpg'
+    },
+    {
+      degree: 'High School (Physics and Mathematics)',
+      institution: 'H.E Sheikh Isa bin Ali Secondary School, Bahrain',
+      date: 'May 2015'
+    }
+  ],
+
+  // Licenses & Certifications
+  certifications: [
+    {
+      name: 'NOCN Level 3 Award for Solar PV Installer and Operator',
+      type: 'Certificate',
+      issuingAuthority: 'NOCN',
+      id: '48282023',
+      pdfUrl: 'SolarPV-NOCN.pdf'
+    },
+    {
+      name: 'Certificate of Acknowledgement (Solar PV)',
+      type: 'Certificate',
+      issuingAuthority: 'Ministry of Electricity and Water Affairs (Bahrain)',
+      id: 'MEWA Certificate No: 2024-21',
+      issued: 'Jul 2024',
+      expires: 'Jul 2029',
+      pdfUrl: 'solar-pv-mewa.pdf'
+    },
+    {
+      name: 'CRPEP License (Electrical)',
+      type: 'License',
+      issuingAuthority: 'The Council for Regulating the Practice of Engineering Professions (Bahrain)',
+      id: 'EPP/C4597/EL/01-D',
+      issued: 'Dec 2022',
+      expires: 'Dec 2023',
+      pdfUrl: 'crpep.pdf'
+    },
+    {
+      name: 'Electrical Installation License',
+      type: 'License',
+      issuingAuthority: 'Electricity and Water Authority (Bahrain)',
+      id: 'W2402010',
+      issued: 'Feb 2024',
+      expires: 'Feb 2029'
+    },
+    {
+      name: 'Basic Life Support (BLS)',
+      type: 'Certificate',
+      issuingAuthority: 'American Heart Association (AHA)',
+      id: '225607015422',
+      issued: 'Jul 2022',
+      expires: 'Jul 2024',
+      pdfUrl: 'BLS.pdf'
+    },
+    {
+      name: 'B2B Sales Fundamentals',
+      type: 'Course Certificate',
+      issuingAuthority: 'Golden Trust Institute (Bahrain)'
+    },
+    {
+      name: 'Emotional Intelligence',
+      type: 'Course Certificate',
+      issuingAuthority: 'Golden Trust Institute (Bahrain)'
+    },
+    {
+      name: 'Online Learning Courses',
+      type: 'Course Certificates',
+      issuingAuthority: 'LinkedIn Learning',
+      courses: [
+        'AI in Business Essentials',
+        'Leading with Innovation',
+        'Critical Thinking'
+      ]
+    }
+  ],
+
+  // Professional Journey Data for Timeline
+  professionalJourney: {
+    education: [
+      {
+        title: 'Bachelor of Science in Electrical Engineering',
+        institution: 'University of Bahrain',
+        location: 'Bahrain',
+        startDate: '2015-09-01',
+        endDate: '2022-06-30',
+        description: 'Completed Bachelor\'s degree in Electrical Engineering with focus on power systems and electronics.',
+        icon: 'school-outline'
+      },
+      {
+        title: 'Full-Stack Development Program',
+        institution: 'Reboot Coding Institute',
+        location: 'Bahrain',
+        startDate: '2024-04-01',
+        endDate: '2026-06-30',
+        description: 'Specialized program in full-stack development covering modern web technologies and software engineering practices.',
+        icon: 'code-slash-outline',
+        current: true
+      }
+    ],
+    internships: [
+      {
+        title: 'Electrical Test Equipment Internship',
+        company: 'Megger',
+        location: 'Bahrain',
+        startDate: '2020-07-01',
+        endDate: '2020-09-30',
+        description: 'Hands-on experience with electrical test equipment and practical lab workflows.',
+        icon: 'construct-outline'
+      }
+    ],
+    career: [
+      {
+        title: 'Retail Sales Representative',
+        company: 'Zain Bahrain',
+        location: 'Bahrain',
+        startDate: '2019-02-01',
+        endDate: '2022-03-31',
+        description: 'Managed retail sales operations, customer service, and technical support for telecommunications services.',
+        icon: 'storefront-outline'
+      },
+      {
+        title: 'Retail Sales Advisor',
+        company: 'channels by stc',
+        location: 'Bahrain',
+        startDate: '2022-04-01',
+        endDate: '2022-09-30',
+        description: 'Executed sales strategies for telecommunications products and services using Oracle CRM.',
+        icon: 'storefront-outline'
+      },
+      {
+        title: 'General Electrical Engineer',
+        company: 'Super Fire & Safety',
+        location: 'Bahrain',
+        startDate: '2022-10-01',
+        endDate: '2023-10-31',
+        description: 'Designed, installed, and commissioned fire alarm systems for major clients including ALBA and Ministry of Education.',
+        icon: 'flash-outline'
+      },
+      {
+        title: 'Public Relations In-Charge',
+        company: 'LIFECO',
+        location: 'Bahrain/UAE',
+        startDate: '2024-05-01',
+        endDate: '2026-06-30',
+        description: 'Lead strategic sales, tender management, and client relations for fire safety equipment.',
+        icon: 'business-outline',
+        current: true
+      }
+    ],
+    certifications: [
+      {
+        title: 'NOCN Level 3 Award for Solar PV Installer and Operator',
+        issuer: 'NOCN',
+        date: 'Jul 2024',
+        description: 'Certification in NOCN Level 3 Award for Solar PV Installer and Operator',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'Certificate of Acknowledgement (Solar PV)',
+        issuer: 'Ministry of Electricity and Water Affairs (Bahrain)',
+        date: 'Jul 2024',
+        description: 'Certification in Certificate of Acknowledgement (Solar PV)',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'CRPEP License (Electrical)',
+        issuer: 'The Council for Regulating the Practice of Engineering Professions (Bahrain)',
+        date: 'Dec 2022',
+        description: 'Certification in CRPEP License (Electrical)',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'Electrical Installation License',
+        issuer: 'Electricity and Water Authority (Bahrain)',
+        date: 'Feb 2024',
+        description: 'Certification in Electrical Installation License',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'Basic Life Support (BLS)',
+        issuer: 'American Heart Association (AHA)',
+        date: 'Jul 2022',
+        description: 'Certification in Basic Life Support (BLS)',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'B2B Sales Fundamentals',
+        issuer: 'Golden Trust Institute (Bahrain)',
+        date: '2019',
+        description: 'Certification in B2B Sales Fundamentals',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'Emotional Intelligence',
+        issuer: 'Golden Trust Institute (Bahrain)',
+        date: '2019',
+        description: 'Certification in Emotional Intelligence',
+        icon: 'ribbon-outline'
+      }
+    ]
+  },
+
+  // Projects
+  projects: [
+    {
+      name: 'Smart Streetlights',
+      type: 'University Graduation Project',
+      links: [
+        { text: 'Thesis', url: 'Smart_Street_Lights_-_Final_Report.pdf' },
+        { text: 'Poster', url: 'Smart_streetligts_poster.pdf' }
+      ],
+      date: 'January 2020 — May 2020',
+      points: [
+        'The current streetlight control methods in Bahrain lack precision and environmental sensing, prompting engineers to reassess the standard to find cost-effective solutions for smart road lighting.',
+        'The project aims to develop an intelligent lighting system that improves the existing streetlight functionality.',
+        'To address this, an Arduino controller and motion detection sensors will be used to activate streetlights based on traffic conditions.',
+        'Additionally, the project will compare energy consumption between high-pressure sodium lights and LEDs.',
+        'Implementing an intelligent street lighting system saves energy, extends lighting lifespan, and reduces maintenance costs.',
+        'It optimizes lighting by avoiding unnecessary usage when no vehicles or pedestrians are present.'
+      ],
+      tech: ['Arduino', 'cpp', 'Java', 'IoT', 'Motion Sensors', 'LED Technology']
+    },
+    {
+      name: 'GigaBit',
+      subtitle: 'Real-Time Social Network (Go + Next.js)',
+      links: [
+        { text: 'Repository', url: 'https://github.com/sahmedhusain/GigaBit' }
+      ],
+      points: [
+        'Built GigaBit, a Full-Stack Development project featuring a real-time social networking platform that covers the complete surface area of a modern community application, from authentication and privacy controls to live communication and group collaboration.',
+        'Profiles with public/private visibility, follow requests, and approval flows.',
+        'Content system including posts with media, threaded comments, reactions, bookmarks, shares, and polls.',
+        'Community features such as groups with roles and permissions, invitations, gated membership, group posts, and events with RSVP handling.',
+        'Real-time capabilities using WebSockets for private and group messaging, typing indicators, notifications, online status, and live feed updates.',
+        'Relational data model using SQLite to support the social graph and interaction workflows.'
+      ],
+      tech: ['Go', 'Next.js', 'React', 'TypeScript', 'Tailwind CSS', 'Apollo Client', 'Framer Motion', 'SQLite', 'WebSocket', 'Gorilla Mux', 'Docker'],
+      featured: true
+    },
+    {
+      name: '01 Dashboard',
+      subtitle: 'Personal Learning Analytics Platform (React + Typescript + GraphQL)',
+      links: [
+        { text: 'Repository', url: 'https://github.com/sahmedhusain/01-Dashboard' }
+      ],
+      points: [
+        '01 Dashboard is a web-based analytics dashboard built to visualize and analyze learning progress on the reboot01 platform.',
+        'The project aggregates data related to XP, projects, audits, and timelines, presenting it in a clear and structured way to help users better understand their learning patterns over time.',
+        'The dashboard consumes real data through a GraphQL API and uses Apollo Client for efficient querying, caching, and request batching.',
+        'Authentication is secured using JWT, with token refresh logic to maintain stable user sessions.',
+        'From a front-end perspective, the project focuses on clarity and usability.',
+        'Interactive charts and visual summaries are used to represent progress, audit performance, and project distribution, while a responsive layout ensures the dashboard works well across devices.'
+      ],
+      tech: ['React', 'TypeScript', 'Vite', 'GraphQL', 'Apollo Client', 'Tailwind CSS', 'Framer Motion', 'JWT', 'SVG Charts'],
+      featured: true
+    },
+    {
+      name: 'Connecthub RT',
+      subtitle: 'Real-Time Forum & Chat Application',
+      links: [
+        { text: 'Repository', url: 'https://github.com/sahmedhusain/Connecthub-RT' }
+      ],
+      points: [
+        'Connecthub RT is a real-time web application built with Go that combines a traditional discussion forum with live communication features.',
+        'The platform supports posts, comments, categories, and private messaging, allowing users to interact without the delays typically found in standard forum systems.',
+        'The backend is structured around Go\'s concurrency model and WebSocket communication, enabling instant updates for comments, online status, and private chats.',
+        'Persistent data such as users, posts, and messages is managed using SQLite, keeping the architecture simple while still reflecting real-world application design.',
+        'The project focuses on practical backend concepts, including session handling, secure password hashing, and real-time connection management.',
+        'The frontend uses HTML, CSS, and JavaScript to deliver a responsive interface that works smoothly across devices.'
+      ],
+      tech: ['Go', 'JavaScript', 'HTML5', 'CSS3', 'SQLite', 'WebSocket', 'Gorilla Mux', 'Docker', 'Jest', 'Playwright']
+    },
+    {
+      name: 'PicoJS Framework',
+      subtitle: 'Reactive UI Framework (JavaScript)',
+      links: [
+        { text: 'Repository', url: 'https://github.com/sahmedhusain/PicoJS-Framework' }
+      ],
+      points: [
+        'Built PicoJS Framework, a lightweight JavaScript framework created to explore and implement the core mechanics behind modern UI libraries in a clean and readable codebase.',
+        'The project focuses on understanding how reactive state, Virtual DOM rendering, and event handling work together to keep user interfaces predictable and efficient.',
+        'Virtual DOM diffing with minimal DOM patching.',
+        'Reactive state management with automatic re-renders.',
+        'Centralized event delegation for better performance and cleanup.',
+        'Hash-based routing that stays in sync with application state.',
+        'Includes a complete TodoMVC demo demonstrating real-world usage.'
+      ],
+      tech: ['JavaScript ES6+', 'HTML5', 'CSS3', 'Virtual DOM', 'Reactive State', 'Hash Routing', 'Zero Dependencies'],
+      featured: true
+    },
+    {
+      name: '01 ConnectHub',
+      subtitle: 'Full-Stack Web Forum Application',
+      links: [
+        { text: 'Repository', url: 'https://github.com/sahmedhusain/01-ConnectHub' }
+      ],
+      points: [
+        '01 ConnectHub is a full-stack web forum application built with Go, tailored to support structured community discussions and meaningful user interaction.',
+        'The platform allows users to register, create posts, participate in discussions through comments, and engage with content using likes and dislikes, all within a moderated and secure environment.',
+        'The application implements a complete authentication system, including secure password hashing and OAuth2 social login using Google and GitHub.',
+        'Role-based access control enables administrators and moderators to manage users and content effectively.',
+        'From a technical perspective, the project focuses heavily on backend architecture, session management, and data persistence.',
+        'Server-side rendering is powered by Go, while the frontend is built with HTML, CSS, and JavaScript.'
+      ],
+      tech: ['Go', 'HTML5', 'CSS3', 'JavaScript', 'SQLite', 'OAuth2', 'Gorilla Sessions', 'bcrypt', 'Docker']
+    },
+    {
+      name: 'HarmonyHub',
+      subtitle: 'Music & Concert Discovery Platform',
+      links: [
+        { text: 'Repository', url: 'https://github.com/sahmedhusain/HarmonyHub' }
+      ],
+      points: [
+        'HarmonyHub is a web application engineered in Go that brings together music artists and their concert information in a single, structured platform.',
+        'The application aggregates artist profiles, band members, formation details, and performance schedules using data retrieved from an external REST API.',
+        'The project focuses on clean server-side architecture, structured data handling, and clear presentation of API-driven content.',
+        'Artist and concert data are processed using Go structs and rendered through server-side templates, ensuring reliability, performance, and maintainability.'
+      ],
+      tech: ['Go', 'HTML5', 'CSS3', 'JavaScript', 'REST API', 'HTML Templates', 'JSON']
+    },
+    {
+      name: 'AntFinder',
+      subtitle: 'Graph Pathfinding Simulation in Go',
+      links: [
+        { text: 'Repository', url: 'https://github.com/sahmedhusain/AntFinder' }
+      ],
+      points: [
+        'AntFinder is a terminal-based application programmed in Go that simulates efficient pathfinding for ant colonies moving through a graph.',
+        'The project focuses on discovering optimal routes and coordinating the movement of multiple ants from a start node to an end node while minimizing the total number of turns.',
+        'The application applies classic graph algorithms, including Depth-First Search (DFS), to explore and evaluate possible paths.',
+        'Ant movement is simulated step by step, ensuring conflict-free traversal and balanced path assignment.'
+      ],
+      tech: ['Go', 'Algorithms', 'DFS', 'Graph Traversal', 'Pathfinding']
+    },
+    {
+      name: 'GoTalk',
+      subtitle: 'Concurrent TCP Chat Server',
+      links: [
+        { text: 'Repository', url: 'https://github.com/sahmedhusain/GoTalk' }
+      ],
+      points: [
+        'GoTalk is a TCP-based chat server architected in Go, optimized to support real-time communication between multiple terminal clients.',
+        'The application allows users to connect concurrently, exchange messages instantly, and interact within a shared chat environment.',
+        'The project focuses on core systems programming concepts, including concurrent client handling using goroutines, message broadcasting through shared channels, and reliable network communication via TCP sockets.',
+        'Each message is timestamped, users are uniquely identified, and chat activity is persisted through server-side logging.'
+      ],
+      tech: ['Go', 'TCP/IP', 'Goroutines', 'Channels', 'Networking', 'File I/O']
+    },
+    {
+      name: 'Space Blaster',
+      subtitle: 'Browser-Based Arcade Game',
+      links: [
+        { text: 'Repository', url: 'https://github.com/sahmedhusain/SpaceBlaster' }
+      ],
+      points: [
+        'Space Blaster is a browser-based space shooter built using HTML, CSS, and JavaScript, inspired by classic arcade games.',
+        'Players control a spaceship to navigate enemy waves, fire lasers, and build their score in real time.',
+        'The project emphasizes smooth gameplay, responsive keyboard controls, and clear game-state management.',
+        'Enemy movement, collision detection, scoring, and lives are orchestrated through structured JavaScript logic and DOM manipulation.',
+        'Audio effects are integrated to enhance immersion without relying on external libraries.'
+      ],
+      tech: ['JavaScript ES6', 'HTML5', 'CSS3', 'DOM Manipulation', 'Audio API', 'Game Development']
+    },
+    {
+      name: 'ASCII Forge',
+      subtitle: 'ASCII Art Generator Web Application',
+      links: [
+        { text: 'Repository', url: 'https://github.com/sahmedhusain/ASCIIForge' }
+      ],
+      points: [
+        'ASCII Forge is a web-based application implemented in Go that converts plain text into stylized ASCII art using multiple banner formats, including standard, shadow, and thinkertoy.',
+        'The application provides a clean and intuitive interface that allows users to generate creative text representations directly from the browser.',
+        'The project focuses on server-side text processing and dynamic content generation, handling banner parsing and rendering logic efficiently.',
+        'Users can export the generated ASCII output as text files, making it easy to reuse or share across different platforms.'
+      ],
+      tech: ['Go', 'HTML5', 'CSS3', 'Bootstrap', 'Docker', 'Text Processing', 'File I/O']
+    }
+  ],
+
+  // Avatar
+  avatar: 'Personal_picture.JPG',
+
+  // Graduation Certificate
+  graduationCertificate: 'Graduation_certificate.jpg',
+
+  // CV URL
+  cvUrl: 'Sayed_Ahmed_Resume.pdf',
+
+  // vCard URL
+  vCardUrl: 'Sayed Ahmed Husain.vcf',
+
+  // Services
+  services: [
+    {
+      title: 'Web Development',
+      description: 'High-quality development of sites at the professional level.',
+      icon: '💻'
+    },
+    {
+      title: 'Electrical Engineering',
+      description: 'Design and installation of fire safety and electrical systems.',
+      icon: '⚡'
+    },
+    {
+      title: 'Full-Stack Development',
+      description: 'Building robust, scalable software solutions using modern technologies.',
+      icon: '🚀'
+    }
+  ]
+};
+
+// Initialize App
 document.addEventListener('DOMContentLoaded', () => {
-    lucide.createIcons();
+  const app = document.getElementById('app');
+  if (!app) {
+    console.error('Root element #app not found');
+    return;
+  }
 
-    // --- Data ---
-    const experienceData = [
-        { title: 'Public Relations In-Charge', company: 'Lichfield Fire and Safety Equipment Co., Ltd. | Bahrain/UAE', date: 'May 2024 — Present', logo: 'https://media.licdn.com/dms/image/v2/C560BAQFofK3kzPzQDA/company-logo_200_200/company-logo_200_200/0/1633352692029/lifeco_uk_logo?e=1755734400&v=beta&t=qWGiMeo6qNH0FIKrsKkJnv6vkdIMOoCGRcdO3TaerGQ', points: ["Develop sales goals and quotas for Bahrain in line with management's expectations.", "Maintain and expand customer base by building rapport with key customers and identifying new opportunities.", "Meet with customers to discuss their evolving needs and assess the quality of the company's relationship.", "Generate high-quality sales leads, negotiate prices, complete sales, and arrange deliveries.", "Analyze market trends and implement marketing strategies to enhance market share.", "Identify areas for improvement and communicate solutions to upper management.", "Build and maintain good relations with Government Ministries and Civil Defence."] },
-        { title: 'General Electrical Engineer', company: 'Super Fire and Safety Services W.L.L | Bahrain', date: 'October 2022 — October 2023', logo: 'https://media.licdn.com/dms/image/v2/D4E0BAQHzLSAfVZFnAA/company-logo_200_200/B4EZZiWNzzHEAM-/0/1745406713575/super_fire_and_safety_services_logo?e=1755734400&v=beta&t=u2FYrnh57oAbVwoknqldxj8utaOC1aB3zF3af50Wzzc', points: ["Completed fire alarm designs and drawings utilizing Bahrain CDFSD, GCC fire codes, and NFPA standards.", "Installed and programmed control panels and other equipment for fire alarm systems.", "Installed wiring to connect system components, complying with all applicable safety standards.", "Showed customers how to use alarm systems, discussed any questions or concerns, and ensured customer satisfaction.", "Reviewed installation manuals, building plans, and work orders to plan optimal locations for system components.", "Identified and repaired malfunctions in system components or wiring, including ordering and replacing parts when necessary.", "Composed and submitted documentation and reports for each installation or repair visit."] },
-        { title: 'Retail Sales Advisor', company: 'channels by stc | Bahrain', date: 'April 2022 — September 2022', logo: 'https://media.licdn.com/dms/image/v2/C4E0BAQEyswtmEmB_xA/company-logo_200_200/company-logo_200_200/0/1630634068141/channels_by_stc_bahrain_logo?e=1755734400&v=beta&t=jYOn8FSJp7DFyal9H_OurQmV9MuihJlS-eA0Y2FpkZ4', points: ["Executed cross-selling and upselling strategies for telecommunications products and services.", "Managed customer inquiries and resolved complaints efficiently using Oracle CRM."] },
-        { title: 'Retail Marketing and Customer Service', company: 'Zain Bahrain B.S.C | Bahrain', date: 'February 2019 — March 2022', logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQGm-AO8N4ouTQ/company-logo_200_200/B4DZfpA75CH4AM-/0/1751961026975?e=1755734400&v=beta&t=uhCsTQhnRGW9gjjITfIuAhfpsR_w7xyBGAwNL80Q0Ho', points: ["Managed sales teams and optimized retail shop operations as Acting Branch Manager.", "Successfully cross-sold and upselled telecommunications services and products.", "Handled customer complaints and requests, ensuring high satisfaction levels.", "Provided technical support and troubleshooted service issues.", "Conducted outbound calls to promote telecom products and services."] }
-    ];
-    const internshipData = [
-        { title: 'Electrical Engineer Trainee', company: 'Megger Group | India (Virtual)', date: 'July 2020 — September 2020', logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQEBLUHBlEKhYg/company-logo_200_200/B4DZUZoCjNHIAM-/0/1739891681887/megger_logo?e=1755734400&v=beta&t=MEMPpfzQ_44ig2f5FXcb-snXm0WUH0lsXu91H4VVvFM', points: ["Gained practical experience with electronic test equipment and various electrical testing procedures.", "Learned basics of using equipment for grounding resistivity, CT, VT, protective relays and electric motors tests."] }
-    ];
-    const skillsData = [
-        { title: 'Engineering & Technical', icon: 'cog', skills: [{ name: 'Fire Safety Systems (NFPA)', icon: 'shield-check' }, { name: 'Solar PV Systems', icon: 'solar-panel' }, { name: 'Electrical Installation & Design', icon: 'plug-zap' }, { name: 'AutoCAD & 3D Modelling', icon: 'ruler' }, { name: 'Preventive Maintenance', icon: 'wrench' }, { name: 'CCTV & Cabling', icon: 'video' }] },
-        { title: 'Programming & Software', icon: 'code-xml', skills: [{ name: 'Go, Python, JavaScript (ES6+)', icon: 'braces' }, { name: 'HTML, CSS, TailwindCSS', icon: 'layout-template' }, { name: 'React, Node.js', icon: 'atom' }, { name: 'SQL, JSON', icon: 'database' }, { name: 'Git, Docker', icon: 'git-branch' }, { name: 'Oracle CRM, MATLAB', icon: 'server' }] },
-        { title: 'Business & Soft Skills', icon: 'briefcase', skills: [{ name: 'Public Relations & Comms', icon: 'megaphone' }, { name: 'Sales Strategy & Execution', icon: 'target' }, { name: 'Client Relationship Management', icon: 'users' }, { name: 'Market Analysis', icon: 'line-chart' }, { name: 'Problem-Solving & Critical Thinking', icon: 'lightbulb' }, { name: 'Leadership & Teamwork', icon: 'users-round' }] }
-    ];
-    const projectsData = [
-        { title: 'ConRev Platform', company: 'Startup Bahrain | May 2024 — Present', description: 'Developing a platform to streamline the construction experience for clients, providing comprehensive tracking and compliance.' },
-        { title: 'Smart Streetlights', company: 'University of Bahrain | Jan 2020 — May 2020', description: 'Developed an intelligent lighting system using Arduino to enhance energy efficiency and improve road safety.', links: [{ name: 'View Report', icon: 'file-text', docName: 'Smart Streetlights Report' }, { name: 'View Poster', icon: 'image', docName: 'Smart Streetlights Poster' }] },
-        { title: 'This Interactive Portfolio', company: 'Personal Project | 2024', description: 'A dynamic, animated personal resume built with HTML, TailwindCSS, and JavaScript to showcase my skills and projects.', externalLink: 'https://github.com/sahmedhusain/portfolio-v1' },
-    ];
-    const educationData = [
-        { degree: 'Full Stack Developer', institution: 'Reboot01 Coding Institute', date: 'May 2024 – April 2026', logo: 'https://media.licdn.com/dms/image/v2/C560BAQHmy1S2noq-Sg/company-logo_200_200/company-logo_200_200/0/1661754301057?e=1755734400&v=beta&t=1tA5FOqXMXthSfMwqwJBTM7y4xLzcqnCaJeFDRP7tVc', docName: 'Full Stack Program Certificate' },
-        { degree: 'BSc in Electrical Engineering', institution: 'University of Bahrain', date: 'September 2015 - June 2022', logo: 'https://media.licdn.com/dms/image/v2/C510BAQFO0Z1XkWgp4Q/company-logo_200_200/company-logo_200_200/0/1631367587454?e=1755734400&v=beta&t=y5MQfsaiHpNMQDn2SjjS6zCbOjxkd3yizNY1C-4lr6c', docName: 'Bachelor\'s Degree Certificate' },
-        { degree: 'High School (Secondary)', institution: 'H.E Sheikh Isa bin Ali Secondary Boys School', date: 'September 2012 - June 2015', logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQESrNBNxWUIvw/company-logo_200_200/company-logo_200_200/0/1689878832049?e=1755734400&v=beta&t=qWS0jEfUsWoMbpS5O0rZasA0cW_hZBKY5guMLwzLnlE', docName: 'High School Diploma' }
-    ];
-    const certsData = [
-        { name: 'Solar PV Installer and Operator (NOCN Level 3)', institution: 'NOCN Group', date: 'March2024', logo: 'https://media.licdn.com/dms/image/v2/C4E0BAQEmpqaAAbSFlw/company-logo_200_200/company-logo_200_200/0/1663657525891/nocn_logo?e=1755734400&v=beta&t=5H4gYiagRKYwjHNDkH_qYHKzbOdgEiY0IqpbjVPVFoQ', docName: 'Solar PV NOCN Certificate' },
-        { name: 'Solar PV Installer and Operator (NOCN Level 3)', institution: 'Ministry of Electricity and Water Affairs, Bahrain', date: 'March 2024', logo: 'https://media.licdn.com/dms/image/v2/D4D0BAQHck4Z2NYT49A/company-logo_200_200/company-logo_200_200/0/1708118281993?e=1755734400&v=beta&t=xPuXlyp7qLZrgdo6Xxse_TcfKzsZ9XN1l60gAr2uLH4', docName: 'Solar PV MEWA Certificate' },
-        { name: 'CRPEP (Electrical)', institution: 'The Council for Regulating the Practice of Engineering Professions (CRPEP), Bahrain', date: 'December 2022 - December 2023', logo: 'https://media.licdn.com/dms/image/v2/C560BAQG5C1694uLjbQ/company-logo_200_200/company-logo_200_200/0/1632289290867?e=1755734400&v=beta&t=lII4FacCVj8IsqDUOrSImU1yJHHxsTxRtuQgmTba1NE', docName: 'CRPEP License' },
-        { name: 'Electrical Installation Wireman', institution: 'Electricity and water Authority, Bahrain', date: 'February 2024 - February 2029', logo: 'https://media.licdn.com/dms/image/v2/D4E0BAQGxxZ1pDcD8Kw/company-logo_200_200/B4EZfu6Yw2HEAI-/0/1752059973679/electricity_and_water_authority_bahrain_logo?e=1755734400&v=beta&t=1eYFoyPir_Wbz5HlCSUhuXb3QjNLacaWmP0o5l4kIOM', docName: 'CRPEP License' },
-        { name: 'Basic Life Support (BLS)', institution: 'American Heart Association', date: 'July 2022 - July 2024', logo: 'https://media.licdn.com/dms/image/v2/C4E0BAQGkbfwG3S0TkQ/company-logo_200_200/company-logo_200_200/0/1631374527549/american_heart_association_logo?e=1755734400&v=beta&t=1ZZwObTfbCGS5MF00Oxxr8CGrGlnQRcXUviQ9oEujb8', docName: 'BLS Certificate' }
-    ];
-    const courseCertsData = [
-        { name: 'B2B Sales Fundamentals', icon: 'briefcase' },
-        { name: 'Emotional Intelligence', icon: 'brain-circuit' },
-        { name: 'AI in Business Essentials', icon: 'bot' },
-        { name: 'Leading with Innovation', icon: 'rocket' },
-        { name: 'Critical Thinking', icon: 'microscope' }
-    ];
+  // Render the complete app
+  app.innerHTML = `
+    ${renderSidebar()}
+    <div class="main-content">
+      ${renderNavbar()}
+      <article class="about active" data-page="about">
+        ${renderAboutSection() + renderProfessionalJourneySection() + renderSkillsSection()}
+      </article>
+      <article class="experience" data-page="journey">
+        ${renderExperienceSection()}
+      </article>
+      <article class="projects" data-page="projects">
+        ${renderProjectsSection()}
+      </article>
+      <article class="contact" data-page="contact">
+        ${renderContactSection()}
+      </article>
+    </div>
+    ${renderFooter()}
+    ${renderSideElements()}
+    ${renderContactModal()}
+  `;
 
-    // --- Dynamic Content Injection ---
-    const experienceContainer = document.querySelector('#experience .timeline');
-    experienceData.forEach((job, i) => {
-        const pointsHTML = job.points.map((point, index) => `<li class="text-sm ${index >= 3 ? 'hidden-item' : ''}">${point}</li>`).join('');
-        const buttonHTML = job.points.length > 3 ? `<button class="text-sm font-semibold mt-4 inline-flex items-center cursor-pointer show-more-btn" style="color: var(--md-sys-color-primary-light);">Show more <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i></button>` : '';
-        experienceContainer.innerHTML += `
-            <div class="timeline-item mb-12 relative animatable" style="--delay: ${i*0.1}s">
-                <div class="dot"></div>
-                <div class="enhanced-card tilt-card">
-                    <div class="flex gap-4 items-start">
-                        <img src="${job.logo}" onerror="this.onerror=null;this.src='https://placehold.co/100x100/e1e3e2/3f4948?text=LOGO';" alt="${job.company} logo" class="org-logo">
-                        <div class="flex-1">
-                            <h3 class="text-lg font-bold card-title flex items-center gap-2">
-                                <i data-lucide="briefcase" class="w-5 h-5"></i>
-                                ${job.title}
-                            </h3>
-                            <p class="font-semibold text-sm mb-1" style="color: var(--md-sys-color-primary-light);">${job.company}</p>
-                            <p class="text-xs mb-4 flex items-center gap-1" style="color: var(--md-sys-color-on-surface-variant-light);">
-                                <i data-lucide="calendar" class="w-3 h-3"></i>
-                                ${job.date}
-                            </p>
-                        </div>
-                    </div>
-                    <ul class="list-disc list-inside space-y-2 job-description mt-4">${pointsHTML}</ul>
-                    ${buttonHTML}
-                </div>
-            </div>`;
-    });
+  // Initialize event listeners
+  initializeEventListeners();
 
-    const internshipContainer = document.querySelector('#internships .timeline');
-    internshipData.forEach((job, i) => {
-        const pointsHTML = job.points.map(point => `<li class="text-sm">${point}</li>`).join('');
-        internshipContainer.innerHTML += `
-            <div class="timeline-item mb-12 relative animatable" style="--delay: ${i*0.1}s">
-                <div class="dot"></div>
-                <div class="card tilt-card">
-                    <div class="flex gap-4 items-start">
-                         <img src="${job.logo}" onerror="this.onerror=null;this.src='https://placehold.co/100x100/e1e3e2/3f4948?text=LOGO';" alt="${job.company} logo" class="org-logo">
-                        <div class="flex-1">
-                            <h3 class="text-lg font-bold card-title">${job.title}</h3>
-                            <p class="font-semibold text-sm mb-1" style="color: var(--md-sys-color-primary-light);">${job.company}</p>
-                            <p class="text-xs mb-4" style="color: var(--md-sys-color-on-surface-variant-light);">${job.date}</p>
-                        </div>
-                    </div>
-                    <ul class="list-disc list-inside space-y-2 mt-4">${pointsHTML}</ul>
-                </div>
-            </div>`;
-    });
+  // Handle initial hash or default to about
+  const initialPage = window.location.hash.substring(1) || 'about';
+  setActivePage(initialPage);
 
-    const skillsContainer = document.querySelector('#skills .bento-grid');
-    skillsData.forEach((cat, i) => {
-        const skillsHTML = cat.skills.map(skill => `
-            <div class="skill-item">
-                <div class="skill-icon">
-                    <i data-lucide="${skill.icon}"></i>
-                </div>
-                <span class="text-sm font-medium">${skill.name}</span>
-            </div>
-        `).join('');
-        skillsContainer.innerHTML += `
-            <div class="enhanced-card bento-item bento-item-${i+1} animatable" style="--delay: ${i*0.1}s">
-                <h3 class="text-lg font-bold mb-4 flex items-center card-title">
-                    <div class="skill-icon mr-3">
-                        <i data-lucide="${cat.icon}"></i>
-                    </div>
-                    ${cat.title}
-                </h3>
-                <div class="space-y-2">${skillsHTML}</div>
-            </div>`;
-    });
+  // Initialize skills animations
+  initializeSkillsAnimations();
+});
 
-    const projectsContainer = document.querySelector('#projects .grid');
-    projectsData.forEach((proj, i) => {
-        let linksHTML = '';
-        if (proj.links) {
-            linksHTML = `<div class="flex items-center space-x-4 mt-4">` +
-                proj.links.map(link => `<a href="#" class="view-doc-link placeholder-link" data-doc-name="${link.docName}"><i data-lucide="${link.icon}" class="w-4 h-4 mr-2"></i>${link.name}</a>`).join('') +
-                `</div>`;
-        } else if (proj.externalLink) {
-             linksHTML = `<div class="mt-4"><a href="${proj.externalLink}" target="_blank" class="view-doc-link">View Project <i data-lucide="arrow-right" class="w-4 h-4 ml-1"></i></a></div>`;
+// Skills Animation Functions
+function initializeSkillsAnimations() {
+  // Animate stats counters
+  const animateStats = () => {
+    const statNumbers = document.querySelectorAll('.stat-number');
+    statNumbers.forEach(stat => {
+      const target = parseInt(stat.getAttribute('data-target'));
+      const increment = target / 100;
+      let current = 0;
+
+      const timer = setInterval(() => {
+        current += increment;
+        if (current >= target) {
+          stat.textContent = target;
+          clearInterval(timer);
+        } else {
+          stat.textContent = Math.floor(current);
         }
-         projectsContainer.innerHTML += `
-            <div class="enhanced-card tilt-card animatable" style="--delay: ${i*0.1}s">
-                <h3 class="text-lg font-bold card-title flex items-center gap-2 mb-3">
-                    <i data-lucide="folder-open" class="w-5 h-5"></i>
-                    ${proj.title}
-                </h3>
-                <p class="font-semibold text-sm mb-2 flex items-center gap-1" style="color: var(--md-sys-color-primary-light);">
-                    <i data-lucide="building" class="w-4 h-4"></i>
-                    ${proj.company}
-                </p>
-                <p class="text-sm mb-4">${proj.description}</p>
-                ${linksHTML}
-            </div>`;
+      }, 20);
+    });
+  };
+
+  // Intersection Observer for skills section
+  const skillsObserver = new IntersectionObserver((entries) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('animate-in');
+        animateStats();
+        skillsObserver.unobserve(entry.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  // Observe skills section
+  const skillsSection = document.querySelector('.skills');
+  if (skillsSection) {
+    skillsObserver.observe(skillsSection);
+  }
+
+  // Add hover effects for skill cards
+  const skillCards = document.querySelectorAll('.skills-card');
+  skillCards.forEach(card => {
+    card.addEventListener('mouseenter', (e) => {
+      const particles = card.querySelectorAll('.particle');
+      particles.forEach(particle => {
+        particle.style.animationPlayState = 'running';
+      });
     });
 
-    const educationContainer = document.querySelector('#education .grid > div:first-child .space-y-6');
-    educationData.forEach((edu, i) => {
-        educationContainer.innerHTML += `
-            <div class="enhanced-card tilt-card animatable" style="--delay: ${i*0.1}s">
-                 <div class="flex gap-4 items-start">
-                    <img src="${edu.logo}" onerror="this.onerror=null;this.src='https://placehold.co/100x100/e1e3e2/3f4948?text=LOGO';" alt="${edu.institution} logo" class="org-logo">
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold card-title flex items-center gap-2">
-                            <i data-lucide="graduation-cap" class="w-5 h-5"></i>
-                            ${edu.degree}
-                        </h3>
-                        <p class="font-semibold text-sm flex items-center gap-1 mb-1" style="color: var(--md-sys-color-primary-light);">
-                            <i data-lucide="school" class="w-4 h-4"></i>
-                            ${edu.institution}
-                        </p>
-                        <p class="text-xs text-slate-500 dark:text-slate-400 mb-2 flex items-center gap-1">
-                            <i data-lucide="calendar" class="w-3 h-3"></i>
-                            ${edu.date}
-                        </p>
-                    </div>
-                </div>
-                <a href="#" class="view-doc-link placeholder-link mt-4" data-doc-name="${edu.docName}">
-                    <i data-lucide="award" class="w-4 h-4 mr-2"></i>View Certificate
-                </a>
-            </div>`;
+    card.addEventListener('mouseleave', (e) => {
+      const particles = card.querySelectorAll('.particle');
+      particles.forEach(particle => {
+        particle.style.animationPlayState = 'paused';
+      });
     });
-    const certsContainer = document.querySelector('#education .grid > div:last-child .space-y-6');
-    certsData.forEach((cert, i) => {
-        certsContainer.innerHTML += `
-            <div class="enhanced-card tilt-card animatable" style="--delay: ${i*0.1}s">
-                 <div class="flex gap-4 items-start">
-                    <img src="${cert.logo}" onerror="this.onerror=null;this.src='https://placehold.co/100x100/e1e3e2/3f4948?text=LOGO';" alt="${cert.name} logo" class="org-logo">
-                    <div class="flex-1">
-                        <h3 class="text-lg font-bold card-title flex items-center gap-2">
-                            <i data-lucide="shield-check" class="w-5 h-5"></i>
-                            ${cert.name}
-                        </h3>
-                        <p class="font-semibold text-sm flex items-center gap-1" style="color: var(--md-sys-color-primary-light);">
-                            <i data-lucide="building-2" class="w-4 h-4"></i>
-                            ${cert.institution}
-                        </p>
-                    </div>
-                </div>
-                <a href="#" class="view-doc-link placeholder-link mt-4" data-doc-name="${cert.docName}">
-                    <i data-lucide="award" class="w-4 h-4 mr-2"></i>View Certificate/License
-                </a>
-            </div>`;
+  });
+
+  // Add click effects for tech logos
+  const techLogoItems = document.querySelectorAll('.tech-logo-item');
+  techLogoItems.forEach(item => {
+    item.addEventListener('click', () => {
+      item.classList.add('tech-logo-clicked');
+      setTimeout(() => {
+        item.classList.remove('tech-logo-clicked');
+      }, 300);
     });
-    const courseCertsHTML = courseCertsData.map(cert => `
-        <div class="skill-item">
-            <div class="skill-icon">
-                <i data-lucide="${cert.icon}"></i>
+  });
+
+  // Add skill badge interactions
+  const skillBadges = document.querySelectorAll('.skill-badge');
+  skillBadges.forEach(badge => {
+    badge.addEventListener('click', () => {
+      badge.classList.add('badge-active');
+      setTimeout(() => {
+        badge.classList.remove('badge-active');
+      }, 500);
+    });
+  });
+}
+
+// Set active page function
+function setActivePage(targetPage) {
+  const navLinkButtons = document.querySelectorAll('[data-nav-link]');
+  const pages = document.querySelectorAll('[data-page]');
+
+  // Remove active from all
+  navLinkButtons.forEach(l => l.classList.remove('active'));
+  pages.forEach(p => p.classList.remove('active'));
+
+  // Add active to target
+  const link = document.querySelector(`[data-nav-link="${targetPage}"]`);
+  if (link) link.classList.add('active');
+  const page = document.querySelector(`[data-page="${targetPage}"]`);
+  if (page) {
+    page.classList.add('active');
+    
+    // Add special animation for contact page
+    if (targetPage === 'contact') {
+      page.classList.add('contact-animate');
+      // Remove animation class after animation completes
+      setTimeout(() => {
+        page.classList.remove('contact-animate');
+      }, 800); // Match animation duration
+    }
+  }
+
+  // Update hash
+  window.location.hash = targetPage;
+
+  // Update nav-logo based on page
+  const navLogo = document.querySelector('.nav-logo');
+  if (targetPage === 'about') {
+    navLogo.classList.remove('other-route');
+  } else {
+    navLogo.classList.add('other-route');
+  }
+}
+
+// Render Functions
+function renderSidebar() {
+  return `
+    <aside class="sidebar" data-sidebar>
+      <div class="sidebar-info">
+        <figure class="avatar-box">
+          <img src="${data.avatar}" alt="${data.name}" width="80" onerror="this.onerror=null;">
+        </figure>
+        <div class="action-buttons">
+          <button class="action-btn primary">
+            <ion-icon name="document-text-outline"></ion-icon>
+            <span>Download Resume</span>
+          </button>
+          <button class="action-btn secondary">
+            <ion-icon name="person-circle-outline"></ion-icon>
+            <span>Contact Details</span>
+          </button>
+        </div>
+      </div>
+      <div class="sidebar-info-more">
+        <div class="separator"></div>
+        <ul class="contacts-list">
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="mail-outline"></ion-icon>
             </div>
-            <span class="text-sm font-medium">${cert.name}</span>
+            <div class="contact-info">
+              <p class="contact-title">Email</p>
+              <a href="mailto:${data.contact.email}" class="contact-link">${data.contact.email}</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="phone-portrait-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Phone</p>
+              <a href="tel:${data.contact.phone}" class="contact-link">${data.contact.phone}</a>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="flag-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Nationality</p>
+              <address>${data.nationality}</address>
+            </div>
+          </li>
+          <li class="contact-item">
+            <div class="icon-box">
+              <ion-icon name="location-outline"></ion-icon>
+            </div>
+            <div class="contact-info">
+              <p class="contact-title">Address</p>
+              <address>${data.address}</address>
+            </div>
+          </li>
+        </ul>
+        <div class="separator"></div>
+        <ul class="social-list">
+          <li class="social-item">
+            <a href="${data.contact.github}" class="social-link">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+          </li>
+          <li class="social-item">
+            <a href="${data.contact.linkedin}" class="social-link">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+  `;
+}
+
+const iconMap = {
+    'everycircuit': { type: 'ion', class: 'hardware-chip' },
+  'go': { type: 'devicon', class: 'devicon-go-plain' },
+  'golang': { type: 'devicon', class: 'devicon-go-plain' },
+  'go golang': { type: 'devicon', class: 'devicon-go-plain' },
+  'javascript': { type: 'devicon', class: 'devicon-javascript-plain' },
+  'javascript es6': { type: 'devicon', class: 'devicon-javascript-plain' },
+  'typescript': { type: 'devicon', class: 'devicon-typescript-plain' },
+  'java': { type: 'devicon', class: 'devicon-java-plain' },
+  'html5': { type: 'devicon', class: 'devicon-html5-plain' },
+  'html': { type: 'devicon', class: 'devicon-html5-plain' },
+  'css3': { type: 'devicon', class: 'devicon-css3-plain' },
+  'css': { type: 'devicon', class: 'devicon-css3-plain' },
+  'react': { type: 'devicon', class: 'devicon-react-plain' },
+  'nextjs': { type: 'devicon', class: 'devicon-nextjs-plain' },
+  'next.js': { type: 'devicon', class: 'devicon-nextjs-plain' },
+  'vite': { type: 'devicon', class: 'devicon-vitejs-plain' },
+  'vitejs': { type: 'devicon', class: 'devicon-vitejs-plain' },
+  'tailwind css': { type: 'devicon', class: 'devicon-tailwindcss-plain' },
+  'graphql': { type: 'devicon', class: 'devicon-graphql-plain' },
+  'apollo client': { type: 'devicon', class: 'devicon-apollographql-plain' },
+  'apollo': { type: 'devicon', class: 'devicon-apollographql-plain' },
+  'sqlite': { type: 'devicon', class: 'devicon-sqlite-plain' },
+  'postgresql': { type: 'devicon', class: 'devicon-postgresql-plain' },
+  'mysql': { type: 'devicon', class: 'devicon-mysql-plain' },
+  'docker': { type: 'devicon', class: 'devicon-docker-plain' },
+  'bootstrap': { type: 'devicon', class: 'devicon-bootstrap-plain' },
+  'arduino': { type: 'devicon', class: 'devicon-arduino-plain' },
+  'node.js': { type: 'devicon', class: 'devicon-nodejs-plain' },
+  'nodejs': { type: 'devicon', class: 'devicon-nodejs-plain' },
+  'jest': { type: 'devicon', class: 'devicon-jest-plain' },
+  'framer motion': { type: 'devicon', class: 'devicon-framermotion-plain' },
+  'framer': { type: 'devicon', class: 'devicon-framermotion-plain' },
+  'json': { type: 'devicon', class: 'devicon-json-plain' },
+  'playwright': { type: 'devicon', class: 'devicon-playwright-plain' },
+  'c': { type: 'devicon', class: 'devicon-c-plain' },
+  'cplusplus': { type: 'devicon', class: 'devicon-cplusplus-plain' },
+  'c++': { type: 'devicon', class: 'devicon-cplusplus-plain' },
+  'cpp': { type: 'devicon', class: 'devicon-cplusplus-plain' },
+  'rust': { type: 'devicon', class: 'devicon-rust-plain' },
+  'php': { type: 'devicon', class: 'devicon-php-plain' },
+  'laravel': { type: 'devicon', class: 'devicon-laravel-plain' },
+  'oauth': { type: 'devicon', class: 'devicon-oauth-plain' },
+  'oauth2': { type: 'devicon', class: 'devicon-oauth-plain' },
+  'aws': { type: 'devicon', class: 'devicon-amazonwebservices-plain' },
+  'postman': { type: 'devicon', class: 'devicon-postman-plain' },
+  'git': { type: 'devicon', class: 'devicon-git-plain' },
+  'github': { type: 'devicon', class: 'devicon-github-plain' },
+  'linux': { type: 'devicon', class: 'devicon-linux-plain' },
+  'vs code': { type: 'devicon', class: 'devicon-vscode-plain' },
+  'figma': { type: 'devicon', class: 'devicon-figma-plain' },
+  'mermaid': { type: 'ion', class: 'git-branch-outline' },
+  'markdown': { type: 'devicon', class: 'devicon-markdown-original' },
+  'wsl': { type: 'devicon', class: 'devicon-linux-plain' },
+  'macos': { type: 'devicon', class: 'devicon-apple-plain' },
+  'windows': { type: 'devicon', class: 'devicon-windows8-plain' },
+  'android': { type: 'devicon', class: 'devicon-android-plain' },
+  'xcode': { type: 'devicon', class: 'devicon-xcode-plain' },
+  'android studio': { type: 'devicon', class: 'devicon-androidstudio-plain' },
+  'firebase': { type: 'devicon', class: 'devicon-firebase-plain' },
+  'python': { type: 'devicon', class: 'devicon-python-plain' },
+  'flutter': { type: 'devicon', class: 'devicon-flutter-plain' },
+  'matlab': { type: 'devicon', class: 'devicon-matlab-plain' },
+  'simulink': { type: 'devicon', class: 'devicon-matlab-plain' },
+  'matlab simulink': { type: 'devicon', class: 'devicon-matlab-plain' },
+  'autocad': { type: 'ion', class: 'hammer' },
+  'solidworks': { type: 'ion', class: 'build' },
+  'fusion 360': { type: 'ion', class: 'settings' },
+  'oracle': { type: 'devicon', class: 'devicon-oracle-plain' },
+  'sap': { type: 'devicon', class: 'devicon-sap-plain' },
+  'matlab/simulink': { type: 'devicon', class: 'devicon-matlab-plain-wordmark' },
+  'oracle crm': { type: 'devicon', class: 'devicon-oracle-plain' },
+  'oracle db': { type: 'devicon', class: 'devicon-oracle-plain' },
+  'sap system': { type: 'ion', class: 'business' },
+  'websockets': { type: 'ion', class: 'radio-button-on' },
+  'tcp': { type: 'devicon', class: 'devicon-tcp-plain' },
+  'ip': { type: 'devicon', class: 'devicon-ip-plain' },
+  'tcp ip': { type: 'ion', class: 'wifi' },
+  'rest': { type: 'devicon', class: 'devicon-rest-plain' },
+  'apis': { type: 'devicon', class: 'devicon-api-plain' },
+  'rest apis': { type: 'ion', class: 'cloud-upload' },
+  'jwt': { type: 'ion', class: 'key' },
+  'go golang': { type: 'devicon', class: 'devicon-go-plain' },
+  'sql sqlite': { type: 'devicon', class: 'devicon-sqlite-plain' },
+  'html/css': { type: 'devicon', class: 'devicon-html5-plain' },
+  'fire alarm system design': { type: 'ion', class: 'flame' },
+  'electrical installation': { type: 'ion', class: 'construct' },
+  'solar pv systems': { type: 'ion', class: 'sunny' },
+  'electronics circuit design': { type: 'ion', class: 'hardware-chip' },
+  'digital coding': { type: 'svg', svg: '<span class="tech-logo-svg"><svg width="1.7em" height="1.7em" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="12,16 44,32 12,48" stroke="currentColor" stroke-width="4" fill="none"/><circle cx="50" cy="32" r="6" stroke="currentColor" stroke-width="4" fill="currentColor"/></svg></span>' }
+};
+
+const normalize = (t) => {
+  let s = String(t || '').toLowerCase().trim();
+  // Handle C++ special-case before stripping '+'
+  s = s.replace(/\bc\+\+\b/g, 'cplusplus');
+  s = s.replace(/[()]/g, '')
+    .replace(/\+/g, ' ')
+    .replace(/\//g, ' ')
+    .replace(/\./g, '')
+    .replace(/\s+/g, ' ')
+    .trim();
+  return s;
+};
+
+const makeAcronym = (t) => {
+  const words = String(t || '').split(/[^a-zA-Z0-9]+/).filter(Boolean);
+  const letters = words.slice(0, 3).map(w => w[0].toUpperCase());
+  return letters.join('') || String(t || '').slice(0, 2).toUpperCase();
+};
+
+const renderTechLogos = (techArr = []) => {
+  // Sort tech so logoed ones come first
+  const sortedTech = techArr.slice().sort((a, b) => {
+    const aHasLogo = !!iconMap[normalize(a)];
+    const bHasLogo = !!iconMap[normalize(b)];
+    if (aHasLogo && !bHasLogo) return -1;
+    if (!aHasLogo && bHasLogo) return 1;
+    return 0;
+  });
+  const logos = sortedTech.filter(orig => iconMap[normalize(orig)]).map(orig => {
+    const key = normalize(orig);
+    const { type, class: cls } = iconMap[key];
+    let iconHtml;
+    if (type === 'devicon') {
+      iconHtml = `<i class="devicon ${cls}"></i>`;
+    } else if (type === 'simple') {
+      iconHtml = `<i class="${cls}"></i>`;
+    } else if (type === 'ion') {
+      iconHtml = `<ion-icon name="${cls}"></ion-icon>`;
+    }
+    return `<li class="project-tech-logo" title="${orig}">${iconHtml}<span class="tech-text">${orig}</span></li>`;
+  });
+  const texts = sortedTech.filter(orig => !iconMap[normalize(orig)]).map(orig => {
+    return `<li class="project-tech-text" title="${orig}">${orig}</li>`;
+  });
+  let html = '';
+  if (logos.length > 0) {
+    html += `<ul class="project-tech-logos">${logos.join('')}</ul>`;
+  }
+  if (texts.length > 0) {
+    html += `<ul class="project-tech-badges">${texts.join('')}</ul>`;
+  }
+  return html;
+};
+
+function renderNavbar() {
+  const navItems = [
+    { label: 'About', data: 'about' },
+    { label: 'Journey', data: 'journey' },
+    { label: 'Portfolio', data: 'projects' },
+    { label: 'Contact', data: 'contact' }
+  ];
+
+  return `
+    <nav class="navbar" id="navbar">
+      <div class="nav-logo">
+        <img src="${data.avatar}" alt="Avatar" class="nav-avatar">
+        <span class="full-name">WELCOME!</span>
+        <span class="short-name">SAYED</span>
+      </div>
+      <button class="nav-toggle" id="nav-toggle">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <ul class="nav-links" id="nav-links">
+        ${navItems.map((item, i) => `
+          <li>
+            <button class="nav-link ${i === 0 ? 'active' : ''}" data-nav-link="${item.data}">
+              ${item.label}
+            </button>
+          </li>
+        `).join('')}
+      </ul>
+    </nav>
+  `;
+}
+
+function renderAboutSection() {
+  const mainSkills = [...data.technicalSkills.languages.slice(0, 4), ...data.technicalSkills.webTechnologies.slice(0, 4)];
+
+  return `
+    <!-- Profile Card with Avatar and Action Buttons -->
+    <div class="about-profile-header">
+        <div class="about-avatar-section">
+        <div class="avatar-box">
+          <img src="${data.avatar}" alt="${data.name}" width="140" height="140" onerror="this.onerror=null;">
         </div>
-    `).join('');
-    certsContainer.innerHTML += `
-        <div class="enhanced-card tilt-card animatable" style="--delay: ${certsData.length * 0.1}s">
-             <h3 class="text-lg font-bold card-title mb-4 flex items-center gap-2">
-                <div class="skill-icon">
-                    <i data-lucide="sparkles"></i>
+        <div class="about-profile-info">
+          <h1>${data.name}</h1>
+          <p class="about-tagline">${data.tagline}</p>
+        </div>
+      </div>
+      <div class="about-profile-spacer" style="flex:1 1 auto;"></div>
+      <div class="action-buttons">
+        <button class="action-btn primary" id="download-cv-btn">
+          <ion-icon name="download-outline"></ion-icon>
+          <span>Download Resume</span>
+        </button>
+        <button class="action-btn secondary" id="view-contact-btn">
+          <ion-icon name="person-outline"></ion-icon>
+          <span>Contact Card</span>
+        </button>
+      </div>
+    </div>
+    
+    <header>
+      <h2 class="h2 article-title">About me</h2>
+    </header>
+    
+    <section class="about-text">
+      <p><strong>Electrical Engineer and Sales Strategist</strong> with specialized expertise in Electrical Engineering for Fire Safety Systems. I bridge the gap between complex technical requirements and business growth, leveraging deep knowledge of <strong>NFPA standards</strong> and fire alarm system design to secure high-value contracts and manage government tenders across Bahrain.</p>
+      <p><strong>Currently advancing into Full-Stack Development</strong>, I apply this same engineering precision to build robust, scalable software solutions using <strong>Go and JavaScript</strong>. My goal is to leverage this dual-competency—industrial engineering insight combined with modern software architecture—to develop efficient tools that solve complex real-world challenges.</p>
+    </section>
+  `;
+}
+
+function renderExperienceSection() {
+  return `
+    <header>
+      <h2 class="h2 article-title">Professional Experience</h2>
+    </header>
+    <div class="experience-tabs">
+      <div class="tab-list" role="tablist">
+        ${data.experience.map((job, i) => `
+          <button class="tab-btn ${i === 0 ? 'active' : ''}" data-tab="${i}">
+            ${job.company}
+          </button>
+        `).join('')}
+      </div>
+      <div class="tab-content">
+        ${data.experience.map((job, i) => {
+    let content = `
+            <h3 class="job-title">${job.title} <span>@ ${job.company}</span></h3>
+            <p class="job-date">${job.date} | ${job.location}</p>
+          `;
+
+    if (job.sections) {
+      Object.entries(job.sections).forEach(([sectionName, points]) => {
+        const sectionTitle = sectionName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+        content += `
+                <h4 class="job-section-title">${sectionTitle}</h4>
+                <ul class="job-description">
+                  ${points.map(point => `<li>${point}</li>`).join('')}
+                </ul>
+              `;
+      });
+    } else if (job.points) {
+      content += `<ul class="job-description">
+              ${job.points.map(point => `<li>${point}</li>`).join('')}
+            </ul>`;
+
+      if (job.keyProjects) {
+        content += `
+                <h4 class="job-section-title">Key Projects</h4>
+                <ul class="job-description">
+                  ${job.keyProjects.map(project => `<li>${project}</li>`).join('')}
+                </ul>
+              `;
+      }
+    }
+
+    return `
+            <div class="tab-panel ${i === 0 ? 'active' : ''}" id="panel-${i}" role="tabpanel">
+              ${content}
+            </div>
+          `;
+  }).join('')}
+      </div>
+    </div>
+    
+    <header style="margin-top: 3rem;">
+      <h2 class="h2 article-title">Education</h2>
+    </header>
+    <ul class="timeline-list">
+      ${data.education.map(edu => `
+        <li class="timeline-item">
+          <h4 class="h4 timeline-item-title">${edu.degree}</h4>
+          <span>${edu.institution}</span>
+          <span class="timeline-item-duration">${edu.date}</span>
+          ${edu.certificate ? `<a href="${edu.certificate}" target="_blank" class="certificate-link">
+            <ion-icon name="document-outline"></ion-icon> View Certificate
+          </a>` : ''}
+        </li>
+      `).join('')}
+    </ul>
+    
+    <header style="margin-top: 3rem;">
+      <h2 class="h2 article-title">Licenses & Certifications</h2>
+    </header>
+    <ul class="timeline-list">
+      ${data.certifications.map(cert => {
+    const isExpired = cert.expires && new Date(cert.expires) < new Date();
+    return `
+        <li class="timeline-item cert-item">
+          <div class="cert-header">
+            <ion-icon name="ribbon-outline" class="cert-icon"></ion-icon>
+            <div class="cert-content">
+              <h4 class="h4 timeline-item-title">${cert.name}</h4>
+              <span class="cert-authority">${cert.issuingAuthority}</span>
+              ${cert.courses ? `
+                <div class="cert-courses">
+                  ${cert.courses.map(course => `<span class="cert-course-item">${course}</span>`).join('')}
                 </div>
-                Course Certificates
-             </h3>
-             <div class="space-y-2">${courseCertsHTML}</div>
+              ` : ''}
+            </div>
+          </div>
+          
+          <div class="cert-meta">
+            ${cert.id ? `<span class="cert-meta-item">ID: ${cert.id}</span>` : ''}
+            ${cert.issued ? `<span class="cert-meta-item">Issued: ${cert.issued}</span>` : ''}
+            ${cert.expires ? `<span class="cert-meta-item ${isExpired ? 'expired' : ''}">${isExpired ? 'Expired' : 'Expires: ' + cert.expires}</span>` : ''}
+          </div>
+          
+          ${cert.pdfUrl ? `<a href="${cert.pdfUrl}" target="_blank" class="certificate-link">
+            <ion-icon name="document-outline"></ion-icon> View Certificate/License
+          </a>` : ''}
+        </li>
+        `;
+  }).join('')}
+    </ul>
+  `;
+}
+
+function getIcon(text) {
+  const lower = text.toLowerCase();
+  if (lower.includes('repository')) return 'logo-github';
+  if (lower.includes('thesis')) return 'school-outline';
+  if (lower.includes('poster')) return 'document-outline';
+  return 'open-outline';
+}
+
+function renderProjectsSection() {
+  // Map common tech names to Devicon classes
+  const categories = ['All', 'Web Development', 'Engineering', 'Games', 'CLI/Algorithms'];
+  const projects = data.projects.map(p => {
+    const name = (p.name || '').toLowerCase();
+    const tech = Array.isArray(p.tech) ? p.tech.map(t => String(t).toLowerCase()) : [];
+
+    const isSpaceBlaster = /space\s*blaster/.test(name);
+    const isCliAlgo = (/^(gotalk|antfinder)$/.test(name) || tech.some(t => /(cli|algorithms|dfs|graph|tcp)/.test(t)));
+    const isEngineering = tech.some(t => /arduino/.test(t));
+    const isWebDev = tech.some(t => /(go|react|javascript|html5|css3)/.test(t));
+
+    // Explicit web overrides per request
+    const forceWeb = (/gigabit/.test(name) || /(^|\s)01\s*dashboard/.test(name));
+
+    let category = 'Web Development';
+    if (isSpaceBlaster) category = 'Games';
+    else if (forceWeb) category = 'Web Development';
+    else if (isCliAlgo) category = 'CLI/Algorithms';
+    else if (isEngineering) category = 'Engineering';
+    else if (isWebDev) category = 'Web Development';
+
+    return { ...p, category };
+  });
+
+  return `
+    <header>
+      <h2 class="h2 article-title">Some Things I've Built</h2>
+    </header>
+    <ul class="filter-list">
+      ${categories.map((cat, i) => `
+        <li class="filter-item">
+          <button class="filter-btn ${i === 0 ? 'active' : ''}" data-filter-btn="${cat.toLowerCase()}">
+            ${cat}
+          </button>
+        </li>
+      `).join('')}
+    </ul>
+    <ul class="project-list">
+      ${projects.map(project => `
+        <li class="project-item active" data-filter-item data-category="${project.category.toLowerCase().replace(' ', '')}">
+            <figure class="project-img">
+              <div class="project-item-icon-box">
+                <span class="icon">📁</span>
+              </div>
+            </figure>
+            <h3 class="project-title">${project.name}</h3>
+            <p class="project-category">${project.category}</p>
+            <div class="project-meta">
+              ${project.points.length > 0 ? `
+                <ul class="project-description-list">
+                  ${project.points.map(point => `<li>${point}</li>`).join('')}
+                </ul>
+              ` : ''}
+              <button class="read-more-btn"><span>Show Description</span> <ion-icon name="chevron-down-outline"></ion-icon></button>
+              <ul class="project-tech-logos" aria-label="Technology stack logos">
+                ${renderTechLogos(project.tech)}
+              </ul>
+            </div>
+            <div class="project-links">
+              ${project.links.map(link => `<a href="${link.url}" target="_blank" class="project-link-btn"><ion-icon name="${getIcon(link.text)}"></ion-icon> ${link.text}</a>`).join('')}
+            </div>
+        </li>
+      `).join('')}
+    </ul>
+  `;
+}
+
+function getIconForCoreItem(item) {
+  if (item.includes('Fire')) return 'flame';
+  if (item.includes('Electrical')) return 'construct';
+  if (item.includes('Solar')) return 'sunny';
+  return 'cog';
+}
+
+function getIconForPersonalSkill(skill) {
+  const icons = {
+    'Adaptability': 'refresh',
+    'Communication': 'chatbubble',
+    'Fast Learner': 'school',
+    'Decision Making': 'options',
+    'Teamwork': 'people',
+    'Problem-solving': 'bulb',
+    'Time Management': 'time',
+    'Leadership': 'person',
+    'Training and Development': 'book',
+    'Project Management': 'folder'
+  };
+  return icons[skill] || 'star';
+}
+
+function getIconForCSConcept(concept) {
+  const icons = {
+    'Algorithms & Data Structures': 'code',
+    'Concurrency & Parallelism': 'sync',
+    'Virtual DOM': 'browsers',
+    'State Management': 'server'
+  };
+  return icons[concept] || 'hardware-chip';
+}
+
+function renderInteractiveTechLogos(techArr = [], type) {
+  // Sort tech so logoed ones come first
+  const sortedTech = techArr.slice().sort((a, b) => {
+    const aHasLogo = !!iconMap[normalize(a)];
+    const bHasLogo = !!iconMap[normalize(b)];
+    if (aHasLogo && !bHasLogo) return -1;
+    if (!aHasLogo && bHasLogo) return 1;
+    return 0;
+  });
+
+  const logos = sortedTech.filter(orig => iconMap[normalize(orig)]).map((orig, index) => {
+    const key = normalize(orig);
+    const iconDef = iconMap[key];
+    let iconHtml;
+    if (iconDef.type === 'devicon') {
+      // Make Oracle and Oracle DB icons larger
+      const largeKeys = ['oracle', 'oracle db', 'oracle crm', 'everycircuit'];
+      const size = largeKeys.includes(key) ? 'font-size: 2.8em;' : '';
+      iconHtml = `<i class="devicon ${iconDef.class}" style="${size}"></i>`;
+    } else if (iconDef.type === 'simple') {
+      iconHtml = `<i class="${iconDef.class}"></i>`;
+    } else if (iconDef.type === 'ion') {
+      iconHtml = `<ion-icon name="${iconDef.class}"></ion-icon>`;
+    } else if (iconDef.type === 'svg') {
+      iconHtml = iconDef.svg;
+    }
+    return `<div class="tech-logo-item" style="animation-delay: ${index * 0.1}s" data-tech="${orig.toLowerCase()}">
+              <div class="tech-logo-wrapper">
+                <div class="tech-logo-glow"></div>
+                ${iconHtml}
+              </div>
+              <span class="tech-logo-text">${orig}</span>
+            </div>`;
+  });
+
+  const texts = sortedTech.filter(orig => !iconMap[normalize(orig)]).map((orig, index) => {
+    return `<div class="tech-text-item" style="animation-delay: ${index * 0.1}s">${orig}</div>`;
+  });
+
+  return `<div class="interactive-tech-container" data-type="${type}">
+            ${logos.length > 0 ? `<div class="tech-logos-grid">${logos.join('')}</div>` : ''}
+            ${texts.length > 0 ? `<div class="tech-texts-grid">${texts.join('')}</div>` : ''}
+          </div>`;
+}
+
+function renderSkillBadges(items = [], type) {
+  const iconFunctions = {
+    engineering: getIconForCoreItem,
+    personal: getIconForPersonalSkill,
+    concepts: getIconForCSConcept
+  };
+
+  const getIcon = iconFunctions[type] || (() => 'star');
+
+  return `<div class="skill-badges-container" data-type="${type}">
+            ${items.map((item, index) => `
+              <div class="skill-badge" style="animation-delay: ${index * 0.1}s">
+                <div class="badge-icon">
+                  <ion-icon name="${getIcon(item)}"></ion-icon>
+                </div>
+                <span class="badge-text">${item}</span>
+                <div class="badge-hover-effect"></div>
+              </div>
+            `).join('')}
+          </div>`;
+}
+
+function renderProfessionalJourneySection() {
+  const journey = data.professionalJourney;
+
+  // Combine all timeline items and sort by date
+  const allItems = [
+    ...journey.education.map(item => ({ ...item, category: 'education' })),
+    ...journey.internships.map(item => ({ ...item, category: 'internships' })),
+    ...journey.career.map(item => ({ ...item, category: 'career' })),
+    ...journey.certifications.map(item => ({ ...item, category: 'certifications' }))
+  ].sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+
+  // Calculate timeline dimensions
+  const startYear = 2015;
+  const endYear = 2026;
+  const totalYears = endYear - startYear;
+  const svgWidth = 1000;
+  const svgHeight = 600;
+  const margin = { top: 50, right: 150, bottom: 50, left: 100 };
+  const chartWidth = svgWidth - margin.left - margin.right;
+  const chartHeight = svgHeight - margin.top - margin.bottom;
+
+  // Calculate positions
+  const getXPosition = (dateStr) => {
+    const date = new Date(dateStr);
+    const year = date.getFullYear();
+    const progress = (year - startYear) / totalYears;
+    return margin.left + (progress * chartWidth);
+  };
+
+  const getYPosition = (index, total) => {
+    return margin.top + (index * (chartHeight / Math.max(total - 1, 1)));
+  };
+
+  // Generate SVG timeline
+  const svgContent = `
+    <svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}" class="timeline-svg">
+      <!-- Background -->
+      <defs>
+        <linearGradient id="timelineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:${getComputedStyle(document.documentElement).getPropertyValue('--gradient-start').trim()};stop-opacity:0.8" />
+          <stop offset="100%" style="stop-color:${getComputedStyle(document.documentElement).getPropertyValue('--gradient-end').trim()};stop-opacity:0.8" />
+        </linearGradient>
+        <filter id="glow">
+          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
+          <feMerge>
+            <feMergeNode in="coloredBlur"/>
+            <feMergeNode in="SourceGraphic"/>
+          </feMerge>
+        </filter>
+      </defs>
+
+      <!-- Main timeline line -->
+      <line x1="${margin.left}" y1="${margin.top}" x2="${margin.left + chartWidth}" y2="${margin.top}"
+            stroke="var(--accent)" stroke-width="3" opacity="0.6"/>
+
+      <!-- Year markers -->
+      ${Array.from({length: totalYears + 1}, (_, i) => {
+        const year = startYear + i;
+        const x = getXPosition(`${year}-01-01`);
+        return `
+          <line x1="${x}" y1="${margin.top - 10}" x2="${x}" y2="${margin.top + 10}"
+                stroke="var(--text-secondary)" stroke-width="1" opacity="0.3"/>
+          <text x="${x}" y="${margin.top - 20}" text-anchor="middle"
+                fill="var(--text-secondary)" font-size="12" font-family="var(--font-mono)">${year}</text>
+        `;
+      }).join('')}
+
+      <!-- Timeline items -->
+      ${allItems.map((item, index) => {
+        const x = getXPosition(item.startDate);
+        const y = getYPosition(index, allItems.length);
+        const isCurrent = item.current || (!item.endDate && new Date() < new Date(item.endDate));
+        const categoryColors = {
+          education: '#64ffda',
+          internships: '#ffab91',
+          career: '#81c784',
+          certifications: '#ffb74d'
+        };
+        const color = categoryColors[item.category] || '#64ffda';
+
+        return `
+          <!-- Connection line -->
+          <line x1="${margin.left}" y1="${margin.top}" x2="${x}" y2="${y}"
+                stroke="${color}" stroke-width="2" opacity="0.4" class="connection-line"
+                data-category="${item.category}"/>
+
+          <!-- Timeline dot -->
+          <circle cx="${x}" cy="${y}" r="${isCurrent ? '8' : '6'}"
+                  fill="${color}" stroke="var(--primary)" stroke-width="2"
+                  class="timeline-dot ${item.category} ${isCurrent ? 'current' : ''}"
+                  data-category="${item.category}">
+            <title>${item.title} - ${item.company || item.institution}</title>
+          </circle>
+
+          <!-- Item card -->
+          <g class="timeline-item-card" data-category="${item.category}">
+            <!-- Card background -->
+            <rect x="${x + 20}" y="${y - 40}" width="280" height="80" rx="8"
+                  fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1"
+                  opacity="0.95" class="item-card-bg"/>
+
+            <!-- Icon -->
+            <foreignObject x="${x + 30}" y="${y - 30}" width="20" height="20">
+              <ion-icon name="${item.icon}" style="color: ${color}; font-size: 20px;"></ion-icon>
+            </foreignObject>
+
+            <!-- Title -->
+            <text x="${x + 60}" y="${y - 15}" fill="var(--text-primary)"
+                  font-size="14" font-weight="600" class="item-title">${item.title}</text>
+
+            <!-- Subtitle -->
+            <text x="${x + 60}" y="${y - 2}" fill="var(--text-secondary)"
+                  font-size="12" class="item-subtitle">${item.company || item.institution}</text>
+
+            <!-- Date -->
+            <text x="${x + 60}" y="${y + 13}" fill="var(--accent)"
+                  font-size="11" font-family="var(--font-mono)" class="item-date">
+              ${new Date(item.startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} -
+              ${item.endDate ? new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Present'}
+            </text>
+
+            <!-- Current indicator -->
+            ${isCurrent ? `
+              <rect x="${x + 200}" y="${y - 35}" width="60" height="20" rx="10"
+                    fill="var(--accent)" class="current-badge"/>
+              <text x="${x + 230}" y="${y - 22}" text-anchor="middle" fill="var(--primary)"
+                    font-size="10" font-weight="600" class="current-text">Current</text>
+            ` : ''}
+          </g>
+        `;
+      }).join('')}
+
+      <!-- Legend -->
+      <g class="timeline-legend">
+        <text x="${margin.left}" y="${svgHeight - 30}" fill="var(--text-primary)"
+              font-size="16" font-weight="600">Legend</text>
+        ${Object.entries({
+          education: { color: '#64ffda', label: 'Education' },
+          internships: { color: '#ffab91', label: 'Internships' },
+          career: { color: '#81c784', label: 'Career' },
+          certifications: { color: '#ffb74d', label: 'Certifications' }
+        }).map(([key, { color, label }], index) => `
+          <circle cx="${margin.left + (index * 120)}" cy="${svgHeight - 10}" r="6" fill="${color}"/>
+          <text x="${margin.left + (index * 120) + 15}" y="${svgHeight - 5}" fill="var(--text-secondary)"
+                font-size="12">${label}</text>
+        `).join('')}
+      </g>
+    </svg>
+  `;
+
+  return `
+    <header>
+      <h2 class="h2 article-title">Professional Journey</h2>
+      <p class="journey-subtitle">Interactive timeline chart of my educational background, career progression, internships, and certifications.</p>
+    </header>
+    <section class="professional-journey">
+      <div class="journey-filters">
+        <button class="filter-btn active" data-filter="all">All</button>
+        <button class="filter-btn" data-filter="education">Education</button>
+        <button class="filter-btn" data-filter="career">Career</button>
+        <button class="filter-btn" data-filter="internships">Internships</button>
+        <button class="filter-btn" data-filter="certifications">Certifications</button>
+      </div>
+      <div class="timeline-chart-container">
+        ${svgContent}
+      </div>
+    </section>
+  `;
+}
+
+function renderSkillsSection() {
+  const categories = [
+    { title: 'Personal Skills', icon: '<ion-icon name="person-outline"></ion-icon>', items: data.personalSkills, isTech: false, type: 'personal' },
+    { title: 'Core Engineering', icon: '<ion-icon name="construct-outline"></ion-icon>', items: data.technicalSkills.coreEngineering, isTech: false, type: 'engineering' },
+    { title: 'Languages', icon: '<ion-icon name="code-slash-outline"></ion-icon>', items: data.technicalSkills.languages, isTech: true, type: 'languages' },
+    { title: 'Web Technologies', icon: '<ion-icon name="globe-outline"></ion-icon>', items: data.technicalSkills.webTechnologies, isTech: true, type: 'web' },
+    { title: 'Systems & Tools', icon: '<ion-icon name="settings-outline"></ion-icon>', items: data.technicalSkills.systemsAndTools, isTech: true, type: 'tools' },
+    { title: 'Engineering Software', icon: '<ion-icon name="build-outline"></ion-icon>', items: data.technicalSkills.engineeringSoftware, isTech: true, type: 'software' },
+    { title: 'Computer Science Concepts', icon: '<ion-icon name="school-outline"></ion-icon>', items: data.technicalSkills.computerScienceConcepts, isTech: false, type: 'concepts' }
+  ];
+
+  // Dynamic stats
+  const numLanguages = data.technicalSkills.languages.length;
+  const numWebTech = data.technicalSkills.webTechnologies.length;
+  const numEngTools = data.technicalSkills.engineeringSoftware.length;
+
+  // Calculate total months of professional experience and convert to years (rounded to 1 decimal)
+  function parseDate(str, fallbackToStart) {
+    // Accepts formats like 'Month YYYY', 'YYYY', or 'Month YYYY — Month YYYY'
+    if (!str) return null;
+    const parts = str.split('—').map(s => s.trim());
+    let dateStr = fallbackToStart ? parts[0] : (parts[1] || parts[0]);
+    // Try to parse 'Month YYYY' or 'YYYY'
+    let d = new Date(dateStr);
+    if (isNaN(d)) {
+      // Try just the year
+      const yearMatch = dateStr.match(/\d{4}/);
+      if (yearMatch) d = new Date(parseInt(yearMatch[0], 10), fallbackToStart ? 0 : 11, 1);
+    }
+    return isNaN(d) ? null : d;
+  }
+
+  let totalMonths = 0;
+  if (Array.isArray(data.experience)) {
+    data.experience.forEach(exp => {
+      if (exp.date) {
+        const start = parseDate(exp.date, true);
+        const end = parseDate(exp.date, false) || new Date();
+        if (start && end && end > start) {
+          const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
+          totalMonths += months;
+        }
+      }
+    });
+  }
+  const yearsExp = totalMonths > 0 ? (totalMonths / 12).toFixed(1) : '1';
+
+  return `
+    <header>
+      <h2 class="h2 article-title">Skills & Technologies</h2>
+      <p class="skills-subtitle">Explore a dynamic showcase of my technical mastery, engineering tools, and professional strengths.</p>
+    </header>
+    <section class="skills">
+      <div class="skills-grid">
+        ${categories.map((cat, index) => `
+          <div class="skills-card" data-type="${cat.type}" style="animation-delay: ${index * 0.1}s">
+            <div class="skill-card-header">
+              <div class="skill-icon-container">
+                <div class="skill-icon-glow"></div>
+                <span class="skill-icon">${cat.icon}</span>
+              </div>
+              <h4 class="skill-card-title">${cat.title}</h4>
+            </div>
+            <div class="skill-card-content">
+              ${cat.isTech ? renderInteractiveTechLogos(cat.items, cat.type) : renderSkillBadges(cat.items, cat.type)}
+            </div>
+            <div class="skill-card-particles">
+              ${Array.from({length: 5}, (_, i) => `<div class="particle" style="animation-delay: ${i * 0.2}s"></div>`).join('')}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+      <div class="skills-stats">
+        <div class="stat-item">
+          <div class="stat-number" data-target="${numLanguages}">0</div>
+          <div class="stat-label">Programming Languages</div>
         </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="${numWebTech}">0</div>
+          <div class="stat-label">Web Technologies</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="${numEngTools}">0</div>
+          <div class="stat-label">Engineering Tools</div>
+        </div>
+        <div class="stat-item">
+          <div class="stat-number" data-target="${yearsExp}">0</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+      </div>
+    </section>
+  `;
+}
+
+function renderEducationSection() {
+  return `
+    <header>
+      <h2 class="h2 article-title">Education</h2>
+    </header>
+    <ul class="timeline-list">
+      ${data.education.map(edu => `
+        <li class="timeline-item">
+          <h4 class="h4 timeline-item-title">${edu.degree}</h4>
+          <span>${edu.institution}</span>
+          <span class="timeline-item-duration">${edu.date}</span>
+          ${edu.certificate ? `<a href="${edu.certificate}" target="_blank" class="certificate-link">
+            <ion-icon name="document-outline"></ion-icon> View Certificate
+          </a>` : ''}
+        </li>
+      `).join('')}
+    </ul>
+    
+    <header style="margin-top: 3rem;">
+      <h2 class="h2 article-title">Licenses & Certifications</h2>
+    </header>
+    <ul class="timeline-list">
+      ${data.certifications.map(cert => {
+    const isExpired = cert.expires && new Date(cert.expires) < new Date();
+    return `
+        <li class="timeline-item cert-item">
+          <div class="cert-header">
+            <ion-icon name="ribbon-outline" class="cert-icon"></ion-icon>
+            <div class="cert-content">
+              <h4 class="h4 timeline-item-title">${cert.name}</h4>
+              <span class="cert-authority">${cert.issuingAuthority}</span>
+              ${cert.courses ? `
+                <div class="cert-courses">
+                  ${cert.courses.map(course => `<span class="cert-course-item">${course}</span>`).join('')}
+                </div>
+              ` : ''}
+            </div>
+          </div>
+          
+          <div class="cert-meta">
+            ${cert.id ? `<span class="cert-meta-item">ID: ${cert.id}</span>` : ''}
+            ${cert.issued ? `<span class="cert-meta-item">Issued: ${cert.issued}</span>` : ''}
+            ${cert.expires ? `<span class="cert-meta-item ${isExpired ? 'expired' : ''}">${isExpired ? 'Expired' : 'Expires: ' + cert.expires}</span>` : ''}
+          </div>
+          
+          ${cert.pdfUrl ? `<a href="${cert.pdfUrl}" target="_blank" class="certificate-link">
+            <ion-icon name="document-outline"></ion-icon> View Certificate/License
+          </a>` : ''}
+        </li>
+        `;
+  }).join('')}
+    </ul>
+  `;
+}
+
+function renderContactSection() {
+  const countryCodes = [
+    { code: '+1', country: 'US/CA', flag: '🇺🇸' },
+    { code: '+1', country: 'Canada', flag: '🇨🇦' },
+    { code: '+7', country: 'Russia', flag: '🇷🇺' },
+    { code: '+20', country: 'Egypt', flag: '🇪🇬' },
+    { code: '+27', country: 'South Africa', flag: '🇿🇦' },
+    { code: '+30', country: 'Greece', flag: '🇬🇷' },
+    { code: '+31', country: 'Netherlands', flag: '🇳🇱' },
+    { code: '+32', country: 'Belgium', flag: '🇧🇪' },
+    { code: '+33', country: 'France', flag: '🇫🇷' },
+    { code: '+34', country: 'Spain', flag: '🇪🇸' },
+    { code: '+36', country: 'Hungary', flag: '🇭🇺' },
+    { code: '+39', country: 'Italy', flag: '🇮🇹' },
+    { code: '+40', country: 'Romania', flag: '🇷🇴' },
+    { code: '+41', country: 'Switzerland', flag: '🇨🇭' },
+    { code: '+43', country: 'Austria', flag: '🇦🇹' },
+    { code: '+44', country: 'UK', flag: '🇬🇧' },
+    { code: '+45', country: 'Denmark', flag: '🇩🇰' },
+    { code: '+46', country: 'Sweden', flag: '🇸🇪' },
+    { code: '+47', country: 'Norway', flag: '🇳🇴' },
+    { code: '+48', country: 'Poland', flag: '🇵🇱' },
+    { code: '+49', country: 'Germany', flag: '🇩🇪' },
+    { code: '+51', country: 'Peru', flag: '🇵🇪' },
+    { code: '+52', country: 'Mexico', flag: '🇲🇽' },
+    { code: '+53', country: 'Cuba', flag: '🇨🇺' },
+    { code: '+54', country: 'Argentina', flag: '🇦🇷' },
+    { code: '+55', country: 'Brazil', flag: '🇧🇷' },
+    { code: '+56', country: 'Chile', flag: '🇨🇱' },
+    { code: '+57', country: 'Colombia', flag: '🇨🇴' },
+    { code: '+58', country: 'Venezuela', flag: '🇻🇪' },
+    { code: '+60', country: 'Malaysia', flag: '🇲🇾' },
+    { code: '+61', country: 'Australia', flag: '🇦🇺' },
+    { code: '+62', country: 'Indonesia', flag: '🇮🇩' },
+    { code: '+63', country: 'Philippines', flag: '🇵🇭' },
+    { code: '+64', country: 'New Zealand', flag: '🇳🇿' },
+    { code: '+65', country: 'Singapore', flag: '🇸🇬' },
+    { code: '+66', country: 'Thailand', flag: '🇹🇭' },
+    { code: '+81', country: 'Japan', flag: '🇯🇵' },
+    { code: '+82', country: 'South Korea', flag: '🇰🇷' },
+    { code: '+84', country: 'Vietnam', flag: '🇻🇳' },
+    { code: '+86', country: 'China', flag: '🇨🇳' },
+    { code: '+90', country: 'Turkey', flag: '🇹🇷' },
+    { code: '+91', country: 'India', flag: '🇮🇳' },
+    { code: '+92', country: 'Pakistan', flag: '🇵🇰' },
+    { code: '+93', country: 'Afghanistan', flag: '🇦🇫' },
+    { code: '+94', country: 'Sri Lanka', flag: '🇱🇰' },
+    { code: '+95', country: 'Myanmar', flag: '🇲🇲' },
+    { code: '+98', country: 'Iran', flag: '🇮🇷' },
+    { code: '+212', country: 'Morocco', flag: '🇲🇦' },
+    { code: '+213', country: 'Algeria', flag: '🇩🇿' },
+    { code: '+216', country: 'Tunisia', flag: '🇹🇳' },
+    { code: '+218', country: 'Libya', flag: '🇱🇾' },
+    { code: '+220', country: 'Gambia', flag: '🇬🇲' },
+    { code: '+221', country: 'Senegal', flag: '🇸🇳' },
+    { code: '+222', country: 'Mauritania', flag: '🇲🇷' },
+    { code: '+223', country: 'Mali', flag: '🇲🇱' },
+    { code: '+224', country: 'Guinea', flag: '🇬🇳' },
+    { code: '+225', country: 'Ivory Coast', flag: '🇨🇮' },
+    { code: '+226', country: 'Burkina Faso', flag: '🇧🇫' },
+    { code: '+227', country: 'Niger', flag: '🇳🇪' },
+    { code: '+228', country: 'Togo', flag: '🇹🇬' },
+    { code: '+229', country: 'Benin', flag: '🇧🇯' },
+    { code: '+230', country: 'Mauritius', flag: '🇲🇺' },
+    { code: '+231', country: 'Liberia', flag: '🇱🇷' },
+    { code: '+232', country: 'Sierra Leone', flag: '🇸🇱' },
+    { code: '+233', country: 'Ghana', flag: '🇬🇭' },
+    { code: '+234', country: 'Nigeria', flag: '🇳🇬' },
+    { code: '+235', country: 'Chad', flag: '🇹🇩' },
+    { code: '+236', country: 'Central African Republic', flag: '🇨🇫' },
+    { code: '+237', country: 'Cameroon', flag: '🇨🇲' },
+    { code: '+238', country: 'Cape Verde', flag: '🇨🇻' },
+    { code: '+239', country: 'São Tomé and Príncipe', flag: '🇸🇹' },
+    { code: '+240', country: 'Equatorial Guinea', flag: '🇬🇶' },
+    { code: '+241', country: 'Gabon', flag: '🇬🇦' },
+    { code: '+242', country: 'Republic of the Congo', flag: '🇨🇬' },
+    { code: '+243', country: 'Democratic Republic of the Congo', flag: '🇨🇩' },
+    { code: '+244', country: 'Angola', flag: '🇦🇴' },
+    { code: '+245', country: 'Guinea-Bissau', flag: '🇬🇼' },
+    { code: '+246', country: 'British Indian Ocean Territory', flag: '🇮🇴' },
+    { code: '+247', country: 'Ascension Island', flag: '🇦🇨' },
+    { code: '+248', country: 'Seychelles', flag: '🇸🇨' },
+    { code: '+249', country: 'Sudan', flag: '🇸🇩' },
+    { code: '+250', country: 'Rwanda', flag: '🇷🇼' },
+    { code: '+251', country: 'Ethiopia', flag: '🇪🇹' },
+    { code: '+252', country: 'Somalia', flag: '🇸🇴' },
+    { code: '+253', country: 'Djibouti', flag: '🇩🇯' },
+    { code: '+254', country: 'Kenya', flag: '🇰🇪' },
+    { code: '+255', country: 'Tanzania', flag: '🇹🇿' },
+    { code: '+256', country: 'Uganda', flag: '🇺🇬' },
+    { code: '+257', country: 'Burundi', flag: '🇧🇮' },
+    { code: '+258', country: 'Mozambique', flag: '🇲🇿' },
+    { code: '+260', country: 'Zambia', flag: '🇿🇲' },
+    { code: '+261', country: 'Madagascar', flag: '🇲🇬' },
+    { code: '+262', country: 'Réunion', flag: '🇷🇪' },
+    { code: '+263', country: 'Zimbabwe', flag: '🇿🇼' },
+    { code: '+264', country: 'Namibia', flag: '🇳🇦' },
+    { code: '+265', country: 'Malawi', flag: '🇲🇼' },
+    { code: '+266', country: 'Lesotho', flag: '🇱🇸' },
+    { code: '+267', country: 'Botswana', flag: '🇧🇼' },
+    { code: '+268', country: 'Eswatini', flag: '🇸🇿' },
+    { code: '+269', country: 'Comoros', flag: '🇰🇲' },
+    { code: '+290', country: 'Saint Helena', flag: '🇸🇭' },
+    { code: '+291', country: 'Eritrea', flag: '🇪🇷' },
+    { code: '+297', country: 'Aruba', flag: '🇦🇼' },
+    { code: '+298', country: 'Faroe Islands', flag: '🇫🇴' },
+    { code: '+299', country: 'Greenland', flag: '🇬🇱' },
+    { code: '+350', country: 'Gibraltar', flag: '🇬🇮' },
+    { code: '+351', country: 'Portugal', flag: '🇵🇹' },
+    { code: '+352', country: 'Luxembourg', flag: '🇱🇺' },
+    { code: '+353', country: 'Ireland', flag: '🇮🇪' },
+    { code: '+354', country: 'Iceland', flag: '🇮🇸' },
+    { code: '+355', country: 'Albania', flag: '🇦🇱' },
+    { code: '+356', country: 'Malta', flag: '🇲🇹' },
+    { code: '+357', country: 'Cyprus', flag: '🇨🇾' },
+    { code: '+358', country: 'Finland', flag: '🇫🇮' },
+    { code: '+359', country: 'Bulgaria', flag: '🇧🇬' },
+    { code: '+370', country: 'Lithuania', flag: '🇱🇹' },
+    { code: '+371', country: 'Latvia', flag: '🇱🇻' },
+    { code: '+372', country: 'Estonia', flag: '🇪🇪' },
+    { code: '+373', country: 'Moldova', flag: '🇲🇩' },
+    { code: '+374', country: 'Armenia', flag: '🇦🇲' },
+    { code: '+375', country: 'Belarus', flag: '🇧🇾' },
+    { code: '+376', country: 'Andorra', flag: '🇦🇩' },
+    { code: '+377', country: 'Monaco', flag: '🇲🇨' },
+    { code: '+378', country: 'San Marino', flag: '🇸🇲' },
+    { code: '+380', country: 'Ukraine', flag: '🇺🇦' },
+    { code: '+381', country: 'Serbia', flag: '🇷🇸' },
+    { code: '+382', country: 'Montenegro', flag: '🇲🇪' },
+    { code: '+383', country: 'Kosovo', flag: '🇽🇰' },
+    { code: '+385', country: 'Croatia', flag: '🇭🇷' },
+    { code: '+386', country: 'Slovenia', flag: '🇸🇮' },
+    { code: '+387', country: 'Bosnia and Herzegovina', flag: '🇧🇦' },
+    { code: '+389', country: 'North Macedonia', flag: '🇲🇰' },
+    { code: '+420', country: 'Czech Republic', flag: '🇨🇿' },
+    { code: '+421', country: 'Slovakia', flag: '🇸🇰' },
+    { code: '+423', country: 'Liechtenstein', flag: '🇱🇮' },
+    { code: '+500', country: 'Falkland Islands', flag: '🇫🇰' },
+    { code: '+501', country: 'Belize', flag: '🇧🇿' },
+    { code: '+502', country: 'Guatemala', flag: '🇬🇹' },
+    { code: '+503', country: 'El Salvador', flag: '🇸🇻' },
+    { code: '+504', country: 'Honduras', flag: '🇭🇳' },
+    { code: '+505', country: 'Nicaragua', flag: '🇳🇮' },
+    { code: '+506', country: 'Costa Rica', flag: '🇨🇷' },
+    { code: '+507', country: 'Panama', flag: '🇵🇦' },
+    { code: '+508', country: 'Saint Pierre and Miquelon', flag: '🇵🇲' },
+    { code: '+509', country: 'Haiti', flag: '🇭🇹' },
+    { code: '+590', country: 'Guadeloupe', flag: '🇬🇵' },
+    { code: '+591', country: 'Bolivia', flag: '🇧🇴' },
+    { code: '+592', country: 'Guyana', flag: '🇬🇾' },
+    { code: '+593', country: 'Ecuador', flag: '🇪🇨' },
+    { code: '+594', country: 'French Guiana', flag: '🇬🇫' },
+    { code: '+595', country: 'Paraguay', flag: '🇵🇾' },
+    { code: '+596', country: 'Martinique', flag: '🇲🇶' },
+    { code: '+597', country: 'Suriname', flag: '🇸🇷' },
+    { code: '+598', country: 'Uruguay', flag: '🇺🇾' },
+    { code: '+599', country: 'Curaçao', flag: '🇨🇼' },
+    { code: '+670', country: 'East Timor', flag: '🇹🇱' },
+    { code: '+672', country: 'Antarctica', flag: '🇦🇶' },
+    { code: '+673', country: 'Brunei', flag: '🇧🇳' },
+    { code: '+674', country: 'Nauru', flag: '🇳🇷' },
+    { code: '+675', country: 'Papua New Guinea', flag: '🇵🇬' },
+    { code: '+676', country: 'Tonga', flag: '🇹🇴' },
+    { code: '+677', country: 'Solomon Islands', flag: '🇸🇧' },
+    { code: '+678', country: 'Vanuatu', flag: '🇻🇺' },
+    { code: '+679', country: 'Fiji', flag: '🇫🇯' },
+    { code: '+680', country: 'Palau', flag: '🇵🇼' },
+    { code: '+681', country: 'Wallis and Futuna', flag: '🇼🇫' },
+    { code: '+682', country: 'Cook Islands', flag: '🇨🇰' },
+    { code: '+683', country: 'Niue', flag: '🇳🇺' },
+    { code: '+684', country: 'American Samoa', flag: '🇦🇸' },
+    { code: '+685', country: 'Samoa', flag: '🇼🇸' },
+    { code: '+686', country: 'Kiribati', flag: '🇰🇮' },
+    { code: '+687', country: 'New Caledonia', flag: '🇳🇨' },
+    { code: '+688', country: 'Tuvalu', flag: '🇹🇻' },
+    { code: '+689', country: 'French Polynesia', flag: '🇵🇫' },
+    { code: '+690', country: 'Tokelau', flag: '🇹🇰' },
+    { code: '+691', country: 'Micronesia', flag: '🇫🇲' },
+    { code: '+692', country: 'Marshall Islands', flag: '🇲🇭' },
+    { code: '+850', country: 'North Korea', flag: '🇰🇵' },
+    { code: '+852', country: 'Hong Kong', flag: '🇭🇰' },
+    { code: '+853', country: 'Macau', flag: '🇲🇴' },
+    { code: '+855', country: 'Cambodia', flag: '🇰🇭' },
+    { code: '+856', country: 'Laos', flag: '🇱🇦' },
+    { code: '+880', country: 'Bangladesh', flag: '🇧🇩' },
+    { code: '+886', country: 'Taiwan', flag: '🇹🇼' },
+    { code: '+960', country: 'Maldives', flag: '🇲🇻' },
+    { code: '+961', country: 'Lebanon', flag: '🇱🇧' },
+    { code: '+962', country: 'Jordan', flag: '🇯🇴' },
+    { code: '+963', country: 'Syria', flag: '🇸🇾' },
+    { code: '+964', country: 'Iraq', flag: '🇮🇶' },
+    { code: '+965', country: 'Kuwait', flag: '🇰🇼' },
+    { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
+    { code: '+967', country: 'Yemen', flag: '🇾🇪' },
+    { code: '+968', country: 'Oman', flag: '🇴🇲' },
+    { code: '+970', country: 'Palestine', flag: '🇵🇸' },
+    { code: '+971', country: 'UAE', flag: '🇦🇪' },
+    { code: '+972', country: 'Israel', flag: '🇮🇱' },
+    { code: '+973', country: 'Bahrain', flag: '🇧🇭' },
+    { code: '+974', country: 'Qatar', flag: '🇶🇦' },
+    { code: '+975', country: 'Bhutan', flag: '🇧🇹' },
+    { code: '+976', country: 'Mongolia', flag: '🇲🇳' },
+    { code: '+977', country: 'Nepal', flag: '🇳🇵' },
+    { code: '+992', country: 'Tajikistan', flag: '🇹🇯' },
+    { code: '+993', country: 'Turkmenistan', flag: '🇹🇲' },
+    { code: '+994', country: 'Azerbaijan', flag: '🇦🇿' },
+    { code: '+995', country: 'Georgia', flag: '🇬🇪' },
+    { code: '+996', country: 'Kyrgyzstan', flag: '🇰🇬' },
+    { code: '+998', country: 'Uzbekistan', flag: '🇺🇿' }
+  ];
+
+  const countryOptions = countryCodes.map(item =>
+    `<option value="${item.code}" ${item.code === '+973' ? 'selected' : ''}>${item.flag} ${item.code} ${item.country}</option>`
+  ).join('');
+
+  return `
+    <header>
+      <h2 class="h2 article-title">Contact</h2>
+    </header>
+    <section class="contact">
+      <p class="contact-text">
+        Let's <strong>keep in touch</strong>! Don't hesitate to contact me if you have any questions or opportunities.
+      </p>
+
+      <div id="form-message"></div>
+
+      <form data-form id="contact-form">
+        <div class="input-wrapper">
+          <input type="text" name="fullname" data-form-input placeholder="Full name" required>
+          <input type="email" name="email" data-form-input placeholder="Email address" required>
+        </div>
+
+        <div class="phone-input-wrapper">
+          <select name="countryCode" id="countryCode">
+            <option value="">Code</option>
+            ${countryOptions}
+          </select>
+          <input type="tel" name="phone" id="phone" placeholder="Phone number (optional)" pattern="[0-9]*">
+        </div>
+
+        <textarea name="message" data-form-input placeholder="Your Message" required></textarea>
+
+        <button type="submit" data-form-btn>
+          <span>Send Message</span>
+        </button>
+      </form>
+    </section>
+  `;
+}
+
+function renderFooter() {
+  return `
+    <footer class="footer">
+      <p class="footer-credit">
+        © 2026 <a href="${data.contact.github}" target="_blank">${data.name}</a>. All rights reserved.
+      </p>
+    </footer>
+  `;
+}
+
+function renderSideElements() {
+  return `
+    <div class="side-element side-left">
+      <div class="hover-text" id="left-hover-text"></div>
+      <a href="tel:${data.contact.phone}" title="Phone">
+        <ion-icon name="call-outline"></ion-icon>
+        <span class="sr-only">Call me!</span>
+      </a>
+      <a href="mailto:${data.contact.email}" title="Email">
+        <ion-icon name="mail-outline"></ion-icon>
+        <span class="sr-only">Let's touch!</span>
+      </a>
+      <a href="${data.contact.linkedin}" target="_blank" title="LinkedIn">
+        <ion-icon name="logo-linkedin"></ion-icon>
+        <span class="sr-only">Connect!</span>
+      </a>
+    </div>
+    <div class="side-element side-right">
+      <div class="hover-text" id="right-hover-text"></div>
+      <a href="https://wa.me/${data.contact.phone.replace(/[^0-9]/g, '')}" target="_blank" title="WhatsApp">
+        <ion-icon name="logo-whatsapp"></ion-icon>
+        <span class="sr-only">Chat now!</span>
+      </a>
+      <a href="${data.contact.github}" target="_blank" title="GitHub">
+        <ion-icon name="logo-github"></ion-icon>
+        <span class="sr-only">Code here!</span>
+      </a>
+      <a href="https://medium.com/@s97ahm" target="_blank" title="Medium">
+        <ion-icon name="logo-medium"></ion-icon>
+        <span class="sr-only">Read me!</span>
+      </a>
+      <a href="${data.contact.twitter}" target="_blank" title="X" class="x-logo">
+        <span>𝕏</span>
+        <span class="sr-only">Follow me!</span>
+      </a>
+      <a href="${data.contact.discord}" target="_blank" title="Discord" class="discord-logo">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden="true" xmlns="http://www.w3.org/2000/svg">
+          <path d="M20.317 4.369A19.791 19.791 0 0 0 16.885 3.2a.077.077 0 0 0-.082.038c-.357.63-.755 1.453-1.037 2.104a18.524 18.524 0 0 0-5.53 0 12.76 12.76 0 0 0-1.05-2.104.077.077 0 0 0-.082-.038A19.736 19.736 0 0 0 3.684 4.369a.069.069 0 0 0-.03.027C.533 9.09-.32 13.579.099 18.021a.082.082 0 0 0 .031.056c2.128 1.565 4.195 2.507 6.23 3.13a.077.077 0 0 0 .084-.027c.48-.66.908-1.356 1.273-2.084a.076.076 0 0 0-.041-.104c-.676-.256-1.32-.57-1.938-.936a.077.077 0 0 1-.008-.127c.13-.098.26-.2.384-.304a.074.074 0 0 1 .077-.01c4.06 1.855 8.447 1.855 12.47 0a.073.073 0 0 1 .078.009c.124.104.254.206.384.304a.077.077 0 0 1-.006.127 12.298 12.298 0 0 1-1.94.936.076.076 0 0 0-.04.105c.366.728.794 1.423 1.272 2.084a.076.076 0 0 0 .084.028c2.037-.623 4.104-1.565 6.23-3.13a.077.077 0 0 0 .031-.055c.5-5.177-.838-9.637-3.548-13.625a.061.061 0 0 0-.03-.028ZM8.02 15.331c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.175 1.094 2.157 2.418 0 1.334-.955 2.419-2.157 2.419Zm7.974 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.418 2.157-2.418 1.21 0 2.175 1.094 2.157 2.418 0 1.334-.947 2.419-2.157 2.419Z" fill="currentColor"/>
+        </svg>
+        <span class="sr-only">Hello world!</span>
+      </a>
+    </div>
+  `;
+}
+
+function renderContactModal() {
+  return `
+    <div class="contact-modal" id="contact-modal">
+      <div class="modal-overlay" id="modal-overlay"></div>
+      <div class="modal-content">
+        <button class="modal-close" id="modal-close">
+          <ion-icon name="close-outline"></ion-icon>
+        </button>
+        <div class="modal-header">
+          <ion-icon name="person-circle" class="modal-icon"></ion-icon>
+          <h3>Save Contact Card</h3>
+          <p>Scan the QR code or download the vCard</p>
+        </div>
+        <div class="modal-body">
+          <div class="qr-code-container" id="qr-code">
+            <div class="qr-placeholder">QR Code will appear here</div>
+          </div>
+          <div class="modal-actions">
+            <button class="modal-btn primary" id="download-vcard-btn">
+              <ion-icon name="download-outline"></ion-icon>
+              <span>Download vCard</span>
+            </button>
+            <button class="modal-btn secondary" id="copy-vcard-btn">
+              <ion-icon name="copy-outline"></ion-icon>
+              <span>Copy vCard</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+// Generate vCard
+function generateVCard() {
+  return `BEGIN:VCARD
+VERSION:3.0
+FN:${data.name}
+N:HUSAIN;SAYED;AHMED;;
+TEL;TYPE=CELL:${data.mobile}
+EMAIL:${data.email}
+ADR;TYPE=HOME:;;${data.address};;;${data.nationality}
+URL:${data.contact.linkedin}
+URL:${data.contact.github}
+NOTE:${data.title}
+END:VCARD`;
+}
+
+// Generate QR Code
+async function generateQRCode() {
+  const qrContainer = document.getElementById('qr-code');
+  if (!qrContainer) return;
+
+  // Show loading state
+  qrContainer.innerHTML = `
+    <div class="qr-loading">
+      <div class="loading-spinner"></div>
+      <p class="loading-text">Generating QR Code...</p>
+    </div>
+  `;
+
+  try {
+    // Add a small delay to show the loading animation
+    await new Promise(resolve => setTimeout(resolve, 800));
+
+    // Fetch the actual VCF file and extract text without photo
+    const response = await fetch(data.vCardUrl);
+    const vcfContent = await response.text();
+
+    // Split into lines and remove the PHOTO field
+    const lines = vcfContent.split('\n');
+    const filteredLines = [];
+    let inPhotoBlock = false;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+
+      // Start of photo block
+      if (line.startsWith('PHOTO;ENCODING=')) {
+        inPhotoBlock = true;
+        continue;
+      }
+
+      // End of vCard or next field means photo block ended
+      if (inPhotoBlock && (line.startsWith('END:VCARD') || (line.match(/^[A-Z]/) && !line.startsWith(' ')))) {
+        inPhotoBlock = false;
+      }
+
+      // Skip lines that are part of photo block
+      if (inPhotoBlock) {
+        continue;
+      }
+
+      filteredLines.push(line);
+    }
+
+    const vCardWithoutPhoto = filteredLines.join('\n');
+
+    // Clear loading state
+    qrContainer.innerHTML = '';
+
+    // Create QR code using QRCode.js
+    const qrCodeDiv = document.createElement('div');
+    qrCodeDiv.id = 'qrcode-canvas';
+    qrContainer.appendChild(qrCodeDiv);
+
+    new QRCode(qrCodeDiv, {
+      text: vCardWithoutPhoto,
+      width: 250,
+      height: 250,
+      colorDark: "#0a192f",
+      colorLight: "#ffffff",
+      correctLevel: QRCode.CorrectLevel.L
+    });
+
+    // Add instruction text
+    const instruction = document.createElement('p');
+    instruction.className = 'qr-instruction';
+    instruction.textContent = 'Scan with your phone camera';
+    qrContainer.appendChild(instruction);
+
+  } catch (err) {
+    console.error('Failed to generate QR code:', err);
+    qrContainer.innerHTML = `
+      <p class="qr-error" style="color: #ff6464; text-align: center;">Unable to generate QR code</p>
     `;
+  }
+}
 
-    // --- Enhanced Expressive Timeline ---
-    const journeyData = [
-        ...experienceData.map(e => ({...e, type: 'work', icon: 'briefcase', category: 'Professional Experience'})),
-        ...internshipData.map(e => ({...e, type: 'internship', icon: 'users', category: 'Training & Development'})),
-        ...educationData.map(e => ({...e, title: e.degree, company: e.institution, type: 'education', icon: 'graduation-cap', category: 'Academic Achievement'}))
-    ];
+// Event Listeners
+function initializeEventListeners() {
+  // Download CV button
+  const downloadCVBtn = document.getElementById('download-cv-btn');
+  if (downloadCVBtn) {
+    downloadCVBtn.addEventListener('click', () => {
+      window.open(data.cvUrl, '_blank');
+    });
+  }
 
-    let currentFilter = 'all';
-    let timelineVisible = false;
+  // View Contact button - show modal
+  const viewContactBtn = document.getElementById('view-contact-btn');
+  const contactModal = document.getElementById('contact-modal');
+  const modalOverlay = document.getElementById('modal-overlay');
+  const modalClose = document.getElementById('modal-close');
 
-    const parseDate = (dateStr) => {
-        if (dateStr.toLowerCase() === 'present') return new Date();
-        if (!isNaN(dateStr)) return new Date(dateStr, 0, 1);
-        const parts = dateStr.split(' ');
-        if (parts.length >= 2) {
-            const month = new Date(Date.parse(parts[0] + " 1, 2000")).getMonth();
-            const year = parseInt(parts[1]);
-            return new Date(year, month, 1);
+  if (viewContactBtn && contactModal) {
+    viewContactBtn.addEventListener('click', () => {
+      contactModal.classList.add('active');
+      document.body.style.overflow = 'hidden';
+      generateQRCode();
+    });
+  }
+
+  // Close modal
+  [modalOverlay, modalClose].forEach(element => {
+    if (element) {
+      element.addEventListener('click', () => {
+        contactModal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+
+  // Download vCard
+  const downloadVCardBtn = document.getElementById('download-vcard-btn');
+  if (downloadVCardBtn) {
+    downloadVCardBtn.addEventListener('click', () => {
+      // Use the actual vCard file
+      const a = document.createElement('a');
+      a.href = data.vCardUrl;
+      a.download = data.vCardUrl;
+      document.body.appendChild(a);
+      a.click();
+      document.body.removeChild(a);
+    });
+  }
+
+  // Copy vCard
+  const copyVCardBtn = document.getElementById('copy-vcard-btn');
+  if (copyVCardBtn) {
+    copyVCardBtn.addEventListener('click', async () => {
+      try {
+        // Fetch the actual vCard file content
+        const response = await fetch(data.vCardUrl);
+        const vCard = await response.text();
+
+        await navigator.clipboard.writeText(vCard);
+        const originalText = copyVCardBtn.querySelector('span').textContent;
+        copyVCardBtn.querySelector('span').textContent = 'Copied!';
+        setTimeout(() => {
+          copyVCardBtn.querySelector('span').textContent = originalText;
+        }, 2000);
+      } catch (err) {
+        console.error('Failed to copy:', err);
+      }
+    });
+  }
+
+  // Mobile nav toggle
+  const navToggle = document.getElementById('nav-toggle');
+  const navLinks = document.getElementById('nav-links');
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      navToggle.classList.toggle('active');
+      navLinks.classList.toggle('active');
+    });
+  }
+
+  // Navbar navigation
+  const navLinkButtons = document.querySelectorAll('[data-nav-link]');
+  const pages = document.querySelectorAll('[data-page]');
+
+  navLinkButtons.forEach(link => {
+    link.addEventListener('click', function () {
+      const targetPage = this.getAttribute('data-nav-link');
+
+      setActivePage(targetPage);
+
+      // Close mobile menu
+      if (navToggle && navLinks) {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      }
+
+      window.scrollTo(0, 0);
+    });
+  });
+
+  // Click on nav-logo to go to About
+  const navLogo = document.querySelector('.nav-logo');
+  if (navLogo) {
+    navLogo.addEventListener('click', () => {
+      setActivePage('about');
+      // Close mobile menu
+      if (navToggle && navLinks) {
+        navToggle.classList.remove('active');
+        navLinks.classList.remove('active');
+      }
+      window.scrollTo(0, 0);
+    });
+  }
+
+  // Handle hash changes (back/forward buttons)
+  window.addEventListener('hashchange', () => {
+    const page = window.location.hash.substring(1) || 'about';
+    setActivePage(page);
+  });
+
+  // Navbar scroll effect
+  const navbar = document.getElementById('navbar');
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 50) {
+      navbar.classList.add('scrolled');
+    } else {
+      navbar.classList.remove('scrolled');
+    }
+  });
+  const tabBtns = document.querySelectorAll('.tab-btn');
+  const tabPanels = document.querySelectorAll('.tab-panel');
+
+  tabBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const tabIndex = this.getAttribute('data-tab');
+
+      // Remove active from all
+      tabBtns.forEach(b => b.classList.remove('active'));
+      tabPanels.forEach(p => p.classList.remove('active'));
+
+      // Add active to clicked
+      this.classList.add('active');
+      const panel = document.getElementById(`panel-${tabIndex}`);
+      if (panel) panel.classList.add('active');
+    });
+  });
+
+  // Project filters
+  const filterBtns = document.querySelectorAll('[data-filter-btn]');
+  const filterItems = document.querySelectorAll('[data-filter-item]');
+
+  filterBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const filter = this.getAttribute('data-filter-btn');
+
+      // Remove active from all buttons
+      filterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
+
+      // Filter items
+      filterItems.forEach(item => {
+        if (filter === 'all' || item.getAttribute('data-category') === filter.replace(' ', '')) {
+          item.classList.add('active');
+        } else {
+          item.classList.remove('active');
         }
-        return new Date(dateStr);
+      });
+    });
+  });
+
+  // Read more button for projects
+  document.addEventListener('click', (e) => {
+    if (e.target.classList.contains('read-more-btn') || e.target.closest('.read-more-btn')) {
+      const btn = e.target.classList.contains('read-more-btn') ? e.target : e.target.closest('.read-more-btn');
+      const projectItem = btn.closest('.project-item');
+      if (projectItem) {
+        projectItem.classList.toggle('expanded');
+        const icon = btn.querySelector('ion-icon');
+        const text = btn.textContent.trim();
+        if (projectItem.classList.contains('expanded')) {
+          icon.name = 'chevron-up-outline';
+          btn.innerHTML = '<span>Hide Description</span> <ion-icon name="chevron-up-outline"></ion-icon>';
+        } else {
+          icon.name = 'chevron-down-outline';
+          btn.innerHTML = '<span>Show Description</span> <ion-icon name="chevron-down-outline"></ion-icon>';
+        }
+      }
+    }
+  });
+
+  // Form validation and submission
+  const form = document.querySelector('[data-form]');
+  const formInputs = document.querySelectorAll('[data-form-input]');
+  const formBtn = document.querySelector('[data-form-btn]');
+
+  if (form && formBtn) {
+    // Form validation
+    formInputs.forEach(input => {
+      input.addEventListener('input', () => {
+        if (form.checkValidity()) {
+          formBtn.removeAttribute('disabled');
+        } else {
+          formBtn.setAttribute('disabled', '');
+        }
+      });
+    });
+
+    // Form submission with EmailJS
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      const formMessage = document.getElementById('form-message');
+      const submitBtn = formBtn.querySelector('span');
+      const originalBtnText = submitBtn.textContent;
+
+      // Show loading state
+      submitBtn.innerHTML = 'Sending... <span class="loading-spinner"></span>';
+      formBtn.setAttribute('disabled', '');
+
+      // Get form data
+      const formData = new FormData(form);
+
+      // Create timestamp
+      const now = new Date();
+      const timestamp = now.toLocaleString('en-US', {
+        weekday: 'long',
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+      });
+
+      const data = {
+        fullname: formData.get('fullname'),
+        email: formData.get('email'),
+        countryCode: formData.get('countryCode') || '',
+        phone: formData.get('phone') || 'Not provided',
+        message: formData.get('message'),
+        time: timestamp
+      };
+
+      try {
+        // EmailJS configuration
+        const serviceID = 'service_ewyv34a'; // Replace with your EmailJS service ID
+        const templateID = 'template_t785tqm'; // Replace with your EmailJS template ID
+        const publicKey = 'oa96Vl-iEwg8B57p1'; // Replace with your EmailJS public key
+
+        // Send email using EmailJS
+        const response = await emailjs.send(serviceID, templateID, data, publicKey);
+
+        // Success
+        formMessage.className = 'form-message success';
+        formMessage.textContent = '✓ Message sent successfully! I\'ll get back to you soon.';
+        form.reset();
+        formBtn.setAttribute('disabled', '');
+
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          formMessage.textContent = '';
+          formMessage.className = '';
+        }, 5000);
+
+      } catch (error) {
+        // Error
+        formMessage.className = 'form-message error';
+        formMessage.textContent = '✗ Oops! Something went wrong. Please try again or email me directly.';
+
+        // Hide message after 5 seconds
+        setTimeout(() => {
+          formMessage.textContent = '';
+          formMessage.className = '';
+        }, 5000);
+      } finally {
+        // Reset button
+        submitBtn.textContent = originalBtnText;
+        formBtn.removeAttribute('disabled');
+      }
+    });
+  }
+
+  // Country code select display customization
+  const countryCodes = [
+    { code: '+1', country: 'US/CA', flag: '🇺🇸' },
+    { code: '+1', country: 'Canada', flag: '🇨🇦' },
+    { code: '+7', country: 'Russia', flag: '🇷🇺' },
+    { code: '+20', country: 'Egypt', flag: '🇪🇬' },
+    { code: '+27', country: 'South Africa', flag: '🇿🇦' },
+    { code: '+30', country: 'Greece', flag: '🇬🇷' },
+    { code: '+31', country: 'Netherlands', flag: '🇳🇱' },
+    { code: '+32', country: 'Belgium', flag: '🇧🇪' },
+    { code: '+33', country: 'France', flag: '🇫🇷' },
+    { code: '+34', country: 'Spain', flag: '🇪🇸' },
+    { code: '+36', country: 'Hungary', flag: '🇭🇺' },
+    { code: '+39', country: 'Italy', flag: '🇮🇹' },
+    { code: '+40', country: 'Romania', flag: '🇷🇴' },
+    { code: '+41', country: 'Switzerland', flag: '🇨🇭' },
+    { code: '+43', country: 'Austria', flag: '🇦🇹' },
+    { code: '+44', country: 'UK', flag: '🇬🇧' },
+    { code: '+45', country: 'Denmark', flag: '🇩🇰' },
+    { code: '+46', country: 'Sweden', flag: '🇸🇪' },
+    { code: '+47', country: 'Norway', flag: '🇳🇴' },
+    { code: '+48', country: 'Poland', flag: '🇵🇱' },
+    { code: '+49', country: 'Germany', flag: '🇩🇪' },
+    { code: '+51', country: 'Peru', flag: '🇵🇪' },
+    { code: '+52', country: 'Mexico', flag: '🇲🇽' },
+    { code: '+53', country: 'Cuba', flag: '🇨🇺' },
+    { code: '+54', country: 'Argentina', flag: '🇦🇷' },
+    { code: '+55', country: 'Brazil', flag: '🇧🇷' },
+    { code: '+56', country: 'Chile', flag: '🇨🇱' },
+    { code: '+57', country: 'Colombia', flag: '🇨🇴' },
+    { code: '+58', country: 'Venezuela', flag: '🇻🇪' },
+    { code: '+60', country: 'Malaysia', flag: '🇲🇾' },
+    { code: '+61', country: 'Australia', flag: '🇦🇺' },
+    { code: '+62', country: 'Indonesia', flag: '🇮🇩' },
+    { code: '+63', country: 'Philippines', flag: '🇵🇭' },
+    { code: '+64', country: 'New Zealand', flag: '🇳🇿' },
+    { code: '+65', country: 'Singapore', flag: '🇸🇬' },
+    { code: '+66', country: 'Thailand', flag: '🇹🇭' },
+    { code: '+81', country: 'Japan', flag: '🇯🇵' },
+    { code: '+82', country: 'South Korea', flag: '🇰🇷' },
+    { code: '+84', country: 'Vietnam', flag: '🇻🇳' },
+    { code: '+86', country: 'China', flag: '🇨🇳' },
+    { code: '+90', country: 'Turkey', flag: '🇹🇷' },
+    { code: '+91', country: 'India', flag: '🇮🇳' },
+    { code: '+92', country: 'Pakistan', flag: '🇵🇰' },
+    { code: '+93', country: 'Afghanistan', flag: '🇦🇫' },
+    { code: '+94', country: 'Sri Lanka', flag: '🇱🇰' },
+    { code: '+95', country: 'Myanmar', flag: '🇲🇲' },
+    { code: '+98', country: 'Iran', flag: '🇮🇷' },
+    { code: '+212', country: 'Morocco', flag: '🇲🇦' },
+    { code: '+213', country: 'Algeria', flag: '🇩🇿' },
+    { code: '+216', country: 'Tunisia', flag: '🇹🇳' },
+    { code: '+218', country: 'Libya', flag: '🇱🇾' },
+    { code: '+220', country: 'Gambia', flag: '🇬🇲' },
+    { code: '+221', country: 'Senegal', flag: '🇸🇳' },
+    { code: '+222', country: 'Mauritania', flag: '🇲🇷' },
+    { code: '+223', country: 'Mali', flag: '🇲🇱' },
+    { code: '+224', country: 'Guinea', flag: '🇬🇳' },
+    { code: '+225', country: 'Ivory Coast', flag: '🇨🇮' },
+    { code: '+226', country: 'Burkina Faso', flag: '🇧🇫' },
+    { code: '+227', country: 'Niger', flag: '🇳🇪' },
+    { code: '+228', country: 'Togo', flag: '🇹🇬' },
+    { code: '+229', country: 'Benin', flag: '🇧🇯' },
+    { code: '+230', country: 'Mauritius', flag: '🇲🇺' },
+    { code: '+231', country: 'Liberia', flag: '🇱🇷' },
+    { code: '+232', country: 'Sierra Leone', flag: '🇸🇱' },
+    { code: '+233', country: 'Ghana', flag: '🇬🇭' },
+    { code: '+234', country: 'Nigeria', flag: '🇳🇬' },
+    { code: '+235', country: 'Chad', flag: '🇹🇩' },
+    { code: '+236', country: 'Central African Republic', flag: '🇨🇫' },
+    { code: '+237', country: 'Cameroon', flag: '🇨🇲' },
+    { code: '+238', country: 'Cape Verde', flag: '🇨🇻' },
+    { code: '+239', country: 'São Tomé and Príncipe', flag: '🇸🇹' },
+    { code: '+240', country: 'Equatorial Guinea', flag: '🇬🇶' },
+    { code: '+241', country: 'Gabon', flag: '🇬🇦' },
+    { code: '+242', country: 'Republic of the Congo', flag: '🇨🇬' },
+    { code: '+243', country: 'Democratic Republic of the Congo', flag: '🇨🇩' },
+    { code: '+244', country: 'Angola', flag: '🇦🇴' },
+    { code: '+245', country: 'Guinea-Bissau', flag: '🇬🇼' },
+    { code: '+246', country: 'British Indian Ocean Territory', flag: '🇮🇴' },
+    { code: '+247', country: 'Ascension Island', flag: '🇦🇨' },
+    { code: '+248', country: 'Seychelles', flag: '🇸🇨' },
+    { code: '+249', country: 'Sudan', flag: '🇸🇩' },
+    { code: '+250', country: 'Rwanda', flag: '🇷🇼' },
+    { code: '+251', country: 'Ethiopia', flag: '🇪🇹' },
+    { code: '+252', country: 'Somalia', flag: '🇸🇴' },
+    { code: '+253', country: 'Djibouti', flag: '🇩🇯' },
+    { code: '+254', country: 'Kenya', flag: '🇰🇪' },
+    { code: '+255', country: 'Tanzania', flag: '🇹🇿' },
+    { code: '+256', country: 'Uganda', flag: '🇺🇬' },
+    { code: '+257', country: 'Burundi', flag: '🇧🇮' },
+    { code: '+258', country: 'Mozambique', flag: '🇲🇿' },
+    { code: '+260', country: 'Zambia', flag: '🇿🇲' },
+    { code: '+261', country: 'Madagascar', flag: '🇲🇬' },
+    { code: '+262', country: 'Réunion', flag: '🇷🇪' },
+    { code: '+263', country: 'Zimbabwe', flag: '🇿🇼' },
+    { code: '+264', country: 'Namibia', flag: '🇳🇦' },
+    { code: '+265', country: 'Malawi', flag: '🇲🇼' },
+    { code: '+266', country: 'Lesotho', flag: '🇱🇸' },
+    { code: '+267', country: 'Botswana', flag: '🇧🇼' },
+    { code: '+268', country: 'Eswatini', flag: '🇸🇿' },
+    { code: '+269', country: 'Comoros', flag: '🇰🇲' },
+    { code: '+290', country: 'Saint Helena', flag: '🇸🇭' },
+    { code: '+291', country: 'Eritrea', flag: '🇪🇷' },
+    { code: '+297', country: 'Aruba', flag: '🇦🇼' },
+    { code: '+298', country: 'Faroe Islands', flag: '🇫🇴' },
+    { code: '+299', country: 'Greenland', flag: '🇬🇱' },
+    { code: '+350', country: 'Gibraltar', flag: '🇬🇮' },
+    { code: '+351', country: 'Portugal', flag: '🇵🇹' },
+    { code: '+352', country: 'Luxembourg', flag: '🇱🇺' },
+    { code: '+353', country: 'Ireland', flag: '🇮🇪' },
+    { code: '+354', country: 'Iceland', flag: '🇮🇸' },
+    { code: '+355', country: 'Albania', flag: '🇦🇱' },
+    { code: '+356', country: 'Malta', flag: '🇲🇹' },
+    { code: '+357', country: 'Cyprus', flag: '🇨🇾' },
+    { code: '+358', country: 'Finland', flag: '🇫🇮' },
+    { code: '+359', country: 'Bulgaria', flag: '🇧🇬' },
+    { code: '+370', country: 'Lithuania', flag: '🇱🇹' },
+    { code: '+371', country: 'Latvia', flag: '🇱🇻' },
+    { code: '+372', country: 'Estonia', flag: '🇪🇪' },
+    { code: '+373', country: 'Moldova', flag: '🇲🇩' },
+    { code: '+374', country: 'Armenia', flag: '🇦🇲' },
+    { code: '+375', country: 'Belarus', flag: '🇧🇾' },
+    { code: '+376', country: 'Andorra', flag: '🇦🇩' },
+    { code: '+377', country: 'Monaco', flag: '🇲🇨' },
+    { code: '+378', country: 'San Marino', flag: '🇸🇲' },
+    { code: '+380', country: 'Ukraine', flag: '🇺🇦' },
+    { code: '+381', country: 'Serbia', flag: '🇷🇸' },
+    { code: '+382', country: 'Montenegro', flag: '🇲🇪' },
+    { code: '+383', country: 'Kosovo', flag: '🇽🇰' },
+    { code: '+385', country: 'Croatia', flag: '🇭🇷' },
+    { code: '+386', country: 'Slovenia', flag: '🇸🇮' },
+    { code: '+387', country: 'Bosnia and Herzegovina', flag: '🇧🇦' },
+    { code: '+389', country: 'North Macedonia', flag: '🇲🇰' },
+    { code: '+420', country: 'Czech Republic', flag: '🇨🇿' },
+    { code: '+421', country: 'Slovakia', flag: '🇸🇰' },
+    { code: '+423', country: 'Liechtenstein', flag: '🇱🇮' },
+    { code: '+500', country: 'Falkland Islands', flag: '🇫🇰' },
+    { code: '+501', country: 'Belize', flag: '🇧🇿' },
+    { code: '+502', country: 'Guatemala', flag: '🇬🇹' },
+    { code: '+503', country: 'El Salvador', flag: '🇸🇻' },
+    { code: '+504', country: 'Honduras', flag: '🇭🇳' },
+    { code: '+505', country: 'Nicaragua', flag: '🇳🇮' },
+    { code: '+506', country: 'Costa Rica', flag: '🇨🇷' },
+    { code: '+507', country: 'Panama', flag: '🇵🇦' },
+    { code: '+508', country: 'Saint Pierre and Miquelon', flag: '🇵🇲' },
+    { code: '+509', country: 'Haiti', flag: '🇭🇹' },
+    { code: '+590', country: 'Guadeloupe', flag: '🇬🇵' },
+    { code: '+591', country: 'Bolivia', flag: '🇧🇴' },
+    { code: '+592', country: 'Guyana', flag: '🇬🇾' },
+    { code: '+593', country: 'Ecuador', flag: '🇪🇨' },
+    { code: '+594', country: 'French Guiana', flag: '🇬🇫' },
+    { code: '+595', country: 'Paraguay', flag: '🇵🇾' },
+    { code: '+596', country: 'Martinique', flag: '🇲🇶' },
+    { code: '+597', country: 'Suriname', flag: '🇸🇷' },
+    { code: '+598', country: 'Uruguay', flag: '🇺🇾' },
+    { code: '+599', country: 'Curaçao', flag: '🇨🇼' },
+    { code: '+670', country: 'East Timor', flag: '🇹🇱' },
+    { code: '+672', country: 'Antarctica', flag: '🇦🇶' },
+    { code: '+673', country: 'Brunei', flag: '🇧🇳' },
+    { code: '+674', country: 'Nauru', flag: '🇳🇷' },
+    { code: '+675', country: 'Papua New Guinea', flag: '🇵🇬' },
+    { code: '+676', country: 'Tonga', flag: '🇹🇴' },
+    { code: '+677', country: 'Solomon Islands', flag: '🇸🇧' },
+    { code: '+678', country: 'Vanuatu', flag: '🇻🇺' },
+    { code: '+679', country: 'Fiji', flag: '🇫🇯' },
+    { code: '+680', country: 'Palau', flag: '🇵🇼' },
+    { code: '+681', country: 'Wallis and Futuna', flag: '🇼🇫' },
+    { code: '+682', country: 'Cook Islands', flag: '🇨🇰' },
+    { code: '+683', country: 'Niue', flag: '🇳🇺' },
+    { code: '+684', country: 'American Samoa', flag: '🇦🇸' },
+    { code: '+685', country: 'Samoa', flag: '🇼🇸' },
+    { code: '+686', country: 'Kiribati', flag: '🇰🇮' },
+    { code: '+687', country: 'New Caledonia', flag: '🇳🇨' },
+    { code: '+688', country: 'Tuvalu', flag: '🇹🇻' },
+    { code: '+689', country: 'French Polynesia', flag: '🇵🇫' },
+    { code: '+690', country: 'Tokelau', flag: '🇹🇰' },
+    { code: '+691', country: 'Micronesia', flag: '🇫🇲' },
+    { code: '+692', country: 'Marshall Islands', flag: '🇲🇭' },
+    { code: '+850', country: 'North Korea', flag: '🇰🇵' },
+    { code: '+852', country: 'Hong Kong', flag: '🇭🇰' },
+    { code: '+853', country: 'Macau', flag: '🇲🇴' },
+    { code: '+855', country: 'Cambodia', flag: '🇰🇭' },
+    { code: '+856', country: 'Laos', flag: '🇱🇦' },
+    { code: '+880', country: 'Bangladesh', flag: '🇧🇩' },
+    { code: '+886', country: 'Taiwan', flag: '🇹🇼' },
+    { code: '+960', country: 'Maldives', flag: '🇲🇻' },
+    { code: '+961', country: 'Lebanon', flag: '🇱🇧' },
+    { code: '+962', country: 'Jordan', flag: '🇯🇴' },
+    { code: '+963', country: 'Syria', flag: '🇸🇾' },
+    { code: '+964', country: 'Iraq', flag: '🇮🇶' },
+    { code: '+965', country: 'Kuwait', flag: '🇰🇼' },
+    { code: '+966', country: 'Saudi Arabia', flag: '🇸🇦' },
+    { code: '+967', country: 'Yemen', flag: '🇾🇪' },
+    { code: '+968', country: 'Oman', flag: '🇴🇲' },
+    { code: '+970', country: 'Palestine', flag: '🇵🇸' },
+    { code: '+971', country: 'UAE', flag: '🇦🇪' },
+    { code: '+972', country: 'Israel', flag: '🇮🇱' },
+    { code: '+973', country: 'Bahrain', flag: '🇧🇭' },
+    { code: '+974', country: 'Qatar', flag: '🇶🇦' },
+    { code: '+975', country: 'Bhutan', flag: '🇧🇹' },
+    { code: '+976', country: 'Mongolia', flag: '🇲🇳' },
+    { code: '+977', country: 'Nepal', flag: '🇳🇵' },
+    { code: '+992', country: 'Tajikistan', flag: '🇹🇯' },
+    { code: '+993', country: 'Turkmenistan', flag: '🇹🇲' },
+    { code: '+994', country: 'Azerbaijan', flag: '🇦🇿' },
+    { code: '+995', country: 'Georgia', flag: '🇬🇪' },
+    { code: '+996', country: 'Kyrgyzstan', flag: '🇰🇬' },
+    { code: '+998', country: 'Uzbekistan', flag: '🇺🇿' }
+  ];
+  const countryCodeSelect = document.getElementById('countryCode');
+  if (countryCodeSelect) {
+    const updateSelectedDisplay = () => {
+      const selectedOption = countryCodeSelect.options[countryCodeSelect.selectedIndex];
+      if (selectedOption.value === '+973') {
+        // For Bahrain, show only flag and code
+        const bahrain = countryCodes.find(c => c.code === '+973');
+        selectedOption.textContent = `${bahrain.flag} ${bahrain.code}`;
+      }
     };
 
-    function getFilteredData() {
-        return currentFilter === 'all' ? journeyData : journeyData.filter(item => item.type === currentFilter);
-    }
-
-    function getResponsiveDimensions() {
-        const containerWidth = document.getElementById('svg-timeline-container').clientWidth;
-        const isMobile = window.innerWidth <= 768;
-        const isTablet = window.innerWidth <= 1024;
-
-        return {
-            width: Math.max(isMobile ? 800 : isTablet ? 1200 : 1400, containerWidth * 0.95),
-            height: isMobile ? 350 : isTablet ? 450 : 500,
-            margin: {
-                top: isMobile ? 60 : isTablet ? 80 : 100,
-                right: isMobile ? 40 : isTablet ? 60 : 80,
-                bottom: isMobile ? 60 : isTablet ? 80 : 100,
-                left: isMobile ? 40 : isTablet ? 60 : 80
-            }
-        };
-    }
-
-    function createStraightLineTimeline() {
-        const svg = document.getElementById('timeline-svg');
-        const tooltip = document.getElementById('timeline-tooltip');
-
-        // Clear existing content
-        svg.innerHTML = '';
-
-        // Get responsive dimensions
-        const dimensions = getResponsiveDimensions();
-        const { width, height, margin } = dimensions;
-        const chartWidth = width - margin.left - margin.right;
-        const timelineY = height / 2; // Center the main timeline
-
-        svg.setAttribute('viewBox', `0 0 ${width} ${height}`);
-
-        // Get filtered data and sort chronologically
-        const filteredData = getFilteredData();
-        const processedData = filteredData.map(item => {
-            const startDate = parseDate(item.date.split('—')[0].trim());
-            const endDate = parseDate(item.date.split('—')[1]?.trim() || 'Present');
-            const duration = (endDate - startDate) / (1000 * 60 * 60 * 24 * 365.25);
-
-            return {
-                ...item,
-                startDate,
-                endDate,
-                startYear: startDate.getFullYear() + startDate.getMonth() / 12,
-                endYear: endDate.getFullYear() + endDate.getMonth() / 12,
-                duration: Math.max(duration, 0.1),
-                impact: item.points ? item.points.length : 3,
-                isPresent: item.date.toLowerCase().includes('present')
-            };
-        }).sort((a, b) => a.startDate - b.startDate);
-
-        if (processedData.length === 0) return;
-
-        // Calculate time scale
-        const minYear = Math.min(...processedData.map(d => d.startYear)) - 0.2;
-        const maxYear = Math.max(...processedData.map(d => d.endYear)) + 0.2;
-        const timeScale = (year) => margin.left + ((year - minYear) / (maxYear - minYear)) * chartWidth;
-
-        // Create definitions for gradients and patterns
-        const defs = document.createElementNS('http://www.w3.org/2000/svg', 'defs');
-
-        // Create gradient for main timeline
-        const mainGradient = document.createElementNS('http://www.w3.org/2000/svg', 'linearGradient');
-        mainGradient.setAttribute('id', 'mainTimelineGradient');
-        mainGradient.setAttribute('x1', '0%');
-        mainGradient.setAttribute('x2', '100%');
-
-        const gradientStop1 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-        gradientStop1.setAttribute('offset', '0%');
-        gradientStop1.setAttribute('stop-color', 'var(--md-sys-color-outline-light)');
-        gradientStop1.setAttribute('stop-opacity', '0.3');
-
-        const gradientStop2 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-        gradientStop2.setAttribute('offset', '50%');
-        gradientStop2.setAttribute('stop-color', 'var(--md-sys-color-primary-light)');
-        gradientStop2.setAttribute('stop-opacity', '1');
-
-        const gradientStop3 = document.createElementNS('http://www.w3.org/2000/svg', 'stop');
-        gradientStop3.setAttribute('offset', '100%');
-        gradientStop3.setAttribute('stop-color', 'var(--md-sys-color-outline-light)');
-        gradientStop3.setAttribute('stop-opacity', '0.3');
-
-        mainGradient.appendChild(gradientStop1);
-        mainGradient.appendChild(gradientStop2);
-        mainGradient.appendChild(gradientStop3);
-        defs.appendChild(mainGradient);
-        svg.appendChild(defs);
-
-        // Draw main timeline line
-        const mainLine = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-        mainLine.setAttribute('x1', margin.left);
-        mainLine.setAttribute('y1', timelineY);
-        mainLine.setAttribute('x2', margin.left + chartWidth);
-        mainLine.setAttribute('y2', timelineY);
-        mainLine.setAttribute('stroke', 'url(#mainTimelineGradient)');
-        mainLine.setAttribute('class', 'timeline-main-line');
-        svg.appendChild(mainLine);
-
-        // Create year markers - bigger and clearer
-        const yearMarkersGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        const yearRange = maxYear - minYear;
-        const yearStep = yearRange <= 8 ? 1 : Math.max(1, Math.ceil(yearRange / 8));
-
-        for (let year = Math.ceil(minYear); year <= maxYear; year += yearStep) {
-            const x = timeScale(year);
-
-            // Year marker line - bigger
-            const marker = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            marker.setAttribute('x1', x);
-            marker.setAttribute('y1', timelineY - 25);
-            marker.setAttribute('x2', x);
-            marker.setAttribute('y2', timelineY + 25);
-            marker.setAttribute('class', 'timeline-year-marker');
-            yearMarkersGroup.appendChild(marker);
-
-            // Year label - bigger and clearer
-            const label = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            label.setAttribute('x', x);
-            label.setAttribute('y', timelineY + 45);
-            label.setAttribute('class', 'timeline-label');
-            label.textContent = Math.floor(year);
-            yearMarkersGroup.appendChild(label);
+    const updateDropdownDisplay = () => {
+      countryCodes.forEach((country, index) => {
+        const option = countryCodeSelect.options[index];
+        if (option) {
+          option.textContent = `${country.flag} ${country.code} ${country.country}`;
         }
+      });
+    };
 
-        svg.appendChild(yearMarkersGroup);
+    countryCodeSelect.addEventListener('focus', updateDropdownDisplay);
+    countryCodeSelect.addEventListener('blur', updateSelectedDisplay);
+    countryCodeSelect.addEventListener('change', updateSelectedDisplay);
 
-        // Create period bars and handle overlaps
-        const periodsGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        const tracks = []; // Track system for overlapping periods
+    // Initial setup
+    updateSelectedDisplay();
+  }
 
-        processedData.forEach((item, index) => {
-            const startX = timeScale(item.startYear);
-            const endX = timeScale(item.endYear);
-            const barWidth = Math.max(endX - startX, 30); // Bigger minimum width for better visibility
+  // Professional Journey Filters
+  const journeyFilterBtns = document.querySelectorAll('.filter-btn');
+  const timelineDots = document.querySelectorAll('.timeline-dot');
+  const timelineItemCards = document.querySelectorAll('.timeline-item-card');
+  const connectionLines = document.querySelectorAll('.connection-line');
 
-            // Find available track (row) for this period
-            let trackIndex = 0;
-            while (trackIndex < tracks.length) {
-                const track = tracks[trackIndex];
-                const hasOverlap = track.some(existingItem =>
-                    !(item.endYear <= existingItem.startYear || item.startYear >= existingItem.endYear)
-                );
-                if (!hasOverlap) break;
-                trackIndex++;
-            }
+  journeyFilterBtns.forEach(btn => {
+    btn.addEventListener('click', function () {
+      const filter = this.getAttribute('data-filter');
 
-            // Create new track if needed
-            if (trackIndex >= tracks.length) {
-                tracks.push([]);
-            }
-            tracks[trackIndex].push(item);
+      // Remove active from all buttons
+      journeyFilterBtns.forEach(b => b.classList.remove('active'));
+      this.classList.add('active');
 
-            // Calculate Y position based on track - bigger spacing
-            const trackOffset = (trackIndex - Math.floor(tracks.length / 2)) * 40;
-            const barY = timelineY + trackOffset;
-
-            // Create period group
-            const periodGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-            periodGroup.setAttribute('class', 'timeline-period-group');
-
-            // Period bar
-            const periodBar = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-            periodBar.setAttribute('x1', startX);
-            periodBar.setAttribute('y1', barY);
-            periodBar.setAttribute('x2', endX);
-            periodBar.setAttribute('y2', barY);
-            periodBar.setAttribute('class', `timeline-period-bar ${item.type}`);
-            periodBar.setAttribute('data-item', JSON.stringify(item));
-
-            // Add current indicator for ongoing positions
-            if (item.isPresent) {
-                const currentIndicator = document.createElementNS('http://www.w3.org/2000/svg', 'line');
-                currentIndicator.setAttribute('x1', endX);
-                currentIndicator.setAttribute('y1', barY - 10);
-                currentIndicator.setAttribute('x2', endX);
-                currentIndicator.setAttribute('y2', barY + 10);
-                currentIndicator.setAttribute('class', 'timeline-current-indicator');
-                periodGroup.appendChild(currentIndicator);
-            }
-
-            // Start milestone - bigger
-            const startMilestone = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-            startMilestone.setAttribute('cx', startX);
-            startMilestone.setAttribute('cy', barY);
-            startMilestone.setAttribute('r', 8);
-            startMilestone.setAttribute('class', `timeline-milestone ${item.type}`);
-            startMilestone.setAttribute('data-item', JSON.stringify(item));
-            startMilestone.setAttribute('data-type', 'start');
-
-            // End milestone (only if not present) - bigger
-            if (!item.isPresent) {
-                const endMilestone = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                endMilestone.setAttribute('cx', endX);
-                endMilestone.setAttribute('cy', barY);
-                endMilestone.setAttribute('r', 8);
-                endMilestone.setAttribute('class', `timeline-milestone ${item.type}`);
-                endMilestone.setAttribute('data-item', JSON.stringify(item));
-                endMilestone.setAttribute('data-type', 'end');
-                periodGroup.appendChild(endMilestone);
-            }
-
-            // Period label (shown on hover) - bigger and clearer
-            const periodLabel = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-            periodLabel.setAttribute('x', startX + barWidth / 2);
-            periodLabel.setAttribute('y', barY - 25);
-            periodLabel.setAttribute('class', 'timeline-period-label');
-            const maxLength = barWidth > 200 ? 30 : barWidth > 100 ? 20 : 15;
-            periodLabel.textContent = item.title.length > maxLength ? item.title.substring(0, maxLength) + '...' : item.title;
-
-            // Add hover events
-            [periodBar, startMilestone].forEach(element => {
-                element.addEventListener('mouseenter', (e) => {
-                    showDetailedTooltip(e, item, svg);
-                });
-
-                element.addEventListener('mouseleave', () => {
-                    hideTooltip();
-                });
-
-                element.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    showDetailedModal(item);
-                });
-            });
-
-            periodGroup.appendChild(periodBar);
-            periodGroup.appendChild(startMilestone);
-            periodGroup.appendChild(periodLabel);
-
-            // Add overlap indicator if multiple tracks
-            if (tracks.length > 1 && trackIndex > 0) {
-                const overlapIndicator = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
-                overlapIndicator.setAttribute('cx', startX - 10);
-                overlapIndicator.setAttribute('cy', barY);
-                overlapIndicator.setAttribute('r', 8);
-                overlapIndicator.setAttribute('class', 'timeline-overlap-indicator');
-
-                const overlapText = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-                overlapText.setAttribute('x', startX - 10);
-                overlapText.setAttribute('y', barY + 3);
-                overlapText.setAttribute('class', 'timeline-overlap-indicator');
-                overlapText.textContent = trackIndex + 1;
-
-                periodGroup.appendChild(overlapIndicator);
-                periodGroup.appendChild(overlapText);
-            }
-
-            periodsGroup.appendChild(periodGroup);
-
-            // Animate period appearance
-            setTimeout(() => {
-                periodBar.style.transition = 'all 0.8s cubic-bezier(0.4, 0, 0.2, 1)';
-                periodBar.style.opacity = '1';
-                startMilestone.style.transition = 'all 0.6s cubic-bezier(0.4, 0, 0.2, 1)';
-                startMilestone.style.opacity = '1';
-                startMilestone.style.transform = 'scale(1)';
-            }, index * 200 + 300);
-        });
-
-        svg.appendChild(periodsGroup);
-
-        // Add timeline title
-        const titleGroup = document.createElementNS('http://www.w3.org/2000/svg', 'g');
-        const title = document.createElementNS('http://www.w3.org/2000/svg', 'text');
-        title.setAttribute('x', margin.left + chartWidth / 2);
-        title.setAttribute('y', 30);
-        title.setAttribute('class', 'timeline-axis-label');
-        title.setAttribute('text-anchor', 'middle');
-        title.textContent = 'Career Timeline - Chronological Journey';
-        titleGroup.appendChild(title);
-        svg.appendChild(titleGroup);
-
-        // Initialize animations
-        periodsGroup.style.opacity = '0';
-        setTimeout(() => {
-            periodsGroup.style.transition = 'opacity 0.5s ease';
-            periodsGroup.style.opacity = '1';
-        }, 100);
-    }
-
-    // Enhanced tooltip functionality
-    function showDetailedTooltip(event, item, svg) {
-        const tooltip = document.getElementById('timeline-tooltip');
-        const rect = svg.getBoundingClientRect();
-
-        // Position tooltip
-        const x = event.clientX - rect.left;
-        const y = event.clientY - rect.top;
-
-        tooltip.style.left = `${Math.min(x + 15, rect.width - 350)}px`;
-        tooltip.style.top = `${Math.max(y - 10, 10)}px`;
-
-        // Create detailed tooltip content
-        const tooltipContent = `
-            <div class="tooltip-header">
-                <div class="tooltip-icon ${item.type}">
-                    <i data-lucide="${item.icon}"></i>
-                </div>
-                <div>
-                    <div class="tooltip-title">${item.title}</div>
-                    <div class="tooltip-company">${item.company}</div>
-                </div>
-            </div>
-            <div class="tooltip-details">
-                <span class="tooltip-label">Period:</span>
-                <span class="tooltip-value">${item.date}</span>
-                <span class="tooltip-label">Duration:</span>
-                <span class="tooltip-value">${item.duration.toFixed(1)} years</span>
-                <span class="tooltip-label">Category:</span>
-                <span class="tooltip-value">${item.category}</span>
-                <span class="tooltip-label">Impact:</span>
-                <span class="tooltip-value">${item.impact} key achievements</span>
-            </div>
-        `;
-
-        tooltip.querySelector('.tooltip-content').innerHTML = tooltipContent;
-        tooltip.classList.add('visible');
-
-        // Recreate icons in tooltip
-        lucide.createIcons();
-    }
-
-    function hideTooltip() {
-        const tooltip = document.getElementById('timeline-tooltip');
-        tooltip.classList.remove('visible');
-    }
-
-    function showDetailedModal(item) {
-        // Create a detailed modal for the timeline item
-        const modal = document.createElement('div');
-        modal.className = 'fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-50';
-        modal.innerHTML = `
-            <div class="bg-white dark:bg-gray-800 rounded-lg p-6 max-w-md w-full mx-4 relative">
-                <button class="absolute top-4 right-4 text-gray-500 hover:text-gray-700" onclick="this.parentElement.parentElement.remove()">
-                    <i data-lucide="x" class="w-6 h-6"></i>
-                </button>
-                <h3 class="text-xl font-bold mb-2">${item.title}</h3>
-                <p class="text-sm text-gray-600 mb-4">${item.company} • ${item.date}</p>
-                <div class="space-y-2">
-                    ${item.points ? item.points.map(point => `<p class="text-sm">• ${point}</p>`).join('') : '<p class="text-sm">No additional details available.</p>'}
-                </div>
-            </div>
-        `;
-
-        document.body.appendChild(modal);
-        lucide.createIcons();
-
-        // Close on backdrop click
-        modal.addEventListener('click', (e) => {
-            if (e.target === modal) {
-                modal.remove();
-            }
-        });
-    }
-
-    // Timeline toggle and filter functionality
-    const timelineToggle = document.getElementById('timeline-toggle');
-    const svgTimelineContainer = document.getElementById('svg-timeline-container');
-    const timelineControls = document.getElementById('timeline-controls');
-    const filterButtons = document.querySelectorAll('.timeline-filter-btn');
-
-    timelineVisible = false;
-
-    timelineToggle.addEventListener('click', () => {
-        timelineVisible = !timelineVisible;
-        const toggleIcon = timelineToggle.querySelector('.toggle-icon');
-        const toggleText = timelineToggle.querySelector('span');
-
-        if (timelineVisible) {
-            svgTimelineContainer.classList.add('active');
-            timelineToggle.classList.add('active');
-            timelineControls.style.display = 'flex';
-            toggleIcon.setAttribute('data-lucide', 'chevron-up');
-            toggleText.textContent = 'Hide Interactive Timeline';
-
-            // Animate controls appearance
-            setTimeout(() => {
-                timelineControls.style.opacity = '1';
-                timelineControls.style.transform = 'translateY(0)';
-            }, 300);
-
-            createStraightLineTimeline();
+      // Filter timeline elements
+      timelineDots.forEach(dot => {
+        const category = dot.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          dot.classList.remove('filtered-out');
+          dot.style.opacity = '1';
         } else {
-            svgTimelineContainer.classList.remove('active');
-            timelineToggle.classList.remove('active');
-            timelineControls.style.display = 'none';
-            timelineControls.style.opacity = '0';
-            timelineControls.style.transform = 'translateY(-10px)';
-            toggleIcon.setAttribute('data-lucide', 'chevron-down');
-            toggleText.textContent = 'Show Interactive Timeline';
+          dot.classList.add('filtered-out');
+          dot.style.opacity = '0.2';
         }
-
-        lucide.createIcons();
-    });
-
-    // Filter functionality
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // Update active state
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            // Update current filter
-            currentFilter = button.dataset.filter;
-
-            // Recreate timeline with new filter
-            if (timelineVisible) {
-                createStraightLineTimeline();
-            }
-        });
-    });
-
-    // Initialize timeline controls styling
-    timelineControls.style.opacity = '0';
-    timelineControls.style.transform = 'translateY(-10px)';
-    timelineControls.style.transition = 'all 0.3s ease';
-
-    // Handle window resize for responsive timeline
-    let resizeTimeout;
-    window.addEventListener('resize', () => {
-        if (timelineVisible) {
-            clearTimeout(resizeTimeout);
-            resizeTimeout = setTimeout(() => {
-                createStraightLineTimeline();
-            }, 300);
-        }
-    });
-
-    // --- Animated Background ---
-    const bgCanvas = document.getElementById('animated-bg');
-    const bgCtx = bgCanvas.getContext('2d');
-    let bgParticles = [];
-
-    function setBgCanvasSize() {
-        bgCanvas.width = window.innerWidth;
-        bgCanvas.height = document.documentElement.scrollHeight;
-    }
-
-    class BgParticle {
-        constructor(x, y, directionX, directionY, size, color) {
-            this.x = x; this.y = y; this.directionX = directionX; this.directionY = directionY; this.size = size; this.color = color;
-        }
-        draw() {
-            bgCtx.beginPath();
-            bgCtx.arc(this.x, this.y, this.size, 0, Math.PI * 2, false);
-            bgCtx.fillStyle = this.color;
-            bgCtx.fill();
-        }
-        update() {
-            if (this.x > bgCanvas.width || this.x < 0) this.directionX = -this.directionX;
-            if (this.y > bgCanvas.height || this.y < 0) this.directionY = -this.directionY;
-            this.x += this.directionX;
-            this.y += this.directionY;
-            this.draw();
-        }
-    }
-
-    function initBgParticles() {
-        bgParticles = [];
-        let numberOfParticles = (bgCanvas.height * bgCanvas.width) / 18000;
-        for (let i = 0; i < numberOfParticles; i++) {
-            let size = (Math.random() * 1.5) + 0.5;
-            let x = (Math.random() * ((bgCanvas.width - size * 2) - (size * 2)) + size * 2);
-            let y = (Math.random() * ((bgCanvas.height - size * 2) - (size * 2)) + size * 2);
-            let directionX = (Math.random() * .2) - .1;
-            let directionY = (Math.random() * .2) - .1;
-            let color = document.documentElement.classList.contains('dark') ? 'var(--md-sys-color-plexus-dark)' : 'var(--md-sys-color-plexus-light)';
-            bgParticles.push(new BgParticle(x, y, directionX, directionY, size, color));
-        }
-    }
-
-    function connectBgParticles() {
-        let opacityValue = 1;
-        for (let a = 0; a < bgParticles.length; a++) {
-            for (let b = a; b < bgParticles.length; b++) {
-                let distance = ((bgParticles[a].x - bgParticles[b].x) * (bgParticles[a].x - bgParticles[b].x)) + ((bgParticles[a].y - bgParticles[b].y) * (bgParticles[a].y - bgParticles[b].y));
-                if (distance < (bgCanvas.width / 10) * (bgCanvas.height / 10)) {
-                    opacityValue = 1 - (distance / 20000);
-                    let color = document.documentElement.classList.contains('dark') ? `rgba(128, 213, 213, ${opacityValue * 0.1})` : `rgba(0, 106, 106, ${opacityValue * 0.1})`;
-                    bgCtx.strokeStyle = color;
-                    bgCtx.lineWidth = 1;
-                    bgCtx.beginPath();
-                    bgCtx.moveTo(bgParticles[a].x, bgParticles[a].y);
-                    bgCtx.lineTo(bgParticles[b].x, bgParticles[b].y);
-                    bgCtx.stroke();
-                }
-            }
-        }
-    }
-
-    function animateBg() {
-        requestAnimationFrame(animateBg);
-        bgCtx.clearRect(0, 0, bgCanvas.width, bgCanvas.height);
-        for (let i = 0; i < bgParticles.length; i++) {
-            bgParticles[i].update();
-        }
-        connectBgParticles();
-    }
-
-    setBgCanvasSize();
-    initBgParticles();
-    animateBg();
-    window.addEventListener('resize', () => { setBgCanvasSize(); initBgParticles(); });
-
-    // --- Card Tilt Effect ---
-    document.querySelectorAll('.tilt-card').forEach(card => {
-        card.addEventListener('mousemove', (e) => {
-            const rect = card.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const { width, height } = rect;
-            const rotateX = (y / height - 0.5) * -15;
-            const rotateY = (x / width - 0.5) * 15;
-            card.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-        });
-        card.addEventListener('mouseleave', () => {
-            card.style.transform = 'perspective(1000px) rotateX(0) rotateY(0) scale3d(1, 1, 1)';
-        });
-    });
-
-    // --- Staggered Animations on Scroll ---
-    const observer = new IntersectionObserver((entries) => {
-        entries.forEach(entry => {
-            if (entry.isIntersecting) {
-                const animatables = entry.target.querySelectorAll('.animatable');
-                anime({
-                    targets: animatables,
-                    translateY: [30, 0],
-                    opacity: [0, 1],
-                    delay: (el, i) => i * 100 + parseFloat(el.style.getPropertyValue("--delay") || 0) * 1000,
-                    easing: 'easeOutExpo',
-                    duration: 1000
-                });
-
-                // Animate timeline graph events
-                const timelineEvents = entry.target.querySelectorAll('.timeline-graph-event');
-                if (timelineEvents.length > 0) {
-                    anime({
-                        targets: timelineEvents,
-                        width: (el) => `${el.dataset.width}%`,
-                        opacity: [0, 1],
-                        delay: anime.stagger(100),
-                        easing: 'easeInOutSine',
-                        duration: 800
-                    });
-                }
-
-                observer.unobserve(entry.target);
-            }
-        });
-    }, { threshold: 0.1 });
-
-    document.querySelectorAll('.target-section, #hero .animatable').forEach(section => {
-        observer.observe(section);
-    });
-
-    // --- Event Listeners ---
-    const nav = document.getElementById('main-nav');
-    window.addEventListener('scroll', () => {
-        nav.classList.toggle('scrolled', window.scrollY > 50);
-    });
-
-    function createRipple(event) {
-        const target = event.currentTarget;
-        const circle = document.createElement("span");
-        const diameter = Math.max(target.clientWidth, target.clientHeight);
-        const radius = diameter / 2;
-        circle.style.width = circle.style.height = `${diameter}px`;
-        const rect = target.getBoundingClientRect();
-        circle.style.left = `${event.clientX - rect.left - radius}px`;
-        circle.style.top = `${event.clientY - rect.top - radius}px`;
-        circle.classList.add("ripple");
-        const ripple = target.getElementsByClassName("ripple")[0];
-        if (ripple) ripple.remove();
-        target.appendChild(circle);
-    }
-    document.querySelectorAll('.card, .m3-button').forEach(el => {
-        el.addEventListener('click', createRipple);
-    });
-
-    const toggleSwitch = document.querySelector('#checkbox');
-    const slider = toggleSwitch.nextElementSibling;
-    const currentTheme = localStorage.getItem('theme');
-    if (currentTheme) {
-        document.documentElement.classList.add(currentTheme);
-        if (currentTheme === 'dark') {
-            toggleSwitch.checked = true;
-            slider.style.backgroundColor = 'var(--md-sys-color-primary-dark)';
-        }
-    }
-    toggleSwitch.addEventListener('change', (e) => {
-        document.documentElement.classList.toggle('dark', e.target.checked);
-        localStorage.setItem('theme', e.target.checked ? 'dark' : 'light');
-        slider.style.backgroundColor = e.target.checked ? 'var(--md-sys-color-primary-dark)' : 'var(--md-sys-color-primary-light)';
-        initBgParticles(); // Re-initialize particles with new colors
-    });
-
-    document.body.addEventListener('click', function(e) {
-        if (e.target.matches('.show-more-btn, .show-more-btn *')) {
-            const button = e.target.closest('.show-more-btn');
-            const list = button.previousElementSibling;
-            const hiddenItems = list.querySelectorAll('.hidden-item');
-            const isExpanded = button.getAttribute('aria-expanded') === 'true';
-            hiddenItems.forEach(item => item.style.display = isExpanded ? 'none' : 'list-item');
-            button.setAttribute('aria-expanded', !isExpanded);
-            button.innerHTML = !isExpanded ? 'Show less <i data-lucide="chevron-up" class="w-4 h-4 ml-1"></i>' : 'Show more <i data-lucide="chevron-down" class="w-4 h-4 ml-1"></i>';
-            lucide.createIcons();
-        }
-    });
-
-    // --- Quick Access Section ---
-    const resumeQuickBtn = document.getElementById('resume-quick-btn');
-    const contactQuickBtn = document.getElementById('contact-quick-btn');
-    const qrDisplayModal = document.getElementById('qr-display-modal');
-    const qrDisplayClose = document.getElementById('qr-display-close');
-    const qrDisplayImage = document.getElementById('qr-display-image');
-    const qrDisplayTitle = document.getElementById('qr-display-title');
-    const qrDisplaySubtitle = document.getElementById('qr-display-subtitle');
-
-    // Enhanced Download Modal Elements
-    const openModalBtn = null; // Removed download-resume-btn
-    const modalBackdrop = document.getElementById('resume-modal-backdrop');
-    const modal = document.getElementById('resume-modal');
-    const closeModalBtn = document.getElementById('modal-close-btn');
-    const qrCodeImg = document.getElementById('qr-code-img');
-    const modalDownloadBtn = document.getElementById('modal-download-btn');
-    const shareResumeBtn = document.getElementById('share-resume-btn');
-    const downloadCountEl = document.getElementById('download-count');
-    const lastUpdatedEl = document.getElementById('last-updated');
-
-
-    const resumeUrl = 'https://github.com/sahmedhusain/portfolio-v1/raw/main/Sayed_Ahmed_Husain_Resume.pdf';
-    const contactVCard = `BEGIN:VCARD
-VERSION:3.0
-FN:Sayed Ahmed Husain
-ORG:Professional Engineer
-TITLE:Electrical Engineer & Full Stack Developer
-EMAIL:sayedahmed97.sad@gmail.com
-URL:https://linkedin.com/in/97ahm
-URL:https://github.com/sahmedhusain
-TEL:+973-XXXXXXXX
-END:VCARD`;
-
-    // Initialize download count from localStorage or default
-    let downloadCount = parseInt(localStorage.getItem('resumeDownloadCount') || '1200');
-
-    function updateDownloadCount() {
-        downloadCount++;
-        localStorage.setItem('resumeDownloadCount', downloadCount.toString());
-        const formattedCount = downloadCount > 1000 ? `${(downloadCount/1000).toFixed(1)}K+` : downloadCount.toString();
-        if (downloadCountEl) downloadCountEl.textContent = formattedCount;
-    }
-
-    function updateLastUpdated() {
-        const now = new Date();
-        const formatted = now.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-        if (lastUpdatedEl) lastUpdatedEl.textContent = formatted;
-    }
-
-    // Enhanced QR Code Display Functions
-    function showQRCode(type, data, title, subtitle) {
-        const qrDisplayIcon = document.getElementById('qr-display-icon');
-        let qrApiUrl;
-        let iconType;
-
-        if (type === 'contact') {
-            qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data)}&bgcolor=ffffff&color=000000&margin=10&format=png`;
-            iconType = 'user';
-        } else if (type === 'resume') {
-            qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(data)}&bgcolor=ffffff&color=000000&margin=10&format=png`;
-            iconType = 'file-text';
-        }
-
-        // Update modal content
-        qrDisplayImage.src = qrApiUrl;
-        qrDisplayTitle.textContent = title;
-        qrDisplaySubtitle.textContent = subtitle;
-
-        // Update icon
-        if (qrDisplayIcon) {
-            qrDisplayIcon.innerHTML = `<i data-lucide="${iconType}" class="w-8 h-8"></i>`;
-            lucide.createIcons();
-        }
-
-        // Show modal with enhanced animation
-        qrDisplayModal.classList.add('active');
-
-        // Staggered entrance animations
-        setTimeout(() => {
-            const content = qrDisplayModal.querySelector('.qr-display-content');
-            content.style.transform = 'scale(1) rotateX(0deg) rotateY(0deg)';
-        }, 100);
-
-        // Add loading state for QR image
-        qrDisplayImage.style.opacity = '0.5';
-        qrDisplayImage.onload = () => {
-            qrDisplayImage.style.transition = 'opacity 0.5s ease';
-            qrDisplayImage.style.opacity = '1';
-        };
-    }
-
-    function hideQRCode() {
-        const content = qrDisplayModal.querySelector('.qr-display-content');
-        content.style.transform = 'scale(0.7) rotateX(20deg) rotateY(15deg)';
-
-        setTimeout(() => {
-            qrDisplayModal.classList.remove('active');
-            // Reset image opacity for next use
-            qrDisplayImage.style.opacity = '0.5';
-        }, 400);
-    }
-
-    // Quick Access Button Event Handlers
-    if (resumeQuickBtn) {
-        resumeQuickBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            openResumeModal();
-        });
-    }
-
-    if (contactQuickBtn) {
-        contactQuickBtn.addEventListener('click', (e) => {
-            e.preventDefault();
-            showQRCode('contact', contactVCard, 'Contact Information', 'Scan to add my contact details to your phone');
-        });
-    }
-
-    // QR Display Modal Event Handlers
-    if (qrDisplayClose) {
-        qrDisplayClose.addEventListener('click', hideQRCode);
-    }
-
-    if (qrDisplayModal) {
-        qrDisplayModal.addEventListener('click', (e) => {
-            if (e.target === qrDisplayModal) {
-                hideQRCode();
-            }
-        });
-    }
-
-    function openResumeModal() {
-        // Generate QR code
-        const qrApiUrl = `https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=${encodeURIComponent(resumeUrl)}&bgcolor=ffffff&color=000000&margin=10`;
-        qrCodeImg.src = qrApiUrl;
-
-        // Set download link
-        modalDownloadBtn.href = resumeUrl;
-
-        // Update last updated date
-        const now = new Date();
-        lastUpdatedEl.textContent = now.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-
-        // Show modal with animation
-        modalBackdrop.classList.add('active');
-        modal.classList.add('active');
-
-        // Add entrance animation
-        setTimeout(() => {
-            modal.style.transform = 'translate(-50%, -50%) scale(1) rotateY(0deg)';
-        }, 50);
-    }
-
-    function closeResumeModal() {
-        modal.style.transform = 'translate(-50%, -50%) scale(0.8) rotateY(15deg)';
-        setTimeout(() => {
-            modalBackdrop.classList.remove('active');
-            modal.classList.remove('active');
-        }, 300);
-    }
-
-    // Event listeners
-    openModalBtn.addEventListener('click', (e) => {
-        e.preventDefault();
-        openResumeModal();
-    });
-
-    closeModalBtn.addEventListener('click', closeResumeModal);
-
-    modalBackdrop.addEventListener('click', (e) => {
-        if (e.target === modalBackdrop) {
-            closeResumeModal();
-        }
-    });
-
-    // Download button functionality
-    modalDownloadBtn.addEventListener('click', (e) => {
-        updateDownloadCount();
-
-        // Add download animation
-        const btn = e.currentTarget;
-        const originalText = btn.innerHTML;
-        btn.innerHTML = '<i data-lucide="loader-2" class="w-5 h-5 animate-spin"></i><span>Downloading...</span>';
-
-        setTimeout(() => {
-            btn.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i><span>Downloaded!</span>';
-            setTimeout(() => {
-                btn.innerHTML = originalText;
-                lucide.createIcons();
-            }, 2000);
-        }, 1000);
-    });
-
-    // Share functionality
-    shareResumeBtn.addEventListener('click', async (e) => {
-        e.preventDefault();
-
-        const btn = e.currentTarget;
-        const originalText = btn.innerHTML;
-
-        try {
-            if (navigator.share) {
-                await navigator.share({
-                    title: 'Sayed Ahmed Husain - Resume',
-                    text: 'Check out my professional resume',
-                    url: resumeUrl
-                });
-
-                btn.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i><span>Shared!</span>';
-            } else {
-                // Fallback: Copy to clipboard
-                await navigator.clipboard.writeText(resumeUrl);
-                btn.innerHTML = '<i data-lucide="check" class="w-5 h-5"></i><span>Link Copied!</span>';
-            }
-        } catch (error) {
-            btn.innerHTML = '<i data-lucide="x" class="w-5 h-5"></i><span>Error</span>';
-        }
-
-        setTimeout(() => {
-            btn.innerHTML = originalText;
-            lucide.createIcons();
-        }, 2000);
-    });
-
-    // Initialize download count display
-    const formattedCount = downloadCount > 1000 ? `${(downloadCount/1000).toFixed(1)}K+` : downloadCount.toString();
-    if (downloadCountEl) downloadCountEl.textContent = formattedCount;
-
-    // Initialize last updated date
-    updateLastUpdated();
-
-    // Keyboard shortcuts
-    document.addEventListener('keydown', (e) => {
-        if (e.key === 'Escape') {
-            if (modalBackdrop && modalBackdrop.classList.contains('active')) {
-                closeResumeModal();
-            }
-            if (qrDisplayModal && qrDisplayModal.classList.contains('active')) {
-                hideQRCode();
-            }
-        }
-        if ((e.ctrlKey || e.metaKey) && e.key === 'd') {
-            e.preventDefault();
-            if (resumeQuickBtn) {
-                resumeQuickBtn.click();
-            }
-        }
-    });
-
-    document.querySelectorAll('.placeholder-link').forEach(link => {
-        link.addEventListener('click', (e) => {
-            if (link.getAttribute('href') === '#') {
-                e.preventDefault();
-                alert(`Please replace the placeholder link for "${e.currentTarget.dataset.docName}".`);
-            }
-        });
-    });
-
-    // --- Enhanced UX Features ---
-
-    // Progress Indicator
-    const progressBar = document.getElementById('progress-bar');
-
-    function updateProgressBar() {
-        const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        const scrollHeight = document.documentElement.scrollHeight - window.innerHeight;
-        const progress = (scrollTop / scrollHeight) * 100;
-        progressBar.style.width = `${Math.min(progress, 100)}%`;
-    }
-
-    window.addEventListener('scroll', updateProgressBar);
-
-    // Floating Action Button - Scroll to Top
-    const scrollToTopBtn = document.getElementById('scroll-to-top');
-
-    function toggleScrollToTopBtn() {
-        if (window.pageYOffset > 300) {
-            scrollToTopBtn.style.opacity = '1';
-            scrollToTopBtn.style.visibility = 'visible';
+      });
+
+      timelineItemCards.forEach(card => {
+        const category = card.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          card.classList.remove('filtered-out');
+          card.style.opacity = '1';
         } else {
-            scrollToTopBtn.style.opacity = '0';
-            scrollToTopBtn.style.visibility = 'hidden';
+          card.classList.add('filtered-out');
+          card.style.opacity = '0.2';
         }
+      });
+
+      connectionLines.forEach(line => {
+        const category = line.getAttribute('data-category');
+        if (filter === 'all' || category === filter) {
+          line.classList.remove('filtered-out');
+          line.style.opacity = '0.4';
+        } else {
+          line.classList.add('filtered-out');
+          line.style.opacity = '0.2';
+        }
+      });
+    });
+  });
+
+  // Navbar scroll effect
+  window.addEventListener('scroll', () => {
+    const navbar = document.getElementById('navbar');
+    if (navbar) {
+      navbar.classList.toggle('scrolled', window.scrollY > 50);
     }
+  });
 
-    window.addEventListener('scroll', toggleScrollToTopBtn);
+  // Project item expansion
+  // Removed
 
-    scrollToTopBtn.addEventListener('click', () => {
-        window.scrollTo({
-            top: 0,
-            behavior: 'smooth'
-        });
+  // Sidebar contact buttons hover effect
+  const leftHoverText = document.getElementById('left-hover-text');
+  const rightHoverText = document.getElementById('right-hover-text');
+  const sideElements = document.querySelectorAll('.side-element a');
+  sideElements.forEach(a => {
+    const text = a.querySelector('.sr-only').textContent;
+    const isLeft = a.closest('.side-left');
+    const hoverText = isLeft ? leftHoverText : rightHoverText;
+    a.addEventListener('mouseenter', () => {
+      hoverText.textContent = text;
+      hoverText.style.opacity = '1';
+      // Move previous siblings up
+      let sibling = a.previousElementSibling;
+      while (sibling) {
+        if (sibling.tagName === 'A') {
+          sibling.style.transform = 'translateY(-10px)';
+        }
+        sibling = sibling.previousElementSibling;
+      }
+      // Move hovered button up
+      a.style.transform = 'translateY(-10px)';
     });
-
-    // Enhanced Card Interactions
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => {
-            document.querySelectorAll('.enhanced-card').forEach(card => {
-                card.addEventListener('mouseenter', () => {
-                    card.style.transform = 'translateY(-8px) scale(1.02)';
-                });
-
-                card.addEventListener('mouseleave', () => {
-                    card.style.transform = 'translateY(0) scale(1)';
-                });
-            });
-        }, 1000);
+    a.addEventListener('mouseleave', () => {
+      hoverText.style.opacity = '0';
+      // Reset all transforms
+      const allSiblings = a.parentElement.querySelectorAll('a');
+      allSiblings.forEach(sib => {
+        sib.style.transform = '';
+      });
     });
-
-    // Smooth scroll for navigation links
-    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-        anchor.addEventListener('click', function (e) {
-            e.preventDefault();
-            const target = document.querySelector(this.getAttribute('href'));
-            if (target) {
-                target.scrollIntoView({
-                    behavior: 'smooth',
-                    block: 'start'
-                });
-            }
-        });
-    });
-
-    // Enhanced button interactions
-    setTimeout(() => {
-        document.querySelectorAll('.timeline-toggle-btn').forEach(btn => {
-            btn.addEventListener('mouseenter', () => {
-                btn.style.transform = 'translateY(-2px) scale(1.05)';
-            });
-
-            btn.addEventListener('mouseleave', () => {
-                btn.style.transform = 'translateY(0) scale(1)';
-            });
-        });
-    }, 500);
-
-
-
-    // Initialize enhanced features
-    updateProgressBar();
-    toggleScrollToTopBtn();
-
-});
+  });
+}
