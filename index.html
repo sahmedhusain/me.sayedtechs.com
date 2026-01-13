@@ -53,14 +53,19 @@
             }))
           ];
 
-          const items = new vis.DataSet(allItems.map((item, index) => ({
-            id: index,
-            content: item.title,
-            start: item.startDate,
-            end: item.endDate,
-            className: item.category,
-            group: item.category,
-          })));
+          const items = new vis.DataSet(allItems.map((item, index) => {
+            const logoHtml = item.logo ? `<img src="${item.logo}" class="timeline-logo" onerror="this.style.display='none'">` : '';
+            const subtitle = item.institution || item.company || item.issuer || '';
+            const content = `<div class="tl-item">${logoHtml}<div class="tl-meta"><div class="tl-title">${item.title}</div>${subtitle ? `<div class="tl-sub">${subtitle}</div>` : ''}</div></div>`;
+            return {
+              id: index,
+              content,
+              start: item.startDate,
+              end: item.endDate,
+              className: item.category,
+              group: item.category,
+            };
+          }));
 
           const groups = new vis.DataSet([
               {id: 'career', content: 'Career'},

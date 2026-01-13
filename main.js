@@ -74,12 +74,14 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
 
   // Technical Skills
   technicalSkills: {
-    coreEngineering: ['Fire Alarm & Fighting Systems Design (NFPA/GCC Codes)', 'Electrical Installation', 'Solar PV Systems'],
+    coreEngineering: ['Fire Alarm & Fighting Systems Design (NFPA/GCC Codes)', 'Electrical Installation', 'Solar PV Systems', 'Power Electronics', 'Digital Circuits Design (Arduino, Pi)', 'Electrical Transmission Systems', 'Electrical Testing Equipment'],
     engineeringSoftware: ['AutoCAD', 'MATLAB', 'Digital Coding', 'SolidWorks', 'Fusion 360', 'Everycircuit', 'Oracle CRM', 'Oracle DB', 'SAP System'],
-    languages: ['JavaScript', 'TypeScript', 'Python', 'Go (Golang)', 'Rust', 'PHP', 'C', 'Cpp', 'SQL (SQLite)', 'CSS', 'HTML'],
+    languages: ['JavaScript', 'TypeScript', 'Python', 'Go (Golang)', 'Rust', 'PHP', 'C', 'Cpp', 'SQL (SQLite)'],
     webTechnologies: ['React', 'Next.js', 'Node.js', 'Flutter', 'Tailwind CSS', 'GraphQL', 'Apollo Client', 'WebSockets', 'PostgreSQL', 'MySQL', 'Firebase', 'Laravel'],
     systemsAndTools: ['Git', 'GitHub', 'VS Code', 'Docker', 'AWS', 'Postman', 'Figma', 'Mermaid', 'Markdown', 'Linux', 'WSL', 'macOS', 'Windows', 'Android', 'Xcode', 'Android Studio', 'TCP/IP', 'JSON', 'REST APIs', 'OAuth2', 'JWT'],
-    computerScienceConcepts: ['Algorithms & Data Structures', 'Concurrency & Parallelism', 'Virtual DOM', 'State Management']
+    systems: ['Linux', 'Raspberry Pi', 'macOS', 'Windows', 'Android'],
+    tools: ['Git', 'GitHub', 'VS Code', 'Docker', 'AWS', 'Postman', 'Figma', 'Mermaid', 'Markdown', 'Xcode', 'Android Studio', 'TCP/IP', 'JSON', 'REST APIs', 'OAuth2', 'JWT'],
+    computerScienceConcepts: ['Algorithms & Data Structures', 'Concurrency & Parallelism', 'Virtual DOM', 'State Management', 'Machine Learning']
   },
 
   // Personal Skills
@@ -156,10 +158,10 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
           'Served as Acting Branch Manager, overseeing sales team performance and optimizing retail shop operations to meet company standards.'
         ],
         salesExcellence: [
-          'consistently exceeded targets by cross-selling and upselling telecommunication services and products as a frontline agent.'
+          'Consistently exceeded targets by cross-selling and upselling telecommunication services and products as a frontline agent.'
         ],
         technicalSupport: [
-          'acted as a Service Center Representative, troubleshooting service issues and resolving technical claims to minimize downtime for customers.'
+          'Acted as a Service Center Representative, troubleshooting service issues and resolving technical claims to minimize downtime for customers.'
         ],
         customerEngagement: [
           'Resolved high-volume customer complaints and requests with a focus on problem resolution and conducted outbound tele-sales calls to drive promotion uptake.'
@@ -195,6 +197,7 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
       type: 'Certificate',
       issuingAuthority: 'NOCN',
       id: '48282023',
+      issued: 'Apr 2024',
       pdfUrl: 'SolarPV-NOCN.pdf'
     },
     {
@@ -225,7 +228,7 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
     },
     {
       name: 'Basic Life Support (BLS)',
-      type: 'Certificate',
+      type: 'License',
       issuingAuthority: 'American Heart Association (AHA)',
       id: '225607015422',
       issued: 'Jul 2022',
@@ -235,12 +238,14 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
     {
       name: 'B2B Sales Fundamentals',
       type: 'Course Certificate',
-      issuingAuthority: 'Golden Trust Institute (Bahrain)'
+      issuingAuthority: 'Golden Trust Institute (Bahrain)',
+      issued: 'Nov 2019'
     },
     {
       name: 'Emotional Intelligence',
       type: 'Course Certificate',
-      issuingAuthority: 'Golden Trust Institute (Bahrain)'
+      issuingAuthority: 'Golden Trust Institute (Bahrain)',
+      issued: 'Aug 2019'
     },
     {
       name: 'Online Learning Courses',
@@ -258,21 +263,30 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
   professionalJourney: {
     education: [
       {
+        title: 'High School (Physics and Mathematics)',
+        institution: 'H.E Sheikh Isa bin Ali Secondary School, Bahrain',
+        location: 'Bahrain',
+        startDate: '2012-09-01',
+        endDate: '2015-06-30',
+        description: 'Completed high school with a focus on Physics and Mathematics.',
+        icon: 'school-outline'
+      },
+      {
         title: 'Bachelor of Science in Electrical Engineering',
         institution: 'University of Bahrain',
         location: 'Bahrain',
         startDate: '2015-09-01',
         endDate: '2022-06-30',
-        description: 'Completed Bachelor\'s degree in Electrical Engineering with focus on power systems and electronics.',
+        description: 'Completed Bachelor\'s degree in Electrical Engineering.',
         icon: 'school-outline'
       },
       {
         title: 'Full-Stack Development Program',
         institution: 'Reboot Coding Institute',
         location: 'Bahrain',
-        startDate: '2024-04-01',
-        endDate: '2026-06-30',
-        description: 'Specialized program in full-stack development covering modern web technologies and software engineering practices.',
+        startDate: '2024-03-01',
+        endDate: '2026-03-31',
+        description: 'Specialized program in full-stack development.',
         icon: 'code-slash-outline',
         current: true
       }
@@ -281,100 +295,100 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
       {
         title: 'Electrical Test Equipment Internship',
         company: 'Megger',
-        location: 'Bahrain',
+        location: 'Virtual / India',
         startDate: '2020-07-01',
         endDate: '2020-09-30',
-        description: 'Hands-on experience with electrical test equipment and practical lab workflows.',
+        description: 'Understanding the basics of using electronics test equipments in several tests such as grounding resistivity, CT, VT, protective relays and electric motors tests.',
         icon: 'construct-outline'
       }
     ],
     career: [
       {
-        title: 'Retail Sales Representative',
-        company: 'Zain Bahrain',
+        title: 'Retail Marketing and Customer Service',
+        company: 'Zain Bahrain B.S.C',
         location: 'Bahrain',
         startDate: '2019-02-01',
         endDate: '2022-03-31',
-        description: 'Managed retail sales operations, customer service, and technical support for telecommunications services.',
+        description: 'Served as Acting Branch Manager, overseeing sales team performance and optimizing retail shop operations to meet company standards. Consistently exceeded targets by cross-selling and upselling telecommunication services and products as a frontline agent. Acted as a Service Center Representative, troubleshooting service issues and resolving technical claims to minimize downtime for customers. Resolved high-volume customer complaints and requests with a focus on problem resolution and conducted outbound tele-sales calls to drive promotion uptake.',
         icon: 'storefront-outline'
       },
       {
-        title: 'Retail Sales Advisor',
-        company: 'channels by stc',
+        title: 'Retail Sales Specialist',
+        company: 'Channels by STC',
         location: 'Bahrain',
         startDate: '2022-04-01',
         endDate: '2022-09-30',
-        description: 'Executed sales strategies for telecommunications products and services using Oracle CRM.',
+        description: 'Served as a Retail Sales Advisor, expertly executing cross-selling and upselling strategies for a wide range of telecommunications products and services. Managed complex customer inquiries and resolved complaints efficiently using the Oracle CRM enterprise system, ensuring high levels of customer satisfaction and retention.',
         icon: 'storefront-outline'
       },
       {
-        title: 'General Electrical Engineer',
-        company: 'Super Fire & Safety',
+        title: 'Electrical Engineer',
+        company: 'Super Fire and Safety Services W.L.L',
         location: 'Bahrain',
         startDate: '2022-10-01',
         endDate: '2023-10-31',
-        description: 'Designed, installed, and commissioned fire alarm systems for major clients including ALBA and Ministry of Education.',
+        description: 'Completed detailed Fire Alarm System Designs and technical drawings utilizing current Bahrain CDFSD, GCC Fire Codes, NFPA standards, and project specifications. Directed electrical teams in the installation, programming, maintenance, testing, and commissioning of fire alarm control panels and suppression systems, ensuring full compliance with NFPA and EWA regulations. Conducted rigorous inspections and system tests to ensure all components met Electrical Engineering safety requirements and performance standards.',
         icon: 'flash-outline'
       },
       {
         title: 'Public Relations In-Charge',
-        company: 'LIFECO',
+        company: 'Lichfield Fire and Safety Equipment Co., Ltd. (LIFECO)',
         location: 'Bahrain/UAE',
         startDate: '2024-05-01',
-        endDate: '2026-06-30',
-        description: 'Lead strategic sales, tender management, and client relations for fire safety equipment.',
+        endDate: '2026-02-28',
+        description: 'Formulate and execute comprehensive Strategic Sales plans and quotas for the Bahrain market, ensuring strict alignment with corporate management objectives. Drive profitability by analyzing market dynamics, tracking competitor activities, and identifying new opportunities to increase revenue and market share. Lead and mentor sales teams, setting clear targets and monitoring performance to ensure sales goals are consistently met or exceeded. Secure high-value deals with public and private sectors by actively managing bids on the Bahrain Tender Board and Procural (Tenders & Auctions Platform). Oversee the end-to-end Vendor Management process, obtaining and maintaining industrial vendor pre-qualifications with key government and private entities. Identify and pursue public and private Government Tenders, managing the submission process to ensure compliance and competitiveness. Cultivate robust relationships with key accounts and expand the customer base by identifying and counseling district sales representatives. Conduct regular client visits to diagnose evolving needs, assess relationship quality, and negotiate pricing to close and renew orders. Establish and nurture critical relationships with Civil Defense and government ministries to facilitate smooth project execution and compliance. Monitor key economic indicators, emerging market trends, and supply and demand shifts to optimize product mix and sales volume. Recommend new product lines and service improvements based on comprehensive market analysis and consumer needs surveys. Maintain technical expertise by participating in professional networks and reviewing industry publications to stay ahead of the curve.',
         icon: 'business-outline',
         current: true
       }
     ],
     certifications: [
       {
-        title: 'NOCN Level 3 Award for Solar PV Installer and Operator',
-        issuer: 'NOCN',
-        date: 'Jul 2024',
-        description: 'Certification in NOCN Level 3 Award for Solar PV Installer and Operator',
-        icon: 'ribbon-outline'
-      },
-      {
-        title: 'Certificate of Acknowledgement (Solar PV)',
-        issuer: 'Ministry of Electricity and Water Affairs (Bahrain)',
-        date: 'Jul 2024',
-        description: 'Certification in Certificate of Acknowledgement (Solar PV)',
-        icon: 'ribbon-outline'
-      },
-      {
-        title: 'CRPEP License (Electrical)',
-        issuer: 'The Council for Regulating the Practice of Engineering Professions (Bahrain)',
-        date: 'Dec 2022',
-        description: 'Certification in CRPEP License (Electrical)',
-        icon: 'ribbon-outline'
-      },
-      {
-        title: 'Electrical Installation License',
-        issuer: 'Electricity and Water Authority (Bahrain)',
-        date: 'Feb 2024',
-        description: 'Certification in Electrical Installation License',
-        icon: 'ribbon-outline'
-      },
-      {
-        title: 'Basic Life Support (BLS)',
-        issuer: 'American Heart Association (AHA)',
-        date: 'Jul 2022',
-        description: 'Certification in Basic Life Support (BLS)',
-        icon: 'ribbon-outline'
-      },
-      {
-        title: 'B2B Sales Fundamentals',
-        issuer: 'Golden Trust Institute (Bahrain)',
-        date: '2019',
-        description: 'Certification in B2B Sales Fundamentals',
+        title: 'Corporate Sales Fundamentals',
+        issuer: 'Golden Trust',
+        date: '2019-11-01',
+        description: 'Certification in Corporate Sales Fundamentals',
         icon: 'ribbon-outline'
       },
       {
         title: 'Emotional Intelligence',
-        issuer: 'Golden Trust Institute (Bahrain)',
-        date: '2019',
+        issuer: 'Golden Trust',
+        date: '2019-08-01',
         description: 'Certification in Emotional Intelligence',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'Basic Life Support (BLS)',
+        issuer: 'American Heart Association',
+        date: '2022-07-01',
+        description: 'Certification in Basic Life Support (BLS)',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'Engineering License (Electrical)',
+        issuer: 'CRPEP',
+        date: '2022-12-01',
+        description: 'Engineering License (Electrical)',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'Electrical Installation Wireman',
+        issuer: 'EWA Bahrain',
+        date: '2024-02-01',
+        description: 'Electrical Installation Wireman License',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'NOCN Level 3 Award — Solar PV Installer and Operator',
+        issuer: 'NOCN Group',
+        date: '2024-03-01',
+        description: 'NOCN Level 3 Award for Solar PV Installer and Operator',
+        icon: 'ribbon-outline'
+      },
+      {
+        title: 'NOCN Level 3 Award — Solar PV Installer and Operator',
+        issuer: 'EWA Acknowledgment',
+        date: '2024-07-01',
+        description: 'NOCN Level 3 Award for Solar PV Installer and Operator (EWA Acknowledgment)',
         icon: 'ribbon-outline'
       }
     ]
@@ -620,6 +634,60 @@ document.addEventListener('DOMContentLoaded', () => {
     ${renderContactModal()}
   `;
 
+  // After rendering: attach any missing logos (uses workspace local assets when available)
+  try {
+    // Add images to certification headers (anchor + image) and remove placeholder icon
+    document.querySelectorAll('.cert-header').forEach(header => {
+      if (header.querySelector('a.logo-link') || header.querySelector('img.org-logo')) return; // already handled
+      const authorityEl = header.querySelector('.cert-authority');
+      const authority = authorityEl ? authorityEl.textContent.trim() : '';
+      const logoSrc = getLogo(authority, '');
+      if (logoSrc) {
+        const a = document.createElement('a');
+        a.href = getEntityUrl(authority);
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'logo-link';
+        a.title = authority;
+        const img = document.createElement('img');
+        img.src = logoSrc;
+        img.alt = `${authority} logo`;
+        img.className = 'org-logo small cert-icon';
+        img.onerror = function () { this.style.display = 'none'; };
+        a.appendChild(img);
+        header.insertBefore(a, header.firstChild);
+      }
+      // Remove fallback ribbon icon if present
+      const ribbon = header.querySelector('ion-icon[name="ribbon-outline"]');
+      if (ribbon) ribbon.remove();
+    });
+
+    // Ensure timeline items (list entries) show logos if missing (anchor + image)
+    document.querySelectorAll('.timeline-item').forEach(item => {
+      if (item.querySelector('.org-logo') || item.querySelector('a.logo-link')) return;
+      const span = item.querySelector('span') || item.querySelector('.timeline-item-title');
+      const name = span ? span.textContent.trim() : '';
+      const logoSrc = getLogo(name, '');
+      if (logoSrc) {
+        const a = document.createElement('a');
+        a.href = getEntityUrl(name);
+        a.target = '_blank';
+        a.rel = 'noopener noreferrer';
+        a.className = 'logo-link';
+        a.title = name;
+        const img = document.createElement('img');
+        img.src = logoSrc;
+        img.alt = `${name} logo`;
+        img.className = 'org-logo small';
+        img.onerror = function () { this.style.display = 'none'; };
+        a.appendChild(img);
+        item.insertBefore(a, item.firstChild);
+      }
+    });
+  } catch (e) {
+    console.warn('Logo injection helper failed:', e);
+  }
+
   // Initialize event listeners
   initializeEventListeners();
 
@@ -637,17 +705,19 @@ function initializeSkillsAnimations() {
   const animateStats = () => {
     const statNumbers = document.querySelectorAll('.stat-number');
     statNumbers.forEach(stat => {
-      const target = parseInt(stat.getAttribute('data-target'));
+      const targetStr = stat.getAttribute('data-target');
+      const hasPlus = targetStr.includes('+');
+      const target = parseInt(targetStr);
       const increment = target / 100;
       let current = 0;
 
       const timer = setInterval(() => {
         current += increment;
         if (current >= target) {
-          stat.textContent = target;
+          stat.textContent = targetStr; // Use the original string (with + if present)
           clearInterval(timer);
         } else {
-          stat.textContent = Math.floor(current);
+          stat.textContent = Math.floor(current) + (hasPlus ? '+' : '');
         }
       }, 20);
     });
@@ -726,7 +796,7 @@ function setActivePage(targetPage) {
   const page = document.querySelector(`[data-page="${targetPage}"]`);
   if (page) {
     page.classList.add('active');
-    
+
     // Add special animation for contact page
     if (targetPage === 'contact') {
       page.classList.add('contact-animate');
@@ -827,7 +897,7 @@ function renderSidebar() {
 }
 
 const iconMap = {
-    'everycircuit': { type: 'ion', class: 'hardware-chip' },
+  'everycircuit': { type: 'ion', class: 'hardware-chip' },
   'go': { type: 'devicon', class: 'devicon-go-plain' },
   'golang': { type: 'devicon', class: 'devicon-go-plain' },
   'go golang': { type: 'devicon', class: 'devicon-go-plain' },
@@ -854,6 +924,7 @@ const iconMap = {
   'docker': { type: 'devicon', class: 'devicon-docker-plain' },
   'bootstrap': { type: 'devicon', class: 'devicon-bootstrap-plain' },
   'arduino': { type: 'devicon', class: 'devicon-arduino-plain' },
+  'raspberry pi': { type: 'devicon', class: 'devicon-raspberrypi-plain' },
   'node.js': { type: 'devicon', class: 'devicon-nodejs-plain' },
   'nodejs': { type: 'devicon', class: 'devicon-nodejs-plain' },
   'jest': { type: 'devicon', class: 'devicon-jest-plain' },
@@ -957,7 +1028,7 @@ const renderTechLogos = (techArr = []) => {
     } else if (type === 'ion') {
       iconHtml = `<ion-icon name="${cls}"></ion-icon>`;
     }
-    return `<li class="project-tech-logo" title="${orig}">${iconHtml}<span class="tech-text">${orig}</span></li>`;
+    return `<li class="project-tech-logo" title="${orig}">${iconHtml}</li>`;
   });
   const texts = sortedTech.filter(orig => !iconMap[normalize(orig)]).map(orig => {
     return `<li class="project-tech-text" title="${orig}">${orig}</li>`;
@@ -1044,69 +1115,148 @@ function renderAboutSection() {
   `;
 }
 
+function getSectionIcon(sectionName) {
+  const icons = {
+    'strategicSalesLeadership': 'trending-up-outline',
+    'tenderAndProcurementManagement': 'document-text-outline',
+    'clientRelationsAndBusinessGrowth': 'people-outline',
+    'marketIntelligenceAndOperations': 'analytics-outline',
+    'operationsManagement': 'settings-outline',
+    'salesExcellence': 'bar-chart-outline',
+    'technicalSupport': 'headset-outline',
+    'customerEngagement': 'chatbubble-outline'
+  };
+  return icons[sectionName] || 'checkmark-circle-outline';
+}
+
 function renderExperienceSection() {
   return `
     <header>
       <h2 class="h2 article-title">Professional Experience</h2>
+      <p class="section-subtitle">Discover my <strong>career journey</strong> – from innovative projects and leadership roles to the achievements that have shaped my professional path. Let's explore the experiences that drive my passion for excellence!</p>
     </header>
-    <div class="experience-tabs">
-      <div class="tab-list" role="tablist">
-        ${data.experience.map((job, i) => `
-          <button class="tab-btn ${i === 0 ? 'active' : ''}" data-tab="${i}">
-            ${job.company}
-          </button>
-        `).join('')}
-      </div>
-      <div class="tab-content">
-        ${data.experience.map((job, i) => {
-    let content = `
-            <h3 class="job-title">${job.title} <span>@ ${job.company}</span></h3>
-            <p class="job-date">${job.date} | ${job.location}</p>
-          `;
 
-    if (job.sections) {
-      Object.entries(job.sections).forEach(([sectionName, points]) => {
-        const sectionTitle = sectionName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
-        content += `
-                <h4 class="job-section-title">${sectionTitle}</h4>
-                <ul class="job-description">
-                  ${points.map(point => `<li>${point}</li>`).join('')}
-                </ul>
-              `;
-      });
-    } else if (job.points) {
-      content += `<ul class="job-description">
-              ${job.points.map(point => `<li>${point}</li>`).join('')}
-            </ul>`;
-
-      if (job.keyProjects) {
-        content += `
-                <h4 class="job-section-title">Key Projects</h4>
-                <ul class="job-description">
-                  ${job.keyProjects.map(project => `<li>${project}</li>`).join('')}
-                </ul>
-              `;
-      }
-    }
-
-    return `
-            <div class="tab-panel ${i === 0 ? 'active' : ''}" id="panel-${i}" role="tabpanel">
-              ${content}
+    <div class="experience-container">
+      ${data.experience.map((job, i) => `
+        <div class="experience-card" data-job="${i}">
+          <div class="experience-card-header">
+            <div class="experience-company-info">
+              <div class="experience-company-logo">
+                <a href="${getEntityUrl(job.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${job.company}">
+                  <img src="${getLogo(job.company, '')}" alt="${job.company} logo" class="org-logo" onerror="this.onerror=null;this.style.display='none';" />
+                </a>
+              </div>
+              <div class="experience-company-details">
+                <h3 class="experience-job-title">${job.title}</h3>
+                <p class="experience-company-name">${job.company}</p>
+                <div class="experience-meta">
+                  <span class="experience-date">
+                    <ion-icon name="calendar-outline"></ion-icon>
+                    ${job.date}
+                  </span>
+                  <span class="experience-location">
+                    <ion-icon name="location-outline"></ion-icon>
+                    ${job.location}
+                  </span>
+                </div>
+              </div>
             </div>
-          `;
-  }).join('')}
-      </div>
+          </div>
+
+          <div class="experience-card-content">
+            ${job.sections ? Object.entries(job.sections).map(([sectionName, points]) => {
+    const sectionTitle = sectionName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+    const sectionIcon = getSectionIcon(sectionName);
+    return `
+                <div class="experience-section">
+                  <h4 class="experience-section-title">
+                    <ion-icon name="${sectionIcon}"></ion-icon>
+                    ${sectionTitle}
+                  </h4>
+                  <ul class="experience-points">
+                    ${points.map(point => `<li class="experience-point">${point}</li>`).join('')}
+                  </ul>
+                </div>
+              `;
+  }).join('') : job.points ? `
+              <div class="experience-section">
+                <h4 class="experience-section-title">
+                  <ion-icon name="checkmark-circle-outline"></ion-icon>
+                  Key Responsibilities
+                </h4>
+                <ul class="experience-points">
+                  ${job.points.map(point => `<li class="experience-point">${point}</li>`).join('')}
+                </ul>
+              </div>
+              ${job.keyProjects ? `
+                <div class="experience-section">
+                  <h4 class="experience-section-title">
+                    <ion-icon name="build-outline"></ion-icon>
+                    Key Projects
+                  </h4>
+                  <ul class="experience-points">
+                    ${job.keyProjects.map(project => `<li class="experience-point">${project}</li>`).join('')}
+                  </ul>
+                </div>
+              ` : ''}
+            ` : ''}
+          </div>
+        </div>
+      `).join('')}
     </div>
+    
+    <header style="margin-top: 3rem;">
+      <h2 class="h2 article-title">Internships</h2>
+    </header>
+    <p class="section-subtitle">Early career experiences – internships that provided <strong>practical skills</strong> and industry insights to launch my professional journey.</p>
+    <ul class="timeline-list">
+      ${data.professionalJourney.internships.map(intern => `
+        <li class="timeline-item cert-item">
+          <div class="cert-header">
+            <ion-icon name="construct-outline" class="cert-icon"></ion-icon>
+            <a href="${getEntityUrl(intern.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${intern.company}">
+              <img src="${getLogo(intern.company, '')}" alt="${intern.company} logo" class="org-logo small" onerror="this.onerror=null;this.style.display='none';" />
+            </a>
+            <div class="cert-content">
+              <h4 class="h4 timeline-item-title">${intern.title}</h4>
+              <span class="cert-authority">${intern.company}</span>
+            </div>
+          </div>
+          
+          <div class="cert-meta">
+            <span class="cert-meta-item">${intern.startDate} - ${intern.endDate}</span>
+            <span class="cert-meta-item">${intern.location}</span>
+          </div>
+          
+          <div class="experience-section">
+            <p class="experience-point">${intern.description}</p>
+          </div>
+        </li>
+      `).join('')}
+    </ul>
     
     <header style="margin-top: 3rem;">
       <h2 class="h2 article-title">Education</h2>
     </header>
+    <p class="section-subtitle">My educational foundation – from high school to university degrees that built my <strong>knowledge base</strong> and technical expertise.</p>
     <ul class="timeline-list">
       ${data.education.map(edu => `
-        <li class="timeline-item">
-          <h4 class="h4 timeline-item-title">${edu.degree}</h4>
-          <span>${edu.institution}</span>
-          <span class="timeline-item-duration">${edu.date}</span>
+        <li class="timeline-item cert-item">
+          <div class="cert-header">
+            <ion-icon name="school-outline" class="cert-icon"></ion-icon>
+            <a href="${getEntityUrl(edu.institution || edu.degree)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${edu.institution}">
+              <img src="${getLogo(edu.institution || edu.degree, '')}" alt="${edu.institution} logo" class="org-logo small" onerror="this.onerror=null;this.style.display='none';" />
+            </a>
+            <div class="cert-content">
+              <h4 class="h4 timeline-item-title">${edu.degree}</h4>
+              <span class="cert-authority">${edu.institution}</span>
+            </div>
+          </div>
+          
+          <div class="cert-meta">
+            <span class="cert-meta-item">${edu.date}</span>
+          </div>
+          
           ${edu.certificate ? `<a href="${edu.certificate}" target="_blank" class="certificate-link">
             <ion-icon name="document-outline"></ion-icon> View Certificate
           </a>` : ''}
@@ -1117,13 +1267,19 @@ function renderExperienceSection() {
     <header style="margin-top: 3rem;">
       <h2 class="h2 article-title">Licenses & Certifications</h2>
     </header>
+    <p class="section-subtitle">Professional credentials – <strong>licenses</strong> and certifications that validate my expertise and commitment to industry standards.</p>
     <ul class="timeline-list">
       ${data.certifications.map(cert => {
     const isExpired = cert.expires && new Date(cert.expires) < new Date();
+    const iconName = cert.type === 'License' ? 'card-outline' : 'ribbon-outline';
+    const viewText = `View ${cert.type}`;
     return `
         <li class="timeline-item cert-item">
           <div class="cert-header">
-            <ion-icon name="ribbon-outline" class="cert-icon"></ion-icon>
+            <ion-icon name="${iconName}" class="cert-icon"></ion-icon>
+            <a href="${getEntityUrl(cert.issuingAuthority)}" target="_blank" class="logo-link">
+              <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo small" onerror="this.onerror=null;this.style.display='none';" />
+            </a>
             <div class="cert-content">
               <h4 class="h4 timeline-item-title">${cert.name}</h4>
               <span class="cert-authority">${cert.issuingAuthority}</span>
@@ -1142,7 +1298,7 @@ function renderExperienceSection() {
           </div>
           
           ${cert.pdfUrl ? `<a href="${cert.pdfUrl}" target="_blank" class="certificate-link">
-            <ion-icon name="document-outline"></ion-icon> View Certificate/License
+            <ion-icon name="document-outline"></ion-icon> ${viewText}
           </a>` : ''}
         </li>
         `;
@@ -1161,7 +1317,7 @@ function getIcon(text) {
 
 function renderProjectsSection() {
   // Map common tech names to Devicon classes
-  const categories = ['All', 'Web Development', 'Engineering', 'Games', 'CLI/Algorithms'];
+  const categories = ['All', 'Web Development', 'Engineering', 'Games', 'CLI/Algorithms', 'UI concepts'];
   const projects = data.projects.map(p => {
     const name = (p.name || '').toLowerCase();
     const tech = Array.isArray(p.tech) ? p.tech.map(t => String(t).toLowerCase()) : [];
@@ -1186,16 +1342,29 @@ function renderProjectsSection() {
 
   return `
     <header>
-      <h2 class="h2 article-title">Some Things I've Built</h2>
+      <h2 class="h2 article-title">Project Showcase</h2>
     </header>
+    
+    <p class="section-subtitle">Explore my portfolio – from <strong>web applications</strong> and engineering solutions to innovative tools that showcase my technical expertise and problem-solving skills.</p>
+    
     <ul class="filter-list">
-      ${categories.map((cat, i) => `
+      ${categories.map((cat, i) => {
+    const iconMap = {
+      'All': 'grid-outline',
+      'Web Development': 'globe-outline',
+      'Engineering': 'construct-outline',
+      'Games': 'game-controller-outline',
+      'CLI/Algorithms': 'terminal-outline',
+      'UI concepts': 'color-palette-outline'
+    };
+    return `
         <li class="filter-item">
           <button class="filter-btn ${i === 0 ? 'active' : ''}" data-filter-btn="${cat.toLowerCase()}">
+            <ion-icon name="${iconMap[cat] || 'grid-outline'}"></ion-icon>
             ${cat}
           </button>
         </li>
-      `).join('')}
+      `}).join('')}
     </ul>
     <ul class="project-list">
       ${projects.map(project => `
@@ -1223,6 +1392,18 @@ function renderProjectsSection() {
             </div>
         </li>
       `).join('')}
+      <li class="project-item ui-concepts-coming-soon" data-filter-item data-category="uiconcepts">
+        <div class="coming-soon-content">
+          <div class="coming-soon-icon">
+            <ion-icon name="color-palette-outline"></ion-icon>
+          </div>
+          <h3 class="coming-soon-title">UI Concepts</h3>
+          <p class="coming-soon-text">Coming Soon</p>
+          <div class="coming-soon-description">
+            Exciting UI/UX design concepts and interactive prototypes are in development. Stay tuned for innovative user interface designs and experiences.
+          </div>
+        </div>
+      </li>
     </ul>
   `;
 }
@@ -1327,168 +1508,304 @@ function renderSkillBadges(items = [], type) {
           </div>`;
 }
 
+// Helper: prefer local workspace logo files where available
+function getLocalLogoFor(name) {
+  const n = (name || '').toLowerCase();
+  if (n.includes('lichfield') || n.includes('lifeco')) return 'lifeco_uk_logo.jpeg';
+  if (n.includes('super fire')) return 'super_fire_and_safety_services_logo.jpeg';
+  if (n.includes('channels by stc') || n.includes('channels')) return 'channels_by_stc_bahrain_logo.jpeg';
+  if (n.includes('zain')) return 'zain_logo.jpeg';
+  if (n.includes('megger')) return 'megger_logo.jpeg';
+  if (n.includes('university of bahrain')) return 'university_of_bahrain_logo.jpeg';
+  if (n.includes('reboot')) return 'reboot_logo.jpeg';
+  if (n.includes('nocn')) return 'nocn_logo.jpeg';
+  if (n.includes('american heart')) return 'american_heart_association_logo.jpeg';
+  if (n.includes('linkedin')) return 'LinkedIn_icon.svg';
+  if (n.includes('golden trust')) return 'golden_trust_logo.jpeg';
+  if (n.includes('crpep')) return 'crpep_logo.jpeg';
+  if (n.includes('council') || n.includes('engineering professions')) return 'crpep_logo.jpeg';
+  if (n.includes('electricity and water') || n.includes('ministry of electricity')) return 'mewa.jpeg';
+  if (n.includes('sheikh isa') || n.includes('secondary school')) return 'moe_highschool.jpeg';
+  // Add more mappings here as you add image files to the repo
+  return null;
+}
+
+function getLogo(name, fallback) {
+  const local = getLocalLogoFor(name);
+  if (local) return local;
+
+  // Specific fallbacks for missing local files
+  const n = (name || '').toLowerCase();
+  if (n.includes('linkedin')) return 'https://cdn.simpleicons.org/linkedin'; // Use SVG icon as fallback
+
+  return fallback || 'https://placehold.co/48x48/e1e3e2/3f4948?text=LOGO';
+}
+
+// Get a sensible destination for a given entity (company, institution, certificate issuer).
+// If you prefer specific URLs for some entities, add them to `entityUrlMap` below.
+function getEntityUrl(name) {
+  const n = (name || '').toLowerCase();
+  const entityUrlMap = {
+    'lichfield': 'https://www.lifeco-uk.com',
+    'lifeco': 'https://www.lifeco-uk.com',
+    'super fire': 'https://www.linkedin.com/company/super-fire-and-safety-services/',
+    'channels by stc': 'https://channels.com.sa/home',
+    'channels': 'https://channels.com.sa/home',
+    'zain': 'https://eshop.bh.zain.com/',
+    'megger': 'https://www.megger.com',
+    'university of bahrain': 'https://www.uob.edu.bh',
+    'reboot': 'https://reboot01.com',
+    'nocn': 'https://www.nocn.org.uk',
+    'american heart': 'https://www.heart.org',
+    'crpep': 'https://www.crpep.bh/',
+    'ministry of electricity': 'https://www.linkedin.com/company/mewa-bah/',
+    'electricity and water': 'https://www.ewa.bh/',
+    'golden trust': 'https://www.linkedin.com/company/golden-trust-group/',
+    'linkedin learning': 'https://www.linkedin.com/learning/'
+  };
+
+  for (const key in entityUrlMap) {
+    if (n.includes(key)) return entityUrlMap[key];
+  }
+
+  // Fallback to a safe Google search for the entity name
+  if (n.trim()) return `https://www.google.com/search?q=${encodeURIComponent(name)}`;
+  return '#';
+}
+
 function renderProfessionalJourneySection() {
   const journey = data.professionalJourney;
 
-  // Combine all timeline items and sort by date
+  // Function to calculate duration in years and months
+  function calculateDuration(startDate, endDate) {
+    if (!startDate || !endDate) return '';
+    const start = new Date(startDate);
+    const end = new Date(endDate);
+    const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+    const years = Math.floor(months / 12);
+    const remainingMonths = months % 12;
+
+    if (years === 0) {
+      return `${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
+    } else if (remainingMonths === 0) {
+      return `${years} year${years !== 1 ? 's' : ''}`;
+    } else {
+      return `${years} year${years !== 1 ? 's' : ''} ${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
+    }
+  }
+
+  // Combine all timeline items in the requested order: education, internships, career, certifications
   const allItems = [
     ...journey.education.map(item => ({ ...item, category: 'education' })),
     ...journey.internships.map(item => ({ ...item, category: 'internships' })),
     ...journey.career.map(item => ({ ...item, category: 'career' })),
-    ...journey.certifications.map(item => ({ ...item, category: 'certifications' }))
-  ].sort((a, b) => new Date(a.startDate) - new Date(b.startDate));
+    ...journey.certifications.map(item => ({ ...item, category: 'certifications', startDate: item.date, endDate: null }))
+  ];
 
   // Calculate timeline dimensions
   const startYear = 2015;
-  const endYear = 2026;
+  const currentYear = new Date().getFullYear();
+  const endYear = currentYear + 1; // Dynamic end year with 1 year buffer
   const totalYears = endYear - startYear;
-  const svgWidth = 1000;
-  const svgHeight = 600;
-  const margin = { top: 50, right: 150, bottom: 50, left: 100 };
+  const totalIntervals = totalYears * 2; // 6-month intervals
+  const svgWidth = 1800; // Further increased width for wider chart
+  const svgHeight = 650; // Increased height for better layout
+  const margin = { top: 80, right: 200, bottom: 80, left: 120 };
   const chartWidth = svgWidth - margin.left - margin.right;
   const chartHeight = svgHeight - margin.top - margin.bottom;
 
   // Calculate positions
   const getXPosition = (dateStr) => {
+    if (!dateStr) {
+      console.error('No date provided');
+      return margin.left; // fallback position
+    }
     const date = new Date(dateStr);
-    const year = date.getFullYear();
-    const progress = (year - startYear) / totalYears;
-    return margin.left + (progress * chartWidth);
+    if (isNaN(date.getTime())) {
+      console.error('Invalid date:', dateStr);
+      return margin.left; // fallback position
+    }
+    const startDate = new Date(startYear, 0, 1); // January 1st of start year
+    const endDate = new Date(endYear, 0, 1); // January 1st of end year
+    const totalTime = endDate.getTime() - startDate.getTime();
+    const currentTime = date.getTime() - startDate.getTime();
+    const progress = Math.max(0, Math.min(1, currentTime / totalTime)); // Clamp between 0 and 1
+    const x = margin.left + (progress * chartWidth);
+    if (isNaN(x)) {
+      console.error('NaN x position for date:', dateStr, 'progress:', progress);
+      return margin.left; // fallback
+    }
+    return x;
   };
 
-  const getYPosition = (index, total) => {
-    return margin.top + (index * (chartHeight / Math.max(total - 1, 1)));
+  // Assign each item to its own horizontal grid line, with custom offset for high school
+  const getYPosition = (index, total, item) => {
+    // High school stays at its current offset (extra 32px)
+    if (item.category === 'education' && item.title && item.title.toLowerCase().includes('high school')) {
+      return margin.top + (index * (chartHeight / Math.max(total - 1, 1))) + 32;
+    }
+    // All other items: one grid step lower for each subsequent item
+    return margin.top + ((index + 1) * (chartHeight / Math.max(total, 1)));
   };
 
   // Generate SVG timeline
   const svgContent = `
     <svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}" class="timeline-svg">
-      <!-- Background -->
-      <defs>
-        <linearGradient id="timelineGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:${getComputedStyle(document.documentElement).getPropertyValue('--gradient-start').trim()};stop-opacity:0.8" />
-          <stop offset="100%" style="stop-color:${getComputedStyle(document.documentElement).getPropertyValue('--gradient-end').trim()};stop-opacity:0.8" />
-        </linearGradient>
-        <filter id="glow">
-          <feGaussianBlur stdDeviation="3" result="coloredBlur"/>
-          <feMerge>
-            <feMergeNode in="coloredBlur"/>
-            <feMergeNode in="SourceGraphic"/>
-          </feMerge>
-        </filter>
-      </defs>
+
+
+      <!-- Background gradient -->
+      <rect width="${svgWidth}" height="${svgHeight}" fill="url(#timelineGradient)" rx="15" ry="15" opacity="0.1"/>
 
       <!-- Main timeline line -->
       <line x1="${margin.left}" y1="${margin.top}" x2="${margin.left + chartWidth}" y2="${margin.top}"
-            stroke="var(--accent)" stroke-width="3" opacity="0.6"/>
+            stroke="url(#mainTimelineGradient)" stroke-width="4" opacity="0.8" filter="url(#shadow)">
+        <animate attributeName="stroke-dasharray" values="0,${chartWidth};${chartWidth},0" dur="2s" fill="freeze"/>
+      </line>
 
-      <!-- Year markers -->
-      ${Array.from({length: totalYears + 1}, (_, i) => {
-        const year = startYear + i;
-        const x = getXPosition(`${year}-01-01`);
-        return `
-          <line x1="${x}" y1="${margin.top - 10}" x2="${x}" y2="${margin.top + 10}"
-                stroke="var(--text-secondary)" stroke-width="1" opacity="0.3"/>
-          <text x="${x}" y="${margin.top - 20}" text-anchor="middle"
-                fill="var(--text-secondary)" font-size="12" font-family="var(--font-mono)">${year}</text>
+
+      <!-- Grid lines (4 quarters per year) -->
+      ${Array.from({ length: totalIntervals * 2 + 1 }, (_, i) => {
+    const year = startYear + Math.floor(i / 4);
+    const quarter = i % 4;
+    const month = ['01', '04', '07', '10'][quarter]; // Jan, Apr, Jul, Oct
+    const x = getXPosition(`${year}-${month}-01`);
+    const isYearStart = quarter === 0;
+    return `
+          <line x1="${x}" y1="${margin.top}" x2="${x}" y2="${margin.top + chartHeight}"
+            stroke="var(--text-secondary)" stroke-width="${isYearStart ? '2' : '1'}"
+            opacity="${isYearStart ? '0.25' : '0.15'}" class="grid-line-vertical"/>
         `;
-      }).join('')}
+  }).join('')}
+
+      <!-- Horizontal grid lines -->
+      ${Array.from({ length: allItems.length + 1 }, (_, i) => {
+    const y = margin.top + (i * (chartHeight / Math.max(allItems.length, 1)));
+    return `
+          <line x1="${margin.left}" y1="${y}" x2="${margin.left + chartWidth}" y2="${y}"
+                stroke="var(--text-secondary)" stroke-width="1" opacity="0.1" class="grid-line-horizontal"/>
+        `;
+  }).join('')}
+
+
+      <!-- Year markers (at Q1 only) -->
+      ${Array.from({ length: totalIntervals * 2 + 1 }, (_, i) => {
+    const year = startYear + Math.floor(i / 4);
+    const quarter = i % 4;
+    const month = ['01', '04', '07', '10'][quarter];
+    const x = getXPosition(`${year}-${month}-01`);
+    const isYearStart = quarter === 0;
+    return isYearStart ? `
+          <g class="year-marker">
+            <line x1="${x}" y1="${margin.top - 15}" x2="${x}" y2="${margin.top + 15}" stroke="var(--text-secondary)" stroke-width="2" opacity="0.5"/>
+            <circle cx="${x}" cy="${margin.top}" r="4" fill="var(--accent)" opacity="0.7"/>
+            <text x="${x}" y="${margin.top - 25}" text-anchor="middle" fill="var(--text-primary)" font-size="14" font-weight="700" font-family="var(--font-mono)">${year}</text>
+          </g>
+        ` : '';
+  }).join('')}
 
       <!-- Timeline items -->
       ${allItems.map((item, index) => {
-        const x = getXPosition(item.startDate);
-        const y = getYPosition(index, allItems.length);
-        const isCurrent = item.current || (!item.endDate && new Date() < new Date(item.endDate));
-        const categoryColors = {
-          education: '#64ffda',
-          internships: '#ffab91',
-          career: '#81c784',
-          certifications: '#ffb74d'
-        };
-        const color = categoryColors[item.category] || '#64ffda';
+    const dateToUse = item.startDate || item.date;
+    const x = getXPosition(dateToUse);
+    let y = getYPosition(index, allItems.length, item);
+    const isCurrent = item.current || (!item.endDate && new Date() < new Date(item.endDate));
+    const categoryColors = {
+      education: '#64ffda',
+      internships: '#ffab91',
+      career: '#81c784',
+      certifications: '#ffb74d'
+    };
+    const color = categoryColors[item.category] || '#64ffda';
 
-        return `
-          <!-- Connection line -->
-          <line x1="${margin.left}" y1="${margin.top}" x2="${x}" y2="${y}"
-                stroke="${color}" stroke-width="2" opacity="0.4" class="connection-line"
-                data-category="${item.category}"/>
+    // Determine if this should be a bar (education, internships, career) or dot (certifications)
+    const isBarItem = ['education', 'internships', 'career'].includes(item.category);
+    const endX = isBarItem && item.endDate ? getXPosition(item.endDate) : x;
+    const logoHref = getLogo(item.company || item.institution || item.issuer || item.title || item.name || '', '');
+    const logoX = x - 16;
+    const logoY = isBarItem ? (y - 26) : (y - 36);
 
-          <!-- Timeline dot -->
-          <circle cx="${x}" cy="${y}" r="${isCurrent ? '8' : '6'}"
-                  fill="${color}" stroke="var(--primary)" stroke-width="2"
+    return `
+          ${logoHref ? `<a href="${getEntityUrl(item.company || item.institution || item.issuer || item.title || item.name || '')}" target="_blank" rel="noopener noreferrer" class="timeline-logo-link"><image href="${logoHref}" x="${logoX}" y="${logoY}" width="36" height="36" preserveAspectRatio="xMidYMid slice" class="timeline-logo" /></a>` : ''} 
+          <!-- Timeline bar (for education, internships, career) -->
+          ${isBarItem ? `
+          <rect x="${x}" y="${y - 6}" width="${endX - x}" height="12" rx="6"
+                fill="${color}" stroke="var(--primary)" stroke-width="2"
+                class="timeline-bar ${item.category} ${isCurrent ? 'current' : ''}"
+                data-category="${item.category}" data-item-index="${index}" filter="url(#glow)" opacity="0.8">
+            <animate attributeName="width" values="0;${endX - x}" dur="1s" begin="${index * 0.1 + 0.3}s" fill="freeze" />
+            <title>${item.title} - ${item.company || item.institution} (${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${item.endDate ? new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Present'})</title>
+          </rect>
+          ` : ''}
+
+          <!-- Timeline dot (for certifications) -->
+          ${!isBarItem ? `
+          <circle cx="${x}" cy="${y}" r="${isCurrent ? '10' : '8'}"
+                  fill="${color}" stroke="var(--primary)" stroke-width="3"
                   class="timeline-dot ${item.category} ${isCurrent ? 'current' : ''}"
-                  data-category="${item.category}">
-            <title>${item.title} - ${item.company || item.institution}</title>
+                  data-category="${item.category}" data-item-index="${index}" filter="url(#glow)">
+            <animate attributeName="r" values="${isCurrent ? '10;12;10' : '8;10;8'}" dur="2.5s" repeatCount="indefinite" />
+            <title>${item.title} - ${item.company || item.institution || item.issuer}</title>
           </circle>
+          ` : ''}
 
-          <!-- Item card -->
-          <g class="timeline-item-card" data-category="${item.category}">
-            <!-- Card background -->
-            <rect x="${x + 20}" y="${y - 40}" width="280" height="80" rx="8"
-                  fill="var(--card-bg)" stroke="var(--card-border)" stroke-width="1"
-                  opacity="0.95" class="item-card-bg"/>
+        `;
+  }).join('')}
 
-            <!-- Icon -->
-            <foreignObject x="${x + 30}" y="${y - 30}" width="20" height="20">
-              <ion-icon name="${item.icon}" style="color: ${color}; font-size: 20px;"></ion-icon>
-            </foreignObject>
 
-            <!-- Title -->
-            <text x="${x + 60}" y="${y - 15}" fill="var(--text-primary)"
-                  font-size="14" font-weight="600" class="item-title">${item.title}</text>
-
-            <!-- Subtitle -->
-            <text x="${x + 60}" y="${y - 2}" fill="var(--text-secondary)"
-                  font-size="12" class="item-subtitle">${item.company || item.institution}</text>
-
-            <!-- Date -->
-            <text x="${x + 60}" y="${y + 13}" fill="var(--accent)"
-                  font-size="11" font-family="var(--font-mono)" class="item-date">
-              ${new Date(item.startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} -
-              ${item.endDate ? new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Present'}
-            </text>
-
-            <!-- Current indicator -->
-            ${isCurrent ? `
-              <rect x="${x + 200}" y="${y - 35}" width="60" height="20" rx="10"
-                    fill="var(--accent)" class="current-badge"/>
-              <text x="${x + 230}" y="${y - 22}" text-anchor="middle" fill="var(--primary)"
-                    font-size="10" font-weight="600" class="current-text">Current</text>
-            ` : ''}
+      <!-- Current Date Line (drawn last for visibility) -->
+      ${(() => {
+      const now = new Date();
+      const currentX = getXPosition(now.toISOString().split('T')[0]);
+      console.log('Current date line - Date:', now.toISOString().split('T')[0], 'X position:', currentX, 'SVG width:', svgWidth);
+      return `
+          <g class="current-date-line-debug">
+            <defs>
+              <filter id="currentDateGlow">
+                <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                <feMerge>
+                  <feMergeNode in="coloredBlur"/>
+                  <feMergeNode in="SourceGraphic"/>
+                </feMerge>
+              </filter>
+            </defs>
+            <!-- Current date vertical line (debug: thick, fully opaque) -->
+            <line x1="${currentX}" y1="${margin.top}" x2="${currentX}" y2="${margin.top + chartHeight}"
+              stroke="#64ffda" stroke-width="1" filter="url(#currentDateGlow)"
+              opacity="0.55" class="current-date-indicator" />
           </g>
         `;
-      }).join('')}
+    })()}
 
-      <!-- Legend -->
-      <g class="timeline-legend">
-        <text x="${margin.left}" y="${svgHeight - 30}" fill="var(--text-primary)"
-              font-size="16" font-weight="600">Legend</text>
-        ${Object.entries({
-          education: { color: '#64ffda', label: 'Education' },
-          internships: { color: '#ffab91', label: 'Internships' },
-          career: { color: '#81c784', label: 'Career' },
-          certifications: { color: '#ffb74d', label: 'Certifications' }
-        }).map(([key, { color, label }], index) => `
-          <circle cx="${margin.left + (index * 120)}" cy="${svgHeight - 10}" r="6" fill="${color}"/>
-          <text x="${margin.left + (index * 120) + 15}" y="${svgHeight - 5}" fill="var(--text-secondary)"
-                font-size="12">${label}</text>
-        `).join('')}
-      </g>
     </svg>
   `;
 
   return `
     <header>
       <h2 class="h2 article-title">Professional Journey</h2>
-      <p class="journey-subtitle">Interactive timeline chart of my educational background, career progression, internships, and certifications.</p>
+      <p class="section-subtitle">Explore my professional timeline – from <strong>education</strong> and internships to career milestones and certifications that shaped my expertise. <a href="#journey" class="journey-link">View Full Journey Details</a></p>
     </header>
-    <section class="professional-journey">
+    <section class="professional-journey" id="professional-journey">
       <div class="journey-filters">
-        <button class="filter-btn active" data-filter="all">All</button>
-        <button class="filter-btn" data-filter="education">Education</button>
-        <button class="filter-btn" data-filter="career">Career</button>
-        <button class="filter-btn" data-filter="internships">Internships</button>
-        <button class="filter-btn" data-filter="certifications">Certifications</button>
+        <button class="filter-btn active" data-filter="all">
+          <ion-icon name="apps-outline" style="font-size: 1.2em; vertical-align: middle; color: var(--accent);"></ion-icon>
+          <span style="margin-left: 0.4em;">All</span>
+        </button>
+        <button class="filter-btn" data-filter="education">
+          <ion-icon name="school-outline" style="font-size: 1.2em; vertical-align: middle; color: #64ffda;"></ion-icon>
+          <span style="margin-left: 0.4em;">Education</span>
+        </button>
+        <button class="filter-btn" data-filter="career">
+          <ion-icon name="business-outline" style="font-size: 1.2em; vertical-align: middle; color: #81c784;"></ion-icon>
+          <span style="margin-left: 0.4em;">Career</span>
+        </button>
+        <button class="filter-btn" data-filter="internships">
+          <ion-icon name="briefcase-outline" style="font-size: 1.2em; vertical-align: middle; color: #ffab91;"></ion-icon>
+          <span style="margin-left: 0.4em;">Internships</span>
+        </button>
+        <button class="filter-btn" data-filter="certifications">
+          <ion-icon name="ribbon-outline" style="font-size: 1.2em; vertical-align: middle; color: #ffb74d;"></ion-icon>
+          <span style="margin-left: 0.4em;">Certifications</span>
+        </button>
       </div>
       <div class="timeline-chart-container">
         ${svgContent}
@@ -1503,8 +1820,9 @@ function renderSkillsSection() {
     { title: 'Core Engineering', icon: '<ion-icon name="construct-outline"></ion-icon>', items: data.technicalSkills.coreEngineering, isTech: false, type: 'engineering' },
     { title: 'Languages', icon: '<ion-icon name="code-slash-outline"></ion-icon>', items: data.technicalSkills.languages, isTech: true, type: 'languages' },
     { title: 'Web Technologies', icon: '<ion-icon name="globe-outline"></ion-icon>', items: data.technicalSkills.webTechnologies, isTech: true, type: 'web' },
-    { title: 'Systems & Tools', icon: '<ion-icon name="settings-outline"></ion-icon>', items: data.technicalSkills.systemsAndTools, isTech: true, type: 'tools' },
     { title: 'Engineering Software', icon: '<ion-icon name="build-outline"></ion-icon>', items: data.technicalSkills.engineeringSoftware, isTech: true, type: 'software' },
+    { title: 'Tools', icon: '<ion-icon name="settings-outline"></ion-icon>', items: data.technicalSkills.tools, isTech: true, type: 'tools' },
+    { title: 'Systems', icon: '<ion-icon name="desktop-outline"></ion-icon>', items: data.technicalSkills.systems, isTech: true, type: 'systems' },
     { title: 'Computer Science Concepts', icon: '<ion-icon name="school-outline"></ion-icon>', items: data.technicalSkills.computerScienceConcepts, isTech: false, type: 'concepts' }
   ];
 
@@ -1542,12 +1860,12 @@ function renderSkillsSection() {
       }
     });
   }
-  const yearsExp = totalMonths > 0 ? (totalMonths / 12).toFixed(1) : '1';
+  const yearsExp = totalMonths > 0 ? Math.floor(totalMonths / 12) + (totalMonths % 12 > 0 ? '+' : '') : '1';
 
   return `
     <header>
       <h2 class="h2 article-title">Skills & Technologies</h2>
-      <p class="skills-subtitle">Explore a dynamic showcase of my technical mastery, engineering tools, and professional strengths.</p>
+      <p class="section-subtitle">Explore my <strong>technical expertise</strong> – from programming languages and engineering tools to the skills that power my innovative solutions.</p>
     </header>
     <section class="skills">
       <div class="skills-grid">
@@ -1564,7 +1882,7 @@ function renderSkillsSection() {
               ${cat.isTech ? renderInteractiveTechLogos(cat.items, cat.type) : renderSkillBadges(cat.items, cat.type)}
             </div>
             <div class="skill-card-particles">
-              ${Array.from({length: 5}, (_, i) => `<div class="particle" style="animation-delay: ${i * 0.2}s"></div>`).join('')}
+              ${Array.from({ length: 5 }, (_, i) => `<div class="particle" style="animation-delay: ${i * 0.2}s"></div>`).join('')}
             </div>
           </div>
         `).join('')}
@@ -1615,10 +1933,15 @@ function renderEducationSection() {
     <ul class="timeline-list">
       ${data.certifications.map(cert => {
     const isExpired = cert.expires && new Date(cert.expires) < new Date();
+    const iconName = cert.type === 'License' ? 'card-outline' : 'ribbon-outline';
+    const viewText = `View ${cert.type}`;
     return `
         <li class="timeline-item cert-item">
           <div class="cert-header">
-            <ion-icon name="ribbon-outline" class="cert-icon"></ion-icon>
+            <ion-icon name="${iconName}" class="cert-icon"></ion-icon>
+            <a href="${getEntityUrl(cert.issuingAuthority)}" target="_blank" class="logo-link">
+              <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo small" onerror="this.onerror=null;this.style.display='none';" />
+            </a>
             <div class="cert-content">
               <h4 class="h4 timeline-item-title">${cert.name}</h4>
               <span class="cert-authority">${cert.issuingAuthority}</span>
@@ -1637,7 +1960,7 @@ function renderEducationSection() {
           </div>
           
           ${cert.pdfUrl ? `<a href="${cert.pdfUrl}" target="_blank" class="certificate-link">
-            <ion-icon name="document-outline"></ion-icon> View Certificate/License
+            <ion-icon name="document-outline"></ion-icon> ${viewText}
           </a>` : ''}
         </li>
         `;
@@ -2603,8 +2926,7 @@ function initializeEventListeners() {
   // Professional Journey Filters
   const journeyFilterBtns = document.querySelectorAll('.filter-btn');
   const timelineDots = document.querySelectorAll('.timeline-dot');
-  const timelineItemCards = document.querySelectorAll('.timeline-item-card');
-  const connectionLines = document.querySelectorAll('.connection-line');
+  const timelineBars = document.querySelectorAll('.timeline-bar');
 
   journeyFilterBtns.forEach(btn => {
     btn.addEventListener('click', function () {
@@ -2626,25 +2948,213 @@ function initializeEventListeners() {
         }
       });
 
-      timelineItemCards.forEach(card => {
-        const category = card.getAttribute('data-category');
+      timelineBars.forEach(bar => {
+        const category = bar.getAttribute('data-category');
         if (filter === 'all' || category === filter) {
-          card.classList.remove('filtered-out');
-          card.style.opacity = '1';
+          bar.classList.remove('filtered-out');
+          bar.style.opacity = '1';
         } else {
-          card.classList.add('filtered-out');
-          card.style.opacity = '0.2';
+          bar.classList.add('filtered-out');
+          bar.style.opacity = '0.2';
         }
       });
+    });
+  });
 
-      connectionLines.forEach(line => {
-        const category = line.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          line.classList.remove('filtered-out');
-          line.style.opacity = '0.4';
-        } else {
-          line.classList.add('filtered-out');
-          line.style.opacity = '0.2';
+  // Timeline dot click handlers for detailed view
+  timelineDots.forEach((dot) => {
+    // Tooltip functionality
+    const tooltip = document.createElement('div');
+    tooltip.className = 'timeline-tooltip';
+    tooltip.style.display = 'none';
+    document.body.appendChild(tooltip);
+
+    dot.addEventListener('mouseenter', function (e) {
+      const itemIndex = parseInt(this.getAttribute('data-item-index'));
+      const item = allItems[itemIndex];
+      const dateToUse = item.startDate || item.date;
+
+      tooltip.innerHTML = `
+        <div class="tooltip-title">${item.title}</div>
+        <div class="tooltip-subtitle">${item.company || item.institution || item.issuer}</div>
+        <div class="tooltip-date">${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${item.endDate ? new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Present'}</div>
+      `;
+
+      tooltip.style.display = 'block';
+    });
+
+    dot.addEventListener('mouseleave', function () {
+      tooltip.style.display = 'none';
+    });
+
+    dot.addEventListener('mousemove', function (e) {
+      tooltip.style.left = e.pageX + 15 + 'px';
+      tooltip.style.top = e.pageY - 50 + 'px';
+    });
+
+    // Click handler for modal
+    dot.addEventListener('click', function () {
+      const itemIndex = parseInt(this.getAttribute('data-item-index'));
+      const item = allItems[itemIndex];
+      const dateToUse = item.startDate || item.date;
+
+      // Create modal for detailed view
+      const modal = document.createElement('div');
+      modal.className = 'timeline-modal';
+      modal.innerHTML = `
+        <div class="timeline-modal-content">
+          <span class="timeline-modal-close">&times;</span>
+          <div class="timeline-modal-header">
+            <ion-icon name="${item.icon}" class="modal-icon"></ion-icon>
+            <h3>${item.title}</h3>
+            <span class="modal-category ${item.category}">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
+          </div>
+          <div class="timeline-modal-body">
+            <p><strong>${item.company || item.institution || item.issuer}</strong></p>
+            <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
+            <p><strong>Duration:</strong> ${item.endDate ? calculateDuration(dateToUse, item.endDate) + ` (${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })})` : `${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}`}</p>
+            <p><strong>Description:</strong> ${item.description}</p>
+            ${item.current ? '<div class="current-indicator">Currently Active</div>' : ''}
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(modal);
+
+      // Close modal functionality
+      modal.querySelector('.timeline-modal-close').addEventListener('click', () => {
+        modal.remove();
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.remove();
+        }
+      });
+    });
+  });
+
+  // Timeline bar click handlers for detailed view
+  timelineBars.forEach((bar) => {
+    // Tooltip functionality
+    const tooltip = document.createElement('div');
+    tooltip.className = 'timeline-tooltip';
+    tooltip.style.display = 'none';
+    document.body.appendChild(tooltip);
+
+    bar.addEventListener('mouseenter', function (e) {
+      const itemIndex = parseInt(this.getAttribute('data-item-index'));
+      const item = allItems[itemIndex];
+      const dateToUse = item.startDate || item.date;
+
+      tooltip.innerHTML = `
+        <div class="tooltip-title">${item.title}</div>
+        <div class="tooltip-subtitle">${item.company || item.institution || item.issuer}</div>
+        <div class="tooltip-date">${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${item.endDate ? new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Present'}</div>
+      `;
+
+      tooltip.style.display = 'block';
+    });
+
+    bar.addEventListener('mouseleave', function () {
+      tooltip.style.display = 'none';
+    });
+
+    bar.addEventListener('mousemove', function (e) {
+      tooltip.style.left = e.pageX + 15 + 'px';
+      tooltip.style.top = e.pageY - 50 + 'px';
+    });
+
+    // Click handler for modal
+    bar.addEventListener('click', function () {
+      const itemIndex = parseInt(this.getAttribute('data-item-index'));
+      const item = allItems[itemIndex];
+      const dateToUse = item.startDate || item.date;
+
+      // Create modal for detailed view
+      const modal = document.createElement('div');
+      modal.className = 'timeline-modal';
+      modal.innerHTML = `
+        <div class="timeline-modal-content">
+          <span class="timeline-modal-close">&times;</span>
+          <div class="timeline-modal-header">
+            <ion-icon name="${item.icon}" class="modal-icon"></ion-icon>
+            <h3>${item.title}</h3>
+            <span class="modal-category ${item.category}">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
+          </div>
+          <div class="timeline-modal-body">
+            <p><strong>${item.company || item.institution || item.issuer}</strong></p>
+            <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
+            <p><strong>Duration:</strong> ${item.endDate ? calculateDuration(dateToUse, item.endDate) + ` (${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })})` : `${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}`}</p>
+            <p><strong>Description:</strong> ${item.description}</p>
+            ${item.current ? '<div class="current-indicator">Currently Active</div>' : ''}
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(modal);
+
+      // Close modal functionality
+      modal.querySelector('.timeline-modal-close').addEventListener('click', () => {
+        modal.remove();
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.remove();
+        }
+      });
+    });
+  });
+
+  // Timeline dot click handlers for detailed view
+  const allItems = [
+    ...data.professionalJourney.education.map(item => ({ ...item, category: 'education' })),
+    ...data.professionalJourney.internships.map(item => ({ ...item, category: 'internships' })),
+    ...data.professionalJourney.career.map(item => ({ ...item, category: 'career' })),
+    ...data.professionalJourney.certifications.map(item => ({ ...item, category: 'certifications', startDate: item.date, endDate: null }))
+  ].sort((a, b) => {
+    const dateA = new Date(a.startDate || a.date);
+    const dateB = new Date(b.startDate || b.date);
+    return dateA - dateB;
+  });
+
+  timelineDots.forEach((dot) => {
+    dot.addEventListener('click', function () {
+      const itemIndex = parseInt(this.getAttribute('data-item-index'));
+      const item = allItems[itemIndex];
+
+      // Create modal for detailed view
+      const modal = document.createElement('div');
+      modal.className = 'timeline-modal';
+      modal.innerHTML = `
+        <div class="timeline-modal-content">
+          <span class="timeline-modal-close">&times;</span>
+          <div class="timeline-modal-header">
+            <ion-icon name="${item.icon}" class="modal-icon"></ion-icon>
+            <h3>${item.title}</h3>
+            <span class="modal-category ${item.category}">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
+          </div>
+          <div class="timeline-modal-body">
+            <p><strong>${item.company || item.institution || item.issuer}</strong></p>
+            <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
+            <p><strong>Duration:</strong> ${item.endDate ? calculateDuration(item.startDate, item.endDate) + ` (${new Date(item.startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })})` : `${new Date(item.startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}`}</p>
+            <p><strong>Description:</strong> ${item.description}</p>
+            ${item.current ? '<div class="current-indicator">Currently Active</div>' : ''}
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(modal);
+
+      // Close modal functionality
+      modal.querySelector('.timeline-modal-close').addEventListener('click', () => {
+        modal.remove();
+      });
+
+      modal.addEventListener('click', (e) => {
+        if (e.target === modal) {
+          modal.remove();
         }
       });
     });
