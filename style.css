@@ -14,68 +14,172 @@
 }
 
 /* Custom colored SVG icons */
-.tcp-bg { fill: #007ACC; }
-.tcp-text { fill: white; }
-.tcp-check-bg { fill: #FF6B35; }
-.tcp-check { stroke: white; }
+.tcp-bg {
+  fill: #007acc;
+}
+.tcp-text {
+  fill: white;
+}
+.tcp-check-bg {
+  fill: #ff6b35;
+}
+.tcp-check {
+  stroke: white;
+}
 
-.ip-bg { fill: #FF6B35; }
-.ip-circle { fill: white; }
-.ip-text { fill: white; }
-.ip-outline { stroke: white; }
+.ip-bg {
+  fill: #ff6b35;
+}
+.ip-circle {
+  fill: white;
+}
+.ip-text {
+  fill: white;
+}
+.ip-outline {
+  stroke: white;
+}
 
-.rest-bg { fill: #28A745; }
-.rest-text { fill: white; }
-.rest-check-bg { fill: #FF6B35; }
-.rest-check { stroke: white; }
+.rest-bg {
+  fill: #28a745;
+}
+.rest-text {
+  fill: white;
+}
+.rest-check-bg {
+  fill: #ff6b35;
+}
+.rest-check {
+  stroke: white;
+}
 
-.apis-bg { fill: #6F42C1; }
-.apis-text { fill: white; }
-.apis-check-bg { fill: #28A745; }
-.apis-check { stroke: white; }
+.apis-bg {
+  fill: #6f42c1;
+}
+.apis-text {
+  fill: white;
+}
+.apis-check-bg {
+  fill: #28a745;
+}
+.apis-check {
+  stroke: white;
+}
 
-.jwt-bg { fill: #FF6B35; }
-.jwt-key { fill: white; }
-.jwt-check { stroke: white; }
-.jwt-center { fill: #007ACC; }
+.jwt-bg {
+  fill: #ff6b35;
+}
+.jwt-key {
+  fill: white;
+}
+.jwt-check {
+  stroke: white;
+}
+.jwt-center {
+  fill: #007acc;
+}
 
-.websockets-bg { fill: #28A745; }
-.websockets-text { fill: white; }
-.websockets-wave1 { fill: #007ACC; }
-.websockets-wave2 { fill: #FF6B35; }
-.websockets-wave3 { fill: #6F42C1; }
-.websockets-check-bg { fill: #FF6B35; }
-.websockets-check { stroke: white; }
+.websockets-bg {
+  fill: #28a745;
+}
+.websockets-text {
+  fill: white;
+}
+.websockets-wave1 {
+  fill: #007acc;
+}
+.websockets-wave2 {
+  fill: #ff6b35;
+}
+.websockets-wave3 {
+  fill: #6f42c1;
+}
+.websockets-check-bg {
+  fill: #ff6b35;
+}
+.websockets-check {
+  stroke: white;
+}
 
-.solidworks-bg { fill: #DC3545; }
-.solidworks-gear1 { fill: #6C757D; }
-.solidworks-gear2 { fill: #6C757D; }
-.solidworks-teeth1 { fill: white; }
-.solidworks-teeth2 { fill: white; }
-.solidworks-bar { fill: #343A40; }
-.solidworks-check-bg { fill: #28A745; }
-.solidworks-check { stroke: white; }
+.solidworks-bg {
+  fill: #dc3545;
+}
+.solidworks-gear1 {
+  fill: #6c757d;
+}
+.solidworks-gear2 {
+  fill: #6c757d;
+}
+.solidworks-teeth1 {
+  fill: white;
+}
+.solidworks-teeth2 {
+  fill: white;
+}
+.solidworks-bar {
+  fill: #343a40;
+}
+.solidworks-check-bg {
+  fill: #28a745;
+}
+.solidworks-check {
+  stroke: white;
+}
 
-.autocad-bg { fill: #007ACC; }
-.autocad-arrow { fill: #FF6B35; }
-.autocad-cross { fill: white; }
-.autocad-check-bg { fill: #28A745; }
+.autocad-bg {
+  fill: #007acc;
+}
+.autocad-arrow {
+  fill: #ff6b35;
+}
+.autocad-cross {
+  fill: white;
+}
+.autocad-check-bg {
+  fill: #28a745;
+}
 /* About page logo overrides - make specific logos white */
-.about img[src*="rust"] { filter: brightness(0) invert(1) !important; }
-.about img[src*="socketdotio"] { filter: brightness(0) invert(1) !important; }
-.about img[src*="github"] { filter: brightness(0) invert(1) !important; }
-.about img[src*="jsonwebtokens"] { filter: brightness(0) invert(1) !important; }
-.about img[src*="markdown"] { filter: brightness(0) invert(1) !important; }
-.about img[src*="apple"] { filter: brightness(0) invert(1) !important; }
+.about img[src*="rust"] {
+  filter: brightness(0) invert(1) !important;
+}
+.about img[src*="socketdotio"] {
+  filter: brightness(0) invert(1) !important;
+}
+.about img[src*="github"] {
+  filter: brightness(0) invert(1) !important;
+}
+.about img[src*="jsonwebtokens"] {
+  filter: brightness(0) invert(1) !important;
+}
+.about img[src*="markdown"] {
+  filter: brightness(0) invert(1) !important;
+}
+.about img[src*="apple"] {
+  filter: brightness(0) invert(1) !important;
+}
 
-.about .tcp-bg { fill: white !important; }
-.about .tcp-text { fill: white !important; }
-.about .tcp-check-bg { fill: white !important; }
-.about .tcp-check { stroke: white !important; }
+.about .tcp-bg {
+  fill: white !important;
+}
+.about .tcp-text {
+  fill: white !important;
+}
+.about .tcp-check-bg {
+  fill: white !important;
+}
+.about .tcp-check {
+  stroke: white !important;
+}
 
-.about .ip-circle { fill: white !important; }
-.about .ip-text { fill: white !important; }
-.about .ip-outline { stroke: white !important; }
+.about .ip-circle {
+  fill: white !important;
+}
+.about .ip-text {
+  fill: white !important;
+}
+.about .ip-outline {
+  stroke: white !important;
+}
 
 /* --- CSS Variables --- */
 :root {
@@ -275,7 +379,11 @@ img {
   height: 80px;
   object-fit: contain;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(17, 34, 64, 0.8));
+  background: linear-gradient(
+    135deg,
+    rgba(100, 255, 218, 0.1),
+    rgba(17, 34, 64, 0.8)
+  );
   border: 2px solid rgba(100, 255, 218, 0.2);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(100, 255, 218, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -283,13 +391,18 @@ img {
   overflow: hidden;
 }
 .org-logo::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
   right: 0;
   bottom: 0;
-  background: linear-gradient(45deg, transparent 30%, rgba(100, 255, 218, 0.1) 50%, transparent 70%);
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(100, 255, 218, 0.1) 50%,
+    transparent 70%
+  );
   opacity: 0;
   transition: opacity 0.3s ease;
 }
@@ -322,7 +435,8 @@ img {
 }
 .logo-link:hover .org-logo {
   border-color: rgba(100, 255, 218, 0.6);
-  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5), 0 0 0 3px rgba(100, 255, 218, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 3px rgba(100, 255, 218, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
 }
 .experience-company-logo {
@@ -342,7 +456,11 @@ img {
   width: 100%;
   height: 100%;
   border-radius: 16px;
-  background: linear-gradient(135deg, rgba(100, 255, 218, 0.1), rgba(17, 34, 64, 0.8));
+  background: linear-gradient(
+    135deg,
+    rgba(100, 255, 218, 0.1),
+    rgba(17, 34, 64, 0.8)
+  );
   border: 2px solid rgba(100, 255, 218, 0.2);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(100, 255, 218, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
@@ -402,8 +520,8 @@ img {
   right: 0;
   height: var(--nav-height);
   background: var(--overlay);
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   z-index: 1000;
   display: flex;
   justify-content: space-between;
@@ -572,8 +690,8 @@ img {
     width: min(75%, 350px);
     height: 100vh;
     background: rgba(17, 34, 64, 0.98);
-    backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
+    backdrop-filter: blur(20px);
     flex-direction: column;
     justify-content: center;
     gap: 2.5rem;
@@ -883,18 +1001,20 @@ img {
     rgba(10, 25, 47, 0.95) 0%,
     rgba(17, 34, 64, 0.95) 100%
   );
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   animation: overlayFadeIn 0.4s ease-out;
 }
 
 @keyframes overlayFadeIn {
   from {
     opacity: 0;
+    -webkit-backdrop-filter: blur(0px);
     backdrop-filter: blur(0px);
   }
   to {
     opacity: 1;
+    -webkit-backdrop-filter: blur(20px);
     backdrop-filter: blur(20px);
   }
 }
@@ -906,8 +1026,8 @@ img {
     rgba(17, 34, 64, 0.95) 0%,
     rgba(10, 25, 47, 0.98) 100%
   );
-  backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
+  backdrop-filter: blur(30px);
   border: 1px solid rgba(100, 255, 218, 0.2);
   border-radius: var(--radius-xl);
   padding: 3rem;
@@ -976,6 +1096,7 @@ img {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   color: var(--accent);
   font-size: 1.5rem;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   animation: closeButtonFloat 0.6s ease-out 0.3s both;
 }
@@ -1137,6 +1258,7 @@ img {
   background: rgba(100, 255, 218, 0.05);
   border-radius: var(--radius-lg);
   border: 1px solid rgba(100, 255, 218, 0.1);
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
   flex: 1;
   display: flex;
@@ -1424,6 +1546,7 @@ img {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
+  -webkit-backdrop-filter: blur(10px);
   backdrop-filter: blur(10px);
 }
 
@@ -1581,7 +1704,6 @@ img {
   .contact-info h4 {
     font-size: 1.3rem;
   }
-}
 
   .modal-btn {
     padding: 0.875rem 1.5rem;
@@ -1661,8 +1783,8 @@ img {
 /* Article Container */
 .article {
   background: var(--glass-bg);
-  backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
   border-radius: var(--radius-xl);
   border: 1px solid var(--card-border);
   margin: 2rem;
@@ -2421,10 +2543,6 @@ article:not(.active) {
   transition: var(--transition);
 }
 
-.project-tech-item:hover {
-  /* Hover effects removed */
-}
-
 /* Tech Logos (Devicon) */
 .project-tech-logos {
   display: flex;
@@ -2766,6 +2884,7 @@ article:not(.active) {
 
 .timeline-svg text {
   font-family: var(--font-sans);
+  -webkit-user-select: none;
   user-select: none;
 }
 
@@ -2782,7 +2901,6 @@ article:not(.active) {
   font-weight: 500;
 }
 
-
 .timeline-svg .grid-line-vertical {
   stroke-dasharray: 3, 6;
   animation: gridFlowVertical 30s linear infinite;
@@ -2794,13 +2912,21 @@ article:not(.active) {
 }
 
 @keyframes gridFlowVertical {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -36; }
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -36;
+  }
 }
 
 @keyframes gridFlowHorizontal {
-  0% { stroke-dashoffset: 0; }
-  100% { stroke-dashoffset: -24; }
+  0% {
+    stroke-dashoffset: 0;
+  }
+  100% {
+    stroke-dashoffset: -24;
+  }
 }
 
 .year-marker {
@@ -2814,7 +2940,6 @@ article:not(.active) {
 .year-marker:nth-child(even) {
   animation-delay: 0.2s;
 }
-
 
 @keyframes fadeInScale {
   0% {
@@ -2892,7 +3017,8 @@ article:not(.active) {
 }
 
 @keyframes pulse {
-  0%, 100% {
+  0%,
+  100% {
     r: 8;
     fill-opacity: 1;
   }
@@ -2976,17 +3102,6 @@ article:not(.active) {
     font-size: 9px;
   }
 }
-    font-size: 12px;
-  }
-
-  .timeline-svg .item-subtitle {
-    font-size: 10px;
-  }
-
-  .timeline-svg .item-date {
-    font-size: 9px;
-  }
-}
 
 @media (max-width: 480px) {
   .timeline-svg {
@@ -2996,7 +3111,6 @@ article:not(.active) {
 
   .timeline-chart-container {
     overflow-x: scroll;
-    -webkit-overflow-scrolling: touch;
   }
 }
 
@@ -3772,7 +3886,7 @@ article:not(.active) {
 .contact-text {
   font-size: 1.3rem;
   color: var(--text-primary);
-  text-align: center;
+  text-align: left;
   margin-bottom: 3rem;
   line-height: 1.8;
   font-weight: 500;
@@ -3785,7 +3899,7 @@ article:not(.active) {
 
 form {
   display: grid;
-  gap: 1.5rem;
+  gap: 2rem;
 }
 
 .input-wrapper {
@@ -3800,9 +3914,21 @@ form {
   }
 }
 
+.input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
 .phone-input-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.phone-fields {
   display: grid;
-  grid-template-columns: 200px 1fr;
+  grid-template-columns: 140px 1fr;
   gap: 1rem;
 }
 
@@ -3846,6 +3972,23 @@ textarea:focus {
   box-shadow: 0 0 0 4px rgba(100, 255, 218, 0.15);
   background: rgba(17, 34, 64, 0.9);
   transform: translateY(-1px);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' fill='%2364ffda' viewBox='0 0 16 16' transform='rotate(180 8 8)'%3E%3Cpath d='M7.247 11.14 2.451 5.658C1.885 5.013 2.345 4 3.204 4h9.592a1 1 0 0 1 .753 1.659l-4.796 5.48a1 1 0 0 1-1.506 0z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 1rem center;
+}
+
+label {
+  display: block;
+  margin-bottom: 0rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+label[for="email"] {
+  margin-top: 1rem;
 }
 
 input::placeholder,
@@ -4554,7 +4697,7 @@ button[type="submit"] span {
 }
 
 .experience-card::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: 0;
@@ -4696,7 +4839,7 @@ button[type="submit"] span {
 }
 
 .experience-point::before {
-  content: '';
+  content: "";
   position: absolute;
   left: 0;
   top: 0.6rem;
@@ -4783,18 +4926,44 @@ button[type="submit"] span {
 }
 
 /* About page logo overrides - make specific logos white */
-.about img[src*="rust"] { filter: brightness(0) invert(1) !important; }
-.about img[src*="socketdotio"] { filter: brightness(0) invert(1) !important; }
-.about img[src*="github"] { filter: brightness(0) invert(1) !important; }
-.about img[src*="jsonwebtokens"] { filter: brightness(0) invert(1) !important; }
-.about img[src*="markdown"] { filter: brightness(0) invert(1) !important; }
-.about img[src*="apple"] { filter: brightness(0) invert(1) !important; }
+.about img[src*="rust"] {
+  filter: brightness(0) invert(1) !important;
+}
+.about img[src*="socketdotio"] {
+  filter: brightness(0) invert(1) !important;
+}
+.about img[src*="github"] {
+  filter: brightness(0) invert(1) !important;
+}
+.about img[src*="jsonwebtokens"] {
+  filter: brightness(0) invert(1) !important;
+}
+.about img[src*="markdown"] {
+  filter: brightness(0) invert(1) !important;
+}
+.about img[src*="apple"] {
+  filter: brightness(0) invert(1) !important;
+}
 
-.about .tcp-bg { fill: white !important; }
-.about .tcp-text { fill: white !important; }
-.about .tcp-check-bg { fill: white !important; }
-.about .tcp-check { stroke: white !important; }
+.about .tcp-bg {
+  fill: white !important;
+}
+.about .tcp-text {
+  fill: white !important;
+}
+.about .tcp-check-bg {
+  fill: white !important;
+}
+.about .tcp-check {
+  stroke: white !important;
+}
 
-.about .ip-circle { fill: white !important; }
-.about .ip-text { fill: white !important; }
-.about .ip-outline { stroke: white !important; }
+.about .ip-circle {
+  fill: white !important;
+}
+.about .ip-text {
+  fill: white !important;
+}
+.about .ip-outline {
+  stroke: white !important;
+}

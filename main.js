@@ -2239,35 +2239,43 @@ function renderContactSection() {
   ];
 
   const countryOptions = countryCodes.map(item =>
-    `<option value="${item.code}" ${item.code === '+973' ? 'selected' : ''}>${item.flag} ${item.code} ${item.country}</option>`
+    `<option value="${item.code}" ${item.code === '+973' ? 'selected' : ''}>${item.flag} ${item.code}</option>`
   ).join('');
 
   return `
     <header>
-      <h2 class="h2 article-title">Contact</h2>
+      <h2 class="h2 article-title">Contact me</h2>
     </header>
     <section class="contact">
       <p class="contact-text">
-        Let's <strong>keep in touch</strong>! Don't hesitate to contact me if you have any questions or opportunities.
+        Let's <strong>keep in touch</strong>! Don't hesitate to contact me for any inquiry or opportunity.
       </p>
 
       <div id="form-message"></div>
 
       <form data-form id="contact-form">
         <div class="input-wrapper">
-          <input type="text" name="fullname" data-form-input placeholder="Full name" required>
-          <input type="email" name="email" data-form-input placeholder="Email address" required>
+          <label for="fullname">Full Name <span style="color: red;">*</span></label>
+          <input type="text" name="fullname" id="fullname" data-form-input placeholder="e.g. Sayed Ahmed" required>
+          <label for="email">Email Address <span style="color: red;">*</span></label>
+          <input type="email" name="email" id="email" data-form-input placeholder="e.g. sayed.ahmed@gmail.com" required>
         </div>
 
         <div class="phone-input-wrapper">
-          <select name="countryCode" id="countryCode">
-            <option value="">Code</option>
-            ${countryOptions}
-          </select>
-          <input type="tel" name="phone" id="phone" placeholder="Phone number (optional)" pattern="[0-9]*">
+          <label for="phone">Phone Number</label>
+          <div class="phone-fields">
+            <select name="countryCode" id="countryCode">
+              <option value="">Select country code</option>
+              ${countryOptions}
+            </select>
+            <input type="tel" name="phone" id="phone" placeholder="e.g. 3X XXX XXX" pattern="[0-9]*">
+          </div>
         </div>
 
-        <textarea name="message" data-form-input placeholder="Your Message" required></textarea>
+        <div class="input-wrapper">
+          <label for="message">Message <span style="color: red;">*</span></label>
+          <textarea name="message" id="message" data-form-input placeholder="e.g. Hello, I'd like to discuss about..." required></textarea>
+        </div>
 
         <button type="submit" data-form-btn>
           <span>Send Message</span>
@@ -3035,18 +3043,24 @@ function initializeEventListeners() {
   if (countryCodeSelect) {
     const updateSelectedDisplay = () => {
       const selectedOption = countryCodeSelect.options[countryCodeSelect.selectedIndex];
-      if (selectedOption.value === '+973') {
-        // For Bahrain, show only flag and code
-        const bahrain = countryCodes.find(c => c.code === '+973');
-        selectedOption.textContent = `${bahrain.flag} ${bahrain.code}`;
+      if (selectedOption.value) {
+        const country = countryCodes.find(c => c.code === selectedOption.value);
+        if (country) {
+          selectedOption.textContent = `${country.flag} ${country.code}`;
+        }
       }
     };
 
     const updateDropdownDisplay = () => {
+      const selectedIndex = countryCodeSelect.selectedIndex;
       countryCodes.forEach((country, index) => {
         const option = countryCodeSelect.options[index];
         if (option) {
-          option.textContent = `${country.flag} ${country.code} ${country.country}`;
+          if (index === selectedIndex) {
+            option.textContent = `${country.flag} ${country.code}`;
+          } else {
+            option.textContent = `${country.flag} ${country.code} ${country.country}`;
+          }
         }
       });
     };
