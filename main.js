@@ -987,6 +987,7 @@ const iconMap = {
   'sap': { type: 'img', src: 'https://simpleicons.org/icons/sap.svg' },
   'sap system': { type: 'img', src: 'data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNDEyLjM4IDIwNCI+PGRlZnM+PHN0eWxlPi5jbHMtMSwuY2xzLTJ7ZmlsbC1ydWxlOmV2ZW5vZGQ7fS5jbHMtMXtmaWxsOnVybCgjbGluZWFyLWdyYWRpZW50KTt9LmNscy0ye2ZpbGw6I2ZmZjt9PC9zdHlsZT48bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjIwNi4xOSIgeDI9IjIwNi4xOSIgeTI9IjIwNCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwYjhmMSIvPjxzdG9wIG9mZnNldD0iMC4wMiIgc3RvcC1jb2xvcj0iIzAxYjZmMCIvPjxzdG9wIG9mZnNldD0iMC4zMSIgc3RvcC1jb2xvcj0iIzBkOTBkOSIvPjxzdG9wIG9mZnNldD0iMC41OCIgc3RvcC1jb2xvcj0iIzE3NzVjOCIvPjxzdG9wIG9mZnNldD0iMC44MiIgc3RvcC1jb2xvcj0iIzFjNjViZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzFlNWZiYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjx0aXRsZT5TQVBfZ3JhZF9SX3Njcm5fWmVpY2hlbmZsw6RjaGUgMTwvdGl0bGU+PHBvbHlsaW5lIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIwIDIwNCAyMDguNDEgMjA0IDQxMi4zOCAwIDAgMCAwIDIwNCIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTI0NC43MywzOC4zNmwtNDAuNiwwdjk2LjUyTDE2OC42NywzOC4zM0gxMzMuNTFsLTMwLjI3LDgwLjcyQzEwMCw5OC43LDc5LDkxLjY3LDYyLjQsODYuNCw1MS40Niw4Mi44OSwzOS44NSw3Ny43Miw0MCw3MmMuMDktNC42OCw2LjIzLTksMTguMzgtOC4zOCw4LjE3LjQzLDE1LjM3LDEuMDksMjkuNzEsOGwxNC4xLTI0LjU1Qzg5LjA2LDQwLjQyLDcxLDM2LjIxLDU2LjE3LDM2LjE5aC0uMDljLTE3LjI4LDAtMzEuNjgsNS42LTQwLjYsMTQuODNBMzQuMjMsMzQuMjMsMCwwLDAsNS43Nyw3NC43QzUuNTQsODcuMTUsMTAuMTEsOTYsMTkuNzEsMTAzYzguMSw1Ljk0LDE4LjQ2LDkuNzksMjcuNiwxMi42MiwxMS4yNywzLjQ5LDIwLjQ3LDYuNTMsMjAuMzYsMTNBOS41Nyw5LjU3LDAsMCwxLDY1LDEzNWMtMi44MSwyLjktNy4xMyw0LTEzLjA5LDQuMS0xMS40OS4yNC0yMC0xLjU2LTMzLjYxLTkuNTlMNS43NywxNTQuNDJhOTMuNzcsOTMuNzcsMCwwLDAsNDYsMTIuMjJsMi4xMSwwYzE0LjI0LS4yNSwyNS43NC00LjMxLDM0LjkyLTExLjcxLjUzLS40MSwxLS44NCwxLjQ5LTEuMjhMODYuMTcsMTY0LjVIMTIzbDYuMTktMTguODJhNjcuNDYsNjcuNDYsMCwwLDAsMjEuNjgsMy40Myw2OC4zMyw2OC4zMywwLDAsMCwyMS4xNi0zLjI1bDYsMTguNjRoNjAuMTR2LTM5aDEzLjExYzMxLjcxLDAsNTAuNDYtMTYuMTUsNTAuNDYtNDMuMkMzMDEuNzQsNTIuMTksMjgzLjUyLDM4LjM2LDI0NC43MywzOC4zNlpNMTUwLjkxLDEyMWEzNi45MywzNi45MywwLDAsMS0xMy0yLjI4bDEyLjg3LTQwLjU5SDE1MWwxMi42NSw0MC43MUEzOC41LDM4LjUsMCwwLDEsMTUwLjkxLDEyMVptOTYuMi0yMy4zM2gtOC45NFY2NC45MWg4Ljk0YzExLjkzLDAsMjEuNDQsNCwyMS40NCwxNi4xNCwwLDEyLjYtOS41MSwxNi41Ny0yMS40NCwxNi41NyIvPjwvc3ZnPg==' },
   'websockets': { type: 'img', src: 'https://www.svgrepo.com/show/354553/websocket.svg' },
+  'websocket': { type: 'img', src: 'https://www.svgrepo.com/show/354553/websocket.svg' },
   'tcp ip': { type: 'img', src: 'https://www.svgrepo.com/show/435305/dns.svg' },
   'rest': { type: 'img', src: 'https://cdn-icons-png.flaticon.com/512/9784/9784550.png' },
   'apis': { type: 'img', src: 'https://cdn-icons-png.flaticon.com/512/9784/9784550.png' },
@@ -1037,7 +1038,13 @@ const renderTechLogos = (techArr = []) => {
     const entry = iconMap[key];
     let iconHtml;
     if (entry.type === 'img') {
-      iconHtml = `<img src="${entry.src}" alt="${orig}" class="tech-logo-svg" />`;
+      // Uniform size for all logos
+      const size = 'width: 2rem; height: 2rem;';
+      // Make specific logos white
+      const whiteSrcs = ['rust', 'socketdotio', 'github', 'jsonwebtokens', 'markdown', 'apple', 'dns', 'key', 'websocket', 'apollographql', '1822940', '9784550', '8654207', 'bash', 'framermotion', 'framer'];
+      const isWhite = whiteSrcs.some(s => entry.src.includes(s));
+      const filter = isWhite ? 'filter: brightness(0) invert(1);' : '';
+      iconHtml = `<img src="${entry.src}" alt="${orig}" class="tech-logo-svg" style="${size}${filter ? ' ' + filter : ''}" />`;
     } else if (entry.type === 'devicon') {
       iconHtml = `<i class="devicon ${entry.class}"></i>`;
     } else if (entry.type === 'simple') {
@@ -1050,16 +1057,20 @@ const renderTechLogos = (techArr = []) => {
     return `<li class="project-tech-logo" title="${orig}">${iconHtml}</li>`;
   });
   const texts = sortedTech.filter(orig => !iconMap[normalize(orig)]).map(orig => {
-    return `<li class="project-tech-text" title="${orig}">${orig}</li>`;
+    return `<li title="${orig}"><ion-icon name="${getIconForLibraryItem(orig)}"></ion-icon> ${orig}</li>`;
   });
-  let html = '';
+  let logosHtml = '';
   if (logos.length > 0) {
-    html += `<ul class="project-tech-logos">${logos.join('')}</ul>`;
+    logosHtml = logos.join('');
   }
+  let librariesHtml = '';
   if (texts.length > 0) {
-    html += `<ul class="project-tech-badges">${texts.join('')}</ul>`;
+    librariesHtml = `<div class="project-libraries">
+      <h4>Libraries</h4>
+      <ul>${texts.join('')}</ul>
+    </div>`;
   }
-  return html;
+  return { logos: logosHtml, libraries: librariesHtml };
 };
 
 function renderNavbar() {
@@ -1401,10 +1412,13 @@ function renderProjectsSection() {
                   ${project.points.map(point => `<li>${point}</li>`).join('')}
                 </ul>
               ` : ''}
-              <button class="read-more-btn"><span>Show Description</span> <ion-icon name="chevron-down-outline"></ion-icon></button>
-              <ul class="project-tech-logos" aria-label="Technology stack logos">
-                ${renderTechLogos(project.tech)}
-              </ul>
+              <button class="read-more-btn"><span>Read</span> <ion-icon name="chevron-down-outline"></ion-icon></button>
+              <div class="project-footer">
+                <ul class="project-tech-logos" aria-label="Technology stack logos">
+                  ${renderTechLogos(project.tech).logos}
+                </ul>
+                ${renderTechLogos(project.tech).libraries}
+              </div>
             </div>
             <div class="project-links">
               ${project.links && project.links.length > 0 ? project.links.map(link => `<a href="${link.url}" target="_blank" class="project-link-btn"><ion-icon name="${getIcon(link.text)}"></ion-icon> ${link.text}</a>`).join('') : ''}
@@ -1435,6 +1449,51 @@ function getIconForCoreItem(item) {
   if (item.includes('Digital Circuits')) return 'hardware-chip';
   if (item.includes('Transmission')) return 'pulse';
   return 'cog';
+}
+
+function getIconForLibraryItem(item) {
+  const lower = item.toLowerCase();
+  if (lower.includes('api') || lower.includes('rest')) return 'link-outline';
+  if (lower.includes('database') || lower.includes('sql') || lower.includes('postgresql') || lower.includes('mysql')) return 'server-outline';
+  if (lower.includes('authentication') || lower.includes('jwt') || lower.includes('oauth')) return 'key-outline';
+  if (lower.includes('websocket') || lower.includes('socket')) return 'radio-outline';
+  if (lower.includes('algorithm') || lower.includes('sorting') || lower.includes('search')) return 'calculator-outline';
+  if (lower.includes('data structure') || lower.includes('array') || lower.includes('tree')) return 'list-outline';
+  if (lower.includes('framework') || lower.includes('react') || lower.includes('vue')) return 'layers-outline';
+  if (lower.includes('library') || lower.includes('npm')) return 'library-outline';
+  if (lower.includes('protocol') || lower.includes('http') || lower.includes('tcp')) return 'swap-horizontal-outline';
+  if (lower.includes('network') || lower.includes('internet')) return 'wifi-outline';
+  if (lower.includes('json') || lower.includes('xml')) return 'document-outline';
+  if (lower.includes('git') || lower.includes('version control')) return 'git-branch-outline';
+  if (lower.includes('docker') || lower.includes('container')) return 'cube-outline';
+  if (lower.includes('cloud') || lower.includes('aws') || lower.includes('azure')) return 'cloud-outline';
+  if (lower.includes('testing') || lower.includes('jest') || lower.includes('mocha')) return 'checkmark-circle-outline';
+  if (lower.includes('security') || lower.includes('encryption')) return 'shield-outline';
+  if (lower.includes('performance') || lower.includes('optimization')) return 'speedometer-outline';
+  if (lower.includes('ui') || lower.includes('ux ') || lower.includes('design')) return 'color-palette-outline';
+  if (lower.includes('timeline') || lower.includes('timeline')) return 'time-outline';
+  if (lower.includes('game development') || lower.includes('game engine')) return 'game-controller-outline';
+  if (lower.includes('contact integration') || lower.includes('crm')) return 'people-outline';
+  if (lower.includes('animation') || lower.includes('motion')) return 'play-outline';
+  if (lower.includes('goroutines') || lower.includes('concurrency')) return 'sync-outline';
+  if (lower.includes('file system') || lower.includes('filesystem')) return 'folder-outline';
+  if (lower.includes('svg') || lower.includes('vector graphics')) return 'image-outline';
+  if (lower.includes('mux') || lower.includes('gorilla mux')) return 'share-social-outline';
+  if (lower.includes('session') || lower.includes('cookie')) return 'key-outline';
+  if (lower.includes('led') || lower.includes('neopixel')) return 'bulb-outline';
+  if (lower.includes('iot') || lower.includes('internet of things')) return 'hardware-chip-outline';
+  if (lower.includes('hash') || lower.includes('encryption')) return 'lock-closed-outline';
+  if (lower.includes('zero dependencies') || lower.includes('standalone')) return 'checkmark-outline';
+  if (lower.includes('bcrypt') || lower.includes('password hashing')) return 'keypad-outline';
+  if (lower.includes('file') || lower.includes('upload') || lower.includes('download')) return 'cloud-download-outline';
+  if (lower.includes('channels') || lower.includes('message passing')) return 'chatbubbles-outline';
+  if (lower.includes('pathfinding') || lower.includes('a*')) return 'navigate-outline';
+  if (lower.includes('dfs') || lower.includes('depth first search')) return 'trail-sign-outline';
+  if (lower.includes('bfs') || lower.includes('breadth first search')) return 'trail-sign-outline';
+  if (lower.includes('traversal') || lower.includes('graph')) return 'git-compare-outline';
+  if (lower.includes('text') || lower.includes('markdown')) return 'document-text-outline';
+
+  return 'code-outline';
 }
 
 function getCategoryIcon(category) {
@@ -1490,9 +1549,9 @@ function renderInteractiveTechLogos(techArr = [], type) {
     let iconHtml;
     if (iconDef.type === 'img') {
       // Uniform size for all logos
-      const size = 'width: 1.5em; height: 1.5em;';
+      const size = 'width: 2rem; height: 2rem;';
       // Make specific logos white
-      const whiteSrcs = ['rust', 'socketdotio', 'github', 'jsonwebtokens', 'markdown', 'apple', 'dns', 'key', 'websocket', 'apollographql', '1822940', '9784550', '8654207', 'bash'];
+      const whiteSrcs = ['rust', 'socketdotio', 'github', 'jsonwebtokens', 'markdown', 'apple', 'dns', 'key', 'websocket', 'apollographql', '1822940', '9784550', '8654207', 'bash', 'framermotion', 'framer'];
       const isWhite = whiteSrcs.some(s => iconDef.src.includes(s));
       const filter = isWhite ? 'filter: brightness(0) invert(1);' : '';
       iconHtml = `<img src="${iconDef.src}" alt="${orig}" class="tech-logo-svg" style="${size}${filter ? ' ' + filter : ''}" />`;
@@ -2727,10 +2786,10 @@ function initializeEventListeners() {
         const text = btn.textContent.trim();
         if (projectItem.classList.contains('expanded')) {
           icon.name = 'chevron-up-outline';
-          btn.innerHTML = '<span>Hide Description</span> <ion-icon name="chevron-up-outline"></ion-icon>';
+          btn.innerHTML = '<span>Hide</span> <ion-icon name="chevron-up-outline"></ion-icon>';
         } else {
           icon.name = 'chevron-down-outline';
-          btn.innerHTML = '<span>Show Description</span> <ion-icon name="chevron-down-outline"></ion-icon>';
+          btn.innerHTML = '<span>Read</span> <ion-icon name="chevron-down-outline"></ion-icon>';
         }
       }
     }
