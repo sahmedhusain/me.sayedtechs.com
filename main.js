@@ -2753,8 +2753,39 @@ function renderContactModal() {
 }
 
 // Generate vCard
-function generateVCard() {
-  return `BEGIN:VCARD
+async function generateVCard() {
+  try {
+    const response = await fetch(data.vCardUrl);
+    const vcfContent = await response.text();
+
+    // Split into lines and remove the PHOTO field
+    const lines = vcfContent.split('\n');
+    const filteredLines = [];
+    let inPhotoBlock = false;
+
+    for (let i = 0; i < lines.length; i++) {
+      const line = lines[i];
+      if (line.startsWith('PHOTO;')) {
+        inPhotoBlock = true;
+        continue;
+      }
+      if (inPhotoBlock) {
+        if (line.trim() === '' || line.startsWith(' ')) {
+          continue;
+        } else {
+          inPhotoBlock = false;
+        }
+      }
+      if (!inPhotoBlock) {
+        filteredLines.push(line);
+      }
+    }
+
+    return filteredLines.join('\n');
+  } catch (err) {
+    console.error('Error fetching vCard:', err);
+    // Fallback to old method
+    return `BEGIN:VCARD
 VERSION:3.0
 FN:${data.name}
 N:HUSAIN;SAYED;AHMED;;
@@ -2766,6 +2797,7 @@ URL:${data.contact.linkedin}
 URL:${data.contact.github}
 NOTE:${data.title}
 END:VCARD`;
+  }
 }
 
 // Generate QR Code
@@ -2990,14 +3022,15 @@ function initializeEventListeners() {
   // Download vCard
   const downloadVCardBtn = document.getElementById('download-vcard-btn');
   if (downloadVCardBtn) {
-    downloadVCardBtn.addEventListener('click', () => {
-      // Use the actual vCard file
+    downloadVCardBtn.addEventListener('click', async () => {
+      const vCard = await generateVCard();
+      const blob = new Blob([vCard], { type: 'text/vcard' });
+      const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
-      a.href = data.vCardUrl;
-      a.download = data.vCardUrl;
-      document.body.appendChild(a);
+      a.href = url;
+      a.download = 'Sayed Ahmed Husain.vcf';
       a.click();
-      document.body.removeChild(a);
+      URL.revokeObjectURL(url);
     });
   }
 
@@ -3006,10 +3039,7 @@ function initializeEventListeners() {
   if (copyVCardBtn) {
     copyVCardBtn.addEventListener('click', async () => {
       try {
-        // Fetch the actual vCard file content
-        const response = await fetch(data.vCardUrl);
-        const vCard = await response.text();
-
+        const vCard = await generateVCard();
         await navigator.clipboard.writeText(vCard);
         const originalText = copyVCardBtn.querySelector('span').textContent;
         copyVCardBtn.querySelector('span').textContent = 'Copied!';
