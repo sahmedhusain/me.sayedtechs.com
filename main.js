@@ -74,13 +74,13 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
 
   // Technical Skills
   technicalSkills: {
-    coreEngineering: ['Fire Alarm & Fighting Systems Design (NFPA/GCC Codes)', 'Electrical Installation', 'Solar PV Systems', 'Power Electronics', 'Digital Circuits Design (Arduino, Pi)', 'Electrical Transmission Systems', 'Electrical Testing Equipment'],
-    engineeringSoftware: ['AutoCAD', 'MATLAB', 'Digital Coding', 'SolidWorks', 'Fusion 360', 'Everycircuit', 'Oracle CRM', 'Oracle DB', 'SAP System'],
-    languages: ['JavaScript', 'TypeScript', 'Python', 'Go (Golang)', 'Rust', 'PHP', 'C', 'Cpp', 'SQL (SQLite)'],
-    webTechnologies: ['React', 'Next.js', 'Node.js', 'Flutter', 'Tailwind CSS', 'GraphQL', 'Apollo Client', 'WebSockets', 'PostgreSQL', 'MySQL', 'Firebase', 'Laravel'],
+    coreEngineering: ['Fire Protections Systems', 'Electrical Installation', 'Solar PV Systems', 'Power Electronics', 'Digital Circuits Design (Arduino, Pi)', 'Electrical Transmission Systems', 'Electrical Testing Equipment'],
+    engineeringSoftware: ['AutoCAD', 'MATLAB', 'Circuit Verse', 'SolidWorks', 'Fusion 360', 'Everycircuit', 'Oracle DB/CRM', 'SAP System'],
+    languages: ['JavaScript', 'TypeScript', 'Python', 'Golang', 'Rust', 'C', 'Cpp', 'SQLite', 'HTML5', 'CSS3', 'Dart', 'Flutter'],
+    webTechnologies: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'GraphQL', 'Apollo Client', 'WebSockets', 'PostgreSQL', 'MySQL', 'Firebase', 'NPM', 'MCP', 'Vite', 'Jest', 'ESLint'],
     systemsAndTools: ['Git', 'GitHub', 'VS Code', 'Docker', 'AWS', 'Postman', 'Figma', 'Mermaid', 'Markdown', 'Linux', 'WSL', 'macOS', 'Windows', 'Android', 'Xcode', 'Android Studio', 'TCP/IP', 'JSON', 'REST APIs', 'OAuth2', 'JWT'],
     systems: ['Linux', 'Raspberry Pi', 'macOS', 'Windows', 'Android'],
-    tools: ['Git', 'GitHub', 'VS Code', 'Docker', 'AWS', 'Postman', 'Figma', 'Mermaid', 'Markdown', 'Xcode', 'Android Studio', 'TCP/IP', 'JSON', 'REST APIs', 'OAuth2', 'JWT'],
+    tools: ['Git', 'GitHub', 'VS Code', 'Docker', 'AWS', 'Postman', 'Figma', 'Mermaid', 'Markdown', 'Bash', 'Xcode', 'Android Studio', 'TCP/IP', 'JSON', 'REST APIs', 'OAuth2', 'JWT'],
     computerScienceConcepts: ['Algorithms & Data Structures', 'Concurrency & Parallelism', 'Virtual DOM', 'State Management', 'Machine Learning']
   },
 
@@ -568,6 +568,19 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
         'Users can export the generated ASCII output as text files, making it easy to reuse or share across different platforms.'
       ],
       tech: ['Go', 'HTML5', 'CSS3', 'Bootstrap', 'Docker', 'Text Processing', 'File I/O']
+    },
+    {
+      name: 'This personal Website',
+      subtitle: 'Interactive Portfolio & Resume Website',
+      points: [
+        'Built this comprehensive personal portfolio website showcasing professional experience, technical skills, and project work as an Electrical Engineer and Full-Stack Developer.',
+        'The website features an interactive timeline visualization of career progression, detailed project showcases, and a responsive design that works seamlessly across all devices.',
+        'Implemented modern web technologies including dynamic content rendering, smooth animations, and interactive elements to create an engaging user experience.',
+        'Integrated contact forms, downloadable resume, and vCard functionality for easy professional networking.',
+        'The site serves as both a professional showcase and a demonstration of web development capabilities, built entirely with vanilla JavaScript, HTML5, and CSS3.'
+      ],
+      tech: ['JavaScript ES6+', 'HTML5', 'CSS3', 'Responsive Design', 'Interactive Timeline', 'Web Animations', 'Contact Integration'],
+      featured: true
     }
   ],
 
@@ -758,27 +771,27 @@ function initializeSkillsAnimations() {
     });
   });
 
-  // Add click effects for tech logos
-  const techLogoItems = document.querySelectorAll('.tech-logo-item');
-  techLogoItems.forEach(item => {
-    item.addEventListener('click', () => {
-      item.classList.add('tech-logo-clicked');
-      setTimeout(() => {
-        item.classList.remove('tech-logo-clicked');
-      }, 300);
-    });
-  });
+  // Add click effects for tech logos - DISABLED
+  // const techLogoItems = document.querySelectorAll('.tech-logo-item');
+  // techLogoItems.forEach(item => {
+  //   item.addEventListener('click', () => {
+  //     item.classList.add('tech-logo-clicked');
+  //     setTimeout(() => {
+  //       item.classList.remove('tech-logo-clicked');
+  //     }, 300);
+  //   });
+  // });
 
-  // Add skill badge interactions
-  const skillBadges = document.querySelectorAll('.skill-badge');
-  skillBadges.forEach(badge => {
-    badge.addEventListener('click', () => {
-      badge.classList.add('badge-active');
-      setTimeout(() => {
-        badge.classList.remove('badge-active');
-      }, 500);
-    });
-  });
+  // Add skill badge interactions - DISABLED
+  // const skillBadges = document.querySelectorAll('.skill-badge');
+  // skillBadges.forEach(badge => {
+  //   badge.addEventListener('click', () => {
+  //     badge.classList.add('badge-active');
+  //     setTimeout(() => {
+  //       badge.classList.remove('badge-active');
+  //     }, 500);
+  //   });
+  // });
 }
 
 // Set active page function
@@ -897,96 +910,98 @@ function renderSidebar() {
 }
 
 const iconMap = {
-  'everycircuit': { type: 'ion', class: 'hardware-chip' },
-  'go': { type: 'devicon', class: 'devicon-go-plain' },
-  'golang': { type: 'devicon', class: 'devicon-go-plain' },
-  'go golang': { type: 'devicon', class: 'devicon-go-plain' },
-  'javascript': { type: 'devicon', class: 'devicon-javascript-plain' },
-  'javascript es6': { type: 'devicon', class: 'devicon-javascript-plain' },
-  'typescript': { type: 'devicon', class: 'devicon-typescript-plain' },
-  'java': { type: 'devicon', class: 'devicon-java-plain' },
-  'html5': { type: 'devicon', class: 'devicon-html5-plain' },
-  'html': { type: 'devicon', class: 'devicon-html5-plain' },
-  'css3': { type: 'devicon', class: 'devicon-css3-plain' },
-  'css': { type: 'devicon', class: 'devicon-css3-plain' },
-  'react': { type: 'devicon', class: 'devicon-react-plain' },
-  'nextjs': { type: 'devicon', class: 'devicon-nextjs-plain' },
-  'next.js': { type: 'devicon', class: 'devicon-nextjs-plain' },
-  'vite': { type: 'devicon', class: 'devicon-vitejs-plain' },
-  'vitejs': { type: 'devicon', class: 'devicon-vitejs-plain' },
-  'tailwind css': { type: 'devicon', class: 'devicon-tailwindcss-plain' },
-  'graphql': { type: 'devicon', class: 'devicon-graphql-plain' },
-  'apollo client': { type: 'devicon', class: 'devicon-apollographql-plain' },
-  'apollo': { type: 'devicon', class: 'devicon-apollographql-plain' },
-  'sqlite': { type: 'devicon', class: 'devicon-sqlite-plain' },
-  'postgresql': { type: 'devicon', class: 'devicon-postgresql-plain' },
-  'mysql': { type: 'devicon', class: 'devicon-mysql-plain' },
-  'docker': { type: 'devicon', class: 'devicon-docker-plain' },
-  'bootstrap': { type: 'devicon', class: 'devicon-bootstrap-plain' },
-  'arduino': { type: 'devicon', class: 'devicon-arduino-plain' },
-  'raspberry pi': { type: 'devicon', class: 'devicon-raspberrypi-plain' },
-  'node.js': { type: 'devicon', class: 'devicon-nodejs-plain' },
-  'nodejs': { type: 'devicon', class: 'devicon-nodejs-plain' },
-  'jest': { type: 'devicon', class: 'devicon-jest-plain' },
-  'framer motion': { type: 'devicon', class: 'devicon-framermotion-plain' },
-  'framer': { type: 'devicon', class: 'devicon-framermotion-plain' },
-  'json': { type: 'devicon', class: 'devicon-json-plain' },
-  'playwright': { type: 'devicon', class: 'devicon-playwright-plain' },
-  'c': { type: 'devicon', class: 'devicon-c-plain' },
-  'cplusplus': { type: 'devicon', class: 'devicon-cplusplus-plain' },
-  'c++': { type: 'devicon', class: 'devicon-cplusplus-plain' },
-  'cpp': { type: 'devicon', class: 'devicon-cplusplus-plain' },
-  'rust': { type: 'devicon', class: 'devicon-rust-plain' },
-  'php': { type: 'devicon', class: 'devicon-php-plain' },
-  'laravel': { type: 'devicon', class: 'devicon-laravel-plain' },
-  'oauth': { type: 'devicon', class: 'devicon-oauth-plain' },
-  'oauth2': { type: 'devicon', class: 'devicon-oauth-plain' },
-  'aws': { type: 'devicon', class: 'devicon-amazonwebservices-plain' },
-  'postman': { type: 'devicon', class: 'devicon-postman-plain' },
-  'git': { type: 'devicon', class: 'devicon-git-plain' },
-  'github': { type: 'devicon', class: 'devicon-github-plain' },
-  'linux': { type: 'devicon', class: 'devicon-linux-plain' },
-  'vs code': { type: 'devicon', class: 'devicon-vscode-plain' },
-  'figma': { type: 'devicon', class: 'devicon-figma-plain' },
-  'mermaid': { type: 'ion', class: 'git-branch-outline' },
-  'markdown': { type: 'devicon', class: 'devicon-markdown-original' },
-  'wsl': { type: 'devicon', class: 'devicon-linux-plain' },
-  'macos': { type: 'devicon', class: 'devicon-apple-plain' },
-  'windows': { type: 'devicon', class: 'devicon-windows8-plain' },
-  'android': { type: 'devicon', class: 'devicon-android-plain' },
-  'xcode': { type: 'devicon', class: 'devicon-xcode-plain' },
-  'android studio': { type: 'devicon', class: 'devicon-androidstudio-plain' },
-  'firebase': { type: 'devicon', class: 'devicon-firebase-plain' },
-  'python': { type: 'devicon', class: 'devicon-python-plain' },
-  'flutter': { type: 'devicon', class: 'devicon-flutter-plain' },
-  'matlab': { type: 'devicon', class: 'devicon-matlab-plain' },
-  'simulink': { type: 'devicon', class: 'devicon-matlab-plain' },
-  'matlab simulink': { type: 'devicon', class: 'devicon-matlab-plain' },
-  'autocad': { type: 'ion', class: 'hammer' },
-  'solidworks': { type: 'ion', class: 'build' },
-  'fusion 360': { type: 'ion', class: 'settings' },
-  'oracle': { type: 'devicon', class: 'devicon-oracle-plain' },
-  'sap': { type: 'devicon', class: 'devicon-sap-plain' },
-  'matlab/simulink': { type: 'devicon', class: 'devicon-matlab-plain-wordmark' },
-  'oracle crm': { type: 'devicon', class: 'devicon-oracle-plain' },
-  'oracle db': { type: 'devicon', class: 'devicon-oracle-plain' },
-  'sap system': { type: 'ion', class: 'business' },
-  'websockets': { type: 'ion', class: 'radio-button-on' },
-  'tcp': { type: 'devicon', class: 'devicon-tcp-plain' },
-  'ip': { type: 'devicon', class: 'devicon-ip-plain' },
-  'tcp ip': { type: 'ion', class: 'wifi' },
-  'rest': { type: 'devicon', class: 'devicon-rest-plain' },
-  'apis': { type: 'devicon', class: 'devicon-api-plain' },
-  'rest apis': { type: 'ion', class: 'cloud-upload' },
-  'jwt': { type: 'ion', class: 'key' },
-  'go golang': { type: 'devicon', class: 'devicon-go-plain' },
-  'sql sqlite': { type: 'devicon', class: 'devicon-sqlite-plain' },
-  'html/css': { type: 'devicon', class: 'devicon-html5-plain' },
+  'everycircuit': { type: 'img', src: 'https://everycircuit.com/website/drawable-ldpi/symbol_spin.png' },
+  'go': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg' },
+  'golang': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg' },
+  'go golang': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg' },
+  'javascript': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+  'javascript es6': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/javascript/javascript-original.svg' },
+  'typescript': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/typescript/typescript-original.svg' },
+  'java': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/java/java-original-wordmark.svg' },
+  'html5': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg' },
+  'html': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original-wordmark.svg' },
+  'css3': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg' },
+  'css': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/css3/css3-original-wordmark.svg' },
+  'react': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/react/react-original-wordmark.svg' },
+  'nextjs': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
+  'next.js': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nextjs/nextjs-original.svg' },
+  'vite': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg' },
+  'vitejs': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vitejs/vitejs-original.svg' },
+  'tailwind css': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/tailwindcss/tailwindcss-original.svg' },
+  'graphql': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/graphql/graphql-plain.svg' },
+  'apollo client': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apollographql/apollographql-original.svg' },
+  'apollo': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apollographql/apollographql-original.svg' },
+  'sqlite': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg' },
+  'postgresql': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
+  'mysql': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+  'mcp': { type: 'img', src: 'https://registry.npmmirror.com/@lobehub/icons-static-png/1.75.0/files/dark/mcp.png' },
+  'docker': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
+  'bootstrap': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg' },
+  'arduino': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/arduino/arduino-original.svg' },
+  'bash': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bash/bash-original.svg' },
+  'raspberry pi': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/raspberrypi/raspberrypi-original.svg' },
+  'node.js': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+  'nodejs': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/nodejs/nodejs-original.svg' },
+  'npm': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/npm/npm-original-wordmark.svg' },
+  'jest': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/jest/jest-plain.svg' },
+  'eslint': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/eslint/eslint-original.svg' },
+  'framer motion': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg' },
+  'framer': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/framermotion/framermotion-original.svg' },
+  'json': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/json/json-original.svg' },
+  'playwright': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/playwright/playwright-original.svg' },
+  'c': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg' },
+  'cplusplus': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
+  'c++': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
+  'cpp': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
+  'rust': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-line.svg' },
+  'php': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg' },
+  'laravel': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/laravel/laravel-original.svg' },
+  'oauth': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oauth/oauth-original.svg' },
+  'oauth2': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oauth/oauth-original.svg' },
+  'aws': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/amazonwebservices/amazonwebservices-original-wordmark.svg' },
+  'postman': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postman/postman-original.svg' },
+  'git': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/git/git-original.svg' },
+  'github': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/github/github-original.svg' },
+  'linux': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' },
+  'vs code': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/vscode/vscode-original.svg' },
+  'figma': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg' },
+  'mermaid': { type: 'img', src: 'https://mermaid.live/favicon.svg' },
+  'markdown': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/markdown/markdown-original.svg' },
+  'wsl': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' },
+  'macos': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg' },
+  'windows': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg' },
+  'android': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/android/android-original.svg' },
+  'xcode': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/xcode/xcode-original.svg' },
+  'android studio': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/androidstudio/androidstudio-original.svg' },
+  'firebase': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/firebase/firebase-plain-wordmark.svg' },
+  'python': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/python/python-original.svg' },
+  'flutter': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
+  'matlab': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg' },
+  'simulink': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg' },
+  'matlab simulink': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg' },
+  'autocad': { type: 'img', src: 'https://web.autocad.com/favicon.ico' },
+  'solidworks': { type: 'img', src: 'https://www.solidworks.com/themes/custom/sw-digital/favicon.ico' },
+  'fusion 360': { type: 'img', src: 'https://damassets.autodesk.net/content/dam/autodesk/www/product-imagery/badge-75x75/simplified-badges/fusion-360-product-design-extension-2023-simplified-badge-75x75.png' },
+  'oracle': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg' },
+  'oracle db crm': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg' },
+  'sap': { type: 'img', src: 'https://simpleicons.org/icons/sap.svg' },
+  'sap system': { type: 'img', src: 'data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNDEyLjM4IDIwNCI+PGRlZnM+PHN0eWxlPi5jbHMtMSwuY2xzLTJ7ZmlsbC1ydWxlOmV2ZW5vZGQ7fS5jbHMtMXtmaWxsOnVybCgjbGluZWFyLWdyYWRpZW50KTt9LmNscy0ye2ZpbGw6I2ZmZjt9PC9zdHlsZT48bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjIwNi4xOSIgeDI9IjIwNi4xOSIgeTI9IjIwNCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwYjhmMSIvPjxzdG9wIG9mZnNldD0iMC4wMiIgc3RvcC1jb2xvcj0iIzAxYjZmMCIvPjxzdG9wIG9mZnNldD0iMC4zMSIgc3RvcC1jb2xvcj0iIzBkOTBkOSIvPjxzdG9wIG9mZnNldD0iMC41OCIgc3RvcC1jb2xvcj0iIzE3NzVjOCIvPjxzdG9wIG9mZnNldD0iMC44MiIgc3RvcC1jb2xvcj0iIzFjNjViZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzFlNWZiYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjx0aXRsZT5TQVBfZ3JhZF9SX3Njcm5fWmVpY2hlbmZsw6RjaGUgMTwvdGl0bGU+PHBvbHlsaW5lIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIwIDIwNCAyMDguNDEgMjA0IDQxMi4zOCAwIDAgMCAwIDIwNCIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTI0NC43MywzOC4zNmwtNDAuNiwwdjk2LjUyTDE2OC42NywzOC4zM0gxMzMuNTFsLTMwLjI3LDgwLjcyQzEwMCw5OC43LDc5LDkxLjY3LDYyLjQsODYuNCw1MS40Niw4Mi44OSwzOS44NSw3Ny43Miw0MCw3MmMuMDktNC42OCw2LjIzLTksMTguMzgtOC4zOCw4LjE3LjQzLDE1LjM3LDEuMDksMjkuNzEsOGwxNC4xLTI0LjU1Qzg5LjA2LDQwLjQyLDcxLDM2LjIxLDU2LjE3LDM2LjE5aC0uMDljLTE3LjI4LDAtMzEuNjgsNS42LTQwLjYsMTQuODNBMzQuMjMsMzQuMjMsMCwwLDAsNS43Nyw3NC43QzUuNTQsODcuMTUsMTAuMTEsOTYsMTkuNzEsMTAzYzguMSw1Ljk0LDE4LjQ2LDkuNzksMjcuNiwxMi42MiwxMS4yNywzLjQ5LDIwLjQ3LDYuNTMsMjAuMzYsMTNBOS41Nyw5LjU3LDAsMCwxLDY1LDEzNWMtMi44MSwyLjktNy4xMyw0LTEzLjA5LDQuMS0xMS40OS4yNC0yMC0xLjU2LTMzLjYxLTkuNTlMNS43NywxNTQuNDJhOTMuNzcsOTMuNzcsMCwwLDAsNDYsMTIuMjJsMi4xMSwwYzE0LjI0LS4yNSwyNS43NC00LjMxLDM0LjkyLTExLjcxLjUzLS40MSwxLS44NCwxLjQ5LTEuMjhMODYuMTcsMTY0LjVIMTIzbDYuMTktMTguODJhNjcuNDYsNjcuNDYsMCwwLDAsMjEuNjgsMy40Myw2OC4zMyw2OC4zMywwLDAsMCwyMS4xNi0zLjI1bDYsMTguNjRoNjAuMTR2LTM5aDEzLjExYzMxLjcxLDAsNTAuNDYtMTYuMTUsNTAuNDYtNDMuMkMzMDEuNzQsNTIuMTksMjgzLjUyLDM4LjM2LDI0NC43MywzOC4zNlpNMTUwLjkxLDEyMWEzNi45MywzNi45MywwLDAsMS0xMy0yLjI4bDEyLjg3LTQwLjU5SDE1MWwxMi42NSw0MC43MUEzOC41LDM4LjUsMCwwLDEsMTUwLjkxLDEyMVptOTYuMi0yMy4zM2gtOC45NFY2NC45MWg4Ljk0YzExLjkzLDAsMjEuNDQsNCwyMS40NCwxNi4xNCwwLDEyLjYtOS41MSwxNi41Ny0yMS40NCwxNi41NyIvPjwvc3ZnPg==' },
+  'websockets': { type: 'img', src: 'https://www.svgrepo.com/show/354553/websocket.svg' },
+  'tcp ip': { type: 'img', src: 'https://www.svgrepo.com/show/435305/dns.svg' },
+  'rest': { type: 'img', src: 'https://cdn-icons-png.flaticon.com/512/9784/9784550.png' },
+  'apis': { type: 'img', src: 'https://cdn-icons-png.flaticon.com/512/9784/9784550.png' },
+  'rest apis': { type: 'img', src: 'https://cdn-icons-png.flaticon.com/512/9784/9784550.png' },
+  'jwt': { type: 'img', src: 'https://cdn-icons-png.flaticon.com/128/8654/8654207.png' },
+  'go golang': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/go/go-original-wordmark.svg' },
+  'sql sqlite': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg' },
+  'html/css': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
   'fire alarm system design': { type: 'ion', class: 'flame' },
   'electrical installation': { type: 'ion', class: 'construct' },
   'solar pv systems': { type: 'ion', class: 'sunny' },
+  'dart': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg' },
+  'flutter': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
   'electronics circuit design': { type: 'ion', class: 'hardware-chip' },
-  'digital coding': { type: 'svg', svg: '<span class="tech-logo-svg"><svg width="1.7em" height="1.7em" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg"><polygon points="12,16 44,32 12,48" stroke="currentColor" stroke-width="4" fill="none"/><circle cx="50" cy="32" r="6" stroke="currentColor" stroke-width="4" fill="currentColor"/></svg></span>' }
+  'circuit verse': { type: 'img', src: 'https://circuitverse.org/assets/favicon-2fc7f88c7d9f61d534fda46f7c4890a0c18d2c406f1f7af2e5948ebc5999e573.ico' }
 };
 
 const normalize = (t) => {
@@ -1019,14 +1034,18 @@ const renderTechLogos = (techArr = []) => {
   });
   const logos = sortedTech.filter(orig => iconMap[normalize(orig)]).map(orig => {
     const key = normalize(orig);
-    const { type, class: cls } = iconMap[key];
+    const entry = iconMap[key];
     let iconHtml;
-    if (type === 'devicon') {
-      iconHtml = `<i class="devicon ${cls}"></i>`;
-    } else if (type === 'simple') {
-      iconHtml = `<i class="${cls}"></i>`;
-    } else if (type === 'ion') {
-      iconHtml = `<ion-icon name="${cls}"></ion-icon>`;
+    if (entry.type === 'img') {
+      iconHtml = `<img src="${entry.src}" alt="${orig}" class="tech-logo-svg" />`;
+    } else if (entry.type === 'devicon') {
+      iconHtml = `<i class="devicon ${entry.class}"></i>`;
+    } else if (entry.type === 'simple') {
+      iconHtml = `<i class="${entry.class}"></i>`;
+    } else if (entry.type === 'ion') {
+      iconHtml = `<ion-icon name="${entry.class}"></ion-icon>`;
+    } else if (entry.type === 'svg') {
+      iconHtml = entry.svg;
     }
     return `<li class="project-tech-logo" title="${orig}">${iconHtml}</li>`;
   });
@@ -1371,7 +1390,7 @@ function renderProjectsSection() {
         <li class="project-item active" data-filter-item data-category="${project.category.toLowerCase().replace(' ', '')}">
             <figure class="project-img">
               <div class="project-item-icon-box">
-                <span class="icon">📁</span>
+                <ion-icon name="${getCategoryIcon(project.category)}"></ion-icon>
               </div>
             </figure>
             <h3 class="project-title">${project.name}</h3>
@@ -1388,7 +1407,7 @@ function renderProjectsSection() {
               </ul>
             </div>
             <div class="project-links">
-              ${project.links.map(link => `<a href="${link.url}" target="_blank" class="project-link-btn"><ion-icon name="${getIcon(link.text)}"></ion-icon> ${link.text}</a>`).join('')}
+              ${project.links && project.links.length > 0 ? project.links.map(link => `<a href="${link.url}" target="_blank" class="project-link-btn"><ion-icon name="${getIcon(link.text)}"></ion-icon> ${link.text}</a>`).join('') : ''}
             </div>
         </li>
       `).join('')}
@@ -1410,9 +1429,23 @@ function renderProjectsSection() {
 
 function getIconForCoreItem(item) {
   if (item.includes('Fire')) return 'flame';
-  if (item.includes('Electrical')) return 'construct';
+  if (item.includes('Electrical Installation')) return 'flash';
   if (item.includes('Solar')) return 'sunny';
+  if (item.includes('Power Electronics')) return 'battery-full';
+  if (item.includes('Digital Circuits')) return 'hardware-chip';
+  if (item.includes('Transmission')) return 'pulse';
   return 'cog';
+}
+
+function getCategoryIcon(category) {
+  const iconMap = {
+    'Web Development': 'globe-outline',
+    'Engineering': 'construct-outline',
+    'Games': 'game-controller-outline',
+    'CLI/Algorithms': 'terminal-outline',
+    'UI concepts': 'color-palette-outline'
+  };
+  return iconMap[category] || 'folder-outline';
 }
 
 function getIconForPersonalSkill(skill) {
@@ -1424,7 +1457,7 @@ function getIconForPersonalSkill(skill) {
     'Teamwork': 'people',
     'Problem-solving': 'bulb',
     'Time Management': 'time',
-    'Leadership': 'person',
+    'Leadership': 'trophy',
     'Training and Development': 'book',
     'Project Management': 'folder'
   };
@@ -1455,17 +1488,29 @@ function renderInteractiveTechLogos(techArr = [], type) {
     const key = normalize(orig);
     const iconDef = iconMap[key];
     let iconHtml;
-    if (iconDef.type === 'devicon') {
-      // Make Oracle and Oracle DB icons larger
-      const largeKeys = ['oracle', 'oracle db', 'oracle crm', 'everycircuit'];
-      const size = largeKeys.includes(key) ? 'font-size: 2.8em;' : '';
+    if (iconDef.type === 'img') {
+      // Uniform size for all logos
+      const size = 'width: 1.5em; height: 1.5em;';
+      // Make specific logos white
+      const whiteSrcs = ['rust', 'socketdotio', 'github', 'jsonwebtokens', 'markdown', 'apple', 'dns', 'key', 'websocket', 'apollographql', '1822940', '9784550', '8654207', 'bash'];
+      const isWhite = whiteSrcs.some(s => iconDef.src.includes(s));
+      const filter = isWhite ? 'filter: brightness(0) invert(1);' : '';
+      iconHtml = `<img src="${iconDef.src}" alt="${orig}" class="tech-logo-svg" style="${size}${filter ? ' ' + filter : ''}" />`;
+    } else if (iconDef.type === 'devicon') {
+      // Uniform size for all logos
+      const size = 'font-size: 1.5em;';
       iconHtml = `<i class="devicon ${iconDef.class}" style="${size}"></i>`;
     } else if (iconDef.type === 'simple') {
-      iconHtml = `<i class="${iconDef.class}"></i>`;
+      const size = 'font-size: 1.5em;';
+      iconHtml = `<i class="${iconDef.class}" style="${size}"></i>`;
     } else if (iconDef.type === 'ion') {
-      iconHtml = `<ion-icon name="${iconDef.class}"></ion-icon>`;
+      const whiteStyle = (key === 'rest apis' || key === 'jwt') ? 'color: white;' : '';
+      const size = 'font-size: 2.5em;';
+      iconHtml = `<ion-icon name="${iconDef.class}" style="${size}${whiteStyle ? ' ' + whiteStyle : ''}"></ion-icon>`;
     } else if (iconDef.type === 'svg') {
-      iconHtml = iconDef.svg;
+      let svg = key === 'digital coding' ? iconDef.svg.replace(/currentColor/g, 'white') : iconDef.svg;
+      svg = svg.replace(/3em/g, '3.5em');
+      iconHtml = svg;
     }
     return `<div class="tech-logo-item" style="animation-delay: ${index * 0.1}s" data-tech="${orig.toLowerCase()}">
               <div class="tech-logo-wrapper">
@@ -1487,6 +1532,21 @@ function renderInteractiveTechLogos(techArr = [], type) {
 }
 
 function renderSkillBadges(items = [], type) {
+  const bulletTypes = ['personal', 'engineering', 'concepts'];
+  if (bulletTypes.includes(type)) {
+    const iconFunctions = {
+      engineering: getIconForCoreItem,
+      personal: getIconForPersonalSkill,
+      concepts: getIconForCSConcept
+    };
+
+    const getIcon = iconFunctions[type] || (() => 'star');
+
+    return `<ul class="skill-bullets" data-type="${type}">
+              ${items.map((item, index) => `<li style="animation-delay: ${index * 0.1}s"><ion-icon name="${getIcon(item)}"></ion-icon> ${item}</li>`).join('')}
+            </ul>`;
+  }
+
   const iconFunctions = {
     engineering: getIconForCoreItem,
     personal: getIconForPersonalSkill,
@@ -1725,7 +1785,7 @@ function renderProfessionalJourneySection() {
     const logoY = isBarItem ? (y - 26) : (y - 36);
 
     return `
-          ${logoHref ? `<a href="${getEntityUrl(item.company || item.institution || item.issuer || item.title || item.name || '')}" target="_blank" rel="noopener noreferrer" class="timeline-logo-link"><image href="${logoHref}" x="${logoX}" y="${logoY}" width="36" height="36" preserveAspectRatio="xMidYMid slice" class="timeline-logo" /></a>` : ''} 
+          <!-- Logos removed from timeline -->
           <!-- Timeline bar (for education, internships, career) -->
           ${isBarItem ? `
           <rect x="${x}" y="${y - 6}" width="${endX - x}" height="12" rx="6"
@@ -1733,7 +1793,6 @@ function renderProfessionalJourneySection() {
                 class="timeline-bar ${item.category} ${isCurrent ? 'current' : ''}"
                 data-category="${item.category}" data-item-index="${index}" filter="url(#glow)" opacity="0.8">
             <animate attributeName="width" values="0;${endX - x}" dur="1s" begin="${index * 0.1 + 0.3}s" fill="freeze" />
-            <title>${item.title} - ${item.company || item.institution} (${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${item.endDate ? new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Present'})</title>
           </rect>
           ` : ''}
 
@@ -1744,7 +1803,6 @@ function renderProfessionalJourneySection() {
                   class="timeline-dot ${item.category} ${isCurrent ? 'current' : ''}"
                   data-category="${item.category}" data-item-index="${index}" filter="url(#glow)">
             <animate attributeName="r" values="${isCurrent ? '10;12;10' : '8;10;8'}" dur="2.5s" repeatCount="indefinite" />
-            <title>${item.title} - ${item.company || item.institution || item.issuer}</title>
           </circle>
           ` : ''}
 
@@ -1818,9 +1876,9 @@ function renderSkillsSection() {
   const categories = [
     { title: 'Personal Skills', icon: '<ion-icon name="person-outline"></ion-icon>', items: data.personalSkills, isTech: false, type: 'personal' },
     { title: 'Core Engineering', icon: '<ion-icon name="construct-outline"></ion-icon>', items: data.technicalSkills.coreEngineering, isTech: false, type: 'engineering' },
+    { title: 'Engineering Software', icon: '<ion-icon name="build-outline"></ion-icon>', items: data.technicalSkills.engineeringSoftware, isTech: true, type: 'software' },
     { title: 'Languages', icon: '<ion-icon name="code-slash-outline"></ion-icon>', items: data.technicalSkills.languages, isTech: true, type: 'languages' },
     { title: 'Web Technologies', icon: '<ion-icon name="globe-outline"></ion-icon>', items: data.technicalSkills.webTechnologies, isTech: true, type: 'web' },
-    { title: 'Engineering Software', icon: '<ion-icon name="build-outline"></ion-icon>', items: data.technicalSkills.engineeringSoftware, isTech: true, type: 'software' },
     { title: 'Tools', icon: '<ion-icon name="settings-outline"></ion-icon>', items: data.technicalSkills.tools, isTech: true, type: 'tools' },
     { title: 'Systems', icon: '<ion-icon name="desktop-outline"></ion-icon>', items: data.technicalSkills.systems, isTech: true, type: 'systems' },
     { title: 'Computer Science Concepts', icon: '<ion-icon name="school-outline"></ion-icon>', items: data.technicalSkills.computerScienceConcepts, isTech: false, type: 'concepts' }
@@ -2274,22 +2332,93 @@ function renderSideElements() {
   `;
 }
 
+function initializeTimeline() {
+  const container = document.getElementById('timeline-container');
+  if (!container) {
+    console.error('Timeline container not found!');
+    return;
+  }
+
+  // Clear the container before initializing
+  container.innerHTML = '';
+
+  try {
+    const allItems = [
+      ...(data.professionalJourney.education || []).map(item => ({ ...item, category: 'education', type: 'box' })),
+      ...(data.professionalJourney.career || []).map(item => ({ ...item, category: 'career', type: 'box' })),
+      ...(data.professionalJourney.internships || []).map(item => ({ ...item, category: 'internships', type: 'box' })),
+      ...(data.professionalJourney.certifications || []).map(item => ({
+        ...item,
+        category: 'certifications',
+        startDate: item.date, // Normalize 'date' to 'startDate'
+        type: 'point'
+      }))
+    ];
+
+    const items = new vis.DataSet(allItems.map((item, index) => {
+      const logoHtml = item.logo ? `<img src="${item.logo}" class="timeline-logo" onerror="this.style.display='none'">` : '';
+      const subtitle = item.institution || item.company || item.issuer || '';
+      const content = `<div class="tl-item">${logoHtml}<div class="tl-meta"><div class="tl-title">${item.title}</div>${subtitle ? `<div class="tl-sub">${subtitle}</div>` : ''}</div></div>`;
+      return {
+        id: index,
+        content,
+        start: item.startDate,
+        end: item.endDate,
+        className: item.category,
+        group: item.category,
+      };
+    }));
+
+    const groups = new vis.DataSet([
+      { id: 'career', content: 'Career' },
+      { id: 'education', content: 'Education' },
+      { id: 'internships', content: 'Internships' },
+      { id: 'certifications', content: 'Certifications' },
+    ]);
+
+    const options = {
+      stack: false,
+      orientation: 'top',
+      zoomMin: 1000 * 60 * 60 * 24 * 30 * 6, // 6 months
+      zoomMax: 1000 * 60 * 60 * 24 * 365 * 20, // 20 years
+      min: new Date(2014, 0, 1),
+      max: new Date(2027, 0, 1),
+    };
+
+    const timeline = new vis.Timeline(container, items, groups, options);
+    console.log('Timeline initialized with dynamic data');
+  } catch (err) {
+    console.error('Error initializing timeline:', err);
+  }
+}
+
 function renderContactModal() {
   return `
-    <div class="contact-modal" id="contact-modal">
+    <div class="contact-modal" id="contact-modal" style="display: none;">
       <div class="modal-overlay" id="modal-overlay"></div>
       <div class="modal-content">
         <button class="modal-close" id="modal-close">
           <ion-icon name="close-outline"></ion-icon>
         </button>
         <div class="modal-header">
-          <ion-icon name="person-circle" class="modal-icon"></ion-icon>
           <h3>Save Contact Card</h3>
           <p>Scan the QR code or download the vCard</p>
         </div>
         <div class="modal-body">
-          <div class="qr-code-container" id="qr-code">
-            <div class="qr-placeholder">QR Code will appear here</div>
+          <div class="modal-columns">
+            <div class="modal-left">
+              <div class="contact-info">
+                <img src="${data.avatar}" alt="${data.name}" class="contact-avatar">
+                <h4>${data.name}</h4>
+                <p><ion-icon name="mail-outline"></ion-icon> ${data.email}</p>
+                <p><ion-icon name="call-outline"></ion-icon> ${data.mobile}</p>
+              </div>
+            </div>
+            <div class="modal-right">
+              <div class="qr-code-container" id="qr-code">
+                <div class="qr-placeholder">QR Code will appear here</div>
+              </div>
+            </div>
           </div>
           <div class="modal-actions">
             <button class="modal-btn primary" id="download-vcard-btn">
@@ -2405,6 +2534,13 @@ async function generateQRCode() {
 
 // Event Listeners
 function initializeEventListeners() {
+  // Define allItems to match the rendering order
+  const allItems = [
+    ...data.professionalJourney.education.map(item => ({ ...item, category: 'education' })),
+    ...data.professionalJourney.internships.map(item => ({ ...item, category: 'internships' })),
+    ...data.professionalJourney.career.map(item => ({ ...item, category: 'career' })),
+    ...data.professionalJourney.certifications.map(item => ({ ...item, category: 'certifications', startDate: item.date, endDate: null }))
+  ];
   // Download CV button
   const downloadCVBtn = document.getElementById('download-cv-btn');
   if (downloadCVBtn) {
@@ -2991,47 +3127,6 @@ function initializeEventListeners() {
       tooltip.style.left = e.pageX + 15 + 'px';
       tooltip.style.top = e.pageY - 50 + 'px';
     });
-
-    // Click handler for modal
-    dot.addEventListener('click', function () {
-      const itemIndex = parseInt(this.getAttribute('data-item-index'));
-      const item = allItems[itemIndex];
-      const dateToUse = item.startDate || item.date;
-
-      // Create modal for detailed view
-      const modal = document.createElement('div');
-      modal.className = 'timeline-modal';
-      modal.innerHTML = `
-        <div class="timeline-modal-content">
-          <span class="timeline-modal-close">&times;</span>
-          <div class="timeline-modal-header">
-            <ion-icon name="${item.icon}" class="modal-icon"></ion-icon>
-            <h3>${item.title}</h3>
-            <span class="modal-category ${item.category}">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
-          </div>
-          <div class="timeline-modal-body">
-            <p><strong>${item.company || item.institution || item.issuer}</strong></p>
-            <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
-            <p><strong>Duration:</strong> ${item.endDate ? calculateDuration(dateToUse, item.endDate) + ` (${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })})` : `${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}`}</p>
-            <p><strong>Description:</strong> ${item.description}</p>
-            ${item.current ? '<div class="current-indicator">Currently Active</div>' : ''}
-          </div>
-        </div>
-      `;
-
-      document.body.appendChild(modal);
-
-      // Close modal functionality
-      modal.querySelector('.timeline-modal-close').addEventListener('click', () => {
-        modal.remove();
-      });
-
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          modal.remove();
-        }
-      });
-    });
   });
 
   // Timeline bar click handlers for detailed view
@@ -3063,100 +3158,6 @@ function initializeEventListeners() {
     bar.addEventListener('mousemove', function (e) {
       tooltip.style.left = e.pageX + 15 + 'px';
       tooltip.style.top = e.pageY - 50 + 'px';
-    });
-
-    // Click handler for modal
-    bar.addEventListener('click', function () {
-      const itemIndex = parseInt(this.getAttribute('data-item-index'));
-      const item = allItems[itemIndex];
-      const dateToUse = item.startDate || item.date;
-
-      // Create modal for detailed view
-      const modal = document.createElement('div');
-      modal.className = 'timeline-modal';
-      modal.innerHTML = `
-        <div class="timeline-modal-content">
-          <span class="timeline-modal-close">&times;</span>
-          <div class="timeline-modal-header">
-            <ion-icon name="${item.icon}" class="modal-icon"></ion-icon>
-            <h3>${item.title}</h3>
-            <span class="modal-category ${item.category}">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
-          </div>
-          <div class="timeline-modal-body">
-            <p><strong>${item.company || item.institution || item.issuer}</strong></p>
-            <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
-            <p><strong>Duration:</strong> ${item.endDate ? calculateDuration(dateToUse, item.endDate) + ` (${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })})` : `${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}`}</p>
-            <p><strong>Description:</strong> ${item.description}</p>
-            ${item.current ? '<div class="current-indicator">Currently Active</div>' : ''}
-          </div>
-        </div>
-      `;
-
-      document.body.appendChild(modal);
-
-      // Close modal functionality
-      modal.querySelector('.timeline-modal-close').addEventListener('click', () => {
-        modal.remove();
-      });
-
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          modal.remove();
-        }
-      });
-    });
-  });
-
-  // Timeline dot click handlers for detailed view
-  const allItems = [
-    ...data.professionalJourney.education.map(item => ({ ...item, category: 'education' })),
-    ...data.professionalJourney.internships.map(item => ({ ...item, category: 'internships' })),
-    ...data.professionalJourney.career.map(item => ({ ...item, category: 'career' })),
-    ...data.professionalJourney.certifications.map(item => ({ ...item, category: 'certifications', startDate: item.date, endDate: null }))
-  ].sort((a, b) => {
-    const dateA = new Date(a.startDate || a.date);
-    const dateB = new Date(b.startDate || b.date);
-    return dateA - dateB;
-  });
-
-  timelineDots.forEach((dot) => {
-    dot.addEventListener('click', function () {
-      const itemIndex = parseInt(this.getAttribute('data-item-index'));
-      const item = allItems[itemIndex];
-
-      // Create modal for detailed view
-      const modal = document.createElement('div');
-      modal.className = 'timeline-modal';
-      modal.innerHTML = `
-        <div class="timeline-modal-content">
-          <span class="timeline-modal-close">&times;</span>
-          <div class="timeline-modal-header">
-            <ion-icon name="${item.icon}" class="modal-icon"></ion-icon>
-            <h3>${item.title}</h3>
-            <span class="modal-category ${item.category}">${item.category.charAt(0).toUpperCase() + item.category.slice(1)}</span>
-          </div>
-          <div class="timeline-modal-body">
-            <p><strong>${item.company || item.institution || item.issuer}</strong></p>
-            <p><strong>Location:</strong> ${item.location || 'N/A'}</p>
-            <p><strong>Duration:</strong> ${item.endDate ? calculateDuration(item.startDate, item.endDate) + ` (${new Date(item.startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })})` : `${new Date(item.startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })}`}</p>
-            <p><strong>Description:</strong> ${item.description}</p>
-            ${item.current ? '<div class="current-indicator">Currently Active</div>' : ''}
-          </div>
-        </div>
-      `;
-
-      document.body.appendChild(modal);
-
-      // Close modal functionality
-      modal.querySelector('.timeline-modal-close').addEventListener('click', () => {
-        modal.remove();
-      });
-
-      modal.addEventListener('click', (e) => {
-        if (e.target === modal) {
-          modal.remove();
-        }
-      });
     });
   });
 

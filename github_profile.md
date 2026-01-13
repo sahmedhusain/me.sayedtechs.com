@@ -1,4 +1,4 @@
-# <img src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif" width="30px" height="30px"> Hi, Welcome to my portfolio!
+# <img src="https://raw.githubusercontent.com/ABSphreak/ABSphreak/master/gifs/Hi.gif" width="30px" height="30px"> Hi, Welcome to my profile!
 
 Full-Stack Developer | Go & JavaScript | Real-Time & Backend-Focused Systems
 
@@ -7,7 +7,7 @@ Full-Stack Developer | Go & JavaScript | Real-Time & Backend-Focused Systems
 </p>
 
 <div align="center">
-  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&random=false&width=800&lines=Electrical+Engineer+%7C+Full+Stack+Developer;Public+Relations+In-charge+@+LIFECO;Reboot+Coding+Institute+Student;Building+Tech-Driven+Solutions+from+Bahrain+%F0%9F%87%A7%F0%9F%87%AD" alt="Typing SVG" />
+  <img src="https://readme-typing-svg.demolab.com?font=Fira+Code&weight=600&size=28&duration=3000&pause=1000&color=58A6FF&center=true&vCenter=true&random=false&width=800&lines=Electrical+Engineer+%7C+Full+Stack+Developer;Reboot+Coding+Institute+Student;Building+Tech-Driven+Solutions+from+Bahrain+%F0%9F%87%A7%F0%9F%87%AD" alt="Typing SVG" />
 </div>
 
 <div align="center">
@@ -44,6 +44,7 @@ Full-Stack Developer | Go & JavaScript | Real-Time & Backend-Focused Systems
 ## 📌 Quick Index
 
 <p align="center">
+  <a href="https://sahmedhusain.github.io/me/"><img src="https://img.shields.io/badge/My_Website-2a9d8f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="My Website" /></a>
   <a href="#featured-projects"><img src="https://img.shields.io/badge/Featured_Projects-0b2d5c?style=for-the-badge&logo=github&logoColor=white" alt="Featured Projects" /></a>
   <a href="#what-im-focused-on-right-now"><img src="https://img.shields.io/badge/Focus_Now-0f4c81?style=for-the-badge&logo=target&logoColor=white" alt="Focus Now" /></a>
   <a href="#technical-skills--technologies"><img src="https://img.shields.io/badge/Tech_Stack-125688?style=for-the-badge&logo=stackshare&logoColor=white" alt="Tech Stack" /></a>
@@ -311,7 +312,7 @@ section 💼 Career
 Zain Bahrain — Retail Sales Representative :done, job1, 2019-02-01, 2022-03-31
 channels by stc — Retail Sales Advisor :done, job2, 2022-04-01, 2022-09-30
 Super Fire & Safety — General Electrical Engineer :done, job3, 2022-10-01, 2023-10-31
-LIFECO — Public Relations In-Charge :active, job4, 2024-05-01, 2026-06-30
+LIFECO — Public Relations In-Charge :active, job4, 2024-05-01, 2026-02-01
 
 section 🏆 Licenses & Certifications
 Corporate Sales Fundamentals — Golden Trust :milestone, cert1, 2019-11-01, 0d
@@ -371,8 +372,10 @@ NOCN Level 3 Award — Solar PV Installer and Operator (EWA Acknowledgment) :mil
 
 <details open>
 <summary><strong>🤝 View contact links (expand/collapse)</strong></summary>
-
 <div align="center">
+  <a href="https://sahmedhusain.github.io/me/" target="_blank">
+    <img src="https://img.shields.io/badge/My_Website-2a9d8f?style=for-the-badge&logo=google-chrome&logoColor=white" alt="My Website"/>
+  </a>
   <a href="https://www.linkedin.com/in/97ahm/" target="_blank">
     <img src="https://img.shields.io/badge/LinkedIn-%230077B5.svg?style=for-the-badge&logo=linkedin&logoColor=white" alt="LinkedIn"/>
   </a>
