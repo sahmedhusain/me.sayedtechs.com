@@ -66,6 +66,7 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
     email: 'sayedahmed97.sad@gmail.com',
     phone: '+97333115351',
     location: 'Bahrain',
+    website: 'https://sahmedhusain.github.io/me',
     linkedin: 'https://linkedin.com/in/97ahm',
     github: 'https://github.com/sahmedhusain',
     twitter: 'https://x.com/_97ahm',
@@ -174,19 +175,37 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
   education: [
     {
       degree: 'Full Stack Development Specialized Program (High Diploma)',
-      institution: 'Reboot01 Coding Institute, Bahrain',
-      date: 'March 2024 — March 2026'
+      institution: 'Reboot01 Coding Institute',
+      location: 'Bahrain',
+      date: 'March 2024 — March 2026',
+      description: [
+        'Intensive 2-year program focused on modern web development technologies and software engineering practices.',
+        'Comprehensive curriculum covering full-stack development, system design, and industry-standard tools.',
+        'Hands-on projects and real-world applications building scalable web applications and systems.'
+      ]
     },
     {
       degree: 'Bachelor of Science in Electrical Engineering',
-      institution: 'University of Bahrain, Bahrain',
+      institution: 'University of Bahrain',
+      location: 'Bahrain',
       date: 'June 2022',
-      certificate: 'Graduation_certificate.jpg'
+      certificate: 'Graduation_certificate.jpg',
+      description: [
+        'Comprehensive engineering education covering electrical systems, power electronics, and control systems.',
+        'Specialized coursework in renewable energy, automation, and digital circuit design.',
+        'Capstone project involving smart street lighting system with IoT integration and energy optimization.'
+      ]
     },
     {
       degree: 'High School (Physics and Mathematics)',
-      institution: 'H.E Sheikh Isa bin Ali Secondary School, Bahrain',
-      date: 'May 2015'
+      institution: 'H.E Sheikh Isa bin Ali Secondary School',
+      location: 'Bahrain',
+      date: 'May 2015',
+      description: [
+        'Advanced secondary education with focus on Physics and Mathematics streams.',
+        'Strong foundation in scientific principles, mathematical reasoning, and analytical thinking.',
+        'Developed problem-solving skills and technical aptitude that formed the basis for engineering studies.'
+      ]
     }
   ],
 
@@ -196,65 +215,113 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
       name: 'NOCN Level 3 Award for Solar PV Installer and Operator',
       type: 'Certificate',
       issuingAuthority: 'NOCN',
+      location: 'Bahrain',
       id: '48282023',
       issued: 'Apr 2024',
-      pdfUrl: 'SolarPV-NOCN.pdf'
+      pdfUrl: 'SolarPV-NOCN.pdf',
+      description: [
+        'Comprehensive certification for solar photovoltaic system installation and operation.',
+        'Covers design, installation, commissioning, and maintenance of solar PV systems.',
+        'Demonstrates expertise in renewable energy technology and industry standards.'
+      ]
     },
     {
       name: 'Certificate of Acknowledgement (Solar PV)',
       type: 'Certificate',
-      issuingAuthority: 'Ministry of Electricity and Water Affairs (Bahrain)',
+      issuingAuthority: 'Ministry of Electricity and Water Affairs',
+      location: 'Bahrain',
       id: 'MEWA Certificate No: 2024-21',
       issued: 'Jul 2024',
       expires: 'Jul 2029',
-      pdfUrl: 'solar-pv-mewa.pdf'
+      pdfUrl: 'solar-pv-mewa.pdf',
+      description: [
+        'Official recognition from Bahrain\'s Ministry of Electricity and Water Affairs.',
+        'Validates competence in solar photovoltaic system design and implementation.',
+        'Required certification for professional solar PV work in Bahrain.'
+      ]
     },
     {
       name: 'CRPEP License (Electrical)',
       type: 'License',
-      issuingAuthority: 'The Council for Regulating the Practice of Engineering Professions (Bahrain)',
+      issuingAuthority: 'The Council for Regulating the Practice of Engineering Professions',
+      location: 'Bahrain',
       id: 'EPP/C4597/EL/01-D',
       issued: 'Dec 2022',
       expires: 'Dec 2023',
-      pdfUrl: 'crpep.pdf'
+      pdfUrl: 'crpep.pdf',
+      description: [
+        'Professional engineering license for electrical engineering practice in Bahrain.',
+        'Issued by the regulatory body overseeing engineering professions in the country.',
+        'Required for legal practice of electrical engineering in Bahrain.'
+      ]
     },
     {
       name: 'Electrical Installation License',
       type: 'License',
-      issuingAuthority: 'Electricity and Water Authority (Bahrain)',
+      issuingAuthority: 'Electricity and Water Authority',
+      location: 'Bahrain',
       id: 'W2402010',
       issued: 'Feb 2024',
-      expires: 'Feb 2029'
+      expires: 'Feb 2029',
+      description: [
+        'Authorization to perform electrical installation work in Bahrain.',
+        'Issued by the national electricity and water authority.',
+        'Covers residential, commercial, and industrial electrical installations.'
+      ]
     },
     {
       name: 'Basic Life Support (BLS)',
       type: 'License',
       issuingAuthority: 'American Heart Association (AHA)',
+      location: 'Bahrain',
       id: '225607015422',
       issued: 'Jul 2022',
       expires: 'Jul 2024',
-      pdfUrl: 'BLS.pdf'
+      pdfUrl: 'BLS.pdf',
+      description: [
+        'Healthcare provider level CPR and basic life support certification.',
+        'Internationally recognized certification from the American Heart Association.',
+        'Covers CPR, AED use, and emergency response for adults, children, and infants.'
+      ]
     },
     {
       name: 'B2B Sales Fundamentals',
       type: 'Course Certificate',
-      issuingAuthority: 'Golden Trust Institute (Bahrain)',
-      issued: 'Nov 2019'
+      issuingAuthority: 'Golden Trust Institute',
+      location: 'Bahrain',
+      issued: 'Nov 2019',
+      description: [
+        'Professional training in business-to-business sales techniques and strategies.',
+        'Covers sales process, customer relationship management, and negotiation skills.',
+        'Essential training for sales professionals in corporate environments.'
+      ]
     },
     {
       name: 'Emotional Intelligence',
       type: 'Course Certificate',
-      issuingAuthority: 'Golden Trust Institute (Bahrain)',
-      issued: 'Aug 2019'
+      issuingAuthority: 'Golden Trust Institute',
+      location: 'Bahrain',
+      issued: 'Aug 2019',
+      description: [
+        'Training in emotional intelligence and interpersonal skills development.',
+        'Covers self-awareness, social skills, and relationship management.',
+        'Important for leadership, team management, and professional communication.'
+      ]
     },
     {
       name: 'Online Learning Courses',
       type: 'Course Certificates',
       issuingAuthority: 'LinkedIn Learning',
+      location: 'Bahrain',
       courses: [
         'AI in Business Essentials',
         'Leading with Innovation',
         'Critical Thinking'
+      ],
+      description: [
+        'Professional development courses on cutting-edge business topics.',
+        'Covers artificial intelligence applications, innovative leadership, and critical thinking skills.',
+        'Demonstrates commitment to continuous learning and professional growth.'
       ]
     }
   ],
@@ -1159,180 +1226,334 @@ function getSectionIcon(sectionName) {
   return icons[sectionName] || 'checkmark-circle-outline';
 }
 
-function renderExperienceSection() {
+function renderExperienceCardContent(job) {
   return `
-    <header>
-      <h2 class="h2 article-title">Professional Experience</h2>
-      <p class="section-subtitle">Discover my <strong>career journey</strong> – from innovative projects and leadership roles to the achievements that have shaped my professional path. Let's explore the experiences that drive my passion for excellence!</p>
-    </header>
-
-    <div class="experience-container">
-      ${data.experience.map((job, i) => `
-        <div class="experience-card" data-job="${i}">
-          <div class="experience-card-header">
-            <div class="experience-company-info">
-              <div class="experience-company-logo">
-                <a href="${getEntityUrl(job.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${job.company}">
-                  <img src="${getLogo(job.company, '')}" alt="${job.company} logo" class="org-logo" onerror="this.onerror=null;this.style.display='none';" />
-                </a>
-              </div>
-              <div class="experience-company-details">
-                <h3 class="experience-job-title">${job.title}</h3>
-                <p class="experience-company-name">${job.company}</p>
-                <div class="experience-meta">
-                  <span class="experience-date">
-                    <ion-icon name="calendar-outline"></ion-icon>
-                    ${job.date}
-                  </span>
-                  <span class="experience-location">
-                    <ion-icon name="location-outline"></ion-icon>
-                    ${job.location}
-                  </span>
-                </div>
-              </div>
-            </div>
+    <div class="experience-card-header">
+      <div class="experience-company-info">
+        <div class="experience-company-logo">
+          <a href="${getEntityUrl(job.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${job.company}">
+            <img src="${getLogo(job.company, '')}" alt="${job.company} logo" class="org-logo" onerror="this.onerror=null;this.style.display='none';" />
+          </a>
+        </div>
+        <div class="experience-company-details">
+          <h3 class="experience-job-title">${job.title}</h3>
+          <p class="experience-company-name">${job.company}</p>
+          <div class="experience-meta">
+            <span class="experience-date">
+              <ion-icon name="calendar-outline"></ion-icon>
+              ${job.date}
+            </span>
+            <span class="experience-location">
+              <ion-icon name="location-outline"></ion-icon>
+              ${job.location}
+            </span>
           </div>
+        </div>
+      </div>
+    </div>
 
-          <div class="experience-card-content">
-            ${job.sections ? Object.entries(job.sections).map(([sectionName, points]) => {
+    <div class="experience-card-content">
+      ${job.sections ? Object.entries(job.sections).map(([sectionName, points]) => {
     const sectionTitle = sectionName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
     const sectionIcon = getSectionIcon(sectionName);
     return `
-                <div class="experience-section">
-                  <h4 class="experience-section-title">
-                    <ion-icon name="${sectionIcon}"></ion-icon>
-                    ${sectionTitle}
-                  </h4>
-                  <ul class="experience-points">
-                    ${points.map(point => `<li class="experience-point">${point}</li>`).join('')}
-                  </ul>
-                </div>
-              `;
+          <div class="experience-section">
+            <h4 class="experience-section-title">
+              <ion-icon name="${sectionIcon}"></ion-icon>
+              ${sectionTitle}
+            </h4>
+            <ul class="experience-points">
+              ${points.map(point => `<li class="experience-point">${point}</li>`).join('')}
+            </ul>
+          </div>
+        `;
   }).join('') : job.points ? `
-              <div class="experience-section">
-                <h4 class="experience-section-title">
-                  <ion-icon name="checkmark-circle-outline"></ion-icon>
-                  Key Responsibilities
-                </h4>
-                <ul class="experience-points">
-                  ${job.points.map(point => `<li class="experience-point">${point}</li>`).join('')}
-                </ul>
-              </div>
-              ${job.keyProjects ? `
-                <div class="experience-section">
-                  <h4 class="experience-section-title">
-                    <ion-icon name="build-outline"></ion-icon>
-                    Key Projects
-                  </h4>
-                  <ul class="experience-points">
-                    ${job.keyProjects.map(project => `<li class="experience-point">${project}</li>`).join('')}
-                  </ul>
-                </div>
-              ` : ''}
-            ` : ''}
+        <div class="experience-section">
+          <h4 class="experience-section-title">
+            <ion-icon name="checkmark-circle-outline"></ion-icon>
+            Key Responsibilities
+          </h4>
+          <ul class="experience-points">
+            ${job.points.map(point => `<li class="experience-point">${point}</li>`).join('')}
+          </ul>
+        </div>
+        ${job.keyProjects ? `
+          <div class="experience-section">
+            <h4 class="experience-section-title">
+              <ion-icon name="build-outline"></ion-icon>
+              Key Projects
+            </h4>
+            <ul class="experience-points">
+              ${job.keyProjects.map(project => `<li class="experience-point">${project}</li>`).join('')}
+            </ul>
+          </div>
+        ` : ''}
+      ` : ''}
+    </div>
+  `;
+}
+
+function renderExperienceSection() {
+  // 1. Experience Section
+  const experienceHTML = generateSectionHTML({
+    idPrefix: 'exp',
+    title: 'Professional Experience',
+    subtitle: 'Discover my <strong>career journey</strong> – from innovative projects and leadership roles to the achievements that have shaped my professional path.',
+    items: data.experience,
+    isFirst: true,
+    getItemTitle: (item) => item.title,
+    getItemSubtitle: (item) => item.company,
+    renderCard: renderExperienceCardContent
+  });
+
+  // 2. Internships Section
+  const internshipsHTML = generateSectionHTML({
+    idPrefix: 'intern',
+    title: 'Internships',
+    subtitle: 'Early career experiences – internships that provided <strong>practical skills</strong> and industry insights.',
+    items: data.professionalJourney.internships,
+    isFirst: false,
+    getItemTitle: (item) => item.title,
+    getItemSubtitle: (item) => item.company,
+    renderCard: renderInternshipCardContent
+  });
+
+  // 3. Education Section
+  const educationHTML = generateSectionHTML({
+    idPrefix: 'edu',
+    title: 'Education',
+    subtitle: 'My <strong>educational foundation</strong> – from high school to university degrees.',
+    items: data.education,
+    isFirst: false,
+    getItemTitle: (item) => item.degree,
+    getItemSubtitle: (item) => item.institution,
+    renderCard: renderEducationCardContent
+  });
+
+  // 4. Certifications Section
+  const certificationsHTML = generateSectionHTML({
+    idPrefix: 'cert',
+    title: 'Licenses & Certifications',
+    subtitle: 'Professional <strong>credentials</strong> validating expertise and commitment to industry standards.',
+    items: data.certifications,
+    isFirst: false,
+    getItemTitle: (item) => item.name,
+    getItemSubtitle: (item) => item.issuingAuthority,
+    renderCard: renderCertificationCardContent
+  });
+
+  return experienceHTML + internshipsHTML + educationHTML + certificationsHTML;
+}
+
+
+// --- Helper: Render Card Content for Internships ---
+function renderInternshipCardContent(intern) {
+  // Reusing the experience card style for consistency
+  return `
+    <div class="experience-card-header">
+      <div class="experience-company-info">
+        <div class="experience-company-logo">
+          <a href="${getEntityUrl(intern.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${intern.company}">
+            <img src="${getLogo(intern.company, '')}" alt="${intern.company} logo" class="org-logo" onerror="this.onerror=null;this.style.display='none';" />
+          </a>
+        </div>
+        <div class="experience-company-details">
+          <h3 class="experience-job-title">${intern.title}</h3>
+          <p class="experience-company-name">${intern.company}</p>
+          <div class="experience-meta">
+            <span class="experience-date">
+              <ion-icon name="calendar-outline"></ion-icon>
+              ${intern.startDate} - ${intern.endDate}
+            </span>
+            <span class="experience-location">
+              <ion-icon name="location-outline"></ion-icon>
+              ${intern.location}
+            </span>
           </div>
         </div>
-      `).join('')}
+      </div>
     </div>
-    
-    <header style="margin-top: 3rem;">
-      <h2 class="h2 article-title">Internships</h2>
-    </header>
-    <p class="section-subtitle">Early career experiences – internships that provided <strong>practical skills</strong> and industry insights to launch my professional journey.</p>
-    <ul class="timeline-list">
-      ${data.professionalJourney.internships.map(intern => `
-        <li class="timeline-item cert-item">
-          <div class="cert-header">
-            <a href="${getEntityUrl(intern.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${intern.company}">
-              <img src="${getLogo(intern.company, '')}" alt="${intern.company} logo" class="org-logo small" onerror="this.onerror=null;this.style.display='none';" />
-            </a>
-            <div class="cert-content">
-              <h4 class="h4 timeline-item-title">${intern.title}</h4>
-              <span class="cert-authority">${intern.company}</span>
+    <div class="experience-card-content">
+      <div class="experience-section">
+        <p class="experience-point">${intern.description}</p>
+      </div>
+    </div>
+  `;
+}
+
+// --- Helper: Render Card Content for Education ---
+function renderEducationCardContent(edu) {
+  return `
+    <div class="experience-card-header">
+      <div class="experience-company-info">
+        <div class="experience-company-logo">
+          <a href="${getEntityUrl(edu.institution)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${edu.institution}">
+            <img src="${getLogo(edu.institution || edu.degree, '')}" alt="${edu.institution} logo" class="org-logo" onerror="this.onerror=null;this.style.display='none';" />
+          </a>
+        </div>
+        <div class="experience-company-details">
+          <h3 class="experience-job-title">${edu.degree}</h3>
+          <p class="experience-company-name">${edu.institution}</p>
+          <div class="experience-meta">
+            <span class="experience-date">
+              <ion-icon name="calendar-outline"></ion-icon>
+              ${edu.date}
+            </span>
+            <span class="experience-location">
+              <ion-icon name="location-outline"></ion-icon>
+              ${edu.location}
+            </span>
+          </div>
+          ${edu.certificate ? `
+            <div style="margin-top: 0.5rem;">
+              <a href="${edu.certificate}" target="_blank" class="certificate-link">
+                <ion-icon name="document-outline"></ion-icon> View Certificate
+              </a>
+            </div>` : ''}
+        </div>
+      </div>
+    </div>
+
+    ${edu.description ? `
+    <div class="experience-card-content">
+      <div class="experience-section">
+        <h4 class="experience-section-title">
+          <ion-icon name="school-outline"></ion-icon>
+          Education Highlights
+        </h4>
+        <ul class="experience-points">
+          ${edu.description.map(point => `<li class="experience-point">${point}</li>`).join('')}
+        </ul>
+      </div>
+    </div>` : ''}
+  `;
+}
+
+// --- Helper: Render Card Content for Certifications ---
+function renderCertificationCardContent(cert) {
+  const isExpired = cert.expires && new Date(cert.expires) < new Date();
+  return `
+    <div class="experience-card-header">
+      <div class="experience-company-info">
+        <div class="experience-company-logo">
+          <a href="${getEntityUrl(cert.issuingAuthority)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${cert.issuingAuthority}">
+            <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo" onerror="this.onerror=null;this.style.display='none';" />
+          </a>
+        </div>
+        <div class="experience-company-details">
+          <h3 class="experience-job-title">${cert.name}</h3>
+          <p class="experience-company-name">${cert.issuingAuthority}</p>
+          <div class="experience-meta">
+             ${cert.id ? `<span class="experience-id"><ion-icon name="${cert.type === 'License' ? 'document-text-outline' : 'ribbon-outline'}"></ion-icon> ID: ${cert.id}</span>` : ''}
+             ${cert.issued ? `<span class="experience-date"><ion-icon name="calendar-outline"></ion-icon> Issued: ${cert.issued}</span>` : ''}
+             ${cert.expires ? `<span class="experience-date" style="${isExpired ? 'color: #ef4444;' : ''}"><ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon> ${isExpired ? 'Expired: ' + cert.expires : 'Expires: ' + cert.expires}</span>` : ''}
+             ${cert.location ? `<span class="experience-location"><ion-icon name="location-outline"></ion-icon> ${cert.location}</span>` : ''}
+          </div>
+           ${cert.pdfUrl ? `
+            <div style="margin-top: 0.5rem;">
+              <a href="${cert.pdfUrl}" target="_blank" class="certificate-link">
+                <ion-icon name="document-outline"></ion-icon> View Credential
+              </a>
+            </div>` : ''}
+        </div>
+      </div>
+    </div>
+    ${cert.description ? `
+    <div class="experience-card-content">
+      <div class="experience-section">
+        <h4 class="experience-section-title">
+          <ion-icon name="information-circle-outline"></ion-icon>
+          About This Credential
+        </h4>
+        <ul class="experience-points">
+          ${cert.description.map(point => `<li class="experience-point">${point}</li>`).join('')}
+        </ul>
+      </div>
+    </div>` : ''}
+    ${cert.courses ? `
+      <div class="experience-card-content" style="margin-top: 1rem;">
+         <div class="experience-section">
+            <h4 class="experience-section-title"><ion-icon name="book-outline"></ion-icon> Courses</h4>
+            <div class="cert-courses" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
+              ${cert.courses.map(course => `<span class="cert-course-item">${course}</span>`).join('')}
             </div>
-          </div>
-          
-          <div class="cert-meta">
-            <span class="cert-meta-item">${intern.startDate} - ${intern.endDate}</span>
-            <span class="cert-meta-item">${intern.location}</span>
-          </div>
-          
-          <div class="experience-section">
-            <p class="experience-point">${intern.description}</p>
-          </div>
-        </li>
-      `).join('')}
-    </ul>
-    
-    <header style="margin-top: 3rem;">
-      <h2 class="h2 article-title">Education</h2>
-    </header>
-    <p class="section-subtitle">My educational foundation – from high school to university degrees that built my <strong>knowledge base</strong> and technical expertise.</p>
-    <ul class="timeline-list">
-      ${data.education.map(edu => `
-        <li class="timeline-item cert-item">
-          <div class="cert-header">
-            <ion-icon name="school-outline" class="cert-icon"></ion-icon>
-            <a href="${getEntityUrl(edu.institution || edu.degree)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${edu.institution}">
-              <img src="${getLogo(edu.institution || edu.degree, '')}" alt="${edu.institution} logo" class="org-logo small" onerror="this.onerror=null;this.style.display='none';" />
-            </a>
-            <div class="cert-content">
-              <h4 class="h4 timeline-item-title">${edu.degree}</h4>
-              <span class="cert-authority">${edu.institution}</span>
+         </div>
+      </div>
+    ` : ''}
+  `;
+}
+
+// --- MASTER FUNCTION: Generate Toggleable Section HTML ---
+function generateSectionHTML({
+  idPrefix,       // e.g., 'exp', 'intern', 'edu', 'cert'
+  title,          // e.g., 'Professional Experience'
+  subtitle,       // e.g., 'My career journey...'
+  items,          // Array of data items
+  isFirst,        // Boolean: is this the first section on the page?
+  getItemTitle,   // Function(item) -> string (for sidebar)
+  getItemSubtitle,// Function(item) -> string (for sidebar)
+  renderCard      // Function(item) -> html string (for content)
+}) {
+
+  // 1. Grid View (Sidebar) - ACTIVE by default
+  const gridViewHtml = `
+    <div class="section-view-container active" id="${idPrefix}-grid-view">
+      <div class="section-tabs-wrapper">
+        <div class="section-sidebar-list">
+          ${items.map((item, i) => `
+            <button class="section-sidebar-btn ${i === 0 ? 'active' : ''}" 
+                    data-tab-group="${idPrefix}" 
+                    data-tab-index="${i}">
+              <span class="sidebar-btn-title">${getItemTitle(item)}</span>
+              <span class="sidebar-btn-subtitle">${getItemSubtitle(item)}</span>
+            </button>
+          `).join('')}
+        </div>
+        <div class="section-tab-content-area">
+          ${items.map((item, i) => `
+            <div class="section-tab-panel ${i === 0 ? 'active' : ''}" id="${idPrefix}-panel-${i}">
+              <div class="experience-card">
+                ${renderCard(item)}
+              </div>
             </div>
+          `).join('')}
+        </div>
+      </div>
+    </div>
+  `;
+
+  // 2. List View - Hidden by default
+  const listViewHtml = `
+    <div class="section-view-container" id="${idPrefix}-list-view">
+      <div class="experience-container">
+        ${items.map((item) => `
+          <div class="experience-card">
+            ${renderCard(item)}
           </div>
-          
-          <div class="cert-meta">
-            <span class="cert-meta-item">${edu.date}</span>
-          </div>
-          
-          ${edu.certificate ? `<a href="${edu.certificate}" target="_blank" class="certificate-link">
-            <ion-icon name="document-outline"></ion-icon> View Certificate
-          </a>` : ''}
-        </li>
-      `).join('')}
-    </ul>
-    
-    <header style="margin-top: 3rem;">
-      <h2 class="h2 article-title">Licenses & Certifications</h2>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
+  return `
+    <header>
+      <div class="section-header-flex ${isFirst ? 'first-section' : ''}">
+        <h2 class="h2 article-title">${title}</h2>
+        ${isFirst ? `
+        <div class="section-view-controls">
+          <button class="view-toggle-btn" data-target-group="experience-all" data-view="list">
+            <ion-icon name="list-outline"></ion-icon> List
+          </button>
+          <button class="view-toggle-btn active" data-target-group="experience-all" data-view="grid">
+            <ion-icon name="grid-outline"></ion-icon> Grid
+          </button>
+        </div>
+        ` : ''}
+      </div>
+      ${subtitle ? `<p class="section-subtitle">${subtitle}</p>` : ''}
     </header>
-    <p class="section-subtitle">Professional credentials – <strong>licenses</strong> and certifications that validate my expertise and commitment to industry standards.</p>
-    <ul class="timeline-list">
-      ${data.certifications.map(cert => {
-    const isExpired = cert.expires && new Date(cert.expires) < new Date();
-    const iconName = cert.type === 'License' ? 'card-outline' : 'ribbon-outline';
-    const viewText = `View ${cert.type}`;
-    return `
-        <li class="timeline-item cert-item">
-          <div class="cert-header">
-            <ion-icon name="${iconName}" class="cert-icon"></ion-icon>
-            <a href="${getEntityUrl(cert.issuingAuthority)}" target="_blank" class="logo-link">
-              <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo small" onerror="this.onerror=null;this.style.display='none';" />
-            </a>
-            <div class="cert-content">
-              <h4 class="h4 timeline-item-title">${cert.name}</h4>
-              <span class="cert-authority">${cert.issuingAuthority}</span>
-              ${cert.courses ? `
-                <div class="cert-courses">
-                  ${cert.courses.map(course => `<span class="cert-course-item">${course}</span>`).join('')}
-                </div>
-              ` : ''}
-            </div>
-          </div>
-          
-          <div class="cert-meta">
-            ${cert.id ? `<span class="cert-meta-item">ID: ${cert.id}</span>` : ''}
-            ${cert.issued ? `<span class="cert-meta-item">Issued: ${cert.issued}</span>` : ''}
-            ${cert.expires ? `<span class="cert-meta-item ${isExpired ? 'expired' : ''}">${isExpired ? 'Expired' : 'Expires: ' + cert.expires}</span>` : ''}
-          </div>
-          
-          ${cert.pdfUrl ? `<a href="${cert.pdfUrl}" target="_blank" class="certificate-link">
-            <ion-icon name="document-outline"></ion-icon> ${viewText}
-          </a>` : ''}
-        </li>
-        `;
-  }).join('')}
-    </ul>
+    ${gridViewHtml}
+    ${listViewHtml}
   `;
 }
 
@@ -2516,6 +2737,7 @@ N:HUSAIN;SAYED;AHMED;;
 TEL;TYPE=CELL:${data.mobile}
 EMAIL:${data.email}
 ADR;TYPE=HOME:;;${data.address};;;${data.nationality}
+URL:${data.contact.website}
 URL:${data.contact.linkedin}
 URL:${data.contact.github}
 NOTE:${data.title}
@@ -2605,6 +2827,72 @@ async function generateQRCode() {
 
 // Event Listeners
 function initializeEventListeners() {
+  // --- Generic View Toggle Logic (List vs Grid) ---
+  const viewToggleBtns = document.querySelectorAll('.view-toggle-btn');
+
+  if (viewToggleBtns.length > 0) {
+    viewToggleBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const group = btn.getAttribute('data-target-group'); // e.g., 'exp', 'edu', 'experience-all'
+        const viewType = btn.getAttribute('data-view');      // 'list' or 'grid'
+
+        // 1. Find all buttons in this specific control group
+        const groupBtns = document.querySelectorAll(`.view-toggle-btn[data-target-group="${group}"]`);
+        groupBtns.forEach(b => b.classList.remove('active'));
+
+        // 2. Activate clicked button
+        btn.classList.add('active');
+
+        // 3. Toggle Containers for this group or all experience groups
+        const groupsToToggle = group === 'experience-all' ? ['exp', 'intern', 'edu', 'cert'] : [group];
+
+        groupsToToggle.forEach(g => {
+          const listView = document.getElementById(`${g}-list-view`);
+          const gridView = document.getElementById(`${g}-grid-view`);
+
+          if (viewType === 'list') {
+            listView.classList.add('active');
+            gridView.classList.remove('active');
+          } else {
+            listView.classList.remove('active');
+            gridView.classList.add('active');
+          }
+        });
+      });
+    });
+  }
+
+  // --- Generic Sidebar Tab Logic ---
+  const sidebarBtns = document.querySelectorAll('.section-sidebar-btn');
+
+  if (sidebarBtns.length > 0) {
+    sidebarBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const group = btn.getAttribute('data-tab-group'); // e.g., 'exp', 'edu'
+        const index = btn.getAttribute('data-tab-index'); // e.g., '0', '1'
+
+        // 1. Deactivate all buttons in this specific sidebar group
+        const groupSidebarBtns = document.querySelectorAll(`.section-sidebar-btn[data-tab-group="${group}"]`);
+        groupSidebarBtns.forEach(b => b.classList.remove('active'));
+
+        // 2. Activate clicked button
+        btn.classList.add('active');
+
+        // 3. Switch Panel
+        // First hide all panels in this group
+        // We find the parent wrapper's content area, then the panels
+        const container = document.getElementById(`${group}-grid-view`);
+        const panels = container.querySelectorAll('.section-tab-panel');
+        panels.forEach(p => p.classList.remove('active'));
+
+        // Show target panel
+        const targetPanel = document.getElementById(`${group}-panel-${index}`);
+        if (targetPanel) {
+          targetPanel.classList.add('active');
+        }
+      });
+    });
+  }
   // Define allItems to match the rendering order
   const allItems = [
     ...data.professionalJourney.education.map(item => ({ ...item, category: 'education' })),
