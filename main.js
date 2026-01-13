@@ -1243,7 +1243,6 @@ function renderExperienceSection() {
       ${data.professionalJourney.internships.map(intern => `
         <li class="timeline-item cert-item">
           <div class="cert-header">
-            <ion-icon name="construct-outline" class="cert-icon"></ion-icon>
             <a href="${getEntityUrl(intern.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${intern.company}">
               <img src="${getLogo(intern.company, '')}" alt="${intern.company} logo" class="org-logo small" onerror="this.onerror=null;this.style.display='none';" />
             </a>
@@ -1892,6 +1891,11 @@ function renderProfessionalJourneySection() {
           </g>
         `;
     })()}
+
+      <!-- Axis Titles -->
+      <text x="${svgWidth / 2}" y="20" text-anchor="middle" fill="var(--text-primary)" font-size="16" font-family="var(--font-sans)" font-weight="bold" class="timeline-title">Professional Timeline</text>
+      <text x="${svgWidth / 2}" y="${svgHeight - 10}" text-anchor="middle" fill="var(--text-secondary)" font-size="12" font-family="var(--font-sans)" class="axis-label axis-x">Time (Year)</text>
+      <text x="10" y="${svgHeight / 2}" text-anchor="middle" fill="var(--text-secondary)" font-size="12" font-family="var(--font-sans)" transform="rotate(-90 10 ${svgHeight / 2})" class="axis-label axis-y">Category</text>
 
     </svg>
   `;
