@@ -683,6 +683,24 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
   ]
 };
 
+// Image Error Handling Function
+function handleImageError(img) {
+  // Prevent infinite loops
+  img.onerror = null;
+
+  // Create placeholder icon based on image class
+  if (img.classList.contains('org-logo') || img.classList.contains('timeline-logo')) {
+    // Company/organization logos - use building icon
+    img.outerHTML = '<ion-icon name="business-outline" class="' + img.className + ' placeholder-icon"></ion-icon>';
+  } else if (img.classList.contains('contact-avatar') || img.alt.includes('avatar') || img.alt.includes('Avatar')) {
+    // Avatar images - use person icon
+    img.outerHTML = '<ion-icon name="person-circle-outline" class="' + img.className + ' placeholder-icon"></ion-icon>';
+  } else {
+    // Generic fallback - use image icon
+    img.outerHTML = '<ion-icon name="image-outline" class="' + img.className + ' placeholder-icon"></ion-icon>';
+  }
+}
+
 // Initialize App
 document.addEventListener('DOMContentLoaded', () => {
   const app = document.getElementById('app');
@@ -714,6 +732,12 @@ document.addEventListener('DOMContentLoaded', () => {
     ${renderContactModal()}
   `;
 
+  // Hide skeleton loading state
+  const skeletonWrapper = document.querySelector('.skeleton-wrapper');
+  if (skeletonWrapper) {
+    skeletonWrapper.classList.add('hide');
+  }
+
   // After rendering: attach any missing logos (uses workspace local assets when available)
   try {
     // Add images to certification headers (anchor + image) and remove placeholder icon
@@ -733,7 +757,7 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = logoSrc;
         img.alt = `${authority} logo`;
         img.className = 'org-logo small cert-icon';
-        img.onerror = function () { this.style.display = 'none'; };
+        img.onerror = function () { handleImageError(this); };
         a.appendChild(img);
         header.insertBefore(a, header.firstChild);
       }
@@ -759,7 +783,7 @@ document.addEventListener('DOMContentLoaded', () => {
         img.src = logoSrc;
         img.alt = `${name} logo`;
         img.className = 'org-logo small';
-        img.onerror = function () { this.style.display = 'none'; };
+        img.onerror = function () { handleImageError(this); };
         a.appendChild(img);
         item.insertBefore(a, item.firstChild);
       }
@@ -905,7 +929,7 @@ function renderSidebar() {
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
         <figure class="avatar-box">
-          <img src="${data.avatar}" alt="${data.name}" width="80" onerror="this.onerror=null;">
+          <img src="${data.avatar}" alt="${data.name}" width="80" loading="lazy" onerror="handleImageError(this)">
         </figure>
         <div class="action-buttons">
           <button class="action-btn primary">
@@ -1111,7 +1135,7 @@ const renderTechLogos = (techArr = []) => {
       const whiteSrcs = ['rust', 'socketdotio', 'github', 'jsonwebtokens', 'markdown', 'apple', 'dns', 'key', 'websocket', 'apollographql', '1822940', '9784550', '8654207', 'bash', 'framermotion', 'framer'];
       const isWhite = whiteSrcs.some(s => entry.src.includes(s));
       const filter = isWhite ? 'filter: brightness(0) invert(1);' : '';
-      iconHtml = `<img src="${entry.src}" alt="${orig}" class="tech-logo-svg" style="${size}${filter ? ' ' + filter : ''}" />`;
+      iconHtml = `<img src="${entry.src}" alt="${orig}" class="tech-logo-svg" style="${size}${filter ? ' ' + filter : ''}" loading="lazy" />`;
     } else if (entry.type === 'devicon') {
       iconHtml = `<i class="devicon ${entry.class}"></i>`;
     } else if (entry.type === 'simple') {
@@ -1151,7 +1175,7 @@ function renderNavbar() {
   return `
     <nav class="navbar" id="navbar">
       <div class="nav-logo">
-        <img src="${data.avatar}" alt="Avatar" class="nav-avatar">
+        <img src="${data.avatar}" alt="Avatar" class="nav-avatar" loading="lazy">
         <span class="full-name">WELCOME!</span>
         <span class="short-name">SAYED</span>
       </div>
@@ -1181,7 +1205,7 @@ function renderAboutSection() {
     <div class="about-profile-header">
         <div class="about-avatar-section">
         <div class="avatar-box">
-          <img src="${data.avatar}" alt="${data.name}" width="140" height="140" onerror="this.onerror=null;">
+          <img src="${data.avatar}" alt="${data.name}" width="140" height="140" loading="lazy" onerror="handleImageError(this)">
         </div>
         <div class="about-profile-info">
           <h1>${data.name}</h1>
@@ -1232,7 +1256,7 @@ function renderExperienceCardContent(job) {
       <div class="experience-company-info">
         <div class="experience-company-logo">
           <a href="${getEntityUrl(job.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${job.company}">
-            <img src="${getLogo(job.company, '')}" alt="${job.company} logo" class="org-logo" onerror="this.onerror=null;this.style.display='none';" />
+            <img src="${getLogo(job.company, '')}" alt="${job.company} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
           </a>
         </div>
         <div class="experience-company-details">
@@ -1354,7 +1378,7 @@ function renderInternshipCardContent(intern) {
       <div class="experience-company-info">
         <div class="experience-company-logo">
           <a href="${getEntityUrl(intern.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${intern.company}">
-            <img src="${getLogo(intern.company, '')}" alt="${intern.company} logo" class="org-logo" onerror="this.onerror=null;this.style.display='none';" />
+            <img src="${getLogo(intern.company, '')}" alt="${intern.company} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
           </a>
         </div>
         <div class="experience-company-details">
@@ -1388,7 +1412,7 @@ function renderEducationCardContent(edu) {
       <div class="experience-company-info">
         <div class="experience-company-logo">
           <a href="${getEntityUrl(edu.institution)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${edu.institution}">
-            <img src="${getLogo(edu.institution || edu.degree, '')}" alt="${edu.institution} logo" class="org-logo" onerror="this.onerror=null;this.style.display='none';" />
+            <img src="${getLogo(edu.institution || edu.degree, '')}" alt="${edu.institution} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
           </a>
         </div>
         <div class="experience-company-details">
@@ -1437,7 +1461,7 @@ function renderCertificationCardContent(cert) {
       <div class="experience-company-info">
         <div class="experience-company-logo">
           <a href="${getEntityUrl(cert.issuingAuthority)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${cert.issuingAuthority}">
-            <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo" onerror="this.onerror=null;this.style.display='none';" />
+            <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
           </a>
         </div>
         <div class="experience-company-details">
@@ -1774,7 +1798,7 @@ function renderInteractiveTechLogos(techArr = [], type) {
       const whiteSrcs = ['rust', 'socketdotio', 'github', 'jsonwebtokens', 'markdown', 'apple', 'dns', 'key', 'websocket', 'apollographql', '1822940', '9784550', '8654207', 'bash', 'framermotion', 'framer'];
       const isWhite = whiteSrcs.some(s => iconDef.src.includes(s));
       const filter = isWhite ? 'filter: brightness(0) invert(1);' : '';
-      iconHtml = `<img src="${iconDef.src}" alt="${orig}" class="tech-logo-svg" style="${size}${filter ? ' ' + filter : ''}" />`;
+      iconHtml = `<img src="${iconDef.src}" alt="${orig}" class="tech-logo-svg" style="${size}${filter ? ' ' + filter : ''}" loading="lazy" />`;
     } else if (iconDef.type === 'devicon') {
       // Uniform size for all logos
       const size = 'font-size: 1.5em;';
@@ -2282,7 +2306,7 @@ function renderEducationSection() {
           <div class="cert-header">
             <ion-icon name="${iconName}" class="cert-icon"></ion-icon>
             <a href="${getEntityUrl(cert.issuingAuthority)}" target="_blank" class="logo-link">
-              <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo small" onerror="this.onerror=null;this.style.display='none';" />
+              <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo small" loading="lazy" onerror="handleImageError(this)" />
             </a>
             <div class="cert-content">
               <h4 class="h4 timeline-item-title">${cert.name}</h4>
@@ -2648,7 +2672,7 @@ function initializeTimeline() {
     ];
 
     const items = new vis.DataSet(allItems.map((item, index) => {
-      const logoHtml = item.logo ? `<img src="${item.logo}" class="timeline-logo" onerror="this.style.display='none'">` : '';
+      const logoHtml = item.logo ? `<img src="${item.logo}" class="timeline-logo" loading="lazy" onerror="handleImageError(this)">` : '';
       const subtitle = item.institution || item.company || item.issuer || '';
       const content = `<div class="tl-item">${logoHtml}<div class="tl-meta"><div class="tl-title">${item.title}</div>${subtitle ? `<div class="tl-sub">${subtitle}</div>` : ''}</div></div>`;
       return {
@@ -2700,7 +2724,7 @@ function renderContactModal() {
           <div class="modal-columns">
             <div class="modal-left">
               <div class="contact-info">
-                <img src="${data.avatar}" alt="${data.name}" class="contact-avatar">
+                <img src="${data.avatar}" alt="${data.name}" class="contact-avatar" loading="lazy">
                 <h4>${data.name}</h4>
                 <p><ion-icon name="mail-outline"></ion-icon> ${data.email}</p>
                 <p><ion-icon name="call-outline"></ion-icon> ${data.mobile}</p>
@@ -2858,7 +2882,38 @@ function initializeEventListeners() {
             gridView.classList.add('active');
           }
         });
+
+        // Save preference to localStorage
+        if (group === 'experience-all') {
+          localStorage.setItem('viewPreference', viewType);
+        }
       });
+    });
+  }
+
+  // --- Load View Preference from localStorage ---
+  const savedView = localStorage.getItem('viewPreference');
+  if (savedView) {
+    const groups = ['exp', 'intern', 'edu', 'cert'];
+    groups.forEach(g => {
+      const listView = document.getElementById(`${g}-list-view`);
+      const gridView = document.getElementById(`${g}-grid-view`);
+      if (savedView === 'list') {
+        listView.classList.add('active');
+        gridView.classList.remove('active');
+      } else {
+        listView.classList.remove('active');
+        gridView.classList.add('active');
+      }
+    });
+    // Update button states
+    const groupBtns = document.querySelectorAll('.view-toggle-btn[data-target-group="experience-all"]');
+    groupBtns.forEach(btn => {
+      if (btn.getAttribute('data-view') === savedView) {
+        btn.classList.add('active');
+      } else {
+        btn.classList.remove('active');
+      }
     });
   }
 
@@ -3568,4 +3623,26 @@ function initializeEventListeners() {
       });
     });
   });
+
+  // --- Back to Top Button ---
+  const backToTopBtn = document.getElementById('back-to-top');
+
+  if (backToTopBtn) {
+    // Show/hide button based on scroll position
+    window.addEventListener('scroll', () => {
+      if (window.pageYOffset > 500) {
+        backToTopBtn.classList.add('visible');
+      } else {
+        backToTopBtn.classList.remove('visible');
+      }
+    });
+
+    // Smooth scroll to top when clicked
+    backToTopBtn.addEventListener('click', () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth'
+      });
+    });
+  }
 }

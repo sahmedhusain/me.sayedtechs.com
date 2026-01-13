@@ -6,9 +6,17 @@
     <meta name="description" content="Sayed Ahmed Husain - Electrical Engineer & Full-Stack Developer Portfolio">
     <meta name="author" content="Sayed Ahmed Husain">
     <meta name="keywords" content="Electrical Engineer, Full-Stack Developer, Go, JavaScript, React, Bahrain">
-    <meta property="og:title" content="Sayed Ahmed Husain">
-    <meta property="og:description" content="Electrical Engineer & Full-Stack Developer building things for the web">
+    <meta property="og:title" content="Sayed Ahmed Husain | Electrical Engineer & Developer">
+    <meta property="og:description" content="Portfolio of an Electrical Engineer bridging the gap to Full-Stack Development.">
+    <meta property="og:image" content="https://sahmedhusain.github.io/me/preview-image.jpg">
+    <meta property="og:url" content="https://sahmedhusain.github.io/me">
     <meta property="og:type" content="website">
+    <meta property="og:site_name" content="Sayed Ahmed Husain Portfolio">
+    <!-- Twitter Card Tags -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Sayed Ahmed Husain | Electrical Engineer & Developer">
+    <meta name="twitter:description" content="Portfolio of an Electrical Engineer bridging the gap to Full-Stack Development.">
+    <meta name="twitter:image" content="https://sahmedhusain.github.io/me/preview-image.jpg">
     <title>Sayed Ahmed Husain</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -27,7 +35,79 @@
     <script src="https://visjs.github.io/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js"></script>
 </head>
 <body>
-    <div id="app"></div>
+    <div id="app">
+        <!-- Skeleton Loading State -->
+        <div class="skeleton-wrapper">
+            <!-- Skeleton Navbar -->
+            <nav class="navbar skeleton-navbar">
+                <div class="nav-logo">
+                    <div class="skeleton-avatar"></div>
+                    <div class="skeleton-text skeleton-title"></div>
+                </div>
+                <div class="nav-links">
+                    <div class="skeleton-text skeleton-nav-item"></div>
+                    <div class="skeleton-text skeleton-nav-item"></div>
+                    <div class="skeleton-text skeleton-nav-item"></div>
+                    <div class="skeleton-text skeleton-nav-item"></div>
+                </div>
+            </nav>
+
+            <!-- Skeleton Main Content -->
+            <div class="main-content">
+                <!-- Skeleton About Section -->
+                <article class="about skeleton-article">
+                    <div class="skeleton-header">
+                        <div class="skeleton-avatar-large"></div>
+                        <div class="skeleton-text-block">
+                            <div class="skeleton-text skeleton-heading"></div>
+                            <div class="skeleton-text skeleton-subheading"></div>
+                            <div class="skeleton-text skeleton-paragraph"></div>
+                            <div class="skeleton-text skeleton-paragraph"></div>
+                        </div>
+                    </div>
+
+                    <div class="skeleton-section">
+                        <div class="skeleton-text skeleton-section-title"></div>
+                        <div class="skeleton-cards">
+                            <div class="skeleton-card">
+                                <div class="skeleton-card-header">
+                                    <div class="skeleton-logo"></div>
+                                    <div class="skeleton-text skeleton-card-title"></div>
+                                </div>
+                                <div class="skeleton-text skeleton-card-subtitle"></div>
+                                <div class="skeleton-text skeleton-card-meta"></div>
+                            </div>
+                            <div class="skeleton-card">
+                                <div class="skeleton-card-header">
+                                    <div class="skeleton-logo"></div>
+                                    <div class="skeleton-text skeleton-card-title"></div>
+                                </div>
+                                <div class="skeleton-text skeleton-card-subtitle"></div>
+                                <div class="skeleton-text skeleton-card-meta"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skeleton-section">
+                        <div class="skeleton-text skeleton-section-title"></div>
+                        <div class="skeleton-skills">
+                            <div class="skeleton-skill-item"></div>
+                            <div class="skeleton-skill-item"></div>
+                            <div class="skeleton-skill-item"></div>
+                            <div class="skeleton-skill-item"></div>
+                            <div class="skeleton-skill-item"></div>
+                            <div class="skeleton-skill-item"></div>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </div>
     <script type="module" src="main.js"></script>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="back-to-top-btn" aria-label="Back to top">
+        <ion-icon name="arrow-up-outline"></ion-icon>
+    </button>
 </body>
 </html>
