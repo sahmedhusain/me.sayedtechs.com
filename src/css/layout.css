@@ -79,7 +79,7 @@ body::before {
   border: 1px solid var(--card-border);
   margin: 2rem;
   padding: 3rem;
-  min-height: calc(100vh - var(--nav-height) - 4rem);
+  min-height: calc(100vh - var(--nav-height) - 8rem);
   animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
 }

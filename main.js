@@ -726,6 +726,7 @@ document.addEventListener('DOMContentLoaded', () => {
     ${renderFooter()}
     ${renderSideElements()}
     ${renderContactModal()}
+    ${renderImagePreviewModal()}
   `;
 
   // Hide skeleton loading state
@@ -899,11 +900,14 @@ function setActivePage(targetPage) {
 
     // Add special animation for contact page
     if (targetPage === 'contact') {
+      document.body.classList.add('contact-active');
       page.classList.add('contact-animate');
       // Remove animation class after animation completes
       setTimeout(() => {
         page.classList.remove('contact-animate');
       }, 800); // Match animation duration
+    } else {
+      document.body.classList.remove('contact-active');
     }
   }
 
@@ -2226,14 +2230,29 @@ function renderSkillsSection() {
 
   // Calculate total months of professional experience and convert to years (rounded to 1 decimal)
   function parseDate(str, fallbackToStart) {
-    // Accepts formats like 'Month YYYY', 'YYYY', or 'Month YYYY — Month YYYY'
     if (!str) return null;
     const parts = str.split('—').map(s => s.trim());
     let dateStr = fallbackToStart ? parts[0] : (parts[1] || parts[0]);
-    // Try to parse 'Month YYYY' or 'YYYY'
+
+    // Manual parsing for "Month YYYY" to support all browsers/mobile
+    const months = {
+      'January': 0, 'February': 1, 'March': 2, 'April': 3, 'May': 4, 'June': 5,
+      'July': 6, 'August': 7, 'September': 8, 'October': 9, 'November': 10, 'December': 11,
+      'Jan': 0, 'Feb': 1, 'Mar': 2, 'Apr': 3, 'Jun': 5, 'Jul': 6, 'Aug': 7, 'Sep': 8, 'Oct': 9, 'Nov': 10, 'Dec': 11
+    };
+
+    const partsDate = dateStr.split(' ');
+    if (partsDate.length === 2) {
+      const monthStr = partsDate[0];
+      const yearStr = partsDate[1];
+      if (months[monthStr] !== undefined && !isNaN(yearStr)) {
+        return new Date(parseInt(yearStr), months[monthStr], 1);
+      }
+    }
+
+    // Fallback for just Year or other formats
     let d = new Date(dateStr);
     if (isNaN(d)) {
-      // Try just the year
       const yearMatch = dateStr.match(/\d{4}/);
       if (yearMatch) d = new Date(parseInt(yearMatch[0], 10), fallbackToStart ? 0 : 11, 1);
     }
@@ -2245,7 +2264,16 @@ function renderSkillsSection() {
     data.experience.forEach(exp => {
       if (exp.date) {
         const start = parseDate(exp.date, true);
-        const end = parseDate(exp.date, false) || new Date();
+
+        let end;
+        // Check if end date is "Present"
+        const dateParts = exp.date.split('—').map(s => s.trim());
+        if (dateParts[1] && dateParts[1].toLowerCase() === 'present') {
+          end = new Date();
+        } else {
+          end = parseDate(exp.date, false) || new Date(); // Fallback to now if parse fails but logic handled in parseDate usually
+        }
+
         if (start && end && end > start) {
           const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
           totalMonths += months;
@@ -2253,7 +2281,20 @@ function renderSkillsSection() {
       }
     });
   }
-  const yearsExp = totalMonths > 0 ? Math.floor(totalMonths / 12) + (totalMonths % 12 > 0 ? '+' : '') : '1';
+
+  // Calculate distinct total years (overlap handling is complex, but simple sum might be desired if roles are concurrent)
+  // Given the resume, roles seem sequential. 
+  // 6.5 years is correct sum.
+
+  const yearsExp = totalMonths > 0 ? (totalMonths / 12).toFixed(1) + '+' : '1+'; // Changed to 1 decimal for accuracy? Or just floor?
+  // User wants "Years", usually integer. Let's stick to Math.floor or toFixed(1) if they want precision.
+  // The original code was: (totalMonths / 12) + (mod > 0 ? '+' : '')
+  // Let's keep it but ensure calculation is correct.
+
+  // Let's use Math.floor(years) but the bug was the input data.
+  const yearsDisplay = totalMonths > 0 ? Math.floor(totalMonths / 12) : 0;
+  const showPlus = (totalMonths % 12) > 0;
+  const finalDisplay = yearsDisplay + (showPlus ? '+' : '');
 
   return `
     <header>
@@ -2294,7 +2335,7 @@ function renderSkillsSection() {
           <div class="stat-label">Engineering Tools</div>
         </div>
         <div class="stat-item">
-          <div class="stat-number" data-target="${yearsExp}">0</div>
+          <div class="stat-number" data-target="${yearsDisplay}">${finalDisplay}</div>
           <div class="stat-label">Years Experience</div>
         </div>
       </div>
@@ -2589,33 +2630,67 @@ function renderContactSection() {
       <div id="form-message"></div>
 
       <form data-form id="contact-form">
-        <div class="input-wrapper">
-          <label for="fullname">Full Name <span style="color: red;">*</span></label>
-          <input type="text" name="fullname" id="fullname" data-form-input placeholder="e.g. Sayed Ahmed" required>
-          <label for="email">Email Address <span style="color: red;">*</span></label>
-          <input type="email" name="email" id="email" data-form-input placeholder="e.g. sayed.ahmed@gmail.com" required>
-        </div>
+        <div class="form-content-wrapper">
+          <div class="form-left-col">
+            <div class="input-wrapper">
+              <label for="fullname">Full Name <span style="color: red;">*</span></label>
+              <input type="text" name="fullname" id="fullname" data-form-input placeholder="e.g. Sayed Ahmed" required>
+            </div>
+            
+            <div class="input-wrapper">
+              <label for="email">Email Address <span style="color: red;">*</span></label>
+              <input type="email" name="email" id="email" data-form-input placeholder="e.g. sayed.ahmed@gmail.com" required>
+            </div>
 
-        <div class="phone-input-wrapper">
-          <label for="phone">Phone Number</label>
-          <div class="phone-fields">
-            <select name="countryCode" id="countryCode">
-              <option value="">Select country code</option>
-              ${countryOptions}
-            </select>
-            <input type="tel" name="phone" id="phone" placeholder="e.g. 3X XXX XXX" pattern="[0-9]*">
+            <div class="phone-input-wrapper">
+              <label for="phone">Phone Number</label>
+              <div class="phone-fields">
+                <select name="countryCode" id="countryCode">
+                  <option value="">Select country code</option>
+                  ${countryOptions}
+                </select>
+                <input type="tel" name="phone" id="phone" placeholder="e.g. 3X XXX XXX" pattern="[0-9]*">
+              </div>
+            </div>
           </div>
-        </div>
 
-        <div class="input-wrapper">
-          <label for="message">Message <span style="color: red;">*</span></label>
-          <textarea name="message" id="message" data-form-input placeholder="e.g. Hello, I'd like to discuss about..." required></textarea>
+          <div class="form-right-col">
+            <div class="input-wrapper" style="height: 100%;">
+              <label for="message">Message <span style="color: red;">*</span></label>
+              <textarea name="message" id="message" data-form-input placeholder="e.g. Hello, I'd like to discuss about..." required style="height: 100%; min-height: 280px;"></textarea>
+            </div>
+          </div>
         </div>
 
         <button type="submit" data-form-btn>
           <span>Send Message</span>
         </button>
       </form>
+      
+      <!-- Contact Page Socials -->
+      <div class="contact-page-socials">
+        <a href="tel:${data.contact.phone}" title="Phone">
+          <ion-icon name="call-outline"></ion-icon>
+        </a>
+        <a href="mailto:${data.contact.email}" title="Email">
+          <ion-icon name="mail-outline"></ion-icon>
+        </a>
+        <a href="${data.contact.linkedin}" target="_blank" title="LinkedIn">
+          <ion-icon name="logo-linkedin"></ion-icon>
+        </a>
+        <a href="https://wa.me/${data.contact.phone.replace(/[^0-9]/g, '')}" target="_blank" title="WhatsApp">
+          <ion-icon name="logo-whatsapp"></ion-icon>
+        </a>
+        <a href="${data.contact.github}" target="_blank" title="GitHub">
+          <ion-icon name="logo-github"></ion-icon>
+        </a>
+        <a href="https://medium.com/@s97ahm" target="_blank" title="Medium">
+          <ion-icon name="logo-medium"></ion-icon>
+        </a>
+        <a href="${data.contact.twitter}" target="_blank" title="X">
+          <span>𝕏</span>
+        </a>
+      </div>
     </section>
   `;
 }
@@ -2774,6 +2849,20 @@ function renderContactModal() {
             </button>
           </div>
         </div>
+      </div>
+    </div>
+  `;
+}
+
+function renderImagePreviewModal() {
+  return `
+    <div class="image-modal" id="image-modal">
+      <div class="overlay" id="image-modal-overlay" style="position: absolute; top:0; left:0; width:100%; height:100%;"></div>
+      <button class="image-modal-close" id="image-modal-close">
+        <ion-icon name="close-outline"></ion-icon>
+      </button>
+      <div class="image-modal-content">
+        <img src="${data.avatar}" alt="${data.name}" class="image-modal-img">
       </div>
     </div>
   `;
@@ -3033,6 +3122,48 @@ function initializeEventListeners() {
       contactModal.classList.add('active');
       document.body.style.overflow = 'hidden';
       generateQRCode();
+    });
+  }
+
+  // Image Preview Modal Logic
+  // Image Preview Modal Logic
+  const avatars = document.querySelectorAll('.avatar-box, .contact-avatar, .nav-avatar img');
+  const imageModal = document.getElementById('image-modal');
+  const imageModalClose = document.getElementById('image-modal-close');
+  const imageModalOverlay = document.getElementById('image-modal-overlay');
+
+  if (avatars.length > 0 && imageModal) {
+    avatars.forEach(avatar => {
+      // Add cursor pointer
+      avatar.style.cursor = 'zoom-in';
+
+      avatar.addEventListener('click', (e) => {
+        // Stop propagation if inside another clickable element
+        e.stopPropagation();
+
+        // Update modal image source to match clicked image
+        const imgSource = avatar.tagName === 'IMG' ? avatar.src : avatar.querySelector('img').src;
+        const modalImg = imageModal.querySelector('.image-modal-img');
+        if (modalImg) modalImg.src = imgSource;
+
+        imageModal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+      });
+    });
+
+    const closeImageModal = () => {
+      imageModal.classList.remove('active');
+      document.body.style.overflow = '';
+    };
+
+    if (imageModalClose) imageModalClose.addEventListener('click', closeImageModal);
+    if (imageModalOverlay) imageModalOverlay.addEventListener('click', closeImageModal);
+
+    // Close on escape key
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && imageModal.classList.contains('active')) {
+        closeImageModal();
+      }
     });
   }
 

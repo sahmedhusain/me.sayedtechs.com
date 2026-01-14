@@ -1,0 +1,36 @@
+/* Hide side elements on Contact page */
+body.contact-active .side-element {
+  display: none !important;
+}
+
+/* Contact Page Social Icons (displayed below form) */
+.contact-page-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 1rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--card-border);
+}
+
+.contact-page-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(100, 255, 218, 0.05);
+  border: 1px solid var(--card-border);
+  border-radius: 50%;
+  font-size: 1.5rem;
+  color: var(--accent);
+  transition: all 0.3s ease;
+}
+
+.contact-page-socials a:hover {
+  background: var(--accent);
+  color: var(--primary);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-glow);
+}

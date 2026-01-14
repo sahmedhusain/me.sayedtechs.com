@@ -4,7 +4,6 @@
 .footer {
   text-align: center;
   padding: 1rem 2rem;
-  border-top: 1px solid var(--card-border);
   margin-top: 2rem;
   background: linear-gradient(180deg, transparent, var(--secondary));
   display: flex;

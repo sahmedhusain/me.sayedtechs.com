@@ -1,0 +1,36 @@
+/* New Form Layout Styles */
+.form-content-wrapper {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 2rem;
+  margin-bottom: 2rem;
+}
+
+.form-left-col {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-right-col {
+  display: flex;
+  flex-direction: column;
+}
+
+/* Adjust existing input wrapper for new layout */
+.input-wrapper {
+  display: flex !important; /* Override current grid if any */
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+@media (max-width: 768px) {
+  .form-content-wrapper {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+
+  .form-right-col textarea {
+    min-height: 200px !important;
+  }
+}

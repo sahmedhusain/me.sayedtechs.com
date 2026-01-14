@@ -26,20 +26,27 @@
 }
 
 form {
-  display: grid;
-  gap: 2rem;
+  display: block; /* Remove grid to allow custom layout */
+  width: 100%;
 }
 
-.input-wrapper {
+.form-content-wrapper {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 1.5rem;
+  gap: 2rem;
+  margin-bottom: 2rem;
 }
 
-@media (max-width: 768px) {
-  .input-wrapper {
-    grid-template-columns: 1fr;
-  }
+.form-left-col {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 100%;
+  gap: 1rem;
+}
+
+.form-right-col {
+  height: 100%;
 }
 
 .input-wrapper {
@@ -51,7 +58,7 @@ form {
 .phone-input-wrapper {
   display: flex;
   flex-direction: column;
-  gap: 0.25rem;
+  gap: 0.5rem;
 }
 
 .phone-fields {
@@ -60,9 +67,17 @@ form {
   gap: 1rem;
 }
 
-@media (max-width: 480px) {
+@media (max-width: 768px) {
+  .form-content-wrapper {
+    grid-template-columns: 1fr;
+  }
+
   .phone-input-wrapper {
     grid-template-columns: 1fr;
+  }
+
+  .phone-fields {
+    grid-template-columns: 1fr; /* Stack phone select and input on small screens */
   }
 }
 
@@ -162,6 +177,8 @@ button[type="submit"] {
   position: relative;
   overflow: hidden;
   box-shadow: 0 4px 20px rgba(100, 255, 218, 0.3);
+  display: block;
+  margin: 0 auto;
 }
 
 button[type="submit"]::before {
@@ -797,4 +814,78 @@ button[type="submit"] span {
     width: 100%;
     justify-content: center;
   }
+}
+
+/* ============================================
+   CONTACT PAGE SOCIALS (Design Enhanced)
+   ============================================ */
+
+/* Hide side elements on Contact page (toggled via JS on body) */
+body.contact-active .side-element {
+  display: none !important;
+}
+
+/* Wrapper for bottom icons */
+.contact-page-socials {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1.5rem;
+  margin-top: 2.5rem; /* Increased spacing */
+  padding-top: 2.5rem;
+  position: relative;
+  flex-wrap: wrap;
+}
+
+/* Stylish Gradient Separator */
+.contact-page-socials::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 150px; /* Short elegant line */
+  height: 2px;
+  background: linear-gradient(90deg, transparent, var(--accent), transparent);
+  border-radius: 2px;
+  opacity: 0.6;
+}
+
+/* Icon Link Styling */
+.contact-page-socials a {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 45px;
+  height: 45px;
+  background: rgba(17, 34, 64, 0.4);
+  border: 1px solid rgba(100, 255, 218, 0.1);
+  border-radius: 50%;
+  font-size: 1.25rem;
+  color: var(--text-secondary);
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Icon Hover State - Glow & Lift */
+.contact-page-socials a:hover {
+  transform: translateY(-5px);
+  background: rgba(100, 255, 218, 0.1);
+  border-color: var(--accent);
+  color: var(--accent);
+  box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+}
+
+/* Active/Focus State */
+.contact-page-socials a:active {
+  transform: translateY(-2px);
+}
+
+/* Fix for X logo text */
+.contact-page-socials a span {
+  font-size: 1.1rem;
+  font-weight: 700;
+  margin-top: -2px;
 }
