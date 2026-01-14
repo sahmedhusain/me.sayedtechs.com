@@ -39,6 +39,7 @@ body {
 /* Scrollbar */
 ::-webkit-scrollbar {
   width: 6px;
+  height: 6px; /* Fix for horizontal scrollbar thickness on mobile */
 }
 
 ::-webkit-scrollbar-track {

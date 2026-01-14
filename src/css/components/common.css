@@ -25,7 +25,7 @@
   justify-content: center;
   gap: 0.5rem;
   padding: 0.75rem 1.25rem;
-  border: none;
+  border: 2px solid transparent;
   border-radius: var(--radius-md);
   font-family: var(--font-sans);
   font-size: 0.85rem;
@@ -102,11 +102,13 @@
 }
 
 @media (max-width: 968px) {
-  .action-buttons {
+  .action-buttons,
+  .about-profile-header .action-buttons {
     width: 100%;
-    flex-direction: column;
-    align-items: stretch;
-    justify-content: flex-start;
+    flex-direction: row; /* Keep row for better look if they fit, or wrap */
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
   }
 }
 

@@ -13,12 +13,14 @@
   justify-content: center;
   align-items: center;
   opacity: 0;
+  visibility: hidden; /* Ensure it is not painted */
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.3s ease, visibility 0.3s ease;
 }
 
 .image-modal.active {
   opacity: 1;
+  visibility: visible;
   pointer-events: auto;
 }
 

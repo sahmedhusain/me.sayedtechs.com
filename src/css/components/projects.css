@@ -9,6 +9,15 @@
   justify-content: center;
 }
 
+@media (max-width: 768px) {
+  .filter-list .filter-btn .filter-text {
+    display: none;
+  }
+  .filter-list .filter-btn {
+    padding: 0.75rem; /* Reduce padding when text is hidden */
+  }
+}
+
 .filter-list .filter-btn {
   background: rgba(17, 34, 64, 0.5);
   border: 1px solid var(--card-border);

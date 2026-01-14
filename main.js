@@ -724,7 +724,6 @@ document.addEventListener('DOMContentLoaded', () => {
       </article>
     </div>
     ${renderFooter()}
-    ${renderSideElements()}
     ${renderContactModal()}
     ${renderImagePreviewModal()}
   `;
@@ -1597,10 +1596,10 @@ function generateSectionHTML({
         ${isFirst ? `
         <div class="section-view-controls">
           <button class="view-toggle-btn" data-target-group="experience-all" data-view="list">
-            <ion-icon name="list-outline"></ion-icon> List
+            <ion-icon name="list-outline"></ion-icon> <span class="view-text">List</span>
           </button>
           <button class="view-toggle-btn active" data-target-group="experience-all" data-view="grid">
-            <ion-icon name="grid-outline"></ion-icon> Grid
+            <ion-icon name="grid-outline"></ion-icon> <span class="view-text">Grid</span>
           </button>
         </div>
         ` : ''}
@@ -1666,7 +1665,7 @@ function renderProjectsSection() {
         <li class="filter-item">
           <button class="filter-btn ${i === 0 ? 'active' : ''}" data-filter-btn="${cat.toLowerCase()}">
             <ion-icon name="${iconMap[cat] || 'grid-outline'}"></ion-icon>
-            ${cat}
+            <span class="filter-text">${cat}</span>
           </button>
         </li>
       `}).join('')}
@@ -2185,23 +2184,23 @@ function renderProfessionalJourneySection() {
       <div class="journey-filters">
         <button class="filter-btn active" data-filter="all">
           <ion-icon name="apps-outline" style="font-size: 1.2em; vertical-align: middle; color: var(--accent);"></ion-icon>
-          <span style="margin-left: 0.4em;">All</span>
+          <span class="filter-text" style="margin-left: 0.4em;">All</span>
         </button>
         <button class="filter-btn" data-filter="education">
           <ion-icon name="school-outline" style="font-size: 1.2em; vertical-align: middle; color: #64ffda;"></ion-icon>
-          <span style="margin-left: 0.4em;">Education</span>
+          <span class="filter-text" style="margin-left: 0.4em;">Education</span>
         </button>
         <button class="filter-btn" data-filter="career">
           <ion-icon name="business-outline" style="font-size: 1.2em; vertical-align: middle; color: #81c784;"></ion-icon>
-          <span style="margin-left: 0.4em;">Career</span>
+          <span class="filter-text" style="margin-left: 0.4em;">Career</span>
         </button>
         <button class="filter-btn" data-filter="internships">
           <ion-icon name="briefcase-outline" style="font-size: 1.2em; vertical-align: middle; color: #ffab91;"></ion-icon>
-          <span style="margin-left: 0.4em;">Internships</span>
+          <span class="filter-text" style="margin-left: 0.4em;">Internships</span>
         </button>
         <button class="filter-btn" data-filter="certifications">
           <ion-icon name="ribbon-outline" style="font-size: 1.2em; vertical-align: middle; color: #ffb74d;"></ion-icon>
-          <span style="margin-left: 0.4em;">Certifications</span>
+          <span class="filter-text" style="margin-left: 0.4em;">Certifications</span>
         </button>
       </div>
       <div class="timeline-chart-container">
@@ -2669,25 +2668,25 @@ function renderContactSection() {
       
       <!-- Contact Page Socials -->
       <div class="contact-page-socials">
-        <a href="tel:${data.contact.phone}" title="Phone">
+        <a href="tel:${data.contact.phone}" data-title="Call me!" aria-label="Call me">
           <ion-icon name="call-outline"></ion-icon>
         </a>
-        <a href="mailto:${data.contact.email}" title="Email">
+        <a href="mailto:${data.contact.email}" data-title="Let's touch!" aria-label="Email me">
           <ion-icon name="mail-outline"></ion-icon>
         </a>
-        <a href="${data.contact.linkedin}" target="_blank" title="LinkedIn">
+        <a href="${data.contact.linkedin}" target="_blank" data-title="Connect!" aria-label="LinkedIn Profile">
           <ion-icon name="logo-linkedin"></ion-icon>
         </a>
-        <a href="https://wa.me/${data.contact.phone.replace(/[^0-9]/g, '')}" target="_blank" title="WhatsApp">
+        <a href="https://wa.me/${data.contact.phone.replace(/[^0-9]/g, '')}" target="_blank" data-title="Chat now!" aria-label="WhatsApp Chat">
           <ion-icon name="logo-whatsapp"></ion-icon>
         </a>
-        <a href="${data.contact.github}" target="_blank" title="GitHub">
+        <a href="${data.contact.github}" target="_blank" data-title="Code here!" aria-label="GitHub Profile">
           <ion-icon name="logo-github"></ion-icon>
         </a>
-        <a href="https://medium.com/@s97ahm" target="_blank" title="Medium">
+        <a href="https://medium.com/@s97ahm" target="_blank" data-title="Read me!" aria-label="Medium Blog">
           <ion-icon name="logo-medium"></ion-icon>
         </a>
-        <a href="${data.contact.twitter}" target="_blank" title="X">
+        <a href="${data.contact.twitter}" target="_blank" data-title="Follow me!" aria-label="X Profile">
           <span>𝕏</span>
         </a>
       </div>

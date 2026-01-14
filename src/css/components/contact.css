@@ -76,8 +76,8 @@ form {
     grid-template-columns: 1fr;
   }
 
-  .phone-fields {
-    grid-template-columns: 1fr; /* Stack phone select and input on small screens */
+  .phone-input-wrapper {
+    grid-template-columns: 1fr;
   }
 }
 
@@ -754,6 +754,27 @@ button[type="submit"] span {
     padding: 0.875rem 1.5rem;
     font-size: 0.9rem;
   }
+
+  .qr-code-container {
+    display: none;
+  }
+
+  /* Force single column layout when QR is hidden */
+  .modal-columns {
+    flex-direction: column;
+    gap: 1.5rem;
+    width: 100%;
+  }
+
+  .modal-left {
+    width: 100%;
+    min-width: unset;
+  }
+
+  .contact-info {
+    width: 100%;
+    padding: 1.5rem;
+  }
 }
 
 @media (max-width: 480px) {
@@ -799,9 +820,7 @@ button[type="submit"] span {
   }
 
   .qr-code-container {
-    padding: 1.5rem;
-    min-height: 240px;
-    width: 100%;
+    display: none;
   }
 
   .modal-actions {
@@ -831,8 +850,8 @@ body.contact-active .side-element {
   justify-content: center;
   align-items: center;
   gap: 1.5rem;
-  margin-top: 2.5rem; /* Increased spacing */
-  padding-top: 2.5rem;
+  margin-top: 3.5rem; /* Increased spacing */
+  padding-top: 3.5rem;
   position: relative;
   flex-wrap: wrap;
 }
@@ -856,26 +875,72 @@ body.contact-active .side-element {
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 45px;
-  height: 45px;
+  width: 55px;
+  height: 55px;
   background: rgba(17, 34, 64, 0.4);
   border: 1px solid rgba(100, 255, 218, 0.1);
   border-radius: 50%;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   color: var(--text-secondary);
   transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
   text-decoration: none;
   position: relative;
-  overflow: hidden;
+  overflow: visible; /* Allow tooltip to show outside */
 }
 
-/* Icon Hover State - Glow & Lift */
+/* Tooltip Text */
+.contact-page-socials a::after {
+  content: attr(data-title);
+  position: absolute;
+  bottom: 125%; /* Position above the icon */
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  background: var(--accent);
+  color: var(--primary);
+  padding: 0.25rem 0.75rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.8rem;
+  font-weight: 600;
+  white-space: nowrap;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Tooltip Arrow */
+.contact-page-socials a::before {
+  content: "";
+  position: absolute;
+  bottom: 115%;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  border-width: 6px;
+  border-style: solid;
+  border-color: var(--accent) transparent transparent transparent;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  z-index: 10;
+  pointer-events: none;
+}
+
+/* Hover State - Glow & Lift & Show Tooltip */
 .contact-page-socials a:hover {
   transform: translateY(-5px);
   background: rgba(100, 255, 218, 0.1);
   border-color: var(--accent);
   color: var(--accent);
   box-shadow: 0 5px 15px rgba(100, 255, 218, 0.2);
+}
+
+.contact-page-socials a:hover::after,
+.contact-page-socials a:hover::before {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0);
 }
 
 /* Active/Focus State */

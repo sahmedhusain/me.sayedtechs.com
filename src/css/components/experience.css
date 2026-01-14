@@ -265,6 +265,15 @@
   color: #000000 !important;
 }
 
+@media (max-width: 768px) {
+  .journey-filters .filter-btn .filter-text {
+    display: none;
+  }
+  .journey-filters .filter-btn {
+    padding: 0.75rem;
+  }
+}
+
 /* Timeline Components */
 .timeline-chart-container {
   display: flex;
@@ -453,6 +462,12 @@
 .view-toggle-btn.active {
   background: rgba(100, 255, 218, 0.1);
   color: var(--accent);
+}
+
+@media (max-width: 768px) {
+  .view-toggle-btn .view-text {
+    display: none;
+  }
 }
 
 .section-view-container {
@@ -1176,6 +1191,26 @@
 
   .experience-section {
     padding: 1rem;
+  }
+
+  /* Centering Fixes for Mobile Cards */
+  .experience-company-info {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+
+  .experience-company-details {
+    padding-right: 0;
+  }
+
+  .experience-meta {
+    justify-content: center;
+  }
+
+  .experience-job-title,
+  .experience-company-name {
+    text-align: center;
   }
 }
 
