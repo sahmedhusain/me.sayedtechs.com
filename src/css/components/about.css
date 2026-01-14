@@ -1,0 +1,279 @@
+/* ============================================
+   ABOUT SECTION
+   ============================================ */
+.about-profile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  padding-bottom: 2rem;
+  border-bottom: 2px solid var(--card-border);
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.about-profile-spacer {
+  display: none;
+}
+
+.about-avatar-section {
+  display: flex;
+  align-items: center;
+  gap: 1rem; /* reduced gap for closer spacing */
+  flex: 1;
+  min-width: 0;
+}
+
+.about-avatar-section .avatar-box {
+  width: 100px; /* reduced size for more space */
+  height: 100px;
+  margin-bottom: 0;
+  border-radius: 50%;
+  overflow: hidden;
+  border: 3px solid var(--accent);
+  box-shadow: 0 8px 22px rgba(0, 0, 0, 0.28);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Prevent flex children from shrinking the avatar */
+.about-avatar-section .avatar-box {
+  flex: 0 0 100px;
+}
+
+.about-avatar-section .avatar-box img,
+.avatar-box img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+  border-radius: 50%;
+  transition: opacity 0.3s ease;
+}
+
+.about-avatar-section .avatar-box:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 35px rgba(0, 0, 0, 0.4);
+}
+
+.about-avatar-section .avatar-box img:hover {
+  opacity: 0.9;
+}
+
+.about-profile-info h1 {
+  font-size: 2rem;
+  color: var(--text-primary);
+  margin-bottom: 0.25rem;
+  font-weight: 800;
+  /* prevent wrapping to avoid each word on new line */
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  z-index: 10;
+  position: relative;
+  display: inline;
+}
+
+/* Allow profile info to shrink properly beside fixed avatar */
+.about-profile-info {
+  min-width: 0;
+  max-width: calc(100% - 110px);
+}
+
+.about-tagline {
+  font-family: var(--font-mono);
+  font-size: 1rem;
+  color: var(--accent);
+  margin: 0 0 0 0.25rem; /* further reduced left margin */
+  line-height: 1.6;
+  /* prevent wrapping */
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: clip;
+  z-index: 10;
+  position: relative;
+  display: inline;
+}
+
+.about-text {
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: var(--text-secondary);
+  margin-bottom: 3rem;
+  animation: fadeIn 0.8s ease-out 0.2s both;
+}
+
+.about-text p {
+  margin-bottom: 1.5rem;
+}
+
+.about-skills {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  list-style: none;
+}
+
+.about-skills li {
+  position: relative;
+  padding-left: 1.5rem;
+  color: var(--text-secondary);
+  font-family: var(--font-mono);
+  font-size: 0.95rem;
+}
+
+.about-skills li::before {
+  content: "▹";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+  font-size: 1.2rem;
+}
+
+.about-text strong {
+  color: var(--text-primary);
+  font-weight: 600;
+}
+
+/* Services Section */
+.service {
+  margin-top: 4rem;
+}
+
+.service-title {
+  margin-bottom: 2rem;
+  color: var(--text-primary);
+}
+
+.service-list {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.service-item {
+  background: linear-gradient(
+    135deg,
+    var(--gradient-start),
+    var(--gradient-end)
+  );
+  border: 1px solid var(--card-border);
+  border-radius: var(--radius-lg);
+  padding: 2rem;
+  transition: var(--transition);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.service-item::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+    circle at top left,
+    var(--accent-light),
+    transparent
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.service-item:hover::before {
+  opacity: 1;
+}
+
+.service-item:hover {
+  transform: translateY(-10px) scale(1.02);
+  box-shadow: var(--shadow-glow);
+  border-color: var(--accent);
+}
+
+.service-icon-box {
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  display: inline-block;
+  animation: float 3s ease-in-out infinite;
+}
+
+.service-content-box {
+  position: relative;
+  z-index: 1;
+}
+
+.service-item-title {
+  color: var(--text-primary);
+  margin-bottom: 0.75rem;
+  font-size: 1.25rem;
+}
+
+.service-item-text {
+  color: var(--text-secondary);
+  line-height: 1.7;
+}
+
+/* About page logo overrides - make specific logos white */
+.about img[src*="rust"],
+.about img[src*="socketdotio"],
+.about img[src*="github"],
+.about img[src*="jsonwebtokens"],
+.about img[src*="markdown"],
+.about img[src*="apple"] {
+  filter: brightness(0) invert(1) !important;
+}
+
+.about .tcp-bg,
+.about .tcp-text,
+.about .tcp-check-bg {
+  fill: white !important;
+}
+
+.about .tcp-check,
+.about .ip-outline {
+  stroke: white !important;
+}
+
+.about .ip-circle,
+.about .ip-text {
+  fill: white !important;
+}
+
+@media (max-width: 968px) {
+  .about-profile-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 1.5rem;
+  }
+
+  .about-profile-spacer {
+    display: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-avatar-section {
+    flex-direction: column;
+    text-align: center;
+    width: 100%;
+  }
+
+  .about-profile-info h1 {
+    font-size: 1.25rem;
+  }
+
+  .about-tagline {
+    font-size: 0.8rem;
+  }
+}
+
+@media (max-width: 580px) {
+  .service-list {
+    grid-template-columns: 1fr;
+  }
+}

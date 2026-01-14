@@ -28,11 +28,7 @@ function loadResources() {
   simpleIcons.rel = 'stylesheet';
   document.head.appendChild(simpleIcons);
 
-  // Stylesheet
-  const style = document.createElement('link');
-  style.rel = 'stylesheet';
-  style.href = 'style.css';
-  document.head.appendChild(style);
+
 
   document.title = 'Sayed Ahmed Husain | Electrical Engineer & Full-Stack Developer';
 }
@@ -51,7 +47,7 @@ const data = {
   email: 'sayedahmed97.sad@gmail.com',
   linkedin: 'linkedin.com/in/97ahm',
   github: 'github.com/sahmedhusain',
-  avatar: 'Personal_picture.JPG',
+  avatar: 'src/assets/Personal_picture.JPG',
 
   // Summary
   summary: `Electrical Engineer and Sales Strategist with specialized expertise in Electrical Engineering for Fire Safety Systems. I bridge the gap between complex technical requirements and business growth, leveraging deep knowledge of NFPA standards and fire alarm system design to secure high-value contracts and manage government tenders across Bahrain.
@@ -189,7 +185,7 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
       institution: 'University of Bahrain',
       location: 'Bahrain',
       date: 'June 2022',
-      certificate: 'Graduation_certificate.jpg',
+      certificate: 'src/assets/Graduation_certificate.jpg',
       description: [
         'Comprehensive engineering education covering electrical systems, power electronics, and control systems.',
         'Specialized coursework in renewable energy, automation, and digital circuit design.',
@@ -218,7 +214,7 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
       location: 'Bahrain',
       id: '48282023',
       issued: 'Apr 2024',
-      pdfUrl: 'SolarPV-NOCN.pdf',
+      pdfUrl: 'src/assets/SolarPV-NOCN.pdf',
       description: [
         'Comprehensive certification for solar photovoltaic system installation and operation.',
         'Covers design, installation, commissioning, and maintenance of solar PV systems.',
@@ -233,7 +229,7 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
       id: 'MEWA Certificate No: 2024-21',
       issued: 'Jul 2024',
       expires: 'Jul 2029',
-      pdfUrl: 'solar-pv-mewa.pdf',
+      pdfUrl: 'src/assets/solar-pv-mewa.pdf',
       description: [
         'Official recognition from Bahrain\'s Ministry of Electricity and Water Affairs.',
         'Validates competence in solar photovoltaic system design and implementation.',
@@ -248,7 +244,7 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
       id: 'EPP/C4597/EL/01-D',
       issued: 'Dec 2022',
       expires: 'Dec 2023',
-      pdfUrl: 'crpep.pdf',
+      pdfUrl: 'src/assets/crpep.pdf',
       description: [
         'Professional engineering license for electrical engineering practice in Bahrain.',
         'Issued by the regulatory body overseeing engineering professions in the country.',
@@ -277,7 +273,7 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
       id: '225607015422',
       issued: 'Jul 2022',
       expires: 'Jul 2024',
-      pdfUrl: 'BLS.pdf',
+      pdfUrl: 'src/assets/BLS.pdf',
       description: [
         'Healthcare provider level CPR and basic life support certification.',
         'Internationally recognized certification from the American Heart Association.',
@@ -467,8 +463,8 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
       name: 'Smart Streetlights',
       type: 'University Graduation Project',
       links: [
-        { text: 'Thesis', url: 'Smart_Street_Lights_-_Final_Report.pdf' },
-        { text: 'Poster', url: 'Smart_streetligts_poster.pdf' }
+        { text: 'Thesis', url: 'src/assets/Smart_Street_Lights_-_Final_Report.pdf' },
+        { text: 'Poster', url: 'src/assets/Smart_streetligts_poster.pdf' }
       ],
       date: 'January 2020 — May 2020',
       points: [
@@ -652,16 +648,16 @@ Currently advancing into Full-Stack Development, I apply this same engineering p
   ],
 
   // Avatar
-  avatar: 'Personal_picture.JPG',
+  avatar: 'src/assets/Personal_picture.JPG',
 
   // Graduation Certificate
-  graduationCertificate: 'Graduation_certificate.jpg',
+  graduationCertificate: 'src/assets/Graduation_certificate.jpg',
 
   // CV URL
-  cvUrl: 'Sayed_Ahmed_Resume.pdf',
+  cvUrl: 'src/assets/Sayed_Ahmed_Resume.pdf',
 
   // vCard URL
-  vCardUrl: 'Sayed Ahmed Husain.vcf',
+  vCardUrl: 'src/assets/Sayed Ahmed Husain.vcf',
 
   // Services
   services: [
@@ -1251,6 +1247,37 @@ function getSectionIcon(sectionName) {
 }
 
 function renderExperienceCardContent(job) {
+  // Helper to calculate duration
+  const getDuration = (dateStr) => {
+    if (!dateStr) return '';
+    const parts = dateStr.split('—').map(s => s.trim());
+    if (parts.length < 2) return '';
+
+    const parseDate = (str) => {
+      if (!str || str.toLowerCase() === 'present') return new Date();
+      return new Date(str);
+    };
+
+    const start = parseDate(parts[0]);
+    const end = parseDate(parts[1]);
+
+    if (isNaN(start) || isNaN(end)) return '';
+
+    let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth()) + 1;
+    if (months < 1) months = 1;
+
+    const years = Math.floor(months / 12);
+    const remMonths = months % 12;
+
+    let res = [];
+    if (years > 0) res.push(`${years} yr${years > 1 ? 's' : ''}`);
+    if (remMonths > 0) res.push(`${remMonths} mo${remMonths > 1 ? 's' : ''}`);
+
+    return res.length > 0 ? ` · ${res.join(' ')}` : '';
+  };
+
+  const duration = getDuration(job.date);
+
   return `
     <div class="experience-card-header">
       <div class="experience-company-info">
@@ -1265,7 +1292,7 @@ function renderExperienceCardContent(job) {
           <div class="experience-meta">
             <span class="experience-date">
               <ion-icon name="calendar-outline"></ion-icon>
-              ${job.date}
+              ${job.date} <span style="opacity: 0.8; font-size: 0.9em;">${duration}</span>
             </span>
             <span class="experience-location">
               <ion-icon name="location-outline"></ion-icon>
@@ -1874,21 +1901,21 @@ function renderSkillBadges(items = [], type) {
 // Helper: prefer local workspace logo files where available
 function getLocalLogoFor(name) {
   const n = (name || '').toLowerCase();
-  if (n.includes('lichfield') || n.includes('lifeco')) return 'lifeco_uk_logo.jpeg';
-  if (n.includes('super fire')) return 'super_fire_and_safety_services_logo.jpeg';
-  if (n.includes('channels by stc') || n.includes('channels')) return 'channels_by_stc_bahrain_logo.jpeg';
-  if (n.includes('zain')) return 'zain_logo.jpeg';
-  if (n.includes('megger')) return 'megger_logo.jpeg';
-  if (n.includes('university of bahrain')) return 'university_of_bahrain_logo.jpeg';
-  if (n.includes('reboot')) return 'reboot_logo.jpeg';
-  if (n.includes('nocn')) return 'nocn_logo.jpeg';
-  if (n.includes('american heart')) return 'american_heart_association_logo.jpeg';
-  if (n.includes('linkedin')) return 'LinkedIn_icon.svg';
-  if (n.includes('golden trust')) return 'golden_trust_logo.jpeg';
-  if (n.includes('crpep')) return 'crpep_logo.jpeg';
-  if (n.includes('council') || n.includes('engineering professions')) return 'crpep_logo.jpeg';
-  if (n.includes('electricity and water') || n.includes('ministry of electricity')) return 'mewa.jpeg';
-  if (n.includes('sheikh isa') || n.includes('secondary school')) return 'moe_highschool.jpeg';
+  if (n.includes('lichfield') || n.includes('lifeco')) return 'src/assets/lifeco_uk_logo.jpeg';
+  if (n.includes('super fire')) return 'src/assets/super_fire_and_safety_services_logo.jpeg';
+  if (n.includes('channels by stc') || n.includes('channels')) return 'src/assets/channels_by_stc_bahrain_logo.jpeg';
+  if (n.includes('zain')) return 'src/assets/zain_logo.jpeg';
+  if (n.includes('megger')) return 'src/assets/megger_logo.jpeg';
+  if (n.includes('university of bahrain')) return 'src/assets/university_of_bahrain_logo.jpeg';
+  if (n.includes('reboot')) return 'src/assets/reboot_logo.jpeg';
+  if (n.includes('nocn')) return 'src/assets/nocn_logo.jpeg';
+  if (n.includes('american heart')) return 'src/assets/american_heart_association_logo.jpeg';
+  if (n.includes('linkedin')) return 'src/assets/LinkedIn_icon.svg';
+  if (n.includes('golden trust')) return 'src/assets/golden_trust_logo.jpeg';
+  if (n.includes('crpep')) return 'src/assets/crpep_logo.jpeg';
+  if (n.includes('council') || n.includes('engineering professions')) return 'src/assets/crpep_logo.jpeg';
+  if (n.includes('electricity and water') || n.includes('ministry of electricity')) return 'src/assets/mewa.jpeg';
+  if (n.includes('sheikh isa') || n.includes('secondary school')) return 'src/assets/moe_highschool.jpeg';
   // Add more mappings here as you add image files to the repo
   return null;
 }
@@ -3028,7 +3055,7 @@ function initializeEventListeners() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'Sayed Ahmed Husain.vcf';
+      a.download = 'src/assets/Sayed Ahmed Husain.vcf';
       a.click();
       URL.revokeObjectURL(url);
     });
@@ -3510,7 +3537,7 @@ function initializeEventListeners() {
   }
 
   // Professional Journey Filters
-  const journeyFilterBtns = document.querySelectorAll('.filter-btn');
+  const journeyFilterBtns = document.querySelectorAll('.journey-filters .filter-btn');
   const timelineDots = document.querySelectorAll('.timeline-dot');
   const timelineBars = document.querySelectorAll('.timeline-bar');
 

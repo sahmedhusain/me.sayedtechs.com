@@ -1,0 +1,119 @@
+/* ============================================
+   SIDE ELEMENTS (Social Links & Email)
+   ============================================ */
+.side-element {
+  position: fixed;
+  bottom: 0;
+  width: 40px;
+  z-index: 10;
+}
+
+.side-element::after {
+  content: "";
+  display: block;
+  width: 1px;
+  height: 90px;
+  background: var(--text-secondary);
+  margin: 0 auto;
+}
+
+.side-left {
+  left: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.side-left a {
+  color: var(--text-secondary);
+  transition: var(--transition-bounce);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: static;
+}
+
+.side-left a ion-icon {
+  font-size: 1.5rem;
+}
+
+.side-left a:hover {
+  color: var(--accent);
+  transform: translateY(-5px);
+  filter: drop-shadow(0 0 8px var(--accent));
+}
+
+.side-right {
+  right: 40px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.5rem;
+}
+
+.side-right a {
+  color: var(--text-secondary);
+  transition: var(--transition-bounce);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: static;
+}
+
+.side-right a ion-icon {
+  font-size: 1.5rem;
+}
+
+.side-right a:hover {
+  color: var(--accent);
+  transform: translateY(-5px);
+  filter: drop-shadow(0 0 8px var(--accent));
+}
+
+.side-right a.x-logo span {
+  font-size: 1.5rem;
+  font-weight: 600;
+  font-family: serif;
+}
+
+.side-right a.discord-logo svg {
+  width: 1.5rem;
+  height: 1.5rem;
+  display: block;
+  color: var(--text-secondary);
+  transition: color 0.2s, transform 0.2s;
+}
+
+.side-right a.discord-logo:hover svg {
+  color: var(--accent);
+  transform: translateY(-5px);
+}
+
+.hover-text {
+  display: block;
+  position: absolute;
+  top: -60px;
+  left: 50%;
+  transform: translateX(-50%);
+  color: var(--accent);
+  font-size: 0.7rem;
+  font-family: var(--font-sans);
+  font-weight: 500;
+  white-space: nowrap;
+  z-index: 11;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  text-shadow: 0 0 4px rgba(100, 255, 218, 0.5);
+}
+
+.side-right a.x-logo .hover-text {
+  font-family: var(--font-sans);
+  font-size: 0.75rem;
+}
+
+@media (max-width: 1024px) {
+  .side-element {
+    display: none;
+  }
+}

@@ -1,0 +1,144 @@
+/* ============================================
+   GLOBAL LAYOUT
+   ============================================ */
+
+/* Animated Background */
+body::before {
+  content: "";
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(
+      circle at 20% 50%,
+      rgba(100, 255, 218, 0.03) 0%,
+      transparent 50%
+    ),
+    radial-gradient(
+      circle at 80% 80%,
+      rgba(100, 255, 218, 0.02) 0%,
+      transparent 50%
+    );
+  pointer-events: none;
+  z-index: 0;
+  animation: bgPulse 15s ease-in-out infinite;
+}
+
+.container {
+  max-width: var(--container-max);
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding: 0 1.5rem;
+  }
+}
+
+.section {
+  padding: var(--section-padding) 0;
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 768px) {
+  .section {
+    padding: 60px 0;
+  }
+}
+
+/* ============================================
+   MAIN CONTENT
+   ============================================ */
+.main-content {
+  margin-left: 0;
+  min-height: 100vh;
+  padding-top: calc(var(--nav-height) + 1rem);
+  max-width: 1500px;
+  margin: 0 auto;
+  padding-left: 2rem;
+  padding-right: 2rem;
+  padding-top: calc(var(--nav-height) + 1rem);
+}
+
+@media (max-width: 768px) {
+  .main-content {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+}
+
+/* Article Container */
+.article {
+  background: var(--glass-bg);
+  -webkit-backdrop-filter: blur(20px);
+  backdrop-filter: blur(20px);
+  border-radius: var(--radius-xl);
+  border: 1px solid var(--card-border);
+  margin: 2rem;
+  padding: 3rem;
+  min-height: calc(100vh - var(--nav-height) - 4rem);
+  animation: fadeInUp 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.25);
+}
+
+@media (max-width: 768px) {
+  .article {
+    margin: 1rem;
+    padding: 2rem 1.5rem;
+  }
+}
+
+article.active {
+  display: block;
+}
+
+article:not(.active) {
+  display: none;
+}
+
+/* Article Header */
+.article-title {
+  color: var(--text-primary);
+  margin-bottom: 2rem;
+  position: relative;
+  display: inline-block;
+  font-size: clamp(1.8rem, 4vw, 2.5rem);
+  /* allow wrapping on narrow screens so the title doesn't vanish */
+  white-space: normal;
+  z-index: 10;
+}
+
+.article-title::after {
+  content: "";
+  position: absolute;
+  bottom: -10px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, var(--accent), transparent);
+  border-radius: 2px;
+}
+
+/* Print Styles */
+@media print {
+  .navbar,
+  .sidebar,
+  .sidebar-toggle,
+  .side-element,
+  .footer {
+    display: none;
+  }
+
+  .main-content {
+    margin-left: 0;
+  }
+
+  .article {
+    box-shadow: none;
+    border: none;
+    page-break-inside: avoid;
+  }
+}

@@ -1,0 +1,25 @@
+/* ============================================
+   FOOTER
+   ============================================ */
+.footer {
+  text-align: center;
+  padding: 1rem 2rem;
+  border-top: 1px solid var(--card-border);
+  margin-top: 2rem;
+  background: linear-gradient(180deg, transparent, var(--secondary));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3rem; /* ensure some height */
+}
+
+.footer-credit {
+  font-family: var(--font-mono);
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.footer-credit a {
+  color: var(--accent);
+  font-weight: 600;
+}

@@ -1,0 +1,232 @@
+/* ============================================
+   COMMON COMPONENTS
+   ============================================ */
+
+/* Action Buttons (Used in About Header & others) */
+.action-buttons {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  width: 100%;
+  margin: 1.5rem 0;
+}
+
+.about-profile-header .action-buttons {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+  margin: 0;
+  justify-content: flex-end;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: var(--radius-md);
+  font-family: var(--font-sans);
+  font-size: 0.85rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.action-btn ion-icon {
+  font-size: 1.25rem;
+  transition: transform 0.3s ease;
+}
+
+.action-btn:hover ion-icon {
+  transform: scale(1.1);
+}
+
+.action-btn.primary {
+  background: var(--accent);
+  color: var(--primary);
+  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+}
+
+.action-btn.primary::before {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: var(--accent-hover);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.5s ease, height 0.5s ease;
+}
+
+.action-btn.primary:hover::before {
+  width: 350px;
+  height: 350px;
+}
+
+.action-btn.primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(100, 255, 218, 0.4);
+}
+
+.action-btn.primary:active {
+  transform: translateY(0);
+}
+
+.action-btn.secondary {
+  background: rgba(100, 255, 218, 0.1);
+  color: var(--accent);
+  border: 2px solid var(--accent);
+}
+
+.action-btn.secondary:hover {
+  background: var(--accent);
+  color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(100, 255, 218, 0.4);
+}
+
+.action-btn.secondary:active {
+  transform: translateY(0);
+}
+
+.action-btn span,
+.action-btn ion-icon {
+  position: relative;
+  z-index: 1;
+}
+
+@media (max-width: 968px) {
+  .action-buttons {
+    width: 100%;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: flex-start;
+  }
+}
+
+/* Organization / Company Logos */
+.org-logo {
+  width: 80px;
+  height: 80px;
+  object-fit: contain;
+  border-radius: 16px;
+  background: linear-gradient(
+    135deg,
+    rgba(100, 255, 218, 0.1),
+    rgba(17, 34, 64, 0.8)
+  );
+  border: 2px solid rgba(100, 255, 218, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(100, 255, 218, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+.org-logo::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(
+    45deg,
+    transparent 30%,
+    rgba(100, 255, 218, 0.1) 50%,
+    transparent 70%
+  );
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.org-logo:hover::before {
+  opacity: 1;
+}
+.org-logo.small {
+  width: 80px;
+  height: 80px;
+  border-radius: 16px;
+}
+.cert-icon {
+  width: 56px;
+  height: 56px;
+  border-radius: 12px;
+}
+.logo-link {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 8px;
+  border-radius: 20px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  text-decoration: none;
+  position: relative;
+}
+.logo-link:hover {
+  transform: translateY(-6px) scale(1.08);
+  box-shadow: 0 16px 48px rgba(100, 255, 218, 0.4);
+}
+.logo-link:hover .org-logo {
+  border-color: rgba(100, 255, 218, 0.6);
+  box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5),
+    0 0 0 3px rgba(100, 255, 218, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+  transform: scale(1.05);
+}
+
+/* Back to Top Button */
+.back-to-top-btn {
+  position: fixed;
+  bottom: 2rem;
+  right: 2rem;
+  background-color: var(--accent);
+  color: var(--primary);
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.5rem;
+  border: none;
+  cursor: pointer;
+  z-index: 99;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(20px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+}
+
+.back-to-top-btn.active {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.back-to-top-btn:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(100, 255, 218, 0.5);
+}
+
+.back-to-top-btn ion-icon {
+  transition: transform 0.3s ease;
+}
+
+.back-to-top-btn:hover ion-icon {
+  transform: translateY(-3px);
+}
+
+@media (max-width: 768px) {
+  .back-to-top-btn {
+    bottom: 1.5rem;
+    right: 1.5rem;
+    width: 40px;
+    height: 40px;
+    font-size: 1.25rem;
+  }
+}
