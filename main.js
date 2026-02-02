@@ -39,7 +39,7 @@ loadResources();
 const data = {
   // Profile Information
   name: 'SAYED AHMED HUSAIN',
-  title: 'Electrical Engineer | Full-stack Developer | "Solar PV - CRPEP – Wireman" Licensed',
+  title: 'Full-stack Developer | Electrical Engineer',
   nationality: 'Bahrain',
   address: 'Northen Governorate, Kingdom of Bahrain',
   qualification: 'Bachelor Degree',
@@ -50,12 +50,14 @@ const data = {
   avatar: 'src/assets/Personal_picture.JPG',
 
   // Summary
-  summary: `Electrical Engineer and Sales Strategist with specialized expertise in Electrical Engineering for Fire Safety Systems. I bridge the gap between complex technical requirements and business growth, leveraging deep knowledge of NFPA standards and fire alarm system design to secure high-value contracts and manage government tenders across Bahrain.
+  summary: `Electrical Engineer transitioning to Full-Stack Development with a strong focus on building secure, scalable web applications. Proficient in Go (Golang), Next.js, React, and TypeScript, with hands-on experience developing real-time solutions using WebSockets. Also skilled in Rust for systems programming.
 
-Currently advancing into Full-Stack Development, I apply this same engineering precision to build robust, scalable software solutions using Go and JavaScript. My goal is to leverage this dual-competency—industrial engineering insight combined with modern software architecture—to develop efficient tools that solve complex real-world challenges.`,
+My background in highly regulated industries—specifically Fire Safety—instills a disciplined approach to reliability and performance. While engineering documentation focuses on regulatory compliance, I apply that same rigor to software documentation, ensuring clarity in system architecture and technical workflows. Furthermore, my experience in Business Development and Administration at LIFECO, combined with my background in the telecom sector at Zain Bahrain and Channels by STC, has enhanced my understanding of market dynamics and customer-centric solutions.
+
+Passionate about bridging the gap between engineering precision and modern software architecture, I am committed to driving digital transformation through innovative full-stack solutions. Leveraging dual expertise in electrical engineering and software development, I create efficient applications that address complex real-world challenges while ensuring robust performance.`,
 
   // Professional Tagline
-  tagline: 'Electrical Engineer | Full-stack Developer',
+  tagline: 'Full-stack Developer | Electrical Engineer',
 
   // Contact Information
   contact: {
@@ -1229,8 +1231,8 @@ function renderAboutSection() {
     </header>
     
     <section class="about-text">
-      <p><strong>Electrical Engineer and Sales Strategist</strong> with specialized expertise in Electrical Engineering for Fire Safety Systems. I bridge the gap between complex technical requirements and business growth, leveraging deep knowledge of <strong>NFPA standards</strong> and fire alarm system design to secure high-value contracts and manage government tenders across Bahrain.</p>
-      <p><strong>Currently advancing into Full-Stack Development</strong>, I apply this same engineering precision to build robust, scalable software solutions using <strong>Go and JavaScript</strong>. My goal is to leverage this dual-competency—industrial engineering insight combined with modern software architecture—to develop efficient tools that solve complex real-world challenges.</p>
+      <p><strong>Electrical Engineer transitioning to Full-Stack Development</strong> with a strong focus on building secure, scalable web applications. Proficient in <strong>Go (Golang), Next.js, React, and TypeScript</strong>, with hands-on experience developing real-time solutions using <strong>WebSockets</strong>. Also skilled in <strong>Rust</strong> for systems programming. My background in highly regulated industries—specifically Fire Safety—instills a disciplined approach to reliability and performance. While engineering documentation focuses on regulatory compliance, I apply that same rigor to software documentation, ensuring clarity in system architecture and technical workflows. Furthermore, my experience in Business Development and Administration at LIFECO, combined with my background in the telecom sector at Zain Bahrain and Channels by STC, has enhanced my understanding of market dynamics and customer-centric solutions.</p>
+      <p><strong>Passionate about bridging the gap between engineering precision and modern software architecture</strong>, I am committed to driving digital transformation through innovative full-stack solutions. Leveraging dual expertise in electrical engineering and software development, I create efficient applications that address complex real-world challenges while ensuring robust performance.</p>
     </section>
   `;
 }
