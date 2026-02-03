@@ -2071,39 +2071,39 @@ window.generateTimelineSVG = function (filter = 'all') {
       ${filter === 'all' ? ['Education', 'Internships', 'Career', 'Certifications'].map((cat, i) => {
     const y = margin.top + ((i + 1) * (chartHeight / 5));
     return `<text x="${margin.left - 15}" y="${y}" text-anchor="end" dominant-baseline="middle" fill="var(--text-secondary)" font-size="14" font-family="var(--font-sans)" font-weight="500">${cat}</text>`;
-  }).join('') : 
-    `<text x="${margin.left - 15}" y="${margin.top + chartHeight / 2}" text-anchor="end" dominant-baseline="middle" fill="var(--text-secondary)" font-size="14" font-family="var(--font-sans)" font-weight="500">${filter.charAt(0).toUpperCase() + filter.slice(1)}</text>`
-  }
+  }).join('') :
+      `<text x="${margin.left - 15}" y="${margin.top + chartHeight / 2}" text-anchor="end" dominant-baseline="middle" fill="var(--text-secondary)" font-size="14" font-family="var(--font-sans)" font-weight="500">${filter.charAt(0).toUpperCase() + filter.slice(1)}</text>`
+    }
       ${Array.from({ length: totalIntervals * 2 + 1 }, (_, i) => {
-    const year = startYear + Math.floor(i / 4);
-    const quarter = i % 4;
-    const month = ['01', '04', '07', '10'][quarter];
-    const x = getXPosition(`${year}-${month}-01`);
-    const isYearStart = quarter === 0;
-    return isYearStart ? `
+      const year = startYear + Math.floor(i / 4);
+      const quarter = i % 4;
+      const month = ['01', '04', '07', '10'][quarter];
+      const x = getXPosition(`${year}-${month}-01`);
+      const isYearStart = quarter === 0;
+      return isYearStart ? `
           <g class="year-marker">
             <line x1="${x}" y1="${margin.top - 15}" x2="${x}" y2="${margin.top + 15}" stroke="var(--text-secondary)" stroke-width="2" opacity="0.5"/>
             <circle cx="${x}" cy="${margin.top}" r="4" fill="var(--accent)" opacity="0.7"/>
             <text x="${x}" y="${margin.top - 25}" text-anchor="middle" fill="var(--text-primary)" font-size="14" font-weight="700" font-family="var(--font-mono)">${year}</text>
           </g>
         ` : '';
-  }).join('')}
+    }).join('')}
       ${filteredItems.map((item, index) => {
-    const dateToUse = item.startDate || item.date;
-    const x = getXPosition(dateToUse);
-    let y = getYPosition(index, filteredItems.length, item);
-    const isCurrent = item.current || (!item.endDate && new Date() < new Date(item.endDate));
-    const categoryColors = {
-      education: '#64ffda',
-      internships: '#ffab91',
-      career: '#81c784',
-      certifications: '#ffb74d'
-    };
-    const color = categoryColors[item.category] || '#64ffda';
-    const isBarItem = ['education', 'internships', 'career'].includes(item.category);
-    const endX = isBarItem && item.endDate ? getXPosition(item.endDate) : x;
+      const dateToUse = item.startDate || item.date;
+      const x = getXPosition(dateToUse);
+      let y = getYPosition(index, filteredItems.length, item);
+      const isCurrent = item.current || (!item.endDate && new Date() < new Date(item.endDate));
+      const categoryColors = {
+        education: '#64ffda',
+        internships: '#ffab91',
+        career: '#81c784',
+        certifications: '#ffb74d'
+      };
+      const color = categoryColors[item.category] || '#64ffda';
+      const isBarItem = ['education', 'internships', 'career'].includes(item.category);
+      const endX = isBarItem && item.endDate ? getXPosition(item.endDate) : x;
 
-    return `
+      return `
           ${isBarItem ? `
           <rect x="${x}" y="${y - 8}" width="${endX - x}" height="16" rx="12"
                 fill="${color}" stroke="var(--primary)" stroke-width="2"
@@ -2131,7 +2131,7 @@ window.generateTimelineSVG = function (filter = 'all') {
           </circle>
           ` : ''}
         `;
-  }).join('')}
+    }).join('')}
       ${(() => {
       const now = new Date();
       const currentX = getXPosition(now.toISOString().split('T')[0]);
