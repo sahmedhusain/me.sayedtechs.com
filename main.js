@@ -73,14 +73,14 @@ Passionate about bridging the gap between engineering precision and modern softw
 
   // Technical Skills
   technicalSkills: {
-    coreEngineering: ['Fire Protections Systems', 'Electrical Installation', 'Solar PV Systems', 'Power Electronics', 'Digital Circuits Design (Arduino, Pi)', 'Electrical Transmission Systems', 'Electrical Testing Equipment'],
+    computerScienceConcepts: ['Algorithms & Data Structures', 'Concurrency & Parallelism', 'Virtual DOM', 'State Management', 'Machine Learning'],
     engineeringSoftware: ['AutoCAD', 'MATLAB', 'Circuit Verse', 'SolidWorks', 'Fusion 360', 'Everycircuit', 'Oracle DB/CRM', 'SAP System'],
     languages: ['JavaScript', 'TypeScript', 'Python', 'Golang', 'Rust', 'C', 'Cpp', 'SQLite', 'HTML5', 'CSS3', 'Dart', 'Flutter'],
     webTechnologies: ['React', 'Next.js', 'Node.js', 'Tailwind CSS', 'GraphQL', 'Apollo Client', 'WebSockets', 'PostgreSQL', 'MySQL', 'Firebase', 'NPM', 'MCP', 'Vite', 'Jest', 'ESLint'],
     systemsAndTools: ['Git', 'GitHub', 'VS Code', 'Docker', 'AWS', 'Postman', 'Figma', 'Mermaid', 'Markdown', 'Linux', 'WSL', 'macOS', 'Windows', 'Android', 'Xcode', 'Android Studio', 'TCP/IP', 'JSON', 'REST APIs', 'OAuth2', 'JWT'],
     systems: ['Linux', 'Raspberry Pi', 'macOS', 'Windows', 'Android'],
     tools: ['Git', 'GitHub', 'VS Code', 'Docker', 'AWS', 'Postman', 'Figma', 'Mermaid', 'Markdown', 'Bash', 'Xcode', 'Android Studio', 'TCP/IP', 'JSON', 'REST APIs', 'OAuth2', 'JWT'],
-    computerScienceConcepts: ['Algorithms & Data Structures', 'Concurrency & Parallelism', 'Virtual DOM', 'State Management', 'Machine Learning']
+    coreEngineering: ['Fire Protections Systems', 'Electrical Installation', 'Solar PV Systems', 'Power Electronics', 'Digital Circuits Design (Arduino, Pi)', 'Electrical Transmission Systems', 'Electrical Testing Equipment']
   },
 
   // Personal Skills
@@ -1968,28 +1968,9 @@ function getEntityUrl(name) {
   return '#';
 }
 
-function renderProfessionalJourneySection() {
+// Function to generate timeline SVG dynamically
+window.generateTimelineSVG = function (filter = 'all') {
   const journey = data.professionalJourney;
-
-  // Function to calculate duration in years and months
-  function calculateDuration(startDate, endDate) {
-    if (!startDate || !endDate) return '';
-    const start = new Date(startDate);
-    const end = new Date(endDate);
-    const months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
-    const years = Math.floor(months / 12);
-    const remainingMonths = months % 12;
-
-    if (years === 0) {
-      return `${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
-    } else if (remainingMonths === 0) {
-      return `${years} year${years !== 1 ? 's' : ''}`;
-    } else {
-      return `${years} year${years !== 1 ? 's' : ''} ${remainingMonths} month${remainingMonths !== 1 ? 's' : ''}`;
-    }
-  }
-
-  // Combine all timeline items in the requested order: education, internships, career, certifications
   const allItems = [
     ...journey.education.map(item => ({ ...item, category: 'education' })),
     ...journey.internships.map(item => ({ ...item, category: 'internships' })),
@@ -1997,72 +1978,78 @@ function renderProfessionalJourneySection() {
     ...journey.certifications.map(item => ({ ...item, category: 'certifications', startDate: item.date, endDate: null }))
   ];
 
-  // Calculate timeline dimensions
-  const startYear = 2015;
+  const filteredItems = filter === 'all' ? allItems : allItems.filter(item => item.category === filter);
+
+  if (filteredItems.length === 0) return '';
+
+  let startYear = 2012;
+  if (filter !== 'all' && filteredItems.length > 0) {
+    const dates = filteredItems.map(item => new Date(item.startDate || item.date).getTime()).filter(d => !isNaN(d));
+    if (dates.length > 0) {
+      startYear = new Date(Math.min(...dates)).getFullYear();
+    }
+  }
+
   const currentYear = new Date().getFullYear();
-  const endYear = currentYear + 1; // Dynamic end year with 1 year buffer
+  let endYear = currentYear + 1;
+
+  if (filter !== 'all' && filter !== 'career' && filteredItems.length > 0) {
+    const hasCurrent = filteredItems.some(item => item.current || (item.endDate && new Date(item.endDate) >= new Date()));
+    if (!hasCurrent) {
+      const dates = filteredItems.map(item => {
+        const d = item.endDate || item.startDate || item.date;
+        return d ? new Date(d).getTime() : 0;
+      }).filter(d => d > 0 && !isNaN(d));
+
+      if (dates.length > 0) {
+        endYear = new Date(Math.max(...dates)).getFullYear() + 1;
+      }
+    }
+  }
+
   const totalYears = endYear - startYear;
-  const totalIntervals = totalYears * 2; // 6-month intervals
-  const svgWidth = 1800; // Further increased width for wider chart
-  const svgHeight = 650; // Increased height for better layout
-  const margin = { top: 80, right: 200, bottom: 80, left: 120 };
+  const totalIntervals = totalYears * 2;
+  const svgWidth = 1800;
+  let svgHeight = 450;
+  if (filter !== 'all') {
+    svgHeight = 300;
+  }
+  const margin = { top: 100, right: 120, bottom: 40, left: 160 };
   const chartWidth = svgWidth - margin.left - margin.right;
   const chartHeight = svgHeight - margin.top - margin.bottom;
 
-  // Calculate positions
   const getXPosition = (dateStr) => {
-    if (!dateStr) {
-      console.error('No date provided');
-      return margin.left; // fallback position
-    }
+    if (!dateStr) return margin.left;
     const date = new Date(dateStr);
-    if (isNaN(date.getTime())) {
-      console.error('Invalid date:', dateStr);
-      return margin.left; // fallback position
-    }
-    const startDate = new Date(startYear, 0, 1); // January 1st of start year
-    const endDate = new Date(endYear, 0, 1); // January 1st of end year
+    if (isNaN(date.getTime())) return margin.left;
+    const startDate = new Date(startYear, 0, 1);
+    const endDate = new Date(endYear, 0, 1);
     const totalTime = endDate.getTime() - startDate.getTime();
     const currentTime = date.getTime() - startDate.getTime();
-    const progress = Math.max(0, Math.min(1, currentTime / totalTime)); // Clamp between 0 and 1
-    const x = margin.left + (progress * chartWidth);
-    if (isNaN(x)) {
-      console.error('NaN x position for date:', dateStr, 'progress:', progress);
-      return margin.left; // fallback
-    }
-    return x;
+    const progress = Math.max(0, Math.min(1, currentTime / totalTime));
+    return margin.left + (progress * chartWidth);
   };
 
-  // Assign each item to its own horizontal grid line, with custom offset for high school
   const getYPosition = (index, total, item) => {
-    // High school stays at its current offset (extra 32px)
-    if (item.category === 'education' && item.title && item.title.toLowerCase().includes('high school')) {
-      return margin.top + (index * (chartHeight / Math.max(total - 1, 1))) + 32;
+    if (filter !== 'all') {
+      return margin.top + (chartHeight / 2);
     }
-    // All other items: one grid step lower for each subsequent item
-    return margin.top + ((index + 1) * (chartHeight / Math.max(total, 1)));
+    const categoryOrder = ['education', 'internships', 'career', 'certifications'];
+    const categoryIndex = categoryOrder.indexOf(item.category) + 1;
+    return margin.top + (categoryIndex * (chartHeight / 5));
   };
 
-  // Generate SVG timeline
-  const svgContent = `
+  return `
     <svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}" class="timeline-svg">
-
-
-      <!-- Background gradient -->
       <rect width="${svgWidth}" height="${svgHeight}" fill="url(#timelineGradient)" rx="15" ry="15" opacity="0.1"/>
-
-      <!-- Main timeline line -->
       <line x1="${margin.left}" y1="${margin.top}" x2="${margin.left + chartWidth}" y2="${margin.top}"
             stroke="url(#mainTimelineGradient)" stroke-width="4" opacity="0.8" filter="url(#shadow)">
         <animate attributeName="stroke-dasharray" values="0,${chartWidth};${chartWidth},0" dur="2s" fill="freeze"/>
       </line>
-
-
-      <!-- Grid lines (4 quarters per year) -->
       ${Array.from({ length: totalIntervals * 2 + 1 }, (_, i) => {
     const year = startYear + Math.floor(i / 4);
     const quarter = i % 4;
-    const month = ['01', '04', '07', '10'][quarter]; // Jan, Apr, Jul, Oct
+    const month = ['01', '04', '07', '10'][quarter];
     const x = getXPosition(`${year}-${month}-01`);
     const isYearStart = quarter === 0;
     return `
@@ -2071,18 +2058,22 @@ function renderProfessionalJourneySection() {
             opacity="${isYearStart ? '0.25' : '0.15'}" class="grid-line-vertical"/>
         `;
   }).join('')}
-
-      <!-- Horizontal grid lines -->
-      ${Array.from({ length: allItems.length + 1 }, (_, i) => {
-    const y = margin.top + (i * (chartHeight / Math.max(allItems.length, 1)));
+      ${filter === 'all' ? Array.from({ length: 6 }, (_, i) => {
+    const y = margin.top + (i * (chartHeight / 5));
     return `
           <line x1="${margin.left}" y1="${y}" x2="${margin.left + chartWidth}" y2="${y}"
                 stroke="var(--text-secondary)" stroke-width="1" opacity="0.1" class="grid-line-horizontal"/>
         `;
-  }).join('')}
-
-
-      <!-- Year markers (at Q1 only) -->
+  }).join('') : `
+          <line x1="${margin.left}" y1="${margin.top + chartHeight / 2}" x2="${margin.left + chartWidth}" y2="${margin.top + chartHeight / 2}"
+                stroke="var(--text-secondary)" stroke-width="1" opacity="0.1" class="grid-line-horizontal"/>
+  `} 
+      ${filter === 'all' ? ['Education', 'Internships', 'Career', 'Certifications'].map((cat, i) => {
+    const y = margin.top + ((i + 1) * (chartHeight / 5));
+    return `<text x="${margin.left - 15}" y="${y}" text-anchor="end" dominant-baseline="middle" fill="var(--text-secondary)" font-size="14" font-family="var(--font-sans)" font-weight="500">${cat}</text>`;
+  }).join('') : 
+    `<text x="${margin.left - 15}" y="${margin.top + chartHeight / 2}" text-anchor="end" dominant-baseline="middle" fill="var(--text-secondary)" font-size="14" font-family="var(--font-sans)" font-weight="500">${filter.charAt(0).toUpperCase() + filter.slice(1)}</text>`
+  }
       ${Array.from({ length: totalIntervals * 2 + 1 }, (_, i) => {
     const year = startYear + Math.floor(i / 4);
     const quarter = i % 4;
@@ -2097,12 +2088,10 @@ function renderProfessionalJourneySection() {
           </g>
         ` : '';
   }).join('')}
-
-      <!-- Timeline items -->
-      ${allItems.map((item, index) => {
+      ${filteredItems.map((item, index) => {
     const dateToUse = item.startDate || item.date;
     const x = getXPosition(dateToUse);
-    let y = getYPosition(index, allItems.length, item);
+    let y = getYPosition(index, filteredItems.length, item);
     const isCurrent = item.current || (!item.endDate && new Date() < new Date(item.endDate));
     const categoryColors = {
       education: '#64ffda',
@@ -2111,45 +2100,41 @@ function renderProfessionalJourneySection() {
       certifications: '#ffb74d'
     };
     const color = categoryColors[item.category] || '#64ffda';
-
-    // Determine if this should be a bar (education, internships, career) or dot (certifications)
     const isBarItem = ['education', 'internships', 'career'].includes(item.category);
     const endX = isBarItem && item.endDate ? getXPosition(item.endDate) : x;
-    const logoHref = getLogo(item.company || item.institution || item.issuer || item.title || item.name || '', '');
-    const logoX = x - 16;
-    const logoY = isBarItem ? (y - 26) : (y - 36);
 
     return `
-          <!-- Logos removed from timeline -->
-          <!-- Timeline bar (for education, internships, career) -->
           ${isBarItem ? `
-          <rect x="${x}" y="${y - 6}" width="${endX - x}" height="12" rx="6"
+          <rect x="${x}" y="${y - 8}" width="${endX - x}" height="16" rx="12"
                 fill="${color}" stroke="var(--primary)" stroke-width="2"
                 class="timeline-bar ${item.category} ${isCurrent ? 'current' : ''}"
-                data-category="${item.category}" data-item-index="${index}" filter="url(#glow)" opacity="0.8">
+                data-category="${item.category}" 
+                data-title="${item.title}"
+                data-subtitle="${item.company || item.institution || item.issuer || ''}"
+                data-start-date="${item.startDate || item.date}"
+                data-end-date="${item.endDate || ''}"
+                filter="url(#glow)" opacity="0.8">
             <animate attributeName="width" values="0;${endX - x}" dur="1s" begin="${index * 0.1 + 0.3}s" fill="freeze" />
           </rect>
           ` : ''}
-
-          <!-- Timeline dot (for certifications) -->
           ${!isBarItem ? `
-          <circle cx="${x}" cy="${y}" r="${isCurrent ? '10' : '8'}"
+          <circle cx="${x}" cy="${y}" r="${isCurrent ? '12' : '10'}"
                   fill="${color}" stroke="var(--primary)" stroke-width="3"
                   class="timeline-dot ${item.category} ${isCurrent ? 'current' : ''}"
-                  data-category="${item.category}" data-item-index="${index}" filter="url(#glow)">
-            <animate attributeName="r" values="${isCurrent ? '10;12;10' : '8;10;8'}" dur="2.5s" repeatCount="indefinite" />
+                  data-category="${item.category}" 
+                data-title="${item.title}"
+                data-subtitle="${item.company || item.institution || item.issuer || ''}"
+                data-start-date="${item.startDate || item.date}"
+                data-end-date="${item.endDate || ''}"
+                filter="url(#glow)">
+            <animate attributeName="r" values="${isCurrent ? '12;14;12' : '10;12;10'}" dur="2.5s" repeatCount="indefinite" />
           </circle>
           ` : ''}
-
         `;
   }).join('')}
-
-
-      <!-- Current Date Line (drawn last for visibility) -->
       ${(() => {
       const now = new Date();
       const currentX = getXPosition(now.toISOString().split('T')[0]);
-      console.log('Current date line - Date:', now.toISOString().split('T')[0], 'X position:', currentX, 'SVG width:', svgWidth);
       return `
           <g class="current-date-line-debug">
             <defs>
@@ -2161,21 +2146,20 @@ function renderProfessionalJourneySection() {
                 </feMerge>
               </filter>
             </defs>
-            <!-- Current date vertical line (debug: thick, fully opaque) -->
             <line x1="${currentX}" y1="${margin.top}" x2="${currentX}" y2="${margin.top + chartHeight}"
               stroke="#64ffda" stroke-width="1" filter="url(#currentDateGlow)"
               opacity="0.55" class="current-date-indicator" />
           </g>
         `;
     })()}
-
-      <!-- Axis Titles -->
       <text x="${svgWidth / 2}" y="20" text-anchor="middle" fill="var(--text-primary)" font-size="16" font-family="var(--font-sans)" font-weight="bold" class="timeline-title">Professional Timeline</text>
-      <text x="${svgWidth / 2}" y="${svgHeight - 10}" text-anchor="middle" fill="var(--text-secondary)" font-size="12" font-family="var(--font-sans)" class="axis-label axis-x">Time (Year)</text>
-      <text x="10" y="${svgHeight / 2}" text-anchor="middle" fill="var(--text-secondary)" font-size="12" font-family="var(--font-sans)" transform="rotate(-90 10 ${svgHeight / 2})" class="axis-label axis-y">Category</text>
-
     </svg>
   `;
+};
+
+function renderProfessionalJourneySection() {
+  const journey = data.professionalJourney;
+  const svgContent = window.generateTimelineSVG('all');
 
   return `
     <header>
@@ -2215,13 +2199,13 @@ function renderProfessionalJourneySection() {
 function renderSkillsSection() {
   const categories = [
     { title: 'Personal Skills', icon: '<ion-icon name="person-outline"></ion-icon>', items: data.personalSkills, isTech: false, type: 'personal' },
-    { title: 'Core Engineering', icon: '<ion-icon name="construct-outline"></ion-icon>', items: data.technicalSkills.coreEngineering, isTech: false, type: 'engineering' },
+    { title: 'Computer Science Concepts', icon: '<ion-icon name="bulb-outline"></ion-icon>', items: data.technicalSkills.computerScienceConcepts, isTech: false, type: 'concepts' },
     { title: 'Engineering Software', icon: '<ion-icon name="build-outline"></ion-icon>', items: data.technicalSkills.engineeringSoftware, isTech: true, type: 'software' },
     { title: 'Languages', icon: '<ion-icon name="code-slash-outline"></ion-icon>', items: data.technicalSkills.languages, isTech: true, type: 'languages' },
     { title: 'Web Technologies', icon: '<ion-icon name="globe-outline"></ion-icon>', items: data.technicalSkills.webTechnologies, isTech: true, type: 'web' },
     { title: 'Tools', icon: '<ion-icon name="settings-outline"></ion-icon>', items: data.technicalSkills.tools, isTech: true, type: 'tools' },
     { title: 'Systems', icon: '<ion-icon name="desktop-outline"></ion-icon>', items: data.technicalSkills.systems, isTech: true, type: 'systems' },
-    { title: 'Computer Science Concepts', icon: '<ion-icon name="school-outline"></ion-icon>', items: data.technicalSkills.computerScienceConcepts, isTech: false, type: 'concepts' }
+    // { title: 'Core Engineering', icon: '<ion-icon name="construct-outline"></ion-icon>', items: data.technicalSkills.coreEngineering, isTech: false, type: 'engineering' }
   ];
 
   // Dynamic stats
@@ -3670,8 +3654,46 @@ function initializeEventListeners() {
 
   // Professional Journey Filters
   const journeyFilterBtns = document.querySelectorAll('.journey-filters .filter-btn');
-  const timelineDots = document.querySelectorAll('.timeline-dot');
-  const timelineBars = document.querySelectorAll('.timeline-bar');
+
+  function attachTimelineTooltips() {
+    const timelineElements = document.querySelectorAll('.timeline-dot, .timeline-bar');
+    let tooltip = document.querySelector('.timeline-tooltip');
+
+    if (!tooltip) {
+      tooltip = document.createElement('div');
+      tooltip.className = 'timeline-tooltip';
+      tooltip.style.display = 'none';
+      document.body.appendChild(tooltip);
+    }
+
+    timelineElements.forEach(el => {
+      el.addEventListener('mouseenter', function (e) {
+        const title = this.getAttribute('data-title');
+        const subtitle = this.getAttribute('data-subtitle');
+        const startDate = this.getAttribute('data-start-date');
+        const endDate = this.getAttribute('data-end-date');
+
+        tooltip.innerHTML = `
+            <div class="tooltip-title">${title}</div>
+            <div class="tooltip-subtitle">${subtitle}</div>
+            <div class="tooltip-date">${new Date(startDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${endDate ? new Date(endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Present'}</div>
+          `;
+        tooltip.style.display = 'block';
+      });
+
+      el.addEventListener('mouseleave', function () {
+        tooltip.style.display = 'none';
+      });
+
+      el.addEventListener('mousemove', function (e) {
+        tooltip.style.left = e.pageX + 15 + 'px';
+        tooltip.style.top = e.pageY - 50 + 'px';
+      });
+    });
+  }
+
+  // Initial attachment
+  attachTimelineTooltips();
 
   journeyFilterBtns.forEach(btn => {
     btn.addEventListener('click', function () {
@@ -3681,92 +3703,12 @@ function initializeEventListeners() {
       journeyFilterBtns.forEach(b => b.classList.remove('active'));
       this.classList.add('active');
 
-      // Filter timeline elements
-      timelineDots.forEach(dot => {
-        const category = dot.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          dot.classList.remove('filtered-out');
-          dot.style.opacity = '1';
-        } else {
-          dot.classList.add('filtered-out');
-          dot.style.opacity = '0.2';
-        }
-      });
-
-      timelineBars.forEach(bar => {
-        const category = bar.getAttribute('data-category');
-        if (filter === 'all' || category === filter) {
-          bar.classList.remove('filtered-out');
-          bar.style.opacity = '1';
-        } else {
-          bar.classList.add('filtered-out');
-          bar.style.opacity = '0.2';
-        }
-      });
-    });
-  });
-
-  // Timeline dot click handlers for detailed view
-  timelineDots.forEach((dot) => {
-    // Tooltip functionality
-    const tooltip = document.createElement('div');
-    tooltip.className = 'timeline-tooltip';
-    tooltip.style.display = 'none';
-    document.body.appendChild(tooltip);
-
-    dot.addEventListener('mouseenter', function (e) {
-      const itemIndex = parseInt(this.getAttribute('data-item-index'));
-      const item = allItems[itemIndex];
-      const dateToUse = item.startDate || item.date;
-
-      tooltip.innerHTML = `
-        <div class="tooltip-title">${item.title}</div>
-        <div class="tooltip-subtitle">${item.company || item.institution || item.issuer}</div>
-        <div class="tooltip-date">${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${item.endDate ? new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Present'}</div>
-      `;
-
-      tooltip.style.display = 'block';
-    });
-
-    dot.addEventListener('mouseleave', function () {
-      tooltip.style.display = 'none';
-    });
-
-    dot.addEventListener('mousemove', function (e) {
-      tooltip.style.left = e.pageX + 15 + 'px';
-      tooltip.style.top = e.pageY - 50 + 'px';
-    });
-  });
-
-  // Timeline bar click handlers for detailed view
-  timelineBars.forEach((bar) => {
-    // Tooltip functionality
-    const tooltip = document.createElement('div');
-    tooltip.className = 'timeline-tooltip';
-    tooltip.style.display = 'none';
-    document.body.appendChild(tooltip);
-
-    bar.addEventListener('mouseenter', function (e) {
-      const itemIndex = parseInt(this.getAttribute('data-item-index'));
-      const item = allItems[itemIndex];
-      const dateToUse = item.startDate || item.date;
-
-      tooltip.innerHTML = `
-        <div class="tooltip-title">${item.title}</div>
-        <div class="tooltip-subtitle">${item.company || item.institution || item.issuer}</div>
-        <div class="tooltip-date">${new Date(dateToUse).toLocaleDateString('en-US', { year: 'numeric', month: 'short' })} - ${item.endDate ? new Date(item.endDate).toLocaleDateString('en-US', { year: 'numeric', month: 'short' }) : 'Present'}</div>
-      `;
-
-      tooltip.style.display = 'block';
-    });
-
-    bar.addEventListener('mouseleave', function () {
-      tooltip.style.display = 'none';
-    });
-
-    bar.addEventListener('mousemove', function (e) {
-      tooltip.style.left = e.pageX + 15 + 'px';
-      tooltip.style.top = e.pageY - 50 + 'px';
+      // Generate new SVG
+      const container = document.querySelector('.timeline-chart-container');
+      if (container && window.generateTimelineSVG) {
+        container.innerHTML = window.generateTimelineSVG(filter);
+        attachTimelineTooltips();
+      }
     });
   });
 
