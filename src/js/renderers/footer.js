@@ -2,9 +2,48 @@ import { data } from '../data.js';
 
 export function renderFooter() {
   return `
-    <footer class="footer">
-      <p class="footer-credit">
-        © 2026 <a href="${data.contact.github}" target="_blank">${data.name}</a>. All rights reserved.
+    <footer style="display: flex; justify-content: space-between; align-items: center; padding: 0.8rem 3rem; margin: 2rem auto 1.5rem; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); border-radius: 999px; width: calc(100% - 3rem); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); flex-wrap: wrap; gap: 1.5rem;">
+      <style>
+        .footer-nav-btn {
+          background: none !important;
+          border: none;
+          color: var(--text-secondary);
+          font-family: inherit;
+          font-weight: 600;
+          font-size: 0.95rem;
+          cursor: pointer;
+          padding: 0.5rem 0.8rem;
+          border-radius: 999px;
+          transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+          box-shadow: none !important;
+        }
+        .footer-nav-btn:hover,
+        .footer-nav-btn.active {
+          color: var(--text-primary);
+          background: transparent !important;
+          transform: translateY(-2px);
+          box-shadow: none !important;
+        }
+        .footer-copyright-link {
+          color: inherit;
+          text-decoration: none;
+          transition: all 0.3s ease;
+        }
+        .footer-copyright-link:hover {
+          color: var(--text-primary);
+          text-decoration: underline;
+        }
+      </style>
+      <div class="footer-nav" style="display: flex; gap: 1.8rem; font-family: var(--font-sans); font-weight: 600; font-size: 0.95rem;">
+        <button data-nav-link="home" class="footer-nav-btn">Home</button>
+        <button data-nav-link="about" class="footer-nav-btn">About</button>
+
+
+
+      </div>
+
+      <p style="color: var(--text-secondary); font-size: 0.9rem; margin: 0; font-family: var(--font-sans); font-weight: 500;">
+        © 2026 <a href="${data.contact.github}" target="_blank" class="footer-copyright-link">${data.name}</a>. All rights reserved.
       </p>
     </footer>
   `;

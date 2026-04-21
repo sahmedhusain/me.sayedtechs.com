@@ -53,7 +53,7 @@
 }
 
 .tab-btn:hover {
-  background: rgba(100, 255, 218, 0.05);
+  background: rgba(161, 161, 170, 0.05);
   color: var(--accent);
   border-left-color: var(--accent);
 }
@@ -65,7 +65,7 @@
 }
 
 .tab-btn.active {
-  background: rgba(100, 255, 218, 0.1);
+  background: rgba(161, 161, 170, 0.1);
   color: var(--accent);
   border-left-color: var(--accent);
 }
@@ -154,11 +154,11 @@
   border-radius: 16px;
   background: linear-gradient(
     135deg,
-    rgba(100, 255, 218, 0.1),
+    rgba(161, 161, 170, 0.1),
     rgba(17, 34, 64, 0.8)
   );
-  border: 2px solid rgba(100, 255, 218, 0.2);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(100, 255, 218, 0.1);
+  border: 2px solid rgba(161, 161, 170, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(161, 161, 170, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
@@ -231,7 +231,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(100, 255, 218, 0.1),
+    rgba(161, 161, 170, 0.1),
     transparent
   );
   transform: translateX(-100%);
@@ -396,8 +396,8 @@
 /* Ensure current date line is always on top */
 .timeline-svg .current-date-indicator {
   pointer-events: none;
-  filter: drop-shadow(0 0 16px #64ffda99);
-  stroke: #64ffda;
+  filter: drop-shadow(0 0 16px #ffffff99);
+  stroke: #ffffff;
   stroke-width: 1;
   opacity: 0.55;
 }
@@ -409,7 +409,7 @@
 }
 .timeline-logo-link:hover .timeline-logo {
   transform: scale(1.15);
-  filter: drop-shadow(0 12px 28px rgba(100, 255, 218, 0.4)) brightness(1.2);
+  filter: drop-shadow(0 12px 28px rgba(161, 161, 170, 0.4)) brightness(1.2);
 }
 
 /* Filtered states */
@@ -456,11 +456,11 @@
 
 .view-toggle-btn:hover {
   color: var(--accent);
-  background: rgba(100, 255, 218, 0.05);
+  background: rgba(161, 161, 170, 0.05);
 }
 
 .view-toggle-btn.active {
-  background: rgba(100, 255, 218, 0.1);
+  background: rgba(161, 161, 170, 0.1);
   color: var(--accent);
 }
 
@@ -499,7 +499,7 @@
 }
 
 .section-sidebar-btn:hover {
-  background: rgba(100, 255, 218, 0.05);
+  background: rgba(161, 161, 170, 0.05);
   border-left-color: var(--accent);
 }
 
@@ -725,11 +725,11 @@
 
 .timeline-item:hover {
   transform: translateX(8px);
-  box-shadow: 0 4px 20px rgba(100, 255, 218, 0.25);
+  box-shadow: 0 4px 20px rgba(161, 161, 170, 0.25);
   border-color: var(--accent);
   background: linear-gradient(
     135deg,
-    rgba(100, 255, 218, 0.12),
+    rgba(161, 161, 170, 0.12),
     var(--gradient-end)
   );
 }
@@ -766,7 +766,7 @@
   border: 1px solid var(--accent);
   border-radius: var(--radius-sm);
   transition: var(--transition-bounce);
-  background: rgba(100, 255, 218, 0.1);
+  background: rgba(161, 161, 170, 0.1);
 }
 
 .certificate-link:hover {
@@ -818,13 +818,13 @@
 }
 
 .cert-course-item {
-  background: rgba(100, 255, 218, 0.1);
+  background: rgba(161, 161, 170, 0.1);
   color: var(--accent);
   padding: 0.25rem 0.5rem;
   border-radius: var(--radius-sm);
   font-size: 0.8rem;
   font-weight: 500;
-  border: 1px solid rgba(100, 255, 218, 0.3);
+  border: 1px solid rgba(161, 161, 170, 0.3);
 }
 
 .cert-meta {
@@ -891,8 +891,8 @@
 }
 
 .vis-item.education {
-  background-color: rgba(100, 255, 218, 0.1);
-  border-color: rgba(100, 255, 218, 0.5);
+  background-color: rgba(161, 161, 170, 0.1);
+  border-color: rgba(161, 161, 170, 0.5);
 }
 
 .vis-item.career {
@@ -938,7 +938,7 @@
   color: #8b5cf6;
 }
 .vis-labelset .vis-label.education {
-  color: #64ffda;
+  color: #ffffff;
 }
 
 .vis-labelset .vis-label.internships {
@@ -980,14 +980,14 @@
 }
 
 .experience-card {
-  background: rgba(255, 255, 255, 0.02);
-  border: 1px solid rgba(255, 255, 255, 0.1);
-  border-radius: 1rem;
-  padding: 2rem;
+  background: transparent;
+  border: none;
+  border-radius: 0;
+  padding: 0;
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  overflow: hidden;
-  margin-bottom: 2rem;
+  overflow: visible;
+  margin-bottom: 3rem;
 }
 
 .experience-card::before {
@@ -1003,13 +1003,13 @@
 }
 
 .experience-card:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
-  border-color: rgba(255, 255, 255, 0.2);
+  transform: none;
+  box-shadow: none;
+  border-color: transparent;
 }
 
 .experience-card:hover::before {
-  opacity: 1;
+  opacity: 0;
 }
 
 .experience-card-header {
@@ -1055,7 +1055,7 @@
   justify-content: center;
   color: var(--bg-primary);
   font-size: 1.8rem;
-  box-shadow: 0 8px 16px rgba(100, 255, 218, 0.2);
+  box-shadow: 0 8px 16px rgba(161, 161, 170, 0.2);
   margin-bottom: 0; /* Override potential previous margin */
 }
 
@@ -1111,16 +1111,15 @@
 }
 
 .experience-section {
-  padding: 1.5rem;
-  background: rgba(255, 255, 255, 0.01);
-  border: 1px solid rgba(255, 255, 255, 0.05);
-  border-radius: 0.75rem;
-  transition: all 0.3s ease;
+  padding: 1rem 0;
+  background: transparent;
+  border: none;
+  border-radius: 0;
 }
 
 .experience-section:hover {
-  background: rgba(255, 255, 255, 0.02);
-  border-color: rgba(255, 255, 255, 0.1);
+  background: transparent;
+  border-color: transparent;
 }
 
 .experience-section-title {

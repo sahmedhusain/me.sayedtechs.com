@@ -45,7 +45,7 @@
   background: linear-gradient(
     45deg,
     transparent,
-    rgba(100, 255, 218, 0.03),
+    rgba(161, 161, 170, 0.03),
     transparent
   );
   opacity: 0;
@@ -244,7 +244,7 @@
   background: linear-gradient(
     90deg,
     transparent,
-    rgba(100, 255, 218, 0.2),
+    rgba(161, 161, 170, 0.2),
     transparent
   );
 }

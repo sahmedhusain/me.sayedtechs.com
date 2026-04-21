@@ -125,12 +125,12 @@ export function generateTimelineSVG(filter = 'all') {
       let y = getYPosition(index, filteredItems.length, item);
       const isCurrent = item.current || (!item.endDate && new Date() < new Date(item.endDate));
       const categoryColors = {
-        education: '#64ffda',
+        education: '#ffffff',
         internships: '#ffab91',
         career: '#81c784',
         certifications: '#ffb74d'
       };
-      const color = categoryColors[item.category] || '#64ffda';
+      const color = categoryColors[item.category] || '#ffffff';
       const isBarItem = ['education', 'internships', 'career'].includes(item.category);
       const endX = isBarItem && item.endDate ? getXPosition(item.endDate) : x;
 
@@ -178,7 +178,7 @@ export function generateTimelineSVG(filter = 'all') {
               </filter>
             </defs>
             <line x1="${currentX}" y1="${margin.top}" x2="${currentX}" y2="${margin.top + chartHeight}"
-              stroke="#64ffda" stroke-width="1" filter="url(#currentDateGlow)"
+              stroke="#ffffff" stroke-width="1" filter="url(#currentDateGlow)"
               opacity="0.55" class="current-date-indicator" />
           </g>
         `;
@@ -195,9 +195,15 @@ export function renderProfessionalJourneySection() {
   const svgContent = window.generateTimelineSVG('all');
 
   return `
-    <header>
-      <h2 class="h2 article-title">Professional Journey</h2>
-      <p class="section-subtitle">Explore my professional timeline – from <strong>education</strong> and internships to career milestones and certifications that shaped my expertise. <a href="#journey" class="journey-link">View Full Journey Details</a></p>
+    <header style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
+      <div>
+        <h2 class="h2 article-title">Professional Journey</h2>
+        <p class="section-subtitle">Explore my professional timeline – from <strong>education</strong> and internships to career milestones and certifications that shaped my expertise. <a href="#journey" class="journey-link">View Full Journey Details</a></p>
+      </div>
+      <button class="action-btn primary" id="download-cv-btn" style="padding: 0.6rem 1.2rem; border-radius: var(--radius-md); background: var(--accent); color: white; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-weight: 500; font-size: 0.95rem;">
+        <ion-icon name="download-outline" style="font-size: 1.2rem;"></ion-icon>
+        <span>Download Resume</span>
+      </button>
     </header>
     <section class="professional-journey" id="professional-journey">
       <div class="journey-filters">
@@ -206,7 +212,7 @@ export function renderProfessionalJourneySection() {
           <span class="filter-text" style="margin-left: 0.4em;">All</span>
         </button>
         <button class="filter-btn" data-filter="education">
-          <ion-icon name="school-outline" style="font-size: 1.2em; vertical-align: middle; color: #64ffda;"></ion-icon>
+          <ion-icon name="school-outline" style="font-size: 1.2em; vertical-align: middle; color: #ffffff;"></ion-icon>
           <span class="filter-text" style="margin-left: 0.4em;">Education</span>
         </button>
         <button class="filter-btn" data-filter="career">

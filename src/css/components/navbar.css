@@ -6,10 +6,8 @@
   top: 0;
   left: 0;
   right: 0;
-  height: var(--nav-height);
-  background: var(--overlay);
-  -webkit-backdrop-filter: blur(20px);
-  backdrop-filter: blur(20px);
+  height: 100px;
+  background: transparent;
   z-index: 1000;
   display: flex;
   justify-content: space-between;
@@ -17,13 +15,14 @@
   padding: 0 3rem;
   transition: all 0.35s cubic-bezier(0.4, 0, 0.2, 1);
   border-bottom: 1px solid transparent;
+  pointer-events: none;
 }
+.navbar > * { pointer-events: auto; } /* Ensure buttons and pill stay clickable */
 
 .navbar.scrolled {
-  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
-  border-bottom-color: var(--card-border);
-  height: 70px;
-  background: rgba(10, 25, 47, 0.98);
+  background: transparent;
+  box-shadow: none;
+  border-bottom-color: transparent;
 }
 
 .nav-logo {
@@ -102,31 +101,9 @@
   border: none;
 }
 
-.nav-link::after {
-  content: "";
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  width: 0;
-  height: 2px;
-  background: linear-gradient(90deg, var(--accent), var(--accent-hover));
-  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  border-radius: 2px;
-}
-
 .nav-link:hover,
 .nav-link.active {
-  color: var(--accent);
-}
-
-.nav-link:hover::before,
-.nav-link.active::before {
-  opacity: 1;
-}
-
-.nav-link:hover::after,
-.nav-link.active::after {
-  width: 100%;
+  color: var(--text-primary);
 }
 
 /* Mobile Menu */
@@ -203,7 +180,7 @@
   }
 
   .nav-link:hover {
-    background: rgba(100, 255, 218, 0.1);
+    background: rgba(161, 161, 170, 0.1);
   }
 }
 
@@ -212,4 +189,190 @@
   .navbar {
     padding: 0 1rem;
   }
+}
+
+/* --- Premium Theme Toggle Interactions --- */
+#theme-toggle-btn {
+  position: absolute !important;
+  right: 3rem !important;
+  margin-top: 1.5rem !important;
+  overflow: hidden !important;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  isolation: isolate;
+}
+
+#theme-toggle-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+#theme-toggle-btn:hover {
+  transform: scale(1.1) translateY(-2px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#theme-toggle-btn:hover::before {
+  opacity: 1;
+}
+
+#theme-toggle-btn ion-icon {
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+#theme-toggle-btn:hover ion-icon {
+  transform: rotate(20deg) scale(1.15);
+}
+
+#theme-toggle-btn:active {
+  transform: scale(0.9) translateY(0);
+}
+
+/* Glass shine animation */
+#theme-toggle-btn::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -150%;
+  width: 50%;
+  height: 300%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: 0s;
+}
+
+#theme-toggle-btn:hover::after {
+  left: 150%;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Theme switch animation */
+[data-theme="dark"] #theme-toggle-btn ion-icon {
+  animation: theme-switch-icon 0.6s cubic-bezier(0.34, 1.56, 0.64, 1);
+}
+
+@keyframes theme-switch-icon {
+  0% { transform: scale(0.4) rotate(-120deg); opacity: 0; }
+  100% { transform: scale(1) rotate(0); opacity: 1; }
+}
+
+/* --- Language Dropdown Interactions --- */
+#lang-dropdown-wrapper {
+  position: absolute !important;
+  right: 7.5rem !important;
+  margin-top: 1.5rem !important;
+  z-index: 10001;
+}
+
+#lang-toggle-btn {
+  position: relative !important;
+  overflow: hidden !important;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  isolation: isolate;
+  margin: 0 !important;
+}
+
+#lang-toggle-btn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at center, rgba(255,255,255,0.15) 0%, transparent 70%);
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+#lang-toggle-btn:hover {
+  transform: scale(1.05) translateY(-2px);
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.25);
+  border-color: rgba(255, 255, 255, 0.3) !important;
+}
+
+#lang-toggle-btn:hover::before {
+  opacity: 1;
+}
+
+#lang-toggle-btn:hover ion-icon[name="globe-outline"] {
+  transform: rotate(30deg) scale(1.1);
+}
+
+#lang-toggle-btn::after {
+  content: "";
+  position: absolute;
+  top: -100%;
+  left: -150%;
+  width: 50%;
+  height: 300%;
+  background: linear-gradient(
+    to right,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transform: rotate(45deg);
+  transition: 0s;
+}
+
+#lang-toggle-btn:hover::after {
+  left: 150%;
+  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.lang-option {
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1) !important;
+  background: transparent !important; /* Ensure transparent to show indicator */
+}
+
+.lang-option:hover {
+  transform: translateX(4px);
+}
+
+.lang-option.active span {
+  color: var(--accent);
+}
+
+#lang-indicator-liquid {
+  background: rgba(255, 255, 255, 0.12) !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.2) !important;
+}
+
+/* --- Theme-Aware Indicators (Light Mode Visibility) --- */
+html:not([data-theme="dark"]) #nav-indicator-active,
+[data-theme="light"] #nav-indicator-active {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border: 1px solid rgba(0, 0, 0, 0.08) !important;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+}
+
+html:not([data-theme="dark"]) #nav-indicator-hover,
+[data-theme="light"] #nav-indicator-hover {
+  background: rgba(0, 0, 0, 0.02) !important;
+}
+
+html:not([data-theme="dark"]) #lang-indicator-liquid,
+[data-theme="light"] #lang-indicator-liquid {
+  background: rgba(0, 0, 0, 0.04) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05) !important;
+}
+
+html:not([data-theme="dark"]) .nav-pill-container,
+[data-theme="light"] .nav-pill-container {
+  background: rgba(255, 255, 255, 0.6) !important;
+  border-color: rgba(0, 0, 0, 0.05) !important;
+  backdrop-filter: blur(25px) saturate(200%) !important;
 }

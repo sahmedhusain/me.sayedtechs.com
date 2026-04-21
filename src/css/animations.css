@@ -285,7 +285,7 @@
   0% {
     opacity: 0;
     transform: scale(0.5) rotate(-10deg);
-    filter: drop-shadow(0 0 0px rgba(100, 255, 218, 0));
+    filter: drop-shadow(0 0 0px rgba(161, 161, 170, 0));
   }
   50% {
     transform: scale(1.1) rotate(5deg);
@@ -293,7 +293,7 @@
   100% {
     opacity: 1;
     transform: scale(1) rotate(0deg);
-    filter: drop-shadow(0 0 10px rgba(100, 255, 218, 0.3));
+    filter: drop-shadow(0 0 10px rgba(161, 161, 170, 0.3));
   }
 }
 
@@ -342,7 +342,7 @@
     opacity: 1;
     transform: scale(1) translateY(0);
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2),
-      inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(100, 255, 218, 0.1);
+      inset 0 1px 0 rgba(255, 255, 255, 0.8), 0 0 0 1px rgba(161, 161, 170, 0.1);
   }
 }
 

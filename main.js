@@ -1,10 +1,12 @@
 import { data } from './src/js/data.js';
 import { handleImageError, getLogo, getEntityUrl } from './src/js/utils.js';
 import { renderNavbar } from './src/js/renderers/navbar.js';
-import { renderSidebar, renderAboutSection } from './src/js/renderers/about.js';
+import { renderSidebar, renderAboutSection, renderHomeFeed } from './src/js/renderers/about.js';
 import { renderExperienceSection } from './src/js/renderers/experience.js';
 import { renderProjectsSection } from './src/js/renderers/projects.js';
+import { renderArticlesSection } from './src/js/renderers/articles.js';
 import { renderSkillsSection } from './src/js/renderers/skills.js';
+
 import { renderProfessionalJourneySection } from './src/js/renderers/journey.js';
 import { renderContactSection, renderContactModal } from './src/js/renderers/contact.js';
 import { renderFooter, renderSideElements, renderImagePreviewModal } from './src/js/renderers/footer.js';
@@ -57,19 +59,25 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Render the complete app
   app.innerHTML = `
-    ${renderSidebar()}
-    <div class="main-content">
+    <div class="main-content" style="max-width: 1024px; margin: 0 auto; padding-top: 10rem;">
       ${renderNavbar()}
-      <article class="about active" data-page="about">
-        ${renderAboutSection() + renderProfessionalJourneySection() + renderSkillsSection()}
+      <article class="home active" data-page="home">
+        ${renderHomeFeed()}
+      </article>
+      <article class="about" data-page="about">
+        ${renderAboutSection()}
+      </article>
+      <article class="articles" data-page="articles">
+        ${renderArticlesSection()}
       </article>
       <article class="experience" data-page="journey">
-        ${renderExperienceSection()}
+        ${renderProfessionalJourneySection() + renderExperienceSection() + renderSkillsSection()}
       </article>
       <article class="projects" data-page="projects">
         ${renderProjectsSection()}
       </article>
       <article class="contact" data-page="contact">
+
         ${renderContactSection()}
       </article>
     </div>
@@ -141,8 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
   // Initialize event listeners
   initializeEventListeners();
 
-  // Handle initial hash or default to about
-  const initialPage = window.location.hash.substring(1) || 'about';
+  // Handle initial hash or default to home
+  const initialPage = window.location.hash.substring(1) || 'home';
   setActivePage(initialPage);
 
   // Initialize skills animations

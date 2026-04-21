@@ -47,12 +47,12 @@ body {
 }
 
 ::-webkit-scrollbar-thumb {
-  background: rgba(100, 255, 218, 0.6);
+  background: rgba(161, 161, 170, 0.6);
   border-radius: 4px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(100, 255, 218, 0.8);
+  background: rgba(161, 161, 170, 0.8);
 }
 
 /* Typography */

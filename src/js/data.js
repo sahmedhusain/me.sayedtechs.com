@@ -9,7 +9,7 @@ export const data = {
   email: 'sayedahmed97.sad@gmail.com',
   linkedin: 'linkedin.com/in/97ahm',
   github: 'github.com/sahmedhusain',
-  avatar: 'src/assets/Personal_picture.JPG',
+  avatar: 'src/assets/IMG_2174.PNG',
 
   // Summary
   summary: `Electrical Engineer transitioning to Full-Stack Development with a strong focus on building secure, scalable web applications. Proficient in Go (Golang), Next.js, React, and TypeScript, with hands-on experience developing real-time solutions using WebSockets. Also skilled in Rust for systems programming.
@@ -32,6 +32,18 @@ Passionate about bridging the gap between engineering precision and modern softw
     twitter: 'https://x.com/_97ahm',
     discord: 'https://discord.com/users/s_97ahm'
   },
+
+  // Featured content (LinkedIn style)
+  featured: [
+    {
+      type: 'achievement',
+      title: 'B.Sc. Electrical Engineering',
+      subtitle: 'University of Bahrain • Graduation Portfolio',
+      image: 'src/assets/IMG_2174.PNG',
+      link: '#journey'
+    }
+  ],
+
 
   // Technical Skills
   technicalSkills: {
@@ -365,7 +377,7 @@ Passionate about bridging the gap between engineering precision and modern softw
         endDate: '2026-02-28',
         description: 'Formulate and execute comprehensive Strategic Sales plans and quotas for the Bahrain market, ensuring strict alignment with corporate management objectives. Drive profitability by analyzing market dynamics, tracking competitor activities, and identifying new opportunities to increase revenue and market share. Lead and mentor sales teams, setting clear targets and monitoring performance to ensure sales goals are consistently met or exceeded. Secure high-value deals with public and private sectors by actively managing bids on the Bahrain Tender Board and Procural (Tenders & Auctions Platform). Oversee the end-to-end Vendor Management process, obtaining and maintaining industrial vendor pre-qualifications with key government and private entities. Identify and pursue public and private Government Tenders, managing the submission process to ensure compliance and competitiveness. Cultivate robust relationships with key accounts and expand the customer base by identifying and counseling district sales representatives. Conduct regular client visits to diagnose evolving needs, assess relationship quality, and negotiate pricing to close and renew orders. Establish and nurture critical relationships with Civil Defense and government ministries to facilitate smooth project execution and compliance. Monitor key economic indicators, emerging market trends, and supply and demand shifts to optimize product mix and sales volume. Recommend new product lines and service improvements based on comprehensive market analysis and consumer needs surveys. Maintain technical expertise by participating in professional networks and reviewing industry publications to stay ahead of the curve.',
         icon: 'business-outline',
-        current: true
+        current: false
       }
     ],
     certifications: [
@@ -611,8 +623,47 @@ Passionate about bridging the gap between engineering precision and modern softw
     }
   ],
 
+  // Articles & Writing
+  articles: [
+    {
+      title: "Transitioning from Electrical Engineering to Software",
+      date: new Date(Date.now() - 3600000 * 25).toISOString(),
+      category: "Career",
+      desc: "A reflection on how my background in highly regulated fire safety systems translates to building reliable applications.",
+      readTime: "5 min read"
+    },
+    {
+      title: "Building Real-Time Social Networks",
+      date: new Date(Date.now() - 3600000 * 24 * 6).toISOString(),
+      category: "Technology",
+      desc: "Insights on using WebSockets and Go to create fast, scalable concurrent chat platforms.",
+      readTime: "8 min read"
+    },
+    {
+      title: "The Architecture of Safety: Engineering Meets Code",
+      date: new Date(Date.now() - 3600000 * 24 * 14).toISOString(),
+      category: "Engineering",
+      desc: "How the rigor of electrical testing and fire safety protocols informs system design in high-performance software.",
+      readTime: "6 min read"
+    },
+    {
+      title: "Complexity in Simplicity: The Art of Clean Code",
+      date: new Date(Date.now() - 3600000 * 24 * 30).toISOString(),
+      category: "Technology",
+      desc: "Why writing less code is often much harder than writing more, and how to master the art of minimalism.",
+      readTime: "4 min read"
+    },
+    {
+      title: "Solar PV Systems: The Future of Energy Integration",
+      date: new Date(Date.now() - 3600000 * 24 * 45).toISOString(),
+      category: "Engineering",
+      desc: "An overview of solar PV installation standards and the technical challenges of grid integration in Bahrain.",
+      readTime: "12 min read"
+    }
+  ],
+
   // Avatar
-  avatar: 'src/assets/Personal_picture.JPG',
+  avatar: 'src/assets/IMG_2174.PNG',
 
   // Graduation Certificate
   graduationCertificate: 'src/assets/Graduation_certificate.jpg',

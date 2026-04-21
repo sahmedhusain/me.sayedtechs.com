@@ -7,79 +7,98 @@ export function renderContactSection() {
     `<option value="${item.code}" ${item.code === '+973' ? 'selected' : ''}>${item.flag} ${item.code} (${item.country})</option>`
   ).join('');
 
-  return `
-    <header>
-      <h2 class="h2 article-title">Contact me</h2>
-    </header>
-    <section class="contact">
-      <p class="contact-text">
-        Let's <strong>keep in touch</strong>! Don't hesitate to contact me for any inquiry or opportunity.
-      </p>
+  const activeCountry = countryCodes.find(c => c.code === '+973') || countryCodes[0];
+  
+  const countryListItems = countryCodes.map(item => `
+    <li class="country-item ${item.code === activeCountry.code ? 'active' : ''}" 
+        data-country-code="${item.code}"
+        data-country-flag="${item.flag}"
+        data-country-name="${item.country}">
+      <span class="country-flag">${item.flag}</span>
+      <span class="country-code-val">${item.code}</span>
+      <span class="country-name-val" style="flex: 1;">${item.country}</span>
+      <ion-icon name="checkmark-outline" class="selection-tick" style="font-size: 0.9rem; opacity: ${item.code === activeCountry.code ? '1' : '0'}; color: var(--accent);"></ion-icon>
+    </li>
+  `).join('');
 
+
+  return `
+    <header class="section-header-glass">
+      <div class="header-left">
+        <p class="section-label">Reach out 🕊️</p>
+        <p class="section-subtitle">Let's build something beautiful together.</p>
+      </div>
+      <button class="action-btn-glass" id="view-contact-btn">
+        <div class="btn-glass-content">
+          <ion-icon name="person-outline"></ion-icon>
+          <span>Business Card</span>
+        </div>
+      </button>
+    </header>
+
+    <section class="contact-section-glass">
       <div id="form-message"></div>
 
-      <form data-form id="contact-form">
-        <div class="form-content-wrapper">
-          <div class="form-left-col">
-            <div class="input-wrapper">
-              <label for="fullname">Full Name <span style="color: red;">*</span></label>
-              <input type="text" name="fullname" id="fullname" data-form-input placeholder="e.g. Sayed Ahmed" required>
+      <form data-form id="contact-form" class="liquid-form">
+        <div class="form-grid">
+          <!-- Left Column: Primary Info -->
+          <div class="form-group-island">
+            <div class="input-glass-wrapper">
+              <label>Full Name</label>
+              <input type="text" name="fullname" data-form-input placeholder="Sayed Ahmed" required>
+              <div class="input-focus-glow"></div>
             </div>
             
-            <div class="input-wrapper">
-              <label for="email">Email Address <span style="color: red;">*</span></label>
-              <input type="email" name="email" id="email" data-form-input placeholder="e.g. sayed.ahmed@gmail.com" required>
+            <div class="input-glass-wrapper">
+              <label>Email Address</label>
+              <input type="email" name="email" data-form-input placeholder="Sayed@example.com" required>
+              <div class="input-focus-glow"></div>
             </div>
 
-            <div class="phone-input-wrapper">
-              <label for="phone">Phone Number</label>
-              <div class="phone-fields">
-                <select name="countryCode" id="countryCode">
-                  <option value="">Select country code</option>
-                  ${countryOptions}
-                </select>
-                <input type="tel" name="phone" id="phone" placeholder="e.g. 3X XXX XXX" pattern="[0-9]*">
+            <div class="input-glass-wrapper">
+              <label>Phone Number</label>
+              <div class="liquid-phone-input">
+                <div class="custom-country-selector" id="country-selector-trigger">
+                  <div class="selected-country">
+                    <span class="selected-flag">${activeCountry.flag}</span>
+                    <span class="selected-code">${activeCountry.code}</span>
+                    <ion-icon name="chevron-down-outline"></ion-icon>
+                  </div>
+                  <div class="country-dropdown-glass">
+                    <div class="country-search-wrapper">
+                      <input type="text" class="country-search-input" placeholder="Search..." id="countrySearch">
+                    </div>
+                    <div class="country-dropdown-indicator"></div>
+                    <ul class="country-list-scroll">
+                      ${countryListItems}
+                    </ul>
+                  </div>
+
+                  <input type="hidden" name="countryCode" id="countryCodeInput" value="${activeCountry.code}">
+                </div>
+
+                <input type="tel" name="phone" id="phone" placeholder="3XXXXXXX" pattern="[0-9]*">
               </div>
+              <div class="input-focus-glow"></div>
             </div>
           </div>
 
-          <div class="form-right-col">
-            <div class="input-wrapper" style="height: 100%;">
-              <label for="message">Message <span style="color: red;">*</span></label>
-              <textarea name="message" id="message" data-form-input placeholder="e.g. Hello, I'd like to discuss about..." required style="height: 100%; min-height: 280px;"></textarea>
+          <!-- Right Column: Message -->
+          <div class="form-group-island">
+            <div class="input-glass-wrapper full-height">
+              <label>Your Message</label>
+              <textarea name="message" data-form-input placeholder="Enter your message..." required></textarea>
+              <div class="input-focus-glow"></div>
             </div>
           </div>
         </div>
 
-        <button type="submit" data-form-btn>
-          <span>Send Message</span>
+        <button type="submit" data-form-btn class="liquid-submit-btn">
+          <div class="btn-text">Send Message</div>
+          <div class="btn-liquid-fill"></div>
+          <ion-icon name="paper-plane-outline"></ion-icon>
         </button>
       </form>
-      
-      <!-- Contact Page Socials -->
-      <div class="contact-page-socials">
-        <a href="tel:${data.contact.phone}" data-title="Call me!" aria-label="Call me">
-          <ion-icon name="call-outline"></ion-icon>
-        </a>
-        <a href="mailto:${data.contact.email}" data-title="Let's touch!" aria-label="Email me">
-          <ion-icon name="mail-outline"></ion-icon>
-        </a>
-        <a href="${data.contact.linkedin}" target="_blank" data-title="Connect!" aria-label="LinkedIn Profile">
-          <ion-icon name="logo-linkedin"></ion-icon>
-        </a>
-        <a href="https://wa.me/${data.contact.phone.replace(/[^0-9]/g, '')}" target="_blank" data-title="Chat now!" aria-label="WhatsApp Chat">
-          <ion-icon name="logo-whatsapp"></ion-icon>
-        </a>
-        <a href="${data.contact.github}" target="_blank" data-title="Code here!" aria-label="GitHub Profile">
-          <ion-icon name="logo-github"></ion-icon>
-        </a>
-        <a href="https://medium.com/@s97ahm" target="_blank" data-title="Read me!" aria-label="Medium Blog">
-          <ion-icon name="logo-medium"></ion-icon>
-        </a>
-        <a href="${data.contact.twitter}" target="_blank" data-title="Follow me!" aria-label="X Profile">
-          <span>𝕏</span>
-        </a>
-      </div>
     </section>
   `;
 }
@@ -104,23 +123,37 @@ export function renderContactModal() {
                 <h4>${data.name}</h4>
                 <p><ion-icon name="mail-outline"></ion-icon> ${data.email}</p>
                 <p><ion-icon name="call-outline"></ion-icon> ${data.mobile}</p>
+                
+                <a href="https://wa.me/${data.mobile.replace(/[^0-9]/g, '')}" target="_blank" class="wa-gloss-btn" style="display:inline-flex; align-items:center; gap:0.5rem; color: #25D366; font-weight:700; text-decoration:none; margin-top:1.2rem; padding:0.9rem 1.4rem; border-radius:999px; background:rgba(37, 211, 102, 0.08); border: 1px solid rgba(37, 211, 102, 0.2); font-size:0.9rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); width: fit-content; align-self: center;">
+                  <ion-icon name="logo-whatsapp" style="font-size: 1.2rem; color: #25D366 !important; opacity: 1 !important;"></ion-icon>
+                  WhatsApp Me
+                </a>
+                <style>
+                  .wa-gloss-btn:hover {
+                    background: rgba(37, 211, 102, 0.15) !important;
+                    transform: translateY(-3px) scale(1.05);
+                    border-color: rgba(37, 211, 102, 0.4) !important;
+                    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.1);
+                  }
+                </style>
               </div>
             </div>
-            <div class="modal-right">
+            <div class="modal-right" style="display: flex; flex-direction: column; gap: 1.5rem; flex: 1;">
               <div class="qr-code-container" id="qr-code">
                 <div class="qr-placeholder">QR Code will appear here</div>
               </div>
+
+              <div class="modal-actions" style="margin-top: 0;">
+                <button class="modal-btn primary" id="download-vcard-btn">
+                  <ion-icon name="download-outline"></ion-icon>
+                  <span>Download</span>
+                </button>
+                <button class="modal-btn secondary" id="copy-vcard-btn">
+                  <ion-icon name="copy-outline"></ion-icon>
+                  <span>Copy</span>
+                </button>
+              </div>
             </div>
-          </div>
-          <div class="modal-actions">
-            <button class="modal-btn primary" id="download-vcard-btn">
-              <ion-icon name="download-outline"></ion-icon>
-              <span>Download vCard</span>
-            </button>
-            <button class="modal-btn secondary" id="copy-vcard-btn">
-              <ion-icon name="copy-outline"></ion-icon>
-              <span>Copy vCard</span>
-            </button>
           </div>
         </div>
       </div>
