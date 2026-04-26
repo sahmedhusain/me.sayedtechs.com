@@ -2,21 +2,75 @@ import { data } from './data.js';
 import { countryCodes } from './data/countries.js';
 import { generateVCard, generateQRCode } from './renderers/contact.js';
 import { generateTimelineSVG } from './renderers/journey.js';
+import { ROUTE_PAGE_SET } from './routes.js';
+
+const VALID_PAGES = ROUTE_PAGE_SET;
+
+function normalizePathname(pathname) {
+  if (!pathname) return '/';
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    return pathname.slice(0, -1);
+  }
+  return pathname;
+}
+
+function computeBasePathname() {
+  const normalized = normalizePathname(window.location.pathname);
+  const segments = normalized.split('/').filter(Boolean);
+  let lastSegment = segments[segments.length - 1];
+
+  if (lastSegment === 'index.html') {
+    segments.pop();
+    lastSegment = segments[segments.length - 1];
+  }
+
+  if (VALID_PAGES.has(lastSegment)) {
+    segments.pop();
+  }
+
+  return segments.length > 0 ? `/${segments.join('/')}` : '';
+}
+
+const BASE_PATHNAME = computeBasePathname();
+
+function getPathForPage(page) {
+  if (page === 'home') {
+    return BASE_PATHNAME || '/';
+  }
+  return `${BASE_PATHNAME}/${page}`;
+}
+
+function getPageFromLocation() {
+  const normalized = normalizePathname(window.location.pathname);
+  const segments = normalized.split('/').filter(Boolean);
+  const lastSegment = segments[segments.length - 1];
+
+  if (lastSegment && VALID_PAGES.has(lastSegment)) {
+    return lastSegment;
+  }
+
+  return 'home';
+}
 
 // Set active page function
-export function setActivePage(targetPage) {
+export function setActivePage(targetPage, options = {}) {
+  const { updateHistory = true, replaceHistory = false } = options;
   const navLinkButtons = document.querySelectorAll('.nav-pill-container [data-nav-link]'); // Target only top bar
   const footerLinkButtons = document.querySelectorAll('.footer [data-nav-link]'); // For content sync only
   const pages = document.querySelectorAll('[data-page]');
 
+  if (!VALID_PAGES.has(targetPage)) {
+    targetPage = 'home';
+  }
+
   // Navbar avatar logic
   const navAvatar = document.getElementById('nav-avatar-container');
   const homeMainAvatar = document.getElementById('home-main-avatar');
-  
+
   const updateNavAvatar = (currentPage = targetPage) => {
     if (!navAvatar) return;
     const isHome = currentPage === 'home';
-    
+
     if (isHome) {
       const scrollThreshold = 10;
       if (window.scrollY > scrollThreshold) {
@@ -61,7 +115,7 @@ export function setActivePage(targetPage) {
 
   const activeTopBarLink = document.querySelector(`.nav-pill-container [data-nav-link="${targetPage}"]`);
   if (activeTopBarLink) activeTopBarLink.classList.add('active');
-  
+
   const activeFooterLink = document.querySelector(`.footer [data-nav-link="${targetPage}"]`);
   if (activeFooterLink) activeFooterLink.classList.add('active');
 
@@ -77,11 +131,19 @@ export function setActivePage(targetPage) {
     }
   }
 
-  // Update URL
-  if (targetPage === 'home') {
-    history.replaceState({ page: 'home' }, '', window.location.pathname); 
-  } else {
-    window.location.hash = targetPage;
+  // Update URL using pathname routes
+  if (updateHistory) {
+    const newPath = getPathForPage(targetPage);
+    const currentPath = normalizePathname(window.location.pathname);
+    const normalizedNewPath = normalizePathname(newPath);
+
+    if (currentPath !== normalizedNewPath) {
+      if (replaceHistory) {
+        history.replaceState({ page: targetPage }, '', newPath);
+      } else {
+        history.pushState({ page: targetPage }, '', newPath);
+      }
+    }
   }
 
   // Sync Logo State
@@ -195,7 +257,7 @@ export function initializeEventListeners() {
   const langMenu = document.getElementById('lang-menu');
   const langOptions = document.querySelectorAll('.lang-option');
   const langText = document.getElementById('lang-text');
-  
+
   if (langToggleBtn && langMenu) {
     const langIndicator = document.getElementById('lang-indicator-liquid');
 
@@ -211,7 +273,7 @@ export function initializeEventListeners() {
     langToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
       const isVisible = langMenu.style.display === 'flex';
-      
+
       if (!isVisible) {
         langMenu.style.display = 'flex';
         // Position indicator on active initially
@@ -233,10 +295,10 @@ export function initializeEventListeners() {
 
     langOptions.forEach(option => {
       option.addEventListener('mouseenter', () => moveLangIndicator(option));
-      
+
       option.addEventListener('click', () => {
         const lang = option.getAttribute('data-lang');
-        
+
         // Update UI
         langText.textContent = lang.toUpperCase();
         langOptions.forEach(opt => {
@@ -287,12 +349,12 @@ export function initializeEventListeners() {
   // --- Theme Toggle Logic ---
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
   const icon = themeToggleBtn?.querySelector('ion-icon');
-  
+
   // Check local storage for theme preference
   const savedTheme = localStorage.getItem('theme');
   if (savedTheme === 'dark') {
     document.documentElement.setAttribute('data-theme', 'dark');
-    if(icon) icon.setAttribute('name', 'sunny-outline');
+    if (icon) icon.setAttribute('name', 'sunny-outline');
   }
 
   if (themeToggleBtn) {
@@ -301,11 +363,11 @@ export function initializeEventListeners() {
       if (isDark) {
         document.documentElement.removeAttribute('data-theme');
         localStorage.setItem('theme', 'light');
-        if(icon) icon.setAttribute('name', 'moon-outline');
+        if (icon) icon.setAttribute('name', 'moon-outline');
       } else {
         document.documentElement.setAttribute('data-theme', 'dark');
         localStorage.setItem('theme', 'dark');
-        if(icon) icon.setAttribute('name', 'sunny-outline');
+        if (icon) icon.setAttribute('name', 'sunny-outline');
       }
     });
   }
@@ -536,7 +598,8 @@ export function initializeEventListeners() {
   const pages = document.querySelectorAll('[data-page]');
 
   navLinkButtons.forEach(link => {
-    link.addEventListener('click', function () {
+    link.addEventListener('click', function (e) {
+      e.preventDefault();
       const targetPage = this.getAttribute('data-nav-link');
       const isHome = document.querySelector('[data-page="home"].active');
 
@@ -545,9 +608,9 @@ export function initializeEventListeners() {
       } else {
         // Reset scroll position before switching page to ensure avatar logic triggers correctly
         window.scrollTo(0, 0);
-        setActivePage(targetPage);
+        setActivePage(targetPage, { updateHistory: true });
       }
-      
+
       if (navToggle && navLinks) {
         navToggle.classList.remove('active');
         navLinks.classList.remove('active');
@@ -559,7 +622,7 @@ export function initializeEventListeners() {
   const activeIndicator = document.getElementById('nav-indicator-active');
   const hoverIndicator = document.getElementById('nav-indicator-hover');
   const navContainer = document.querySelector('.nav-pill-container');
-  
+
   if (navContainer) {
     const moveIndicator = (indicator, target, opacity = 1) => {
       if (!indicator || !target) return;
@@ -580,7 +643,7 @@ export function initializeEventListeners() {
       btn.addEventListener('mouseenter', () => {
         const isHome = btn.getAttribute('data-nav-link') === 'home';
         const isActive = btn.classList.contains('active');
-        
+
         if (!isHome && !isActive) {
           moveIndicator(hoverIndicator, btn, 1);
         } else {
@@ -604,15 +667,20 @@ export function initializeEventListeners() {
     });
   }
 
-  // Handle initial hash or default to home
-  const initialPage = window.location.hash.substring(1) || 'home';
-  setActivePage(initialPage);
+  // Backward compatibility: convert old hash URLs (e.g. #about) to pathname routes.
+  const legacyHashPage = window.location.hash.substring(1);
+  if (VALID_PAGES.has(legacyHashPage)) {
+    history.replaceState({ page: legacyHashPage }, '', getPathForPage(legacyHashPage));
+  }
+
+  // Handle initial pathname route.
+  setActivePage(getPageFromLocation(), { updateHistory: false });
 
   // Click on nav-logo to go to Home
   const navLogo = document.querySelector('.nav-logo');
   if (navLogo) {
     navLogo.addEventListener('click', () => {
-      setActivePage('home');
+      setActivePage('home', { updateHistory: true });
       window.scrollTo({ top: 0, behavior: 'smooth' });
       // Close mobile menu
       if (navToggle && navLinks) {
@@ -622,10 +690,9 @@ export function initializeEventListeners() {
     });
   }
 
-  // Handle browser back/forward buttons (hash-based)
-  window.addEventListener('hashchange', () => {
-    const page = window.location.hash.substring(1) || 'home';
-    setActivePage(page);
+  // Handle browser back/forward buttons (pathname-based)
+  window.addEventListener('popstate', () => {
+    setActivePage(getPageFromLocation(), { updateHistory: false });
   });
 
   // Navbar scroll effect
@@ -681,15 +748,15 @@ export function initializeEventListeners() {
   // Journey Timeline filters
   const journeyFilterBtns = document.querySelectorAll('.journey-filters .filter-btn');
   const timelineChartContainer = document.querySelector('.timeline-chart-container');
-  
+
   if (journeyFilterBtns.length > 0 && timelineChartContainer) {
     journeyFilterBtns.forEach(btn => {
-      btn.addEventListener('click', function() {
+      btn.addEventListener('click', function () {
         const filter = this.getAttribute('data-filter');
-        
+
         journeyFilterBtns.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
-        
+
         if (window.generateTimelineSVG) {
           timelineChartContainer.innerHTML = window.generateTimelineSVG(filter);
         }
@@ -962,7 +1029,7 @@ export function initializeEventListeners() {
     articleTabs.forEach(tab => {
       tab.addEventListener('click', () => {
         const filter = tab.getAttribute('data-filter');
-        
+
         // Update active tab
         articleTabs.forEach(t => t.classList.remove('active'));
         tab.classList.add('active');
@@ -996,7 +1063,7 @@ export function initializeEventListeners() {
       articleCards.forEach(card => {
         const titleText = card.querySelector('.article-title-link').textContent.toLowerCase();
         const descText = card.querySelector('.article-desc').textContent.toLowerCase();
-        
+
         if (titleText.includes(query) || descText.includes(query)) {
           card.style.display = 'flex';
           card.style.opacity = '1';

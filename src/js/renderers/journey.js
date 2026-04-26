@@ -198,7 +198,7 @@ export function renderProfessionalJourneySection() {
     <header style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem; margin-bottom: 2rem;">
       <div>
         <h2 class="h2 article-title">Professional Journey</h2>
-        <p class="section-subtitle">Explore my professional timeline – from <strong>education</strong> and internships to career milestones and certifications that shaped my expertise. <a href="#journey" class="journey-link">View Full Journey Details</a></p>
+        <p class="section-subtitle">Explore my professional timeline – from <strong>education</strong> and internships to career milestones and certifications that shaped my expertise. <a href="/journey" data-nav-link="journey" class="journey-link">View Full Journey Details</a></p>
       </div>
       <button class="action-btn primary" id="download-cv-btn" style="padding: 0.6rem 1.2rem; border-radius: var(--radius-md); background: var(--accent); color: white; border: none; cursor: pointer; display: flex; align-items: center; gap: 0.5rem; font-weight: 500; font-size: 0.95rem;">
         <ion-icon name="download-outline" style="font-size: 1.2rem;"></ion-icon>

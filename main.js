@@ -10,11 +10,60 @@ import { renderSkillsSection } from './src/js/renderers/skills.js';
 import { renderProfessionalJourneySection } from './src/js/renderers/journey.js';
 import { renderContactSection, renderContactModal } from './src/js/renderers/contact.js';
 import { renderFooter, renderSideElements, renderImagePreviewModal } from './src/js/renderers/footer.js';
-import { initializeEventListeners, setActivePage, initializeSkillsAnimations } from './src/js/events.js';
+import { initializeEventListeners, initializeSkillsAnimations } from './src/js/events.js';
+import { ROUTE_PAGE_SET } from './src/js/routes.js';
 
 window.handleImageError = handleImageError;
 window.getLogo = getLogo;
 window.getEntityUrl = getEntityUrl;
+
+function normalizePathname(pathname) {
+  if (!pathname) return '/';
+  if (pathname.length > 1 && pathname.endsWith('/')) {
+    return pathname.slice(0, -1);
+  }
+  return pathname;
+}
+
+function computeBasePathname() {
+  const normalized = normalizePathname(window.location.pathname);
+  const segments = normalized.split('/').filter(Boolean);
+  let lastSegment = segments[segments.length - 1] || '';
+
+  if (lastSegment === 'index.html') {
+    segments.pop();
+    lastSegment = segments[segments.length - 1] || '';
+  }
+
+  if (ROUTE_PAGE_SET.has(lastSegment)) {
+    segments.pop();
+  }
+
+  return segments.length ? `/${segments.join('/')}` : '';
+}
+
+function restorePathFromFallbackQuery() {
+  const redirected = window.location.search.match(/[?&]p=([^&]+)/);
+  if (!redirected || !redirected[1]) return;
+
+  const basePath = computeBasePathname();
+  const restoredPath = decodeURIComponent(redirected[1]);
+  const cleanUrl = `${basePath}${restoredPath}` + window.location.hash;
+  window.history.replaceState(null, '', cleanUrl);
+}
+
+function loadExternalScript(src, attrs = {}) {
+  const script = document.createElement('script');
+  script.src = src;
+
+  if (attrs.type) script.type = attrs.type;
+  if (attrs.async) script.async = true;
+  if (attrs.defer) script.defer = true;
+
+  document.head.appendChild(script);
+}
+
+restorePathFromFallbackQuery();
 
 function loadResources() {
   // Google Fonts
@@ -42,12 +91,32 @@ function loadResources() {
   simpleIcons.rel = 'stylesheet';
   document.head.appendChild(simpleIcons);
 
+  // Vis.js Timeline CSS
+  const visCss = document.createElement('link');
+  visCss.href = 'https://visjs.github.io/vis-timeline/styles/vis-timeline-graph2d.min.css';
+  visCss.rel = 'stylesheet';
+  visCss.type = 'text/css';
+  document.head.appendChild(visCss);
+
+  // EmailJS, QRCode.js and Vis.js Timeline runtime
+  loadExternalScript('https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js');
+  loadExternalScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js');
+  loadExternalScript('https://visjs.github.io/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js');
+
 
 
   document.title = 'Sayed Ahmed Husain | Electrical Engineer & Full-Stack Developer';
 }
 
 loadResources();
+
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js', { scope: './' }).catch((err) => {
+      console.warn('Service worker registration failed:', err);
+    });
+  });
+}
 
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -86,10 +155,11 @@ document.addEventListener('DOMContentLoaded', () => {
     ${renderImagePreviewModal()}
   `;
 
-  // Hide skeleton loading state
-  const skeletonWrapper = document.querySelector('.skeleton-wrapper');
-  if (skeletonWrapper) {
-    skeletonWrapper.classList.add('hide');
+  if (!document.getElementById('back-to-top')) {
+    document.body.insertAdjacentHTML(
+      'beforeend',
+      '<button id="back-to-top" class="back-to-top-btn" aria-label="Back to top"><ion-icon name="arrow-up-outline"></ion-icon></button>'
+    );
   }
 
   // After rendering: attach any missing logos (uses workspace local assets when available)
@@ -148,10 +218,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
   // Initialize event listeners
   initializeEventListeners();
-
-  // Handle initial hash or default to home
-  const initialPage = window.location.hash.substring(1) || 'home';
-  setActivePage(initialPage);
 
   // Initialize skills animations
   initializeSkillsAnimations();

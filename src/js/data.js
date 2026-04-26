@@ -40,7 +40,7 @@ Passionate about bridging the gap between engineering precision and modern softw
       title: 'B.Sc. Electrical Engineering',
       subtitle: 'University of Bahrain • Graduation Portfolio',
       image: 'src/assets/IMG_2174.PNG',
-      link: '#journey'
+      link: '/journey'
     }
   ],
 
@@ -515,10 +515,10 @@ Passionate about bridging the gap between engineering precision and modern softw
         'Virtual DOM diffing with minimal DOM patching.',
         'Reactive state management with automatic re-renders.',
         'Centralized event delegation for better performance and cleanup.',
-        'Hash-based routing that stays in sync with application state.',
+        'Path-based routing that stays in sync with application state.',
         'Includes a complete TodoMVC demo demonstrating real-world usage.'
       ],
-      tech: ['JavaScript ES6+', 'HTML5', 'CSS3', 'Virtual DOM', 'Reactive State', 'Hash Routing', 'Zero Dependencies'],
+      tech: ['JavaScript ES6+', 'HTML5', 'CSS3', 'Virtual DOM', 'Reactive State', 'History API Routing', 'Zero Dependencies'],
       featured: true
     },
     {
