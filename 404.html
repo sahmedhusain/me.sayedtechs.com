@@ -8,26 +8,30 @@
     import { ROUTE_PAGES } from './src/js/routes.js';
 
     // Redirect deep links to index.html while preserving requested SPA route.
+    // Redirect deep links to index.html while preserving requested SPA route.
     (function () {
       var pathname = window.location.pathname;
       var search = window.location.search || '';
-
+      var routes = ['home', 'about', 'articles', 'article', 'journey', 'projects', 'contact'];
       var segments = pathname.split('/').filter(Boolean);
-      var lastSegment = segments[segments.length - 1] || '';
-
-      var basePath = '';
-      var routePath = '/';
-
-      if (segments.length === 0) {
-        routePath = '/';
-      } else if (ROUTE_PAGES.includes(lastSegment)) {
-        basePath = '/' + segments.slice(0, -1).join('/');
-        routePath = lastSegment === 'home' ? '/' : '/' + lastSegment;
-      } else {
-        basePath = '/' + segments.join('/');
+      
+      var baseSegments = [];
+      var routeSegments = [];
+      var foundRoute = false;
+      
+      for (var i = 0; i < segments.length; i++) {
+        if (foundRoute || routes.indexOf(segments[i]) !== -1) {
+          foundRoute = true;
+          routeSegments.push(segments[i]);
+        } else {
+          baseSegments.push(segments[i]);
+        }
       }
-
-      var target = (basePath || '') + '/?p=' + encodeURIComponent(routePath) + search;
+      
+      var basePath = '/' + baseSegments.join('/');
+      var routePath = '/' + routeSegments.join('/');
+      
+      var target = (basePath === '/' ? '' : basePath) + '/?p=' + encodeURIComponent(routePath) + search;
       window.location.replace(target);
     })();
   </script>

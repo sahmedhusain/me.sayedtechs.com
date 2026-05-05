@@ -4,7 +4,7 @@ import { renderNavbar } from './src/js/renderers/navbar.js';
 import { renderSidebar, renderAboutSection, renderHomeFeed } from './src/js/renderers/about.js';
 import { renderExperienceSection } from './src/js/renderers/experience.js';
 import { renderProjectsSection } from './src/js/renderers/projects.js';
-import { renderArticlesSection } from './src/js/renderers/articles.js';
+import { renderArticlesSection, renderArticleDetail } from './src/js/renderers/articles.js';
 import { renderSkillsSection } from './src/js/renderers/skills.js';
 
 import { renderProfessionalJourneySection } from './src/js/renderers/journey.js';
@@ -26,20 +26,17 @@ function normalizePathname(pathname) {
 }
 
 function computeBasePathname() {
-  const normalized = normalizePathname(window.location.pathname);
-  const segments = normalized.split('/').filter(Boolean);
-  let lastSegment = segments[segments.length - 1] || '';
-
-  if (lastSegment === 'index.html') {
-    segments.pop();
-    lastSegment = segments[segments.length - 1] || '';
+  const path = window.location.pathname;
+  const segments = path.split('/').filter(Boolean);
+  const routes = ['home', 'about', 'articles', 'article', 'journey', 'projects', 'contact'];
+  
+  const baseSegments = [];
+  for (let i = 0; i < segments.length; i++) {
+    if (routes.includes(segments[i]) || segments[i] === 'index.html') break;
+    baseSegments.push(segments[i]);
   }
-
-  if (ROUTE_PAGE_SET.has(lastSegment)) {
-    segments.pop();
-  }
-
-  return segments.length ? `/${segments.join('/')}` : '';
+  
+  return baseSegments.length ? `/${baseSegments.join('/')}` : '';
 }
 
 function restorePathFromFallbackQuery() {
@@ -87,7 +84,7 @@ function loadResources() {
 
   // Simple Icons for brand logos
   const simpleIcons = document.createElement('link');
-  simpleIcons.href = 'https://cdn.jsdelivr.net/npm/simple-icons@v10/font/simple-icons.min.css';
+  simpleIcons.href = 'https://cdn.jsdelivr.net/npm/simple-icons-font@latest/font/simple-icons.min.css';
   simpleIcons.rel = 'stylesheet';
   document.head.appendChild(simpleIcons);
 
@@ -146,8 +143,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ${renderProjectsSection()}
       </article>
       <article class="contact" data-page="contact">
-
         ${renderContactSection()}
+      </article>
+      <article class="article article-detail" data-page="article">
+        <div id="article-detail-content"></div>
       </article>
     </div>
     ${renderFooter()}

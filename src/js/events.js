@@ -2,6 +2,7 @@ import { data } from './data.js';
 import { countryCodes } from './data/countries.js';
 import { generateVCard, generateQRCode } from './renderers/contact.js';
 import { generateTimelineSVG } from './renderers/journey.js';
+import { renderArticleDetail } from './renderers/articles.js';
 import { ROUTE_PAGE_SET } from './routes.js';
 
 const VALID_PAGES = ROUTE_PAGE_SET;
@@ -15,20 +16,17 @@ function normalizePathname(pathname) {
 }
 
 function computeBasePathname() {
-  const normalized = normalizePathname(window.location.pathname);
-  const segments = normalized.split('/').filter(Boolean);
-  let lastSegment = segments[segments.length - 1];
-
-  if (lastSegment === 'index.html') {
-    segments.pop();
-    lastSegment = segments[segments.length - 1];
+  const path = window.location.pathname;
+  const segments = path.split('/').filter(Boolean);
+  const routes = ['home', 'about', 'articles', 'article', 'journey', 'projects', 'contact'];
+  
+  const baseSegments = [];
+  for (let i = 0; i < segments.length; i++) {
+    if (routes.includes(segments[i]) || segments[i] === 'index.html') break;
+    baseSegments.push(segments[i]);
   }
-
-  if (VALID_PAGES.has(lastSegment)) {
-    segments.pop();
-  }
-
-  return segments.length > 0 ? `/${segments.join('/')}` : '';
+  
+  return baseSegments.length ? `/${baseSegments.join('/')}` : '';
 }
 
 const BASE_PATHNAME = computeBasePathname();
@@ -37,12 +35,22 @@ function getPathForPage(page) {
   if (page === 'home') {
     return BASE_PATHNAME || '/';
   }
+  if (page.startsWith('articles/')) {
+    return `${BASE_PATHNAME}/${page}`;
+  }
   return `${BASE_PATHNAME}/${page}`;
 }
 
 function getPageFromLocation() {
   const normalized = normalizePathname(window.location.pathname);
   const segments = normalized.split('/').filter(Boolean);
+
+  // Check for articles/:id
+  const articlesIndex = segments.indexOf('articles');
+  if (articlesIndex !== -1 && segments[articlesIndex + 1]) {
+    return `articles/${segments[articlesIndex + 1]}`;
+  }
+
   const lastSegment = segments[segments.length - 1];
 
   if (lastSegment && VALID_PAGES.has(lastSegment)) {
@@ -59,8 +67,27 @@ export function setActivePage(targetPage, options = {}) {
   const footerLinkButtons = document.querySelectorAll('.footer [data-nav-link]'); // For content sync only
   const pages = document.querySelectorAll('[data-page]');
 
-  if (!VALID_PAGES.has(targetPage)) {
-    targetPage = 'home';
+  let pageId = targetPage;
+  let articleId = null;
+
+  if (targetPage.includes('/') && targetPage.startsWith('articles/')) {
+    pageId = 'article';
+    articleId = targetPage.split('/')[1];
+  }
+
+  if (!VALID_PAGES.has(pageId)) {
+    pageId = 'home';
+  }
+
+  // If it's an article, render it
+  if (pageId === 'article' && articleId) {
+    const content = document.getElementById('article-detail-content');
+    if (content) {
+      console.log('Injecting article content into #article-detail-content for ID:', articleId);
+      content.innerHTML = renderArticleDetail(articleId);
+    } else {
+      console.error('CRITICAL ERROR: Element #article-detail-content not found in DOM!');
+    }
   }
 
   // Navbar avatar logic
@@ -99,7 +126,7 @@ export function setActivePage(targetPage, options = {}) {
     }
   };
 
-  updateNavAvatar(targetPage);
+  updateNavAvatar(pageId);
   if (!window.hasNavScrollListener) {
     window.addEventListener('scroll', () => {
       const currentActive = document.querySelector('[data-page].active');
@@ -110,25 +137,34 @@ export function setActivePage(targetPage, options = {}) {
   }
 
   // Handle Active Classes
+  console.log('Activating pageId:', pageId);
   document.querySelectorAll('[data-nav-link]').forEach(l => l.classList.remove('active'));
   pages.forEach(p => p.classList.remove('active'));
 
-  const activeTopBarLink = document.querySelector(`.nav-pill-container [data-nav-link="${targetPage}"]`);
-  if (activeTopBarLink) activeTopBarLink.classList.add('active');
+  // For individual articles, we highlight the 'articles' nav link
+  const navLinkId = pageId === 'article' ? 'articles' : pageId;
+  const activeTopBarLink = document.querySelector(`.nav-pill-container [data-nav-link="${navLinkId}"]`);
+  if (activeTopBarLink) {
+    console.log('Activating nav-link:', navLinkId);
+    activeTopBarLink.classList.add('active');
+  }
 
-  const activeFooterLink = document.querySelector(`.footer [data-nav-link="${targetPage}"]`);
+  const activeFooterLink = document.querySelector(`.footer [data-nav-link="${navLinkId}"]`);
   if (activeFooterLink) activeFooterLink.classList.add('active');
 
-  const page = document.querySelector(`[data-page="${targetPage}"]`);
+  const page = document.querySelector(`[data-page="${pageId}"]`);
   if (page) {
+    console.log('Found page element for:', pageId);
     page.classList.add('active');
-    if (targetPage === 'contact') {
+    if (pageId === 'contact') {
       document.body.classList.add('contact-active');
       page.classList.add('contact-animate');
       setTimeout(() => page.classList.remove('contact-animate'), 800);
     } else {
       document.body.classList.remove('contact-active');
     }
+  } else {
+    console.error('CRITICAL ERROR: Page element not found for pageId:', pageId);
   }
 
   // Update URL using pathname routes
@@ -593,29 +629,27 @@ export function initializeEventListeners() {
     });
   }
 
-  // Navbar navigation
-  const navLinkButtons = document.querySelectorAll('[data-nav-link]');
-  const pages = document.querySelectorAll('[data-page]');
+  // Navbar navigation with event delegation
+  document.addEventListener('click', (e) => {
+    const link = e.target.closest('[data-nav-link]');
+    if (!link) return;
 
-  navLinkButtons.forEach(link => {
-    link.addEventListener('click', function (e) {
-      e.preventDefault();
-      const targetPage = this.getAttribute('data-nav-link');
-      const isHome = document.querySelector('[data-page="home"].active');
+    e.preventDefault();
+    const targetPage = link.getAttribute('data-nav-link');
+    const isHome = document.querySelector('[data-page="home"].active');
 
-      if (targetPage === 'home' && isHome) {
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      } else {
-        // Reset scroll position before switching page to ensure avatar logic triggers correctly
-        window.scrollTo(0, 0);
-        setActivePage(targetPage, { updateHistory: true });
-      }
+    if (targetPage === 'home' && isHome) {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      // Reset scroll position before switching page to ensure avatar logic triggers correctly
+      window.scrollTo(0, 0);
+      setActivePage(targetPage, { updateHistory: true });
+    }
 
-      if (navToggle && navLinks) {
-        navToggle.classList.remove('active');
-        navLinks.classList.remove('active');
-      }
-    });
+    if (navToggle && navLinks) {
+      navToggle.classList.remove('active');
+      navLinks.classList.remove('active');
+    }
   });
 
   // --- Liquid Nav Movement (Dual Layer: Active & Hover) ---

@@ -626,6 +626,7 @@ Passionate about bridging the gap between engineering precision and modern softw
   // Articles & Writing
   articles: [
     {
+      id: 1,
       title: "Transitioning from Electrical Engineering to Software",
       date: new Date(Date.now() - 3600000 * 25).toISOString(),
       category: "Career",
@@ -633,6 +634,7 @@ Passionate about bridging the gap between engineering precision and modern softw
       readTime: "5 min read"
     },
     {
+      id: 2,
       title: "Building Real-Time Social Networks",
       date: new Date(Date.now() - 3600000 * 24 * 6).toISOString(),
       category: "Technology",
@@ -640,6 +642,7 @@ Passionate about bridging the gap between engineering precision and modern softw
       readTime: "8 min read"
     },
     {
+      id: 3,
       title: "The Architecture of Safety: Engineering Meets Code",
       date: new Date(Date.now() - 3600000 * 24 * 14).toISOString(),
       category: "Engineering",
@@ -647,6 +650,7 @@ Passionate about bridging the gap between engineering precision and modern softw
       readTime: "6 min read"
     },
     {
+      id: 4,
       title: "Complexity in Simplicity: The Art of Clean Code",
       date: new Date(Date.now() - 3600000 * 24 * 30).toISOString(),
       category: "Technology",
@@ -654,6 +658,7 @@ Passionate about bridging the gap between engineering precision and modern softw
       readTime: "4 min read"
     },
     {
+      id: 5,
       title: "Solar PV Systems: The Future of Energy Integration",
       date: new Date(Date.now() - 3600000 * 24 * 45).toISOString(),
       category: "Engineering",

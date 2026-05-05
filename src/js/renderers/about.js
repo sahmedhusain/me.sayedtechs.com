@@ -249,10 +249,13 @@ export function renderHomeFeed() {
             };
 
             return `
-              <li style="cursor: pointer; position: relative;" class="flat-post-item" onmouseover="this.querySelector('h3').style.color='var(--accent)'" onmouseout="this.querySelector('h3').style.color='var(--text-primary)'">
+              <li class="flat-post-item" style="position: relative;">
                 <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem;">${timeAgo(post.date)} • ${post.category}</div>
                 <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; transition: color 0.2s;">${post.title}</h3>
-                <p style="color: var(--text-secondary); margin: 0; font-size: 1rem; line-height: 1.6;">${post.desc}</p>
+                <p style="color: var(--text-secondary); margin: 0 0 1rem 0; font-size: 1rem; line-height: 1.6;">${post.desc}</p>
+                <a href="articles/${post.id}" data-nav-link="articles/${post.id}" class="read-more-link" style="color: var(--accent); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; text-decoration: none; width: fit-content;">
+                  See full article <ion-icon name="arrow-forward-outline"></ion-icon>
+                </a>
               </li>
             `;
           }).join('')}

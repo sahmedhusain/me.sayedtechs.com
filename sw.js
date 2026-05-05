@@ -31,9 +31,9 @@ self.addEventListener('fetch', (event) => {
       fetch(request)
         .then((response) => {
           if (response.ok) return response;
-          return caches.match('./index.html');
+          return caches.match('index.html').then(cached => cached || fetch('index.html'));
         })
-        .catch(() => caches.match('./index.html'))
+        .catch(() => caches.match('index.html').then(cached => cached || fetch('index.html')))
     );
     return;
   }

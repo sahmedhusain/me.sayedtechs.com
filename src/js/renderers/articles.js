@@ -3,45 +3,14 @@ import { data } from '../data.js';
 export function renderArticlesSection() {
   const categories = ['All', 'Technology', 'Engineering', 'Career', 'Life'];
   
-  const articles = [
-    {
-      title: "Transitioning from Electrical Engineering to Software",
-      date: "Yesterday",
-      category: "Career",
-      desc: "A reflection on how my background in highly regulated fire safety systems translates to building reliable applications.",
-      readTime: "5 min read"
-    },
-    {
-      title: "Building Real-Time Social Networks",
-      date: "6 days ago",
-      category: "Technology",
-      desc: "Insights on using WebSockets and Go to create fast, scalable concurrent chat platforms.",
-      readTime: "8 min read"
-    },
-    {
-      title: "Complexity in Simplicity: The Art of Clean Code",
-      date: "2 weeks ago",
-      category: "Technology",
-      desc: "Why writing less code is often much harder than writing more, and how to master the art of minimalism.",
-      readTime: "4 min read"
-    },
-    {
-      title: "Solar PV Systems: The Future of Energy",
-      date: "1 month ago",
-      category: "Engineering",
-      desc: "An overview of solar PV installation standards and the technical challenges of grid integration.",
-      readTime: "12 min read"
-    }
-  ];
-
   const categoryTabs = categories.map(cat => `
     <button class="article-tab ${cat === 'All' ? 'active' : ''}" data-filter="${cat.toLowerCase()}">${cat}</button>
   `).join('');
 
-  const articleItems = articles.map(article => `
+  const articleItems = data.articles.map(article => `
     <article class="article-card active" data-category="${article.category.toLowerCase()}">
       <div class="article-meta">
-        <span class="article-date">${article.date}</span>
+        <span class="article-date">${new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
         <span class="article-dot">•</span>
         <span class="article-category">${article.category}</span>
         <span class="article-dot">•</span>
@@ -50,7 +19,7 @@ export function renderArticlesSection() {
       <h3 class="article-title-link">${article.title}</h3>
       <p class="article-desc">${article.desc}</p>
       <div class="article-footer">
-        <a href="#" class="read-article-btn">Read full story <ion-icon name="arrow-forward-outline"></ion-icon></a>
+        <a href="articles/${article.id}" data-nav-link="articles/${article.id}" class="read-article-btn">Read full story <ion-icon name="arrow-forward-outline"></ion-icon></a>
       </div>
     </article>
   `).join('');
@@ -76,6 +45,42 @@ export function renderArticlesSection() {
 
     <div class="articles-grid">
       ${articleItems}
+    </div>
+  `;
+}
+
+export function renderArticleDetail(id) {
+  console.log('Rendering article with ID:', id);
+  const article = data.articles.find(a => String(a.id) === String(id));
+  if (!article) {
+    console.error('Article not found for ID:', id);
+    return `<div class="error-container"><h1>Article not found</h1><button data-nav-link="articles">Back to articles</button></div>`;
+  }
+
+  return `
+    <div class="article-detail-wrapper">
+      <header class="article-detail-header">
+        <button class="back-btn" data-nav-link="articles">
+          <ion-icon name="arrow-back-outline"></ion-icon> Back to Articles
+        </button>
+        <div class="article-meta">
+          <span>${new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
+          <span class="dot">•</span>
+          <span>${article.category}</span>
+          <span class="dot">•</span>
+          <span>${article.readTime}</span>
+        </div>
+        <h1 class="article-title">${article.title}</h1>
+      </header>
+ 
+      <div class="article-content">
+        <p class="article-lead">${article.desc}</p>
+        <!-- Placeholder for full article content -->
+        <div style="margin-top: 2rem; color: var(--text-secondary); line-height: 1.8;">
+          <p>Full article content would go here. Currently, each article has a title, date, category, and description.</p>
+          <p>As I continue to share my journey at the intersection of electrical engineering and software development, I will be adding more detailed technical write-ups and reflections here.</p>
+        </div>
+      </div>
     </div>
   `;
 }
