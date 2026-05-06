@@ -6,18 +6,20 @@
     <meta name="theme-color" content="#0a192f">
     <script>
       (function() {
-        var path = window.location.pathname;
-        var routes = ['home', 'about', 'articles', 'article', 'journey', 'projects', 'contact'];
-        var segments = path.split('/').filter(Boolean);
-        var baseSegments = [];
-        for (var i = 0; i < segments.length; i++) {
-          var s = segments[i].toLowerCase();
-          if (routes.indexOf(s) !== -1 || s === 'index.html') break;
-          baseSegments.push(segments[i]);
-        }
-        var basePath = '/' + baseSegments.join('/') + (baseSegments.length ? '/' : '');
-        if (basePath === '') basePath = '/';
+        var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+        var basePath = isLocal ? '/' : '/me/';
         document.write('<base href="' + basePath + '">');
+
+        // Handle GitHub Pages SPA redirect from 404.html
+        var searchParams = new URLSearchParams(window.location.search);
+        var p = searchParams.get('p');
+        if (p) {
+          searchParams.delete('p');
+          var newSearch = searchParams.toString();
+          newSearch = newSearch ? '?' + newSearch : '';
+          var newUrl = basePath.replace(/\/$/, '') + p + newSearch + window.location.hash;
+          window.history.replaceState(null, null, newUrl);
+        }
       })();
     </script>
     <title>Sayed Ahmed Husain | Electrical Engineer & Full-Stack Developer</title>

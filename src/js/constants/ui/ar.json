@@ -1,0 +1,114 @@
+{
+  "nav": {
+    "about": "حول",
+    "articles": "المقالات",
+    "journey": "المسيرة",
+    "projects": "معرض الأعمال",
+    "contact": "تواصل معي",
+    "resume": "السيرة الذاتية"
+  },
+  "home": {
+    "welcome": "مرحبًا بكم في فضاء سيد 🌍.",
+    "tagline": "مجموعة أفكار من مسيرتي المهنية\nإلى عالمي الشخصي.",
+    "seeAllArticles": "عرض جميع المقالات",
+    "seeFullArticle": "اقرأ المقال كاملاً",
+    "professionalCareer": "المسيرة المهنية",
+    "featured": "مميز",
+    "backToTop": "العودة للأعلى"
+  },
+  "about": {
+    "greeting": "مرحبًا، أنا سيد أحمد ✨",
+    "followGithub": "تابع على GitHub",
+    "followLinkedin": "تابع على LinkedIn",
+    "followX": "تابع على X",
+    "readMedium": "اقرأ على Medium",
+    "email": "البريد الإلكتروني",
+    "phone": "الهاتف",
+    "nationality": "الجنسية",
+    "addressLabel": "العنوان",
+    "downloadResume": "تحميل السيرة الذاتية",
+    "contactDetails": "تفاصيل التواصل"
+  },
+  "articles": {
+    "title": "المقالات ✍️",
+    "subtitle": "غوص عميق في الهندسة والبرمجة والنمو المهني.",
+    "searchPlaceholder": "البحث في المقالات...",
+    "readFullStory": "اقرأ القصة كاملة",
+    "backToArticles": "العودة إلى المقالات",
+    "articleNotFound": "المقال غير موجود",
+    "categories": ["الكل", "التكنولوجيا", "الهندسة", "المهنة", "الحياة"]
+  },
+  "journey": {
+    "title": "المسيرة المهنية ✨",
+    "subtitle": "اكتشف مساري المهني – من المشاريع المبتكرة والأدوار القيادية إلى الإنجازات الأكاديمية والمهنية التي شكلت خبرتي.",
+    "downloadResume": "تحميل السيرة الذاتية",
+    "filters": {
+      "all": "الكل",
+      "education": "التعليم",
+      "career": "المهنة",
+      "internships": "التدريب",
+      "certifications": "الشهادات"
+    }
+  },
+  "experience": {
+    "title": "الخبرة المهنية",
+    "keyResponsibilities": "المسؤوليات الرئيسية",
+    "keyProjects": "المشاريع الرئيسية",
+    "viewList": "قائمة",
+    "viewGrid": "شبكة"
+  },
+  "projects": {
+    "title": "معرض الأعمال 🎨",
+    "comingSoon": "قريبًا",
+    "read": "اقرأ"
+  },
+  "skills": {
+    "title": "المهارات والتقنيات"
+  },
+  "contact": {
+    "title": "تواصل معي 🕊️",
+    "subtitle": "لنبني شيئًا جميلًا معًا.",
+    "businessCard": "بطاقة العمل",
+    "fullName": "الاسم الكامل",
+    "emailAddress": "البريد الإلكتروني",
+    "phoneNumber": "رقم الهاتف",
+    "yourMessage": "رسالتك",
+    "sendMessage": "إرسال الرسالة",
+    "download": "تحميل",
+    "copy": "نسخ",
+    "copied": "تم النسخ!",
+    "whatsappMe": "واتساب",
+    "callMe": "اتصال",
+    "optional": "(اختياري)"
+  },
+  "footer": {
+    "allRightsReserved": "جميع الحقوق محفوظة.",
+    "home": "الرئيسية",
+    "about": "حول"
+  },
+  "time": {
+    "justNow": "الآن",
+    "minutesAgo": "منذ {n} دقائق",
+    "hoursAgo": "منذ {n} ساعات",
+    "yesterday": "أمس",
+    "daysAgo": "منذ {n} أيام",
+    "weeksAgo": "منذ {n} أسابيع",
+    "monthsAgo": "منذ {n} أشهر",
+    "yearsAgo": "منذ {n} سنوات",
+    "present": "حالياً"
+  },
+  "notFound": {
+    "title": "الصفحة غير موجودة",
+    "code": "404",
+    "message": "الصفحة التي تبحث عنها غير موجودة أو تم نقلها.",
+    "goHome": "الرئيسية",
+    "goBack": "رجوع",
+    "lostMessage": "يبدو أنك ضللت الطريق."
+  },
+  "common": {
+    "loading": "جاري التحميل...",
+    "error": "حدث خطأ",
+    "retry": "حاول مرة أخرى",
+    "close": "إغلاق"
+  }
+}

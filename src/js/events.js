@@ -1,7 +1,5 @@
-import { data } from './data.js';
-import { countryCodes } from './data/countries.js';
+import { getData } from './constants/index.js';
 import { generateVCard, generateQRCode } from './renderers/contact.js';
-import { generateTimelineSVG } from './renderers/journey.js';
 import { renderArticleDetail } from './renderers/articles.js';
 import { ROUTE_PAGE_SET } from './routes.js';
 
@@ -16,17 +14,8 @@ function normalizePathname(pathname) {
 }
 
 function computeBasePathname() {
-  const path = window.location.pathname;
-  const segments = path.split('/').filter(Boolean);
-  const routes = ['home', 'about', 'articles', 'article', 'journey', 'projects', 'contact'];
-  
-  const baseSegments = [];
-  for (let i = 0; i < segments.length; i++) {
-    if (routes.includes(segments[i]) || segments[i] === 'index.html') break;
-    baseSegments.push(segments[i]);
-  }
-  
-  return baseSegments.length ? `/${baseSegments.join('/')}` : '';
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  return isLocal ? '' : '/me';
 }
 
 const BASE_PATHNAME = computeBasePathname();
@@ -163,6 +152,28 @@ export function setActivePage(targetPage, options = {}) {
     } else {
       document.body.classList.remove('contact-active');
     }
+
+    // Handle Resume Button Visibility
+    const resumeBtn = document.getElementById('nav-resume-btn');
+    if (resumeBtn) {
+      if (pageId === 'journey') {
+        resumeBtn.style.display = 'flex';
+        // Force reflow for transition
+        resumeBtn.offsetHeight;
+        resumeBtn.style.opacity = '1';
+        resumeBtn.style.transform = 'translateX(0)';
+      } else {
+        resumeBtn.style.opacity = '0';
+        resumeBtn.style.transform = 'translateX(10px)';
+        setTimeout(() => {
+          // Check if we didn't switch back to journey during timeout
+          const currentPage = document.querySelector('[data-page].active');
+          if (!currentPage || currentPage.getAttribute('data-page') !== 'journey') {
+            resumeBtn.style.display = 'none';
+          }
+        }, 400);
+      }
+    }
   } else {
     console.error('CRITICAL ERROR: Page element not found for pageId:', pageId);
   }
@@ -262,28 +273,6 @@ export function initializeSkillsAnimations() {
       });
     });
   });
-
-  // Add click effects for tech logos - DISABLED
-  // const techLogoItems = document.querySelectorAll('.tech-logo-item');
-  // techLogoItems.forEach(item => {
-  //   item.addEventListener('click', () => {
-  //     item.classList.add('tech-logo-clicked');
-  //     setTimeout(() => {
-  //       item.classList.remove('tech-logo-clicked');
-  //     }, 300);
-  //   });
-  // });
-
-  // Add skill badge interactions - DISABLED
-  // const skillBadges = document.querySelectorAll('.skill-badge');
-  // skillBadges.forEach(badge => {
-  //   badge.addEventListener('click', () => {
-  //     badge.classList.add('badge-active');
-  //     setTimeout(() => {
-  //       badge.classList.remove('badge-active');
-  //     }, 500);
-  //   });
-  // });
 }
 
 
@@ -305,6 +294,21 @@ export function initializeEventListeners() {
       langIndicator.style.top = `${rect.top - parentRect.top}px`;
       langIndicator.style.opacity = '1';
     };
+
+    // Initialize UI from localStorage
+    const savedLang = localStorage.getItem('lang') || 'en';
+    if (langText) {
+      langText.textContent = savedLang === 'ar' ? 'Language' : 'اللغة';
+    }
+    langOptions.forEach(opt => {
+      if (opt.getAttribute('data-lang') === savedLang) {
+        opt.classList.add('active');
+        opt.querySelector('ion-icon').style.opacity = '1';
+      } else {
+        opt.classList.remove('active');
+        opt.querySelector('ion-icon').style.opacity = '0';
+      }
+    });
 
     langToggleBtn.addEventListener('click', (e) => {
       e.stopPropagation();
@@ -336,7 +340,9 @@ export function initializeEventListeners() {
         const lang = option.getAttribute('data-lang');
 
         // Update UI
-        langText.textContent = lang.toUpperCase();
+        if (langText) {
+          langText.textContent = lang === 'ar' ? 'Language' : 'اللغة';
+        }
         langOptions.forEach(opt => {
           opt.classList.remove('active');
           opt.querySelector('ion-icon').style.opacity = '0';
@@ -354,12 +360,15 @@ export function initializeEventListeners() {
           document.body.classList.remove('rtl');
         }
 
-        // Close Menu
+        localStorage.setItem('lang', lang);
+
+        // Close Menu and reload to apply translations globally
         setTimeout(() => {
           langMenu.style.opacity = '0';
           langMenu.style.transform = 'translateY(-10px)';
           setTimeout(() => {
             langMenu.style.display = 'none';
+            window.location.reload();
           }, 400);
         }, 200);
       });
@@ -409,76 +418,61 @@ export function initializeEventListeners() {
   }
 
   // --- Generic View Toggle Logic (List vs Grid) ---
-  const viewToggleBtns = document.querySelectorAll('.view-toggle-btn');
+  const updatePillIndicator = (btn, indicatorClass = '.pill-indicator', opacity = 1) => {
+    const container = btn.closest('.navbar-style-pill');
+    if (!container) return;
+    const indicator = container.querySelector(indicatorClass);
+    if (indicator) {
+      indicator.style.width = `${btn.offsetWidth}px`;
+      indicator.style.left = `${btn.offsetLeft}px`;
+      indicator.style.opacity = opacity;
+    }
+  };
 
-  if (viewToggleBtns.length > 0) {
-    viewToggleBtns.forEach(btn => {
-      btn.addEventListener('click', () => {
-        const group = btn.getAttribute('data-target-group'); // e.g., 'exp', 'edu', 'experience-all'
-        const viewType = btn.getAttribute('data-view');      // 'list' or 'grid'
+  const updateSidebarIndicator = (btn, indicatorClass = '.sidebar-indicator-active', opacity = 1) => {
+    const container = btn.closest('.section-sidebar-list');
+    if (!container) return;
+    const indicator = container.querySelector(indicatorClass);
+    if (indicator) {
+      indicator.style.height = `${btn.offsetHeight}px`;
+      indicator.style.top = `${btn.offsetTop}px`;
+      indicator.style.opacity = opacity;
+    }
+  };
 
-        // 1. Find all buttons in this specific control group
-        const groupBtns = document.querySelectorAll(`.view-toggle-btn[data-target-group="${group}"]`);
-        groupBtns.forEach(b => b.classList.remove('active'));
-
-        // 2. Activate clicked button
-        btn.classList.add('active');
-
-        // 3. Toggle Containers for this group or all experience groups
-        const groupsToToggle = group === 'experience-all' ? ['exp', 'intern', 'edu', 'cert'] : [group];
-
-        groupsToToggle.forEach(g => {
-          const listView = document.getElementById(`${g}-list-view`);
-          const gridView = document.getElementById(`${g}-grid-view`);
-
-          if (viewType === 'list') {
-            listView.classList.add('active');
-            gridView.classList.remove('active');
-          } else {
-            listView.classList.remove('active');
-            gridView.classList.add('active');
-          }
-        });
-
-        // Save preference to localStorage
-        if (group === 'experience-all') {
-          localStorage.setItem('viewPreference', viewType);
-        }
-      });
-    });
-  }
-
-  // --- Load View Preference from localStorage ---
-  const savedView = localStorage.getItem('viewPreference');
-  if (savedView) {
-    const groups = ['exp', 'intern', 'edu', 'cert'];
-    groups.forEach(g => {
-      const listView = document.getElementById(`${g}-list-view`);
-      const gridView = document.getElementById(`${g}-grid-view`);
-      if (savedView === 'list') {
-        listView.classList.add('active');
-        gridView.classList.remove('active');
-      } else {
-        listView.classList.remove('active');
-        gridView.classList.add('active');
+  const pillBtns = document.querySelectorAll('.pill-btn');
+  pillBtns.forEach(btn => {
+    btn.addEventListener('mouseenter', function() {
+      if (!this.classList.contains('active')) {
+        updatePillIndicator(this, '.pill-indicator-hover', 1);
       }
     });
-    // Update button states
-    const groupBtns = document.querySelectorAll('.view-toggle-btn[data-target-group="experience-all"]');
-    groupBtns.forEach(btn => {
-      if (btn.getAttribute('data-view') === savedView) {
-        btn.classList.add('active');
-      } else {
-        btn.classList.remove('active');
-      }
+
+    btn.addEventListener('mouseleave', function() {
+      const container = this.closest('.navbar-style-pill');
+      const hoverIndicator = container ? container.querySelector('.pill-indicator-hover') : null;
+      if (hoverIndicator) hoverIndicator.style.opacity = '0';
     });
-  }
+  });
+
 
   // --- Generic Sidebar Tab Logic ---
   const sidebarBtns = document.querySelectorAll('.section-sidebar-btn');
 
   if (sidebarBtns.length > 0) {
     sidebarBtns.forEach(btn => {
+      btn.addEventListener('mouseenter', function() {
+        if (!this.classList.contains('active')) {
+          updateSidebarIndicator(this, '.sidebar-indicator-hover', 1);
+        }
+      });
+
+      btn.addEventListener('mouseleave', function() {
+        const container = this.closest('.section-sidebar-list');
+        const hoverIndicator = container ? container.querySelector('.sidebar-indicator-hover') : null;
+        if (hoverIndicator) hoverIndicator.style.opacity = '0';
+      });
+
       btn.addEventListener('click', () => {
         const group = btn.getAttribute('data-tab-group'); // e.g., 'exp', 'edu'
         const index = btn.getAttribute('data-tab-index'); // e.g., '0', '1'
@@ -489,6 +483,11 @@ export function initializeEventListeners() {
 
         // 2. Activate clicked button
         btn.classList.add('active');
+        updateSidebarIndicator(btn);
+        
+        // Hide hover indicator on click
+        const hoverIndicator = btn.closest('.section-sidebar-list').querySelector('.sidebar-indicator-hover');
+        if (hoverIndicator) hoverIndicator.style.opacity = '0';
 
         // 3. Switch Panel
         // First hide all panels in this group
@@ -506,6 +505,7 @@ export function initializeEventListeners() {
     });
   }
   // Define allItems to match the rendering order
+  const data = getData();
   const allItems = [
     ...data.professionalJourney.education.map(item => ({ ...item, category: 'education' })),
     ...data.professionalJourney.internships.map(item => ({ ...item, category: 'internships' })),
@@ -595,8 +595,10 @@ export function initializeEventListeners() {
       const url = URL.createObjectURL(blob);
       const a = document.createElement('a');
       a.href = url;
-      a.download = 'src/assets/Sayed Ahmed Husain.vcf';
+      a.download = getData().vCardUrl.split('/').pop() || 'contact.vcf';
+      document.body.appendChild(a);
       a.click();
+      document.body.removeChild(a);
       URL.revokeObjectURL(url);
     });
   }
@@ -629,8 +631,26 @@ export function initializeEventListeners() {
     });
   }
 
-  // Navbar navigation with event delegation
+  // Navbar navigation and internal links with event delegation
   document.addEventListener('click', (e) => {
+    // Intercept internal jump links (e.g., Portfolio skills/projects)
+    const anchorLink = e.target.closest('a[href^="#"]');
+    if (anchorLink) {
+      e.preventDefault();
+      const targetId = anchorLink.getAttribute('href').substring(1);
+      const targetElement = document.getElementById(targetId);
+      if (targetElement) {
+        const headerOffset = 100;
+        const elementPosition = targetElement.getBoundingClientRect().top;
+        const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
+        window.scrollTo({
+          top: offsetPosition,
+          behavior: 'smooth'
+        });
+      }
+      return;
+    }
+
     const link = e.target.closest('[data-nav-link]');
     if (!link) return;
 
@@ -780,7 +800,7 @@ export function initializeEventListeners() {
   });
 
   // Journey Timeline filters
-  const journeyFilterBtns = document.querySelectorAll('.journey-filters .filter-btn');
+  const journeyFilterBtns = document.querySelectorAll('.journey-filters .pill-btn');
   const timelineChartContainer = document.querySelector('.timeline-chart-container');
 
   if (journeyFilterBtns.length > 0 && timelineChartContainer) {
@@ -790,13 +810,63 @@ export function initializeEventListeners() {
 
         journeyFilterBtns.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
+        updatePillIndicator(this);
+        
+        // Hide hover indicator on click
+        const hoverIndicator = this.closest('.navbar-style-pill').querySelector('.pill-indicator-hover');
+        if (hoverIndicator) hoverIndicator.style.opacity = '0';
 
         if (window.generateTimelineSVG) {
           timelineChartContainer.innerHTML = window.generateTimelineSVG(filter);
         }
+
+        // Global page filtering for experience sections
+        const expSections = document.querySelectorAll('.journey-section-wrapper');
+        const filterMap = {
+          'career': 'exp',
+          'internships': 'intern',
+          'education': 'edu',
+          'certifications': 'cert'
+        };
+
+        expSections.forEach(section => {
+          if (filter === 'all') {
+            section.style.display = 'block';
+            section.style.opacity = '0';
+            setTimeout(() => {
+              section.style.transition = 'opacity 0.4s ease';
+              section.style.opacity = '1';
+            }, 10);
+          } else {
+            const sectionType = section.getAttribute('data-journey-section');
+            if (sectionType === filterMap[filter]) {
+              section.style.display = 'block';
+              section.style.opacity = '0';
+              setTimeout(() => {
+                section.style.transition = 'opacity 0.4s ease';
+                section.style.opacity = '1';
+              }, 10);
+            } else {
+              section.style.display = 'none';
+            }
+          }
+        });
       });
     });
   }
+
+  // Global initial pill positioner
+  setTimeout(() => {
+    document.querySelectorAll('.navbar-style-pill').forEach(pill => {
+      const activeBtn = pill.querySelector('.pill-btn.active');
+      if (activeBtn) updatePillIndicator(activeBtn);
+    });
+    
+    document.querySelectorAll('.section-sidebar-list').forEach(sidebar => {
+      const activeBtn = sidebar.querySelector('.section-sidebar-btn.active');
+      if (activeBtn) updateSidebarIndicator(activeBtn);
+    });
+  }, 500);
 
   // Read more button for projects
   document.addEventListener('click', (e) => {
@@ -1040,9 +1110,9 @@ export function initializeEventListeners() {
     // Show/hide button based on scroll position
     window.addEventListener('scroll', () => {
       if (window.pageYOffset > 500) {
-        backToTopBtn.classList.add('visible');
+        backToTopBtn.classList.add('active');
       } else {
-        backToTopBtn.classList.remove('visible');
+        backToTopBtn.classList.remove('active');
       }
     });
 
@@ -1108,5 +1178,63 @@ export function initializeEventListeners() {
       });
     });
   }
+
+  // --- Timeline Click-to-View Logic ---
+  document.addEventListener('click', (e) => {
+    const trigger = e.target.closest('.timeline-item-trigger');
+    
+    // Remove existing tooltips first
+    const existingTooltip = document.querySelector('.timeline-tooltip');
+    if (existingTooltip) {
+      existingTooltip.remove();
+      if (trigger && trigger._hasTooltip) {
+        trigger._hasTooltip = false;
+        return;
+      }
+    }
+
+    document.querySelectorAll('.timeline-item-trigger').forEach(el => el._hasTooltip = false);
+
+    if (trigger) {
+      const title = trigger.getAttribute('data-title');
+      const subtitle = trigger.getAttribute('data-subtitle');
+      const date = trigger.getAttribute('data-date');
+
+      const tooltip = document.createElement('div');
+      tooltip.className = 'timeline-tooltip';
+      const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+      const separatorColor = isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.1)';
+
+      tooltip.innerHTML = `
+        <div class="tooltip-content" style="pointer-events: none;">
+          <h4 class="tooltip-title" style="margin: 0; font-size: 1.1rem; color: var(--text-primary); font-weight: 800; letter-spacing: -0.01em;">${title}</h4>
+          <p class="tooltip-subtitle" style="margin: 0.4rem 0 0.8rem; font-size: 0.95rem; color: var(--text-secondary); opacity: 0.9; font-weight: 500; line-height: 1.4;">${subtitle}</p>
+          <div style="display: flex; align-items: center; gap: 0.6rem; margin-top: 0.5rem; padding-top: 0.8rem; border-top: 1px solid ${separatorColor};">
+            <span style="width: 8px; height: 8px; border-radius: 50%; background: var(--accent);"></span>
+            <span class="tooltip-date" style="font-size: 0.85rem; font-weight: 700; color: var(--text-primary); opacity: 0.8; font-family: var(--font-mono);">${date}</span>
+          </div>
+        </div>
+      `;
+
+      document.body.appendChild(tooltip);
+
+      const rect = trigger.getBoundingClientRect();
+      const tooltipRect = tooltip.getBoundingClientRect();
+      
+      let left = rect.left + rect.width / 2 - tooltipRect.width / 2;
+      let top = rect.top + window.scrollY - tooltipRect.height - 15;
+      
+      if (left < 10) left = 10;
+      if (left + tooltipRect.width > window.innerWidth - 10) {
+        left = window.innerWidth - tooltipRect.width - 10;
+      }
+      
+      tooltip.style.left = `${left}px`;
+      tooltip.style.top = `${top}px`;
+      tooltip.style.pointerEvents = 'none';
+
+      trigger._hasTooltip = true;
+    }
+  });
 }
 

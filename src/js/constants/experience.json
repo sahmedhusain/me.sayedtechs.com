@@ -1,0 +1,81 @@
+[
+  {
+    "title": "Public Relations In-Charge",
+    "company": "Lichfield Fire and Safety Equipment FZE",
+    "location": "Bahrain & United Arab Emirates",
+    "date": "May 2024 — February 2026",
+    "sections": {
+      "strategicSalesLeadership": [
+        "Formulate and execute comprehensive Strategic Sales plans and quotas for the Bahrain market, ensuring strict alignment with corporate management objectives.",
+        "Drive profitability by analyzing market dynamics, tracking competitor activities, and identifying new opportunities to increase revenue and market share.",
+        "Lead and mentor sales teams, setting clear targets and monitoring performance to ensure sales goals are consistently met or exceeded."
+      ],
+      "tenderAndProcurementManagement": [
+        "Secure high-value deals with public and private sectors by actively managing bids on the Bahrain Tender Board and Procural (Tenders & Auctions Platform).",
+        "Oversee the end-to-end Vendor Management process, obtaining and maintaining industrial vendor pre-qualifications with key government and private entities.",
+        "Identify and pursue public and private Government Tenders, managing the submission process to ensure compliance and competitiveness."
+      ],
+      "clientRelationsAndBusinessGrowth": [
+        "Cultivate robust relationships with key accounts and expand the customer base by identifying and counseling district sales representatives.",
+        "Conduct regular client visits to diagnose evolving needs, assess relationship quality, and negotiate pricing to close and renew orders.",
+        "Establish and nurture critical relationships with Civil Defense and government ministries to facilitate smooth project execution and compliance."
+      ],
+      "marketIntelligenceAndOperations": [
+        "Monitor key economic indicators, emerging market trends, and supply and demand shifts to optimize product mix and sales volume.",
+        "Recommend new product lines and service improvements based on comprehensive market analysis and consumer needs surveys.",
+        "Maintain technical expertise by participating in professional networks and reviewing industry publications to stay ahead of the curve."
+      ]
+    }
+  },
+  {
+    "title": "Electrical Engineer",
+    "company": "Super Fire and Safety Services W.L.L",
+    "location": "Bahrain",
+    "date": "October 2022 — October 2023",
+    "points": [
+      "System Design & Engineering: Completed detailed Fire Alarm System Designs and technical drawings utilizing current Bahrain CDFSD, GCC Fire Codes, NFPA standards, and project specifications.",
+      "Installation & Commissioning: Directed electrical teams in the installation, programming, maintenance, testing, and commissioning of fire alarm control panels and suppression systems, ensuring full compliance with NFPA and EWA regulations.",
+      "Quality Assurance: Conducted rigorous inspections and system tests to ensure all components met Electrical Engineering safety requirements and performance standards."
+    ],
+    "keyProjects": [
+      "Bahrain Aluminium Company (ALBA): Deluge fire fighting system.",
+      "Bahrain Steel Company: Fire suppression systems.",
+      "Ministry of Education: Fire alarm systems.",
+      "MCSIX: Fire alarm and firefighting systems for the Ministry of Works STP."
+    ]
+  },
+  {
+    "title": "Retail Sales Specialist",
+    "company": "Channels by STC",
+    "location": "Bahrain",
+    "date": "April 2022 — September 2022",
+    "sections": {
+      "salesStrategy": [
+        "Served as a Retail Sales Advisor, expertly executing cross-selling and upselling strategies for a wide range of telecommunications products and services."
+      ],
+      "customerManagement": [
+        "Managed complex customer inquiries and resolved complaints efficiently using the Oracle CRM enterprise system, ensuring high levels of customer satisfaction and retention."
+      ]
+    }
+  },
+  {
+    "title": "Retail Marketing and Customer Service",
+    "company": "Zain Bahrain B.S.C",
+    "location": "Bahrain",
+    "date": "February 2019 — March 2022",
+    "sections": {
+      "operationsManagement": [
+        "Served as Acting Branch Manager, overseeing sales team performance and optimizing retail shop operations to meet company standards."
+      ],
+      "salesExcellence": [
+        "Consistently exceeded targets by cross-selling and upselling telecommunication services and products as a frontline agent."
+      ],
+      "technicalSupport": [
+        "Acted as a Service Center Representative, troubleshooting service issues and resolving technical claims to minimize downtime for customers."
+      ],
+      "customerEngagement": [
+        "Resolved high-volume customer complaints and requests with a focus on problem resolution and conducted outbound tele-sales calls to drive promotion uptake."
+      ]
+    }
+  }
+]

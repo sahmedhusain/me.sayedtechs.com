@@ -1,7 +1,9 @@
-import { data } from '../data.js';
+import { getData } from '../constants/index.js';
+import { t } from '../constants/i18n.js';
 import { countryCodes } from '../data/countries.js';
 
 export function renderContactSection() {
+  const data = getData();
 
   const countryOptions = countryCodes.map(item =>
     `<option value="${item.code}" ${item.code === '+973' ? 'selected' : ''}>${item.flag} ${item.code} (${item.country})</option>`
@@ -25,13 +27,13 @@ export function renderContactSection() {
   return `
     <header class="section-header-glass">
       <div class="header-left">
-        <p class="section-label">Reach out 🕊️</p>
-        <p class="section-subtitle">Let's build something beautiful together.</p>
+        <p class="section-label">${t('contact.title')}</p>
+        <p class="section-subtitle">${t('contact.subtitle')}</p>
       </div>
       <button class="action-btn-glass" id="view-contact-btn">
         <div class="btn-glass-content">
           <ion-icon name="person-outline"></ion-icon>
-          <span>Business Card</span>
+          <span>${t('contact.businessCard')}</span>
         </div>
       </button>
     </header>
@@ -44,19 +46,19 @@ export function renderContactSection() {
           <!-- Left Column: Primary Info -->
           <div class="form-group-island">
             <div class="input-glass-wrapper">
-              <label>Full Name</label>
-              <input type="text" name="fullname" data-form-input placeholder="Sayed Ahmed" required>
+              <label>${t('contact.fullName')} <span style="color: #ff6464;">*</span></label>
+              <input type="text" name="fullname" data-form-input placeholder="${t('contact.fullNamePlaceholder')}" required>
               <div class="input-focus-glow"></div>
             </div>
             
             <div class="input-glass-wrapper">
-              <label>Email Address</label>
-              <input type="email" name="email" data-form-input placeholder="Sayed@example.com" required>
+              <label>${t('contact.emailAddress')} <span style="color: #ff6464;">*</span></label>
+              <input type="email" name="email" data-form-input placeholder="${t('contact.emailPlaceholder')}" required>
               <div class="input-focus-glow"></div>
             </div>
 
             <div class="input-glass-wrapper">
-              <label>Phone Number</label>
+              <label>${t('contact.phoneNumber')} <span style="color: var(--text-secondary); font-weight: 500; font-size: 0.8em; text-transform: none;">${t('contact.optional')}</span></label>
               <div class="liquid-phone-input">
                 <div class="custom-country-selector" id="country-selector-trigger">
                   <div class="selected-country">
@@ -66,7 +68,7 @@ export function renderContactSection() {
                   </div>
                   <div class="country-dropdown-glass">
                     <div class="country-search-wrapper">
-                      <input type="text" class="country-search-input" placeholder="Search..." id="countrySearch">
+                      <input type="text" class="country-search-input" placeholder="${t('contact.searchCountry')}" id="countrySearch">
                     </div>
                     <div class="country-dropdown-indicator"></div>
                     <ul class="country-list-scroll">
@@ -77,7 +79,7 @@ export function renderContactSection() {
                   <input type="hidden" name="countryCode" id="countryCodeInput" value="${activeCountry.code}">
                 </div>
 
-                <input type="tel" name="phone" id="phone" placeholder="3XXXXXXX" pattern="[0-9]*">
+                <input type="tel" name="phone" id="phone" placeholder="${t('contact.phonePlaceholder')}" pattern="[0-9]*">
               </div>
               <div class="input-focus-glow"></div>
             </div>
@@ -86,15 +88,15 @@ export function renderContactSection() {
           <!-- Right Column: Message -->
           <div class="form-group-island">
             <div class="input-glass-wrapper full-height">
-              <label>Your Message</label>
-              <textarea name="message" data-form-input placeholder="Enter your message..." required></textarea>
+              <label>${t('contact.yourMessage')} <span style="color: #ff6464;">*</span></label>
+              <textarea name="message" data-form-input placeholder="${t('contact.messagePlaceholder')}" required></textarea>
               <div class="input-focus-glow"></div>
             </div>
           </div>
         </div>
 
         <button type="submit" data-form-btn class="liquid-submit-btn">
-          <div class="btn-text">Send Message</div>
+          <div class="btn-text">${t('contact.sendMessage')}</div>
           <div class="btn-liquid-fill"></div>
           <ion-icon name="paper-plane-outline"></ion-icon>
         </button>
@@ -104,16 +106,55 @@ export function renderContactSection() {
 }
 
 export function renderContactModal() {
+  const data = getData();
+  const phones = data.phones || data.contact?.phones || [];
+
+  const phoneRows = phones.map(phone => {
+    const fullNumber = `${phone.countryCode}${phone.number}`;
+    const cleanNumber = fullNumber.replace(/[^0-9]/g, '');
+    return `
+      <div class="phone-row">
+        <span style="font-size: 1.4rem;">${phone.flag}</span>
+        <div style="flex: 1; min-width: 0; text-align: start;">
+          <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary);">${phone.label}</div>
+          <div style="font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono);">${phone.countryCode} ${phone.number}</div>
+        </div>
+        <div style="display: flex; gap: 0.5rem;">
+          <a href="tel:${fullNumber}" class="phone-action-btn" title="${t('contact.callMe')}">
+            <ion-icon name="call-outline" style="font-size: 1.2rem;"></ion-icon>
+          </a>
+          ${phone.whatsapp ? `
+          <a href="https://wa.me/${cleanNumber}" target="_blank" class="phone-action-btn wa-btn" title="${t('contact.whatsappMe')}">
+            <ion-icon name="logo-whatsapp" style="font-size: 1.2rem;"></ion-icon>
+          </a>
+          ` : ''}
+        </div>
+      </div>
+    `;
+  }).join('');
+
   return `
     <div class="contact-modal" id="contact-modal" style="display: none;">
+      <style>
+        .phone-action-btn:hover {
+          background: rgba(255, 255, 255, 0.12) !important;
+          transform: scale(1.1);
+          border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+        .phone-action-btn.wa-btn:hover {
+          color: var(--text-primary) !important;
+          background: rgba(255, 255, 255, 0.12) !important;
+          border-color: rgba(255, 255, 255, 0.3) !important;
+        }
+      </style>
       <div class="modal-overlay" id="modal-overlay"></div>
       <div class="modal-content">
         <button class="modal-close" id="modal-close">
           <ion-icon name="close-outline"></ion-icon>
         </button>
         <div class="modal-header">
-          <h3>Save Contact Card</h3>
-          <p>Scan the QR code or download the vCard</p>
+          <h3>${t('contact.saveContactCard')}</h3>
+          <p>${t('contact.scanQr')}</p>
         </div>
         <div class="modal-body">
           <div class="modal-columns">
@@ -122,18 +163,19 @@ export function renderContactModal() {
                 <img src="${data.avatar}" alt="${data.name}" class="contact-avatar" loading="lazy">
                 <h4>${data.name}</h4>
                 <p><ion-icon name="mail-outline"></ion-icon> ${data.email}</p>
-                <p><ion-icon name="call-outline"></ion-icon> ${data.mobile}</p>
                 
-                <a href="https://wa.me/${data.mobile.replace(/[^0-9]/g, '')}" target="_blank" class="wa-gloss-btn" style="display:inline-flex; align-items:center; gap:0.5rem; color: #25D366; font-weight:700; text-decoration:none; margin-top:1.2rem; padding:0.9rem 1.4rem; border-radius:999px; background:rgba(37, 211, 102, 0.08); border: 1px solid rgba(37, 211, 102, 0.2); font-size:0.9rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); width: fit-content; align-self: center;">
-                  <ion-icon name="logo-whatsapp" style="font-size: 1.2rem; color: #25D366 !important; opacity: 1 !important;"></ion-icon>
-                  WhatsApp Me
-                </a>
+                <div style="margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0;">
+                  ${phoneRows}
+                </div>
+
                 <style>
-                  .wa-gloss-btn:hover {
+                  .phone-action-btn:hover {
+                    transform: translateY(-2px);
+                    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+                  }
+                  .wa-btn:hover {
                     background: rgba(37, 211, 102, 0.15) !important;
-                    transform: translateY(-3px) scale(1.05);
                     border-color: rgba(37, 211, 102, 0.4) !important;
-                    box-shadow: 0 10px 20px rgba(37, 211, 102, 0.1);
                   }
                 </style>
               </div>
@@ -146,11 +188,11 @@ export function renderContactModal() {
               <div class="modal-actions" style="margin-top: 0;">
                 <button class="modal-btn primary" id="download-vcard-btn">
                   <ion-icon name="download-outline"></ion-icon>
-                  <span>Download</span>
+                  <span>${t('contact.download')}</span>
                 </button>
                 <button class="modal-btn secondary" id="copy-vcard-btn">
                   <ion-icon name="copy-outline"></ion-icon>
-                  <span>Copy</span>
+                  <span>${t('contact.copy')}</span>
                 </button>
               </div>
             </div>
@@ -162,6 +204,7 @@ export function renderContactModal() {
 }
 
 export async function generateVCard() {
+  const data = getData();
   try {
     const response = await fetch(data.vCardUrl);
     const vcfContent = await response.text();
@@ -210,6 +253,7 @@ END:VCARD`;
 
 
 export async function generateQRCode() {
+  const data = getData();
   const qrContainer = document.getElementById('qr-code');
   if (!qrContainer) return;
 
@@ -222,43 +266,48 @@ export async function generateQRCode() {
   `;
 
   try {
-    // Add a small delay to show the loading animation
-    await new Promise(resolve => setTimeout(resolve, 800));
+    // Wait for QRCode library to load (max 3 seconds)
+    let attempts = 0;
+    while (typeof QRCode === 'undefined' && attempts < 30) {
+      await new Promise(r => setTimeout(r, 100));
+      attempts++;
+    }
 
-    // Fetch the actual VCF file and extract text without photo
+    if (typeof QRCode === 'undefined') {
+      throw new Error('QRCode library failed to load from CDN.');
+    }
+
+    // Fetch the actual VCF file
     const response = await fetch(data.vCardUrl);
     const vcfContent = await response.text();
 
-    // Split into lines and remove the PHOTO field
-    const lines = vcfContent.split('\n');
+    // Cleanly strip ONLY the PHOTO property
+    const lines = vcfContent.split(/\r?\n/);
     const filteredLines = [];
-    let inPhotoBlock = false;
+    let inPhoto = false;
 
     for (let i = 0; i < lines.length; i++) {
       const line = lines[i];
-
-      // Start of photo block
-      if (line.startsWith('PHOTO;ENCODING=')) {
-        inPhotoBlock = true;
-        continue;
+      if (inPhoto) {
+        if (line.startsWith(' ') || line.startsWith('\t')) {
+          continue; // Continuation of the photo base64 string
+        } else {
+          inPhoto = false; // End of photo block
+        }
       }
 
-      // End of vCard or next field means photo block ended
-      if (inPhotoBlock && (line.startsWith('END:VCARD') || (line.match(/^[A-Z]/) && !line.startsWith(' ')))) {
-        inPhotoBlock = false;
+      if (!inPhoto) {
+        if (line.startsWith('PHOTO')) {
+          inPhoto = true;
+          continue;
+        }
+        filteredLines.push(line);
       }
-
-      // Skip lines that are part of photo block
-      if (inPhotoBlock) {
-        continue;
-      }
-
-      filteredLines.push(line);
     }
 
-    const vCardWithoutPhoto = filteredLines.join('\n');
+    // Remove emojis and non-ASCII characters that cause qrcode.js length calculation bugs
+    const vCardWithoutPhoto = filteredLines.join('\n').replace(/[^\x00-\x7F]/g, "");
 
-    // Clear loading state
     qrContainer.innerHTML = '';
 
     // Create QR code using QRCode.js
@@ -272,7 +321,7 @@ export async function generateQRCode() {
       height: 250,
       colorDark: "#0a192f",
       colorLight: "#ffffff",
-      correctLevel: QRCode.CorrectLevel.L
+      correctLevel: QRCode.CorrectLevel.L // Low correction allows maximum data capacity
     });
 
     // Add instruction text
@@ -284,7 +333,10 @@ export async function generateQRCode() {
   } catch (err) {
     console.error('Failed to generate QR code:', err);
     qrContainer.innerHTML = `
-      <p class="qr-error" style="color: #ff6464; text-align: center;">Unable to generate QR code</p>
+      <p class="qr-error" style="color: #ff6464; text-align: center; font-size: 0.9rem;">
+        Unable to generate QR code:<br>
+        <span style="font-size: 0.8rem; opacity: 0.8;">${err.message}</span>
+      </p>
     `;
   }
 }

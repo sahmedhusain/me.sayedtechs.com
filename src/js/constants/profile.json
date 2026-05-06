@@ -1,0 +1,50 @@
+{
+  "name": "SAYED AHMED HUSAIN",
+  "title": "Full-stack Developer | Electrical Engineer",
+  "nationality": "Bahrain",
+  "address": "Northern Governorate, Kingdom of Bahrain",
+  "qualification": "Bachelor Degree",
+  "email": "sayedahmed97.sad@gmail.com",
+  "tagline": "Full-stack Developer | Electrical Engineer",
+
+  "summary": "Electrical Engineer transitioning to Full-Stack Development with a strong focus on building secure, scalable web applications. Proficient in Go (Golang), Next.js, React, and TypeScript, with hands-on experience developing real-time solutions using WebSockets. Also skilled in Rust for systems programming.\n\nMy background in highly regulated industries—specifically Fire Safety—instills a disciplined approach to reliability and performance. While engineering documentation focuses on regulatory compliance, I apply that same rigor to software documentation, ensuring clarity in system architecture and technical workflows. Furthermore, my experience in Business Development and Administration at LIFECO, combined with my background in the telecom sector at Zain Bahrain and Channels by STC, has enhanced my understanding of market dynamics and customer-centric solutions.\n\nPassionate about bridging the gap between engineering precision and modern software architecture, I am committed to driving digital transformation through innovative full-stack solutions. Leveraging dual expertise in electrical engineering and software development, I create efficient applications that address complex real-world challenges while ensuring robust performance.",
+
+  "phones": [
+    {
+      "label": "Bahrain",
+      "countryCode": "+973",
+      "number": "33115351",
+      "flag": "🇧🇭",
+      "whatsapp": true,
+      "primary": true
+    },
+    {
+      "label": "Saudi Arabia",
+      "countryCode": "+966",
+      "number": "590305575",
+      "flag": "🇸🇦",
+      "whatsapp": true,
+      "primary": false
+    }
+  ],
+
+  "social": {
+    "linkedin": "https://linkedin.com/in/97ahm",
+    "github": "https://github.com/sahmedhusain",
+    "twitter": "https://x.com/_97ahm",
+    "discord": "https://discord.com/users/s_97ahm",
+    "medium": "https://medium.com/@s97ahm",
+    "website": "https://sahmedhusain.github.io/me"
+  },
+
+  "featured": {
+    "source": "education",
+    "id": 1,
+    "overrides": {
+      "title": "B.Sc. Electrical Engineering",
+      "subtitle": "University of Bahrain",
+      "image": "graduation_certificate",
+      "link": "/journey"
+    }
+  }
+}

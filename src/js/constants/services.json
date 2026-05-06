@@ -1,0 +1,17 @@
+[
+  {
+    "title": "Web Development",
+    "description": "High-quality development of sites at the professional level.",
+    "icon": "💻"
+  },
+  {
+    "title": "Electrical Engineering",
+    "description": "Design and installation of fire safety and electrical systems.",
+    "icon": "⚡"
+  },
+  {
+    "title": "Full-Stack Development",
+    "description": "Building robust, scalable software solutions using modern technologies.",
+    "icon": "🚀"
+  }
+]

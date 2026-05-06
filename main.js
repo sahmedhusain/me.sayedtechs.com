@@ -1,34 +1,26 @@
-import { data } from './src/js/data.js';
+import { loadData, getData } from './src/js/constants/index.js';
 import { handleImageError, getLogo, getEntityUrl } from './src/js/utils.js';
 import { renderNavbar } from './src/js/renderers/navbar.js';
-import { renderSidebar, renderAboutSection, renderHomeFeed } from './src/js/renderers/about.js';
+import { renderAboutSection, renderHomeFeed } from './src/js/renderers/about.js';
 import { renderExperienceSection } from './src/js/renderers/experience.js';
-import { renderProjectsSection } from './src/js/renderers/projects.js';
-import { renderArticlesSection, renderArticleDetail } from './src/js/renderers/articles.js';
-import { renderSkillsSection } from './src/js/renderers/skills.js';
+import { renderPortfolioPage } from './src/js/renderers/projects.js';
+import { renderArticlesSection } from './src/js/renderers/articles.js';
 
 import { renderProfessionalJourneySection } from './src/js/renderers/journey.js';
 import { renderContactSection, renderContactModal } from './src/js/renderers/contact.js';
-import { renderFooter, renderSideElements, renderImagePreviewModal } from './src/js/renderers/footer.js';
+import { renderFooter, renderImagePreviewModal } from './src/js/renderers/footer.js';
 import { initializeEventListeners, initializeSkillsAnimations } from './src/js/events.js';
-import { ROUTE_PAGE_SET } from './src/js/routes.js';
 
 window.handleImageError = handleImageError;
 window.getLogo = getLogo;
 window.getEntityUrl = getEntityUrl;
 
-function normalizePathname(pathname) {
-  if (!pathname) return '/';
-  if (pathname.length > 1 && pathname.endsWith('/')) {
-    return pathname.slice(0, -1);
-  }
-  return pathname;
-}
+
 
 function computeBasePathname() {
   const path = window.location.pathname;
   const segments = path.split('/').filter(Boolean);
-  const routes = ['home', 'about', 'articles', 'article', 'journey', 'projects', 'contact'];
+  const routes = ['home', 'about', 'articles', 'article', 'journey', 'portfolio', 'contact'];
   
   const baseSegments = [];
   for (let i = 0; i < segments.length; i++) {
@@ -102,7 +94,6 @@ function loadResources() {
 
 
 
-  document.title = 'Sayed Ahmed Husain | Electrical Engineer & Full-Stack Developer';
 }
 
 loadResources();
@@ -116,12 +107,19 @@ if ('serviceWorker' in navigator) {
 }
 
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', async () => {
   const app = document.getElementById('app');
   if (!app) {
     console.error('Root element #app not found');
     return;
   }
+
+  // Load all data from JSON constants before rendering
+  await loadData();
+  const data = getData();
+  
+  // Set dynamic document title
+  document.title = `${data.name} | ${data.title}`;
 
   // Render the complete app
   app.innerHTML = `
@@ -137,10 +135,10 @@ document.addEventListener('DOMContentLoaded', () => {
         ${renderArticlesSection()}
       </article>
       <article class="experience" data-page="journey">
-        ${renderProfessionalJourneySection() + renderExperienceSection() + renderSkillsSection()}
+        ${renderProfessionalJourneySection() + renderExperienceSection()}
       </article>
-      <article class="projects" data-page="projects">
-        ${renderProjectsSection()}
+      <article class="projects" data-page="portfolio">
+        ${renderPortfolioPage()}
       </article>
       <article class="contact" data-page="contact">
         ${renderContactSection()}

@@ -1,0 +1,180 @@
+{
+  "nav": {
+    "about": "About",
+    "articles": "Articles",
+    "journey": "Journey",
+    "projects": "Portfolio",
+    "contact": "Contact",
+    "resume": "Resume"
+  },
+  "home": {
+    "welcome": "Welcome to Sayed's Space 🌍.",
+    "tagline": "A collection of thoughts from my professional path\nto my personal world.",
+    "seeAllArticles": "See all articles",
+    "seeFullArticle": "See full article",
+    "professionalCareer": "Professional career",
+    "featured": "Featured",
+    "backToTop": "Back to top"
+  },
+  "about": {
+    "greeting": "Hi, I'm Sayed Ahmed ✨",
+    "summaryIntro": "Electrical Engineer transitioning to Full-Stack Development",
+    "summarySkills": "Go (Golang), Next.js, React, and TypeScript",
+    "summaryWebSockets": "WebSockets",
+    "summaryRust": "Rust",
+    "summaryBridge": "Passionate about bridging the gap between engineering precision and modern software architecture",
+    "followGithub": "Follow on GitHub",
+    "followLinkedin": "Follow on LinkedIn",
+    "followX": "Follow on X",
+    "readMedium": "Read on Medium",
+    "tooltipConnect": "Connect.",
+    "tooltipCode": "Code.",
+    "tooltipRead": "Read.",
+    "tooltipFollow": "Follow.",
+    "email": "Email",
+    "phone": "Phone",
+    "nationality": "Nationality",
+    "addressLabel": "Address",
+    "downloadResume": "Download Resume",
+    "contactDetails": "Contact Details"
+  },
+  "articles": {
+    "title": "Articles ✍️",
+    "subtitle": "Deep dives into engineering, code, and professional growth.",
+    "searchPlaceholder": "Search articles...",
+    "readFullStory": "Read full story",
+    "backToArticles": "Back to Articles",
+    "articleNotFound": "Article not found",
+    "backToArticlesBtn": "Back to articles",
+    "fullContentPlaceholder": "Full article content would go here. Currently, each article has a title, date, category, and description.",
+    "fullContentNote": "As I continue to share my journey at the intersection of electrical engineering and software development, I will be adding more detailed technical write-ups and reflections here.",
+    "categories": ["All", "Technology", "Engineering", "Career", "Life"]
+  },
+  "journey": {
+    "title": "Professional Journey ✨",
+    "subtitle": "Discover my professional path – from innovative projects and leadership roles to the academic and career milestones that have shaped my expertise.",
+    "viewFullJourney": "View Full Journey Details",
+    "downloadResume": "Download Resume",
+    "timelineTitle": "Professional Timeline",
+    "filters": {
+      "all": "All",
+      "education": "Education",
+      "career": "Career",
+      "internships": "Internships",
+      "certifications": "Certifications"
+    }
+  },
+  "experience": {
+    "title": "Professional Experience",
+    "subtitle": "Discover my <strong>career journey</strong> – from innovative projects and leadership roles to the achievements that have shaped my professional path.",
+    "keyResponsibilities": "Key Responsibilities",
+    "keyProjects": "Key Projects",
+    "viewList": "List",
+    "viewGrid": "Grid",
+    "internships": {
+      "title": "Internships",
+      "subtitle": "Early career experiences – internships that provided <strong>practical skills</strong> and industry insights."
+    },
+    "education": {
+      "title": "Education",
+      "subtitle": "My <strong>educational foundation</strong> – from high school to university degrees.",
+      "highlights": "Education Highlights",
+      "viewCertificate": "View Certificate"
+    },
+    "certifications": {
+      "title": "Licenses & Certifications",
+      "subtitle": "Professional <strong>credentials</strong> validating expertise and commitment to industry standards.",
+      "aboutCredential": "About This Credential",
+      "viewCredential": "View Credential",
+      "issued": "Issued",
+      "expires": "Expires",
+      "expired": "Expired",
+      "courses": "Courses"
+    }
+  },
+  "projects": {
+    "title": "Portfolio 🎨",
+    "subtitle": "Explore my <strong>portfolio</strong> – from web applications and engineering solutions to innovative tools that showcase my technical expertise and problem-solving skills.",
+    "categories": ["All", "Web Development", "Engineering", "Games", "CLI/Algorithms", "UI concepts"],
+    "comingSoon": "Coming Soon",
+    "comingSoonTitle": "UI Concepts",
+    "comingSoonDesc": "Exciting UI/UX design concepts and interactive prototypes are in development. Stay tuned for innovative user interface designs and experiences.",
+    "read": "Read"
+  },
+  "skills": {
+    "title": "Skills & Technologies",
+    "subtitle": "Explore my <strong>technical expertise</strong> – from programming languages and engineering tools to the skills that power my innovative solutions.",
+    "categories": {
+      "personal": "Personal Skills",
+      "concepts": "Computer Science Concepts",
+      "software": "Engineering Software",
+      "languages": "Languages",
+      "web": "Web Technologies",
+      "tools": "Tools",
+      "systems": "Systems",
+      "engineering": "Core Engineering"
+    },
+    "stats": {
+      "programmingLanguages": "Programming Languages",
+      "webTechnologies": "Web Technologies",
+      "engineeringTools": "Engineering Tools",
+      "yearsExperience": "Years Experience"
+    }
+  },
+  "contact": {
+    "title": "Reach out 🕊️",
+    "subtitle": "Let's build something beautiful together.",
+    "businessCard": "Business Card",
+    "fullName": "Full Name",
+    "fullNamePlaceholder": "Sayed Ahmed",
+    "emailAddress": "Email Address",
+    "emailPlaceholder": "Sayed@example.com",
+    "phoneNumber": "Phone Number",
+    "phonePlaceholder": "3XXXXXXX",
+    "yourMessage": "Your Message",
+    "messagePlaceholder": "Enter your message...",
+    "sendMessage": "Send Message",
+    "searchCountry": "Search...",
+    "saveContactCard": "Save Contact Card",
+    "scanQr": "Scan the QR code or download the vCard",
+    "scanWithPhone": "Scan with your phone camera",
+    "generatingQr": "Generating QR Code...",
+    "qrError": "Unable to generate QR code",
+    "download": "Download",
+    "copy": "Copy",
+    "copied": "Copied!",
+    "whatsappMe": "WhatsApp",
+    "callMe": "Call",
+    "optional": "(optional)"
+  },
+  "footer": {
+    "allRightsReserved": "All rights reserved.",
+    "home": "Home",
+    "about": "About"
+  },
+  "time": {
+    "justNow": "Just now",
+    "minutesAgo": "{n} minutes ago",
+    "hoursAgo": "{n} hours ago",
+    "yesterday": "Yesterday",
+    "daysAgo": "{n} days ago",
+    "weeksAgo": "{n} weeks ago",
+    "monthsAgo": "{n} months ago",
+    "yearsAgo": "{n} years ago",
+    "present": "Present"
+  },
+  "notFound": {
+    "title": "Page Not Found",
+    "code": "404",
+    "message": "The page you're looking for doesn't exist or has been moved.",
+    "goHome": "Go Home",
+    "goBack": "Go Back",
+    "lostMessage": "Looks like you've wandered off the path."
+  },
+  "common": {
+    "loading": "Loading...",
+    "error": "Something went wrong",
+    "retry": "Try again",
+    "close": "Close"
+  }
+}

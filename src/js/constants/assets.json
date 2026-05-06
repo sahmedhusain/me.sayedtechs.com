@@ -1,0 +1,72 @@
+{
+  "avatar": "src/assets/IMG_2174.PNG",
+  "favicon": "src/assets/favicon.svg",
+  "cv": "src/assets/Sayed_Ahmed_Resume.pdf",
+  "vcard": "src/assets/Sayed Ahmed Husain.vcf",
+  "graduation_certificate": "src/assets/Graduation_certificate.jpg",
+
+  "logos": {
+    "lifeco": "src/assets/lifeco_uk_logo.jpeg",
+    "super_fire": "src/assets/super_fire_and_safety_services_logo.jpeg",
+    "channels_stc": "src/assets/channels_by_stc_bahrain_logo.jpeg",
+    "zain": "src/assets/zain_logo.jpeg",
+    "megger": "src/assets/megger_logo.jpeg",
+    "university_of_bahrain": "src/assets/university_of_bahrain_logo.jpeg",
+    "reboot": "src/assets/reboot_logo.jpeg",
+    "nocn": "src/assets/nocn_logo.jpeg",
+    "american_heart": "src/assets/american_heart_association_logo.jpeg",
+    "linkedin": "src/assets/LinkedIn_icon.svg",
+    "golden_trust": "src/assets/golden_trust_logo.jpeg",
+    "crpep": "src/assets/crpep_logo.jpeg",
+    "mewa": "src/assets/mewa.jpeg",
+    "moe_highschool": "src/assets/moe_highschool.jpeg",
+    "ewa": "src/assets/electricity_and_water_authority_bahrain_logo.jpeg"
+  },
+
+  "pdfs": {
+    "bls": "src/assets/BLS.pdf",
+    "crpep": "src/assets/crpep.pdf",
+    "solar_pv_nocn": "src/assets/SolarPV-NOCN.pdf",
+    "solar_pv_mewa": "src/assets/solar-pv-mewa.pdf",
+    "smart_streetlights_report": "src/assets/Smart_Street_Lights_-_Final_Report.pdf",
+    "smart_streetlights_poster": "src/assets/Smart_streetligts_poster.pdf"
+  },
+
+  "entity_urls": {
+    "lifeco": "https://www.lifeco-uk.com",
+    "lichfield": "https://www.lifeco-uk.com",
+    "super_fire": "https://www.linkedin.com/company/super-fire-and-safety-services/",
+    "channels_stc": "https://channels.com.sa/home",
+    "channels": "https://channels.com.sa/home",
+    "zain": "https://eshop.bh.zain.com/",
+    "megger": "https://www.megger.com",
+    "university_of_bahrain": "https://www.uob.edu.bh",
+    "reboot": "https://reboot01.com",
+    "nocn": "https://www.nocn.org.uk",
+    "american_heart": "https://www.heart.org",
+    "crpep": "https://www.crpep.bh/",
+    "council": "https://www.crpep.bh/",
+    "mewa": "https://www.linkedin.com/company/mewa-bah/",
+    "ewa": "https://www.ewa.bh/",
+    "electricity_and_water": "https://www.ewa.bh/",
+    "golden_trust": "https://www.linkedin.com/company/golden-trust-group/",
+    "linkedin_learning": "https://www.linkedin.com/learning/"
+  },
+
+  "logo_match_rules": [
+    { "match": ["lichfield", "lifeco"], "logo": "lifeco", "url": "lifeco" },
+    { "match": ["super fire"], "logo": "super_fire", "url": "super_fire" },
+    { "match": ["channels by stc", "channels"], "logo": "channels_stc", "url": "channels_stc" },
+    { "match": ["zain"], "logo": "zain", "url": "zain" },
+    { "match": ["megger"], "logo": "megger", "url": "megger" },
+    { "match": ["university of bahrain"], "logo": "university_of_bahrain", "url": "university_of_bahrain" },
+    { "match": ["reboot"], "logo": "reboot", "url": "reboot" },
+    { "match": ["nocn"], "logo": "nocn", "url": "nocn" },
+    { "match": ["american heart"], "logo": "american_heart", "url": "american_heart" },
+    { "match": ["linkedin"], "logo": "linkedin", "url": "linkedin_learning" },
+    { "match": ["golden trust"], "logo": "golden_trust", "url": "golden_trust" },
+    { "match": ["crpep", "council", "engineering professions"], "logo": "crpep", "url": "crpep" },
+    { "match": ["electricity and water", "ministry of electricity"], "logo": "mewa", "url": "ewa" },
+    { "match": ["sheikh isa", "secondary school"], "logo": "moe_highschool", "url": null }
+  ]
+}

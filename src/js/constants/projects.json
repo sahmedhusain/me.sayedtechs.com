@@ -1,0 +1,201 @@
+[
+  {
+    "name": "Smart Streetlights",
+    "type": "University Graduation Project",
+    "category": "Engineering",
+    "links": [
+      { "text": "Thesis", "url": "smart_streetlights_report" },
+      { "text": "Poster", "url": "smart_streetlights_poster" }
+    ],
+    "date": "January 2020 — May 2020",
+    "points": [
+      "The current streetlight control methods in Bahrain lack precision and environmental sensing, prompting engineers to reassess the standard to find cost-effective solutions for smart road lighting.",
+      "The project aims to develop an intelligent lighting system that improves the existing streetlight functionality.",
+      "To address this, an Arduino controller and motion detection sensors will be used to activate streetlights based on traffic conditions.",
+      "Additionally, the project will compare energy consumption between high-pressure sodium lights and LEDs.",
+      "Implementing an intelligent street lighting system saves energy, extends lighting lifespan, and reduces maintenance costs.",
+      "It optimizes lighting by avoiding unnecessary usage when no vehicles or pedestrians are present."
+    ],
+    "tech": ["Arduino", "cpp", "Java", "IoT", "Motion Sensors", "LED Technology"]
+  },
+  {
+    "name": "GigaBit",
+    "subtitle": "Real-Time Social Network (Go + Next.js)",
+    "category": "Web Development",
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/GigaBit" }
+    ],
+    "points": [
+      "Built GigaBit, a Full-Stack Development project featuring a real-time social networking platform that covers the complete surface area of a modern community application, from authentication and privacy controls to live communication and group collaboration.",
+      "Profiles with public/private visibility, follow requests, and approval flows.",
+      "Content system including posts with media, threaded comments, reactions, bookmarks, shares, and polls.",
+      "Community features such as groups with roles and permissions, invitations, gated membership, group posts, and events with RSVP handling.",
+      "Real-time capabilities using WebSockets for private and group messaging, typing indicators, notifications, online status, and live feed updates.",
+      "Relational data model using SQLite to support the social graph and interaction workflows."
+    ],
+    "tech": ["Go", "Next.js", "React", "TypeScript", "Tailwind CSS", "Apollo Client", "Framer Motion", "SQLite", "WebSocket", "Gorilla Mux", "Docker"],
+    "featured": true
+  },
+  {
+    "name": "01 Dashboard",
+    "subtitle": "Personal Learning Analytics Platform (React + Typescript + GraphQL)",
+    "category": "Web Development",
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/01-Dashboard" }
+    ],
+    "points": [
+      "01 Dashboard is a web-based analytics dashboard built to visualize and analyze learning progress on the reboot01 platform.",
+      "The project aggregates data related to XP, projects, audits, and timelines, presenting it in a clear and structured way to help users better understand their learning patterns over time.",
+      "The dashboard consumes real data through a GraphQL API and uses Apollo Client for efficient querying, caching, and request batching.",
+      "Authentication is secured using JWT, with token refresh logic to maintain stable user sessions.",
+      "From a front-end perspective, the project focuses on clarity and usability.",
+      "Interactive charts and visual summaries are used to represent progress, audit performance, and project distribution, while a responsive layout ensures the dashboard works well across devices."
+    ],
+    "tech": ["React", "TypeScript", "Vite", "GraphQL", "Apollo Client", "Tailwind CSS", "Framer Motion", "JWT", "SVG Charts"],
+    "featured": true
+  },
+  {
+    "name": "Connecthub RT",
+    "subtitle": "Real-Time Forum & Chat Application",
+    "category": "Web Development",
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/Connecthub-RT" }
+    ],
+    "points": [
+      "Connecthub RT is a real-time web application built with Go that combines a traditional discussion forum with live communication features.",
+      "The platform supports posts, comments, categories, and private messaging, allowing users to interact without the delays typically found in standard forum systems.",
+      "The backend is structured around Go's concurrency model and WebSocket communication, enabling instant updates for comments, online status, and private chats.",
+      "Persistent data such as users, posts, and messages is managed using SQLite, keeping the architecture simple while still reflecting real-world application design.",
+      "The project focuses on practical backend concepts, including session handling, secure password hashing, and real-time connection management.",
+      "The frontend uses HTML, CSS, and JavaScript to deliver a responsive interface that works smoothly across devices."
+    ],
+    "tech": ["Go", "JavaScript", "HTML5", "CSS3", "SQLite", "WebSocket", "Gorilla Mux", "Docker", "Jest", "Playwright"]
+  },
+  {
+    "name": "PicoJS Framework",
+    "subtitle": "Reactive UI Framework (JavaScript)",
+    "category": "Web Development",
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/PicoJS-Framework" }
+    ],
+    "points": [
+      "Built PicoJS Framework, a lightweight JavaScript framework created to explore and implement the core mechanics behind modern UI libraries in a clean and readable codebase.",
+      "The project focuses on understanding how reactive state, Virtual DOM rendering, and event handling work together to keep user interfaces predictable and efficient.",
+      "Virtual DOM diffing with minimal DOM patching.",
+      "Reactive state management with automatic re-renders.",
+      "Centralized event delegation for better performance and cleanup.",
+      "Path-based routing that stays in sync with application state.",
+      "Includes a complete TodoMVC demo demonstrating real-world usage."
+    ],
+    "tech": ["JavaScript ES6+", "HTML5", "CSS3", "Virtual DOM", "Reactive State", "History API Routing", "Zero Dependencies"],
+    "featured": true
+  },
+  {
+    "name": "01 ConnectHub",
+    "subtitle": "Full-Stack Web Forum Application",
+    "category": "Web Development",
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/01-ConnectHub" }
+    ],
+    "points": [
+      "01 ConnectHub is a full-stack web forum application built with Go, tailored to support structured community discussions and meaningful user interaction.",
+      "The platform allows users to register, create posts, participate in discussions through comments, and engage with content using likes and dislikes, all within a moderated and secure environment.",
+      "The application implements a complete authentication system, including secure password hashing and OAuth2 social login using Google and GitHub.",
+      "Role-based access control enables administrators and moderators to manage users and content effectively.",
+      "From a technical perspective, the project focuses heavily on backend architecture, session management, and data persistence.",
+      "Server-side rendering is powered by Go, while the frontend is built with HTML, CSS, and JavaScript."
+    ],
+    "tech": ["Go", "HTML5", "CSS3", "JavaScript", "SQLite", "OAuth2", "Gorilla Sessions", "bcrypt", "Docker"]
+  },
+  {
+    "name": "HarmonyHub",
+    "subtitle": "Music & Concert Discovery Platform",
+    "category": "Web Development",
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/HarmonyHub" }
+    ],
+    "points": [
+      "HarmonyHub is a web application engineered in Go that brings together music artists and their concert information in a single, structured platform.",
+      "The application aggregates artist profiles, band members, formation details, and performance schedules using data retrieved from an external REST API.",
+      "The project focuses on clean server-side architecture, structured data handling, and clear presentation of API-driven content.",
+      "Artist and concert data are processed using Go structs and rendered through server-side templates, ensuring reliability, performance, and maintainability."
+    ],
+    "tech": ["Go", "HTML5", "CSS3", "JavaScript", "REST API", "HTML Templates", "JSON"]
+  },
+  {
+    "name": "AntFinder",
+    "subtitle": "Graph Pathfinding Simulation in Go",
+    "category": "CLI/Algorithms",
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/AntFinder" }
+    ],
+    "points": [
+      "AntFinder is a terminal-based application programmed in Go that simulates efficient pathfinding for ant colonies moving through a graph.",
+      "The project focuses on discovering optimal routes and coordinating the movement of multiple ants from a start node to an end node while minimizing the total number of turns.",
+      "The application applies classic graph algorithms, including Depth-First Search (DFS), to explore and evaluate possible paths.",
+      "Ant movement is simulated step by step, ensuring conflict-free traversal and balanced path assignment."
+    ],
+    "tech": ["Go", "Algorithms", "DFS", "Graph Traversal", "Pathfinding"]
+  },
+  {
+    "name": "GoTalk",
+    "subtitle": "Concurrent TCP Chat Server",
+    "category": "CLI/Algorithms",
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/GoTalk" }
+    ],
+    "points": [
+      "GoTalk is a TCP-based chat server architected in Go, optimized to support real-time communication between multiple terminal clients.",
+      "The application allows users to connect concurrently, exchange messages instantly, and interact within a shared chat environment.",
+      "The project focuses on core systems programming concepts, including concurrent client handling using goroutines, message broadcasting through shared channels, and reliable network communication via TCP sockets.",
+      "Each message is timestamped, users are uniquely identified, and chat activity is persisted through server-side logging."
+    ],
+    "tech": ["Go", "TCP/IP", "Goroutines", "Channels", "Networking", "File I/O"]
+  },
+  {
+    "name": "Space Blaster",
+    "subtitle": "Browser-Based Arcade Game",
+    "category": "Games",
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/SpaceBlaster" }
+    ],
+    "points": [
+      "Space Blaster is a browser-based space shooter built using HTML, CSS, and JavaScript, inspired by classic arcade games.",
+      "Players control a spaceship to navigate enemy waves, fire lasers, and build their score in real time.",
+      "The project emphasizes smooth gameplay, responsive keyboard controls, and clear game-state management.",
+      "Enemy movement, collision detection, scoring, and lives are orchestrated through structured JavaScript logic and DOM manipulation.",
+      "Audio effects are integrated to enhance immersion without relying on external libraries."
+    ],
+    "tech": ["JavaScript ES6", "HTML5", "CSS3", "DOM Manipulation", "Audio API", "Game Development"]
+  },
+  {
+    "name": "ASCII Forge",
+    "subtitle": "ASCII Art Generator Web Application",
+    "category": "Web Development",
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/ASCIIForge" }
+    ],
+    "points": [
+      "ASCII Forge is a web-based application implemented in Go that converts plain text into stylized ASCII art using multiple banner formats, including standard, shadow, and thinkertoy.",
+      "The application provides a clean and intuitive interface that allows users to generate creative text representations directly from the browser.",
+      "The project focuses on server-side text processing and dynamic content generation, handling banner parsing and rendering logic efficiently.",
+      "Users can export the generated ASCII output as text files, making it easy to reuse or share across different platforms."
+    ],
+    "tech": ["Go", "HTML5", "CSS3", "Bootstrap", "Docker", "Text Processing", "File I/O"]
+  },
+  {
+    "name": "This personal Website",
+    "subtitle": "Interactive Portfolio & Resume Website",
+    "category": "Web Development",
+    "links": [],
+    "points": [
+      "Built this comprehensive personal portfolio website showcasing professional experience, technical skills, and project work as an Electrical Engineer and Full-Stack Developer.",
+      "The website features an interactive timeline visualization of career progression, detailed project showcases, and a responsive design that works seamlessly across all devices.",
+      "Implemented modern web technologies including dynamic content rendering, smooth animations, and interactive elements to create an engaging user experience.",
+      "Integrated contact forms, downloadable resume, and vCard functionality for easy professional networking.",
+      "The site serves as both a professional showcase and a demonstration of web development capabilities, built entirely with vanilla JavaScript, HTML5, and CSS3."
+    ],
+    "tech": ["JavaScript ES6+", "HTML5", "CSS3", "Responsive Design", "Interactive Timeline", "Web Animations", "Contact Integration"],
+    "featured": true
+  }
+]

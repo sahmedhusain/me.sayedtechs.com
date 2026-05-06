@@ -1,7 +1,8 @@
-import { data } from '../data.js';
-import { handleImageError, getLocalLogoFor, getLogo, getEntityUrl } from '../utils.js';
+import { getData } from '../constants/index.js';
+import { getLogo, timeAgo } from '../utils.js';
 
 export function renderSidebar() {
+  const data = getData();
   return `
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
@@ -78,11 +79,12 @@ export function renderSidebar() {
 }
 
 export function renderAboutSection() {
+  const data = getData();
   return `
     <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4rem; width: 100%; flex-wrap: wrap;">
       
       <!-- Left Column: Title and Description -->
-      <div style="flex: 2; min-width: 300px; text-align: left;">
+      <div class="animate-entry" style="flex: 2; min-width: 300px; text-align: left; animation-delay: 0s;">
         <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 2rem; font-family: var(--font-sans);">Hi, I'm Sayed Ahmed ✨</h1>
         <section class="about-text" style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem;">
           <p style="margin-bottom: 1.5rem;"><strong>Electrical Engineer transitioning to Full-Stack Development</strong> with a strong focus on building secure, scalable web applications. Proficient in <strong>Go (Golang), Next.js, React, and TypeScript</strong>, with hands-on experience developing real-time solutions using <strong>WebSockets</strong>. Also skilled in <strong>Rust</strong> for systems programming. My background in highly regulated industries—specifically Fire Safety—instills a disciplined approach to reliability and performance. While engineering documentation focuses on regulatory compliance, I apply that same rigor to software documentation, ensuring clarity in system architecture and technical workflows. Furthermore, my experience in Business Development and Administration at LIFECO, combined with my background in the telecom sector at Zain Bahrain and Channels by STC, has enhanced my understanding of market dynamics and customer-centric solutions.</p>
@@ -91,7 +93,7 @@ export function renderAboutSection() {
       </div>
 
       <!-- Right Column: Socials and Email -->
-      <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 0.5rem;">
+      <div class="animate-entry" style="flex: 1; min-width: 250px; display: flex; flex-direction: column; gap: 1.5rem; margin-top: 0.5rem; animation-delay: 0.1s;">
         <style>
           .about-contact-link {
             display: flex;
@@ -118,7 +120,7 @@ export function renderAboutSection() {
           <a href="${data.contact.twitter}" target="_blank" class="about-contact-link">
              <span style="font-family: var(--font-sans); font-weight: bold; font-size: 1.1rem; width: 1.3rem; text-align: center;">𝕏</span> Follow on X
           </a>
-          <a href="https://medium.com/@s97ahm" target="_blank" class="about-contact-link">
+          <a href="${data.contact.medium}" target="_blank" class="about-contact-link">
             <ion-icon name="logo-medium" style="font-size: 1.3rem;"></ion-icon> Read on Medium
           </a>
         </div>
@@ -135,9 +137,10 @@ export function renderAboutSection() {
 }
 
 export function renderHomeFeed() {
+  const data = getData();
   return `
     <!-- Profile Card with Avatar and Action Buttons -->
-    <div class="about-profile-header" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 1.5rem; margin-bottom: 2.5rem; width: 100%;">
+    <div class="about-profile-header animate-entry" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 1.5rem; margin-bottom: 2.5rem; width: 100%; animation-delay: 0s;">
       
       <!-- Picture -->
       <div class="about-avatar-section">
@@ -221,7 +224,7 @@ export function renderHomeFeed() {
           <a href="${data.contact.github}" target="_blank" data-title="Code." aria-label="GitHub Profile">
             <ion-icon name="logo-github"></ion-icon>
           </a>
-          <a href="https://medium.com/@s97ahm" target="_blank" data-title="Read." aria-label="Medium Blog">
+          <a href="${data.contact.medium}" target="_blank" data-title="Read." aria-label="Medium Blog">
             <ion-icon name="logo-medium"></ion-icon>
           </a>
           <a href="${data.contact.twitter}" target="_blank" data-title="Follow." aria-label="X Profile" style="font-family: var(--font-sans); font-weight: bold; background: none;">
@@ -231,23 +234,11 @@ export function renderHomeFeed() {
       </div>
     </div>
 
-    <div style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 5rem; align-items: flex-start; justify-content: space-between; width: 100%;">
+    <div class="animate-entry" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 5rem; align-items: flex-start; justify-content: space-between; width: 100%; animation-delay: 0.1s;">
       
       <section style="flex: 1.5; min-width: 300px;">
         <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:2.5rem;">
           ${data.articles.slice(0, 5).map(post => {
-            const timeAgo = (dateStr) => {
-              const seconds = Math.floor((new Date() - new Date(dateStr)) / 1000);
-              if (seconds < 60) return "Just now";
-              if (seconds < 3600) return `${Math.floor(seconds / 60)} minutes ago`;
-              if (seconds < 86400) return `${Math.floor(seconds / 3600)} hours ago`;
-              if (seconds < 172800) return "Yesterday";
-              if (seconds < 604800) return `${Math.floor(seconds / 86400)} days ago`;
-              if (seconds < 2592000) return `${Math.floor(seconds / 604800)} weeks ago`;
-              if (seconds < 31536000) return `${Math.floor(seconds / 2592000)} months ago`;
-              return `${Math.floor(seconds / 31536000)} years ago`;
-            };
-
             return `
               <li class="flat-post-item" style="position: relative;">
                 <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem;">${timeAgo(post.date)} • ${post.category}</div>
@@ -371,7 +362,7 @@ export function renderHomeFeed() {
           <div style="display: flex; flex-direction: column; gap: 1.2rem;">
             ${data.featured.map(item => `
               <div class="featured-card" style="cursor: pointer; background: var(--apple-glass-bg); border: 1px solid var(--card-border); border-radius: 1.2rem; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
-                ${item.image ? `<div style="height: 110px; overflow: hidden;"><img src="${item.image}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;" onerror="this.src='src/assets/IMG_2174.PNG'"></div>` : ''}
+                ${item.image ? `<div style="height: 110px; overflow: hidden;"><img src="${item.image}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;" onerror="this.src='${data.avatar}'"></div>` : ''}
                 <div style="padding: 1.2rem;">
                   <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
                     <ion-icon name="${item.type === 'project' ? 'code-slash-outline' : item.type === 'article' ? 'document-text-outline' : 'ribbon-outline'}" style="color: var(--accent); font-size: 0.9rem;"></ion-icon>

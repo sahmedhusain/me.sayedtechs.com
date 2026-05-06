@@ -129,10 +129,10 @@ export const renderTechLogos = (techArr = []) => {
     if (entry.type === 'img') {
       // Uniform size for all logos
       const size = 'width: 2rem; height: 2rem;';
-      // Make specific logos white
+      // Make specific logos invert dynamically based on theme
       const whiteSrcs = ['rust', 'socketdotio', 'github', 'jsonwebtokens', 'markdown', 'apple', 'dns', 'key', 'websocket', 'apollographql', '1822940', '9784550', '8654207', 'bash', 'framermotion', 'framer'];
       const isWhite = whiteSrcs.some(s => entry.src.includes(s));
-      const filter = isWhite ? 'filter: brightness(0) invert(1);' : '';
+      const filter = isWhite ? 'filter: var(--mono-logo-filter);' : '';
       iconHtml = `<img src="${entry.src}" alt="${orig}" class="tech-logo-svg" style="${size}${filter ? ' ' + filter : ''}" loading="lazy" />`;
     } else if (entry.type === 'devicon') {
       iconHtml = `<i class="devicon ${entry.class}"></i>`;
@@ -219,11 +219,11 @@ export function getIconForLibraryItem(item) {
 
 export function getCategoryIcon(category) {
   const iconMap = {
-    'Web Development': 'globe-outline',
-    'Engineering': 'construct-outline',
-    'Games': 'game-controller-outline',
-    'CLI/Algorithms': 'terminal-outline',
-    'UI concepts': 'color-palette-outline'
+    'webdevelopment': 'globe-outline',
+    'engineering': 'construct-outline',
+    'games': 'game-controller-outline',
+    'clialgorithms': 'terminal-outline',
+    'uiconcepts': 'color-palette-outline'
   };
   return iconMap[category] || 'folder-outline';
 }
@@ -271,10 +271,10 @@ export function renderInteractiveTechLogos(techArr = [], type) {
     if (iconDef.type === 'img') {
       // Uniform size for all logos
       const size = 'width: 2rem; height: 2rem;';
-      // Make specific logos white
+      // Make specific logos invert dynamically based on theme
       const whiteSrcs = ['rust', 'socketdotio', 'github', 'jsonwebtokens', 'markdown', 'apple', 'dns', 'key', 'websocket', 'apollographql', '1822940', '9784550', '8654207', 'bash', 'framermotion', 'framer'];
       const isWhite = whiteSrcs.some(s => iconDef.src.includes(s));
-      const filter = isWhite ? 'filter: brightness(0) invert(1);' : '';
+      const filter = isWhite ? 'filter: var(--mono-logo-filter);' : '';
       iconHtml = `<img src="${iconDef.src}" alt="${orig}" class="tech-logo-svg" style="${size}${filter ? ' ' + filter : ''}" loading="lazy" />`;
     } else if (iconDef.type === 'devicon') {
       // Uniform size for all logos

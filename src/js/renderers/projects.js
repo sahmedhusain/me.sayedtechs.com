@@ -1,5 +1,38 @@
-import { data } from '../data.js';
-import { iconMap, makeAcronym, renderTechLogos, getIconForCoreItem, getIconForLibraryItem, getCategoryIcon, getIconForPersonalSkill, getIconForCSConcept, renderInteractiveTechLogos, renderSkillBadges } from '../icons.js';
+import { getData } from '../constants/index.js';
+import { t } from '../constants/i18n.js';
+import { renderTechLogos, getCategoryIcon } from '../data/icons.js';
+import { renderSkillsSection } from './skills.js';
+import { FALLBACK_CATEGORIES, INTERNAL_CATEGORIES, CATEGORY_ICONS } from '../constants/config.js';
+
+export function renderPortfolioPage() {
+  return `
+    <style>
+      .portfolio-inline-link {
+        transition: all 0.3s ease;
+        text-decoration: none;
+      }
+      .portfolio-inline-link:hover {
+        text-decoration: underline !important;
+        text-decoration-color: var(--accent) !important;
+        text-underline-offset: 4px;
+      }
+    </style>
+    <header class="animate-entry" style="margin-bottom: 4rem; text-align: left; animation-delay: 0s;">
+      <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
+        ${t('projects.title') || 'Portfolio 🎨'}
+      </h1>
+      <p class="section-subtitle" style="font-size: 1.15rem; line-height: 1.7; color: var(--text-secondary); max-width: 850px; font-family: var(--font-sans); margin-bottom: 1.5rem;">
+        Explore my <strong><a href="#projects-section" class="portfolio-inline-link" style="color: var(--text-primary);">Projects</a></strong> – from web applications and engineering solutions to innovative tools that showcase my <strong><a href="#skills-section" class="portfolio-inline-link" style="color: var(--text-primary);">Skills & Technologies</a></strong>, technical expertise, and problem-solving skills.
+      </p>
+    </header>
+    <div class="animate-entry" style="animation-delay: 0.1s;">
+      ${renderSkillsSection()}
+    </div>
+    <div class="animate-entry" style="animation-delay: 0.2s;">
+      ${renderProjectsSection()}
+    </div>
+  `;
+}
 
 export function getIcon(text) {
   const lower = text.toLowerCase();
@@ -10,8 +43,12 @@ export function getIcon(text) {
 }
 
 export function renderProjectsSection() {
-  // Map common tech names to Devicon classes
-  const categories = ['All', 'Web Development', 'Engineering', 'Games', 'CLI/Algorithms', 'UI concepts'];
+  const data = getData();
+  let categories = t('projects.categories');
+  if (!Array.isArray(categories)) {
+    categories = FALLBACK_CATEGORIES;
+  }
+  
   const projects = data.projects.map(p => {
     const name = (p.name || '').toLowerCase();
     const tech = Array.isArray(p.tech) ? p.tech.map(t => String(t).toLowerCase()) : [];
@@ -24,37 +61,45 @@ export function renderProjectsSection() {
     // Explicit web overrides per request
     const forceWeb = (/gigabit/.test(name) || /(^|\s)01\s*dashboard/.test(name));
 
-    let category = 'Web Development';
-    if (isSpaceBlaster) category = 'Games';
-    else if (forceWeb) category = 'Web Development';
-    else if (isCliAlgo) category = 'CLI/Algorithms';
-    else if (isEngineering) category = 'Engineering';
-    else if (isWebDev) category = 'Web Development';
+    let categoryKey = 'webdevelopment';
+    let displayCategory = categories[1];
 
-    return { ...p, category };
+    if (isSpaceBlaster) {
+      categoryKey = 'games';
+      displayCategory = categories[3];
+    }
+    else if (forceWeb) {
+      categoryKey = 'webdevelopment';
+      displayCategory = categories[1];
+    }
+    else if (isCliAlgo) {
+      categoryKey = 'clialgorithms';
+      displayCategory = categories[4];
+    }
+    else if (isEngineering) {
+      categoryKey = 'engineering';
+      displayCategory = categories[2];
+    }
+    else if (isWebDev) {
+      categoryKey = 'webdevelopment';
+      displayCategory = categories[1];
+    }
+
+    return { ...p, categoryKey, displayCategory };
   });
 
   return `
-    <header>
-      <h2 class="h2 article-title">Project Showcase</h2>
-    </header>
-    
-    <p class="section-subtitle">Explore my portfolio – from <strong>web applications</strong> and engineering solutions to innovative tools that showcase my technical expertise and problem-solving skills.</p>
+    <section id="projects-section" style="margin-top: 4rem;">
+      <h3 class="h3 section-title" style="margin-bottom: 2rem;">Projects</h3>
     
     <ul class="filter-list">
       ${categories.map((cat, i) => {
-    const iconMap = {
-      'All': 'grid-outline',
-      'Web Development': 'globe-outline',
-      'Engineering': 'construct-outline',
-      'Games': 'game-controller-outline',
-      'CLI/Algorithms': 'terminal-outline',
-      'UI concepts': 'color-palette-outline'
-    };
-    return `
+        const internalCat = INTERNAL_CATEGORIES[i] || 'all';
+        const icon = CATEGORY_ICONS[i] || 'grid-outline';
+        return `
         <li class="filter-item">
-          <button class="filter-btn ${i === 0 ? 'active' : ''}" data-filter-btn="${cat.toLowerCase()}">
-            <ion-icon name="${iconMap[cat] || 'grid-outline'}"></ion-icon>
+          <button class="filter-btn ${i === 0 ? 'active' : ''}" data-filter-btn="${internalCat}">
+            <ion-icon name="${icon}"></ion-icon>
             <span class="filter-text">${cat}</span>
           </button>
         </li>
@@ -62,14 +107,14 @@ export function renderProjectsSection() {
     </ul>
     <ul class="project-list">
       ${projects.map(project => `
-        <li class="project-item active" data-filter-item data-category="${project.category.toLowerCase().replace(' ', '')}">
+        <li class="project-item active" data-filter-item data-category="${project.categoryKey}">
             <figure class="project-img">
               <div class="project-item-icon-box">
-                <ion-icon name="${getCategoryIcon(project.category)}"></ion-icon>
+                <ion-icon name="${getCategoryIcon(project.categoryKey)}"></ion-icon>
               </div>
             </figure>
             <h3 class="project-title">${project.name}</h3>
-            <p class="project-category">${project.category}</p>
+            <p class="project-category">${project.displayCategory}</p>
             <div class="project-meta">
               ${project.points.length > 0 ? `
                 <ul class="project-description-list">
@@ -102,5 +147,6 @@ export function renderProjectsSection() {
         </div>
       </li>
     </ul>
+    </section>
   `;
 }

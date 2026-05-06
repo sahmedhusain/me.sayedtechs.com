@@ -46,6 +46,7 @@
   --shadow-accent: 0 0 10px rgba(0, 0, 0, 0.05);
 
   --radius-xl: 24px;
+  --mono-logo-filter: none;
 }
 
 [data-theme="dark"] {
@@ -59,9 +60,10 @@
   --card-bg: #18181b;
   --card-border: #27272a;
   --glass-bg: rgba(24, 24, 27, 0.85);
-  --apple-glass-bg: rgba(24, 24, 27, 0.55);
-  --apple-glass-border: rgba(255, 255, 255, 0.08);
+  --apple-glass-bg: rgba(24, 24, 27, 0.65);
+  --apple-glass-border: rgba(255, 255, 255, 0.1);
   --overlay: rgba(18, 18, 18, 0.95);
+  --mono-logo-filter: invert(1);
 }
 
 /* Tablet */

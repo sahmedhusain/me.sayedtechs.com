@@ -1,6 +1,32 @@
-import { data } from '../data.js';
+import { getData } from '../constants/index.js';
+import { t } from '../constants/i18n.js';
 import { handleImageError, getLocalLogoFor, getLogo, getEntityUrl } from '../utils.js';
 import { getSectionIcon } from './about.js';
+
+// --- Helper: Section Icons Map ---
+// --- UTILS ---
+function shortenDate(dateStr) {
+  if (!dateStr) return '';
+  const months = {
+    'January': 'JAN', 'February': 'FEB', 'March': 'MAR', 'April': 'APR',
+    'May': 'MAY', 'June': 'JUN', 'July': 'JUL', 'August': 'AUG',
+    'September': 'SEP', 'October': 'OCT', 'November': 'NOV', 'December': 'DEC',
+    'Present': 'PRESENT'
+  };
+  let result = dateStr;
+  Object.keys(months).forEach(m => {
+    const reg = new RegExp(m, 'g');
+    result = result.replace(reg, months[m]);
+  });
+  return result;
+}
+
+const SECTION_ICONS = {
+  'Career': 'briefcase-outline',
+  'Internships': 'flask-outline',
+  'Education': 'school-outline',
+  'Certifications & Licenses': 'ribbon-outline'
+};
 
 // --- Helper: Get Duration for Cards ---
 export function renderExperienceCardContent(job) {
@@ -39,22 +65,26 @@ export function renderExperienceCardContent(job) {
     <div class="experience-card-header">
       <div class="experience-company-info">
         <div class="experience-company-logo">
-          <a href="${getEntityUrl(job.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${job.company}">
-            <img src="${getLogo(job.company, '')}" alt="${job.company} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
-          </a>
+          <img src="${getLogo(job.company, '')}" alt="${job.company} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
         </div>
-        <div class="experience-company-details">
+        <div class="experience-header-main">
           <h3 class="experience-job-title">${job.title}</h3>
-          <p class="experience-company-name">${job.company}</p>
-          <div class="experience-meta">
-            <span class="experience-date">
+          <p class="experience-company-name">
+            <a href="${getEntityUrl(job.company)}" target="_blank" rel="noopener noreferrer" class="company-link">${job.company}</a>
+          </p>
+          <div class="experience-meta-row">
+            <div class="meta-pill date-pill">
               <ion-icon name="calendar-outline"></ion-icon>
-              ${job.date} <span style="opacity: 0.8; font-size: 0.9em;">${duration}</span>
-            </span>
-            <span class="experience-location">
+              <span class="date-text">${shortenDate(job.date)}</span>
+              ${duration ? `
+                <span class="meta-separator"></span>
+                <span class="duration-text">${duration.replace(' · ', '')}</span>
+              ` : ''}
+            </div>
+            <div class="meta-pill location-pill">
               <ion-icon name="location-outline"></ion-icon>
-              ${job.location}
-            </span>
+              <span>${job.location}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -103,13 +133,15 @@ export function renderExperienceCardContent(job) {
 
 // --- MAIN EXPERIENCE SECTION ENTRY ---
 export function renderExperienceSection() {
+  const data = getData();
   // 1. Experience Section
   const experienceHTML = generateSectionHTML({
     idPrefix: 'exp',
-    title: 'Professional Experience',
-    subtitle: 'Discover my <strong>career journey</strong> – from innovative projects and leadership roles to the achievements that have shaped my professional path.',
+    title: 'Career',
+    subtitle: '',
     items: data.experience,
     isFirst: true,
+    hideHeader: false,
     getItemTitle: (item) => item.title,
     getItemSubtitle: (item) => item.company,
     renderCard: renderExperienceCardContent
@@ -119,7 +151,7 @@ export function renderExperienceSection() {
   const internshipsHTML = generateSectionHTML({
     idPrefix: 'intern',
     title: 'Internships',
-    subtitle: 'Early career experiences – internships that provided <strong>practical skills</strong> and industry insights.',
+    subtitle: '',
     items: data.professionalJourney.internships,
     isFirst: false,
     getItemTitle: (item) => item.title,
@@ -131,7 +163,7 @@ export function renderExperienceSection() {
   const educationHTML = generateSectionHTML({
     idPrefix: 'edu',
     title: 'Education',
-    subtitle: 'My <strong>educational foundation</strong> – from high school to university degrees.',
+    subtitle: '',
     items: data.education,
     isFirst: false,
     getItemTitle: (item) => item.degree,
@@ -142,8 +174,8 @@ export function renderExperienceSection() {
   // 4. Certifications Section
   const certificationsHTML = generateSectionHTML({
     idPrefix: 'cert',
-    title: 'Licenses & Certifications',
-    subtitle: 'Professional <strong>credentials</strong> validating expertise and commitment to industry standards.',
+    title: 'Certifications & Licenses',
+    subtitle: '',
     items: data.certifications,
     isFirst: false,
     getItemTitle: (item) => item.name,
@@ -161,22 +193,22 @@ export function renderInternshipCardContent(intern) {
     <div class="experience-card-header">
       <div class="experience-company-info">
         <div class="experience-company-logo">
-          <a href="${getEntityUrl(intern.company)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${intern.company}">
-            <img src="${getLogo(intern.company, '')}" alt="${intern.company} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
-          </a>
+          <img src="${getLogo(intern.company, '')}" alt="${intern.company} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
         </div>
-        <div class="experience-company-details">
+        <div class="experience-header-main">
           <h3 class="experience-job-title">${intern.title}</h3>
-          <p class="experience-company-name">${intern.company}</p>
-          <div class="experience-meta">
-            <span class="experience-date">
+          <p class="experience-company-name">
+            <a href="${getEntityUrl(intern.company)}" target="_blank" rel="noopener noreferrer" class="company-link">${intern.company}</a>
+          </p>
+          <div class="experience-meta-row">
+            <div class="meta-pill date-pill">
               <ion-icon name="calendar-outline"></ion-icon>
-              ${intern.startDate} - ${intern.endDate}
-            </span>
-            <span class="experience-location">
+              <span>${shortenDate(intern.startDate)} - ${shortenDate(intern.endDate)}</span>
+            </div>
+            <div class="meta-pill location-pill">
               <ion-icon name="location-outline"></ion-icon>
-              ${intern.location}
-            </span>
+              <span>${intern.location}</span>
+            </div>
           </div>
         </div>
       </div>
@@ -195,31 +227,30 @@ export function renderEducationCardContent(edu) {
     <div class="experience-card-header">
       <div class="experience-company-info">
         <div class="experience-company-logo">
-          <a href="${getEntityUrl(edu.institution)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${edu.institution}">
-            <img src="${getLogo(edu.institution || edu.degree, '')}" alt="${edu.institution} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
-          </a>
+          <img src="${getLogo(edu.institution || edu.degree, '')}" alt="${edu.institution} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
         </div>
-        <div class="experience-company-details">
+        <div class="experience-header-main">
           <h3 class="experience-job-title">${edu.degree}</h3>
-          <p class="experience-company-name">${edu.institution}</p>
-          <div class="experience-meta">
-            <span class="experience-date">
+          <p class="experience-company-name">
+            <a href="${getEntityUrl(edu.institution)}" target="_blank" rel="noopener noreferrer" class="company-link">${edu.institution}</a>
+          </p>
+          <div class="experience-meta-row">
+            <div class="meta-pill date-pill">
               <ion-icon name="calendar-outline"></ion-icon>
-              ${edu.date}
-            </span>
-            <span class="experience-location">
+              <span>${shortenDate(edu.date)}</span>
+            </div>
+            <div class="meta-pill location-pill">
               <ion-icon name="location-outline"></ion-icon>
-              ${edu.location}
-            </span>
+              <span>${edu.location}</span>
+            </div>
           </div>
-          ${edu.certificate ? `
-            <div style="margin-top: 0.5rem;">
-              <a href="${edu.certificate}" target="_blank" class="certificate-link">
-                <ion-icon name="document-outline"></ion-icon> View Certificate
-              </a>
-            </div>` : ''}
         </div>
       </div>
+      ${edu.certificate ? `
+        <a href="${edu.certificate}" target="_blank" class="header-action-btn">
+          <ion-icon name="document-text-outline"></ion-icon>
+          <span>View</span>
+        </a>` : ''}
     </div>
 
     ${edu.description ? `
@@ -244,27 +275,25 @@ export function renderCertificationCardContent(cert) {
     <div class="experience-card-header">
       <div class="experience-company-info">
         <div class="experience-company-logo">
-          <a href="${getEntityUrl(cert.issuingAuthority)}" target="_blank" rel="noopener noreferrer" class="logo-link" title="${cert.issuingAuthority}">
-            <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
-          </a>
+          <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
         </div>
-        <div class="experience-company-details">
+        <div class="experience-header-main">
           <h3 class="experience-job-title">${cert.name}</h3>
-          <p class="experience-company-name">${cert.issuingAuthority}</p>
-          <div class="experience-meta">
-             ${cert.id ? `<span class="experience-id"><ion-icon name="${cert.type === 'License' ? 'document-text-outline' : 'ribbon-outline'}"></ion-icon> ID: ${cert.id}</span>` : ''}
-             ${cert.issued ? `<span class="experience-date"><ion-icon name="calendar-outline"></ion-icon> Issued: ${cert.issued}</span>` : ''}
-             ${cert.expires ? `<span class="experience-date" style="${isExpired ? 'color: #ef4444;' : ''}"><ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon> ${isExpired ? 'Expired: ' + cert.expires : 'Expires: ' + cert.expires}</span>` : ''}
-             ${cert.location ? `<span class="experience-location"><ion-icon name="location-outline"></ion-icon> ${cert.location}</span>` : ''}
+          <p class="experience-company-name">
+            <a href="${getEntityUrl(cert.issuingAuthority)}" target="_blank" rel="noopener noreferrer" class="company-link">${cert.issuingAuthority}</a>
+          </p>
+          <div class="experience-meta-row">
+             ${cert.id ? `<div class="meta-pill"><ion-icon name="${cert.type === 'License' ? 'document-text-outline' : 'ribbon-outline'}"></ion-icon> ID: ${cert.id}</div>` : ''}
+             ${cert.issued ? `<div class="meta-pill"><ion-icon name="calendar-outline"></ion-icon> Issued: ${shortenDate(cert.issued)}</div>` : ''}
+             ${cert.expires ? `<div class="meta-pill" style="${isExpired ? 'color: #ef4444;' : ''}"><ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon> ${isExpired ? 'Expired: ' + shortenDate(cert.expires) : 'Expires: ' + shortenDate(cert.expires)}</div>` : ''}
           </div>
-           ${cert.pdfUrl ? `
-            <div style="margin-top: 0.5rem;">
-              <a href="${cert.pdfUrl}" target="_blank" class="certificate-link">
-                <ion-icon name="document-outline"></ion-icon> View Credential
-              </a>
-            </div>` : ''}
         </div>
       </div>
+      ${cert.pdfUrl ? `
+        <a href="${cert.pdfUrl}" target="_blank" class="header-action-btn">
+          <ion-icon name="document-text-outline"></ion-icon>
+          <span>View</span>
+        </a>` : ''}
     </div>
     ${cert.description ? `
     <div class="experience-card-content">
@@ -300,22 +329,34 @@ export function generateSectionHTML({
   isFirst,        // Boolean: is this the first section on the page?
   getItemTitle,   // Function(item) -> string (for sidebar)
   getItemSubtitle,// Function(item) -> string (for sidebar)
-  renderCard      // Function(item) -> html string (for content)
+  renderCard,      // Function(item) -> html string (for content)
+  hideHeader = false
 }) {
+  const iconName = SECTION_ICONS[title] || 'layers-outline';
 
   // 1. Grid View (Sidebar) - ACTIVE by default
   const gridViewHtml = `
-    <div class="section-view-container active" id="${idPrefix}-grid-view">
-      <div class="section-tabs-wrapper">
+    <div class="section-view-container active" id="${idPrefix}-grid-view" data-journey-section="${idPrefix}">
+      <div class="section-tabs-wrapper ${idPrefix}-wrapper">
         <div class="section-sidebar-list">
-          ${items.map((item, i) => `
-            <button class="section-sidebar-btn ${i === 0 ? 'active' : ''}" 
-                    data-tab-group="${idPrefix}" 
-                    data-tab-index="${i}">
-              <span class="sidebar-btn-title">${getItemTitle(item)}</span>
-              <span class="sidebar-btn-subtitle">${getItemSubtitle(item)}</span>
-            </button>
-          `).join('')}
+          <div class="sidebar-section-header">
+            <ion-icon name="${iconName}"></ion-icon>
+            <span>${title}</span>
+          </div>
+          <div class="sidebar-separator"></div>
+          
+          <div class="sidebar-items-container">
+            <div class="sidebar-indicator-active"></div>
+            <div class="sidebar-indicator-hover"></div>
+            ${items.map((item, i) => `
+              <button class="section-sidebar-btn ${i === 0 ? 'active' : ''}" 
+                      data-tab-group="${idPrefix}" 
+                      data-tab-index="${i}">
+                <span class="sidebar-btn-title">${getItemTitle(item)}</span>
+                <span class="sidebar-btn-subtitle">${getItemSubtitle(item)}</span>
+              </button>
+            `).join('')}
+          </div>
         </div>
         <div class="section-tab-content-area">
           ${items.map((item, i) => `
@@ -330,37 +371,15 @@ export function generateSectionHTML({
     </div>
   `;
 
-  // 2. List View - Hidden by default
-  const listViewHtml = `
-    <div class="section-view-container" id="${idPrefix}-list-view">
-      <div class="experience-container">
-        ${items.map((item) => `
-          <div class="experience-card">
-            ${renderCard(item)}
-          </div>
-        `).join('')}
-      </div>
-    </div>
-  `;
-
   return `
-    <header>
-      <div class="section-header-flex ${isFirst ? 'first-section' : ''}">
-        <h2 class="h2 article-title">${title}</h2>
-        ${isFirst ? `
-        <div class="section-view-controls">
-          <button class="view-toggle-btn" data-target-group="experience-all" data-view="list">
-            <ion-icon name="list-outline"></ion-icon> <span class="view-text">List</span>
-          </button>
-          <button class="view-toggle-btn active" data-target-group="experience-all" data-view="grid">
-            <ion-icon name="grid-outline"></ion-icon> <span class="view-text">Grid</span>
-          </button>
+    <div class="journey-section-wrapper animate-entry" data-journey-section="${idPrefix}" style="animation-delay: 0.3s;">
+      ${hideHeader ? '' : `
+      <header class="experience-header">
+        <div class="section-header-flex ${isFirst ? 'first-section' : ''}">
         </div>
-        ` : ''}
-      </div>
-      ${subtitle ? `<p class="section-subtitle">${subtitle}</p>` : ''}
-    </header>
-    ${gridViewHtml}
-    ${listViewHtml}
+      </header>
+      `}
+      ${gridViewHtml}
+    </div>
   `;
 }
