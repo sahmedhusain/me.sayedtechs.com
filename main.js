@@ -146,6 +146,9 @@ document.addEventListener('DOMContentLoaded', async () => {
       <article class="article article-detail" data-page="article">
         <div id="article-detail-content"></div>
       </article>
+      <article class="project-detail" data-page="project">
+        <div id="project-detail-content"></div>
+      </article>
     </div>
     ${renderFooter()}
     ${renderContactModal()}

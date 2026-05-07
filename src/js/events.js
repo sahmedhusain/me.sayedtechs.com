@@ -24,7 +24,7 @@ function getPathForPage(page) {
   if (page === 'home') {
     return BASE_PATHNAME || '/';
   }
-  if (page.startsWith('articles/')) {
+  if (page.startsWith('articles/') || page.startsWith('projects/')) {
     return `${BASE_PATHNAME}/${page}`;
   }
   return `${BASE_PATHNAME}/${page}`;
@@ -38,6 +38,12 @@ function getPageFromLocation() {
   const articlesIndex = segments.indexOf('articles');
   if (articlesIndex !== -1 && segments[articlesIndex + 1]) {
     return `articles/${segments[articlesIndex + 1]}`;
+  }
+
+  // Check for projects/:id
+  const projectsIndex = segments.indexOf('projects');
+  if (projectsIndex !== -1 && segments[projectsIndex + 1]) {
+    return `projects/${segments[projectsIndex + 1]}`;
   }
 
   const lastSegment = segments[segments.length - 1];
@@ -57,11 +63,17 @@ export function setActivePage(targetPage, options = {}) {
   const pages = document.querySelectorAll('[data-page]');
 
   let pageId = targetPage;
-  let articleId = null;
+  let subId = null;
 
-  if (targetPage.includes('/') && targetPage.startsWith('articles/')) {
-    pageId = 'article';
-    articleId = targetPage.split('/')[1];
+  if (targetPage.includes('/')) {
+    const parts = targetPage.split('/');
+    if (parts[0] === 'articles') {
+      pageId = 'article';
+      subId = parts[1];
+    } else if (parts[0] === 'projects') {
+      pageId = 'project';
+      subId = parts[1];
+    }
   }
 
   if (!VALID_PAGES.has(pageId)) {
@@ -69,13 +81,22 @@ export function setActivePage(targetPage, options = {}) {
   }
 
   // If it's an article, render it
-  if (pageId === 'article' && articleId) {
+  if (pageId === 'article' && subId) {
     const content = document.getElementById('article-detail-content');
     if (content) {
-      console.log('Injecting article content into #article-detail-content for ID:', articleId);
-      content.innerHTML = renderArticleDetail(articleId);
-    } else {
-      console.error('CRITICAL ERROR: Element #article-detail-content not found in DOM!');
+      import('./renderers/articles.js').then(m => {
+        content.innerHTML = m.renderArticleDetail(subId);
+      });
+    }
+  }
+
+  // If it's a project, render it
+  if (pageId === 'project' && subId) {
+    const content = document.getElementById('project-detail-content');
+    if (content) {
+      import('./renderers/projects.js').then(m => {
+        content.innerHTML = m.renderProjectDetail(subId);
+      });
     }
   }
 

@@ -1,8 +1,10 @@
 [
   {
+    "id": "smart-streetlights",
     "name": "Smart Streetlights",
     "type": "University Graduation Project",
     "category": "Engineering",
+    "hasGithubRepo": false,
     "links": [
       { "text": "Thesis", "url": "smart_streetlights_report" },
       { "text": "Poster", "url": "smart_streetlights_poster" }
@@ -19,9 +21,11 @@
     "tech": ["Arduino", "cpp", "Java", "IoT", "Motion Sensors", "LED Technology"]
   },
   {
+    "id": "gigabit",
     "name": "GigaBit",
     "subtitle": "Real-Time Social Network (Go + Next.js)",
     "category": "Web Development",
+    "hasGithubRepo": true,
     "links": [
       { "text": "Repository", "url": "https://github.com/sahmedhusain/GigaBit" }
     ],
@@ -37,9 +41,11 @@
     "featured": true
   },
   {
+    "id": "01-dashboard",
     "name": "01 Dashboard",
     "subtitle": "Personal Learning Analytics Platform (React + Typescript + GraphQL)",
     "category": "Web Development",
+    "hasGithubRepo": true,
     "links": [
       { "text": "Repository", "url": "https://github.com/sahmedhusain/01-Dashboard" }
     ],
@@ -55,9 +61,11 @@
     "featured": true
   },
   {
+    "id": "connecthub-rt",
     "name": "Connecthub RT",
     "subtitle": "Real-Time Forum & Chat Application",
     "category": "Web Development",
+    "hasGithubRepo": true,
     "links": [
       { "text": "Repository", "url": "https://github.com/sahmedhusain/Connecthub-RT" }
     ],
@@ -72,9 +80,11 @@
     "tech": ["Go", "JavaScript", "HTML5", "CSS3", "SQLite", "WebSocket", "Gorilla Mux", "Docker", "Jest", "Playwright"]
   },
   {
+    "id": "picojs-framework",
     "name": "PicoJS Framework",
     "subtitle": "Reactive UI Framework (JavaScript)",
     "category": "Web Development",
+    "hasGithubRepo": true,
     "links": [
       { "text": "Repository", "url": "https://github.com/sahmedhusain/PicoJS-Framework" }
     ],
@@ -91,9 +101,11 @@
     "featured": true
   },
   {
+    "id": "01-connecthub",
     "name": "01 ConnectHub",
     "subtitle": "Full-Stack Web Forum Application",
     "category": "Web Development",
+    "hasGithubRepo": true,
     "links": [
       { "text": "Repository", "url": "https://github.com/sahmedhusain/01-ConnectHub" }
     ],
@@ -108,9 +120,11 @@
     "tech": ["Go", "HTML5", "CSS3", "JavaScript", "SQLite", "OAuth2", "Gorilla Sessions", "bcrypt", "Docker"]
   },
   {
+    "id": "harmonyhub",
     "name": "HarmonyHub",
     "subtitle": "Music & Concert Discovery Platform",
     "category": "Web Development",
+    "hasGithubRepo": true,
     "links": [
       { "text": "Repository", "url": "https://github.com/sahmedhusain/HarmonyHub" }
     ],
@@ -123,9 +137,11 @@
     "tech": ["Go", "HTML5", "CSS3", "JavaScript", "REST API", "HTML Templates", "JSON"]
   },
   {
+    "id": "antfinder",
     "name": "AntFinder",
     "subtitle": "Graph Pathfinding Simulation in Go",
     "category": "CLI/Algorithms",
+    "hasGithubRepo": true,
     "links": [
       { "text": "Repository", "url": "https://github.com/sahmedhusain/AntFinder" }
     ],
@@ -138,9 +154,11 @@
     "tech": ["Go", "Algorithms", "DFS", "Graph Traversal", "Pathfinding"]
   },
   {
+    "id": "gotalk",
     "name": "GoTalk",
     "subtitle": "Concurrent TCP Chat Server",
     "category": "CLI/Algorithms",
+    "hasGithubRepo": true,
     "links": [
       { "text": "Repository", "url": "https://github.com/sahmedhusain/GoTalk" }
     ],
@@ -153,9 +171,11 @@
     "tech": ["Go", "TCP/IP", "Goroutines", "Channels", "Networking", "File I/O"]
   },
   {
+    "id": "space-blaster",
     "name": "Space Blaster",
     "subtitle": "Browser-Based Arcade Game",
     "category": "Games",
+    "hasGithubRepo": true,
     "links": [
       { "text": "Repository", "url": "https://github.com/sahmedhusain/SpaceBlaster" }
     ],
@@ -169,9 +189,11 @@
     "tech": ["JavaScript ES6", "HTML5", "CSS3", "DOM Manipulation", "Audio API", "Game Development"]
   },
   {
+    "id": "ascii-forge",
     "name": "ASCII Forge",
     "subtitle": "ASCII Art Generator Web Application",
     "category": "Web Development",
+    "hasGithubRepo": true,
     "links": [
       { "text": "Repository", "url": "https://github.com/sahmedhusain/ASCIIForge" }
     ],
@@ -184,9 +206,11 @@
     "tech": ["Go", "HTML5", "CSS3", "Bootstrap", "Docker", "Text Processing", "File I/O"]
   },
   {
+    "id": "personal-website",
     "name": "This personal Website",
     "subtitle": "Interactive Portfolio & Resume Website",
     "category": "Web Development",
+    "hasGithubRepo": false,
     "links": [],
     "points": [
       "Built this comprehensive personal portfolio website showcasing professional experience, technical skills, and project work as an Electrical Engineer and Full-Stack Developer.",
