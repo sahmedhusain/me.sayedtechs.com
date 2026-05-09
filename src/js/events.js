@@ -5,6 +5,95 @@ import { ROUTE_PAGE_SET } from './routes.js';
 
 const VALID_PAGES = ROUTE_PAGE_SET;
 
+function getResumeUrl() {
+  // Build absolute URL to resume.html from current origin
+  const protocol = window.location.protocol;
+  const hostname = window.location.hostname;
+  const port = window.location.port ? ':' + window.location.port : '';
+  return `${protocol}//${hostname}${port}/src/assets/resume.html`;
+}
+
+function waitForResumeWindowToBeReady(resumeWindow) {
+  return new Promise(resolve => {
+    const poll = () => {
+      if (!resumeWindow || resumeWindow.closed) {
+        resolve(false);
+        return;
+      }
+
+      try {
+        const resumeDocument = resumeWindow.document;
+        const resumeName = resumeDocument.querySelector('.name')?.textContent.trim() || '';
+        const resumeItems = resumeDocument.querySelectorAll('.item').length;
+        const summaryText = resumeDocument.querySelector('.summary-text')?.textContent.trim() || '';
+        const contentReady = resumeDocument.readyState === 'complete' && resumeName.length > 0 && (resumeItems > 0 || summaryText.length > 0);
+
+        if (contentReady) {
+          resolve(true);
+          return;
+        }
+      } catch (error) {
+        // same-origin access can lag until the page is fully loaded
+      }
+
+      setTimeout(poll, 150);
+    };
+
+    poll();
+  });
+}
+
+async function openResumePrintWindow() {
+  const resumeWindow = window.open(getResumeUrl(), '_blank');
+
+  if (!resumeWindow) {
+    console.error('Resume window was blocked by the browser');
+    return;
+  }
+
+  const ready = await waitForResumeWindowToBeReady(resumeWindow);
+  if (!ready) {
+    return;
+  }
+
+  try {
+    resumeWindow.focus();
+
+    // Check if mobile device
+    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
+
+    if (isMobile && resumeWindow.html2pdf) {
+      // Use html2pdf for mobile devices
+      setTimeout(() => {
+        const element = resumeWindow.document.querySelector('.resume-wrapper');
+        const opt = {
+          margin: 0,
+          filename: 'Resume — Sayed Ahmed Husain.pdf',
+          image: { type: 'jpeg', quality: 0.98 },
+          html2canvas: { scale: 2 },
+          jsPDF: { format: 'a4', orientation: 'portrait' }
+        };
+        resumeWindow.html2pdf().set(opt).from(element).save();
+        setTimeout(() => {
+          if (!resumeWindow.closed) {
+            resumeWindow.close();
+          }
+        }, 1000);
+      }, 500);
+    } else {
+      // Use print dialog for desktop
+      resumeWindow.onafterprint = () => {
+        if (!resumeWindow.closed) {
+          resumeWindow.close();
+        }
+      };
+      resumeWindow.print();
+    }
+  } catch (error) {
+    console.error('Failed to open resume print dialog', error);
+  }
+}
+
 function normalizePathname(pathname) {
   if (!pathname) return '/';
   if (pathname.length > 1 && pathname.endsWith('/')) {
@@ -14,7 +103,7 @@ function normalizePathname(pathname) {
 }
 
 function computeBasePathname() {
-  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+  const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.startsWith('192.168.');
   return isLocal ? '' : '/me';
 }
 
@@ -463,13 +552,13 @@ export function initializeEventListeners() {
 
   const pillBtns = document.querySelectorAll('.pill-btn');
   pillBtns.forEach(btn => {
-    btn.addEventListener('mouseenter', function() {
+    btn.addEventListener('mouseenter', function () {
       if (!this.classList.contains('active')) {
         updatePillIndicator(this, '.pill-indicator-hover', 1);
       }
     });
 
-    btn.addEventListener('mouseleave', function() {
+    btn.addEventListener('mouseleave', function () {
       const container = this.closest('.navbar-style-pill');
       const hoverIndicator = container ? container.querySelector('.pill-indicator-hover') : null;
       if (hoverIndicator) hoverIndicator.style.opacity = '0';
@@ -482,13 +571,13 @@ export function initializeEventListeners() {
 
   if (sidebarBtns.length > 0) {
     sidebarBtns.forEach(btn => {
-      btn.addEventListener('mouseenter', function() {
+      btn.addEventListener('mouseenter', function () {
         if (!this.classList.contains('active')) {
           updateSidebarIndicator(this, '.sidebar-indicator-hover', 1);
         }
       });
 
-      btn.addEventListener('mouseleave', function() {
+      btn.addEventListener('mouseleave', function () {
         const container = this.closest('.section-sidebar-list');
         const hoverIndicator = container ? container.querySelector('.sidebar-indicator-hover') : null;
         if (hoverIndicator) hoverIndicator.style.opacity = '0';
@@ -505,7 +594,7 @@ export function initializeEventListeners() {
         // 2. Activate clicked button
         btn.classList.add('active');
         updateSidebarIndicator(btn);
-        
+
         // Hide hover indicator on click
         const hoverIndicator = btn.closest('.section-sidebar-list').querySelector('.sidebar-indicator-hover');
         if (hoverIndicator) hoverIndicator.style.opacity = '0';
@@ -621,6 +710,14 @@ export function initializeEventListeners() {
       a.click();
       document.body.removeChild(a);
       URL.revokeObjectURL(url);
+    });
+  }
+
+  const resumeBtn = document.getElementById('nav-resume-btn');
+  if (resumeBtn) {
+    resumeBtn.addEventListener('click', async (e) => {
+      e.preventDefault();
+      await openResumePrintWindow();
     });
   }
 
@@ -832,7 +929,7 @@ export function initializeEventListeners() {
         journeyFilterBtns.forEach(b => b.classList.remove('active'));
         this.classList.add('active');
         updatePillIndicator(this);
-        
+
         // Hide hover indicator on click
         const hoverIndicator = this.closest('.navbar-style-pill').querySelector('.pill-indicator-hover');
         if (hoverIndicator) hoverIndicator.style.opacity = '0';
@@ -882,7 +979,7 @@ export function initializeEventListeners() {
       const activeBtn = pill.querySelector('.pill-btn.active');
       if (activeBtn) updatePillIndicator(activeBtn);
     });
-    
+
     document.querySelectorAll('.section-sidebar-list').forEach(sidebar => {
       const activeBtn = sidebar.querySelector('.section-sidebar-btn.active');
       if (activeBtn) updateSidebarIndicator(activeBtn);
@@ -1203,7 +1300,7 @@ export function initializeEventListeners() {
   // --- Timeline Click-to-View Logic ---
   document.addEventListener('click', (e) => {
     const trigger = e.target.closest('.timeline-item-trigger');
-    
+
     // Remove existing tooltips first
     const existingTooltip = document.querySelector('.timeline-tooltip');
     if (existingTooltip) {
@@ -1241,15 +1338,15 @@ export function initializeEventListeners() {
 
       const rect = trigger.getBoundingClientRect();
       const tooltipRect = tooltip.getBoundingClientRect();
-      
+
       let left = rect.left + rect.width / 2 - tooltipRect.width / 2;
       let top = rect.top + window.scrollY - tooltipRect.height - 15;
-      
+
       if (left < 10) left = 10;
       if (left + tooltipRect.width > window.innerWidth - 10) {
         left = window.innerWidth - tooltipRect.width - 10;
       }
-      
+
       tooltip.style.left = `${left}px`;
       tooltip.style.top = `${top}px`;
       tooltip.style.pointerEvents = 'none';

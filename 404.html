@@ -6,7 +6,7 @@
   <meta name="theme-color" content="#0a192f">
   <script>
     (function() {
-      var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+      var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.startsWith('192.168.');
       var basePath = isLocal ? '/' : '/me/';
       document.write('<base href="' + basePath + '">');
     })();
