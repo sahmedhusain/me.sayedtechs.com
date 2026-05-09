@@ -87,6 +87,12 @@ function loadResources() {
   visCss.type = 'text/css';
   document.head.appendChild(visCss);
 
+  // Font Awesome for versatile iconography
+  const fontAwesome = document.createElement('link');
+  fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
+  fontAwesome.rel = 'stylesheet';
+  document.head.appendChild(fontAwesome);
+
   // EmailJS, QRCode.js and Vis.js Timeline runtime
   loadExternalScript('https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js');
   loadExternalScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js');

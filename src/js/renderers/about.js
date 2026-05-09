@@ -399,7 +399,10 @@ export function getSectionIcon(sectionName) {
     'operationsManagement': 'settings-outline',
     'salesExcellence': 'bar-chart-outline',
     'technicalSupport': 'headset-outline',
-    'customerEngagement': 'chatbubble-outline'
+    'customerEngagement': 'chatbubble-outline',
+    'educationHighlights': 'school-outline',
+    'activitiesAndSocieties': 'people-circle-outline',
+    'capstoneProject': 'rocket-outline'
   };
   return icons[sectionName] || 'checkmark-circle-outline';
 }

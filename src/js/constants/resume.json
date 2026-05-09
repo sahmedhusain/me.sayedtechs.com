@@ -1,7 +1,7 @@
 {
   "profileImage": {
     "web": "https://sahmedhusain.github.io/me/src/assets/IMG_2174.PNG",
-    "local": "IMG_2174.PNG",
+    "local": "../assets/IMG_2174.PNG",
     "alt": "Sayed Ahmed Husain"
   },
   "name": "Sayed Ahmed Husain",
@@ -78,6 +78,7 @@
       "company": "Lichfield Fire and Safety Equipment FZE",
       "link": "https://www.lifeco-uk.com",
       "logoWeb": "https://sahmedhusain.github.io/me/src/assets/lifeco_uk_logo.jpeg",
+      "logoLocal": "../assets/lifeco_uk_logo.jpeg",
       "logoAlt": "Lichfield Fire and Safety Equipment FZE",
       "title": "Business Development & Public Relations In-Charge",
       "meta": "May 2024 — Feb 2026 \nBahrain & United Arab Emirates",
@@ -91,6 +92,7 @@
       "company": "Super Fire and Safety Services W.L.L",
       "link": "https://www.linkedin.com/company/super-fire-and-safety-services/",
       "logoWeb": "https://sahmedhusain.github.io/me/src/assets/super_fire_and_safety_services_logo.jpeg",
+      "logoLocal": "../assets/super_fire_and_safety_services_logo.jpeg",
       "logoAlt": "Super Fire and Safety Services W.L.L",
       "title": "Electrical Project Engineer",
       "meta": "Oct 2022 — Oct 2023 \nBahrain",
@@ -104,6 +106,7 @@
       "company": "Channels by STC",
       "link": "https://channels.com.sa/home",
       "logoWeb": "https://sahmedhusain.github.io/me/src/assets/channels_by_stc_bahrain_logo.jpeg",
+      "logoLocal": "../assets/channels_by_stc_bahrain_logo.jpeg",
       "logoAlt": "Channels by STC",
       "title": "Retail Sales Specialist",
       "meta": "Apr 2022 — Sep 2022 \nBahrain",
@@ -132,6 +135,7 @@
       "company": "Megger",
       "link": "https://www.megger.com",
       "logoWeb": "https://sahmedhusain.github.io/me/src/assets/megger_logo.jpeg",
+      "logoLocal": "../assets/megger_logo.jpeg",
       "logoAlt": "Megger",
       "title": "Electrical Engineering Intern",
       "meta": "Jul 2020 — Sep 2020 \nRemote",
@@ -150,18 +154,18 @@
   ],
   "education": [
     {
-      "institution": "Reboot Coding Institute",
-      "link": "https://reboot01.com",
       "logoWeb": "https://sahmedhusain.github.io/me/src/assets/reboot_logo.jpeg",
+      "logoLocal": "../assets/reboot_logo.jpeg",
+      "institution": "Reboot Coding Institute",
       "title": "Professional and Specialized Skill Intensive 2-Year Program, Fullstack developer",
       "meta": "Mar 2024 — Sep 2026\nBahrain",
       "context": "Focus & Activities: Intensive, project-based software engineering program focusing on Go, Rust, and modern system architecture.",
       "bullets": ["Activities and societies: Active member of the Linux Community Club, collaborating on system-level projects, environments, and open-source methodologies."]
     },
     {
-      "institution": "University of Bahrain",
-      "link": "https://www.uob.edu.bh",
       "logoWeb": "https://sahmedhusain.github.io/me/src/assets/university_of_bahrain_logo.jpeg",
+      "logoLocal": "../assets/university_of_bahrain_logo.jpeg",
+      "institution": "University of Bahrain",
       "title": "Bachelor of Science - BS, Electrical Engineering",
       "meta": "Sep 2015 — Jun 2022\nBahrain",
       "context": "Highlights: Developed a rigorous foundation in complex systems, control logic, and hardware-software integration.",
@@ -271,10 +275,6 @@
     { 
       "category": "Databases", 
       "items": ["PostgreSQL", "MySQL", "SQLite", "MongoDB"] 
-    },
-    { 
-      "category": "Testing & Code Quality", 
-      "items": ["Jest", "ESLint"] 
     },
     { 
       "category": "Networking, Web & Protocols", 

@@ -1,7 +1,14 @@
+import { iconMap, normalize, getIconForCoreItem, getIconForPersonalSkill, getIconForCSConcept, getIconForLibraryItem } from './data/icons.js';
+
 async function loadResumeJSON() {
     try {
-        const res = await fetch('../js/constants/resume.json');
+        const [res, skillsRes] = await Promise.all([
+            fetch('../js/constants/resume.json'),
+            fetch('../js/constants/skills.json').catch(() => null)
+        ]);
+        
         const c = await res.json();
+        const skillsData = skillsRes ? await skillsRes.json() : null;
 
         // SVG icons used for meta (dates / location)
         const calendarSVG = '<i data-feather="calendar"></i>';
@@ -19,6 +26,35 @@ async function loadResumeJSON() {
         // tag/list icon for skill categories (text-related)
         const tagSVG = '<i data-feather="tag"></i>';
         const subtitleSVG = '<i data-feather="hash"></i>';
+
+        function renderVisual(skill, type) {
+            const key = normalize(skill);
+            const iconDef = iconMap[key];
+            
+            if (iconDef) {
+                if (iconDef.type === 'img' || iconDef.type === 'devicon') {
+                    const src = iconDef.src || iconDef.url;
+                    return `<img src="${src}" class="skill-logo" style="width: 14px; height: 14px; object-fit: contain;">`;
+                } else if (iconDef.type === 'ion') {
+                    return `<ion-icon name="${iconDef.class}" style="font-size: 14px;"></ion-icon>`;
+                } else if (iconDef.type === 'fa' || iconDef.type === 'font-awesome' || iconDef.type === 'simple') {
+                    return `<i class="${iconDef.class}" style="font-size: 12px; width: 14px; text-align: center;"></i>`;
+                } else if (iconDef.type === 'svg') {
+                    return iconDef.svg.replace(/width="[^"]*"/, 'width="14"').replace(/height="[^"]*"/, 'height="14"');
+                }
+            }
+
+            // Fallback based on type
+            if (type === 'personal') {
+                return `<ion-icon name="${getIconForPersonalSkill(skill)}" style="font-size: 14px;"></ion-icon>`;
+            } else if (type === 'engineering' || type === 'hardwareAndCoreEngineering') {
+                return `<ion-icon name="${getIconForCoreItem(skill)}" style="font-size: 14px;"></ion-icon>`;
+            } else if (type === 'concepts' || type === 'computerScienceAndArchitecture') {
+                return `<ion-icon name="${getIconForCSConcept(skill)}" style="font-size: 14px;"></ion-icon>`;
+            }
+
+            return `<i class="fas fa-layer-group" style="font-size: 12px; width: 14px; text-align: center;"></i>`;
+        }
 
         // Populate headings and sidebar titles from labels
         if (c.labels && c.labels.sections) {
@@ -201,7 +237,7 @@ async function loadResumeJSON() {
               <div class="item">
                 <div class="item-header">
                   <div class="item-header-left">
-                    <img src="${e.logoWeb}" alt="${e.institution || ''}" class="company-logo" onerror="this.outerHTML='<div class=\'company-logo-fallback\'>${(e.institution || '').split(' ').slice(0, 3).map(w => w[0]).join('')}'</div>'">
+                    <img src="${e.logoLocal || e.logoWeb}" alt="${e.institution || ''}" class="company-logo" onerror="this.outerHTML='<div class=\'company-logo-fallback\'>${(e.institution || '').split(' ').slice(0, 3).map(w => w[0]).join('')}'</div>'">
                     <div>
                       <h3 class="item-title"><a href="${e.link || '#'}" target="_blank" rel="noopener noreferrer" style="color: inherit; text-decoration: none;">${e.institution}</a></h3>
                       <p class="item-subtitle">${e.title || ''}</p>
@@ -280,31 +316,117 @@ async function loadResumeJSON() {
                 // map skill category names to unique feather icons
                 const norm = s => (s || '').toLowerCase().replace(/[^a-z0-9]/g, '');
                 const skillIconMap = {
+                    [norm('Personal Skills')]: 'user',
                     [norm('Web Architecture & Frameworks')]: 'layers',
+                    [norm('Programming & Markup Languages')]: 'code',
                     [norm('Programming Languages')]: 'code',
+                    [norm('Frameworks & Libraries')]: 'layers',
+                    [norm('Databases')]: 'database',
+                    [norm('Networking, Web & Protocols')]: 'globe',
+                    [norm('Software, DevOps & Tools')]: 'tool',
                     [norm('Systems, Development & Tools')]: 'server',
                     [norm('Computer Science Concepts')]: 'book-open',
-                    [norm('Core Engineering & Software')]: 'settings'
+                    [norm('Computer Science & Architecture')]: 'cpu',
+                    [norm('Core Engineering & Software')]: 'settings',
+                    [norm('Engineering CAD & Simulation')]: 'box',
+                    [norm('Hardware & Core Engineering')]: 'cpu',
+                    [norm('Operating Systems & Environments')]: 'monitor',
+                    [norm('OS & Environments')]: 'monitor',
+                    [norm('Testing & Code Quality')]: 'check-circle'
                 };
 
-                container.innerHTML = (c.technicalSkills || []).map(cat => {
+                // Category Mapping for skills.json keys
+                const categoryLabelMapping = {
+                    programmingAndMarkupLanguages: 'Programming & Markup Languages',
+                    frameworksAndLibraries: 'Frameworks & Libraries',
+                    databases: 'Databases',
+                    networkingWebAndProtocols: 'Networking, Web & Protocols',
+                    softwareDevOpsAndTools: 'Software, DevOps & Tools',
+                    operatingSystemsAndEnvironments: 'Operating Systems & Environments',
+                    testingAndCodeQuality: 'Testing & Code Quality',
+                    computerScienceAndArchitecture: 'Computer Science & Architecture',
+                    engineeringCadAndSimulation: 'Engineering CAD & Simulation',
+                    hardwareAndCoreEngineering: 'Hardware & Core Engineering'
+                };
+
+
+                let displaySkills = c.technicalSkills || [];
+
+                // If skillsData exists, use it to override/populate
+                if (skillsData) {
+                    displaySkills = [];
+                    // Add personal skills first (matches website behavior)
+                    if (Array.isArray(skillsData.personalSkills) && skillsData.personalSkills.length > 0) {
+                        displaySkills.push({
+                            category: 'Personal Skills',
+                            type: 'personal',
+                            items: skillsData.personalSkills
+                        });
+                    }
+                    // Add technical skills
+                    if (skillsData.technicalSkills) {
+                        for (const [key, items] of Object.entries(skillsData.technicalSkills)) {
+                            if (Array.isArray(items) && items.length > 0) {
+                                displaySkills.push({
+                                    category: categoryLabelMapping[key] || key,
+                                    type: key,
+                                    items: items.map(item => typeof item === 'string' ? item : item.name)
+                                });
+                            }
+                        }
+                    }
+                }
+
+                const filteredSkills = displaySkills.filter(cat => cat.category !== 'Testing & Code Quality');
+                container.innerHTML = filteredSkills.map(cat => {
                     const key = norm(cat.category);
                     const icon = skillIconMap[key] || 'hash';
                     const iconHtml = `<i data-feather="${icon}"></i>`;
+                    
                     return `
-                <div class="skill-category"><h3>${iconHtml}<span>${cat.category}</span></h3><div class="project-tags">${(cat.items || []).map(i => `<span class="tag">${i}</span>`).join('')}</div></div>
-              `;
+                    <div class="skill-category">
+                        <h3>${iconHtml}<span>${cat.category}</span></h3>
+                        <div class="project-tags">
+                            ${(cat.items || []).map(i => {
+                            return `<span class="tag">${renderVisual(i, cat.type)}${i}</span>`;
+                        }).join('')}
+                        </div>
+                    </div>
+                    `;
                 }).join('');
+
             }
         }
         // Sidebar Top Skills & Languages (use data-sidebar-container)
-        const topContainer = document.querySelector('[data-sidebar-container="topSkills"]'); if (topContainer) topContainer.innerHTML = (c.topSkills || []).map(s => `<span class="tag">${s}</span>`).join('');
-        const langContainer = document.querySelector('[data-sidebar-container="languages"]'); if (langContainer) langContainer.innerHTML = (c.languages || []).map(s => `<span class="tag">${s}</span>`).join('');
-
-        // Replace Feather icons (if loaded)
-        if (window.feather && typeof window.feather.replace === 'function') {
-            try { window.feather.replace({ 'stroke-width': 1.5 }); } catch (e) { console.warn('feather replace failed', e); }
+        // Sidebar Top Skills & Languages (rendered as bullet points)
+        const topContainer = document.querySelector('[data-sidebar-container="topSkills"]'); 
+        if (topContainer) {
+            topContainer.innerHTML = `<ul style="list-style: none; padding: 0; margin: 0;">
+                ${(c.topSkills || []).map(s => `<li style="font-size: 9.5pt; color: var(--text-muted); margin-bottom: 4px; display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="color: var(--accent); font-weight: bold;">•</span> ${s}
+                </li>`).join('')}
+            </ul>`;
         }
+        
+        const langContainer = document.querySelector('[data-sidebar-container="languages"]'); 
+        if (langContainer) {
+            langContainer.innerHTML = `<ul style="list-style: none; padding: 0; margin: 0;">
+                ${(c.languages || []).map(s => `<li style="font-size: 9.5pt; color: var(--text-muted); margin-bottom: 4px; display: flex; align-items: flex-start; gap: 8px;">
+                    <span style="color: var(--accent); font-weight: bold;">•</span> ${s}
+                </li>`).join('')}
+            </ul>`;
+        }
+
+        // Replace Feather icons (if loaded) with a slight delay to ensure DOM is ready
+        const triggerFeather = () => {
+            if (window.feather && typeof window.feather.replace === 'function') {
+                try { window.feather.replace({ 'stroke-width': 1.5 }); } catch (e) { console.warn('feather replace failed', e); }
+            }
+        };
+
+        triggerFeather();
+        setTimeout(triggerFeather, 100);
+        setTimeout(triggerFeather, 500);
 
     } catch (err) { console.error('Failed to load resume JSON', err); }
 }

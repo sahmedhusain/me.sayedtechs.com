@@ -361,8 +361,14 @@ h3,
   display: inline-flex;
   align-items: center;
   justify-content: center;
+  gap: 8px;
   text-align: center;
   line-height: 1.2;
+}
+
+.tag i, .tag svg {
+  font-size: 11px;
+  flex-shrink: 0;
 }
 
 .pill:hover,
@@ -933,8 +939,8 @@ h3,
   .section-title {
     font-size: 14pt;
     color: #1e293b !important;
-    margin-top: 20pt !important;
-    margin-bottom: 16pt !important;
+    margin-top: 12pt !important;
+    margin-bottom: 10pt !important;
     display: flex;
     align-items: center;
     gap: 10px;
@@ -954,10 +960,10 @@ h3,
   [data-section="education"],
   [data-section="certifications"],
   [data-section="technicalSkills"] {
-    clear: both !important;
-    width: 100% !important;
+    clear: none !important;
+    width: auto !important;
     display: block !important;
-    margin-top: 20px !important;
+    margin-top: 12px !important;
   }
 
   .summary-bullets {

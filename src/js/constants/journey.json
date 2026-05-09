@@ -10,7 +10,7 @@
       "icon": "school-outline"
     },
     {
-      "title": "Bachelor of Science in Electrical Engineering",
+      "title": "Bachelor of Science - BS, Electrical Engineering",
       "institution": "University of Bahrain",
       "location": "Bahrain",
       "startDate": "2015-09-01",
@@ -19,7 +19,7 @@
       "icon": "school-outline"
     },
     {
-      "title": "Full-Stack Development Program",
+      "title": "Professional and Specialized Skill Intensive 2-Year Program, Fullstack developer",
       "institution": "Reboot Coding Institute",
       "location": "Bahrain",
       "startDate": "2024-03-01",
@@ -31,27 +31,29 @@
   ],
   "internships": [
     {
-      "title": "Electrical Test Equipment Internship",
+      "title": "Electrical Engineering Intern",
       "company": "Megger",
-      "location": "Virtual / India",
+      "location": "Remote",
+      "roleOverview": "Remote Technical Internship: Focused on the operational fundamentals and diagnostics of high-precision electrical test equipment.",
       "startDate": "2020-07-01",
       "endDate": "2020-09-30",
-      "description": "Understanding the basics of using electronics test equipments in several tests such as grounding resistivity, CT, VT, protective relays and electric motors tests.",
+      "description": "Gained hands-on familiarity with advanced diagnostic procedures including grounding resistivity, CT, VT, and protective relay testing. Analyzed electric motor performance through precise measurement and calibration protocols.",
       "icon": "construct-outline"
     },
         {
-      "title": "Trainee",
+      "title": "Operations Trainee",
       "company": "Zain Bahrain B.S.C",
       "location": "Bahrain",
+      "roleOverview": "Operational Excellence: Mastered technical support and retail fundamentals, resulting in an immediate transition to a full-time leadership track.",
       "startDate": "2018-12-10",
       "endDate": "2019-01-15",
-      "description": "Trainee in the Retail Sales Department, learning about telecommunication services and products.",
+      "description": "Acquired deep insights into telecommunications retail operations and product life-cycles. Developed core technical troubleshooting skills and customer engagement strategies that set the foundation for subsequent branch management roles.",
       "icon": "construct-outline"
     }
   ],
   "career": [
     {
-      "title": "Retail Marketing and Customer Service",
+      "title": "Acting Branch Manager & Retail Operations",
       "company": "Zain Bahrain B.S.C",
       "location": "Bahrain",
       "startDate": "2019-02-01",
@@ -69,7 +71,7 @@
       "icon": "storefront-outline"
     },
     {
-      "title": "Electrical Engineer",
+      "title": "Electrical Project Engineer",
       "company": "Super Fire and Safety Services W.L.L",
       "location": "Bahrain",
       "startDate": "2022-10-01",
@@ -78,7 +80,7 @@
       "icon": "flash-outline"
     },
     {
-      "title": "Public Relations In-Charge",
+      "title": "Business Development & Public Relations In-Charge",
       "company": "Lichfield Fire and Safety Equipment FZE",
       "location": "Bahrain & United Arab Emirates",
       "startDate": "2024-05-01",

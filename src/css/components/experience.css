@@ -1693,3 +1693,49 @@ html:not([data-theme="dark"]) .timeline-svg .timeline-bar-group circle,
     transform: translateY(0);
   }
 }
+
+/* Role Overview Section in Cards */
+.experience-overview {
+  margin: 0 0 1.5rem 0;
+  padding: 1.5rem;
+  background: rgba(255, 255, 255, 0.03);
+  border-radius: 1.2rem;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  margin-top: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+[data-theme="light"] .experience-overview {
+  background: rgba(0, 0, 0, 0.02);
+  border-color: rgba(0, 0, 0, 0.05);
+}
+
+.experience-overview:hover {
+  background: rgba(255, 255, 255, 0.05);
+  border-color: rgba(255, 255, 255, 0.12);
+  transform: translateY(-2px);
+}
+
+.overview-header {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  color: var(--accent);
+  font-weight: 700;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  margin-bottom: 0.8rem;
+}
+
+.overview-header ion-icon {
+  font-size: 1.2rem;
+}
+
+.overview-text {
+  color: var(--text-secondary);
+  line-height: 1.6;
+  font-size: 0.95rem;
+  font-style: italic;
+  margin: 0;
+}

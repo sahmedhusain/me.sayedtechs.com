@@ -89,8 +89,17 @@ export function renderExperienceCardContent(job) {
         </div>
       </div>
     </div>
-
     <div class="experience-card-content">
+      ${job.roleOverview ? `
+        <div class="experience-overview" style="margin: 0 0 1.5rem 0;">
+          <div class="overview-header">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>Role Overview</span>
+          </div>
+          <p class="overview-text">${job.roleOverview}</p>
+        </div>
+      ` : ''}
+
       ${job.sections ? Object.entries(job.sections).map(([sectionName, points]) => {
     const sectionTitle = sectionName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
     const sectionIcon = getSectionIcon(sectionName);
@@ -214,6 +223,16 @@ export function renderInternshipCardContent(intern) {
       </div>
     </div>
     <div class="experience-card-content">
+      ${intern.roleOverview ? `
+        <div class="experience-overview" style="margin: 0 0 1.5rem 0;">
+          <div class="overview-header">
+            <ion-icon name="information-circle-outline"></ion-icon>
+            <span>Role Overview</span>
+          </div>
+          <p class="overview-text">${intern.roleOverview}</p>
+        </div>
+      ` : ''}
+
       <div class="experience-section">
         <p class="experience-point">${intern.description}</p>
       </div>
@@ -253,18 +272,33 @@ export function renderEducationCardContent(edu) {
         </a>` : ''}
     </div>
 
-    ${edu.description ? `
     <div class="experience-card-content">
-      <div class="experience-section">
-        <h4 class="experience-section-title">
-          <ion-icon name="school-outline"></ion-icon>
-          ${getData().ui_extras?.experience?.educationHighlights || 'Education Highlights'}
-        </h4>
-        <ul class="experience-points">
-          ${edu.description.map(point => `<li class="experience-point">${point}</li>`).join('')}
-        </ul>
-      </div>
-    </div>` : ''}
+      ${edu.sections ? Object.entries(edu.sections).map(([sectionName, points]) => {
+    const sectionTitle = sectionName.replace(/([A-Z])/g, ' $1').replace(/^./, str => str.toUpperCase());
+    const sectionIcon = getSectionIcon(sectionName);
+    return `
+          <div class="experience-section">
+            <h4 class="experience-section-title">
+              <ion-icon name="${sectionIcon}"></ion-icon>
+              ${sectionTitle}
+            </h4>
+            <ul class="experience-points">
+              ${points.map(point => `<li class="experience-point">${point}</li>`).join('')}
+            </ul>
+          </div>
+        `;
+  }).join('') : edu.description ? `
+        <div class="experience-section">
+          <h4 class="experience-section-title">
+            <ion-icon name="school-outline"></ion-icon>
+            ${getData().ui_extras?.experience?.educationHighlights || 'Education Highlights'}
+          </h4>
+          <ul class="experience-points">
+            ${edu.description.map(point => `<li class="experience-point">${point}</li>`).join('')}
+          </ul>
+        </div>
+      ` : ''}
+    </div>
   `;
 }
 

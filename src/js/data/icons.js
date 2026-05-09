@@ -23,6 +23,9 @@ export const iconMap = {
   'sqlite': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg' },
   'postgresql': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/postgresql/postgresql-original.svg' },
   'mysql': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mysql/mysql-original.svg' },
+  'mongodb': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongodb/mongodb-original.svg' },
+  'mongoose': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/mongoose/mongoose-original.svg' },
+  'express': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/express/express-original.svg' },
   'mcp': { type: 'img', src: 'https://registry.npmmirror.com/@lobehub/icons-static-png/1.75.0/files/dark/mcp.png' },
   'docker': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/docker/docker-original.svg' },
   'bootstrap': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/bootstrap/bootstrap-original.svg' },
@@ -41,6 +44,7 @@ export const iconMap = {
   'c': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/c/c-original.svg' },
   'cplusplus': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
   'c++': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
+  'pycharm': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/pycharm/pycharm-original.svg' },
   'cpp': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/cplusplus/cplusplus-original.svg' },
   'rust': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/rust/rust-line.svg' },
   'php': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/php/php-original.svg' },
@@ -56,6 +60,9 @@ export const iconMap = {
   'figma': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/figma/figma-original.svg' },
   'mermaid': { type: 'img', src: 'https://mermaid.live/favicon.svg' },
   'markdown': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/markdown/markdown-original.svg' },
+  'unix': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' },
+  'archicad': { type: 'img', src: 'https://cdn.simpleicons.org/archicad' },
+  'archi cad': { type: 'img', src: 'https://cdn.simpleicons.org/archicad' },
   'wsl': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/linux/linux-original.svg' },
   'macos': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/apple/apple-original.svg' },
   'windows': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/windows8/windows8-original.svg' },
@@ -68,7 +75,7 @@ export const iconMap = {
   'matlab': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg' },
   'simulink': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg' },
   'matlab simulink': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/matlab/matlab-original.svg' },
-  'autocad': { type: 'img', src: 'https://web.autocad.com/favicon.ico' },
+  'autocad': { type: 'img', src: 'https://cdn.simpleicons.org/autocad' },
   'solidworks': { type: 'img', src: 'https://www.solidworks.com/themes/custom/sw-digital/favicon.ico' },
   'fusion 360': { type: 'img', src: 'https://damassets.autodesk.net/content/dam/autodesk/www/product-imagery/badge-75x75/simplified-badges/fusion-360-product-design-extension-2023-simplified-badge-75x75.png' },
   'oracle': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/oracle/oracle-original.svg' },
@@ -77,6 +84,7 @@ export const iconMap = {
   'sap system': { type: 'img', src: 'data:image/svg+xml;base64,PHN2ZyBpZD0iTGF5ZXJfMSIgZGF0YS1uYW1lPSJMYXllciAxIiB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHhtbG5zOnhsaW5rPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5L3hsaW5rIiB2aWV3Qm94PSIwIDAgNDEyLjM4IDIwNCI+PGRlZnM+PHN0eWxlPi5jbHMtMSwuY2xzLTJ7ZmlsbC1ydWxlOmV2ZW5vZGQ7fS5jbHMtMXtmaWxsOnVybCgjbGluZWFyLWdyYWRpZW50KTt9LmNscy0ye2ZpbGw6I2ZmZjt9PC9zdHlsZT48bGluZWFyR3JhZGllbnQgaWQ9ImxpbmVhci1ncmFkaWVudCIgeDE9IjIwNi4xOSIgeDI9IjIwNi4xOSIgeTI9IjIwNCIgZ3JhZGllbnRVbml0cz0idXNlclNwYWNlT25Vc2UiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzAwYjhmMSIvPjxzdG9wIG9mZnNldD0iMC4wMiIgc3RvcC1jb2xvcj0iIzAxYjZmMCIvPjxzdG9wIG9mZnNldD0iMC4zMSIgc3RvcC1jb2xvcj0iIzBkOTBkOSIvPjxzdG9wIG9mZnNldD0iMC41OCIgc3RvcC1jb2xvcj0iIzE3NzVjOCIvPjxzdG9wIG9mZnNldD0iMC44MiIgc3RvcC1jb2xvcj0iIzFjNjViZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzFlNWZiYiIvPjwvbGluZWFyR3JhZGllbnQ+PC9kZWZzPjx0aXRsZT5TQVBfZ3JhZF9SX3Njcm5fWmVpY2hlbmZsw6RjaGUgMTwvdGl0bGU+PHBvbHlsaW5lIGNsYXNzPSJjbHMtMSIgcG9pbnRzPSIwIDIwNCAyMDguNDEgMjA0IDQxMi4zOCAwIDAgMCAwIDIwNCIvPjxwYXRoIGNsYXNzPSJjbHMtMiIgZD0iTTI0NC43MywzOC4zNmwtNDAuNiwwdjk2LjUyTDE2OC42NywzOC4zM0gxMzMuNTFsLTMwLjI3LDgwLjcyQzEwMCw5OC43LDc5LDkxLjY3LDYyLjQsODYuNCw1MS40Niw4Mi44OSwzOS44NSw3Ny43Miw0MCw3MmMuMDktNC42OCw2LjIzLTksMTguMzgtOC4zOCw4LjE3LjQzLDE1LjM3LDEuMDksMjkuNzEsOGwxNC4xLTI0LjU1Qzg5LjA2LDQwLjQyLDcxLDM2LjIxLDU2LjE3LDM2LjE5aC0uMDljLTE3LjI4LDAtMzEuNjgsNS42LTQwLjYsMTQuODNBMzQuMjMsMzQuMjMsMCwwLDAsNS43Nyw3NC43QzUuNTQsODcuMTUsMTAuMTEsOTYsMTkuNzEsMTAzYzguMSw1Ljk0LDE4LjQ2LDkuNzksMjcuNiwxMi42MiwxMS4yNywzLjQ5LDIwLjQ3LDYuNTMsMjAuMzYsMTNBOS41Nyw5LjU3LDAsMCwxLDY1LDEzNWMtMi44MSwyLjktNy4xMyw0LTEzLjA5LDQuMS0xMS40OS4yNC0yMC0xLjU2LTMzLjYxLTkuNTlMNS43NywxNTQuNDJhOTMuNzcsOTMuNzcsMCwwLDAsNDYsMTIuMjJsMi4xMSwwYzE0LjI0LS4yNSwyNS43NC00LjMxLDM0LjkyLTExLjcxLjUzLS40MSwxLS44NCwxLjQ5LTEuMjhMODYuMTcsMTY0LjVIMTIzbDYuMTktMTguODJhNjcuNDYsNjcuNDYsMCwwLDAsMjEuNjgsMy40Myw2OC4zMyw2OC4zMywwLDAsMCwyMS4xNi0zLjI1bDYsMTguNjRoNjAuMTR2LTM5aDEzLjExYzMxLjcxLDAsNTAuNDYtMTYuMTUsNTAuNDYtNDMuMkMzMDEuNzQsNTIuMTksMjgzLjUyLDM4LjM2LDI0NC43MywzOC4zNlpNMTUwLjkxLDEyMWEzNi45MywzNi45MywwLDAsMS0xMy0yLjI4bDEyLjg3LTQwLjU5SDE1MWwxMi42NSw0MC43MUEzOC41LDM4LjUsMCwwLDEsMTUwLjkxLDEyMVptOTYuMi0yMy4zM2gtOC45NFY2NC45MWg4Ljk0YzExLjkzLDAsMjEuNDQsNCwyMS40NCwxNi4xNCwwLDEyLjYtOS41MSwxNi41Ny0yMS40NCwxNi41NyIvPjwvc3ZnPg==' },
   'websockets': { type: 'img', src: 'https://www.svgrepo.com/show/354553/websocket.svg' },
   'websocket': { type: 'img', src: 'https://www.svgrepo.com/show/354553/websocket.svg' },
+  'http': { type: 'ion', class: 'globe-outline' },
   'tcp ip': { type: 'img', src: 'https://www.svgrepo.com/show/435305/dns.svg' },
   'rest': { type: 'img', src: 'https://cdn-icons-png.flaticon.com/512/9784/9784550.png' },
   'apis': { type: 'img', src: 'https://cdn-icons-png.flaticon.com/512/9784/9784550.png' },
@@ -86,11 +94,29 @@ export const iconMap = {
   'sql sqlite': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/sqlite/sqlite-original.svg' },
   'html/css': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/html5/html5-original.svg' },
   'fire alarm system design': { type: 'ion', class: 'flame' },
+  'fire protections systems': { type: 'ion', class: 'shield-checkmark-outline' },
+  'fire protection systems': { type: 'ion', class: 'shield-checkmark-outline' },
   'electrical installation': { type: 'ion', class: 'construct' },
+  'electrical testing equipment': { type: 'ion', class: 'speedometer-outline' },
+  'power electronics': { type: 'ion', class: 'flash-outline' },
   'solar pv systems': { type: 'ion', class: 'sunny' },
   'dart': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/dart/dart-original.svg' },
   'flutter': { type: 'img', src: 'https://cdn.jsdelivr.net/gh/devicons/devicon@latest/icons/flutter/flutter-original.svg' },
   'electronics circuit design': { type: 'ion', class: 'hardware-chip' },
+  'digital circuits design arduino pi': { type: 'ion', class: 'hardware-chip' },
+  'digital circuits design': { type: 'ion', class: 'hardware-chip' },
+  'machine learning': { type: 'fa', class: 'fas fa-brain' },
+  'machinelearning': { type: 'fa', class: 'fas fa-brain' },
+  'machine learining': { type: 'fa', class: 'fas fa-brain' },
+  'ml': { type: 'fa', class: 'fas fa-brain' },
+  'algorithms data structures': { type: 'ion', class: 'code-working' },
+  'graph algorithms pathfinding': { type: 'ion', class: 'git-network' },
+  'virtual dom': { type: 'ion', class: 'layers' },
+  'state management': { type: 'ion', class: 'server' },
+  'concurrency parallelism': { type: 'ion', class: 'sync' },
+  'authentication session management': { type: 'ion', class: 'lock-closed' },
+  'object oriented programming': { type: 'ion', class: 'cube' },
+  'oop': { type: 'ion', class: 'cube' },
   'circuit verse': { type: 'img', src: 'https://circuitverse.org/assets/favicon-2fc7f88c7d9f61d534fda46f7c4890a0c18d2c406f1f7af2e5948ebc5999e573.ico' }
 };
 
@@ -98,7 +124,7 @@ export const normalize = (t) => {
   let s = String(t || '').toLowerCase().trim();
   // Handle C++ special-case before stripping '+'
   s = s.replace(/\bc\+\+\b/g, 'cplusplus');
-  s = s.replace(/[()]/g, '')
+  s = s.replace(/[()&,\-]/g, ' ') // Replace (), &, comma, and hyphen with space
     .replace(/\+/g, ' ')
     .replace(/\//g, ' ')
     .replace(/\./g, '')
@@ -283,6 +309,9 @@ export function renderInteractiveTechLogos(techArr = [], type) {
     } else if (iconDef.type === 'simple') {
       const size = 'font-size: 1.5em;';
       iconHtml = `<i class="${iconDef.class}" style="${size}"></i>`;
+    } else if (iconDef.type === 'fa' || iconDef.type === 'font-awesome') {
+      const size = 'font-size: 1.5em;';
+      iconHtml = `<i class="${iconDef.class}" style="${size}"></i>`;
     } else if (iconDef.type === 'ion') {
       const whiteStyle = (key === 'rest apis' || key === 'jwt') ? 'color: white;' : '';
       const size = 'font-size: 2.5em;';
@@ -330,20 +359,39 @@ export function renderSkillBadges(items = [], type) {
   const iconFunctions = {
     engineering: getIconForCoreItem,
     personal: getIconForPersonalSkill,
-    concepts: getIconForCSConcept
+    concepts: getIconForCSConcept,
+    computerScienceAndArchitecture: getIconForCSConcept
   };
 
-  const getIcon = iconFunctions[type] || (() => 'star');
-
   return `<div class="skill-badges-container" data-type="${type}">
-            ${items.map((item, index) => `
+            ${items.map((item, index) => {
+              const normKey = normalize(item);
+              const iconDef = iconMap[normKey];
+              let iconHtml = '';
+
+              if (iconDef) {
+                if (iconDef.type === 'fa' || iconDef.type === 'font-awesome' || iconDef.type === 'simple') {
+                  iconHtml = `<i class="${iconDef.class}"></i>`;
+                } else if (iconDef.type === 'ion') {
+                  iconHtml = `<ion-icon name="${iconDef.class}"></ion-icon>`;
+                } else if (iconDef.type === 'img' || iconDef.type === 'devicon') {
+                  iconHtml = `<img src="${iconDef.src || iconDef.url}" style="width: 1.2em; height: 1.2em; object-fit: contain;">`;
+                } else if (iconDef.type === 'svg') {
+                  iconHtml = iconDef.svg.replace(/width="[^"]*"/, 'width="20"').replace(/height="[^"]*"/, 'height="20"');
+                }
+              } else {
+                const getFallback = iconFunctions[type] || (() => 'star');
+                iconHtml = `<ion-icon name="${getFallback(item)}"></ion-icon>`;
+              }
+
+              return `
               <div class="skill-badge" style="animation-delay: ${index * 0.1}s">
                 <div class="badge-icon">
-                  <ion-icon name="${getIcon(item)}"></ion-icon>
+                  ${iconHtml}
                 </div>
                 <span class="badge-text">${item}</span>
                 <div class="badge-hover-effect"></div>
               </div>
-            `).join('')}
+            `}).join('')}
           </div>`;
 }
