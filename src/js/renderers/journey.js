@@ -24,10 +24,10 @@ export function generateTimelineSVG(filter = 'all') {
       if (item.current || !item.endDate) return new Date().getFullYear();
       return new Date(item.endDate).getFullYear();
     });
-    
+
     startYear = Math.min(...years);
     endYear = Math.max(...endYears) + 1;
-    
+
     if (startYear === endYear) {
       startYear -= 1;
       endYear += 1;
@@ -72,7 +72,7 @@ export function generateTimelineSVG(filter = 'all') {
 
       <!-- Timeline Title -->
       <text x="${svgWidth / 2}" y="40" text-anchor="middle" fill="var(--text-primary)" 
-            font-size="36" font-weight="800" style="letter-spacing: -0.02em; opacity: 0.9;">Professional Timeline</text>
+        font-size="36" font-weight="800" style="letter-spacing: -0.02em; opacity: 0.9;">${data.ui_extras?.journey?.timelineTitle || 'Professional Timeline'}</text>
 
       <!-- Time Grid -->
       ${Array.from({ length: (endYear - startYear) + 1 }, (_, i) => {
@@ -99,34 +99,34 @@ export function generateTimelineSVG(filter = 'all') {
 
       <!-- Category Tracks (Horizontal Lines) -->
       ${(() => {
-    if (filter === 'all') {
-      return ['Education', 'Internships', 'Career', 'Certifications'].map((cat, i) => {
-        const y = margin.top + ((i + 1) * (chartHeight / 5));
-        return `
+      if (filter === 'all') {
+        return ['Education', 'Internships', 'Career', 'Certifications'].map((cat, i) => {
+          const y = margin.top + ((i + 1) * (chartHeight / 5));
+          return `
               <line x1="40" y1="${y}" x2="${margin.left + chartWidth}" y2="${y}" 
                     stroke="var(--text-secondary)" stroke-width="1.5" opacity="0.5" />
               <text x="40" y="${y - 15}" text-anchor="start" dominant-baseline="middle" 
                     fill="var(--text-primary)" font-size="18" font-weight="800" opacity="1">${cat}</text>
             `;
-      }).join('');
-    } else {
-      const catName = filter.charAt(0).toUpperCase() + filter.slice(1);
-      const y = margin.top + chartHeight / 2;
-      return `
+        }).join('');
+      } else {
+        const catName = filter.charAt(0).toUpperCase() + filter.slice(1);
+        const y = margin.top + chartHeight / 2;
+        return `
             <line x1="40" y1="${y}" x2="${margin.left + chartWidth}" y2="${y}" 
                   stroke="var(--text-secondary)" stroke-width="1.5" opacity="0.5" />
             <text x="40" y="${y - 15}" text-anchor="start" dominant-baseline="middle" 
                   fill="var(--text-primary)" font-size="18" font-weight="800" opacity="1">${catName}</text>
           `;
-    }
-  })()}
+      }
+    })()}
 
       <!-- Data Layer -->
       ${filteredItems.map(item => {
       const x = getXPosition(item.startDate || item.date);
       const y = getYPosition(item);
       const isCurrent = item.current || (!item.endDate && new Date() < new Date(item.endDate));
-      const colorMap = { 
+      const colorMap = {
         education: '#2980b9', // Dark Blue
         internships: '#e67e22', // Orange
         career: '#27ae60', // Green
@@ -149,7 +149,7 @@ export function generateTimelineSVG(filter = 'all') {
         const start = formatShortDate(item.startDate || item.date);
         const end = isCurrent ? 'Present' : formatShortDate(item.endDate);
         const dateRange = `${start}${end ? ' - ' + end : ''}`;
-        
+
         return `
             <g class="timeline-bar-group timeline-item-trigger" 
                data-title="${item.title}" 
@@ -187,6 +187,8 @@ window.generateTimelineSVG = generateTimelineSVG;
 export function renderProfessionalJourneySection() {
   const data = getData();
   const journey = data.professionalJourney;
+  const ui = data.ui_extras || {};
+  const journeyUi = ui.journey || {};
   const svgContent = window.generateTimelineSVG('all');
 
   return `
@@ -204,23 +206,23 @@ export function renderProfessionalJourneySection() {
         <div class="pill-indicator-hover"></div>
         <button class="pill-btn active" data-filter="all">
           <ion-icon name="apps-outline"></ion-icon>
-          <span class="filter-text">${t('journey.filters.all') || 'All'}</span>
+          <span class="filter-text">${journeyUi.filters?.all || t('journey.filters.all') || 'All'}</span>
         </button>
         <button class="pill-btn" data-filter="education">
           <ion-icon name="school-outline"></ion-icon>
-          <span class="filter-text">${t('journey.filters.education') || 'Education'}</span>
+          <span class="filter-text">${journeyUi.filters?.education || t('journey.filters.education') || 'Education'}</span>
         </button>
         <button class="pill-btn" data-filter="career">
           <ion-icon name="business-outline"></ion-icon>
-          <span class="filter-text">${t('journey.filters.career') || 'Career'}</span>
+          <span class="filter-text">${journeyUi.filters?.career || t('journey.filters.career') || 'Career'}</span>
         </button>
         <button class="pill-btn" data-filter="internships">
           <ion-icon name="briefcase-outline"></ion-icon>
-          <span class="filter-text">${t('journey.filters.internships') || 'Internships'}</span>
+          <span class="filter-text">${journeyUi.filters?.internships || t('journey.filters.internships') || 'Internships'}</span>
         </button>
         <button class="pill-btn" data-filter="certifications">
           <ion-icon name="ribbon-outline"></ion-icon>
-          <span class="filter-text">${t('journey.filters.certifications') || 'Certifications'}</span>
+          <span class="filter-text">${journeyUi.filters?.certifications || t('journey.filters.certifications') || 'Certifications'}</span>
         </button>
       </div>
       <div class="timeline-chart-container animate-entry" style="animation-delay: 0.2s;">

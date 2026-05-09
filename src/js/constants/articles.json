@@ -15,7 +15,8 @@
       { "type": "heading", "level": 2, "text": "What I Brought to Software" },
       { "type": "paragraph", "text": "My engineering background gave me a strong foundation in problem-solving, documentation practices, and systematic testing. These skills translate directly into writing clean, maintainable code and building robust architectures." },
       { "type": "paragraph", "text": "As I continue to share my journey at the intersection of electrical engineering and software development, I will be adding more detailed technical write-ups and reflections here." }
-    ]
+    ],
+    "embeds": []
   },
   {
     "id": 2,
@@ -32,7 +33,8 @@
       { "type": "heading", "level": 2, "text": "Architecture Decisions" },
       { "type": "paragraph", "text": "The GigaBit project taught me how to structure a social platform with real-time features including private messaging, group chats, typing indicators, and live feed updates—all powered by WebSockets." },
       { "type": "paragraph", "text": "As I continue to share my journey at the intersection of electrical engineering and software development, I will be adding more detailed technical write-ups and reflections here." }
-    ]
+    ],
+    "embeds": []
   },
   {
     "id": 3,
@@ -47,7 +49,8 @@
       { "type": "heading", "level": 2, "text": "Safety-Critical Thinking" },
       { "type": "paragraph", "text": "Working with fire alarm systems taught me that every component must be tested, every connection verified, and every failure mode anticipated. This same mindset applies to building reliable software systems." },
       { "type": "paragraph", "text": "As I continue to share my journey at the intersection of electrical engineering and software development, I will be adding more detailed technical write-ups and reflections here." }
-    ]
+    ],
+    "embeds": []
   },
   {
     "id": 4,
@@ -62,7 +65,8 @@
       { "type": "heading", "level": 2, "text": "The Paradox of Simplicity" },
       { "type": "paragraph", "text": "Simple code is the hardest to write. It requires deep understanding of the problem, thoughtful abstraction, and the discipline to remove everything that isn't essential." },
       { "type": "paragraph", "text": "As I continue to share my journey at the intersection of electrical engineering and software development, I will be adding more detailed technical write-ups and reflections here." }
-    ]
+    ],
+    "embeds": []
   },
   {
     "id": 5,
@@ -79,6 +83,7 @@
       { "type": "heading", "level": 2, "text": "Standards and Certification" },
       { "type": "paragraph", "text": "The NOCN Level 3 certification and MEWA acknowledgment process ensure that solar PV installers meet rigorous safety and performance standards. These certifications are crucial for professional practice in Bahrain." },
       { "type": "paragraph", "text": "As I continue to share my journey at the intersection of electrical engineering and software development, I will be adding more detailed technical write-ups and reflections here." }
-    ]
+    ],
+    "embeds": []
   }
 ]

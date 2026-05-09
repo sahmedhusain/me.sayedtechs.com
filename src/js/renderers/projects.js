@@ -6,80 +6,6 @@ import { FALLBACK_CATEGORIES, INTERNAL_CATEGORIES, CATEGORY_ICONS } from '../con
 
 export function renderPortfolioPage() {
   return `
-        color: var(--accent);
-        font-weight: 600;
-        text-decoration: none;
-        margin-top: 1rem;
-        transition: all 0.3s ease;
-      }
-      .go-to-project-btn:hover {
-        transform: translateX(5px);
-      }
-
-      /* Custom Tooltips for Tech Logos */
-      .project-tech-logo {
-        position: relative;
-        cursor: help;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.3s ease;
-      }
-      .project-tech-logo:hover {
-        transform: translateY(-3px);
-      }
-      .project-tech-logo:hover::after {
-        content: attr(title);
-        position: absolute;
-        bottom: 125%;
-        left: 50%;
-        transform: translateX(-50%);
-        background: var(--bg-secondary);
-        color: var(--text-primary);
-        padding: 0.5rem 0.8rem;
-        border-radius: 8px;
-        font-size: 0.75rem;
-        font-weight: 600;
-        white-space: nowrap;
-        z-index: 100;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
-        border: 1px solid var(--border-color);
-        pointer-events: none;
-        animation: fadeIn 0.2s ease;
-      }
-      @keyframes fadeIn { from { opacity: 0; transform: translate(-50%, 5px); } to { opacity: 1; transform: translate(-50%, 0); } }
-
-      .project-detail-libraries h4 {
-        color: var(--text-primary);
-        font-size: 0.85rem;
-        text-transform: uppercase;
-        letter-spacing: 0.5px;
-        margin-bottom: 0.8rem;
-        opacity: 0.8;
-      }
-      .project-detail-libraries ul {
-        display: flex;
-        flex-wrap: wrap;
-        gap: 0.6rem;
-        list-style: none;
-        padding: 0;
-      }
-      .project-detail-libraries li {
-        background: var(--bg-secondary);
-        padding: 0.4rem 0.8rem;
-        border-radius: 8px;
-        font-size: 0.85rem;
-        color: var(--text-secondary);
-        border: 1px solid var(--border-color);
-        display: flex;
-        align-items: center;
-        gap: 0.4rem;
-      }
-      .project-detail-libraries li ion-icon {
-        color: var(--accent);
-        font-size: 1rem;
-      }
-    </style>
     <header class="animate-entry" style="margin-bottom: 4rem; text-align: left; animation-delay: 0s;">
       <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
         ${t('projects.title') || 'Portfolio 🎨'}
@@ -99,15 +25,17 @@ export function renderPortfolioPage() {
 
 export function renderProjectDetail(id) {
   const data = getData();
+  const ui = data.ui_extras || {};
+  const projUi = ui.projects || {};
   const project = data.projects.find(p => p.id === id);
-  if (!project) return '<div class="animate-entry"><p>Project not found</p></div>';
+  if (!project) return `<div class="animate-entry"><p>${projUi.notFound || 'Project not found'}</p></div>`;
 
   // Extract category key if not present (fallback)
   const categoryKey = project.categoryKey || project.category?.toLowerCase().replace(/\s+/g, '') || 'webdevelopment';
 
   // Find github repo
   const githubLink = project.links.find(l => l.text.toLowerCase() === 'repository' && l.url.includes('github.com'));
-  
+
   // HTML for detail page
   setTimeout(() => {
     if (githubLink) {
@@ -122,7 +50,7 @@ export function renderProjectDetail(id) {
     <section class="project-detail-wrapper animate-entry">
       <header class="project-detail-header">
         <button class="back-btn" onclick="window.history.back()">
-          <ion-icon name="chevron-back-outline"></ion-icon> <span>Back to Portfolio</span>
+          <ion-icon name="chevron-back-outline"></ion-icon> <span>${projUi.backToPortfolio || 'Back to Portfolio'}</span>
         </button>
         <div class="project-header-main">
           <div class="project-icon-large">
@@ -163,12 +91,12 @@ export function renderProjectDetail(id) {
              <div id="project-readme-container" class="readme-container">
                 <div class="readme-loading">
                   <div class="spinner"></div>
-                  <p>Fetching technical documentation from GitHub...</p>
+                  <p>${projUi.readmeFetching || 'Fetching technical documentation from GitHub...'}</p>
                 </div>
              </div>
            ` : `
              <div class="project-summary-card">
-                <h3>Project Overview</h3>
+                <h3>${projUi.overviewTitle || 'Project Overview'}</h3>
                 <ul>
                   ${project.points.map(p => `<li>${p}</li>`).join('')}
                 </ul>
@@ -182,7 +110,7 @@ export function renderProjectDetail(id) {
 
 async function loadReadme(githubUrl, id) {
   console.log(`[README] Fetching for project: ${id} from URL: ${githubUrl}`);
-  
+
   // Robustly extract owner and repo (handles trailing slashes)
   const cleanUrl = githubUrl.replace(/\/+$/, '');
   const urlParts = cleanUrl.split('/');
@@ -198,7 +126,7 @@ async function loadReadme(githubUrl, id) {
   // Common branch and filename combinations
   const branches = ['main', 'master'];
   const files = ['README.md', 'readme.md', 'README.markdown', 'README.txt'];
-  
+
   try {
     let markdown = '';
     let success = false;
@@ -225,7 +153,7 @@ async function loadReadme(githubUrl, id) {
     if (!success) {
       throw new Error(`Could not find README in main/master branches for ${owner}/${repo}`);
     }
-    
+
     // Use marked library to parse markdown
     let parsedHtml = '';
     if (typeof marked !== 'undefined') {
@@ -254,10 +182,10 @@ async function loadReadme(githubUrl, id) {
     const data = getData();
     const project = data.projects.find(p => p.id === id);
     container.innerHTML = `
-      <div class="project-summary-card" style="margin-bottom: 2rem;">
-        <h3>Project Overview</h3>
+        <div class="project-summary-card" style="margin-bottom: 2rem;">
+        <h3>${projUi.overviewTitle || 'Project Overview'}</h3>
         <p style="margin-bottom: 1rem; color: var(--text-secondary); font-style: italic;">
-          (Note: Unable to load live documentation from GitHub. Showing project summary instead.)
+          (${projUi.readmeNotice || 'Note: Unable to load live documentation from GitHub. Showing project summary instead.'})
         </p>
         <ul>
           ${project ? project.points.map(p => `<li>${p}</li>`).join('') : '<li>No project details available.</li>'}
@@ -285,7 +213,7 @@ export function renderProjectsSection() {
   if (!Array.isArray(categories)) {
     categories = FALLBACK_CATEGORIES;
   }
-  
+
   const projects = data.projects.map(p => {
     const name = (p.name || '').toLowerCase();
     const tech = Array.isArray(p.tech) ? p.tech.map(t => String(t).toLowerCase()) : [];
@@ -331,9 +259,9 @@ export function renderProjectsSection() {
     
     <ul class="filter-list">
       ${categories.map((cat, i) => {
-        const internalCat = INTERNAL_CATEGORIES[i] || 'all';
-        const icon = CATEGORY_ICONS[i] || 'grid-outline';
-        return `
+    const internalCat = INTERNAL_CATEGORIES[i] || 'all';
+    const icon = CATEGORY_ICONS[i] || 'grid-outline';
+    return `
         <li class="filter-item">
           <button class="filter-btn ${i === 0 ? 'active' : ''}" data-filter-btn="${internalCat}">
             <ion-icon name="${icon}"></ion-icon>

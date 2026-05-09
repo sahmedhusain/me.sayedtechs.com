@@ -260,10 +260,48 @@
     }
   ],
   "technicalSkills": [
-    { "category": "Web Architecture & Frameworks", "items": ["React","Next.js","Node.js","Tailwind CSS","GraphQL","Apollo Client","WebSockets","PostgreSQL","MySQL","Firebase","NPM","Vite","Jest","ESLint"] },
-    { "category": "Programming Languages", "items": ["JavaScript","TypeScript","Python","Golang","Rust","C","C++","SQLite","HTML5","CSS3","Dart","Flutter"] },
-    { "category": "Systems, Development & Tools", "items": ["Git","GitHub","VS Code","Docker","AWS","Postman","Figma","Mermaid","Markdown","Linux","WSL","macOS","Windows","Android","TCP/IP","JSON","REST APIs","OAuth2","JWT"] },
-    { "category": "Computer Science Concepts", "items": ["Algorithms & Data Structures","Concurrency & Parallelism","Virtual DOM","State Management","Machine Learning"] },
-    { "category": "Core Engineering & Software", "items": ["Fire Protections Systems","Electrical Installation","Solar PV Systems","Power Electronics","Digital Circuits Design","Electrical Testing Equipment","AutoCAD","MATLAB","Circuit Verse","SolidWorks","Fusion 360","Oracle DB/CRM","SAP System"] }
+    { 
+      "category": "Programming & Markup Languages", 
+      "items": ["JavaScript", "TypeScript", "Python", "Golang", "Rust", "C++", "Dart", "HTML5", "CSS3"] 
+    },
+    { 
+      "category": "Frameworks & Libraries", 
+      "items": ["React", "Next.js", "Node.js", "Tailwind CSS", "GraphQL", "Apollo Client", "Vite", "Flutter"] 
+    },
+    { 
+      "category": "Databases", 
+      "items": ["PostgreSQL", "MySQL", "SQLite", "MongoDB"] 
+    },
+    { 
+      "category": "Testing & Code Quality", 
+      "items": ["Jest", "ESLint"] 
+    },
+    { 
+      "category": "Networking, Web & Protocols", 
+      "items": ["REST APIs", "WebSockets", "HTTP", "TCP/IP", "JSON", "OAuth2", "JWT"] 
+    },
+    { 
+      "category": "Software, DevOps & Tools", 
+      "items": ["Git", "GitHub", "VS Code", "PyCharm", "Docker", "Unix", "Bash", "Postman", "Figma", "Mermaid", "Markdown", "Xcode", "Android Studio"] 
+    },
+    { 
+      "category": "Operating Systems & Environments", 
+      "items": ["Linux", "macOS", "Windows", "Android", "Raspberry Pi"] 
+    },
+    { 
+      "category": "Computer Science & Architecture", 
+      "items": ["Algorithms & Data Structures", "Graph Algorithms & Pathfinding", "Virtual DOM", "State Management", "Concurrency & Parallelism", "Authentication & Session Management", "Object-Oriented Programming", "Machine Learning"] 
+    },
+    { 
+      "category": "Engineering CAD & Simulation", 
+      "items": ["AutoCAD", "ArchiCAD", "MATLAB", "Circuit Verse", "Everycircuit", "SolidWorks", "Fusion 360"] 
+    },
+    { 
+      "category": "Hardware & Core Engineering", 
+      "items": ["Fire Protections Systems", "Electrical Installation", "Electrical Testing Equipment", "Solar PV Systems", "Digital Circuits Design (Arduino, Pi)", "Power Electronics"] 
+    }
+  ],
+  "personalSkills": [
+    "Fast Learner", "Adaptability", "Teamwork", "Communication", "Problem-solving", "Decision Making", "Time Management", "Project Management", "Leadership", "Continuous Learning"
   ]
 }

@@ -10,7 +10,7 @@ export function renderContactSection() {
   ).join('');
 
   const activeCountry = countryCodes.find(c => c.code === '+973') || countryCodes[0];
-  
+
   const countryListItems = countryCodes.map(item => `
     <li class="country-item ${item.code === activeCountry.code ? 'active' : ''}" 
         data-country-code="${item.code}"
@@ -107,6 +107,8 @@ export function renderContactSection() {
 
 export function renderContactModal() {
   const data = getData();
+  const ui = data.ui_extras || {};
+  const contactUi = ui.contact || {};
   const phones = data.phones || data.contact?.phones || [];
 
   const phoneRows = phones.map(phone => {
@@ -182,7 +184,7 @@ export function renderContactModal() {
             </div>
             <div class="modal-right" style="display: flex; flex-direction: column; gap: 1.5rem; flex: 1;">
               <div class="qr-code-container" id="qr-code">
-                <div class="qr-placeholder">QR Code will appear here</div>
+                <div class="qr-placeholder">${contactUi.qrPlaceholder || 'QR Code will appear here'}</div>
               </div>
 
               <div class="modal-actions" style="margin-top: 0;">
@@ -254,6 +256,8 @@ END:VCARD`;
 
 export async function generateQRCode() {
   const data = getData();
+  const ui = data.ui_extras || {};
+  const contactUi = ui.contact || {};
   const qrContainer = document.getElementById('qr-code');
   if (!qrContainer) return;
 
@@ -261,7 +265,7 @@ export async function generateQRCode() {
   qrContainer.innerHTML = `
     <div class="qr-loading">
       <div class="loading-spinner"></div>
-      <p class="loading-text">Generating QR Code...</p>
+      <p class="loading-text">${contactUi.qrGenerating || 'Generating QR Code...'}</p>
     </div>
   `;
 

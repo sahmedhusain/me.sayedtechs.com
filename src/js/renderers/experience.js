@@ -109,7 +109,7 @@ export function renderExperienceCardContent(job) {
         <div class="experience-section">
           <h4 class="experience-section-title">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
-            Key Responsibilities
+            ${getData().ui_extras?.experience?.keyResponsibilities || 'Key Responsibilities'}
           </h4>
           <ul class="experience-points">
             ${job.points.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -119,7 +119,7 @@ export function renderExperienceCardContent(job) {
           <div class="experience-section">
             <h4 class="experience-section-title">
               <ion-icon name="build-outline"></ion-icon>
-              Key Projects
+              ${getData().ui_extras?.experience?.keyProjects || 'Key Projects'}
             </h4>
             <ul class="experience-points">
               ${job.keyProjects.map(project => `<li class="experience-point">${project}</li>`).join('')}
@@ -247,9 +247,9 @@ export function renderEducationCardContent(edu) {
         </div>
       </div>
       ${edu.certificate ? `
-        <a href="${edu.certificate}" target="_blank" class="header-action-btn">
+          <a href="${edu.certificate}" target="_blank" class="header-action-btn">
           <ion-icon name="document-text-outline"></ion-icon>
-          <span>View</span>
+          <span>${getData().ui_extras?.experience?.view || 'View'}</span>
         </a>` : ''}
     </div>
 
@@ -258,7 +258,7 @@ export function renderEducationCardContent(edu) {
       <div class="experience-section">
         <h4 class="experience-section-title">
           <ion-icon name="school-outline"></ion-icon>
-          Education Highlights
+          ${getData().ui_extras?.experience?.educationHighlights || 'Education Highlights'}
         </h4>
         <ul class="experience-points">
           ${edu.description.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -285,7 +285,7 @@ export function renderCertificationCardContent(cert) {
           <div class="experience-meta-row">
              ${cert.id ? `<div class="meta-pill"><ion-icon name="${cert.type === 'License' ? 'document-text-outline' : 'ribbon-outline'}"></ion-icon> ID: ${cert.id}</div>` : ''}
              ${cert.issued ? `<div class="meta-pill"><ion-icon name="calendar-outline"></ion-icon> Issued: ${shortenDate(cert.issued)}</div>` : ''}
-             ${cert.expires ? `<div class="meta-pill" style="${isExpired ? 'color: #ef4444;' : ''}"><ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon> ${isExpired ? 'Expired: ' + shortenDate(cert.expires) : 'Expires: ' + shortenDate(cert.expires)}</div>` : ''}
+             ${cert.expires ? `<div class="meta-pill" style="${isExpired ? 'color: #ef4444;' : ''}"><ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon> ${isExpired ? (getData().ui_extras?.experience?.expired || 'Expired:') + ' ' + shortenDate(cert.expires) : (getData().ui_extras?.experience?.expires || 'Expires:') + ' ' + shortenDate(cert.expires)}</div>` : ''}
           </div>
         </div>
       </div>
@@ -333,6 +333,13 @@ export function generateSectionHTML({
   hideHeader = false
 }) {
   const iconName = SECTION_ICONS[title] || 'layers-outline';
+  const ui = getData().ui_extras || {};
+  const expUi = ui.experience || {};
+  const displayTitle = title === 'Career' ? (expUi.career || title)
+    : title === 'Internships' ? (expUi.internships || title)
+      : title === 'Education' ? (expUi.education || title)
+        : title === 'Certifications & Licenses' ? (expUi.certifications || title)
+          : title;
 
   // 1. Grid View (Sidebar) - ACTIVE by default
   const gridViewHtml = `
@@ -341,7 +348,7 @@ export function generateSectionHTML({
         <div class="section-sidebar-list">
           <div class="sidebar-section-header">
             <ion-icon name="${iconName}"></ion-icon>
-            <span>${title}</span>
+            <span>${displayTitle}</span>
           </div>
           <div class="sidebar-separator"></div>
           

@@ -3,6 +3,7 @@ import { getLogo, timeAgo } from '../utils.js';
 
 export function renderSidebar() {
   const data = getData();
+  const ui = data.ui || {};
   return `
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
@@ -12,11 +13,11 @@ export function renderSidebar() {
         <div class="action-buttons">
           <button class="action-btn primary">
             <ion-icon name="document-text-outline"></ion-icon>
-            <span>Download Resume</span>
+            <span>${ui.downloadResume || 'Download Resume'}</span>
           </button>
           <button class="action-btn secondary">
             <ion-icon name="person-circle-outline"></ion-icon>
-            <span>Contact Details</span>
+            <span>${ui.contactDetails || 'Contact Details'}</span>
           </button>
         </div>
       </div>
@@ -28,7 +29,7 @@ export function renderSidebar() {
               <ion-icon name="mail-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">Email</p>
+              <p class="contact-title">${(ui.contactLabels && ui.contactLabels.email) || 'Email'}</p>
               <a href="mailto:${data.contact.email}" class="contact-link">${data.contact.email}</a>
             </div>
           </li>
@@ -37,7 +38,7 @@ export function renderSidebar() {
               <ion-icon name="phone-portrait-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">Phone</p>
+              <p class="contact-title">${(ui.contactLabels && ui.contactLabels.phone) || 'Phone'}</p>
               <a href="tel:${data.contact.phone}" class="contact-link">${data.contact.phone}</a>
             </div>
           </li>
@@ -46,7 +47,7 @@ export function renderSidebar() {
               <ion-icon name="flag-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">Nationality</p>
+              <p class="contact-title">${(ui.contactLabels && ui.contactLabels.nationality) || 'Nationality'}</p>
               <address>${data.nationality}</address>
             </div>
           </li>
@@ -55,7 +56,7 @@ export function renderSidebar() {
               <ion-icon name="location-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">Address</p>
+              <p class="contact-title">${(ui.contactLabels && ui.contactLabels.address) || 'Address'}</p>
               <address>${data.address}</address>
             </div>
           </li>
@@ -80,15 +81,19 @@ export function renderSidebar() {
 
 export function renderAboutSection() {
   const data = getData();
+  const aboutHtml = (data.about || data.summary || '')
+    .split(/\n\s*\n/)
+    .map(p => `<p style="margin-bottom: 1.5rem;">${p.replace(/\n/g, '<br/>')}</p>`)
+    .join('');
+  const ui = data.ui || {};
   return `
     <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4rem; width: 100%; flex-wrap: wrap;">
       
       <!-- Left Column: Title and Description -->
       <div class="animate-entry" style="flex: 2; min-width: 300px; text-align: left; animation-delay: 0s;">
-        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 2rem; font-family: var(--font-sans);">Hi, I'm Sayed Ahmed ✨</h1>
-        <section class="about-text" style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem;">
-          <p style="margin-bottom: 1.5rem;"><strong>Electrical Engineer transitioning to Full-Stack Development</strong> with a strong focus on building secure, scalable web applications. Proficient in <strong>Go (Golang), Next.js, React, and TypeScript</strong>, with hands-on experience developing real-time solutions using <strong>WebSockets</strong>. Also skilled in <strong>Rust</strong> for systems programming. My background in highly regulated industries—specifically Fire Safety—instills a disciplined approach to reliability and performance. While engineering documentation focuses on regulatory compliance, I apply that same rigor to software documentation, ensuring clarity in system architecture and technical workflows. Furthermore, my experience in Business Development and Administration at LIFECO, combined with my background in the telecom sector at Zain Bahrain and Channels by STC, has enhanced my understanding of market dynamics and customer-centric solutions.</p>
-          <p><strong>Passionate about bridging the gap between engineering precision and modern software architecture</strong>, I am committed to driving digital transformation through innovative full-stack solutions. Leveraging dual expertise in electrical engineering and software development, I create efficient applications that address complex real-world challenges while ensuring robust performance.</p>
+        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 2rem; font-family: var(--font-sans);">${ui.greeting || `Hi, I'm ${data.name.split(' ')[0]}.👋`}</h1>
+        <section class="about-text" style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem; text-align: justify; text-justify: inter-word; max-width: none;">
+          ${aboutHtml}
         </section>
       </div>
 
@@ -112,16 +117,16 @@ export function renderAboutSection() {
         </style>
         <div style="display: flex; flex-direction: column; gap: 1.2rem;">
           <a href="${data.contact.github}" target="_blank" class="about-contact-link">
-            <ion-icon name="logo-github" style="font-size: 1.3rem;"></ion-icon> Follow on GitHub
+            <ion-icon name="logo-github" style="font-size: 1.3rem;"></ion-icon> ${(ui.follow && ui.follow.github) || 'Follow on GitHub'}
           </a>
           <a href="${data.contact.linkedin}" target="_blank" class="about-contact-link">
-            <ion-icon name="logo-linkedin" style="font-size: 1.3rem;"></ion-icon> Follow on LinkedIn
+            <ion-icon name="logo-linkedin" style="font-size: 1.3rem;"></ion-icon> ${(ui.follow && ui.follow.linkedin) || 'Follow on LinkedIn'}
           </a>
           <a href="${data.contact.twitter}" target="_blank" class="about-contact-link">
-             <span style="font-family: var(--font-sans); font-weight: bold; font-size: 1.1rem; width: 1.3rem; text-align: center;">𝕏</span> Follow on X
+             <span style="font-family: var(--font-sans); font-weight: bold; font-size: 1.1rem; width: 1.3rem; text-align: center;">𝕏</span> ${(ui.follow && ui.follow.twitter) || 'Follow on X'}
           </a>
           <a href="${data.contact.medium}" target="_blank" class="about-contact-link">
-            <ion-icon name="logo-medium" style="font-size: 1.3rem;"></ion-icon> Read on Medium
+            <ion-icon name="logo-medium" style="font-size: 1.3rem;"></ion-icon> ${(ui.follow && ui.follow.medium) || 'Read on Medium'}
           </a>
         </div>
         
@@ -239,7 +244,7 @@ export function renderHomeFeed() {
       <section style="flex: 1.5; min-width: 300px;">
         <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:2.5rem;">
           ${data.articles.slice(0, 5).map(post => {
-            return `
+    return `
               <li class="flat-post-item" style="position: relative;">
                 <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem;">${timeAgo(post.date)} • ${post.category}</div>
                 <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; transition: color 0.2s;">${post.title}</h3>
@@ -249,7 +254,7 @@ export function renderHomeFeed() {
                 </a>
               </li>
             `;
-          }).join('')}
+  }).join('')}
         </ul>
         <button class="action-btn-glass" data-nav-link="articles" style="margin-top: 3rem; width: 100%; border-radius: 1rem; padding: 1rem;">
           <div class="btn-glass-content" style="justify-content: center; width: 100%;">
@@ -316,23 +321,23 @@ export function renderHomeFeed() {
           </style>
           <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:2rem;">
             ${[...data.professionalJourney.career].reverse().map(item => {
-              const formatMonthYear = (dateStr) => {
-                if (!dateStr) return 'Present';
-                const d = new Date(dateStr);
-                return d.toLocaleString('en-US', { month: 'short', year: 'numeric' });
-              };
-              const duration = (start, end) => {
-                const startDate = new Date(start);
-                const endDate = end ? new Date(end) : new Date();
-                let months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth()) + 1;
-                const years = Math.floor(months / 12);
-                const remMonths = months % 12;
-                let res = [];
-                if (years > 0) res.push(`${years} yr${years > 1 ? 's' : ''}`);
-                if (remMonths > 0) res.push(`${remMonths} mo${remMonths > 1 ? 's' : ''}`);
-                return res.join(' ');
-              };
-              return `
+    const formatMonthYear = (dateStr) => {
+      if (!dateStr) return 'Present';
+      const d = new Date(dateStr);
+      return d.toLocaleString('en-US', { month: 'short', year: 'numeric' });
+    };
+    const duration = (start, end) => {
+      const startDate = new Date(start);
+      const endDate = end ? new Date(end) : new Date();
+      let months = (endDate.getFullYear() - startDate.getFullYear()) * 12 + (endDate.getMonth() - startDate.getMonth()) + 1;
+      const years = Math.floor(months / 12);
+      const remMonths = months % 12;
+      let res = [];
+      if (years > 0) res.push(`${years} yr${years > 1 ? 's' : ''}`);
+      if (remMonths > 0) res.push(`${remMonths} mo${remMonths > 1 ? 's' : ''}`);
+      return res.join(' ');
+    };
+    return `
               <li class="career-item" style="display: flex; align-items: flex-start; gap: 1.2rem;">
                 <div class="career-info-card">
                   <strong style="color: var(--text-primary); display: block; margin-bottom: 0.2rem; font-size: 0.9rem;">${item.company}</strong>
@@ -350,7 +355,7 @@ export function renderHomeFeed() {
                   </div>
                 </div>
               </li>`;
-            }).join('')}
+  }).join('')}
           </ul>
         </aside>
 

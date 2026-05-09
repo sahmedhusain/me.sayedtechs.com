@@ -3,8 +3,10 @@ import { t } from '../constants/i18n.js';
 
 export function renderArticlesSection() {
   const data = getData();
+  const ui = data.ui_extras || {};
+  const articlesUi = ui.articles || {};
   const categories = t('articles.categories') || ['All', 'Technology', 'Engineering', 'Career', 'Life'];
-  
+
   const categoryTabs = categories.map(cat => `
     <button class="article-tab ${cat === 'All' ? 'active' : ''}" data-filter="${cat.toLowerCase()}">${cat}</button>
   `).join('');
@@ -21,7 +23,7 @@ export function renderArticlesSection() {
       <h3 class="article-title-link">${article.title}</h3>
       <p class="article-desc">${article.desc}</p>
       <div class="article-footer">
-        <a href="articles/${article.id}" data-nav-link="articles/${article.id}" class="read-article-btn">Read full story <ion-icon name="arrow-forward-outline"></ion-icon></a>
+        <a href="articles/${article.id}" data-nav-link="articles/${article.id}" class="read-article-btn">${articlesUi.readFullStory || 'Read full story'} <ion-icon name="arrow-forward-outline"></ion-icon></a>
       </div>
     </article>
   `).join('');
@@ -43,7 +45,7 @@ export function renderArticlesSection() {
       </div>
       <div class="article-search">
         <ion-icon name="search-outline"></ion-icon>
-        <input type="text" placeholder="Search articles..." id="articleSearch">
+        <input type="text" placeholder="${articlesUi.searchPlaceholder || 'Search articles...'}" id="articleSearch">
       </div>
     </nav>
 
@@ -55,18 +57,25 @@ export function renderArticlesSection() {
 
 export function renderArticleDetail(id) {
   const data = getData();
+  const ui = data.ui_extras || {};
+  const articlesUi = ui.articles || {};
   console.log('Rendering article with ID:', id);
   const article = data.articles.find(a => String(a.id) === String(id));
   if (!article) {
     console.error('Article not found for ID:', id);
-    return `<div class="error-container"><h1>Article not found</h1><button data-nav-link="articles">Back to articles</button></div>`;
+    return `<div class="error-container"><h1>${articlesUi.notFound || 'Article not found'}</h1><button data-nav-link="articles">${articlesUi.backToList || 'Back to articles'}</button></div>`;
   }
+
+  const articleBlocks = [
+    ...(Array.isArray(article.content) ? article.content : []),
+    ...(Array.isArray(article.embeds) ? article.embeds.map(embed => ({ type: 'embed', ...embed })) : [])
+  ];
 
   return `
     <div class="article-detail-wrapper">
       <header class="article-detail-header">
         <button class="back-btn" data-nav-link="articles">
-          <ion-icon name="arrow-back-outline"></ion-icon> Back to Articles
+          <ion-icon name="arrow-back-outline"></ion-icon> ${articlesUi.backToList || 'Back to Articles'}
         </button>
         <div class="article-meta">
           <span>${new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
@@ -80,9 +89,9 @@ export function renderArticleDetail(id) {
  
       <div class="article-content">
         <p class="article-lead">${article.desc}</p>
-        ${article.content && article.content.length > 0 ? `
+        ${articleBlocks.length > 0 ? `
           <div style="margin-top: 2rem; color: var(--text-secondary); line-height: 1.8;">
-            ${renderArticleContent(article.content)}
+            ${renderArticleContent(articleBlocks)}
           </div>
         ` : `
           <div style="margin-top: 2rem; color: var(--text-secondary); line-height: 1.8;">
@@ -119,7 +128,7 @@ function renderArticleContent(blocks) {
           : '';
         return `
           <figure style="margin: 2rem 0;">
-            <img src="${src}" alt="${block.alt || ''}" style="width: 100%; border-radius: 1rem; object-fit: cover;">
+            <img src="${src}" alt="${block.alt || ''}" style="width: 100%; height: auto; border-radius: 8px;">
             ${captionHtml}
           </figure>
         `;
@@ -141,37 +150,60 @@ function renderArticleContent(blocks) {
   }).join('');
 }
 
-/**
- * Render a social embed block (LinkedIn, Twitter, YouTube, GitHub Gist).
- */
 function renderEmbed(block) {
+  if (!block) return '';
+  const platform = String(block.platform || block.provider || '').toLowerCase();
   const captionHtml = block.caption
     ? `<p style="text-align: center; margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">${block.caption}</p>`
     : '';
 
-  switch (block.platform) {
+  if (block.html) {
+    return `
+      <div style="margin: 2rem 0;">
+        ${block.html}
+        ${captionHtml}
+      </div>
+    `;
+  }
+
+  switch (platform) {
+    case 'iframe': {
+      const src = block.src || block.url || '';
+      const title = block.title || block.caption || 'Embedded content';
+      const height = block.height || 420;
+      const allow = block.allow || 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      return `
+        <div style="margin: 2rem 0; border-radius: 1rem; overflow: hidden; border: 1px solid var(--card-border);">
+          <iframe src="${src}" title="${title}" width="100%" height="${height}" loading="lazy" allow="${allow}" allowfullscreen style="border: none; display: block;"></iframe>
+          ${captionHtml}
+        </div>
+      `;
+    }
+
     case 'linkedin':
       return `
         <div style="margin: 2rem 0; border-radius: 1rem; overflow: hidden; border: 1px solid var(--card-border);">
-          <iframe src="${block.url}" height="400" width="100%" frameborder="0" allowfullscreen style="border: none; display: block;"></iframe>
+          <iframe src="${block.url || ''}" height="400" width="100%" frameborder="0" allowfullscreen style="border: none; display: block;"></iframe>
           ${captionHtml}
         </div>
       `;
 
     case 'twitter':
+    case 'x':
       return `
         <div style="margin: 2rem 0; display: flex; justify-content: center;">
           <blockquote class="twitter-tweet" data-dnt="true">
-            <a href="https://twitter.com/i/status/${block.tweetId}"></a>
+            <a href="${block.url || (block.tweetId ? `https://twitter.com/i/status/${block.tweetId}` : '')}"></a>
           </blockquote>
           ${captionHtml}
         </div>
       `;
 
     case 'youtube':
+      const youtubeUrl = block.url || (block.id ? `https://www.youtube.com/embed/${block.id}` : '');
       return `
         <div style="margin: 2rem 0; border-radius: 1rem; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--card-border);">
-          <iframe src="${block.url}" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border: none; display: block;"></iframe>
+          <iframe src="${youtubeUrl}" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border: none; display: block;"></iframe>
           ${captionHtml}
         </div>
       `;
@@ -179,7 +211,7 @@ function renderEmbed(block) {
     case 'gist':
       return `
         <div style="margin: 2rem 0;">
-          <script src="${block.url}"></script>
+          <script src="${block.url || ''}"></script>
           ${captionHtml}
         </div>
       `;
@@ -187,7 +219,7 @@ function renderEmbed(block) {
     default:
       return `
         <div style="margin: 2rem 0; padding: 1.5rem; border: 1px solid var(--card-border); border-radius: 1rem;">
-          <a href="${block.url}" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">${block.url}</a>
+          <a href="${block.url || '#'}" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">${block.url || block.html || ''}</a>
           ${captionHtml}
         </div>
       `;

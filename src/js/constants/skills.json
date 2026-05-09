@@ -1,122 +1,106 @@
 {
   "technicalSkills": {
-    "computerScienceConcepts": [
-      { "name": "Algorithms & Data Structures", "proficiency": 75 },
-      { "name": "Concurrency & Parallelism", "proficiency": 70 },
-      { "name": "Virtual DOM", "proficiency": 80 },
-      { "name": "State Management", "proficiency": 80 },
-      { "name": "Machine Learning", "proficiency": 35 }
-    ],
-    "engineeringSoftware": [
-      { "name": "AutoCAD", "proficiency": 70 },
-      { "name": "MATLAB", "proficiency": 60 },
-      { "name": "Circuit Verse", "proficiency": 55 },
-      { "name": "SolidWorks", "proficiency": 45 },
-      { "name": "Fusion 360", "proficiency": 40 },
-      { "name": "Everycircuit", "proficiency": 50 },
-      { "name": "Oracle DB/CRM", "proficiency": 65 },
-      { "name": "SAP System", "proficiency": 50 }
-    ],
-    "languages": [
+    "programmingAndMarkupLanguages": [
       { "name": "JavaScript", "proficiency": 90 },
       { "name": "TypeScript", "proficiency": 85 },
-      { "name": "Python", "proficiency": 70 },
       { "name": "Golang", "proficiency": 80 },
+      { "name": "Python", "proficiency": 70 },
       { "name": "Rust", "proficiency": 55 },
-      { "name": "C", "proficiency": 50 },
-      { "name": "Cpp", "proficiency": 50 },
-      { "name": "SQLite", "proficiency": 75 },
-      { "name": "HTML5", "proficiency": 95 },
-      { "name": "CSS3", "proficiency": 90 },
+      { "name": "C++", "proficiency": 50 },
       { "name": "Dart", "proficiency": 40 },
-      { "name": "Flutter", "proficiency": 40 }
+      { "name": "HTML5", "proficiency": 95 },
+      { "name": "CSS3", "proficiency": 90 }
     ],
-    "webTechnologies": [
-      { "name": "React", "proficiency": 85 },
-      { "name": "Next.js", "proficiency": 80 },
-      { "name": "Node.js", "proficiency": 75 },
-      { "name": "Tailwind CSS", "proficiency": 80 },
-      { "name": "GraphQL", "proficiency": 70 },
-      { "name": "Apollo Client", "proficiency": 70 },
-      { "name": "WebSockets", "proficiency": 80 },
+    "databases": [
+      { "name": "SQLite", "proficiency": 75 },
+      { "name": "MongoDB", "proficiency": 75 },
       { "name": "PostgreSQL", "proficiency": 60 },
-      { "name": "MySQL", "proficiency": 60 },
-      { "name": "Firebase", "proficiency": 55 },
-      { "name": "NPM", "proficiency": 90 },
-      { "name": "MCP", "proficiency": 50 },
-      { "name": "Vite", "proficiency": 85 },
-      { "name": "Jest", "proficiency": 65 },
-      { "name": "ESLint", "proficiency": 80 }
+      { "name": "MySQL", "proficiency": 60 }
     ],
-    "systemsAndTools": [
-      { "name": "Git", "proficiency": 90 },
-      { "name": "GitHub", "proficiency": 90 },
-      { "name": "VS Code", "proficiency": 95 },
-      { "name": "Docker", "proficiency": 70 },
-      { "name": "AWS", "proficiency": 45 },
-      { "name": "Postman", "proficiency": 80 },
-      { "name": "Figma", "proficiency": 60 },
-      { "name": "Mermaid", "proficiency": 70 },
-      { "name": "Markdown", "proficiency": 90 },
-      { "name": "Linux", "proficiency": 75 },
-      { "name": "WSL", "proficiency": 70 },
-      { "name": "macOS", "proficiency": 90 },
-      { "name": "Windows", "proficiency": 85 },
-      { "name": "Android", "proficiency": 70 },
-      { "name": "Xcode", "proficiency": 40 },
-      { "name": "Android Studio", "proficiency": 45 },
-      { "name": "TCP/IP", "proficiency": 65 },
-      { "name": "JSON", "proficiency": 95 },
-      { "name": "REST APIs", "proficiency": 85 },
-      { "name": "OAuth2", "proficiency": 70 },
-      { "name": "JWT", "proficiency": 80 }
+    "frameworksAndLibraries": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Tailwind CSS",
+      "GraphQL",
+      "Apollo Client",
+      "Vite",
+      "Flutter"
     ],
-    "systems": [
-      { "name": "Linux", "proficiency": 75 },
-      { "name": "Raspberry Pi", "proficiency": 60 },
-      { "name": "macOS", "proficiency": 90 },
-      { "name": "Windows", "proficiency": 85 },
-      { "name": "Android", "proficiency": 70 }
+    "testingAndCodeQuality": [
+      "Jest",
+      "ESLint"
     ],
-    "tools": [
-      { "name": "Git", "proficiency": 90 },
-      { "name": "GitHub", "proficiency": 90 },
-      { "name": "VS Code", "proficiency": 95 },
-      { "name": "Docker", "proficiency": 70 },
-      { "name": "AWS", "proficiency": 45 },
-      { "name": "Postman", "proficiency": 80 },
-      { "name": "Figma", "proficiency": 60 },
-      { "name": "Mermaid", "proficiency": 70 },
-      { "name": "Markdown", "proficiency": 90 },
-      { "name": "Bash", "proficiency": 70 },
-      { "name": "Xcode", "proficiency": 40 },
-      { "name": "Android Studio", "proficiency": 45 },
-      { "name": "TCP/IP", "proficiency": 65 },
-      { "name": "JSON", "proficiency": 95 },
-      { "name": "REST APIs", "proficiency": 85 },
-      { "name": "OAuth2", "proficiency": 70 },
-      { "name": "JWT", "proficiency": 80 }
+    "networkingWebAndProtocols": [
+      "REST APIs",
+      "WebSockets",
+      "HTTP",
+      "JSON",
+      "TCP/IP",
+      "OAuth2",
+      "JWT"
     ],
-    "coreEngineering": [
-      { "name": "Fire Protections Systems", "proficiency": 85 },
-      { "name": "Electrical Installation", "proficiency": 80 },
-      { "name": "Solar PV Systems", "proficiency": 75 },
-      { "name": "Power Electronics", "proficiency": 65 },
-      { "name": "Digital Circuits Design (Arduino, Pi)", "proficiency": 70 },
-      { "name": "Electrical Transmission Systems", "proficiency": 60 },
-      { "name": "Electrical Testing Equipment", "proficiency": 75 }
+    "softwareDevOpsAndTools": [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "PyCharm",
+      "Docker",
+      "AWS",
+      "Unix",
+      "Bash",
+      "Postman",
+      "Figma",
+      "Mermaid",
+      "Markdown",
+      "Xcode",
+      "Android Studio"
+    ],
+    "operatingSystemsAndEnvironments": [
+      "Linux",
+      "macOS",
+      "Windows",
+      "Android",
+      "Raspberry Pi"
+    ],
+    "computerScienceAndArchitecture": [
+      "Algorithms & Data Structures",
+      "Graph Algorithms & Pathfinding",
+      "Virtual DOM",
+      "State Management",
+      "Concurrency & Parallelism",
+      "Authentication & Session Management",
+      "Object-Oriented Programming",
+      "Machine Learning"
+    ],
+    "engineeringCadAndSimulation": [
+      "AutoCAD",
+      "ArchiCAD",
+      "MATLAB",
+      "Circuit Verse",
+      "Everycircuit",
+      "SolidWorks",
+      "Fusion 360"
+    ],
+    "hardwareAndCoreEngineering": [
+      "Fire Protections Systems",
+      "Electrical Installation",
+      "Electrical Testing Equipment",
+      "Solar PV Systems",
+      "Digital Circuits Design (Arduino, Pi)",
+      "Power Electronics"
     ]
   },
   "personalSkills": [
-    { "name": "Adaptability", "proficiency": 90 },
-    { "name": "Communication", "proficiency": 85 },
-    { "name": "Fast Learner", "proficiency": 95 },
-    { "name": "Decision Making", "proficiency": 80 },
-    { "name": "Teamwork", "proficiency": 90 },
-    { "name": "Problem-solving", "proficiency": 85 },
-    { "name": "Time Management", "proficiency": 80 },
-    { "name": "Leadership", "proficiency": 75 },
-    { "name": "Training and Development", "proficiency": 70 },
-    { "name": "Project Management", "proficiency": 75 }
+    "Fast Learner",
+    "Adaptability",
+    "Teamwork",
+    "Communication",
+    "Problem-solving",
+    "Decision Making",
+    "Time Management",
+    "Project Management",
+    "Leadership",
+    "Continuous Learning"
   ]
 }

@@ -16,18 +16,18 @@ let data = null;
  */
 export async function loadData() {
   const [profile, assets, experience, education, certifications, skills,
-         projects, articles, journey, services] = await Promise.all([
-    fetchJSON('src/js/constants/profile.json'),
-    fetchJSON('src/js/constants/assets.json'),
-    fetchJSON('src/js/constants/experience.json'),
-    fetchJSON('src/js/constants/education.json'),
-    fetchJSON('src/js/constants/certifications.json'),
-    fetchJSON('src/js/constants/skills.json'),
-    fetchJSON('src/js/constants/projects.json'),
-    fetchJSON('src/js/constants/articles.json'),
-    fetchJSON('src/js/constants/journey.json'),
-    fetchJSON('src/js/constants/services.json'),
-  ]);
+    projects, articles, journey, services] = await Promise.all([
+      fetchJSON('src/js/constants/profile.json'),
+      fetchJSON('src/js/constants/assets.json'),
+      fetchJSON('src/js/constants/experience.json'),
+      fetchJSON('src/js/constants/education.json'),
+      fetchJSON('src/js/constants/certifications.json'),
+      fetchJSON('src/js/constants/skills.json'),
+      fetchJSON('src/js/constants/projects.json'),
+      fetchJSON('src/js/constants/articles.json'),
+      fetchJSON('src/js/constants/journey.json'),
+      fetchJSON('src/js/constants/services.json'),
+    ]);
 
   // Load default language
   const savedLang = localStorage.getItem('lang') || 'en';
@@ -75,6 +75,9 @@ export async function loadData() {
     email: profile.email,
     tagline: profile.tagline,
     summary: profile.summary,
+    about: profile.about || profile.summary,
+    ui: profile.ui || {},
+    ui_extras: profile.ui_extras || {},
     mobile: primaryFullNumber,
     linkedin: profile.social?.linkedin?.replace('https://', '') || '',
     github: profile.social?.github?.replace('https://', '') || '',
@@ -112,7 +115,7 @@ export async function loadData() {
     certifications: resolvedCertifications,
     technicalSkills: extractSkillNames(skills.technicalSkills),
     technicalSkillsFull: skills.technicalSkills,
-    personalSkills: (skills.personalSkills || []).map(s => s.name),
+    personalSkills: skills.personalSkills || [],
     personalSkillsFull: skills.personalSkills || [],
     projects: resolvedProjects,
     articles,
@@ -178,9 +181,9 @@ function resolveFeatured(config, collections, assets) {
     ...item,
     _source: config.source,
     type: config.source === 'education' ? 'achievement'
-        : config.source === 'projects' ? 'project'
+      : config.source === 'projects' ? 'project'
         : config.source === 'articles' ? 'article'
-        : 'achievement',
+          : 'achievement',
     ...overrides
   };
 }
