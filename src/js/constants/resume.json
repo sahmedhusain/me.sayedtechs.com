@@ -63,7 +63,10 @@
     "Fire Protection Systems",
     "CRPEP Licensed Engineer"
   ],
-  "languages": ["Arabic - Native", "English - Fluent"],
+  "languages": [
+    "Arabic - Native",
+    "English - Fluent"
+  ],
   "summary": {
     "intro": "I am a multidisciplinary engineer bridging the physical and digital worlds—combining the zero-failure precision of Electrical and Fire Safety Engineering with the scalable architecture of Full-Stack Software Development.\n\nWith a background spanning complex industrial infrastructure, strategic vendor management, and modern web development, I build systems that are secure, highly reliable, and commercially viable. My technical philosophy is rooted in deep architectural ownership: I hand-engineer core system logic and frameworks, leveraging AI strictly for development velocity and auditing.\n\nWhether leading technical procurement for multi-million-dollar government contracts or developing highly concurrent software systems, my ultimate goal is to drive measurable business impact.\n\n**Key Highlights:**",
     "bullets": [
@@ -140,7 +143,9 @@
       "title": "Electrical Engineering Intern",
       "meta": "Jul 2020 — Sep 2020 \nRemote",
       "context": "Selected for an international remote technical internship focusing on the operational fundamentals and diagnostics of high-precision electrical test equipment.",
-      "bullets": ["Mastered protocols for comprehensive diagnostic testing (grounding resistivity, CT, VT, protective relays) crucial for performance assessment of complex motor systems."]
+      "bullets": [
+        "Mastered protocols for comprehensive diagnostic testing (grounding resistivity, CT, VT, protective relays) crucial for performance assessment of complex motor systems."
+      ]
     },
     {
       "company": "Zain Bahrain",
@@ -149,7 +154,9 @@
       "logoAlt": "Zain Bahrain",
       "title": "Operations Trainee",
       "meta": "Dec 2018 — Feb 2019\nBahrain",
-      "bullets": ["Mastered technical support protocols and customer service fundamentals, demonstrating high adaptability that led to an immediate full-time promotion within the organization."]
+      "bullets": [
+        "Mastered technical support protocols and customer service fundamentals, demonstrating high adaptability that led to an immediate full-time promotion within the organization."
+      ]
     }
   ],
   "education": [
@@ -160,7 +167,9 @@
       "title": "Professional and Specialized Skill Intensive 2-Year Program, Fullstack developer",
       "meta": "Mar 2024 — Sep 2026\nBahrain",
       "context": "Focus & Activities: Intensive, project-based software engineering program focusing on Go, Rust, and modern system architecture.",
-      "bullets": ["Activities and societies: Active member of the Linux Community Club, collaborating on system-level projects, environments, and open-source methodologies."]
+      "bullets": [
+        "Activities and societies: Active member of the Linux Community Club, collaborating on system-level projects, environments, and open-source methodologies."
+      ]
     },
     {
       "logoWeb": "https://sahmedhusain.github.io/me/src/assets/university_of_bahrain_logo.jpeg",
@@ -169,139 +178,252 @@
       "title": "Bachelor of Science - BS, Electrical Engineering",
       "meta": "Sep 2015 — Jun 2022\nBahrain",
       "context": "Highlights: Developed a rigorous foundation in complex systems, control logic, and hardware-software integration.",
-      "bullets": ["Capstone Project: Architected an IoT-based \"Smart Streetlight\" system utilizing Arduino microcontrollers and motion sensors, simulating a 40% reduction in energy consumption"]
+      "bullets": [
+        "Capstone Project: Architected an IoT-based \"Smart Streetlight\" system utilizing Arduino microcontrollers and motion sensors, simulating a 40% reduction in energy consumption"
+      ]
     }
   ],
   "certifications": [
-    { "text": "NOCN Level 3 Award — Solar PV Installer and Operator (ID: 48282023)", "link": "https://sahmedhusain.github.io/me/src/assets/SolarPV-NOCN.pdf" },
-    { "text": "Certificate of Acknowledgement (Solar PV) — MEWA", "link": "https://sahmedhusain.github.io/me/src/assets/solar-pv-mewa.pdf" },
-    { "text": "CRPEP License (Electrical) — Council for Regulating Engineering Professions, Bahrain", "link": "https://sahmedhusain.github.io/me/src/assets/crpep.pdf" },
-    { "text": "Electrical Installation License — Electricity and Water Authority (EWA), Bahrain" },
-    { "text": "Basic Life Support (BLS) — American Heart Association (AHA)", "link": "https://sahmedhusain.github.io/me/src/assets/BLS.pdf" },
-    { "text": "B2B Sales Fundamentals — Golden Trust Institute" },
-    { "text": "Emotional Intelligence — Golden Trust Institute" },
-    { "text": "LinkedIn Learning — AI in Business Essentials, Leading with Innovation, Critical Thinking" }
+    {
+      "text": "NOCN Level 3 Award — Solar PV Installer and Operator (ID: 48282023)",
+      "link": "https://sahmedhusain.github.io/me/src/assets/SolarPV-NOCN.pdf"
+    },
+    {
+      "text": "Certificate of Acknowledgement (Solar PV) — MEWA",
+      "link": "https://sahmedhusain.github.io/me/src/assets/solar-pv-mewa.pdf"
+    },
+    {
+      "text": "CRPEP License (Electrical) — Council for Regulating Engineering Professions, Bahrain",
+      "link": "https://sahmedhusain.github.io/me/src/assets/crpep.pdf"
+    },
+    {
+      "text": "Electrical Installation License — Electricity and Water Authority (EWA), Bahrain"
+    },
+    {
+      "text": "Basic Life Support (BLS) — American Heart Association (AHA)",
+      "link": "https://sahmedhusain.github.io/me/src/assets/BLS.pdf"
+    },
+    {
+      "text": "B2B Sales Fundamentals — Golden Trust Institute"
+    },
+    {
+      "text": "Emotional Intelligence — Golden Trust Institute"
+    },
+    {
+      "text": "LinkedIn Learning — AI in Business Essentials, Leading with Innovation, Critical Thinking"
+    }
   ],
   "projects": [
     {
       "title": "Smart Streetlights | IOT Optimization",
       "links": [
-        { "text": "Thesis", "url": "https://sahmedhusain.github.io/me/src/assets/Smart_Street_Lights_-_Final_Report.pdf" },
-        { "text": "Poster", "url": "https://sahmedhusain.github.io/me/src/assets/Smart_Streetligts_poster.pdf" }
+        {
+          "text": "Thesis",
+          "url": "https://sahmedhusain.github.io/me/src/assets/Smart_Street_Lights_-_Final_Report.pdf"
+        },
+        {
+          "text": "Poster",
+          "url": "https://sahmedhusain.github.io/me/src/assets/Smart_Streetligts_poster.pdf"
+        }
       ]
     },
     {
       "title": "GigaBit | Real-Time Social Network",
       "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/GigaBit" }
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/GigaBit"
+        }
       ]
     },
     {
       "title": "01 Dashboard | Learning Analytics Platform",
       "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/01-Dashboard" }
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/01-Dashboard"
+        }
       ]
     },
     {
-      "title": "Connecthub RT | Real-Time Forum & Chat",
+      "title": "FlowGrid | Autonomous Intersection Simulation",
       "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/Connecthub-RT" }
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/flowgrid"
+        }
+      ]
+    },
+    {
+      "title": "Blast Arena | Multiplayer Bomb-Battle Arena",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/blast-arena"
+        }
       ]
     },
     {
       "title": "PicoJS Framework | Reactive UI Framework",
       "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/PicoJS-Framework" }
-      ]
-    },
-    {
-      "title": "01 ConnectHub | Full-Stack Forum Application",
-      "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/01-ConnectHub" }
-      ]
-    },
-    {
-      "title": "HarmonyHub | Music & Concert Discovery",
-      "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/HarmonyHub" }
-      ]
-    },
-    {
-      "title": "AntFinder | Graph Pathfinding Simulation",
-      "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/AntFinder" }
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/PicoJS-Framework"
+        }
       ]
     },
     {
       "title": "GoTalk | Concurrent TCP Chat Server",
       "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/GoTalk" }
-      ]
-    },
-    {
-      "title": "Space Blaster | Browser-Based Arcade Game",
-      "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/SpaceBlaster" }
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/GoTalk"
+        }
       ]
     },
     {
       "title": "Betting Game - Card betting engine",
       "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/Betting-Game" }
-      ]
-    },
-    {
-      "title": "ASCII Forge | ASCII Art Generator",
-      "links": [
-        { "text": "Repository", "url": "https://github.com/sahmedhusain/ASCIIForge" }
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/Betting-Game"
+        }
       ]
     },
     {
       "title": "Personal Portfolio Website",
       "links": [
-        { "text": "Website", "url": "https://sahmedhusain.github.io/me/" }
+        {
+          "text": "Website",
+          "url": "https://sahmedhusain.github.io/me/"
+        }
       ]
     }
   ],
   "technicalSkills": [
-    { 
-      "category": "Programming & Markup Languages", 
-      "items": ["JavaScript", "TypeScript", "Python", "Golang", "Rust", "C++", "Dart", "HTML5", "CSS3"] 
+    {
+      "category": "Programming & Markup Languages",
+      "items": [
+        "JavaScript",
+        "TypeScript",
+        "Python",
+        "Golang",
+        "Rust",
+        "C++",
+        "Dart",
+        "HTML5",
+        "CSS3"
+      ]
     },
-    { 
-      "category": "Frameworks & Libraries", 
-      "items": ["React", "Next.js", "Node.js", "Tailwind CSS", "GraphQL", "Apollo Client", "Vite", "Flutter"] 
+    {
+      "category": "Frameworks & Libraries",
+      "items": [
+        "React",
+        "Next.js",
+        "Node.js",
+        "Tailwind CSS",
+        "GraphQL",
+        "Apollo Client",
+        "Vite",
+        "Flutter"
+      ]
     },
-    { 
-      "category": "Databases", 
-      "items": ["PostgreSQL", "MySQL", "SQLite", "MongoDB"] 
+    {
+      "category": "Databases",
+      "items": [
+        "PostgreSQL",
+        "MySQL",
+        "SQLite",
+        "MongoDB"
+      ]
     },
-    { 
-      "category": "Networking, Web & Protocols", 
-      "items": ["REST APIs", "WebSockets", "HTTP", "TCP/IP", "JSON", "OAuth2", "JWT"] 
+    {
+      "category": "Networking, Web & Protocols",
+      "items": [
+        "REST APIs",
+        "WebSockets",
+        "HTTP",
+        "TCP/IP",
+        "JSON",
+        "OAuth2",
+        "JWT"
+      ]
     },
-    { 
-      "category": "Software, DevOps & Tools", 
-      "items": ["Git", "GitHub", "VS Code", "PyCharm", "Docker", "Unix", "Bash", "Postman", "Figma", "Mermaid", "Markdown", "Xcode", "Android Studio"] 
+    {
+      "category": "Software, DevOps & Tools",
+      "items": [
+        "Git",
+        "GitHub",
+        "VS Code",
+        "PyCharm",
+        "Docker",
+        "Unix",
+        "Bash",
+        "Postman",
+        "Figma",
+        "Mermaid",
+        "Markdown",
+        "Xcode",
+        "Android Studio"
+      ]
     },
-    { 
-      "category": "Operating Systems & Environments", 
-      "items": ["Linux", "macOS", "Windows", "Android", "Raspberry Pi"] 
+    {
+      "category": "Operating Systems & Environments",
+      "items": [
+        "Linux",
+        "macOS",
+        "Windows",
+        "Android",
+        "Raspberry Pi"
+      ]
     },
-    { 
-      "category": "Computer Science & Architecture", 
-      "items": ["Algorithms & Data Structures", "Graph Algorithms & Pathfinding", "Virtual DOM", "State Management", "Concurrency & Parallelism", "Authentication & Session Management", "Object-Oriented Programming", "Machine Learning"] 
+    {
+      "category": "Computer Science & Architecture",
+      "items": [
+        "Algorithms & Data Structures",
+        "Graph Algorithms & Pathfinding",
+        "Virtual DOM",
+        "State Management",
+        "Concurrency & Parallelism",
+        "Authentication & Session Management",
+        "Object-Oriented Programming",
+        "Machine Learning"
+      ]
     },
-    { 
-      "category": "Engineering CAD & Simulation", 
-      "items": ["AutoCAD", "ArchiCAD", "MATLAB", "Circuit Verse", "Everycircuit", "SolidWorks", "Fusion 360"] 
+    {
+      "category": "Engineering CAD & Simulation",
+      "items": [
+        "AutoCAD",
+        "ArchiCAD",
+        "MATLAB",
+        "Circuit Verse",
+        "Everycircuit",
+        "SolidWorks",
+        "Fusion 360"
+      ]
     },
-    { 
-      "category": "Hardware & Core Engineering", 
-      "items": ["Fire Protections Systems", "Electrical Installation", "Electrical Testing Equipment", "Solar PV Systems", "Digital Circuits Design (Arduino, Pi)", "Power Electronics"] 
+    {
+      "category": "Hardware & Core Engineering",
+      "items": [
+        "Fire Protections Systems",
+        "Electrical Installation",
+        "Electrical Testing Equipment",
+        "Solar PV Systems",
+        "Digital Circuits Design (Arduino, Pi)",
+        "Power Electronics"
+      ]
     }
   ],
   "personalSkills": [
-    "Fast Learner", "Adaptability", "Teamwork", "Communication", "Problem-solving", "Decision Making", "Time Management", "Project Management", "Leadership", "Continuous Learning"
+    "Fast Learner",
+    "Adaptability",
+    "Teamwork",
+    "Communication",
+    "Problem-solving",
+    "Decision Making",
+    "Time Management",
+    "Project Management",
+    "Leadership",
+    "Continuous Learning"
   ]
 }

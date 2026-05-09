@@ -1,5 +1,64 @@
 [
   {
+    "id": "betting-game",
+    "name": "Hand Betting Game",
+    "subtitle": "Real-Time Mahjong Prediction Engine",
+    "category": "Games",
+    "hasGithubRepo": true,
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/Betting-Game" }
+    ],
+    "points": [
+      "Built a high-performance Mahjong betting engine featuring real-time prediction logic and dynamic tile valuation.",
+      "Developed a custom Virtual DOM framework (PicoJS) to achieve sub-millisecond UI updates and predictable state management.",
+      "Engineered a concurrent Go backend following Domain-Driven Design (DDD) to handle game logic, session validation, and real-time scaling.",
+      "Implemented a real-time 'valuation scaling' system where tile values evolve based on global win/loss outcomes.",
+      "Architected a secure session management layer with rate-limiting and JWT-based authentication.",
+      "Containerized the entire stack using Docker for seamless production deployment and environment parity."
+    ],
+    "tech": ["Go", "PicoJS", "JavaScript", "MongoDB", "Tailwind CSS", "Docker", "WebSocket", "DDD"],
+    "featured": true
+  },
+  {
+    "id": "flowgrid",
+    "name": "FlowGrid",
+    "subtitle": "Autonomous Intersection Simulation (Rust + SDL2)",
+    "category": "Engineering",
+    "hasGithubRepo": true,
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/flowgrid" }
+    ],
+    "points": [
+      "Architected a real-time autonomous traffic simulation in Rust to optimize four-way intersection throughput without traditional traffic lights.",
+      "Implemented a deterministic reservation-based scheduler that coordinates vehicle entry times into 6x6 conflict zones.",
+      "Developed a high-precision collision detection engine using Oriented Bounding Boxes (OBB) and the Separating Axis Theorem (SAT).",
+      "Engineered a fairness-aware priority model that considers wait time, queue depth, and aging to prevent starvation.",
+      "Built an interactive visualization layer using SDL2 with procedural road rendering and directional car texture mapping.",
+      "Included detailed performance analytics tracking metrics such as completion time, waiting intervals, and close-call frequency."
+    ],
+    "tech": ["Rust", "SDL2", "Physics Engine", "Scheduling Algorithms", "Geometric Math", "Performance Analytics"],
+    "featured": true
+  },
+  {
+    "id": "blast-arena",
+    "name": "Blast Arena",
+    "subtitle": "Multiplayer Bomb-Battle Arena",
+    "category": "Games",
+    "hasGithubRepo": true,
+    "links": [
+      { "text": "Repository", "url": "https://github.com/sahmedhusain/blast-arena" }
+    ],
+    "points": [
+      "Developed a fast-paced multiplayer arena game with real-time synchronization over WebSockets using Node.js.",
+      "Implemented a destructible grid environment and power-up system with precise collision and proximity logic.",
+      "Built a synchronized lobby system supporting four-player sessions with live chat and 'ready-up' states.",
+      "Utilized a custom reactive UI layer (PicoJS) for lightweight client-side rendering and minimal bundle size.",
+      "Engineered a robust backend game loop with server-side validation to ensure competitive integrity and state consistency."
+    ],
+    "tech": ["Node.js", "WebSocket", "Vanilla JS", "PicoJS", "CSS3 Animations", "Game Logic"],
+    "featured": false
+  },
+  {
     "id": "smart-streetlights",
     "name": "Smart Streetlights",
     "type": "University Graduation Project",
