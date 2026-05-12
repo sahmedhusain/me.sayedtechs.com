@@ -107,7 +107,6 @@ loadResources();
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
     navigator.serviceWorker.register('sw.js', { scope: './' }).catch((err) => {
-      console.warn('Service worker registration failed:', err);
     });
   });
 }
@@ -116,7 +115,6 @@ if ('serviceWorker' in navigator) {
 document.addEventListener('DOMContentLoaded', async () => {
   const app = document.getElementById('app');
   if (!app) {
-    console.error('Root element #app not found');
     return;
   }
 
@@ -149,7 +147,7 @@ document.addEventListener('DOMContentLoaded', async () => {
       <article class="contact" data-page="contact">
         ${renderContactSection()}
       </article>
-      <article class="article article-detail" data-page="article">
+      <article class="article-detail" data-page="article">
         <div id="article-detail-content"></div>
       </article>
       <article class="project-detail" data-page="project">
@@ -219,7 +217,6 @@ document.addEventListener('DOMContentLoaded', async () => {
       }
     });
   } catch (e) {
-    console.warn('Logo injection helper failed:', e);
   }
 
   // Initialize event listeners

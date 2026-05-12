@@ -184,7 +184,7 @@ export function renderContactModal() {
             </div>
             <div class="modal-right" style="display: flex; flex-direction: column; gap: 1.5rem; flex: 1;">
               <div class="qr-code-container" id="qr-code">
-                <div class="qr-placeholder">${contactUi.qrPlaceholder || 'QR Code will appear here'}</div>
+                <div class="qr-placeholder">${contactUi.qrPlaceholder}</div>
               </div>
 
               <div class="modal-actions" style="margin-top: 0;">
@@ -236,7 +236,6 @@ export async function generateVCard() {
 
     return filteredLines.join('\n');
   } catch (err) {
-    console.error('Error fetching vCard:', err);
     // Fallback to old method
     return `BEGIN:VCARD
 VERSION:3.0
@@ -265,7 +264,7 @@ export async function generateQRCode() {
   qrContainer.innerHTML = `
     <div class="qr-loading">
       <div class="loading-spinner"></div>
-      <p class="loading-text">${contactUi.qrGenerating || 'Generating QR Code...'}</p>
+      <p class="loading-text">${contactUi.qrGenerating}</p>
     </div>
   `;
 
@@ -335,7 +334,6 @@ export async function generateQRCode() {
     qrContainer.appendChild(instruction);
 
   } catch (err) {
-    console.error('Failed to generate QR code:', err);
     qrContainer.innerHTML = `
       <p class="qr-error" style="color: #ff6464; text-align: center; font-size: 0.9rem;">
         Unable to generate QR code:<br>

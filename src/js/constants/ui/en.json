@@ -11,8 +11,8 @@
     "welcome": "Welcome to Sayed's Space 🌍.",
     "tagline": "A collection of thoughts from my professional path\nto my personal world.",
     "seeAllArticles": "See all articles",
-    "seeFullArticle": "See full article",
-    "professionalCareer": "Professional career",
+    "readFullArticle": "Read full article",
+    "professionalCareer": "Career",
     "featured": "Featured",
     "backToTop": "Back to top"
   },
@@ -40,15 +40,20 @@
   },
   "articles": {
     "title": "Articles ✍️",
-    "subtitle": "Deep dives into engineering, code, and professional growth.",
+    "subtitle": "Insights on engineering, code, and professional growth.",
     "searchPlaceholder": "Search articles...",
-    "readFullStory": "Read full story",
+    "readFullArticle": "Read full article",
     "backToArticles": "Back to Articles",
     "articleNotFound": "Article not found",
+    "noArticlesFound": "Something's brewing! ☕ No articles here yet, but stay tuned for fresh insights.",
     "backToArticlesBtn": "Back to articles",
     "fullContentPlaceholder": "Full article content would go here. Currently, each article has a title, date, category, and description.",
     "fullContentNote": "As I continue to share my journey at the intersection of electrical engineering and software development, I will be adding more detailed technical write-ups and reflections here.",
-    "categories": ["All", "Technology", "Engineering", "Career", "Life"]
+    "categories": ["All", "Technology", "Engineering", "Career", "Life"],
+    "viewOn": "View content on",
+    "code": "Code",
+    "date": "Date",
+    "readTime": "Read Time"
   },
   "journey": {
     "title": "Professional Journey ✨",
@@ -94,11 +99,13 @@
   },
   "projects": {
     "title": "Portfolio 🎨",
+    "sectionTitle": "Projects",
     "subtitle": "Explore my <strong>portfolio</strong> – from web applications and engineering solutions to innovative tools that showcase my technical expertise and problem-solving skills.",
     "categories": ["All", "Web Development", "Engineering", "Games", "CLI/Algorithms", "UI concepts"],
     "comingSoon": "Coming Soon",
-    "comingSoonTitle": "UI Concepts",
     "comingSoonDesc": "Exciting UI/UX design concepts and interactive prototypes are in development. Stay tuned for innovative user interface designs and experiences.",
+    "viewProject": "View Project",
+    "license": "License",
     "read": "Read"
   },
   "skills": {
@@ -124,7 +131,7 @@
   "contact": {
     "title": "Reach out 🕊️",
     "subtitle": "Let's build something beautiful together.",
-    "businessCard": "Business Card",
+    "businessCard": "Contact Card",
     "fullName": "Full Name",
     "fullNamePlaceholder": "Sayed Ahmed",
     "emailAddress": "Email Address",
@@ -154,12 +161,18 @@
   },
   "time": {
     "justNow": "Just now",
+    "minuteAgo": "1 minute ago",
     "minutesAgo": "{n} minutes ago",
+    "hourAgo": "1 hour ago",
     "hoursAgo": "{n} hours ago",
     "yesterday": "Yesterday",
+    "dayAgo": "1 day ago",
     "daysAgo": "{n} days ago",
+    "weekAgo": "1 week ago",
     "weeksAgo": "{n} weeks ago",
+    "monthAgo": "1 month ago",
     "monthsAgo": "{n} months ago",
+    "yearAgo": "1 year ago",
     "yearsAgo": "{n} years ago",
     "present": "Present"
   },

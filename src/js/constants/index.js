@@ -94,9 +94,10 @@ export async function loadData() {
       website: profile.social?.website || '',
       linkedin: profile.social?.linkedin || '',
       github: profile.social?.github || '',
-      twitter: profile.social?.twitter || '',
+      twitter: profile.social?.x || '',
       discord: profile.social?.discord || '',
       medium: profile.social?.medium || '',
+      reddit: profile.social?.reddit || '',
     },
 
     // Social links
@@ -143,7 +144,6 @@ export function getData() {
  */
 export function getAsset(key) {
   if (!data?.assets) {
-    console.warn('Assets not loaded yet, returning key:', key);
     return key;
   }
   return resolveAssetKey(key, data.assets);
@@ -157,7 +157,6 @@ async function fetchJSON(url) {
     if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
     return await res.json();
   } catch (err) {
-    console.error(`Error loading ${url}:`, err);
     return Array.isArray(url) ? [] : {};
   }
 }

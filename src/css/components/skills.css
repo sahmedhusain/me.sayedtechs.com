@@ -14,113 +14,84 @@
 .skills-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  gap: 2rem;
+  gap: 2.5rem;
   margin-top: 3rem;
 }
 
 .skills-card {
-  background: linear-gradient(
-    135deg,
-    var(--gradient-start),
-    var(--gradient-end)
-  );
+  background: var(--apple-glass-bg);
   border: 1px solid var(--card-border);
-  border-radius: var(--radius-lg);
-  padding: 2rem;
-  transition: var(--transition);
+  border-radius: var(--radius-xl);
+  padding: 2.5rem;
+  transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);
   position: relative;
   overflow: hidden;
   opacity: 0;
   transform: translateY(30px);
   animation: slideInUp 0.6s ease-out both;
+  display: flex;
+  flex-direction: column;
 }
 
-.skills-card::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(
-    45deg,
-    transparent,
-    rgba(161, 161, 170, 0.03),
-    transparent
-  );
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  pointer-events: none;
+/* If there's an odd number of skills, make the last one full width */
+.skills-card:last-child:nth-child(odd) {
+  grid-column: 1 / -1;
 }
 
-.skills-card.animate-in {
-  opacity: 1;
-  transform: translateY(0);
-}
 
 .skill-card-header {
   display: flex;
   align-items: center;
-  margin-bottom: 1.5rem;
+  margin-bottom: 2rem;
   position: relative;
 }
 
 .skill-icon-container {
   position: relative;
-  margin-right: 1rem;
-  width: 40px;
-  height: 40px;
+  margin-right: 1.2rem;
+  width: 48px;
+  height: 48px;
   display: flex;
   align-items: center;
   justify-content: center;
+  background: rgba(var(--accent-rgb), 0.05);
+  border-radius: 12px;
+  transition: all 0.3s ease;
 }
+
 
 .skill-icon-glow {
   position: absolute;
-  top: -6px;
-  left: -6px;
-  right: -6px;
-  bottom: -6px;
-  background: radial-gradient(circle, var(--accent-glow), transparent);
+  inset: -8px;
+  background: radial-gradient(circle, var(--accent-glow), transparent 70%);
   border-radius: 50%;
   opacity: 0;
   transition: opacity 0.3s ease;
-  animation: pulse 2s ease-in-out infinite;
 }
 
+
 .skill-icon {
-  font-size: 1.75rem;
+  font-size: 1.8rem;
   color: var(--accent);
-  position: relative;
-  z-index: 1;
-  transition: var(--transition);
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 100%;
-  height: 100%;
+  transition: color 0.3s ease;
 }
+
 
 .skill-card-title {
   color: var(--text-primary);
-  font-size: 1.1rem;
-  font-weight: 600;
+  font-size: 1.25rem;
+  font-weight: 700;
   margin: 0;
-}
-
-.skill-card-content {
-  position: relative;
-  z-index: 1;
+  letter-spacing: -0.01em;
 }
 
 /* Interactive Tech Logos */
-.interactive-tech-container {
-  position: relative;
-}
-
 .tech-logos-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(80px, 1fr));
+  grid-template-columns: repeat(4, 1fr);
   gap: 1rem;
   margin-bottom: 1rem;
 }
@@ -129,75 +100,43 @@
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding: 0.75rem;
-  border-radius: var(--radius-md);
-  background: rgba(17, 34, 64, 0.5);
+  padding: 1rem 0.5rem;
+  border-radius: 16px;
+  background: rgba(var(--accent-rgb), 0.03);
   border: 1px solid transparent;
-  transition: var(--transition);
-  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
-  overflow: hidden;
-  opacity: 0;
-  transform: translateY(20px);
-  animation: fadeInUp 0.5s ease-out both;
 }
 
-.tech-logo-item::before {
-  content: "";
-  position: absolute;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: linear-gradient(45deg, var(--accent), var(--accent-hover));
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  z-index: -1;
-}
 
 .tech-logo-wrapper {
   position: relative;
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
-.tech-logo-glow {
-  position: absolute;
-  top: -3px;
-  left: -3px;
-  right: -3px;
-  bottom: -3px;
-  background: radial-gradient(circle, var(--accent-glow), transparent);
-  border-radius: 50%;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-}
-
+.tech-logo-item img,
 .tech-logo-item i,
 .tech-logo-item ion-icon {
   font-size: 2rem;
-  color: var(--accent);
-  transition: var(--transition);
-}
-
-.tech-logo-item img {
-  font-size: 2rem;
-  transition: var(--transition);
-}
-
-.tech-logo-item img {
   width: 2rem;
   height: 2rem;
-  object-fit: contain;
+  transition: transform 0.3s ease;
 }
 
+
 .tech-logo-text {
-  font-size: 0.6rem;
+  font-size: 0.75rem;
   color: var(--text-secondary);
   text-align: center;
-  font-weight: 500;
-  transition: var(--transition);
-  white-space: nowrap;
+  font-weight: 600;
+  opacity: 0.8;
+  transition: opacity 0.3s ease;
 }
+
+
 
 .tech-logo-clicked {
   animation: techLogoPulse 0.3s ease-out;
@@ -284,21 +223,30 @@
   column-gap: 2rem;
 }
 
+/* Single column for specific sections to ensure left justification */
+.skill-bullets[data-type="computerScienceAndArchitecture"],
+.skill-bullets[data-type="hardwareAndCoreEngineering"] {
+  columns: 1;
+}
+
 .skill-bullets li {
-  margin-bottom: 0.5rem;
+  margin-bottom: 0.85rem;
   color: var(--text-secondary);
-  font-size: 0.9rem;
+  font-size: 0.95rem;
   opacity: 0;
   transform: translateY(15px);
   animation: slideInLeft 0.4s ease-out both;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
+  line-height: 1.5;
 }
 
 .skill-bullets li ion-icon {
-  margin-right: 0.5rem;
+  margin-right: 0.8rem;
   color: var(--accent);
-  font-size: 1rem;
+  font-size: 1.1rem;
+  margin-top: 0.2rem;
+  flex-shrink: 0;
 }
 
 /* Particles */

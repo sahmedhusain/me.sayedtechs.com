@@ -1,51 +1,11 @@
 import { getData } from '../constants/index.js';
 import { renderInteractiveTechLogos, renderSkillBadges } from '../data/icons.js';
+import { SKILLS_CATEGORY_MAPPING, SKILLS_CATEGORY_ICONS, SKILLS_PRIORITY_ORDER } from '../constants/config.js';
 
 export function renderSkillsSection() {
   const data = getData();
   const ui = data.ui_extras || {};
   const skillsUi = ui.skills || {};
-
-  // Debug: check if technicalSkillsFull exists
-  console.log('technicalSkillsFull:', data.technicalSkillsFull);
-
-  // Map of actual property names to display titles
-  const categoryMapping = {
-    programmingAndMarkupLanguages: 'Programming & Markup Languages',
-    frameworksAndLibraries: 'Frameworks & Libraries',
-    databases: 'Databases',
-    networkingWebAndProtocols: 'Networking, Web & Protocols',
-    softwareDevOpsAndTools: 'Software, DevOps & Tools',
-    operatingSystemsAndEnvironments: 'OS & Environments',
-    testingAndCodeQuality: 'Testing & Code Quality',
-    computerScienceAndArchitecture: 'Computer Science & Architecture',
-    engineeringCadAndSimulation: 'Engineering CAD & Simulation',
-    hardwareAndCoreEngineering: 'Hardware & Core Engineering',
-    // Fallback mappings for whatever the actual structure is
-    computerScienceConcepts: 'Computer Science Concepts',
-    engineeringSoftware: 'Engineering Software',
-    languages: 'Programming Languages',
-    webTechnologies: 'Web Technologies',
-    systemsAndTools: 'Systems & Tools'
-  };
-
-  const categoryIcons = {
-    programmingAndMarkupLanguages: 'code-slash-outline',
-    frameworksAndLibraries: 'library-outline',
-    databases: 'server-outline',
-    networkingWebAndProtocols: 'globe-outline',
-    softwareDevOpsAndTools: 'construct-outline',
-    operatingSystemsAndEnvironments: 'desktop-outline',
-    testingAndCodeQuality: 'checkmark-circle-outline',
-    computerScienceAndArchitecture: 'git-network-outline',
-    engineeringCadAndSimulation: 'cube-outline',
-    hardwareAndCoreEngineering: 'hardware-chip-outline',
-    computerScienceConcepts: 'git-network-outline',
-    engineeringSoftware: 'cube-outline',
-    languages: 'code-slash-outline',
-    webTechnologies: 'globe-outline',
-    systemsAndTools: 'construct-outline'
-  };
 
   // Build categories dynamically from technicalSkillsFull
   const categories = [];
@@ -53,7 +13,7 @@ export function renderSkillsSection() {
   // Add personal skills first
   if (data.personalSkills && data.personalSkills.length > 0) {
     categories.push({
-      title: skillsUi.categories?.personal || 'Personal Skills',
+      title: skillsUi.categories.personal,
       icon: 'person-outline',
       items: data.personalSkills,
       isTech: false,
@@ -65,11 +25,12 @@ export function renderSkillsSection() {
   if (data.technicalSkillsFull && typeof data.technicalSkillsFull === 'object') {
     for (const [key, items] of Object.entries(data.technicalSkillsFull)) {
       if (Array.isArray(items) && items.length > 0) {
+        const isNonTechCategory = SKILLS_PRIORITY_ORDER.includes(key) && key !== 'personal';
         categories.push({
-          title: skillsUi.categories?.[key] || categoryMapping[key] || key,
-          icon: categoryIcons[key] || 'layers-outline',
+          title: skillsUi.categories[key],
+          icon: SKILLS_CATEGORY_ICONS[key],
           items,
-          isTech: true,
+          isTech: !isNonTechCategory,
           type: key
         });
       }
@@ -85,9 +46,28 @@ export function renderSkillsSection() {
     return { ...cat, items };
   });
 
+  // Sort categories: Personal, Hardware, and CS first, then others
+  validCategories.sort((a, b) => {
+    const aIndex = SKILLS_PRIORITY_ORDER.indexOf(a.type);
+    const bIndex = SKILLS_PRIORITY_ORDER.indexOf(b.type);
+    
+    // If both are in priority list, sort by their order in list
+    if (aIndex !== -1 && bIndex !== -1) return aIndex - bIndex;
+    // If only a is in priority list, it comes first
+    if (aIndex !== -1) return -1;
+    // If only b is in priority list, it comes first
+    if (bIndex !== -1) return 1;
+    
+    return 0; // Maintain original relative order for others
+  });
+
   return `
-    <section id="skills-section" class="skills" style="margin-top: 2rem;">
-      <h3 class="h3 section-title" style="margin-bottom: 2rem;">${skillsUi.title || 'Skills and Technologies'}</h3>
+    <header id="skills-section" class="animate-entry" style="margin-bottom: 2rem; text-align: left; animation-delay: 0s;">
+      <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
+        ${skillsUi.title}
+      </h1>
+    </header>
+    <section class="skills">
       <div class="skills-grid">
         ${validCategories.map((cat, index) => `
           <div class="skills-card" data-type="${cat.type}" style="animation-delay: ${index * 0.1}s">
@@ -100,9 +80,6 @@ export function renderSkillsSection() {
             </div>
             <div class="skill-card-content">
               ${cat.isTech ? renderInteractiveTechLogos(cat.items, cat.type) : renderSkillBadges(cat.items, cat.type)}
-            </div>
-            <div class="skill-card-particles">
-              ${Array.from({ length: 5 }, (_, i) => `<div class="particle" style="animation-delay: ${i * 0.2}s"></div>`).join('')}
             </div>
           </div>
         `).join('')}

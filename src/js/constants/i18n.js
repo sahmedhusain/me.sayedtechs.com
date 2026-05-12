@@ -21,7 +21,6 @@ export async function loadLocale(locale) {
     currentLocale = locale;
     loaded = true;
   } catch (err) {
-    console.warn(`Failed to load locale '${locale}', falling back to 'en':`, err);
     if (locale !== 'en') {
       await loadLocale('en');
     }
@@ -39,7 +38,6 @@ export async function loadLocale(locale) {
  */
 export function t(key, replacements = {}) {
   if (!loaded) {
-    console.warn('i18n not loaded yet, returning key:', key);
     return key;
   }
 

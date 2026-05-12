@@ -1,17 +1,17 @@
 import { getData } from '../constants/index.js';
 import { t } from '../constants/i18n.js';
-import { renderTechLogos, getCategoryIcon } from '../data/icons.js';
+import { renderTechLogos, getCategoryIcon, getIconForLibraryItem } from '../data/icons.js';
 import { renderSkillsSection } from './skills.js';
 import { FALLBACK_CATEGORIES, INTERNAL_CATEGORIES, CATEGORY_ICONS } from '../constants/config.js';
 
 export function renderPortfolioPage() {
   return `
-    <header class="animate-entry" style="margin-bottom: 4rem; text-align: left; animation-delay: 0s;">
-      <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
-        ${t('projects.title') || 'Portfolio 🎨'}
+    <header class="animate-entry" style="margin-bottom: 1.2rem; text-align: left; animation-delay: 0s;">
+      <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
+        ${t('projects.title')}
       </h1>
-      <p class="section-subtitle" style="font-size: 1.15rem; line-height: 1.7; color: var(--text-secondary); max-width: 850px; font-family: var(--font-sans); margin-bottom: 1.5rem;">
-        Explore my <strong><a href="#projects-section" class="portfolio-inline-link" style="color: var(--text-primary);">Projects</a></strong> – from web applications and engineering solutions to innovative tools that showcase my <strong><a href="#skills-section" class="portfolio-inline-link" style="color: var(--text-primary);">Skills & Technologies</a></strong>, technical expertise, and problem-solving skills.
+      <p class="section-subtitle" style="font-size: 1.15rem; line-height: 1.7; color: var(--text-secondary); max-width: 850px; font-family: var(--font-sans);">
+        ${t('projects.subtitle')}
       </p>
     </header>
     <div class="animate-entry" style="animation-delay: 0.1s;">
@@ -28,18 +28,14 @@ export function renderProjectDetail(id) {
   const ui = data.ui_extras || {};
   const projUi = ui.projects || {};
   const project = data.projects.find(p => p.id === id);
-  if (!project) return `<div class="animate-entry"><p>${projUi.notFound || 'Project not found'}</p></div>`;
+  if (!project) return `<div class="animate-entry"><p>${projUi.notFound}</p></div>`;
 
-  // Extract category key if not present (fallback)
   const categoryKey = project.categoryKey || project.category?.toLowerCase().replace(/\s+/g, '') || 'webdevelopment';
-
-  // Find github repo
   const githubLink = project.links.find(l => l.text.toLowerCase() === 'repository' && l.url.includes('github.com'));
 
-  // HTML for detail page
   setTimeout(() => {
     if (githubLink) {
-      loadReadme(githubLink.url, id);
+      loadReadme(githubLink.url, id, projUi);
     } else {
       const container = document.getElementById('project-readme-container');
       if (container) container.style.display = 'none';
@@ -49,58 +45,65 @@ export function renderProjectDetail(id) {
   return `
     <section class="project-detail-wrapper animate-entry">
       <header class="project-detail-header">
-        <button class="back-btn" onclick="window.history.back()">
-          <ion-icon name="chevron-back-outline"></ion-icon> <span>${projUi.backToPortfolio || 'Back to Portfolio'}</span>
-        </button>
         <div class="project-header-main">
+          <button class="back-btn-minimal" onclick="window.history.back()" title="${projUi.backToPortfolio}">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </button>
           <div class="project-icon-large">
             <ion-icon name="${getCategoryIcon(categoryKey)}"></ion-icon>
           </div>
           <div class="project-title-box">
+             <div class="project-detail-category">${project.category}</div>
              <h2 class="h2 project-detail-title">${project.name}</h2>
-             <p class="project-detail-subtitle">${project.subtitle || project.category}</p>
+             <p class="project-detail-subtitle">${project.subtitle}</p>
+          </div>
+          <div class="project-header-links">
+             ${project.links.map(l => `
+               <a href="${l.url}" target="_blank" class="btn-solid-black-inverted">
+                 <ion-icon name="${getIcon(l.text)}"></ion-icon>
+                 <span>${l.text}</span>
+               </a>
+             `).join('')}
           </div>
         </div>
       </header>
 
       <div class="project-detail-grid">
         <div class="project-info-sidebar">
-           <div class="info-group">
-             <h4>Category</h4>
-             <p style="color: var(--text-secondary);">${project.category}</p>
-           </div>
-           <div class="info-group">
-             <h4>Tech Stack</h4>
+           <div class="info-group-tech">
+             <div class="tech-label">Tech Stack</div>
              <div class="project-detail-tech-container">
-               <ul class="project-tech-logos-detail" style="display: flex; gap: 1rem; flex-wrap: wrap; background: rgba(var(--accent-rgb), 0.05); padding: 1.2rem; border-radius: 16px; border: 1px solid rgba(var(--accent-rgb), 0.1); list-style: none; margin-bottom: 1.5rem;">
+               <ul class="project-tech-logos-detail">
                   ${renderTechLogos(project.tech).logos}
                </ul>
-               ${renderTechLogos(project.tech).libraries ? `<div class="project-detail-libraries">${renderTechLogos(project.tech).libraries}</div>` : ''}
-             </div>
-           </div>
-           <div class="info-group">
-             <h4>Links</h4>
-             <div class="project-links-vertical">
-                ${project.links.map(l => `<a href="${l.url}" target="_blank"><ion-icon name="${getIcon(l.text)}"></ion-icon> ${l.text}</a>`).join('')}
+               <div class="tech-divider"></div>
+               <div class="project-detail-libraries-chips">
+                  ${renderTechLogos(project.tech).rawLibraries.map(lib => `
+                    <span class="lib-chip">
+                      <ion-icon name="${getIconForLibraryItem(lib)}"></ion-icon>
+                      ${lib}
+                    </span>
+                  `).join('')}
+               </div>
              </div>
            </div>
         </div>
 
         <div class="project-main-content">
            ${project.hasGithubRepo ? `
-             <div id="project-readme-container" class="readme-container">
+             <div id="project-readme-container" class="readme-container-raw">
                 <div class="readme-loading">
                   <div class="spinner"></div>
-                  <p>${projUi.readmeFetching || 'Fetching technical documentation from GitHub...'}</p>
+                  <p>${projUi.readmeFetching}</p>
                 </div>
              </div>
            ` : `
-             <div class="project-summary-card">
-                <h3>${projUi.overviewTitle || 'Project Overview'}</h3>
-                <ul>
-                  ${project.points.map(p => `<li>${p}</li>`).join('')}
-                </ul>
-             </div>
+              <div class="project-summary-raw">
+                 <h2 class="raw-section-title">${projUi.overviewTitle}</h2>
+                 <ul class="raw-points-list">
+                   ${project.points.map(p => `<li>${p}</li>`).join('')}
+                 </ul>
+              </div>
            `}
         </div>
       </div>
@@ -108,92 +111,231 @@ export function renderProjectDetail(id) {
   `;
 }
 
-async function loadReadme(githubUrl, id) {
-  console.log(`[README] Fetching for project: ${id} from URL: ${githubUrl}`);
-
-  // Robustly extract owner and repo (handles trailing slashes)
+async function loadReadme(githubUrl, id, projUi) {
   const cleanUrl = githubUrl.replace(/\/+$/, '');
   const urlParts = cleanUrl.split('/');
   const repo = urlParts[urlParts.length - 1];
   const owner = urlParts[urlParts.length - 2];
 
   const container = document.getElementById('project-readme-container');
-  if (!container) {
-    console.error(`[README] Container #project-readme-container not found for ${id}`);
-    return;
-  }
+  if (!container) return;
 
-  // Common branch and filename combinations
-  const branches = ['main', 'master'];
+  const branches = ['main', 'master', 'develop', 'gh-pages'];
   const files = ['README.md', 'readme.md', 'README.markdown', 'README.txt'];
 
   try {
     let markdown = '';
     let success = false;
+    let successfulBranch = 'main';
+    let successfulRepo = repo;
+    let foundReadmeFile = 'README.md';
 
-    // Iterate through common combinations until one works
-    for (const branch of branches) {
-      for (const file of files) {
-        const url = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}/${file}`;
-        try {
-          const response = await fetch(url);
-          if (response.ok) {
-            markdown = await response.text();
-            console.log(`[README] Successfully fetched from: ${url}`);
-            success = true;
-            break;
+    // Discovery logic: Try to get repo info from API first to avoid 404s in console
+    const repoNames = [repo, repo.toLowerCase(), id, id.toLowerCase()];
+    const uniqueRepos = [...new Set(repoNames)];
+
+    for (const r of uniqueRepos) {
+      try {
+        const repoApiUrl = `https://api.github.com/repos/${owner}/${r}`;
+        const repoResp = await fetch(repoApiUrl);
+        
+        if (repoResp.ok) {
+          const repoData = await repoResp.json();
+          const defaultBranch = repoData.default_branch || 'main';
+          
+          // Now check for the README in the file list
+          const contentsApiUrl = `https://api.github.com/repos/${owner}/${r}/contents/`;
+          const contentsResp = await fetch(contentsApiUrl);
+          
+          if (contentsResp.ok) {
+            const contents = await contentsResp.json();
+            const readmeFile = contents.find(f => 
+              ['README.md', 'readme.md', 'README.markdown', 'README.txt'].includes(f.name)
+            );
+
+            if (readmeFile) {
+              const rawUrl = `https://raw.githubusercontent.com/${owner}/${r}/${defaultBranch}/${readmeFile.name}`;
+              const resp = await fetch(rawUrl);
+              if (resp.ok) {
+                markdown = await resp.text();
+                success = true;
+                successfulBranch = defaultBranch;
+                successfulRepo = r;
+                foundReadmeFile = readmeFile.name;
+
+                // Check for License in the same contents list
+                const licenseFile = contents.find(f => 
+                  ['LICENSE', 'LICENSE.md', 'license.md'].includes(f.name)
+                );
+                if (licenseFile) {
+                  renderLicenseLink(owner, r, defaultBranch, licenseFile.name);
+                }
+                break;
+              }
+            }
           }
-        } catch (e) {
-          // Individual fetch failed, continue to next
         }
+      } catch (apiErr) {
+        // GitHub API discovery failed
       }
-      if (success) break;
     }
 
+    // Fallback to the old probing method only if API discovery didn't succeed
     if (!success) {
-      throw new Error(`Could not find README in main/master branches for ${owner}/${repo}`);
+      const branches = ['main', 'master', 'develop', 'gh-pages'];
+      const files = ['README.md', 'readme.md', 'README.markdown', 'README.txt'];
+      
+      for (const r of uniqueRepos) {
+        for (const branch of branches) {
+          for (const file of files) {
+            const url = `https://raw.githubusercontent.com/${owner}/${r}/${branch}/${file}`;
+            try {
+              const response = await fetch(url);
+              if (response.ok) {
+                markdown = await response.text();
+                success = true;
+                successfulBranch = branch;
+                successfulRepo = r;
+                
+                // Quick license probe
+                const licFiles = ['LICENSE', 'LICENSE.md'];
+                for (const lf of licFiles) {
+                  const lResp = await fetch(`https://raw.githubusercontent.com/${owner}/${r}/${branch}/${lf}`, { method: 'HEAD' });
+                  if (lResp.ok) {
+                    renderLicenseLink(owner, r, branch, lf);
+                    break;
+                  }
+                }
+                break;
+              }
+            } catch (e) {}
+          }
+          if (success) break;
+        }
+        if (success) break;
+      }
     }
 
-    // Use marked library to parse markdown
+    function renderLicenseLink(owner, repo, branch, filename) {
+      const headerLinks = document.querySelector('.project-header-links');
+      if (headerLinks && !headerLinks.querySelector('[data-license-link]')) {
+        const licLink = document.createElement('a');
+        licLink.href = `https://github.com/${owner}/${repo}/blob/${branch}/${filename}`;
+        licLink.target = '_blank';
+        licLink.className = 'btn-solid-black-inverted';
+        licLink.setAttribute('data-license-link', 'true');
+        licLink.innerHTML = `<ion-icon name="document-text-outline"></ion-icon><span>${t('projects.license')}</span>`;
+        headerLinks.appendChild(licLink);
+      }
+    }
+
+    if (!success) throw new Error('README not found');
+
+    const rawUrlBase = `https://raw.githubusercontent.com/${owner}/${successfulRepo}/${successfulBranch}`;
+    
+    // Helper to normalize URLs and handle ./ relative paths
+    const normalizeUrl = (path) => {
+      // If it's already an absolute URL, check if it's a GitHub blob link that should be raw
+      if (path.startsWith('http')) {
+        if (path.includes('github.com') && path.includes('/blob/')) {
+          return path.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+        }
+        return path;
+      }
+      
+      if (path.startsWith('/') || path.startsWith('data:')) return path;
+      
+      const cleanPath = path.replace(/^\.\//, '');
+      // Encode URI to handle spaces in filenames
+      const encodedPath = encodeURI(cleanPath);
+      return `${rawUrlBase}/${encodedPath}`.replace(/([^:]\/)\/+/g, "$1");
+    };
+
+    // Fix relative image and link paths
+    markdown = markdown.replace(/(!\[.*?\]\()(.+?)(\))/g, (match, p1, p2, p3) => {
+      return `${p1}${normalizeUrl(p2)}${p3}`;
+    });
+    
+    markdown = markdown.replace(/src=["'](.+?)["']/g, (match, p1) => {
+      return `src="${normalizeUrl(p1)}"`;
+    });
+
+    markdown = markdown.replace(/href=["'](.+?)["']/g, (match, p1) => {
+      // Only rewrite relative internal links, not #anchors or absolute URLs
+      if (p1.startsWith('#') || p1.startsWith('http') || p1.startsWith('mailto:')) return match;
+      return `href="${normalizeUrl(p1)}"`;
+    });
+
     let parsedHtml = '';
     if (typeof marked !== 'undefined') {
-      try {
-        // Handle different marked versions (v4+ uses marked.parse, older use marked())
-        parsedHtml = (typeof marked.parse === 'function') ? marked.parse(markdown) : marked(markdown);
-      } catch (e) {
-        console.error('[README] Marked parsing failed:', e);
-        parsedHtml = `<pre style="white-space: pre-wrap;">${markdown}</pre>`;
-      }
+      const renderer = new marked.Renderer();
+      
+      // Auto-generate IDs for headings to support Table of Contents
+      renderer.heading = ({ text, depth }) => {
+        const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+        return `<h${depth} id="${escapedText}">${text}</h${depth}>`;
+      };
+
+      renderer.code = (token) => {
+        const code = token.text;
+        const lang = (token.lang || '').toLowerCase();
+        
+        if (lang.includes('mermaid')) {
+          return `<pre class="mermaid">${code}</pre>`;
+        }
+        
+        const langClass = lang ? `class="language-${lang}"` : '';
+        return `<pre><code ${langClass}>${code}</code></pre>`;
+      };
+
+
+      parsedHtml = marked.parse(markdown, { renderer });
     } else {
-      console.warn('[README] Marked library not found');
-      parsedHtml = `<pre style="white-space: pre-wrap;">${markdown}</pre>`;
+      parsedHtml = `<pre>${markdown}</pre>`;
     }
 
     container.innerHTML = `
-      <div class="readme-header">
-        <ion-icon name="logo-github"></ion-icon> <span>README.md</span>
-      </div>
-      <div class="markdown-body">
+      <div class="markdown-body-raw">
         ${parsedHtml}
       </div>
     `;
+
+    if (window.mermaid) {
+      try {
+        // Find and hide immediately to prevent flash
+        const initialDivs = container.querySelectorAll('.mermaid');
+        initialDivs.forEach(div => div.style.visibility = 'hidden');
+
+        setTimeout(async () => {
+          const mermaidDivs = container.querySelectorAll('.mermaid');
+          if (mermaidDivs.length > 0) {
+            try {
+              // mermaid.run is more robust for pre tags
+              await window.mermaid.run({
+                nodes: mermaidDivs
+              });
+              
+              mermaidDivs.forEach(div => {
+                div.style.visibility = 'visible';
+                div.classList.add('rendered');
+              });
+            } catch (err) {
+              mermaidDivs.forEach(div => div.style.visibility = 'visible');
+            }
+          }
+        }, 800);
+      } catch (e) {
+      }
+    }
   } catch (err) {
-    console.error(`[README] Final error for ${id}:`, err);
     const data = getData();
     const project = data.projects.find(p => p.id === id);
     container.innerHTML = `
-        <div class="project-summary-card" style="margin-bottom: 2rem;">
-        <h3>${projUi.overviewTitle || 'Project Overview'}</h3>
-        <p style="margin-bottom: 1rem; color: var(--text-secondary); font-style: italic;">
-          (${projUi.readmeNotice || 'Note: Unable to load live documentation from GitHub. Showing project summary instead.'})
-        </p>
-        <ul>
-          ${project ? project.points.map(p => `<li>${p}</li>`).join('') : '<li>No project details available.</li>'}
+      <div class="project-summary-raw">
+        <h2 class="raw-section-title">${projUi.overviewTitle}</h2>
+        <ul class="raw-points-list">
+          ${project ? project.points.map(p => `<li>${p}</li>`).join('') : `<li>${projUi.detailsInRepo}</li>`}
         </ul>
-      </div>
-      <div class="readme-error" style="padding: 1.5rem; background: rgba(var(--accent-rgb), 0.05);">
-        <ion-icon name="alert-circle-outline" style="color: var(--accent); font-size: 1.2rem; vertical-align: middle; margin-right: 0.5rem;"></ion-icon>
-        <span style="font-size: 0.9rem; opacity: 0.8;">Full documentation and source code are available via the <strong>Repository</strong> link in the sidebar.</span>
       </div>
     `;
   }
@@ -215,55 +357,43 @@ export function renderProjectsSection() {
   }
 
   const projects = data.projects.map(p => {
-    const name = (p.name || '').toLowerCase();
-    const tech = Array.isArray(p.tech) ? p.tech.map(t => String(t).toLowerCase()) : [];
+    const jsonCategory = p.category || 'Web Development';
+    
+    // Find index in FALLBACK_CATEGORIES to get the correct internal key and display label
+    let catIndex = FALLBACK_CATEGORIES.indexOf(jsonCategory);
+    if (catIndex === -1) {
+       // Robust fallback if the category string in JSON doesn't exactly match
+       const lowerCat = jsonCategory.toLowerCase();
+       if (lowerCat.includes('game')) catIndex = 3;
+       else if (lowerCat.includes('engineering')) catIndex = 2;
+       else if (lowerCat.includes('cli') || lowerCat.includes('algorithm')) catIndex = 4;
+       else if (lowerCat.includes('ui')) catIndex = 5;
+       else catIndex = 1; // Default to Web Dev
+    }
 
-    const isSpaceBlaster = /space\s*blaster/.test(name);
-    const isCliAlgo = (/^(gotalk|antfinder)$/.test(name) || tech.some(t => /(cli|algorithms|dfs|graph|tcp)/.test(t)));
-    const isEngineering = tech.some(t => /arduino/.test(t));
-    const isWebDev = tech.some(t => /(go|react|javascript|html5|css3)/.test(t));
-
-    // Explicit web overrides per request
-    const forceWeb = (/gigabit/.test(name) || /(^|\s)01\s*dashboard/.test(name));
-
-    let categoryKey = 'webdevelopment';
-    let displayCategory = categories[1];
-
-    if (isSpaceBlaster) {
-      categoryKey = 'games';
-      displayCategory = categories[3];
-    }
-    else if (forceWeb) {
-      categoryKey = 'webdevelopment';
-      displayCategory = categories[1];
-    }
-    else if (isCliAlgo) {
-      categoryKey = 'clialgorithms';
-      displayCategory = categories[4];
-    }
-    else if (isEngineering) {
-      categoryKey = 'engineering';
-      displayCategory = categories[2];
-    }
-    else if (isWebDev) {
-      categoryKey = 'webdevelopment';
-      displayCategory = categories[1];
-    }
+    const categoryKey = INTERNAL_CATEGORIES[catIndex];
+    const displayCategory = categories[catIndex];
 
     return { ...p, categoryKey, displayCategory };
-  });
+  }).sort((a, b) => a.name.localeCompare(b.name));
 
   return `
-    <section id="projects-section" style="margin-top: 4rem;">
-      <h3 class="h3 section-title" style="margin-bottom: 2rem;">Projects</h3>
+    <header id="projects-section" class="animate-entry" style="margin-top: 5rem; margin-bottom: 2rem; text-align: left; animation-delay: 0s;">
+      <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
+        ${t('projects.sectionTitle')}
+      </h1>
+    </header>
+    <section>
     
-    <ul class="filter-list">
+    <ul class="filter-list navbar-style-pill">
+      <div class="pill-indicator"></div>
+      <div class="pill-indicator-hover"></div>
       ${categories.map((cat, i) => {
     const internalCat = INTERNAL_CATEGORIES[i] || 'all';
     const icon = CATEGORY_ICONS[i] || 'grid-outline';
     return `
         <li class="filter-item">
-          <button class="filter-btn ${i === 0 ? 'active' : ''}" data-filter-btn="${internalCat}">
+          <button class="pill-btn ${i === 0 ? 'active' : ''}" data-filter-btn="${internalCat}">
             <ion-icon name="${icon}"></ion-icon>
             <span class="filter-text">${cat}</span>
           </button>
@@ -273,31 +403,22 @@ export function renderProjectsSection() {
     <ul class="project-list">
       ${projects.map(project => `
         <li class="project-item active" data-filter-item data-category="${project.categoryKey}">
-            <figure class="project-img">
-              <div class="project-item-icon-box">
-                <ion-icon name="${getCategoryIcon(project.categoryKey)}"></ion-icon>
-              </div>
-            </figure>
+            <div class="project-item-icon-box">
+              <ion-icon name="${getCategoryIcon(project.categoryKey)}"></ion-icon>
+            </div>
+            <div class="project-links">
+              ${project.links && project.links.length > 0 ? project.links.map(link => `<a href="${link.url}" target="_blank" class="project-link-btn" title="${link.text}"><ion-icon name="${getIcon(link.text)}"></ion-icon> <span>${link.text}</span></a>`).join('') : ''}
+            </div>
             <h3 class="project-title">${project.name}</h3>
             <p class="project-category">${project.displayCategory}</p>
             <div class="project-meta">
-              ${project.points.length > 0 ? `
-                <ul class="project-description-list">
-                  ${project.points.map(point => `<li>${point}</li>`).join('')}
-                </ul>
-              ` : ''}
+              <p class="project-small-description">
+                ${project.subtitle || (project.points && project.points.length > 0 ? project.points[0] : '')}
+              </p>
               <a href="projects/${project.id}" data-nav-link="projects/${project.id}" class="go-to-project-btn">
-                <span>Go to Project</span> <ion-icon name="arrow-forward-outline"></ion-icon>
+                <span>${t('projects.viewProject')}</span>
+                <ion-icon name="arrow-forward-outline"></ion-icon>
               </a>
-              <div class="project-footer">
-                <ul class="project-tech-logos" aria-label="Technology stack logos">
-                  ${renderTechLogos(project.tech).logos}
-                </ul>
-                ${renderTechLogos(project.tech).libraries}
-              </div>
-            </div>
-            <div class="project-links">
-              ${project.links && project.links.length > 0 ? project.links.map(link => `<a href="${link.url}" target="_blank" class="project-link-btn"><ion-icon name="${getIcon(link.text)}"></ion-icon> ${link.text}</a>`).join('') : ''}
             </div>
         </li>
       `).join('')}
@@ -306,10 +427,10 @@ export function renderProjectsSection() {
           <div class="coming-soon-icon">
             <ion-icon name="color-palette-outline"></ion-icon>
           </div>
-          <h3 class="coming-soon-title">UI Concepts</h3>
-          <p class="coming-soon-text">Coming Soon</p>
+          <h3 class="coming-soon-title">${t('projects.categories')[5]}</h3>
+          <p class="coming-soon-text">${t('projects.comingSoon')}</p>
           <div class="coming-soon-description">
-            Exciting UI/UX design concepts and interactive prototypes are in development. Stay tuned for innovative user interface designs and experiences.
+            ${t('projects.comingSoonDesc')}
           </div>
         </div>
       </li>

@@ -1,69 +1,97 @@
 import { getData } from '../constants/index.js';
 import { t } from '../constants/i18n.js';
 
+/**
+ * Renders the main Articles list page.
+ */
 export function renderArticlesSection() {
   const data = getData();
   const ui = data.ui_extras || {};
   const articlesUi = ui.articles || {};
-  const categories = t('articles.categories') || ['All', 'Technology', 'Engineering', 'Career', 'Life'];
+  const categories = t('articles.categories');
 
   const categoryTabs = categories.map(cat => `
     <button class="article-tab ${cat === 'All' ? 'active' : ''}" data-filter="${cat.toLowerCase()}">${cat}</button>
   `).join('');
 
-  const articleItems = data.articles.map(article => `
-    <article class="article-card active" data-category="${article.category.toLowerCase()}">
-      <div class="article-meta">
-        <span class="article-date">${new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-        <span class="article-dot">•</span>
-        <span class="article-category">${article.category}</span>
-        <span class="article-dot">•</span>
-        <span class="article-read-time">${article.readTime}</span>
-      </div>
-      <h3 class="article-title-link">${article.title}</h3>
-      <p class="article-desc">${article.desc}</p>
-      <div class="article-footer">
-        <a href="articles/${article.id}" data-nav-link="articles/${article.id}" class="read-article-btn">${articlesUi.readFullStory || 'Read full story'} <ion-icon name="arrow-forward-outline"></ion-icon></a>
-      </div>
-    </article>
-  `).join('');
+  const noArticlesMessage = `<div id="noArticlesMessage" class="no-content-message animate-entry" style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; color: var(--text-secondary); font-style: italic; border: 1px dashed var(--card-border); border-radius: 1.5rem; ${data.articles.length > 0 ? 'display: none;' : ''}">
+         <ion-icon name="document-text-outline" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></ion-icon>
+         <p style="font-size: 1.1rem;">${t('articles.noArticlesFound')}</p>
+       </div>`;
+
+  const articleItems = data.articles.map(article => {
+    return `
+      <article class="article-card active animate-entry" data-category="${article.category.toLowerCase()}">
+        <div class="article-card-body">
+          <div class="article-meta">
+            <span class="article-date">${new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+            <span class="article-dot">•</span>
+            <span class="article-category">${article.category}</span>
+            ${(article.embeds && article.embeds.length > 0) ? `
+              <span class="article-dot">•</span>
+              <span class="article-platform-inline" title="${article.embeds[0].platform || article.embeds[0].provider}">
+                ${String(article.embeds[0].platform || article.embeds[0].provider).toLowerCase() === 'x' || String(article.embeds[0].platform || article.embeds[0].provider).toLowerCase() === 'twitter' 
+                  ? '<span class="x-logo-inline">𝕏</span>' 
+                  : `<ion-icon name="${getPlatformIcon(article.embeds[0].platform || article.embeds[0].provider)}"></ion-icon>`}
+              </span>
+            ` : ''}
+          </div>
+          <h3 class="article-title-link" data-nav-link="articles/${article.id}">${article.title}</h3>
+          <p class="article-desc">${article.desc}</p>
+          <div class="article-footer">
+            <span class="article-read-time"><ion-icon name="time-outline"></ion-icon> ${article.readTime}</span>
+            <a href="articles/${article.id}" data-nav-link="articles/${article.id}" class="read-article-btn">
+              ${t('articles.readFullArticle')} <ion-icon name="arrow-forward-outline"></ion-icon>
+            </a>
+          </div>
+        </div>
+      </article>
+    `;
+  }).join('');
 
   return `
-    <header class="animate-entry" style="margin-bottom: 4rem; text-align: left; animation-delay: 0s;">
-      <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
-        ${t('articles.title') || 'Articles ✍️'}
+    <header class="animate-entry" style="margin-bottom: 1.2rem; text-align: left; animation-delay: 0s;">
+      <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
+        ${t('articles.title')}
       </h1>
       <p class="section-subtitle" style="font-size: 1.15rem; line-height: 1.7; color: var(--text-secondary); max-width: 850px; font-family: var(--font-sans);">
-        ${t('articles.subtitle') || 'Deep dives into engineering, code, and professional growth.'}
+        ${t('articles.subtitle')}
       </p>
     </header>
 
-    <!-- Article Sub-Navigation Bar -->
     <nav class="article-navbar animate-entry" style="animation-delay: 0.1s;">
       <div class="article-nav-pills">
         ${categoryTabs}
       </div>
       <div class="article-search">
         <ion-icon name="search-outline"></ion-icon>
-        <input type="text" placeholder="${articlesUi.searchPlaceholder || 'Search articles...'}" id="articleSearch">
+        <input type="text" placeholder="${articlesUi.searchPlaceholder}" id="articleSearch">
       </div>
     </nav>
 
     <div class="articles-grid animate-entry" style="animation-delay: 0.2s;">
       ${articleItems}
+      ${noArticlesMessage}
     </div>
   `;
 }
 
+/**
+ * Renders a single Article detail page.
+ */
 export function renderArticleDetail(id) {
   const data = getData();
   const ui = data.ui_extras || {};
   const articlesUi = ui.articles || {};
-  console.log('Rendering article with ID:', id);
   const article = data.articles.find(a => String(a.id) === String(id));
+  
   if (!article) {
-    console.error('Article not found for ID:', id);
-    return `<div class="error-container"><h1>${articlesUi.notFound || 'Article not found'}</h1><button data-nav-link="articles">${articlesUi.backToList || 'Back to articles'}</button></div>`;
+    return `
+      <div class="error-container animate-entry">
+        <h1>${articlesUi.notFound}</h1>
+        <button class="btn-solid-black" data-nav-link="articles">${articlesUi.backToList}</button>
+      </div>
+    `;
   }
 
   const articleBlocks = [
@@ -72,41 +100,53 @@ export function renderArticleDetail(id) {
   ];
 
   return `
-    <div class="article-detail-wrapper">
-      <header class="article-detail-header">
-        <button class="back-btn" data-nav-link="articles">
-          <ion-icon name="arrow-back-outline"></ion-icon> ${articlesUi.backToList || 'Back to Articles'}
-        </button>
-        <div class="article-meta">
-          <span>${new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}</span>
-          <span class="dot">•</span>
-          <span>${article.category}</span>
-          <span class="dot">•</span>
-          <span>${article.readTime}</span>
+    <section class="project-detail-wrapper animate-entry">
+      <header class="project-detail-header">
+        <div class="project-header-main">
+          <button class="back-btn-minimal" data-nav-link="articles" title="${articlesUi.backToList}">
+            <ion-icon name="arrow-back-outline"></ion-icon>
+          </button>
+          
+          <div class="project-title-box">
+             <div class="project-detail-category">${article.category}</div>
+             <h2 class="project-detail-title">${article.title}</h2>
+             <p class="project-detail-subtitle">${article.desc}</p>
+          </div>
         </div>
-        <h1 class="article-title">${article.title}</h1>
       </header>
- 
-      <div class="article-content">
-        <p class="article-lead">${article.desc}</p>
-        ${articleBlocks.length > 0 ? `
-          <div style="margin-top: 2rem; color: var(--text-secondary); line-height: 1.8;">
-            ${renderArticleContent(articleBlocks)}
+
+      <div class="project-detail-grid">
+        <div class="project-info-sidebar" style="margin-bottom: 2rem;">
+          <div style="display: flex; align-items: center; gap: 1.5rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1.5rem;">
+            <div class="lib-chip" style="color: var(--text-primary); font-weight: 600; padding: 0; display: flex; align-items: center;">
+              <ion-icon name="calendar-outline" style="color: var(--accent); margin-right: 0.5rem;"></ion-icon>
+              ${new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+            </div>
+            
+            <div style="width: 1px; height: 14px; background: var(--card-border); opacity: 0.5;"></div>
+
+            <div class="lib-chip" style="color: var(--text-primary); font-weight: 600; padding: 0; display: flex; align-items: center;">
+              <ion-icon name="time-outline" style="color: var(--accent); margin-right: 0.5rem;"></ion-icon>
+              ${article.readTime}
+            </div>
           </div>
-        ` : `
-          <div style="margin-top: 2rem; color: var(--text-secondary); line-height: 1.8;">
-            <p>${t('articles.fullContentPlaceholder')}</p>
-            <p>${t('articles.fullContentNote')}</p>
+        </div>
+
+        <div class="project-main-content">
+          <div class="readme-container-raw">
+            <div class="markdown-body-raw">
+              ${article.image ? `<img src="${article.image}" alt="${article.title}" class="article-featured-image">` : ''}
+              ${renderArticleContent(articleBlocks)}
+            </div>
           </div>
-        `}
+        </div>
       </div>
-    </div>
+    </section>
   `;
 }
 
 /**
  * Render structured article content blocks.
- * Supports: paragraph, heading, image, code, embed (linkedin, twitter, youtube, gist)
  */
 function renderArticleContent(blocks) {
   if (!blocks || !Array.isArray(blocks)) return '';
@@ -124,11 +164,11 @@ function renderArticleContent(blocks) {
       case 'image': {
         const src = block.src || '';
         const captionHtml = block.caption
-          ? `<figcaption style="text-align: center; margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">${block.caption}</figcaption>`
+          ? `<figcaption class="article-caption">${block.caption}</figcaption>`
           : '';
         return `
-          <figure style="margin: 2rem 0;">
-            <img src="${src}" alt="${block.alt || ''}" style="width: 100%; height: auto; border-radius: 8px;">
+          <figure class="article-figure">
+            <img src="${src}" alt="${block.alt || ''}" class="article-content-image">
             ${captionHtml}
           </figure>
         `;
@@ -136,9 +176,12 @@ function renderArticleContent(blocks) {
 
       case 'code':
         return `
-          <pre style="background: var(--tertiary); border: 1px solid var(--card-border); border-radius: 0.8rem; padding: 1.5rem; overflow-x: auto; margin: 1.5rem 0; font-family: var(--font-mono); font-size: 0.9rem;">
-            <code>${block.code}</code>
-          </pre>
+          <div class="article-code-block">
+            <div class="code-header">
+              <span class="code-lang">${block.lang || t('articles.code')}</span>
+            </div>
+            <pre><code>${block.code}</code></pre>
+          </div>
         `;
 
       case 'embed':
@@ -150,79 +193,89 @@ function renderArticleContent(blocks) {
   }).join('');
 }
 
+/**
+ * Renders embedded content for various platforms.
+ */
 function renderEmbed(block) {
-  if (!block) return '';
+  if (!block || (!block.url && !block.id && !block.src)) return '';
   const platform = String(block.platform || block.provider || '').toLowerCase();
   const captionHtml = block.caption
-    ? `<p style="text-align: center; margin-top: 0.5rem; font-size: 0.85rem; color: var(--text-secondary); font-style: italic;">${block.caption}</p>`
+    ? `<p class="embed-caption">${block.caption}</p>`
     : '';
 
-  if (block.html) {
-    return `
-      <div style="margin: 2rem 0;">
-        ${block.html}
-        ${captionHtml}
-      </div>
-    `;
-  }
-
   switch (platform) {
-    case 'iframe': {
-      const src = block.src || block.url || '';
-      const title = block.title || block.caption || 'Embedded content';
-      const height = block.height || 420;
-      const allow = block.allow || 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+    case 'youtube':
+      const youtubeId = block.id || (block.url ? extractYoutubeId(block.url) : '');
       return `
-        <div style="margin: 2rem 0; border-radius: 1rem; overflow: hidden; border: 1px solid var(--card-border);">
-          <iframe src="${src}" title="${title}" width="100%" height="${height}" loading="lazy" allow="${allow}" allowfullscreen style="border: none; display: block;"></iframe>
+        <div class="embed-container youtube">
+          <iframe src="https://www.youtube.com/embed/${youtubeId}" frameborder="0" allowfullscreen></iframe>
           ${captionHtml}
         </div>
       `;
-    }
 
     case 'linkedin':
+      const linkedinUrl = block.url || block.src || '';
       return `
-        <div style="margin: 2rem 0; border-radius: 1rem; overflow: hidden; border: 1px solid var(--card-border);">
-          <iframe src="${block.url || ''}" height="400" width="100%" frameborder="0" allowfullscreen style="border: none; display: block;"></iframe>
+        <div class="embed-container linkedin">
+          <iframe src="${linkedinUrl}" height="500" width="100%" frameborder="0" allowfullscreen></iframe>
           ${captionHtml}
         </div>
       `;
 
-    case 'twitter':
     case 'x':
+    case 'twitter':
       return `
-        <div style="margin: 2rem 0; display: flex; justify-content: center;">
-          <blockquote class="twitter-tweet" data-dnt="true">
-            <a href="${block.url || (block.tweetId ? `https://twitter.com/i/status/${block.tweetId}` : '')}"></a>
+        <div class="embed-container x">
+          <blockquote class="twitter-tweet" data-theme="dark">
+            <a href="${block.url}"></a>
           </blockquote>
           ${captionHtml}
         </div>
       `;
 
-    case 'youtube':
-      const youtubeUrl = block.url || (block.id ? `https://www.youtube.com/embed/${block.id}` : '');
+    case 'medium':
       return `
-        <div style="margin: 2rem 0; border-radius: 1rem; overflow: hidden; aspect-ratio: 16/9; border: 1px solid var(--card-border);">
-          <iframe src="${youtubeUrl}" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen style="border: none; display: block;"></iframe>
+        <div class="embed-container medium">
+          <iframe src="${block.url}" width="100%" height="400" frameborder="0"></iframe>
           ${captionHtml}
         </div>
       `;
 
-    case 'gist':
+    case 'reddit':
       return `
-        <div style="margin: 2rem 0;">
-          <script src="${block.url || ''}"></script>
+        <div class="embed-container reddit">
+          <iframe src="${block.url}" width="100%" height="500" frameborder="0"></iframe>
           ${captionHtml}
         </div>
       `;
 
     default:
       return `
-        <div style="margin: 2rem 0; padding: 1.5rem; border: 1px solid var(--card-border); border-radius: 1rem;">
-          <a href="${block.url || '#'}" target="_blank" rel="noopener noreferrer" style="color: var(--accent);">${block.url || block.html || ''}</a>
+        <div class="embed-container generic">
+          <a href="${block.url}" target="_blank" class="embed-link">
+            <ion-icon name="link-outline"></ion-icon>
+            <span>${t('articles.viewOn')} ${platform}</span>
+          </a>
           ${captionHtml}
         </div>
       `;
   }
 }
 
+// --- Helpers ---
+
+export function getPlatformIcon(platform) {
+  const p = platform.toLowerCase();
+  if (p.includes('youtube')) return 'logo-youtube';
+  if (p.includes('linkedin')) return 'logo-linkedin';
+  if (p.includes('twitter') || p === 'x') return 'logo-x';
+  if (p.includes('medium')) return 'logo-medium';
+  if (p.includes('reddit')) return 'logo-reddit';
+  return 'document-text-outline';
+}
+
+function extractYoutubeId(url) {
+  const regExp = /^.*(youtu.be\/|v\/|u\/\w\/|embed\/|watch\?v=|\&v=)([^#\&\?]*).*/;
+  const match = url.match(regExp);
+  return (match && match[2].length === 11) ? match[2] : null;
+}

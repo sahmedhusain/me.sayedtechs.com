@@ -420,7 +420,7 @@ async function loadResumeJSON() {
         // Replace Feather icons (if loaded) with a slight delay to ensure DOM is ready
         const triggerFeather = () => {
             if (window.feather && typeof window.feather.replace === 'function') {
-                try { window.feather.replace({ 'stroke-width': 1.5 }); } catch (e) { console.warn('feather replace failed', e); }
+                try { window.feather.replace({ 'stroke-width': 1.5 }); } catch (e) { }
             }
         };
 
@@ -428,6 +428,6 @@ async function loadResumeJSON() {
         setTimeout(triggerFeather, 100);
         setTimeout(triggerFeather, 500);
 
-    } catch (err) { console.error('Failed to load resume JSON', err); }
+    } catch (err) { }
 }
 document.addEventListener('DOMContentLoaded', loadResumeJSON);

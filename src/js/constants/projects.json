@@ -61,12 +61,13 @@
   {
     "id": "smart-streetlights",
     "name": "Smart Streetlights",
+    "subtitle": "IoT-Based Intelligent Road Lighting System",
     "type": "University Graduation Project",
     "category": "Engineering",
     "hasGithubRepo": false,
     "links": [
-      { "text": "Thesis", "url": "smart_streetlights_report" },
-      { "text": "Poster", "url": "smart_streetlights_poster" }
+      { "text": "Thesis", "url": "pdfs.smart_streetlights_report" },
+      { "text": "Poster", "url": "pdfs.smart_streetlights_poster" }
     ],
     "date": "January 2020 — May 2020",
     "points": [

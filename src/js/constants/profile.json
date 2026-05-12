@@ -15,6 +15,9 @@
     "greeting": "Hi, I'm Sayed.👋",
     "homeTitle": "Welcome to Sayed's Space.🌍",
     "homeTagline": "A collection of thoughts from my professional path to my personal world.",
+    "icons": {
+      "x": "𝕏"
+    },
     "downloadResume": "Download Resume",
     "contactDetails": "Contact Details",
     "contactLabels": {
@@ -26,10 +29,10 @@
     "follow": {
       "github": "Follow on GitHub",
       "linkedin": "Follow on LinkedIn",
-      "twitter": "Follow on X",
+      "x": "Follow on X",
       "medium": "Read on Medium"
     },
-    "professionalCareer": "Professional career",
+    "professionalCareer": "Career",
     "featuredTitle": "Featured",
     "seeAllArticles": "See all articles",
     "seeFullArticle": "See full article"
@@ -117,7 +120,7 @@
   "social": {
     "linkedin": "https://linkedin.com/in/97ahm",
     "github": "https://github.com/sahmedhusain",
-    "twitter": "https://x.com/_97ahm",
+    "x": "https://x.com/_97ahm",
     "discord": "https://discord.com/users/s_97ahm",
     "medium": "https://medium.com/@s97ahm",
     "website": "https://sahmedhusain.github.io/me"

@@ -6,20 +6,49 @@
     <meta name="theme-color" content="#0a192f">
     <script>
       (function() {
-        var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.hostname.startsWith('192.168.');
+        // Detect environment
+        var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port !== '';
         var basePath = isLocal ? '/' : '/me/';
-        document.write('<base href="' + basePath + '">');
+        
+        var basePath = isLocal ? '/' : '/me/';
+        
 
-        // Handle GitHub Pages SPA redirect from 404.html
+        // Handle GitHub Pages SPA redirect
         var searchParams = new URLSearchParams(window.location.search);
         var p = searchParams.get('p');
         if (p) {
           searchParams.delete('p');
           var newSearch = searchParams.toString();
-          newSearch = newSearch ? '?' + newSearch : '';
-          var newUrl = basePath.replace(/\/$/, '') + p + newSearch + window.location.hash;
+          var newUrl = basePath.replace(/\/$/, '') + p + (newSearch ? '?' + newSearch : '') + window.location.hash;
           window.history.replaceState(null, null, newUrl);
         }
+
+        // Dynamically inject absolute assets to bypass subfolder issues
+        function injectAsset(file, type) {
+          // Resolve path against the absolute origin + basePath
+          var path = (basePath + '/' + file).replace(/\/+/g, '/');
+          var absoluteUrl = window.location.origin + path;
+          
+          var el;
+          if (type === 'css') {
+            el = document.createElement('link');
+            el.rel = 'stylesheet';
+            el.href = absoluteUrl;
+          } else {
+            el = document.createElement('script');
+            el.type = 'module';
+            el.src = absoluteUrl;
+          }
+          document.head.appendChild(el);
+        }
+
+        // Inject core assets immediately
+        ['src/css/main.css', 'src/css/components/project-detail.css'].forEach(f => injectAsset(f, 'css'));
+        
+        // Inject main logic after DOM is ready to ensure #app exists
+        window.addEventListener('DOMContentLoaded', function() {
+          injectAsset('main.js', 'js');
+        });
       })();
     </script>
     <title>Sayed Ahmed Husain | Electrical Engineer & Full-Stack Developer</title>
@@ -28,11 +57,19 @@
     <link rel="apple-touch-icon" sizes="180x180" href="src/assets/IMG_2174.PNG">
     <link rel="manifest" href="site.webmanifest">
     <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-    <link rel="stylesheet" href="src/css/main.css">
-    <link rel="stylesheet" href="src/css/components/project-detail.css">
+    <script type="module">
+      import mermaid from 'https://cdn.jsdelivr.net/npm/mermaid@11/dist/mermaid.esm.min.mjs';
+      window.mermaid = mermaid;
+      mermaid.initialize({ 
+        startOnLoad: false,
+        theme: 'neutral',
+        securityLevel: 'loose',
+        fontFamily: 'inherit',
+        logLevel: 3
+      });
+    </script>
 </head>
 <body>
     <div id="app"></div>
-    <script type="module" src="main.js"></script>
 </body>
 </html>

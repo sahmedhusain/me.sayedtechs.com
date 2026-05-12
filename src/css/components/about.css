@@ -234,6 +234,15 @@
   line-height: 1.7;
 }
 
+.x-logo-about {
+  font-family: var(--font-sans);
+  font-weight: bold;
+  font-size: 1.1rem;
+  width: 1.3rem;
+  text-align: center;
+  display: inline-block;
+}
+
 /* About page logo overrides - make specific logos white */
 .about img[src*="rust"],
 .about img[src*="socketdotio"],

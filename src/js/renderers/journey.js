@@ -72,7 +72,7 @@ export function generateTimelineSVG(filter = 'all') {
 
       <!-- Timeline Title -->
       <text x="${svgWidth / 2}" y="40" text-anchor="middle" fill="var(--text-primary)" 
-        font-size="36" font-weight="800" style="letter-spacing: -0.02em; opacity: 0.9;">${data.ui_extras?.journey?.timelineTitle || 'Professional Timeline'}</text>
+        font-size="36" font-weight="800" style="letter-spacing: -0.02em; opacity: 0.9;">${data.ui_extras?.journey?.timelineTitle}</text>
 
       <!-- Time Grid -->
       ${Array.from({ length: (endYear - startYear) + 1 }, (_, i) => {
@@ -192,37 +192,37 @@ export function renderProfessionalJourneySection() {
   const svgContent = window.generateTimelineSVG('all');
 
   return `
-    <header class="animate-entry" style="margin-bottom: 4rem; text-align: left; animation-delay: 0s;">
-      <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
-        ${t('journey.title') || 'Professional Journey ✨'}
+    <header class="animate-entry" style="margin-bottom: 1.2rem; text-align: left; animation-delay: 0s;">
+      <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
+        ${t('journey.title')}
       </h1>
       <p class="section-subtitle" style="font-size: 1.15rem; line-height: 1.7; color: var(--text-secondary); max-width: 850px; font-family: var(--font-sans);">
-        ${t('journey.subtitle') || 'Discover my professional path – from innovative projects and leadership roles to the academic and career milestones that have shaped my expertise.'}
+        ${t('journey.subtitle')}
       </p>
     </header>
     <section class="professional-journey" id="professional-journey">
-      <div class="journey-filters navbar-style-pill animate-entry" style="width: fit-content; margin: 0 auto 3.5rem; animation-delay: 0.1s;">
+      <div class="journey-filters navbar-style-pill animate-entry" style="width: fit-content; margin: 0 auto 2.5rem; animation-delay: 0.1s;">
         <div class="pill-indicator"></div>
         <div class="pill-indicator-hover"></div>
         <button class="pill-btn active" data-filter="all">
           <ion-icon name="apps-outline"></ion-icon>
-          <span class="filter-text">${journeyUi.filters?.all || t('journey.filters.all') || 'All'}</span>
+          <span class="filter-text">${t('journey.filters.all')}</span>
         </button>
         <button class="pill-btn" data-filter="education">
           <ion-icon name="school-outline"></ion-icon>
-          <span class="filter-text">${journeyUi.filters?.education || t('journey.filters.education') || 'Education'}</span>
+          <span class="filter-text">${t('journey.filters.education')}</span>
         </button>
         <button class="pill-btn" data-filter="career">
           <ion-icon name="business-outline"></ion-icon>
-          <span class="filter-text">${journeyUi.filters?.career || t('journey.filters.career') || 'Career'}</span>
+          <span class="filter-text">${t('journey.filters.career')}</span>
         </button>
         <button class="pill-btn" data-filter="internships">
           <ion-icon name="briefcase-outline"></ion-icon>
-          <span class="filter-text">${journeyUi.filters?.internships || t('journey.filters.internships') || 'Internships'}</span>
+          <span class="filter-text">${t('journey.filters.internships')}</span>
         </button>
         <button class="pill-btn" data-filter="certifications">
           <ion-icon name="ribbon-outline"></ion-icon>
-          <span class="filter-text">${journeyUi.filters?.certifications || t('journey.filters.certifications') || 'Certifications'}</span>
+          <span class="filter-text">${t('journey.filters.certifications')}</span>
         </button>
       </div>
       <div class="timeline-chart-container animate-entry" style="animation-delay: 0.2s;">
@@ -235,7 +235,6 @@ export function renderProfessionalJourneySection() {
 export function initializeTimeline() {
   const container = document.getElementById('timeline-container');
   if (!container) {
-    console.error('Timeline container not found!');
     return;
   }
 
@@ -286,8 +285,6 @@ export function initializeTimeline() {
     };
 
     const timeline = new vis.Timeline(container, items, groups, options);
-    console.log('Timeline initialized with dynamic data');
   } catch (err) {
-    console.error('Error initializing timeline:', err);
   }
 }

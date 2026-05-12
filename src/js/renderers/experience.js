@@ -2,31 +2,19 @@ import { getData } from '../constants/index.js';
 import { t } from '../constants/i18n.js';
 import { handleImageError, getLocalLogoFor, getLogo, getEntityUrl } from '../utils.js';
 import { getSectionIcon } from './about.js';
+import { SECTION_ICONS, MONTHS_SHORT } from '../constants/config.js';
 
 // --- Helper: Section Icons Map ---
 // --- UTILS ---
 function shortenDate(dateStr) {
   if (!dateStr) return '';
-  const months = {
-    'January': 'JAN', 'February': 'FEB', 'March': 'MAR', 'April': 'APR',
-    'May': 'MAY', 'June': 'JUN', 'July': 'JUL', 'August': 'AUG',
-    'September': 'SEP', 'October': 'OCT', 'November': 'NOV', 'December': 'DEC',
-    'Present': 'PRESENT'
-  };
   let result = dateStr;
-  Object.keys(months).forEach(m => {
+  Object.keys(MONTHS_SHORT).forEach(m => {
     const reg = new RegExp(m, 'g');
-    result = result.replace(reg, months[m]);
+    result = result.replace(reg, MONTHS_SHORT[m]);
   });
   return result;
 }
-
-const SECTION_ICONS = {
-  'Career': 'briefcase-outline',
-  'Internships': 'flask-outline',
-  'Education': 'school-outline',
-  'Certifications & Licenses': 'ribbon-outline'
-};
 
 // --- Helper: Get Duration for Cards ---
 export function renderExperienceCardContent(job) {
@@ -118,7 +106,7 @@ export function renderExperienceCardContent(job) {
         <div class="experience-section">
           <h4 class="experience-section-title">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
-            ${getData().ui_extras?.experience?.keyResponsibilities || 'Key Responsibilities'}
+            ${getData().ui_extras?.experience?.keyResponsibilities}
           </h4>
           <ul class="experience-points">
             ${job.points.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -128,7 +116,7 @@ export function renderExperienceCardContent(job) {
           <div class="experience-section">
             <h4 class="experience-section-title">
               <ion-icon name="build-outline"></ion-icon>
-              ${getData().ui_extras?.experience?.keyProjects || 'Key Projects'}
+              ${getData().ui_extras?.experience?.keyProjects}
             </h4>
             <ul class="experience-points">
               ${job.keyProjects.map(project => `<li class="experience-point">${project}</li>`).join('')}
@@ -268,7 +256,7 @@ export function renderEducationCardContent(edu) {
       ${edu.certificate ? `
           <a href="${edu.certificate}" target="_blank" class="header-action-btn">
           <ion-icon name="document-text-outline"></ion-icon>
-          <span>${getData().ui_extras?.experience?.view || 'View'}</span>
+          <span>${getData().ui_extras?.experience?.view}</span>
         </a>` : ''}
     </div>
 
@@ -291,7 +279,7 @@ export function renderEducationCardContent(edu) {
         <div class="experience-section">
           <h4 class="experience-section-title">
             <ion-icon name="school-outline"></ion-icon>
-            ${getData().ui_extras?.experience?.educationHighlights || 'Education Highlights'}
+            ${getData().ui_extras?.experience?.educationHighlights}
           </h4>
           <ul class="experience-points">
             ${edu.description.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -319,7 +307,7 @@ export function renderCertificationCardContent(cert) {
           <div class="experience-meta-row">
              ${cert.id ? `<div class="meta-pill"><ion-icon name="${cert.type === 'License' ? 'document-text-outline' : 'ribbon-outline'}"></ion-icon> ID: ${cert.id}</div>` : ''}
              ${cert.issued ? `<div class="meta-pill"><ion-icon name="calendar-outline"></ion-icon> Issued: ${shortenDate(cert.issued)}</div>` : ''}
-             ${cert.expires ? `<div class="meta-pill" style="${isExpired ? 'color: #ef4444;' : ''}"><ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon> ${isExpired ? (getData().ui_extras?.experience?.expired || 'Expired:') + ' ' + shortenDate(cert.expires) : (getData().ui_extras?.experience?.expires || 'Expires:') + ' ' + shortenDate(cert.expires)}</div>` : ''}
+             ${cert.expires ? `<div class="meta-pill" style="${isExpired ? 'color: #ef4444;' : ''}"><ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon> ${isExpired ? (getData().ui_extras?.experience?.expired) + ' ' + shortenDate(cert.expires) : (getData().ui_extras?.experience?.expires) + ' ' + shortenDate(cert.expires)}</div>` : ''}
           </div>
         </div>
       </div>

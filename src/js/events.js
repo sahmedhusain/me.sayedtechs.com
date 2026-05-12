@@ -47,7 +47,6 @@ async function openResumePrintWindow() {
   const resumeWindow = window.open(getResumeUrl(), '_blank');
 
   if (!resumeWindow) {
-    console.error('Resume window was blocked by the browser');
     return;
   }
 
@@ -90,7 +89,6 @@ async function openResumePrintWindow() {
       resumeWindow.print();
     }
   } catch (error) {
-    console.error('Failed to open resume print dialog', error);
   }
 }
 
@@ -236,7 +234,6 @@ export function setActivePage(targetPage, options = {}) {
   }
 
   // Handle Active Classes
-  console.log('Activating pageId:', pageId);
   document.querySelectorAll('[data-nav-link]').forEach(l => l.classList.remove('active'));
   pages.forEach(p => p.classList.remove('active'));
 
@@ -244,7 +241,6 @@ export function setActivePage(targetPage, options = {}) {
   const navLinkId = pageId === 'article' ? 'articles' : pageId;
   const activeTopBarLink = document.querySelector(`.nav-pill-container [data-nav-link="${navLinkId}"]`);
   if (activeTopBarLink) {
-    console.log('Activating nav-link:', navLinkId);
     activeTopBarLink.classList.add('active');
   }
 
@@ -253,7 +249,6 @@ export function setActivePage(targetPage, options = {}) {
 
   const page = document.querySelector(`[data-page="${pageId}"]`);
   if (page) {
-    console.log('Found page element for:', pageId);
     page.classList.add('active');
     if (pageId === 'contact') {
       document.body.classList.add('contact-active');
@@ -285,7 +280,6 @@ export function setActivePage(targetPage, options = {}) {
       }
     }
   } else {
-    console.error('CRITICAL ERROR: Page element not found for pageId:', pageId);
   }
 
   // Update URL using pathname routes
@@ -366,23 +360,6 @@ export function initializeSkillsAnimations() {
     skillsObserver.observe(skillsSection);
   }
 
-  // Add hover effects for skill cards
-  const skillCards = document.querySelectorAll('.skills-card');
-  skillCards.forEach(card => {
-    card.addEventListener('mouseenter', (e) => {
-      const particles = card.querySelectorAll('.particle');
-      particles.forEach(particle => {
-        particle.style.animationPlayState = 'running';
-      });
-    });
-
-    card.addEventListener('mouseleave', (e) => {
-      const particles = card.querySelectorAll('.particle');
-      particles.forEach(particle => {
-        particle.style.animationPlayState = 'paused';
-      });
-    });
-  });
 }
 
 
@@ -734,7 +711,6 @@ export function initializeEventListeners() {
           copyVCardBtn.querySelector('span').textContent = originalText;
         }, 2000);
       } catch (err) {
-        console.error('Failed to copy:', err);
       }
     });
   }
@@ -758,7 +734,7 @@ export function initializeEventListeners() {
       const targetId = anchorLink.getAttribute('href').substring(1);
       const targetElement = document.getElementById(targetId);
       if (targetElement) {
-        const headerOffset = 100;
+        const headerOffset = 120;
         const elementPosition = targetElement.getBoundingClientRect().top;
         const offsetPosition = elementPosition + window.pageYOffset - headerOffset;
         window.scrollTo({
@@ -894,26 +870,50 @@ export function initializeEventListeners() {
     });
   });
 
-  // Project filters
-  const filterBtns = document.querySelectorAll('[data-filter-btn]');
-  const filterItems = document.querySelectorAll('[data-filter-item]');
+  // Project filters - Using event delegation for robustness
+  document.addEventListener('click', function (e) {
+    const btn = e.target.closest('[data-filter-btn]');
+    if (!btn) return;
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', function () {
-      const filter = this.getAttribute('data-filter-btn');
+    const filter = btn.getAttribute('data-filter-btn');
+    const filterBtns = document.querySelectorAll('[data-filter-btn]');
+    const filterItems = document.querySelectorAll('[data-filter-item]');
 
-      // Remove active from all buttons
-      filterBtns.forEach(b => b.classList.remove('active'));
-      this.classList.add('active');
+    // Remove active from all buttons
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    
+    // Update liquid indicator
+    if (typeof updatePillIndicator === 'function') {
+      updatePillIndicator(btn);
+    }
+    
+    // Hide hover indicator on click
+    const container = btn.closest('.navbar-style-pill');
+    if (container) {
+      const hoverIndicator = container.querySelector('.pill-indicator-hover');
+      if (hoverIndicator) hoverIndicator.style.opacity = '0';
+    }
 
-      // Filter items
-      filterItems.forEach(item => {
-        if (filter === 'all' || item.getAttribute('data-category') === filter.replace(' ', '')) {
+    // Filter items with a smooth fade effect
+    filterItems.forEach(item => {
+      const itemCategory = item.getAttribute('data-category');
+      
+      if (filter === 'all' || itemCategory === filter) {
+        item.style.display = 'flex';
+        setTimeout(() => {
           item.classList.add('active');
-        } else {
-          item.classList.remove('active');
-        }
-      });
+          item.style.opacity = '1';
+          item.style.transform = 'translateY(0)';
+        }, 10);
+      } else {
+        item.classList.remove('active');
+        item.style.opacity = '0';
+        item.style.transform = 'translateY(10px)';
+        setTimeout(() => {
+          item.style.display = 'none';
+        }, 300);
+      }
     });
   });
 
@@ -985,6 +985,23 @@ export function initializeEventListeners() {
       if (activeBtn) updateSidebarIndicator(activeBtn);
     });
   }, 500);
+
+  // Handle anchor links in README (Table of Contents) smoothly without breaking SPA
+  document.addEventListener('click', (e) => {
+    const anchor = e.target.closest('a');
+    if (!anchor) return;
+    
+    const href = anchor.getAttribute('href');
+    if (href && href.startsWith('#')) {
+      const targetId = href.substring(1);
+      const targetElement = document.getElementById(targetId);
+      
+      if (targetElement) {
+        e.preventDefault();
+        targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
+      }
+    }
+  });
 
   // Read more button for projects
   document.addEventListener('click', (e) => {
@@ -1257,10 +1274,12 @@ export function initializeEventListeners() {
         tab.classList.add('active');
 
         // Filter cards with animation
+        let visibleCount = 0;
         articleCards.forEach(card => {
           const category = card.getAttribute('data-category');
           if (filter === 'all' || category === filter) {
             card.style.display = 'flex';
+            visibleCount++;
             setTimeout(() => {
               card.style.opacity = '1';
               card.style.transform = 'translateY(0)';
@@ -1273,6 +1292,12 @@ export function initializeEventListeners() {
             }, 300);
           }
         });
+
+        // Show/hide no articles message
+        const noArticlesMsg = document.getElementById('noArticlesMessage');
+        if (noArticlesMsg) {
+          noArticlesMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+        }
       });
     });
   }
@@ -1282,6 +1307,7 @@ export function initializeEventListeners() {
   if (articleSearch) {
     articleSearch.addEventListener('input', (e) => {
       const query = e.target.value.toLowerCase();
+      let visibleCount = 0;
       articleCards.forEach(card => {
         const titleText = card.querySelector('.article-title-link').textContent.toLowerCase();
         const descText = card.querySelector('.article-desc').textContent.toLowerCase();
@@ -1289,11 +1315,18 @@ export function initializeEventListeners() {
         if (titleText.includes(query) || descText.includes(query)) {
           card.style.display = 'flex';
           card.style.opacity = '1';
+          visibleCount++;
         } else {
           card.style.display = 'none';
           card.style.opacity = '0';
         }
       });
+
+      // Show/hide no articles message
+      const noArticlesMsg = document.getElementById('noArticlesMessage');
+      if (noArticlesMsg) {
+        noArticlesMsg.style.display = visibleCount === 0 ? 'block' : 'none';
+      }
     });
   }
 

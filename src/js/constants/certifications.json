@@ -6,7 +6,7 @@
     "location": "Bahrain",
     "id": "48282023",
     "issued": "Apr 2024",
-    "pdfUrl": "solar_pv_nocn",
+    "pdfUrl": "pdfs.solar_pv_nocn",
     "description": [
       "Comprehensive certification for solar photovoltaic system installation and operation.",
       "Covers design, installation, commissioning, and maintenance of solar PV systems.",
@@ -21,7 +21,7 @@
     "id": "MEWA Certificate No: 2024-21",
     "issued": "Jul 2024",
     "expires": "Jul 2029",
-    "pdfUrl": "solar_pv_mewa",
+    "pdfUrl": "pdfs.solar_pv_mewa",
     "description": [
       "Official recognition from Bahrain's Ministry of Electricity and Water Affairs.",
       "Validates competence in solar photovoltaic system design and implementation.",
@@ -36,7 +36,7 @@
     "id": "EPP/C4597/EL/01-D",
     "issued": "Dec 2022",
     "expires": "Dec 2023",
-    "pdfUrl": "crpep",
+    "pdfUrl": "pdfs.crpep",
     "description": [
       "Professional engineering license for electrical engineering practice in Bahrain.",
       "Issued by the regulatory body overseeing engineering professions in the country.",
@@ -65,7 +65,7 @@
     "id": "225607015422",
     "issued": "Jul 2022",
     "expires": "Jul 2024",
-    "pdfUrl": "bls",
+    "pdfUrl": "pdfs.bls",
     "description": [
       "Healthcare provider level CPR and basic life support certification.",
       "Internationally recognized certification from the American Heart Association.",

@@ -115,11 +115,28 @@ export function timeAgo(dateStr) {
   const seconds = Math.floor((new Date() - new Date(dateStr)) / 1000);
   if (seconds < 0) return t('time.justNow');
   if (seconds < 60) return t('time.justNow');
-  if (seconds < 3600) return t('time.minutesAgo', { n: Math.floor(seconds / 60) });
-  if (seconds < 86400) return t('time.hoursAgo', { n: Math.floor(seconds / 3600) });
+  
+  if (seconds < 3600) {
+    const n = Math.floor(seconds / 60);
+    return n === 1 ? t('time.minuteAgo') : t('time.minutesAgo', { n });
+  }
+  if (seconds < 86400) {
+    const n = Math.floor(seconds / 3600);
+    return n === 1 ? t('time.hourAgo') : t('time.hoursAgo', { n });
+  }
   if (seconds < 172800) return t('time.yesterday');
-  if (seconds < 604800) return t('time.daysAgo', { n: Math.floor(seconds / 86400) });
-  if (seconds < 2592000) return t('time.weeksAgo', { n: Math.floor(seconds / 604800) });
-  if (seconds < 31536000) return t('time.monthsAgo', { n: Math.floor(seconds / 2592000) });
-  return t('time.yearsAgo', { n: Math.floor(seconds / 31536000) });
+  if (seconds < 604800) {
+    const n = Math.floor(seconds / 86400);
+    return n === 1 ? t('time.dayAgo') : t('time.daysAgo', { n });
+  }
+  if (seconds < 2592000) {
+    const n = Math.floor(seconds / 604800);
+    return n === 1 ? t('time.weekAgo') : t('time.weeksAgo', { n });
+  }
+  if (seconds < 31536000) {
+    const n = Math.floor(seconds / 2592000);
+    return n === 1 ? t('time.monthAgo') : t('time.monthsAgo', { n });
+  }
+  const n = Math.floor(seconds / 31536000);
+  return n === 1 ? t('time.yearAgo') : t('time.yearsAgo', { n });
 }

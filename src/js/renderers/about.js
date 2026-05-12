@@ -1,5 +1,7 @@
 import { getData } from '../constants/index.js';
+import { t } from '../constants/i18n.js';
 import { getLogo, timeAgo } from '../utils.js';
+import { getPlatformIcon } from './articles.js';
 
 export function renderSidebar() {
   const data = getData();
@@ -13,11 +15,11 @@ export function renderSidebar() {
         <div class="action-buttons">
           <button class="action-btn primary">
             <ion-icon name="document-text-outline"></ion-icon>
-            <span>${ui.downloadResume || 'Download Resume'}</span>
+            <span>${ui.downloadResume}</span>
           </button>
           <button class="action-btn secondary">
             <ion-icon name="person-circle-outline"></ion-icon>
-            <span>${ui.contactDetails || 'Contact Details'}</span>
+            <span>${ui.contactDetails}</span>
           </button>
         </div>
       </div>
@@ -29,7 +31,7 @@ export function renderSidebar() {
               <ion-icon name="mail-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">${(ui.contactLabels && ui.contactLabels.email) || 'Email'}</p>
+              <p class="contact-title">${ui.contactLabels.email}</p>
               <a href="mailto:${data.contact.email}" class="contact-link">${data.contact.email}</a>
             </div>
           </li>
@@ -38,7 +40,7 @@ export function renderSidebar() {
               <ion-icon name="phone-portrait-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">${(ui.contactLabels && ui.contactLabels.phone) || 'Phone'}</p>
+              <p class="contact-title">${ui.contactLabels.phone}</p>
               <a href="tel:${data.contact.phone}" class="contact-link">${data.contact.phone}</a>
             </div>
           </li>
@@ -47,7 +49,7 @@ export function renderSidebar() {
               <ion-icon name="flag-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">${(ui.contactLabels && ui.contactLabels.nationality) || 'Nationality'}</p>
+              <p class="contact-title">${ui.contactLabels.nationality}</p>
               <address>${data.nationality}</address>
             </div>
           </li>
@@ -56,7 +58,7 @@ export function renderSidebar() {
               <ion-icon name="location-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">${(ui.contactLabels && ui.contactLabels.address) || 'Address'}</p>
+              <p class="contact-title">${ui.contactLabels.address}</p>
               <address>${data.address}</address>
             </div>
           </li>
@@ -91,7 +93,7 @@ export function renderAboutSection() {
       
       <!-- Left Column: Title and Description -->
       <div class="animate-entry" style="flex: 2; min-width: 300px; text-align: left; animation-delay: 0s;">
-        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 2rem; font-family: var(--font-sans);">${ui.greeting || `Hi, I'm ${data.name.split(' ')[0]}.👋`}</h1>
+        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 2rem; font-family: var(--font-sans);">${ui.greeting}</h1>
         <section class="about-text" style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem; text-align: justify; text-justify: inter-word; max-width: none;">
           ${aboutHtml}
         </section>
@@ -117,16 +119,16 @@ export function renderAboutSection() {
         </style>
         <div style="display: flex; flex-direction: column; gap: 1.2rem;">
           <a href="${data.contact.github}" target="_blank" class="about-contact-link">
-            <ion-icon name="logo-github" style="font-size: 1.3rem;"></ion-icon> ${(ui.follow && ui.follow.github) || 'Follow on GitHub'}
+            <ion-icon name="logo-github" style="font-size: 1.3rem;"></ion-icon> ${ui.follow.github}
           </a>
           <a href="${data.contact.linkedin}" target="_blank" class="about-contact-link">
-            <ion-icon name="logo-linkedin" style="font-size: 1.3rem;"></ion-icon> ${(ui.follow && ui.follow.linkedin) || 'Follow on LinkedIn'}
+            <ion-icon name="logo-linkedin" style="font-size: 1.3rem;"></ion-icon> ${ui.follow.linkedin}
           </a>
           <a href="${data.contact.twitter}" target="_blank" class="about-contact-link">
-             <span style="font-family: var(--font-sans); font-weight: bold; font-size: 1.1rem; width: 1.3rem; text-align: center;">𝕏</span> ${(ui.follow && ui.follow.twitter) || 'Follow on X'}
+             <span class="x-logo-about">${ui.icons.x}</span> ${ui.follow.x}
           </a>
           <a href="${data.contact.medium}" target="_blank" class="about-contact-link">
-            <ion-icon name="logo-medium" style="font-size: 1.3rem;"></ion-icon> ${(ui.follow && ui.follow.medium) || 'Read on Medium'}
+            <ion-icon name="logo-medium" style="font-size: 1.3rem;"></ion-icon> ${ui.follow.medium}
           </a>
         </div>
         
@@ -141,9 +143,45 @@ export function renderAboutSection() {
   `;
 }
 
+
 export function renderHomeFeed() {
   const data = getData();
   return `
+    <style>
+      .read-more-link {
+        transition: all 0.3s ease;
+      }
+      .read-more-link:hover {
+        color: var(--accent-hover) !important;
+        transform: translateX(5px) !important;
+      }
+      .read-more-link ion-icon {
+        transition: transform 0.3s ease;
+      }
+      .read-more-link:hover ion-icon {
+        transform: translateX(3px);
+      }
+      .action-btn-glass {
+        transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1) !important;
+        cursor: pointer;
+      }
+      .action-btn-glass:hover {
+        background: rgba(255, 255, 255, 0.08) !important;
+        border-color: var(--accent) !important;
+        transform: translateY(-3px);
+        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+      }
+      .action-btn-glass:hover span {
+        color: var(--accent);
+      }
+      .action-btn-glass:hover ion-icon {
+        transform: translateX(5px);
+        color: var(--accent);
+      }
+      .action-btn-glass ion-icon {
+        transition: transform 0.3s ease;
+      }
+    </style>
     <!-- Profile Card with Avatar and Action Buttons -->
     <div class="about-profile-header animate-entry" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 1.5rem; margin-bottom: 2.5rem; width: 100%; animation-delay: 0s;">
       
@@ -156,8 +194,8 @@ export function renderHomeFeed() {
       
       <!-- Info & Socials -->
       <div>
-        <h1 style="font-size: 2.1rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; font-family: var(--font-sans); white-space: nowrap;">Welcome to Sayed's Space 🌍.</h1>
-        <p class="about-tagline" style="font-size: 1.05rem; color: var(--text-secondary); margin: 0 0 1.2rem 0; line-height: 1.6; font-weight: 400; font-style: italic; font-family: var(--font-sans);">A collection of thoughts from my professional path<br>to my personal world.</p>
+        <h1 style="font-size: 2.1rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; font-family: var(--font-sans); white-space: nowrap;">${t('home.welcome')}</h1>
+        <p class="about-tagline" style="font-size: 1.05rem; color: var(--text-secondary); margin: 0 0 1.2rem 0; line-height: 1.6; font-weight: 400; font-style: italic; font-family: var(--font-sans);">${t('home.tagline')}</p>
         
         <style>
           .home-profile-socials { position: relative; z-index: 50; }
@@ -243,25 +281,43 @@ export function renderHomeFeed() {
       
       <section style="flex: 1.5; min-width: 300px;">
         <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:2.5rem;">
-          ${data.articles.slice(0, 5).map(post => {
-    return `
-              <li class="flat-post-item" style="position: relative;">
-                <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem;">${timeAgo(post.date)} • ${post.category}</div>
-                <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; transition: color 0.2s;">${post.title}</h3>
-                <p style="color: var(--text-secondary); margin: 0 0 1rem 0; font-size: 1rem; line-height: 1.6;">${post.desc}</p>
-                <a href="articles/${post.id}" data-nav-link="articles/${post.id}" class="read-more-link" style="color: var(--accent); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; text-decoration: none; width: fit-content;">
-                  See full article <ion-icon name="arrow-forward-outline"></ion-icon>
-                </a>
-              </li>
-            `;
-  }).join('')}
+          ${data.articles.length > 0 
+            ? data.articles.slice(0, 5).map(post => {
+                return `
+                  <li class="flat-post-item" style="position: relative; display: flex; flex-direction: column;">
+                    <div style="font-family: var(--font-mono); font-size: 0.85rem; color: var(--text-secondary); margin-bottom: 0.4rem; display: flex; align-items: center; gap: 0.5rem;">
+                      ${timeAgo(post.date)} • ${post.category}
+                      ${(post.embeds && post.embeds.length > 0) ? `
+                        • 
+                        <span class="article-platform-inline" style="color: var(--accent); font-size: 0.9rem;">
+                          ${String(post.embeds[0].platform || post.embeds[0].provider).toLowerCase() === 'x' || String(post.embeds[0].platform || post.embeds[0].provider).toLowerCase() === 'twitter' 
+                            ? '<span class="x-logo-inline">𝕏</span>' 
+                            : `<ion-icon name="${getPlatformIcon(post.embeds[0].platform || post.embeds[0].provider)}"></ion-icon>`}
+                        </span>
+                      ` : ''}
+                    </div>
+                    <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; transition: color 0.2s;">${post.title}</h3>
+                    <p style="color: var(--text-secondary); margin: 0 0 1.2rem 0; font-size: 1rem; line-height: 1.6; flex-grow: 1;">${post.desc}</p>
+                    <a href="articles/${post.id}" data-nav-link="articles/${post.id}" class="read-more-link" style="color: var(--accent); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; text-decoration: none; width: fit-content; margin-top: auto;">
+                      ${t('home.readFullArticle')} <ion-icon name="arrow-forward-outline"></ion-icon>
+                    </a>
+                  </li>
+                `;
+              }).join('')
+            : `<div class="no-content-message animate-entry" style="text-align: center; padding: 3rem 2rem; color: var(--text-secondary); font-style: italic; border: 1px dashed var(--card-border); border-radius: 1.5rem; width: 100%;">
+                 <ion-icon name="document-text-outline" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></ion-icon>
+                 <p style="font-size: 1rem;">${t('articles.noArticlesFound')}</p>
+               </div>`
+          }
         </ul>
+        ${data.articles.length > 0 ? `
         <button class="action-btn-glass" data-nav-link="articles" style="margin-top: 3rem; width: 100%; border-radius: 1rem; padding: 1rem;">
           <div class="btn-glass-content" style="justify-content: center; width: 100%;">
-            <span>See all articles</span>
+            <span>${t('home.seeAllArticles')}</span>
             <ion-icon name="arrow-forward-outline"></ion-icon>
           </div>
         </button>
+        ` : ''}
       </section>
 
       <!-- Right Column: Career & Featured (Stacked) -->
@@ -270,7 +326,7 @@ export function renderHomeFeed() {
         <!-- Career Aside -->
         <aside style="padding: 1.8rem; border: 1px solid var(--card-border); border-radius: 1.5rem; background: rgba(255, 255, 255, 0.02); box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05); position: relative;">
           <h3 style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 2rem; color: var(--text-primary); font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; opacity: 0.8; position: relative; z-index: 1;">
-            <ion-icon name="briefcase-outline" style="font-size: 1.3rem; color: var(--text-secondary);"></ion-icon> Professional career
+            <ion-icon name="briefcase-outline" style="font-size: 1.3rem; color: var(--text-secondary);"></ion-icon> ${t('home.professionalCareer')}
           </h3>
           <style>
             .career-item { position: relative; cursor: default; }
@@ -279,19 +335,19 @@ export function renderHomeFeed() {
               bottom: 125%;
               left: 0;
               width: 280px;
-              background: #ffffff;
-              border: 1px solid #e4e4e7;
+              background: var(--secondary);
+              border: 1px solid var(--card-border);
               padding: 1rem;
               border-radius: 1rem;
               font-size: 0.85rem;
               line-height: 1.4;
-              color: #18181b;
+              color: var(--text-primary);
               opacity: 0;
               visibility: hidden;
               transform: translateY(10px);
               transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
               transition-delay: 0s;
-              box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+              box-shadow: var(--shadow-xl);
               z-index: 9999;
               pointer-events: none;
             }
@@ -302,7 +358,7 @@ export function renderHomeFeed() {
               left: 20px;
               border-width: 8px;
               border-style: solid;
-              border-color: #ffffff transparent transparent transparent;
+              border-color: var(--secondary) transparent transparent transparent;
             }
             .career-item:hover .career-info-card {
               opacity: 1;
@@ -315,7 +371,7 @@ export function renderHomeFeed() {
               flex-direction: column;
               gap: 0.2rem;
               margin-top: 0.4rem;
-              color: #71717a;
+              color: var(--text-secondary);
               font-size: 0.8rem;
             }
           </style>
@@ -362,7 +418,7 @@ export function renderHomeFeed() {
         <!-- Featured Standalone Container -->
         <section style="padding: 1.8rem; border: 1px solid var(--card-border); border-radius: 1.5rem; background: rgba(255, 255, 255, 0.02); box-shadow: 0 4px 25px rgba(0, 0, 0, 0.05);">
           <h3 style="display: flex; align-items: center; gap: 0.8rem; margin-bottom: 1.8rem; color: var(--text-primary); font-size: 1.1rem; font-weight: 700; letter-spacing: 1px; opacity: 0.8;">
-            <ion-icon name="star-outline" style="font-size: 1.3rem; color: var(--accent);"></ion-icon> Featured
+            <ion-icon name="star-outline" style="font-size: 1.3rem; color: var(--accent);"></ion-icon> ${t('home.featured')}
           </h3>
           <div style="display: flex; flex-direction: column; gap: 1.2rem;">
             ${data.featured.map(item => `
