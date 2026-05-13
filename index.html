@@ -77,7 +77,9 @@
   <!-- Dynamic Language Meta Updater -->
   <script>
     (function () {
-      var lang = localStorage.getItem('lang') || 'en';
+      var lang = 'en';
+      try { lang = localStorage.getItem('lang') || 'en'; } catch (e) { lang = 'en'; }
+      
       var titles = {
         en: "Sayed Ahmed Husain | Multidisciplinary Engineer & Software Architect",
         ar: "سيد أحمد حسين | مهندس متعدد التخصصات ومعماري برمجيات"
@@ -169,11 +171,9 @@
 
   <script>
     (function () {
-      // Detect environment
       var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port !== '';
       var basePath = isLocal ? '/' : '/me/';
 
-      // Handle GitHub Pages SPA redirect
       var searchParams = new URLSearchParams(window.location.search);
       var p = searchParams.get('p');
       if (p) {
@@ -183,11 +183,9 @@
         window.history.replaceState(null, null, newUrl);
       }
 
-      // Dynamically inject absolute assets to bypass subfolder issues
       function injectAsset(file, type) {
         var path = (basePath + '/' + file).replace(/\/+/g, '/');
         var absoluteUrl = window.location.origin + path;
-
         var el;
         if (type === 'css') {
           el = document.createElement('link');
@@ -201,12 +199,14 @@
         document.head.appendChild(el);
       }
 
-      // Inject core assets immediately
       ['src/css/main.css', 'src/css/components/project-detail.css'].forEach(f => injectAsset(f, 'css'));
 
-      window.addEventListener('DOMContentLoaded', function () {
-        injectAsset('main.js', 'js');
-      });
+      function startApp() { injectAsset('main.js', 'js'); }
+      if (document.readyState === 'loading') {
+        window.addEventListener('DOMContentLoaded', startApp);
+      } else {
+        startApp();
+      }
     })();
   </script>
 
