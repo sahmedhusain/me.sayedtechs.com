@@ -48,6 +48,11 @@ export function renderNavbar() {
       </div>
 
       <div class="nav-controls" style="position:absolute; right: 3rem; display:flex; align-items:center; gap: 0.75rem; margin-top: 1.5rem; pointer-events: auto;">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle-btn" style="position: static; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border:1px solid rgba(255, 255, 255, 0.1); cursor:pointer; font-size:1.4rem; color:var(--text-primary); width: 52px; height: 52px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto; margin-top: 0;">
+          <ion-icon name="moon-outline" class="dark-icon"></ion-icon>
+        </button>
+
         <!-- Language Dropdown -->
         <div id="lang-dropdown-wrapper" style="position:static; display:flex; flex-direction:column; align-items: flex-end; margin-top: 0; pointer-events: auto;">
           <button id="lang-toggle-btn" style="background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border:1px solid rgba(255, 255, 255, 0.1); cursor:pointer; color:var(--text-primary); height: 52px; width: 52px; display:flex; align-items:center; justify-content:center; border-radius:50%; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto; font-family: var(--font-sans); font-weight: 700; font-size: 0.9rem;">
@@ -71,11 +76,6 @@ export function renderNavbar() {
             </button>
           </div>
         </div>
-
-        <!-- Theme Toggle -->
-        <button id="theme-toggle-btn" style="position: static; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border:1px solid rgba(255, 255, 255, 0.1); cursor:pointer; font-size:1.4rem; color:var(--text-primary); width: 52px; height: 52px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto; margin-top: 0;">
-          <ion-icon name="moon-outline" class="dark-icon"></ion-icon>
-        </button>
 
         <button
           id="nav-mobile-toggle"
