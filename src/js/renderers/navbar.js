@@ -114,11 +114,15 @@ function setMobileNavbarOpenState(open) {
   if (!navTabsContainer || !navOverlay || !navToggleBtn || !navToggleIcon) return;
 
   const isOpen = Boolean(open) && isMobileNavbarViewport();
+  const navbar = document.getElementById('navbar');
   navTabsContainer.classList.toggle('is-mobile-open', isOpen);
   navOverlay.classList.toggle('is-mobile-open', isOpen);
   navToggleBtn.classList.toggle('is-mobile-open', isOpen);
+  navbar?.classList.toggle('is-mobile-menu-open', isOpen);
+  document.body.classList.toggle('mobile-nav-open', isOpen);
   navToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
   navToggleIcon.setAttribute('name', isOpen ? 'close-outline' : 'menu-outline');
+  navOverlay.setAttribute('aria-hidden', isOpen ? 'false' : 'true');
 }
 
 function closeMobileNavbarMenu() {
