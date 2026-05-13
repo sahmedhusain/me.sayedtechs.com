@@ -112,7 +112,7 @@ if ('serviceWorker' in navigator) {
 }
 
 
-document.addEventListener('DOMContentLoaded', async () => {
+async function initApp() {
   const app = document.getElementById('app');
   if (!app) {
     return;
@@ -224,4 +224,10 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Set initial active page and sync title/UI
   setActivePage(getPageFromLocation(), { updateHistory: false });
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', initApp);
+} else {
+  initApp();
+}

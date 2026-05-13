@@ -523,27 +523,142 @@ export function initializeEventListeners() {
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
   const icon = themeToggleBtn?.querySelector('ion-icon');
 
-  // Check local storage for theme preference
+  // Helper to apply theme
+  const applyTheme = (theme) => {
+    if (theme === 'dark') {
+      document.documentElement.setAttribute('data-theme', 'dark');
+      if (icon) icon.setAttribute('name', 'sunny-outline');
+    } else {
+      document.documentElement.removeAttribute('data-theme');
+      if (icon) icon.setAttribute('name', 'moon-outline');
+    }
+  };
+
+  // 1. Initial Theme Detection with 'light' as absolute default
   const savedTheme = localStorage.getItem('theme');
-  if (savedTheme === 'dark') {
-    document.documentElement.setAttribute('data-theme', 'dark');
-    if (icon) icon.setAttribute('name', 'sunny-outline');
+  if (savedTheme) {
+    applyTheme(savedTheme);
+  } else {
+    // Detect System Preference, fallback to light
+    const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+    applyTheme(prefersDark ? 'dark' : 'light');
   }
+
+  // Listen for system theme changes if no manual override exists
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    if (!localStorage.getItem('theme')) {
+      applyTheme(e.matches ? 'dark' : 'light');
+    }
+  });
 
   if (themeToggleBtn) {
     themeToggleBtn.addEventListener('click', () => {
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-      if (isDark) {
-        document.documentElement.removeAttribute('data-theme');
-        localStorage.setItem('theme', 'light');
-        if (icon) icon.setAttribute('name', 'moon-outline');
-      } else {
-        document.documentElement.setAttribute('data-theme', 'dark');
-        localStorage.setItem('theme', 'dark');
-        if (icon) icon.setAttribute('name', 'sunny-outline');
-      }
+      const newTheme = isDark ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
     });
   }
+
+  // --- Automatic Language & Location Detection ---
+  const detectPreferences = async () => {
+    try {
+      // Helper for safe storage
+      const safeSetItem = (key, val) => {
+        try { localStorage.setItem(key, val); } catch (e) { return false; }
+        return true;
+      };
+
+      // 1. Language Detection (Default: English)
+      if (!localStorage.getItem('lang')) {
+        const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
+        if (browserLang.startsWith('ar')) {
+          if (safeSetItem('lang', 'ar')) {
+            window.location.reload(); 
+            return;
+          }
+        }
+        safeSetItem('lang', 'en');
+      }
+
+      // 2. Location & Country Code Detection (Waterfall Strategy)
+      const updateCountryUI = (code) => {
+        if (!code) return false;
+        const cleanCode = code.startsWith('+') ? code : `+${code}`;
+        
+        const applyToDOM = () => {
+          const countrySelector = document.getElementById('countryCodeInput');
+          const countryItem = document.querySelector(`.country-item[data-country-code="${cleanCode}"]`);
+          
+          if (countrySelector && countryItem) {
+            const flag = countryItem.getAttribute('data-country-flag');
+            const selectedFlag = document.querySelector('.selected-flag');
+            const selectedCode = document.querySelector('.selected-code');
+            
+            if (selectedFlag) selectedFlag.textContent = flag;
+            if (selectedCode) selectedCode.textContent = cleanCode;
+            countrySelector.value = cleanCode;
+            
+            document.querySelectorAll('.country-item').forEach(li => {
+              li.classList.remove('active');
+              const tick = li.querySelector('.selection-tick');
+              if (tick) tick.style.opacity = '0';
+            });
+            countryItem.classList.add('active');
+            const activeTick = countryItem.querySelector('.selection-tick');
+            if (activeTick) activeTick.style.opacity = '1';
+            return true;
+          }
+          return false;
+        };
+
+        // Try immediately, then retry a few times
+        if (!applyToDOM()) {
+          let attempts = 0;
+          const interval = setInterval(() => {
+            if (applyToDOM() || attempts > 15) clearInterval(interval);
+            attempts++;
+          }, 200);
+        }
+        return true;
+      };
+
+      const providers = [
+        { url: 'https://ipapi.co/json/', key: 'country_calling_code' },
+        { url: 'https://ipwho.is/', key: 'calling_code' },
+        { url: 'https://freeipapi.com/api/json', key: 'callingCode' }
+      ];
+
+      for (const provider of providers) {
+        try {
+          let fetchOptions = {};
+          if (window.AbortController) {
+            const controller = new AbortController();
+            setTimeout(() => controller.abort(), 3000);
+            fetchOptions.signal = controller.signal;
+          }
+          
+          const response = await fetch(provider.url, fetchOptions);
+          if (response.ok) {
+            const data = await response.json();
+            const code = data[provider.key] || (data.country && data.country.calling_code);
+            if (code && updateCountryUI(code)) break;
+          }
+        } catch (e) {
+          // Continue to next provider on fail
+        }
+      }
+    } catch (globalErr) {
+      // Silent fail to ensure app stays up
+    }
+  };
+
+  // Run detection asynchronously so it never blocks the main UI thread
+  setTimeout(() => {
+    try {
+      detectPreferences();
+    } catch (e) {}
+  }, 100);
 
   // --- Generic View Toggle Logic (List vs Grid) ---
   const updatePillIndicator = (btn, indicatorClass = '.pill-indicator', opacity = 1) => {

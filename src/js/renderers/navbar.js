@@ -24,7 +24,7 @@ export function renderNavbar() {
       <div id="nav-center-wrapper" style="display: flex; align-items: center; justify-content: center; position: relative; margin-top: 1.5rem; pointer-events: auto;">
         
         <!-- Navigation Pill -->
-        <div class="nav-pill-container" style="display: flex; gap: 0.5rem; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.5rem; border-radius: 999px; position: relative; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto;">
+        <div class="nav-pill-container nav-tabs-container" id="nav-mobile-tabs" style="display: flex; gap: 0.5rem; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.5rem; border-radius: 999px; position: relative; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto;">
           <!-- Active Selection Indicator (Pinned) -->
           <div id="nav-indicator-active" style="position: absolute; height: calc(100% - 1rem); background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; z-index: 0; box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);"></div>
           
@@ -47,34 +47,119 @@ export function renderNavbar() {
         </div>
       </div>
 
-      <!-- Theme Toggle (Separate Absolute Right) -->
-      <button id="theme-toggle-btn" style="position:absolute; right: 7rem; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border:1px solid rgba(255, 255, 255, 0.1); cursor:pointer; font-size:1.4rem; color:var(--text-primary); width: 52px; height: 52px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto; margin-top: 1.5rem;">
-        <ion-icon name="moon-outline" class="dark-icon"></ion-icon>
-      </button>
-
-      <!-- Language Dropdown (Separate Absolute Right) -->
-      <div id="lang-dropdown-wrapper" style="position:absolute; right: 3rem; display:flex; flex-direction:column; align-items: flex-end; margin-top: 1.5rem; pointer-events: auto;">
-        <button id="lang-toggle-btn" style="background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border:1px solid rgba(255, 255, 255, 0.1); cursor:pointer; color:var(--text-primary); height: 52px; width: 52px; display:flex; align-items:center; justify-content:center; border-radius:50%; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto; font-family: var(--font-sans); font-weight: 700; font-size: 0.9rem;">
-          <ion-icon name="globe-outline" style="font-size: 1.4rem;"></ion-icon>
+      <div class="nav-controls" style="position:absolute; right: 3rem; display:flex; align-items:center; gap: 0.75rem; margin-top: 1.5rem; pointer-events: auto;">
+        <!-- Theme Toggle -->
+        <button id="theme-toggle-btn" style="position: static; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border:1px solid rgba(255, 255, 255, 0.1); cursor:pointer; font-size:1.4rem; color:var(--text-primary); width: 52px; height: 52px; display:flex; align-items:center; justify-content:center; border-radius:50%; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto; margin-top: 0;">
+          <ion-icon name="moon-outline" class="dark-icon"></ion-icon>
         </button>
-        
-        <div id="lang-menu" style="position:absolute; top: calc(52px + 0.5rem); right: 0; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(30px) saturate(200%); -webkit-backdrop-filter: blur(30px) saturate(200%); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.6rem; border-radius: 1.2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); display:none; flex-direction:column; gap: 0.4rem; min-width: 160px; z-index: 10001; opacity: 0; transform: translateY(-10px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: auto;">
-          
-          <!-- Liquid Indicator for Dropdown -->
-          <div id="lang-indicator-liquid" style="position: absolute; top: 0.6rem; left: 0.6rem; width: calc(100% - 1.2rem); height: 42px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0.8rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; z-index: 0; box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);"></div>
 
-          <button class="lang-option active" data-lang="en" style="background:transparent; border:none; padding: 0.8rem 1rem; color:var(--text-primary); cursor:pointer; display:flex; align-items:center; gap: 0.8rem; border-radius: 0.8rem; font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem; transition: all 0.3s; width: 100%; position: relative; z-index: 1;">
-            <span style="font-size: 1.2rem;">🇺🇸</span>
-            <span style="flex: 1;">English</span>
-            <ion-icon name="checkmark-outline" style="font-size: 1rem; opacity: 1; color: var(--accent);"></ion-icon>
+        <!-- Language Dropdown -->
+        <div id="lang-dropdown-wrapper" style="position:static; display:flex; flex-direction:column; align-items: flex-end; margin-top: 0; pointer-events: auto;">
+          <button id="lang-toggle-btn" style="background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border:1px solid rgba(255, 255, 255, 0.1); cursor:pointer; color:var(--text-primary); height: 52px; width: 52px; display:flex; align-items:center; justify-content:center; border-radius:50%; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto; font-family: var(--font-sans); font-weight: 700; font-size: 0.9rem;">
+            <ion-icon name="globe-outline" style="font-size: 1.4rem;"></ion-icon>
           </button>
-          <button class="lang-option" data-lang="ar" style="background:transparent; border:none; padding: 0.8rem 1rem; color:var(--text-primary); cursor:pointer; display:flex; align-items:center; gap: 0.8rem; border-radius: 0.8rem; font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem; transition: all 0.3s; width: 100%; position: relative; z-index: 1;">
-            <span style="font-size: 1.2rem;">🇸🇦</span>
-            <span style="flex: 1;">العربية</span>
-            <ion-icon name="checkmark-outline" style="font-size: 1rem; opacity: 0; color: var(--accent);"></ion-icon>
-          </button>
+          
+          <div id="lang-menu" style="position:absolute; top: calc(52px + 0.5rem); right: 0; background: rgba(255, 255, 255, 0.05); backdrop-filter: blur(30px) saturate(200%); -webkit-backdrop-filter: blur(30px) saturate(200%); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.6rem; border-radius: 1.2rem; box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25); display:none; flex-direction:column; gap: 0.4rem; min-width: 160px; z-index: 10001; opacity: 0; transform: translateY(-10px); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: auto;">
+            
+            <!-- Liquid Indicator for Dropdown -->
+            <div id="lang-indicator-liquid" style="position: absolute; top: 0.6rem; left: 0.6rem; width: calc(100% - 1.2rem); height: 42px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0.8rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; z-index: 0; box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);"></div>
+
+            <button class="lang-option active" data-lang="en" style="background:transparent; border:none; padding: 0.8rem 1rem; color:var(--text-primary); cursor:pointer; display:flex; align-items:center; gap: 0.8rem; border-radius: 0.8rem; font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem; transition: all 0.3s; width: 100%; position: relative; z-index: 1;">
+              <span style="font-size: 1.2rem;">🇺🇸</span>
+              <span style="flex: 1;">English</span>
+              <ion-icon name="checkmark-outline" style="font-size: 1rem; opacity: 1; color: var(--accent);"></ion-icon>
+            </button>
+            <button class="lang-option" data-lang="ar" style="background:transparent; border:none; padding: 0.8rem 1rem; color:var(--text-primary); cursor:pointer; display:flex; align-items:center; gap: 0.8rem; border-radius: 0.8rem; font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem; transition: all 0.3s; width: 100%; position: relative; z-index: 1;">
+              <span style="font-size: 1.2rem;">🇸🇦</span>
+              <span style="flex: 1;">العربية</span>
+              <ion-icon name="checkmark-outline" style="font-size: 1rem; opacity: 0; color: var(--accent);"></ion-icon>
+            </button>
+          </div>
         </div>
+
+        <button
+          id="nav-mobile-toggle"
+          class="nav-mobile-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-controls="nav-mobile-tabs"
+          aria-expanded="false"
+          style="display:none; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border:1px solid rgba(255, 255, 255, 0.1); cursor:pointer; color:var(--text-primary); height: 52px; width: 52px; align-items:center; justify-content:center; border-radius:50%; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto; padding: 0;">
+          <ion-icon id="nav-mobile-toggle-icon" name="menu-outline" style="font-size: 1.45rem;"></ion-icon>
+        </button>
       </div>
+
+      <div class="nav-mobile-overlay" id="nav-mobile-overlay" aria-hidden="true"></div>
     </nav>
   `;
 }
+
+const MOBILE_NAV_BREAKPOINT_QUERY = '(max-width: 850px)';
+
+function isMobileNavbarViewport() {
+  return window.matchMedia(MOBILE_NAV_BREAKPOINT_QUERY).matches;
+}
+
+function getMobileNavbarNodes() {
+  return {
+    navTabsContainer: document.getElementById('nav-mobile-tabs'),
+    navOverlay: document.getElementById('nav-mobile-overlay'),
+    navToggleBtn: document.getElementById('nav-mobile-toggle'),
+    navToggleIcon: document.getElementById('nav-mobile-toggle-icon')
+  };
+}
+
+function setMobileNavbarOpenState(open) {
+  const { navTabsContainer, navOverlay, navToggleBtn, navToggleIcon } = getMobileNavbarNodes();
+  if (!navTabsContainer || !navOverlay || !navToggleBtn || !navToggleIcon) return;
+
+  const isOpen = Boolean(open) && isMobileNavbarViewport();
+  navTabsContainer.classList.toggle('is-mobile-open', isOpen);
+  navOverlay.classList.toggle('is-mobile-open', isOpen);
+  navToggleBtn.classList.toggle('is-mobile-open', isOpen);
+  navToggleBtn.setAttribute('aria-expanded', isOpen ? 'true' : 'false');
+  navToggleIcon.setAttribute('name', isOpen ? 'close-outline' : 'menu-outline');
+}
+
+function closeMobileNavbarMenu() {
+  setMobileNavbarOpenState(false);
+}
+
+let mobileNavbarInitialized = false;
+
+export function initializeNavbarMobileMenu() {
+  if (mobileNavbarInitialized) return;
+  mobileNavbarInitialized = true;
+
+  document.addEventListener('click', (event) => {
+    const toggleBtn = event.target.closest('#nav-mobile-toggle');
+    if (toggleBtn) {
+      const willOpen = !toggleBtn.classList.contains('is-mobile-open');
+      setMobileNavbarOpenState(willOpen);
+      return;
+    }
+
+    if (event.target.closest('#nav-mobile-overlay')) {
+      closeMobileNavbarMenu();
+      return;
+    }
+
+    if (event.target.closest('.nav-tabs-container [data-nav-link]')) {
+      closeMobileNavbarMenu();
+    }
+  });
+
+  window.addEventListener('resize', () => {
+    if (!isMobileNavbarViewport()) {
+      closeMobileNavbarMenu();
+    }
+  });
+
+  document.addEventListener('keydown', (event) => {
+    if (event.key === 'Escape') {
+      closeMobileNavbarMenu();
+    }
+  });
+}
+
+initializeNavbarMobileMenu();
