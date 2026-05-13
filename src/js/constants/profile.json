@@ -1,20 +1,13 @@
 {
-  "name": "SAYED AHMED HUSAIN",
-  "title": "Multidisciplinary Engineer | Full-Stack Developer & Software Architect",
+  "name": "Sayed",
+  "title": "",
   "nationality": "Bahrain",
-  "address": "Northern Governorate, Kingdom of Bahrain",
+  "address": "Kingdom of Bahrain | Eastern Kingdom of Saudi Arabia",
   "qualification": "Bachelor Degree",
   "email": "sayedahmed97.sad@gmail.com",
-  "tagline": "Multidisciplinary Engineer | Full-Stack Developer & Software Architect",
-
-  "summary": "Electrical Engineer transitioning to Full-Stack Development with a strong focus on building secure, scalable web applications. Proficient in Go (Golang), Next.js, React, and TypeScript, with hands-on experience developing real-time solutions using WebSockets. Also skilled in Rust for systems programming.\n\nMy background in highly regulated industries—specifically Fire Safety—instills a disciplined approach to reliability and performance. While engineering documentation focuses on regulatory compliance, I apply that same rigor to software documentation, ensuring clarity in system architecture and technical workflows. Furthermore, my experience in Business Development and Administration at LIFECO, combined with my background in the telecom sector at Zain Bahrain and Channels by STC, has enhanced my understanding of market dynamics and customer-centric solutions.\n\nPassionate about bridging the gap between engineering precision and modern software architecture, I am committed to driving digital transformation through innovative full-stack solutions. Leveraging dual expertise in electrical engineering and software development, I create efficient applications that address complex real-world challenges while ensuring robust performance.",
-
   "about": "I like to build things that (hopefully) don't break 🏗️. My career path wasn't exactly a straight line. I actually started out designing life-safety electrical and fire systems for massive industrial plants ⚡🧯. In that world, a \"bug\" means a literal disaster. Today, I build full-stack web applications and backend architectures—where a \"bug\" just means I spend three hours shouting at my monitor before realizing I missed a semicolon 🤬💻.\n\nBut I’ll let you in on a secret 🤫: before I was deep in enterprise software, I survived the absolute frontlines of customer service and retail operations at Zain and STC 📞. If you want to understand human psychology, don't read a textbook—try explaining a telecom bill to a furious customer 😤. That experience basically gave me an unofficial PhD in human behavior 🧠. It taught me how to read attitudes, handle absolutely anyone, and stay cool under pressure (well, most of the time 🧘‍♂️).\n\nPersonality-wise, I’m a bit of a walking contradiction 🎭. I like to describe myself as \"short-long\"—short patience for bad code, but a very long attention span for the things I love ⏳. I can be a little moody, occasionally loud when I'm passionate (or debugging), and my YouTube \"Watch Later\" playlist is a terrifying black hole of thousands of videos that I will absolutely, definitely, 100% watch... someday 📺🕳️. Probably. (No, I won't 🤷‍♂️).\n\nWhen I’m not hand-coding system architectures or pretending I don't use AI to fix my typos 🤖, I run on excessive amounts of tea and pure summer vibes ☕☀️. I'm currently teaching myself how to play the piano 🎹—very basic stuff, but we’re getting there. If I'm away from the keyboard, I'm probably swimming 🏊‍♂️, cruising around in my silver Jeep Wrangler 🚙, trying to get my Home Assistant server to turn on my lights perfectly 💡, or configuring retro emulators to play the arcade games of my childhood 🕹️.\n\nI built this space because I wanted a corner of the internet that's just mine 🌍. It’s not just a professional portfolio; it’s a place where I plan to share the real stuff—life challenges, tech struggles, weird hardware experiments, and funny facts I pick up along the way 🚀.\n\nSo grab a cup of tea 🍵, take a look around, and if you want to talk about software, hardware, or how to psychoanalyze people, drop me a line!✌️",
-
   "ui": {
-    "greeting": "Hi, I'm Sayed.👋",
-    "homeTitle": "Welcome to Sayed's Space.🌍",
-    "homeTagline": "A collection of thoughts from my professional path to my personal world.",
+    "greeting": "Hi, I'm Sayed. 👋",
     "icons": {
       "x": "𝕏"
     },
@@ -31,15 +24,10 @@
       "linkedin": "Follow on LinkedIn",
       "x": "Follow on X",
       "medium": "Read on Medium"
-    },
-    "professionalCareer": "Career",
-    "featuredTitle": "Featured",
-    "seeAllArticles": "See all articles",
-    "seeFullArticle": "See full article"
+    }
   },
   "ui_extras": {
     "articles": {
-      "searchPlaceholder": "Search articles...",
       "readFullStory": "Read full story",
       "notFound": "Article not found",
       "backToList": "Back to articles"
@@ -51,10 +39,6 @@
       "copy": "Copy"
     },
     "experience": {
-      "career": "Career",
-      "internships": "Internships",
-      "education": "Education",
-      "certifications": "Certifications & Licenses",
       "keyResponsibilities": "Key Responsibilities",
       "keyProjects": "Key Projects",
       "educationHighlights": "Education Highlights",
@@ -63,14 +47,7 @@
       "expires": "Expires:"
     },
     "journey": {
-      "timelineTitle": "Professional Timeline",
-      "filters": {
-        "all": "All",
-        "education": "Education",
-        "career": "Career",
-        "internships": "Internships",
-        "certifications": "Certifications"
-      }
+      "timelineTitle": "Professional Timeline"
     },
     "projects": {
       "backToPortfolio": "Back to Portfolio",
@@ -97,7 +74,6 @@
       }
     }
   },
-
   "phones": [
     {
       "label": "Bahrain",
@@ -116,7 +92,6 @@
       "primary": false
     }
   ],
-
   "social": {
     "linkedin": "https://linkedin.com/in/97ahm",
     "github": "https://github.com/sahmedhusain",
@@ -125,7 +100,6 @@
     "medium": "https://medium.com/@s97ahm",
     "website": "https://sahmedhusain.github.io/me"
   },
-
   "featured": {
     "source": "education",
     "id": 1,

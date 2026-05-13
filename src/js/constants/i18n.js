@@ -9,22 +9,67 @@ let currentLocale = 'en';
 let strings = {};
 let loaded = false;
 
-/**
- * Load a locale file and set it as the active locale.
- * @param {string} locale - Locale code (e.g. 'en', 'ar')
- */
+let dualStrings = { en: {}, ar: {} };
+
 export async function loadLocale(locale) {
   try {
-    const res = await fetch(`src/js/constants/ui/${locale}.json`);
-    if (!res.ok) throw new Error(`Locale file not found: ${locale}`);
-    strings = await res.json();
+    // Always load both for cross-language search support
+    const [enRes, arRes] = await Promise.all([
+      fetch(`src/js/constants/ui/en.json`),
+      fetch(`src/js/constants/ui/ar.json`)
+    ]);
+    
+    dualStrings.en = await enRes.json();
+    dualStrings.ar = await arRes.json();
+
+    if (locale === 'en') {
+      strings = dualStrings.en;
+    } else {
+      // Deep merge locale strings over English as base
+      strings = mergeDeep(JSON.parse(JSON.stringify(dualStrings.en)), dualStrings[locale] || {});
+    }
+
     currentLocale = locale;
     loaded = true;
   } catch (err) {
-    if (locale !== 'en') {
-      await loadLocale('en');
-    }
+    loaded = false;
   }
+}
+
+/**
+ * Get a translation specifically for a given locale (en or ar).
+ */
+export function tDual(key, locale) {
+  const keys = key.split('.');
+  let value = dualStrings[locale];
+  for (const k of keys) {
+    value = value?.[k];
+    if (value === undefined) return null;
+  }
+  return value;
+}
+
+function mergeDeep(target, source) {
+  const isObject = (obj) => obj && typeof obj === 'object';
+
+  if (!isObject(target) || !isObject(source)) {
+    return source;
+  }
+
+  Object.keys(source).forEach(key => {
+    const targetValue = target[key];
+    const sourceValue = source[key];
+
+    if (Array.isArray(targetValue) && Array.isArray(sourceValue)) {
+      target[key] = sourceValue;
+    } else if (isObject(targetValue) && isObject(sourceValue)) {
+      target[key] = mergeDeep(Object.assign({}, targetValue), sourceValue);
+    } else {
+      target[key] = sourceValue;
+    }
+  });
+
+  return target;
 }
 
 /**

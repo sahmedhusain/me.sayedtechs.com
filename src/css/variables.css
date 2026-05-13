@@ -22,8 +22,8 @@
   --overlay: rgba(250, 250, 250, 0.95);
 
   /* Typography */
-  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI",
-    sans-serif;
+  --font-sans: "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  --font-arabic: "IBM Plex Sans Arabic", "Inter", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
   --font-mono: "Fira Code", "SF Mono", "Monaco", "Courier New", monospace;
 
   /* Spacing */
@@ -78,4 +78,7 @@
   :root {
     --section-padding: 40px;
   }
+}
+[dir="rtl"] {
+  --font-sans: var(--font-arabic);
 }

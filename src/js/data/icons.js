@@ -71,13 +71,15 @@ export const renderTechLogos = (techArr = []) => {
 };
 
 export function getIconForCoreItem(item) {
-  if (item.includes('Fire')) return 'flame';
-  if (item.includes('Electrical Installation')) return 'flash';
-  if (item.includes('Solar')) return 'sunny';
-  if (item.includes('Power Electronics')) return 'battery-full';
-  if (item.includes('Digital Circuits')) return 'hardware-chip';
-  if (item.includes('Transmission')) return 'pulse';
-  return 'cog';
+  const s = normalize(item);
+  if (s.includes('fire') || s.includes('حريق')) return 'shield-checkmark-outline';
+  if (s.includes('installation') || s.includes('تمديدات') || s.includes('تركيبات')) return 'construct';
+  if (s.includes('testing') || s.includes('فحص') || s.includes('اختبار')) return 'speedometer-outline';
+  if (s.includes('solar') || s.includes('طاقة شمسية') || s.includes('شمسية')) return 'sunny';
+  if (s.includes('power electronics') || s.includes('إلكترونيات الطاقة') || s.includes('إلكترونيات القوى')) return 'flash-outline';
+  if (s.includes('digital circuits') || s.includes('دوائر رقمية') || s.includes('أردوينو')) return 'hardware-chip';
+  if (s.includes('transmission') || s.includes('نقل')) return 'pulse';
+  return 'settings-outline';
 }
 
 export function getIconForLibraryItem(item) {
@@ -137,32 +139,53 @@ export function getCategoryIcon(category) {
 }
 
 export function getIconForPersonalSkill(skill) {
+  const s = normalize(skill);
   const icons = {
-    'Adaptability': 'refresh',
-    'Communication': 'chatbubble',
-    'Fast Learner': 'school',
-    'Decision Making': 'options',
-    'Teamwork': 'people',
-    'Problem-solving': 'bulb',
-    'Time Management': 'time',
-    'Leadership': 'trophy',
-    'Training and Development': 'book',
-    'Project Management': 'folder'
+    'adaptability': 'refresh',
+    'مرن وأتأقلم مع التغيير': 'refresh',
+    'communication': 'chatbubble',
+    'تواصل فعال': 'chatbubble',
+    'fast learner': 'school',
+    'أتعلم بسرعة': 'school',
+    'decision making': 'options',
+    'سرعة اتخاذ القرار': 'options',
+    'teamwork': 'people',
+    'روح الفريق': 'people',
+    'problem solving': 'bulb',
+    'حل المشاكل المعقدة': 'bulb',
+    'time management': 'time',
+    'إدارة وتنظيم الوقت': 'time',
+    'leadership': 'trophy',
+    'شخصية قيادية': 'trophy',
+    'training and development': 'book',
+    'continuous learning': 'book',
+    'شغف التعلم المستمر': 'book',
+    'project management': 'folder',
+    'إدارة المشاريع': 'folder'
   };
-  return icons[skill] || 'star';
+  return icons[s] || 'star';
 }
 
 export function getIconForCSConcept(concept) {
+  const s = normalize(concept);
   const icons = {
-    'Algorithms & Data Structures': 'code-working',
-    'Concurrency & Parallelism': 'sync',
-    'Virtual DOM': 'layers',
-    'State Management': 'server',
-    'Authentication & Session Management': 'finger-print-outline',
-    'Object-Oriented Programming': 'shapes-outline',
-    'Graph Algorithms & Pathfinding': 'navigate-outline'
+    'algorithms data structures': 'code-working',
+    'الخوارزميات وهياكل البيانات': 'code-working',
+    'concurrency parallelism': 'sync',
+    'البرمجة المتزامنة concurrency': 'sync',
+    'virtual dom': 'layers',
+    'state management': 'server',
+    'إدارة الحالة state management': 'server',
+    'authentication session management': 'finger-print-outline',
+    'إدارة الجلسات وحماية الدخول auth': 'finger-print-outline',
+    'object oriented programming': 'shapes-outline',
+    'البرمجة كائنية التوجه oop': 'shapes-outline',
+    'graph algorithms pathfinding': 'navigate-outline',
+    'خوارزميات البحث عن المسار pathfinding': 'navigate-outline',
+    'machine learning': 'hardware-chip', // fallback icon if not in iconMap
+    'تعلم الآلة machine learning': 'hardware-chip'
   };
-  return icons[concept] || 'hardware-chip';
+  return icons[s] || 'hardware-chip';
 }
 
 export function renderInteractiveTechLogos(techArr = [], type) {

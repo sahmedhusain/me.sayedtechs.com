@@ -1,21 +1,60 @@
 {
   "technicalSkills": {
     "programmingAndMarkupLanguages": [
-      { "name": "JavaScript", "proficiency": 90 },
-      { "name": "TypeScript", "proficiency": 85 },
-      { "name": "Golang", "proficiency": 80 },
-      { "name": "Python", "proficiency": 70 },
-      { "name": "Rust", "proficiency": 55 },
-      { "name": "C++", "proficiency": 50 },
-      { "name": "Dart", "proficiency": 40 },
-      { "name": "HTML5", "proficiency": 95 },
-      { "name": "CSS3", "proficiency": 90 }
+      {
+        "name": "JavaScript",
+        "proficiency": 90
+      },
+      {
+        "name": "TypeScript",
+        "proficiency": 85
+      },
+      {
+        "name": "Golang",
+        "proficiency": 80
+      },
+      {
+        "name": "Python",
+        "proficiency": 70
+      },
+      {
+        "name": "Rust",
+        "proficiency": 55
+      },
+      {
+        "name": "C++",
+        "proficiency": 50
+      },
+      {
+        "name": "Dart",
+        "proficiency": 40
+      },
+      {
+        "name": "HTML5",
+        "proficiency": 95
+      },
+      {
+        "name": "CSS3",
+        "proficiency": 90
+      }
     ],
     "databases": [
-      { "name": "SQLite", "proficiency": 75 },
-      { "name": "MongoDB", "proficiency": 75 },
-      { "name": "PostgreSQL", "proficiency": 60 },
-      { "name": "MySQL", "proficiency": 60 }
+      {
+        "name": "SQLite",
+        "proficiency": 75
+      },
+      {
+        "name": "MongoDB",
+        "proficiency": 75
+      },
+      {
+        "name": "PostgreSQL",
+        "proficiency": 60
+      },
+      {
+        "name": "MySQL",
+        "proficiency": 60
+      }
     ],
     "frameworksAndLibraries": [
       "React",

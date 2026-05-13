@@ -5,7 +5,6 @@ import { getPlatformIcon } from './articles.js';
 
 export function renderSidebar() {
   const data = getData();
-  const ui = data.ui || {};
   return `
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
@@ -15,11 +14,11 @@ export function renderSidebar() {
         <div class="action-buttons">
           <button class="action-btn primary">
             <ion-icon name="document-text-outline"></ion-icon>
-            <span>${ui.downloadResume}</span>
+            <span>${t('about.downloadResume')}</span>
           </button>
           <button class="action-btn secondary">
             <ion-icon name="person-circle-outline"></ion-icon>
-            <span>${ui.contactDetails}</span>
+            <span>${t('about.contactDetails')}</span>
           </button>
         </div>
       </div>
@@ -31,7 +30,7 @@ export function renderSidebar() {
               <ion-icon name="mail-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">${ui.contactLabels.email}</p>
+              <p class="contact-title">${t('about.contactLabels.email')}</p>
               <a href="mailto:${data.contact.email}" class="contact-link">${data.contact.email}</a>
             </div>
           </li>
@@ -40,7 +39,7 @@ export function renderSidebar() {
               <ion-icon name="phone-portrait-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">${ui.contactLabels.phone}</p>
+              <p class="contact-title">${t('about.contactLabels.phone')}</p>
               <a href="tel:${data.contact.phone}" class="contact-link">${data.contact.phone}</a>
             </div>
           </li>
@@ -49,7 +48,7 @@ export function renderSidebar() {
               <ion-icon name="flag-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">${ui.contactLabels.nationality}</p>
+              <p class="contact-title">${t('about.contactLabels.nationality')}</p>
               <address>${data.nationality}</address>
             </div>
           </li>
@@ -58,7 +57,7 @@ export function renderSidebar() {
               <ion-icon name="location-outline"></ion-icon>
             </div>
             <div class="contact-info">
-              <p class="contact-title">${ui.contactLabels.address}</p>
+              <p class="contact-title">${t('about.contactLabels.address')}</p>
               <address>${data.address}</address>
             </div>
           </li>
@@ -87,13 +86,12 @@ export function renderAboutSection() {
     .split(/\n\s*\n/)
     .map(p => `<p style="margin-bottom: 1.5rem;">${p.replace(/\n/g, '<br/>')}</p>`)
     .join('');
-  const ui = data.ui || {};
   return `
     <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4rem; width: 100%; flex-wrap: wrap;">
       
       <!-- Left Column: Title and Description -->
-      <div class="animate-entry" style="flex: 2; min-width: 300px; text-align: left; animation-delay: 0s;">
-        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 2rem; font-family: var(--font-sans);">${ui.greeting}</h1>
+      <div class="animate-entry" style="flex: 2; min-width: 300px; display: flex; flex-direction: column; align-items: flex-start; animation-delay: 0s;">
+        <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 2rem; font-family: var(--font-sans);">${t('about.greeting')}</h1>
         <section class="about-text" style="color: var(--text-secondary); line-height: 1.8; font-size: 1.05rem; text-align: justify; text-justify: inter-word; max-width: none;">
           ${aboutHtml}
         </section>
@@ -119,16 +117,16 @@ export function renderAboutSection() {
         </style>
         <div style="display: flex; flex-direction: column; gap: 1.2rem;">
           <a href="${data.contact.github}" target="_blank" class="about-contact-link">
-            <ion-icon name="logo-github" style="font-size: 1.3rem;"></ion-icon> ${ui.follow.github}
+            <ion-icon name="logo-github" style="font-size: 1.3rem;"></ion-icon> ${t('about.follow.github')}
           </a>
           <a href="${data.contact.linkedin}" target="_blank" class="about-contact-link">
-            <ion-icon name="logo-linkedin" style="font-size: 1.3rem;"></ion-icon> ${ui.follow.linkedin}
+            <ion-icon name="logo-linkedin" style="font-size: 1.3rem;"></ion-icon> ${t('about.follow.linkedin')}
           </a>
           <a href="${data.contact.twitter}" target="_blank" class="about-contact-link">
-             <span class="x-logo-about">${ui.icons.x}</span> ${ui.follow.x}
+             <span class="x-logo-about">𝕏</span> ${t('about.follow.x')}
           </a>
           <a href="${data.contact.medium}" target="_blank" class="about-contact-link">
-            <ion-icon name="logo-medium" style="font-size: 1.3rem;"></ion-icon> ${ui.follow.medium}
+            <ion-icon name="logo-medium" style="font-size: 1.3rem;"></ion-icon> ${t('about.follow.medium')}
           </a>
         </div>
         
@@ -168,8 +166,8 @@ export function renderHomeFeed() {
       .action-btn-glass:hover {
         background: rgba(255, 255, 255, 0.08) !important;
         border-color: var(--accent) !important;
-        transform: translateY(-3px);
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+        transform: none !important;
+        box-shadow: none !important;
       }
       .action-btn-glass:hover span {
         color: var(--accent);
@@ -183,7 +181,7 @@ export function renderHomeFeed() {
       }
     </style>
     <!-- Profile Card with Avatar and Action Buttons -->
-    <div class="about-profile-header animate-entry" style="display: flex; flex-direction: column; align-items: flex-start; text-align: left; gap: 1.5rem; margin-bottom: 2.5rem; width: 100%; animation-delay: 0s;">
+    <div class="about-profile-header animate-entry" style="display: flex; flex-direction: column; align-items: flex-start; gap: 1.5rem; margin-bottom: 2.5rem; width: 100%; animation-delay: 0s;">
       
       <!-- Picture -->
       <div class="about-avatar-section">
@@ -195,7 +193,7 @@ export function renderHomeFeed() {
       <!-- Info & Socials -->
       <div>
         <h1 style="font-size: 2.1rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; font-family: var(--font-sans); white-space: nowrap;">${t('home.welcome')}</h1>
-        <p class="about-tagline" style="font-size: 1.05rem; color: var(--text-secondary); margin: 0 0 1.2rem 0; line-height: 1.6; font-weight: 400; font-style: italic; font-family: var(--font-sans);">${t('home.tagline')}</p>
+        <p class="about-tagline" style="font-size: 1.05rem; color: var(--text-secondary); margin: 0 0 1.2rem 0; line-height: 1.6; font-weight: 400; font-style: italic; font-family: var(--font-sans); display: block;">${t('home.tagline')}</p>
         
         <style>
           .home-profile-socials { position: relative; z-index: 50; }
@@ -260,17 +258,17 @@ export function renderHomeFeed() {
             transition-delay: 0.2s;
           }
         </style>
-        <div class="home-profile-socials" style="display: flex; justify-content: flex-start; gap: 1.5rem; font-size: 1.6rem; margin-bottom: 2rem;">
-          <a href="${data.contact.linkedin}" target="_blank" data-title="Connect." aria-label="LinkedIn Profile">
+        <div class="home-profile-socials" style="display: flex; gap: 1.5rem; font-size: 1.6rem; margin-bottom: 2rem;">
+          <a href="${data.contact.linkedin}" target="_blank" data-title="${t('home.social.connect')}" aria-label="LinkedIn Profile">
             <ion-icon name="logo-linkedin"></ion-icon>
           </a>
-          <a href="${data.contact.github}" target="_blank" data-title="Code." aria-label="GitHub Profile">
+          <a href="${data.contact.github}" target="_blank" data-title="${t('home.social.code')}" aria-label="GitHub Profile">
             <ion-icon name="logo-github"></ion-icon>
           </a>
-          <a href="${data.contact.medium}" target="_blank" data-title="Read." aria-label="Medium Blog">
+          <a href="${data.contact.medium}" target="_blank" data-title="${t('home.social.read')}" aria-label="Medium Blog">
             <ion-icon name="logo-medium"></ion-icon>
           </a>
-          <a href="${data.contact.twitter}" target="_blank" data-title="Follow." aria-label="X Profile" style="font-family: var(--font-sans); font-weight: bold; background: none;">
+          <a href="${data.contact.twitter}" target="_blank" data-title="${t('home.social.follow')}" aria-label="X Profile" style="font-family: var(--font-sans); font-weight: bold; background: none;">
             <span>𝕏</span>
           </a>
         </div>
@@ -299,7 +297,7 @@ export function renderHomeFeed() {
                     <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; transition: color 0.2s;">${post.title}</h3>
                     <p style="color: var(--text-secondary); margin: 0 0 1.2rem 0; font-size: 1rem; line-height: 1.6; flex-grow: 1;">${post.desc}</p>
                     <a href="articles/${post.id}" data-nav-link="articles/${post.id}" class="read-more-link" style="color: var(--accent); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; text-decoration: none; width: fit-content; margin-top: auto;">
-                      ${t('home.readFullArticle')} <ion-icon name="arrow-forward-outline"></ion-icon>
+                      ${t('home.readFullArticle')} <ion-icon name="${document.documentElement.dir === 'rtl' ? 'arrow-back-outline' : 'arrow-forward-outline'}"></ion-icon>
                     </a>
                   </li>
                 `;
@@ -314,7 +312,7 @@ export function renderHomeFeed() {
         <button class="action-btn-glass" data-nav-link="articles" style="margin-top: 3rem; width: 100%; border-radius: 1rem; padding: 1rem;">
           <div class="btn-glass-content" style="justify-content: center; width: 100%;">
             <span>${t('home.seeAllArticles')}</span>
-            <ion-icon name="arrow-forward-outline"></ion-icon>
+            <ion-icon name="${document.documentElement.dir === 'rtl' ? 'arrow-back-outline' : 'arrow-forward-outline'}"></ion-icon>
           </div>
         </button>
         ` : ''}
@@ -378,9 +376,9 @@ export function renderHomeFeed() {
           <ul style="list-style:none; padding:0; margin:0; display:flex; flex-direction:column; gap:2rem;">
             ${[...data.professionalJourney.career].reverse().map(item => {
     const formatMonthYear = (dateStr) => {
-      if (!dateStr) return 'Present';
+      if (!dateStr) return t('time.present');
       const d = new Date(dateStr);
-      return d.toLocaleString('en-US', { month: 'short', year: 'numeric' });
+      return d.toLocaleString(t('common.locale_tag') || 'en-US', { month: 'short', year: 'numeric' });
     };
     const duration = (start, end) => {
       const startDate = new Date(start);
@@ -389,8 +387,8 @@ export function renderHomeFeed() {
       const years = Math.floor(months / 12);
       const remMonths = months % 12;
       let res = [];
-      if (years > 0) res.push(`${years} yr${years > 1 ? 's' : ''}`);
-      if (remMonths > 0) res.push(`${remMonths} mo${remMonths > 1 ? 's' : ''}`);
+      if (years > 0) res.push(`${years} ${t(years > 1 ? 'time.yrs' : 'time.yr')}`);
+      if (remMonths > 0) res.push(`${remMonths} ${t(remMonths > 1 ? 'time.mos' : 'time.mo')}`);
       return res.join(' ');
     };
     return `
@@ -398,7 +396,7 @@ export function renderHomeFeed() {
                 <div class="career-info-card">
                   <strong style="color: var(--text-primary); display: block; margin-bottom: 0.2rem; font-size: 0.9rem;">${item.company}</strong>
                   <div class="career-info-meta">
-                    <span>${formatMonthYear(item.startDate)} — ${item.current ? 'Present' : formatMonthYear(item.endDate)}</span>
+                    <span>${formatMonthYear(item.startDate)} — ${item.current ? t('time.present') : formatMonthYear(item.endDate)}</span>
                     <span style="color: var(--accent); font-weight: 600;">${duration(item.startDate, item.current ? null : item.endDate)}</span>
                   </div>
                 </div>
@@ -407,7 +405,7 @@ export function renderHomeFeed() {
                   <strong style="color: var(--text-primary); font-size: 1rem; display: block; margin-bottom: 0.15rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.company}</strong>
                   <div style="display: flex; justify-content: space-between; align-items: baseline; gap: 0.5rem;">
                     <span style="color: var(--text-secondary); font-size: 0.85rem; white-space: nowrap; overflow: hidden; text-overflow: ellipsis;">${item.title}</span>
-                    <span style="color: var(--text-secondary); font-size: 0.8rem; font-family: var(--font-mono); flex-shrink: 0;">${item.startDate.slice(0, 4)} — ${item.current ? 'Present' : (item.endDate ? item.endDate.slice(0, 4) : 'Present')}</span>
+                    <span style="color: var(--text-secondary); font-size: 0.8rem; font-family: var(--font-mono); flex-shrink: 0;">${item.startDate.slice(0, 4)} — ${item.current ? t('time.present') : (item.endDate ? item.endDate.slice(0, 4) : t('time.present'))}</span>
                   </div>
                 </div>
               </li>`;

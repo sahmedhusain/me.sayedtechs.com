@@ -1,5 +1,5 @@
 export const countryCodes = [
-    { code: '+1', country: 'United States/Canada', flag: '🇺🇸' },
+    { code: '+1', country: 'United States/Canada', flag: '🇺🇸🇨🇦' },
     { code: '+7', country: 'Russia', flag: '🇷🇺' },
     { code: '+20', country: 'Egypt', flag: '🇪🇬' },
     { code: '+27', country: 'South Africa', flag: '🇿🇦' },

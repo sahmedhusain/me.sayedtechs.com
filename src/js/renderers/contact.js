@@ -1,5 +1,5 @@
 import { getData } from '../constants/index.js';
-import { t } from '../constants/i18n.js';
+import { t, tDual, isRTL } from '../constants/i18n.js';
 import { countryCodes } from '../data/countries.js';
 
 export function renderContactSection() {
@@ -11,17 +11,23 @@ export function renderContactSection() {
 
   const activeCountry = countryCodes.find(c => c.code === '+973') || countryCodes[0];
 
-  const countryListItems = countryCodes.map(item => `
+  const countryListItems = countryCodes.map(item => {
+    const localizedName = t(`countries.${item.country}`) || item.country;
+    const arabicName = tDual(`countries.${item.country}`, 'ar') || '';
+    return `
     <li class="country-item ${item.code === activeCountry.code ? 'active' : ''}" 
         data-country-code="${item.code}"
         data-country-flag="${item.flag}"
-        data-country-name="${item.country}">
+        data-country-name="${localizedName}"
+        data-country-name-en="${item.country.toLowerCase()}"
+        data-country-name-ar="${arabicName.toLowerCase()}">
       <span class="country-flag">${item.flag}</span>
       <span class="country-code-val">${item.code}</span>
-      <span class="country-name-val" style="flex: 1;">${item.country}</span>
+      <span class="country-name-val" style="flex: 1;">${localizedName}</span>
       <ion-icon name="checkmark-outline" class="selection-tick" style="font-size: 0.9rem; opacity: ${item.code === activeCountry.code ? '1' : '0'}; color: var(--accent);"></ion-icon>
     </li>
-  `).join('');
+  `;
+  }).join('');
 
 
   return `
@@ -107,8 +113,6 @@ export function renderContactSection() {
 
 export function renderContactModal() {
   const data = getData();
-  const ui = data.ui_extras || {};
-  const contactUi = ui.contact || {};
   const phones = data.phones || data.contact?.phones || [];
 
   const phoneRows = phones.map(phone => {
@@ -119,14 +123,14 @@ export function renderContactModal() {
         <span style="font-size: 1.4rem;">${phone.flag}</span>
         <div style="flex: 1; min-width: 0; text-align: start;">
           <div style="font-weight: 600; font-size: 0.9rem; color: var(--text-primary);">${phone.label}</div>
-          <div style="font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono);">${phone.countryCode} ${phone.number}</div>
+          <div style="font-size: 0.85rem; color: var(--text-secondary); font-family: var(--font-mono); direction: ltr; unicode-bidi: isolate; text-align: ${isRTL() ? 'right' : 'left'};">${phone.countryCode} ${phone.number}</div>
         </div>
         <div style="display: flex; gap: 0.5rem;">
           <a href="tel:${fullNumber}" class="phone-action-btn" title="${t('contact.callMe')}">
             <ion-icon name="call-outline" style="font-size: 1.2rem;"></ion-icon>
           </a>
           ${phone.whatsapp ? `
-          <a href="https://wa.me/${cleanNumber}" target="_blank" class="phone-action-btn wa-btn" title="${t('contact.whatsappMe')}">
+          <a href="https://wa.me/${cleanNumber}?text=Hi%20Sayed,%20I%20saw%20your%20website%20and%20would%20like%20to%20connect!%20" target="_blank" class="phone-action-btn wa-btn" title="${t('contact.whatsappMe')}">
             <ion-icon name="logo-whatsapp" style="font-size: 1.2rem;"></ion-icon>
           </a>
           ` : ''}
@@ -154,16 +158,16 @@ export function renderContactModal() {
         <button class="modal-close" id="modal-close">
           <ion-icon name="close-outline"></ion-icon>
         </button>
-        <div class="modal-header">
-          <h3>${t('contact.saveContactCard')}</h3>
-          <p>${t('contact.scanQr')}</p>
+        <div class="modal-header" style="text-align: center !important;">
+          <h3 style="text-align: center !important;">${t('contact.saveContactCard')}</h3>
+          <p style="text-align: center !important; margin: 0 auto;">${t('contact.scanQr')}</p>
         </div>
         <div class="modal-body">
           <div class="modal-columns">
             <div class="modal-left">
-              <div class="contact-info">
+              <div class="contact-info" style="text-align: center;">
                 <img src="${data.avatar}" alt="${data.name}" class="contact-avatar" loading="lazy">
-                <h4>${data.name}</h4>
+                <h4 style="text-align: center;">${data.name}</h4>
                 <p><ion-icon name="mail-outline"></ion-icon> ${data.email}</p>
                 
                 <div style="margin-top: 0.8rem; display: flex; flex-direction: column; gap: 0;">
@@ -184,7 +188,7 @@ export function renderContactModal() {
             </div>
             <div class="modal-right" style="display: flex; flex-direction: column; gap: 1.5rem; flex: 1;">
               <div class="qr-code-container" id="qr-code">
-                <div class="qr-placeholder">${contactUi.qrPlaceholder}</div>
+                <div class="qr-placeholder">${t('contact.qrPlaceholder')}</div>
               </div>
 
               <div class="modal-actions" style="margin-top: 0;">
@@ -234,6 +238,8 @@ export async function generateVCard() {
       }
     }
 
+    
+
     return filteredLines.join('\n');
   } catch (err) {
     // Fallback to old method
@@ -255,8 +261,6 @@ END:VCARD`;
 
 export async function generateQRCode() {
   const data = getData();
-  const ui = data.ui_extras || {};
-  const contactUi = ui.contact || {};
   const qrContainer = document.getElementById('qr-code');
   if (!qrContainer) return;
 
@@ -264,7 +268,7 @@ export async function generateQRCode() {
   qrContainer.innerHTML = `
     <div class="qr-loading">
       <div class="loading-spinner"></div>
-      <p class="loading-text">${contactUi.qrGenerating}</p>
+      <p class="loading-text">${t('contact.qrGenerating')}</p>
     </div>
   `;
 
@@ -330,13 +334,13 @@ export async function generateQRCode() {
     // Add instruction text
     const instruction = document.createElement('p');
     instruction.className = 'qr-instruction';
-    instruction.textContent = 'Scan with your phone camera';
+    instruction.textContent = t('contact.qrInstruction');
     qrContainer.appendChild(instruction);
 
   } catch (err) {
     qrContainer.innerHTML = `
       <p class="qr-error" style="color: #ff6464; text-align: center; font-size: 0.9rem;">
-        Unable to generate QR code:<br>
+        ${t('contact.qrError')}<br>
         <span style="font-size: 0.8rem; opacity: 0.8;">${err.message}</span>
       </p>
     `;

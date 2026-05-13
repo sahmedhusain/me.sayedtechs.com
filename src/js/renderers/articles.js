@@ -6,12 +6,10 @@ import { t } from '../constants/i18n.js';
  */
 export function renderArticlesSection() {
   const data = getData();
-  const ui = data.ui_extras || {};
-  const articlesUi = ui.articles || {};
   const categories = t('articles.categories');
 
-  const categoryTabs = categories.map(cat => `
-    <button class="article-tab ${cat === 'All' ? 'active' : ''}" data-filter="${cat.toLowerCase()}">${cat}</button>
+  const categoryTabs = categories.map((cat, index) => `
+    <button class="article-tab ${index === 0 ? 'active' : ''}" data-filter="${index === 0 ? 'all' : cat.toLowerCase()}">${cat}</button>
   `).join('');
 
   const noArticlesMessage = `<div id="noArticlesMessage" class="no-content-message animate-entry" style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; color: var(--text-secondary); font-style: italic; border: 1px dashed var(--card-border); border-radius: 1.5rem; ${data.articles.length > 0 ? 'display: none;' : ''}">
@@ -20,11 +18,18 @@ export function renderArticlesSection() {
        </div>`;
 
   const articleItems = data.articles.map(article => {
+    const englishArticle = data.articles_en?.find(a => a.id === article.id) || {};
+    const arabicArticle = data.articles_ar?.find(a => a.id === article.id) || {};
     return `
-      <article class="article-card active animate-entry" data-category="${article.category.toLowerCase()}">
+      <article class="article-card active animate-entry" 
+               data-category="${article.category.toLowerCase()}"
+               data-title-en="${(englishArticle.title || '').toLowerCase()}"
+               data-desc-en="${(englishArticle.desc || '').toLowerCase()}"
+               data-title-ar="${(arabicArticle.title || '').toLowerCase()}"
+               data-desc-ar="${(arabicArticle.desc || '').toLowerCase()}">
         <div class="article-card-body">
           <div class="article-meta">
-            <span class="article-date">${new Date(article.date).toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
+            <span class="article-date">${new Date(article.date).toLocaleDateString(document.documentElement.dir === 'rtl' ? 'ar-SA' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
             <span class="article-dot">•</span>
             <span class="article-category">${article.category}</span>
             ${(article.embeds && article.embeds.length > 0) ? `
@@ -41,7 +46,7 @@ export function renderArticlesSection() {
           <div class="article-footer">
             <span class="article-read-time"><ion-icon name="time-outline"></ion-icon> ${article.readTime}</span>
             <a href="articles/${article.id}" data-nav-link="articles/${article.id}" class="read-article-btn">
-              ${t('articles.readFullArticle')} <ion-icon name="arrow-forward-outline"></ion-icon>
+              ${t('articles.readFullArticle')} <ion-icon name="${document.documentElement.dir === 'rtl' ? 'arrow-back-outline' : 'arrow-forward-outline'}"></ion-icon>
             </a>
           </div>
         </div>
@@ -50,7 +55,7 @@ export function renderArticlesSection() {
   }).join('');
 
   return `
-    <header class="animate-entry" style="margin-bottom: 1.2rem; text-align: left; animation-delay: 0s;">
+    <header class="animate-entry" style="margin-bottom: 1.2rem; animation-delay: 0s;">
       <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
         ${t('articles.title')}
       </h1>
@@ -65,7 +70,7 @@ export function renderArticlesSection() {
       </div>
       <div class="article-search">
         <ion-icon name="search-outline"></ion-icon>
-        <input type="text" placeholder="${articlesUi.searchPlaceholder}" id="articleSearch">
+        <input type="text" placeholder="${t('articles.searchPlaceholder')}" id="articleSearch">
       </div>
     </nav>
 
@@ -88,8 +93,8 @@ export function renderArticleDetail(id) {
   if (!article) {
     return `
       <div class="error-container animate-entry">
-        <h1>${articlesUi.notFound}</h1>
-        <button class="btn-solid-black" data-nav-link="articles">${articlesUi.backToList}</button>
+        <h1>${t('articles.articleNotFound')}</h1>
+        <button class="btn-solid-black" data-nav-link="articles">${t('articles.backToArticles')}</button>
       </div>
     `;
   }
@@ -100,10 +105,10 @@ export function renderArticleDetail(id) {
   ];
 
   return `
-    <section class="project-detail-wrapper animate-entry">
+    <section class="project-detail-wrapper animate-entry article-detail-page">
       <header class="project-detail-header">
         <div class="project-header-main">
-          <button class="back-btn-minimal" data-nav-link="articles" title="${articlesUi.backToList}">
+          <button class="back-btn-minimal" data-nav-link="articles" title="${t('articles.backToArticles')}">
             <ion-icon name="arrow-back-outline"></ion-icon>
           </button>
           
@@ -120,7 +125,7 @@ export function renderArticleDetail(id) {
           <div style="display: flex; align-items: center; gap: 1.5rem; border-bottom: 1px solid var(--card-border); padding-bottom: 1.5rem;">
             <div class="lib-chip" style="color: var(--text-primary); font-weight: 600; padding: 0; display: flex; align-items: center;">
               <ion-icon name="calendar-outline" style="color: var(--accent); margin-right: 0.5rem;"></ion-icon>
-              ${new Date(article.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
+              ${new Date(article.date).toLocaleDateString(document.documentElement.dir === 'rtl' ? 'ar-SA' : 'en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
             </div>
             
             <div style="width: 1px; height: 14px; background: var(--card-border); opacity: 0.5;"></div>
@@ -134,7 +139,7 @@ export function renderArticleDetail(id) {
 
         <div class="project-main-content">
           <div class="readme-container-raw">
-            <div class="markdown-body-raw">
+            <div class="markdown-body-raw article-body">
               ${article.image ? `<img src="${article.image}" alt="${article.title}" class="article-featured-image">` : ''}
               ${renderArticleContent(articleBlocks)}
             </div>

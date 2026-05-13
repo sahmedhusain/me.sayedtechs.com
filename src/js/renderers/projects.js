@@ -4,9 +4,11 @@ import { renderTechLogos, getCategoryIcon, getIconForLibraryItem } from '../data
 import { renderSkillsSection } from './skills.js';
 import { FALLBACK_CATEGORIES, INTERNAL_CATEGORIES, CATEGORY_ICONS } from '../constants/config.js';
 
+const readmeCache = new Map();
+
 export function renderPortfolioPage() {
   return `
-    <header class="animate-entry" style="margin-bottom: 1.2rem; text-align: left; animation-delay: 0s;">
+    <header class="animate-entry" style="margin-bottom: 1.2rem; animation-delay: 0s;">
       <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
         ${t('projects.title')}
       </h1>
@@ -25,17 +27,15 @@ export function renderPortfolioPage() {
 
 export function renderProjectDetail(id) {
   const data = getData();
-  const ui = data.ui_extras || {};
-  const projUi = ui.projects || {};
   const project = data.projects.find(p => p.id === id);
-  if (!project) return `<div class="animate-entry"><p>${projUi.notFound}</p></div>`;
+  if (!project) return `<div class="animate-entry"><p>${t('projects.notFound')}</p></div>`;
 
-  const categoryKey = project.categoryKey || project.category?.toLowerCase().replace(/\s+/g, '') || 'webdevelopment';
-  const githubLink = project.links.find(l => l.text.toLowerCase() === 'repository' && l.url.includes('github.com'));
+  const categoryKey = resolveCategoryKey(project.category);
+  const githubLink = project.links.find(l => l.url.includes('github.com'));
 
   setTimeout(() => {
     if (githubLink) {
-      loadReadme(githubLink.url, id, projUi);
+      loadReadme(githubLink.url, id);
     } else {
       const container = document.getElementById('project-readme-container');
       if (container) container.style.display = 'none';
@@ -46,7 +46,7 @@ export function renderProjectDetail(id) {
     <section class="project-detail-wrapper animate-entry">
       <header class="project-detail-header">
         <div class="project-header-main">
-          <button class="back-btn-minimal" onclick="window.history.back()" title="${projUi.backToPortfolio}">
+          <button class="back-btn-minimal" onclick="window.history.back()" title="${t('projects.backToPortfolio')}">
             <ion-icon name="arrow-back-outline"></ion-icon>
           </button>
           <div class="project-icon-large">
@@ -71,7 +71,7 @@ export function renderProjectDetail(id) {
       <div class="project-detail-grid">
         <div class="project-info-sidebar">
            <div class="info-group-tech">
-             <div class="tech-label">Tech Stack</div>
+             <div class="tech-label">${t('projects.techStack')}</div>
              <div class="project-detail-tech-container">
                <ul class="project-tech-logos-detail">
                   ${renderTechLogos(project.tech).logos}
@@ -94,12 +94,12 @@ export function renderProjectDetail(id) {
              <div id="project-readme-container" class="readme-container-raw">
                 <div class="readme-loading">
                   <div class="spinner"></div>
-                  <p>${projUi.readmeFetching}</p>
+                  <p>${t('projects.readmeFetching')}</p>
                 </div>
              </div>
            ` : `
               <div class="project-summary-raw">
-                 <h2 class="raw-section-title">${projUi.overviewTitle}</h2>
+                 <h2 class="raw-section-title">${t('projects.overviewTitle')}</h2>
                  <ul class="raw-points-list">
                    ${project.points.map(p => `<li>${p}</li>`).join('')}
                  </ul>
@@ -111,242 +111,201 @@ export function renderProjectDetail(id) {
   `;
 }
 
-async function loadReadme(githubUrl, id, projUi) {
+async function loadReadme(githubUrl, id) {
+  if (readmeCache.has(id)) {
+    const cached = readmeCache.get(id);
+    renderMarkdown(cached.markdown, id, cached.owner, cached.repo, cached.branch);
+    return;
+  }
+
   const cleanUrl = githubUrl.replace(/\/+$/, '');
   const urlParts = cleanUrl.split('/');
   const repo = urlParts[urlParts.length - 1];
   const owner = urlParts[urlParts.length - 2];
 
-  const container = document.getElementById('project-readme-container');
-  if (!container) return;
-
-  const branches = ['main', 'master', 'develop', 'gh-pages'];
-  const files = ['README.md', 'readme.md', 'README.markdown', 'README.txt'];
+  const repoNames = [repo, repo.toLowerCase(), id, id.toLowerCase()];
+  const uniqueRepos = [...new Set(repoNames)];
 
   try {
     let markdown = '';
     let success = false;
     let successfulBranch = 'main';
     let successfulRepo = repo;
-    let foundReadmeFile = 'README.md';
 
-    // Discovery logic: Try to get repo info from API first to avoid 404s in console
-    const repoNames = [repo, repo.toLowerCase(), id, id.toLowerCase()];
-    const uniqueRepos = [...new Set(repoNames)];
+    // Optimization: Try most likely Raw URLs in parallel first
+    const branches = ['main', 'master', 'develop'];
+    const files = ['README.md', 'readme.md'];
 
+    const probeUrls = [];
     for (const r of uniqueRepos) {
+      for (const b of branches) {
+        for (const f of files) {
+          probeUrls.push({
+            url: `https://raw.githubusercontent.com/${owner}/${r}/${b}/${f}`,
+            branch: b,
+            repo: r,
+            file: f
+          });
+        }
+      }
+    }
+
+    const initialProbes = probeUrls.slice(0, 6);
+    const results = await Promise.all(initialProbes.map(async (p) => {
       try {
-        const repoApiUrl = `https://api.github.com/repos/${owner}/${r}`;
-        const repoResp = await fetch(repoApiUrl);
-        
-        if (repoResp.ok) {
-          const repoData = await repoResp.json();
-          const defaultBranch = repoData.default_branch || 'main';
-          
-          // Now check for the README in the file list
-          const contentsApiUrl = `https://api.github.com/repos/${owner}/${r}/contents/`;
-          const contentsResp = await fetch(contentsApiUrl);
-          
-          if (contentsResp.ok) {
-            const contents = await contentsResp.json();
-            const readmeFile = contents.find(f => 
-              ['README.md', 'readme.md', 'README.markdown', 'README.txt'].includes(f.name)
-            );
+        const resp = await fetch(p.url);
+        if (resp.ok) return { ...p, content: await resp.text() };
+      } catch (e) { }
+      return null;
+    }));
 
-            if (readmeFile) {
-              const rawUrl = `https://raw.githubusercontent.com/${owner}/${r}/${defaultBranch}/${readmeFile.name}`;
-              const resp = await fetch(rawUrl);
-              if (resp.ok) {
-                markdown = await resp.text();
-                success = true;
-                successfulBranch = defaultBranch;
-                successfulRepo = r;
-                foundReadmeFile = readmeFile.name;
+    const successfulProbe = results.find(r => r !== null);
 
-                // Check for License in the same contents list
-                const licenseFile = contents.find(f => 
-                  ['LICENSE', 'LICENSE.md', 'license.md'].includes(f.name)
-                );
-                if (licenseFile) {
-                  renderLicenseLink(owner, r, defaultBranch, licenseFile.name);
+    if (successfulProbe) {
+      markdown = successfulProbe.content;
+      success = true;
+      successfulBranch = successfulProbe.branch;
+      successfulRepo = successfulProbe.repo;
+    } else {
+      // Full discovery as fallback
+      for (const r of uniqueRepos) {
+        try {
+          const repoApiUrl = `https://api.github.com/repos/${owner}/${r}`;
+          const repoResp = await fetch(repoApiUrl);
+          if (repoResp.ok) {
+            const repoData = await repoResp.json();
+            const defaultBranch = repoData.default_branch || 'main';
+            const contentsApiUrl = `https://api.github.com/repos/${owner}/${r}/contents/`;
+            const contentsResp = await fetch(contentsApiUrl);
+            if (contentsResp.ok) {
+              const contents = await contentsResp.json();
+              const readmeFile = contents.find(f => ['README.md', 'readme.md', 'README.markdown', 'README.txt'].includes(f.name));
+              if (readmeFile) {
+                const resp = await fetch(`https://raw.githubusercontent.com/${owner}/${r}/${defaultBranch}/${readmeFile.name}`);
+                if (resp.ok) {
+                  markdown = await resp.text();
+                  success = true;
+                  successfulBranch = defaultBranch;
+                  successfulRepo = r;
+                  break;
                 }
-                break;
               }
             }
           }
-        }
-      } catch (apiErr) {
-        // GitHub API discovery failed
-      }
-    }
-
-    // Fallback to the old probing method only if API discovery didn't succeed
-    if (!success) {
-      const branches = ['main', 'master', 'develop', 'gh-pages'];
-      const files = ['README.md', 'readme.md', 'README.markdown', 'README.txt'];
-      
-      for (const r of uniqueRepos) {
-        for (const branch of branches) {
-          for (const file of files) {
-            const url = `https://raw.githubusercontent.com/${owner}/${r}/${branch}/${file}`;
-            try {
-              const response = await fetch(url);
-              if (response.ok) {
-                markdown = await response.text();
-                success = true;
-                successfulBranch = branch;
-                successfulRepo = r;
-                
-                // Quick license probe
-                const licFiles = ['LICENSE', 'LICENSE.md'];
-                for (const lf of licFiles) {
-                  const lResp = await fetch(`https://raw.githubusercontent.com/${owner}/${r}/${branch}/${lf}`, { method: 'HEAD' });
-                  if (lResp.ok) {
-                    renderLicenseLink(owner, r, branch, lf);
-                    break;
-                  }
-                }
-                break;
-              }
-            } catch (e) {}
-          }
-          if (success) break;
-        }
-        if (success) break;
-      }
-    }
-
-    function renderLicenseLink(owner, repo, branch, filename) {
-      const headerLinks = document.querySelector('.project-header-links');
-      if (headerLinks && !headerLinks.querySelector('[data-license-link]')) {
-        const licLink = document.createElement('a');
-        licLink.href = `https://github.com/${owner}/${repo}/blob/${branch}/${filename}`;
-        licLink.target = '_blank';
-        licLink.className = 'btn-solid-black-inverted';
-        licLink.setAttribute('data-license-link', 'true');
-        licLink.innerHTML = `<ion-icon name="document-text-outline"></ion-icon><span>${t('projects.license')}</span>`;
-        headerLinks.appendChild(licLink);
+        } catch (apiErr) { }
       }
     }
 
     if (!success) throw new Error('README not found');
-
-    const rawUrlBase = `https://raw.githubusercontent.com/${owner}/${successfulRepo}/${successfulBranch}`;
     
-    // Helper to normalize URLs and handle ./ relative paths
-    const normalizeUrl = (path) => {
-      // If it's already an absolute URL, check if it's a GitHub blob link that should be raw
-      if (path.startsWith('http')) {
-        if (path.includes('github.com') && path.includes('/blob/')) {
-          return path.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
-        }
-        return path;
-      }
-      
-      if (path.startsWith('/') || path.startsWith('data:')) return path;
-      
-      const cleanPath = path.replace(/^\.\//, '');
-      // Encode URI to handle spaces in filenames
-      const encodedPath = encodeURI(cleanPath);
-      return `${rawUrlBase}/${encodedPath}`.replace(/([^:]\/)\/+/g, "$1");
-    };
-
-    // Fix relative image and link paths
-    markdown = markdown.replace(/(!\[.*?\]\()(.+?)(\))/g, (match, p1, p2, p3) => {
-      return `${p1}${normalizeUrl(p2)}${p3}`;
-    });
-    
-    markdown = markdown.replace(/src=["'](.+?)["']/g, (match, p1) => {
-      return `src="${normalizeUrl(p1)}"`;
-    });
-
-    markdown = markdown.replace(/href=["'](.+?)["']/g, (match, p1) => {
-      // Only rewrite relative internal links, not #anchors or absolute URLs
-      if (p1.startsWith('#') || p1.startsWith('http') || p1.startsWith('mailto:')) return match;
-      return `href="${normalizeUrl(p1)}"`;
-    });
-
-    let parsedHtml = '';
-    if (typeof marked !== 'undefined') {
-      const renderer = new marked.Renderer();
-      
-      // Auto-generate IDs for headings to support Table of Contents
-      renderer.heading = ({ text, depth }) => {
-        const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
-        return `<h${depth} id="${escapedText}">${text}</h${depth}>`;
-      };
-
-      renderer.code = (token) => {
-        const code = token.text;
-        const lang = (token.lang || '').toLowerCase();
-        
-        if (lang.includes('mermaid')) {
-          return `<pre class="mermaid">${code}</pre>`;
-        }
-        
-        const langClass = lang ? `class="language-${lang}"` : '';
-        return `<pre><code ${langClass}>${code}</code></pre>`;
-      };
-
-
-      parsedHtml = marked.parse(markdown, { renderer });
-    } else {
-      parsedHtml = `<pre>${markdown}</pre>`;
-    }
-
-    container.innerHTML = `
-      <div class="markdown-body-raw">
-        ${parsedHtml}
-      </div>
-    `;
-
-    if (window.mermaid) {
-      try {
-        // Find and hide immediately to prevent flash
-        const initialDivs = container.querySelectorAll('.mermaid');
-        initialDivs.forEach(div => div.style.visibility = 'hidden');
-
-        setTimeout(async () => {
-          const mermaidDivs = container.querySelectorAll('.mermaid');
-          if (mermaidDivs.length > 0) {
-            try {
-              // mermaid.run is more robust for pre tags
-              await window.mermaid.run({
-                nodes: mermaidDivs
-              });
-              
-              mermaidDivs.forEach(div => {
-                div.style.visibility = 'visible';
-                div.classList.add('rendered');
-              });
-            } catch (err) {
-              mermaidDivs.forEach(div => div.style.visibility = 'visible');
-            }
-          }
-        }, 800);
-      } catch (e) {
-      }
-    }
+    readmeCache.set(id, { markdown, owner, repo: successfulRepo, branch: successfulBranch });
+    renderMarkdown(markdown, id, owner, successfulRepo, successfulBranch);
   } catch (err) {
-    const data = getData();
-    const project = data.projects.find(p => p.id === id);
-    container.innerHTML = `
-      <div class="project-summary-raw">
-        <h2 class="raw-section-title">${projUi.overviewTitle}</h2>
-        <ul class="raw-points-list">
-          ${project ? project.points.map(p => `<li>${p}</li>`).join('') : `<li>${projUi.detailsInRepo}</li>`}
-        </ul>
-      </div>
-    `;
+    renderFallback(id);
   }
+}
+
+function renderMarkdown(markdown, id, owner, repo, branch) {
+  const container = document.getElementById('project-readme-container');
+  if (!container) return;
+
+  const rawUrlBase = `https://raw.githubusercontent.com/${owner}/${repo}/${branch}`;
+  
+  const normalizeUrl = (path) => {
+    if (path.startsWith('http')) {
+      if (path.includes('github.com') && path.includes('/blob/')) {
+        return path.replace('github.com', 'raw.githubusercontent.com').replace('/blob/', '/');
+      }
+      return path;
+    }
+    if (path.startsWith('/') || path.startsWith('data:')) return path;
+    const cleanPath = path.replace(/^\.\//, '');
+    return `${rawUrlBase}/${encodeURI(cleanPath)}`.replace(/([^:]\/)\/+/g, "$1");
+  };
+
+  let processedMarkdown = markdown.replace(/(!\[.*?\]\()(.+?)(\))/g, (match, p1, p2, p3) => `${p1}${normalizeUrl(p2)}${p3}`);
+  processedMarkdown = processedMarkdown.replace(/src=["'](.+?)["']/g, (match, p1) => `src="${normalizeUrl(p1)}"`);
+  processedMarkdown = processedMarkdown.replace(/href=["'](.+?)["']/g, (match, p1) => {
+    if (p1.startsWith('#') || p1.startsWith('http') || p1.startsWith('mailto:')) return match;
+    return `href="${normalizeUrl(p1)}"`;
+  });
+
+  let parsedHtml = '';
+  if (typeof marked !== 'undefined') {
+    const renderer = new marked.Renderer();
+    renderer.heading = ({ text, depth }) => {
+      const escapedText = text.toLowerCase().replace(/[^\w]+/g, '-');
+      return `<h${depth} id="${escapedText}">${text}</h${depth}>`;
+    };
+    renderer.code = (token) => {
+      const code = token.text;
+      const lang = (token.lang || '').toLowerCase();
+      if (lang.includes('mermaid')) return `<pre class="mermaid">${code}</pre>`;
+      const langClass = lang ? `class="language-${lang}"` : '';
+      return `<pre><code ${langClass}>${code}</code></pre>`;
+    };
+    parsedHtml = marked.parse(processedMarkdown, { renderer });
+  } else {
+    parsedHtml = `<pre>${processedMarkdown}</pre>`;
+  }
+
+  container.innerHTML = `<div class="markdown-body-raw">${parsedHtml}</div>`;
+
+  if (window.mermaid) {
+    const mermaidDivs = container.querySelectorAll('.mermaid');
+    if (mermaidDivs.length > 0) {
+      mermaidDivs.forEach(div => div.style.visibility = 'hidden');
+      setTimeout(async () => {
+        try {
+          await window.mermaid.run({ nodes: mermaidDivs });
+          mermaidDivs.forEach(div => {
+            div.style.visibility = 'visible';
+            div.classList.add('rendered');
+          });
+        } catch (err) {
+          mermaidDivs.forEach(div => div.style.visibility = 'visible');
+        }
+      }, 800);
+    }
+  }
+}
+
+
+function renderFallback(id) {
+  const container = document.getElementById('project-readme-container');
+  if (!container) return;
+  const data = getData();
+  const project = data.projects.find(p => p.id === id);
+  container.innerHTML = `
+    <div class="project-summary-raw">
+      <h2 class="raw-section-title">${t('projects.overviewTitle')}</h2>
+      <ul class="raw-points-list">
+        ${project ? project.points.map(p => `<li>${p}</li>`).join('') : `<li>${t('projects.readmeUnavailable')}</li>`}
+      </ul>
+    </div>
+  `;
 }
 
 export function getIcon(text) {
   const lower = text.toLowerCase();
   if (lower.includes('repository')) return 'logo-github';
-  if (lower.includes('thesis')) return 'school-outline';
+  if (lower.includes('thesis') || lower.includes('report')) return 'school-outline';
   if (lower.includes('poster')) return 'document-outline';
+  if (lower.includes('المستودع') || lower.includes('الكود') || lower.includes('جيت هب') || lower.includes('قت هب')) return 'logo-github';
+  if (lower.includes('تقرير') || lower.includes('أطروحة') || lower.includes('البحث')) return 'school-outline';
+  if (lower.includes('ملصق') || lower.includes('المنشور')) return 'document-outline';
   return 'open-outline';
+}
+
+function resolveCategoryKey(category) {
+  if (!category) return 'webdevelopment';
+  const lower = category.toLowerCase();
+  if (lower.includes('game') || lower.includes('ألعاب')) return 'games';
+  if (lower.includes('engineering') || lower.includes('هندسة')) return 'engineering';
+  if (lower.includes('cli') || lower.includes('algorithm') || lower.includes('خوارزميات')) return 'clialgorithms';
+  if (lower.includes('ui') || lower.includes('تصميم')) return 'uiconcepts';
+  if (lower.includes('web') || lower.includes('ويب')) return 'webdevelopment';
+  return 'webdevelopment';
 }
 
 export function renderProjectsSection() {
@@ -358,33 +317,20 @@ export function renderProjectsSection() {
 
   const projects = data.projects.map(p => {
     const jsonCategory = p.category || 'Web Development';
-    
-    // Find index in FALLBACK_CATEGORIES to get the correct internal key and display label
-    let catIndex = FALLBACK_CATEGORIES.indexOf(jsonCategory);
-    if (catIndex === -1) {
-       // Robust fallback if the category string in JSON doesn't exactly match
-       const lowerCat = jsonCategory.toLowerCase();
-       if (lowerCat.includes('game')) catIndex = 3;
-       else if (lowerCat.includes('engineering')) catIndex = 2;
-       else if (lowerCat.includes('cli') || lowerCat.includes('algorithm')) catIndex = 4;
-       else if (lowerCat.includes('ui')) catIndex = 5;
-       else catIndex = 1; // Default to Web Dev
-    }
-
-    const categoryKey = INTERNAL_CATEGORIES[catIndex];
+    const categoryKey = resolveCategoryKey(jsonCategory);
+    let catIndex = INTERNAL_CATEGORIES.indexOf(categoryKey);
+    if (catIndex === -1) catIndex = 1;
     const displayCategory = categories[catIndex];
-
     return { ...p, categoryKey, displayCategory };
   }).sort((a, b) => a.name.localeCompare(b.name));
 
   return `
-    <header id="projects-section" class="animate-entry" style="margin-top: 5rem; margin-bottom: 2rem; text-align: left; animation-delay: 0s;">
+    <header id="projects-section" class="animate-entry" style="margin-top: 5rem; margin-bottom: 2rem; animation-delay: 0s;">
       <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
         ${t('projects.sectionTitle')}
       </h1>
     </header>
     <section>
-    
     <ul class="filter-list navbar-style-pill">
       <div class="pill-indicator"></div>
       <div class="pill-indicator-hover"></div>
@@ -417,7 +363,9 @@ export function renderProjectsSection() {
               </p>
               <a href="projects/${project.id}" data-nav-link="projects/${project.id}" class="go-to-project-btn">
                 <span>${t('projects.viewProject')}</span>
-                <ion-icon name="arrow-forward-outline"></ion-icon>
+                <span class="project-btn-icon">
+                  <ion-icon name="${document.documentElement.dir === 'rtl' ? 'arrow-back-outline' : 'arrow-forward-outline'}"></ion-icon>
+                </span>
               </a>
             </div>
         </li>

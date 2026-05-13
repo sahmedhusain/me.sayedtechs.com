@@ -6,7 +6,10 @@
     "category": "Games",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/Betting-Game" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/Betting-Game"
+      }
     ],
     "points": [
       "Built a high-performance Mahjong betting engine featuring real-time prediction logic and dynamic tile valuation.",
@@ -16,7 +19,16 @@
       "Architected a secure session management layer with rate-limiting and JWT-based authentication.",
       "Containerized the entire stack using Docker for seamless production deployment and environment parity."
     ],
-    "tech": ["Go", "PicoJS", "JavaScript", "MongoDB", "Tailwind CSS", "Docker", "WebSocket", "DDD"],
+    "tech": [
+      "Go",
+      "PicoJS",
+      "JavaScript",
+      "MongoDB",
+      "Tailwind CSS",
+      "Docker",
+      "WebSocket",
+      "DDD"
+    ],
     "featured": true
   },
   {
@@ -26,7 +38,10 @@
     "category": "Engineering",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/flowgrid" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/flowgrid"
+      }
     ],
     "points": [
       "Architected a real-time autonomous traffic simulation in Rust to optimize four-way intersection throughput without traditional traffic lights.",
@@ -36,7 +51,14 @@
       "Built an interactive visualization layer using SDL2 with procedural road rendering and directional car texture mapping.",
       "Included detailed performance analytics tracking metrics such as completion time, waiting intervals, and close-call frequency."
     ],
-    "tech": ["Rust", "SDL2", "Physics Engine", "Scheduling Algorithms", "Geometric Math", "Performance Analytics"],
+    "tech": [
+      "Rust",
+      "SDL2",
+      "Physics Engine",
+      "Scheduling Algorithms",
+      "Geometric Math",
+      "Performance Analytics"
+    ],
     "featured": true
   },
   {
@@ -46,7 +68,10 @@
     "category": "Games",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/blast-arena" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/blast-arena"
+      }
     ],
     "points": [
       "Developed a fast-paced multiplayer arena game with real-time synchronization over WebSockets using Node.js.",
@@ -55,7 +80,14 @@
       "Utilized a custom reactive UI layer (PicoJS) for lightweight client-side rendering and minimal bundle size.",
       "Engineered a robust backend game loop with server-side validation to ensure competitive integrity and state consistency."
     ],
-    "tech": ["Node.js", "WebSocket", "Vanilla JS", "PicoJS", "CSS3 Animations", "Game Logic"],
+    "tech": [
+      "Node.js",
+      "WebSocket",
+      "Vanilla JS",
+      "PicoJS",
+      "CSS3 Animations",
+      "Game Logic"
+    ],
     "featured": false
   },
   {
@@ -66,8 +98,14 @@
     "category": "Engineering",
     "hasGithubRepo": false,
     "links": [
-      { "text": "Thesis", "url": "pdfs.smart_streetlights_report" },
-      { "text": "Poster", "url": "pdfs.smart_streetlights_poster" }
+      {
+        "text": "Thesis",
+        "url": "pdfs.smart_streetlights_report"
+      },
+      {
+        "text": "Poster",
+        "url": "pdfs.smart_streetlights_poster"
+      }
     ],
     "date": "January 2020 — May 2020",
     "points": [
@@ -78,7 +116,14 @@
       "Implementing an intelligent street lighting system saves energy, extends lighting lifespan, and reduces maintenance costs.",
       "It optimizes lighting by avoiding unnecessary usage when no vehicles or pedestrians are present."
     ],
-    "tech": ["Arduino", "cpp", "Java", "IoT", "Motion Sensors", "LED Technology"]
+    "tech": [
+      "Arduino",
+      "cpp",
+      "Java",
+      "IoT",
+      "Motion Sensors",
+      "LED Technology"
+    ]
   },
   {
     "id": "gigabit",
@@ -87,7 +132,10 @@
     "category": "Web Development",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/GigaBit" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/GigaBit"
+      }
     ],
     "points": [
       "Built GigaBit, a Full-Stack Development project featuring a real-time social networking platform that covers the complete surface area of a modern community application, from authentication and privacy controls to live communication and group collaboration.",
@@ -97,7 +145,19 @@
       "Real-time capabilities using WebSockets for private and group messaging, typing indicators, notifications, online status, and live feed updates.",
       "Relational data model using SQLite to support the social graph and interaction workflows."
     ],
-    "tech": ["Go", "Next.js", "React", "TypeScript", "Tailwind CSS", "Apollo Client", "Framer Motion", "SQLite", "WebSocket", "Gorilla Mux", "Docker"],
+    "tech": [
+      "Go",
+      "Next.js",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "Apollo Client",
+      "Framer Motion",
+      "SQLite",
+      "WebSocket",
+      "Gorilla Mux",
+      "Docker"
+    ],
     "featured": true
   },
   {
@@ -107,7 +167,10 @@
     "category": "Web Development",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/01-Dashboard" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/01-Dashboard"
+      }
     ],
     "points": [
       "01 Dashboard is a web-based analytics dashboard built to visualize and analyze learning progress on the reboot01 platform.",
@@ -117,7 +180,17 @@
       "From a front-end perspective, the project focuses on clarity and usability.",
       "Interactive charts and visual summaries are used to represent progress, audit performance, and project distribution, while a responsive layout ensures the dashboard works well across devices."
     ],
-    "tech": ["React", "TypeScript", "Vite", "GraphQL", "Apollo Client", "Tailwind CSS", "Framer Motion", "JWT", "SVG Charts"],
+    "tech": [
+      "React",
+      "TypeScript",
+      "Vite",
+      "GraphQL",
+      "Apollo Client",
+      "Tailwind CSS",
+      "Framer Motion",
+      "JWT",
+      "SVG Charts"
+    ],
     "featured": true
   },
   {
@@ -127,7 +200,10 @@
     "category": "Web Development",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/Connecthub-RT" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/Connecthub-RT"
+      }
     ],
     "points": [
       "Connecthub RT is a real-time web application built with Go that combines a traditional discussion forum with live communication features.",
@@ -137,7 +213,18 @@
       "The project focuses on practical backend concepts, including session handling, secure password hashing, and real-time connection management.",
       "The frontend uses HTML, CSS, and JavaScript to deliver a responsive interface that works smoothly across devices."
     ],
-    "tech": ["Go", "JavaScript", "HTML5", "CSS3", "SQLite", "WebSocket", "Gorilla Mux", "Docker", "Jest", "Playwright"]
+    "tech": [
+      "Go",
+      "JavaScript",
+      "HTML5",
+      "CSS3",
+      "SQLite",
+      "WebSocket",
+      "Gorilla Mux",
+      "Docker",
+      "Jest",
+      "Playwright"
+    ]
   },
   {
     "id": "picojs-framework",
@@ -146,7 +233,10 @@
     "category": "Web Development",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/PicoJS-Framework" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/PicoJS-Framework"
+      }
     ],
     "points": [
       "Built PicoJS Framework, a lightweight JavaScript framework created to explore and implement the core mechanics behind modern UI libraries in a clean and readable codebase.",
@@ -157,7 +247,15 @@
       "Path-based routing that stays in sync with application state.",
       "Includes a complete TodoMVC demo demonstrating real-world usage."
     ],
-    "tech": ["JavaScript ES6+", "HTML5", "CSS3", "Virtual DOM", "Reactive State", "History API Routing", "Zero Dependencies"],
+    "tech": [
+      "JavaScript ES6+",
+      "HTML5",
+      "CSS3",
+      "Virtual DOM",
+      "Reactive State",
+      "History API Routing",
+      "Zero Dependencies"
+    ],
     "featured": true
   },
   {
@@ -167,7 +265,10 @@
     "category": "Web Development",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/01-ConnectHub" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/01-ConnectHub"
+      }
     ],
     "points": [
       "01 ConnectHub is a full-stack web forum application built with Go, tailored to support structured community discussions and meaningful user interaction.",
@@ -177,7 +278,17 @@
       "From a technical perspective, the project focuses heavily on backend architecture, session management, and data persistence.",
       "Server-side rendering is powered by Go, while the frontend is built with HTML, CSS, and JavaScript."
     ],
-    "tech": ["Go", "HTML5", "CSS3", "JavaScript", "SQLite", "OAuth2", "Gorilla Sessions", "bcrypt", "Docker"]
+    "tech": [
+      "Go",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "SQLite",
+      "OAuth2",
+      "Gorilla Sessions",
+      "bcrypt",
+      "Docker"
+    ]
   },
   {
     "id": "harmonyhub",
@@ -186,7 +297,10 @@
     "category": "Web Development",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/HarmonyHub" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/HarmonyHub"
+      }
     ],
     "points": [
       "HarmonyHub is a web application engineered in Go that brings together music artists and their concert information in a single, structured platform.",
@@ -194,7 +308,15 @@
       "The project focuses on clean server-side architecture, structured data handling, and clear presentation of API-driven content.",
       "Artist and concert data are processed using Go structs and rendered through server-side templates, ensuring reliability, performance, and maintainability."
     ],
-    "tech": ["Go", "HTML5", "CSS3", "JavaScript", "REST API", "HTML Templates", "JSON"]
+    "tech": [
+      "Go",
+      "HTML5",
+      "CSS3",
+      "JavaScript",
+      "REST API",
+      "HTML Templates",
+      "JSON"
+    ]
   },
   {
     "id": "antfinder",
@@ -203,7 +325,10 @@
     "category": "CLI/Algorithms",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/AntFinder" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/AntFinder"
+      }
     ],
     "points": [
       "AntFinder is a terminal-based application programmed in Go that simulates efficient pathfinding for ant colonies moving through a graph.",
@@ -211,7 +336,13 @@
       "The application applies classic graph algorithms, including Depth-First Search (DFS), to explore and evaluate possible paths.",
       "Ant movement is simulated step by step, ensuring conflict-free traversal and balanced path assignment."
     ],
-    "tech": ["Go", "Algorithms", "DFS", "Graph Traversal", "Pathfinding"]
+    "tech": [
+      "Go",
+      "Algorithms",
+      "DFS",
+      "Graph Traversal",
+      "Pathfinding"
+    ]
   },
   {
     "id": "gotalk",
@@ -220,7 +351,10 @@
     "category": "CLI/Algorithms",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/GoTalk" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/GoTalk"
+      }
     ],
     "points": [
       "GoTalk is a TCP-based chat server architected in Go, optimized to support real-time communication between multiple terminal clients.",
@@ -228,7 +362,14 @@
       "The project focuses on core systems programming concepts, including concurrent client handling using goroutines, message broadcasting through shared channels, and reliable network communication via TCP sockets.",
       "Each message is timestamped, users are uniquely identified, and chat activity is persisted through server-side logging."
     ],
-    "tech": ["Go", "TCP/IP", "Goroutines", "Channels", "Networking", "File I/O"]
+    "tech": [
+      "Go",
+      "TCP/IP",
+      "Goroutines",
+      "Channels",
+      "Networking",
+      "File I/O"
+    ]
   },
   {
     "id": "space-blaster",
@@ -237,7 +378,10 @@
     "category": "Games",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/SpaceBlaster" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/SpaceBlaster"
+      }
     ],
     "points": [
       "Space Blaster is a browser-based space shooter built using HTML, CSS, and JavaScript, inspired by classic arcade games.",
@@ -246,7 +390,14 @@
       "Enemy movement, collision detection, scoring, and lives are orchestrated through structured JavaScript logic and DOM manipulation.",
       "Audio effects are integrated to enhance immersion without relying on external libraries."
     ],
-    "tech": ["JavaScript ES6", "HTML5", "CSS3", "DOM Manipulation", "Audio API", "Game Development"]
+    "tech": [
+      "JavaScript ES6",
+      "HTML5",
+      "CSS3",
+      "DOM Manipulation",
+      "Audio API",
+      "Game Development"
+    ]
   },
   {
     "id": "ascii-forge",
@@ -255,7 +406,10 @@
     "category": "Web Development",
     "hasGithubRepo": true,
     "links": [
-      { "text": "Repository", "url": "https://github.com/sahmedhusain/ASCIIForge" }
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/ASCIIForge"
+      }
     ],
     "points": [
       "ASCII Forge is a web-based application implemented in Go that converts plain text into stylized ASCII art using multiple banner formats, including standard, shadow, and thinkertoy.",
@@ -263,7 +417,15 @@
       "The project focuses on server-side text processing and dynamic content generation, handling banner parsing and rendering logic efficiently.",
       "Users can export the generated ASCII output as text files, making it easy to reuse or share across different platforms."
     ],
-    "tech": ["Go", "HTML5", "CSS3", "Bootstrap", "Docker", "Text Processing", "File I/O"]
+    "tech": [
+      "Go",
+      "HTML5",
+      "CSS3",
+      "Bootstrap",
+      "Docker",
+      "Text Processing",
+      "File I/O"
+    ]
   },
   {
     "id": "personal-website",
@@ -279,7 +441,15 @@
       "Integrated contact forms, downloadable resume, and vCard functionality for easy professional networking.",
       "The site serves as both a professional showcase and a demonstration of web development capabilities, built entirely with vanilla JavaScript, HTML5, and CSS3."
     ],
-    "tech": ["JavaScript ES6+", "HTML5", "CSS3", "Responsive Design", "Interactive Timeline", "Web Animations", "Contact Integration"],
+    "tech": [
+      "JavaScript ES6+",
+      "HTML5",
+      "CSS3",
+      "Responsive Design",
+      "Interactive Timeline",
+      "Web Animations",
+      "Contact Integration"
+    ],
     "featured": true
   }
 ]

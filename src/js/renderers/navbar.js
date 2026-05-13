@@ -63,12 +63,12 @@ export function renderNavbar() {
           <!-- Liquid Indicator for Dropdown -->
           <div id="lang-indicator-liquid" style="position: absolute; top: 0.6rem; left: 0.6rem; width: calc(100% - 1.2rem); height: 42px; background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 0.8rem; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; z-index: 0; box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);"></div>
 
-          <button class="lang-option active" data-lang="en" style="background:transparent; border:none; padding: 0.8rem 1rem; color:var(--text-primary); cursor:pointer; display:flex; align-items:center; gap: 0.8rem; border-radius: 0.8rem; font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem; transition: all 0.3s; width: 100%; text-align: left; position: relative; z-index: 1;">
+          <button class="lang-option active" data-lang="en" style="background:transparent; border:none; padding: 0.8rem 1rem; color:var(--text-primary); cursor:pointer; display:flex; align-items:center; gap: 0.8rem; border-radius: 0.8rem; font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem; transition: all 0.3s; width: 100%; position: relative; z-index: 1;">
             <span style="font-size: 1.2rem;">🇺🇸</span>
             <span style="flex: 1;">English</span>
             <ion-icon name="checkmark-outline" style="font-size: 1rem; opacity: 1; color: var(--accent);"></ion-icon>
           </button>
-          <button class="lang-option" data-lang="ar" style="background:transparent; border:none; padding: 0.8rem 1rem; color:var(--text-primary); cursor:pointer; display:flex; align-items:center; gap: 0.8rem; border-radius: 0.8rem; font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem; transition: all 0.3s; width: 100%; text-align: left; position: relative; z-index: 1;">
+          <button class="lang-option" data-lang="ar" style="background:transparent; border:none; padding: 0.8rem 1rem; color:var(--text-primary); cursor:pointer; display:flex; align-items:center; gap: 0.8rem; border-radius: 0.8rem; font-family: var(--font-sans); font-weight: 600; font-size: 0.9rem; transition: all 0.3s; width: 100%; position: relative; z-index: 1;">
             <span style="font-size: 1.2rem;">🇸🇦</span>
             <span style="flex: 1;">العربية</span>
             <ion-icon name="checkmark-outline" style="font-size: 1rem; opacity: 0; color: var(--accent);"></ion-icon>

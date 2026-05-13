@@ -15,26 +15,29 @@ let data = null;
  * @returns {Object} The assembled data object
  */
 export async function loadData() {
-  const [profile, assets, experience, education, certifications, skills,
-    projects, articles, journey, services] = await Promise.all([
-      fetchJSON('src/js/constants/profile.json'),
-      fetchJSON('src/js/constants/assets.json'),
-      fetchJSON('src/js/constants/experience.json'),
-      fetchJSON('src/js/constants/education.json'),
-      fetchJSON('src/js/constants/certifications.json'),
-      fetchJSON('src/js/constants/skills.json'),
-      fetchJSON('src/js/constants/projects.json'),
-      fetchJSON('src/js/constants/articles.json'),
-      fetchJSON('src/js/constants/journey.json'),
-      fetchJSON('src/js/constants/services.json'),
-    ]);
-
-  // Load default language
+  // Load language preference first
   const savedLang = localStorage.getItem('lang') || 'en';
   await loadLocale(savedLang);
 
+  const suffix = savedLang === 'ar' ? '_ar' : '';
+
+    const [profile, assets, experience, education, certifications, skills,
+    projects, articles_en, articles_ar, journey] = await Promise.all([
+      fetchJSON(`src/js/constants/profile${suffix}.json`),
+      fetchJSON(`src/js/constants/assets${suffix}.json`),
+      fetchJSON(`src/js/constants/experience${suffix}.json`),
+      fetchJSON(`src/js/constants/education${suffix}.json`),
+      fetchJSON(`src/js/constants/certifications${suffix}.json`),
+      fetchJSON(`src/js/constants/skills${suffix}.json`),
+      fetchJSON(`src/js/constants/projects${suffix}.json`),
+      fetchJSON(`src/js/constants/articles.json`),
+      fetchJSON(`src/js/constants/articles_ar.json`),
+      fetchJSON(`src/js/constants/journey${suffix}.json`),
+    ]);
+
   // Resolve featured reference from profile config
-  const allCollections = { experience, education, certifications, projects, articles };
+  const currentArticles = savedLang === 'ar' ? articles_ar : articles_en;
+  const allCollections = { experience, education, certifications, projects, articles: currentArticles };
   const featured = resolveFeatured(profile.featured, allCollections, assets);
 
   // Build primary phone convenience fields
@@ -119,9 +122,10 @@ export async function loadData() {
     personalSkills: skills.personalSkills || [],
     personalSkillsFull: skills.personalSkills || [],
     projects: resolvedProjects,
-    articles,
+    articles: savedLang === 'ar' ? articles_ar : articles_en,
+    articles_en,
+    articles_ar,
     professionalJourney: journey,
-    services,
     featured: featured ? [featured] : [],
   };
 
@@ -157,7 +161,10 @@ async function fetchJSON(url) {
     if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
     return await res.json();
   } catch (err) {
-    return Array.isArray(url) ? [] : {};
+    // Return empty array for collection files, empty object for others
+    const arrayFiles = ['articles', 'projects', 'experience', 'education', 'certifications'];
+    const isArrayFile = arrayFiles.some(f => url.includes(f));
+    return isArrayFile ? [] : {};
   }
 }
 

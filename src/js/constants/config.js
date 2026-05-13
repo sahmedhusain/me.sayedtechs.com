@@ -22,9 +22,7 @@ export const SKILLS_CATEGORY_MAPPING = {
   hardwareAndCoreEngineering: 'Hardware & Core Engineering',
   computerScienceConcepts: 'Computer Science Concepts',
   engineeringSoftware: 'Engineering Software',
-  languages: 'Programming Languages',
-  webTechnologies: 'Web Technologies',
-  systemsAndTools: 'Systems & Tools'
+  engineeringSoftware: 'Engineering Software'
 };
 
 export const SKILLS_CATEGORY_ICONS = {
@@ -40,9 +38,7 @@ export const SKILLS_CATEGORY_ICONS = {
   hardwareAndCoreEngineering: 'hardware-chip-outline',
   computerScienceConcepts: 'git-network-outline',
   engineeringSoftware: 'cube-outline',
-  languages: 'code-slash-outline',
-  webTechnologies: 'globe-outline',
-  systemsAndTools: 'construct-outline'
+  engineeringSoftware: 'cube-outline'
 };
 
 export const SKILLS_PRIORITY_ORDER = [
@@ -73,4 +69,15 @@ export const MONTHS_SHORT = {
   'November': 'NOV', 
   'December': 'DEC',
   'Present': 'PRESENT'
+};
+
+export const FORM_CONFIG = {
+  emailjs: {
+    serviceID: 'service_ewyv34a',
+    templateID: 'template_t785tqm',
+    publicKey: 'oa96Vl-iEwg8B57p1'
+  },
+  web3forms: {
+    accessKey: 'd6bf9c04-06f6-4151-bc76-eaee93370afa'
+  }
 };

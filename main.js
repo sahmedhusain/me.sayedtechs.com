@@ -9,7 +9,7 @@ import { renderArticlesSection } from './src/js/renderers/articles.js';
 import { renderProfessionalJourneySection } from './src/js/renderers/journey.js';
 import { renderContactSection, renderContactModal } from './src/js/renderers/contact.js';
 import { renderFooter, renderImagePreviewModal } from './src/js/renderers/footer.js';
-import { initializeEventListeners, initializeSkillsAnimations } from './src/js/events.js';
+import { initializeEventListeners, initializeSkillsAnimations, setActivePage, getPageFromLocation } from './src/js/events.js';
 
 window.handleImageError = handleImageError;
 window.getLogo = getLogo;
@@ -57,7 +57,7 @@ restorePathFromFallbackQuery();
 function loadResources() {
   // Google Fonts
   const fonts = document.createElement('link');
-  fonts.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&display=swap';
+  fonts.href = 'https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Fira+Code:wght@400;500&family=IBM+Plex+Sans+Arabic:wght@300;400;500;600;700&display=swap';
   fonts.rel = 'stylesheet';
   document.head.appendChild(fonts);
 
@@ -122,9 +122,6 @@ document.addEventListener('DOMContentLoaded', async () => {
   await loadData();
   const data = getData();
   
-  // Set dynamic document title
-  document.title = `${data.name} | ${data.title}`;
-
   // Render the complete app
   app.innerHTML = `
     <div class="main-content" style="max-width: 1024px; margin: 0 auto; padding-top: 10rem;">
@@ -224,4 +221,7 @@ document.addEventListener('DOMContentLoaded', async () => {
 
   // Initialize skills animations
   initializeSkillsAnimations();
+
+  // Set initial active page and sync title/UI
+  setActivePage(getPageFromLocation(), { updateHistory: false });
 });

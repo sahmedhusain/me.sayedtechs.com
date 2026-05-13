@@ -7,15 +7,38 @@
     "image": "https://images.unsplash.com/photo-1581092160562-40aa08e78837?auto=format&fit=crop&q=80&w=800",
     "desc": "A reflection on how my background in highly regulated fire safety systems translates to building reliable applications.",
     "readTime": "5 min read",
-    "tags": ["career-change", "engineering", "software"],
+    "tags": [
+      "career-change",
+      "engineering",
+      "software"
+    ],
     "content": [
-      { "type": "paragraph", "text": "When I first began my career as an electrical engineer specializing in fire safety systems, I never imagined that the discipline and rigor required in that field would become the foundation of my journey into software development." },
-      { "type": "image", "src": "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&q=80&w=1200", "caption": "Engineering rigor applied to software architecture.", "alt": "Engineering schematics" },
-      { "type": "heading", "level": 2, "text": "The Parallels Between Engineering and Code" },
-      { "type": "paragraph", "text": "Fire safety engineering and software engineering share a common DNA: both demand meticulous attention to detail, both operate under strict regulatory and quality constraints, and both require systems thinking—the ability to see how individual components interact within a larger whole." }
+      {
+        "type": "paragraph",
+        "text": "When I first began my career as an electrical engineer specializing in fire safety systems, I never imagined that the discipline and rigor required in that field would become the foundation of my journey into software development."
+      },
+      {
+        "type": "image",
+        "src": "https://images.unsplash.com/photo-1517077304055-6e89abbf09b0?auto=format&fit=crop&q=80&w=1200",
+        "caption": "Engineering rigor applied to software architecture.",
+        "alt": "Engineering schematics"
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "The Parallels Between Engineering and Code"
+      },
+      {
+        "type": "paragraph",
+        "text": "Fire safety engineering and software engineering share a common DNA: both demand meticulous attention to detail, both operate under strict regulatory and quality constraints, and both require systems thinking—the ability to see how individual components interact within a larger whole."
+      }
     ],
     "embeds": [
-      { "platform": "linkedin", "url": "https://www.linkedin.com/embed/feed/update/urn:li:share:7123456789012345678", "caption": "Sharing my transition journey on LinkedIn." }
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:share:7123456789012345678",
+        "caption": "Sharing my transition journey on LinkedIn."
+      }
     ]
   },
   {
@@ -26,12 +49,24 @@
     "platform": "youtube",
     "desc": "Insights on using WebSockets and Go to create fast, scalable concurrent chat platforms.",
     "readTime": "8 min read",
-    "tags": ["golang", "websockets", "real-time", "social-network"],
+    "tags": [
+      "golang",
+      "websockets",
+      "real-time",
+      "social-network"
+    ],
     "content": [
-      { "type": "paragraph", "text": "Building a real-time social network from scratch is one of the most challenging and rewarding projects a developer can undertake. It touches every layer of the stack—from database design to WebSocket management to responsive UI rendering." }
+      {
+        "type": "paragraph",
+        "text": "Building a real-time social network from scratch is one of the most challenging and rewarding projects a developer can undertake. It touches every layer of the stack—from database design to WebSocket management to responsive UI rendering."
+      }
     ],
     "embeds": [
-      { "platform": "youtube", "id": "dQw4w9WgXcQ", "caption": "Watch the technical breakdown on YouTube." }
+      {
+        "platform": "youtube",
+        "id": "dQw4w9WgXcQ",
+        "caption": "Watch the technical breakdown on YouTube."
+      }
     ]
   },
   {
@@ -42,12 +77,23 @@
     "platform": "linkedin",
     "desc": "How the rigor of electrical testing and fire safety protocols informs system design in high-performance software.",
     "readTime": "6 min read",
-    "tags": ["engineering", "safety", "system-design"],
+    "tags": [
+      "engineering",
+      "safety",
+      "system-design"
+    ],
     "content": [
-      { "type": "paragraph", "text": "The principles that govern safety-critical engineering systems have profound implications for how we design and build software." }
+      {
+        "type": "paragraph",
+        "text": "The principles that govern safety-critical engineering systems have profound implications for how we design and build software."
+      }
     ],
     "embeds": [
-       { "platform": "x", "url": "https://twitter.com/NASA/status/1785311145885065403", "caption": "Insights shared on X/Twitter." }
+      {
+        "platform": "x",
+        "url": "https://twitter.com/NASA/status/1785311145885065403",
+        "caption": "Insights shared on X/Twitter."
+      }
     ]
   },
   {
@@ -58,9 +104,16 @@
     "platform": "medium",
     "desc": "Why writing less code is often much harder than writing more, and how to master the art of minimalism.",
     "readTime": "4 min read",
-    "tags": ["clean-code", "best-practices", "software-craftsmanship"],
+    "tags": [
+      "clean-code",
+      "best-practices",
+      "software-craftsmanship"
+    ],
     "content": [
-      { "type": "paragraph", "text": "There's a famous quote often attributed to Blaise Pascal: 'I would have written a shorter letter, but I did not have the time.'" }
+      {
+        "type": "paragraph",
+        "text": "There's a famous quote often attributed to Blaise Pascal: 'I would have written a shorter letter, but I did not have the time.'"
+      }
     ],
     "embeds": []
   },
@@ -72,9 +125,17 @@
     "image": "https://images.unsplash.com/photo-1508514177221-188b1cf16e9d?auto=format&fit=crop&q=80&w=800",
     "desc": "An overview of solar PV installation standards and the technical challenges of grid integration in Bahrain.",
     "readTime": "12 min read",
-    "tags": ["solar", "renewable-energy", "electrical-engineering", "bahrain"],
+    "tags": [
+      "solar",
+      "renewable-energy",
+      "electrical-engineering",
+      "bahrain"
+    ],
     "content": [
-      { "type": "paragraph", "text": "Solar photovoltaic systems represent one of the most promising pathways to sustainable energy." }
+      {
+        "type": "paragraph",
+        "text": "Solar photovoltaic systems represent one of the most promising pathways to sustainable energy."
+      }
     ],
     "embeds": []
   }

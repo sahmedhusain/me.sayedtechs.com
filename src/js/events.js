@@ -1,7 +1,9 @@
 import { getData } from './constants/index.js';
+import { t } from './constants/i18n.js';
 import { generateVCard, generateQRCode } from './renderers/contact.js';
 import { renderArticleDetail } from './renderers/articles.js';
 import { ROUTE_PAGE_SET } from './routes.js';
+import { FORM_CONFIG } from './constants/config.js';
 
 const VALID_PAGES = ROUTE_PAGE_SET;
 
@@ -117,7 +119,7 @@ function getPathForPage(page) {
   return `${BASE_PATHNAME}/${page}`;
 }
 
-function getPageFromLocation() {
+export function getPageFromLocation() {
   const normalized = normalizePathname(window.location.pathname);
   const segments = normalized.split('/').filter(Boolean);
 
@@ -165,6 +167,15 @@ export function setActivePage(targetPage, options = {}) {
 
   if (!VALID_PAGES.has(pageId)) {
     pageId = 'home';
+  }
+
+  // Handle body overflow for contact page to disable scroll
+  if (pageId === 'contact') {
+    document.body.style.overflow = 'hidden';
+    document.documentElement.style.overflow = 'hidden';
+  } else {
+    document.body.style.overflow = '';
+    document.documentElement.style.overflow = '';
   }
 
   // If it's an article, render it
@@ -316,6 +327,19 @@ export function setActivePage(targetPage, options = {}) {
   } else if (activeIndicator) {
     activeIndicator.style.opacity = '0';
   }
+
+  // Update Document Title
+  const data = getData();
+  const pageKey = (pageId === 'project' || pageId === 'portfolio') ? 'projects' : (pageId === 'article' ? 'articles' : pageId);
+  let pageName = t('nav.' + pageKey);
+
+  if (pageId === 'article' && subId) {
+    pageName = subId;
+  } else if (pageId === 'project' && subId) {
+    pageName = subId;
+  }
+
+  document.title = `${data.name} | ${pageName}`;
 }
 
 
@@ -387,6 +411,18 @@ export function initializeEventListeners() {
     if (langText) {
       langText.textContent = savedLang === 'ar' ? 'Language' : 'اللغة';
     }
+    
+    // Apply direction on load
+    if (savedLang === 'ar') {
+      document.documentElement.setAttribute('lang', 'ar');
+      document.documentElement.setAttribute('dir', 'rtl');
+      document.body.classList.add('rtl');
+    } else {
+      document.documentElement.setAttribute('lang', 'en');
+      document.documentElement.setAttribute('dir', 'ltr');
+      document.body.classList.remove('rtl');
+    }
+
     langOptions.forEach(opt => {
       if (opt.getAttribute('data-lang') === savedLang) {
         opt.classList.add('active');
@@ -426,38 +462,43 @@ export function initializeEventListeners() {
       option.addEventListener('click', () => {
         const lang = option.getAttribute('data-lang');
 
-        // Update UI
-        if (langText) {
-          langText.textContent = lang === 'ar' ? 'Language' : 'اللغة';
-        }
-        langOptions.forEach(opt => {
-          opt.classList.remove('active');
-          opt.querySelector('ion-icon').style.opacity = '0';
-        });
-        option.classList.add('active');
-        option.querySelector('ion-icon').style.opacity = '1';
-        moveLangIndicator(option);
+        // 1. Show premium loader immediately
+        const showLoader = () => {
+          let loader = document.getElementById('lang-loader');
+          if (!loader) {
+            loader = document.createElement('div');
+            loader.id = 'lang-loader';
+            loader.className = 'lang-loader-overlay';
+            loader.innerHTML = `
+              <div class="lang-loader-content">
+                <div class="lang-loader-spinner"></div>
+                <div class="lang-loader-text" dir="${lang === 'ar' ? 'rtl' : 'ltr'}">${lang === 'ar' ? 'جاري تغيير اللغة...' : 'Changing language...'}</div>
+              </div>
+            `;
+            document.body.appendChild(loader);
+          }
 
-        // Apply Language
-        if (lang === 'ar') {
-          document.documentElement.setAttribute('lang', 'ar');
-          document.body.classList.add('rtl');
-        } else {
-          document.documentElement.setAttribute('lang', 'en');
-          document.body.classList.remove('rtl');
-        }
-
-        localStorage.setItem('lang', lang);
-
-        // Close Menu and reload to apply translations globally
-        setTimeout(() => {
-          langMenu.style.opacity = '0';
-          langMenu.style.transform = 'translateY(-10px)';
+          // Trigger layout changes only AFTER loader starts appearing to prevent flicker
           setTimeout(() => {
-            langMenu.style.display = 'none';
-            window.location.reload();
-          }, 400);
-        }, 200);
+            loader.classList.add('active');
+            
+            // Hide menu
+            langMenu.style.opacity = '0';
+            langMenu.style.transform = 'translateY(-10px)';
+
+            // Trigger exit animation on app
+            const app = document.getElementById('app');
+            if (app) app.classList.add('page-exit-active');
+
+            setTimeout(() => {
+              // Update storage and reload
+              localStorage.setItem('lang', lang);
+              window.location.reload();
+            }, 800);
+          }, 10);
+        };
+
+        showLoader();
       });
     });
 
@@ -1078,13 +1119,23 @@ export function initializeEventListeners() {
       };
 
       try {
-        // EmailJS configuration
-        const serviceID = 'service_ewyv34a'; // Replace with your EmailJS service ID
-        const templateID = 'template_t785tqm'; // Replace with your EmailJS template ID
-        const publicKey = 'oa96Vl-iEwg8B57p1'; // Replace with your EmailJS public key
+        const { emailjs: emailConfig, web3forms: web3Config } = FORM_CONFIG;
 
         // Send email using EmailJS
-        const response = await emailjs.send(serviceID, templateID, data, publicKey);
+        const emailPromise = emailjs.send(emailConfig.serviceID, emailConfig.templateID, data, emailConfig.publicKey);
+
+        // Send to Web3Forms for data logging
+        const web3FormData = new FormData(form);
+        web3FormData.append("access_key", web3Config.accessKey);
+        web3FormData.append("subject", `New Contact from Portfolio: ${data.fullname}`);
+        
+        const web3Promise = fetch("https://api.web3forms.com/submit", {
+          method: "POST",
+          body: web3FormData
+        });
+
+        // Wait for both to complete
+        const [emailResponse] = await Promise.all([emailPromise, web3Promise]);
 
         // Success
         formMessage.className = 'form-message success';
@@ -1137,8 +1188,17 @@ export function initializeEventListeners() {
 
     countryTrigger.addEventListener('click', (e) => {
       e.stopPropagation();
-      countryTrigger.classList.toggle('active');
-      if (countryTrigger.classList.contains('active')) {
+      const isActive = countryTrigger.classList.toggle('active');
+      const wrapper = countryTrigger.closest('.input-glass-wrapper');
+
+      // Clear other active wrappers/dropdowns first
+      document.querySelectorAll('.input-glass-wrapper').forEach(w => w.classList.remove('active-dropdown'));
+      document.querySelectorAll('.custom-country-selector').forEach(s => {
+        if (s !== countryTrigger) s.classList.remove('active');
+      });
+
+      if (isActive) {
+        if (wrapper) wrapper.classList.add('active-dropdown');
         const activeItem = countryTrigger.querySelector('.country-item.active');
         if (activeItem) {
           moveIndicator(activeItem);
@@ -1176,12 +1236,19 @@ export function initializeEventListeners() {
     });
 
     const listScroll = countryTrigger.querySelector('.country-list-scroll');
+    
+    document.addEventListener('click', (e) => {
+      if (!countryTrigger.contains(e.target)) {
+        countryTrigger.classList.remove('active');
+        const wrapper = countryTrigger.closest('.input-glass-wrapper');
+        if (wrapper) wrapper.classList.remove('active-dropdown');
+      }
+    });
+
     listScroll.addEventListener('mouseleave', () => {
       const activeItem = countryTrigger.querySelector('.country-item.active');
       if (activeItem) moveIndicator(activeItem);
     });
-
-    document.addEventListener('click', () => countryTrigger.classList.remove('active'));
 
     const searchInput = document.getElementById('countrySearch');
     if (searchInput) {
@@ -1190,8 +1257,10 @@ export function initializeEventListeners() {
         const term = e.target.value.toLowerCase();
         items.forEach(item => {
           const name = item.querySelector('.country-name-val').textContent.toLowerCase();
+          const nameEn = item.getAttribute('data-country-name-en') || '';
+          const nameAr = item.getAttribute('data-country-name-ar') || '';
           const code = item.getAttribute('data-country-code').toLowerCase();
-          if (name.includes(term) || code.includes(term)) {
+          if (name.includes(term) || nameEn.includes(term) || nameAr.includes(term) || code.includes(term)) {
             item.style.display = 'flex';
           } else {
             item.style.display = 'none';
@@ -1311,8 +1380,14 @@ export function initializeEventListeners() {
       articleCards.forEach(card => {
         const titleText = card.querySelector('.article-title-link').textContent.toLowerCase();
         const descText = card.querySelector('.article-desc').textContent.toLowerCase();
+        const titleEn = card.getAttribute('data-title-en') || '';
+        const descEn = card.getAttribute('data-desc-en') || '';
+        const titleAr = card.getAttribute('data-title-ar') || '';
+        const descAr = card.getAttribute('data-desc-ar') || '';
 
-        if (titleText.includes(query) || descText.includes(query)) {
+        if (titleText.includes(query) || descText.includes(query) || 
+            titleEn.includes(query) || descEn.includes(query) ||
+            titleAr.includes(query) || descAr.includes(query)) {
           card.style.display = 'flex';
           card.style.opacity = '1';
           visibleCount++;
@@ -1353,6 +1428,7 @@ export function initializeEventListeners() {
 
       const tooltip = document.createElement('div');
       tooltip.className = 'timeline-tooltip';
+      tooltip.dir = document.documentElement.dir || 'ltr';
       const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
       const separatorColor = isDark ? 'rgba(255, 255, 255, 0.15)' : 'rgba(0, 0, 0, 0.1)';
 

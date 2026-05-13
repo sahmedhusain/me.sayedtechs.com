@@ -1,11 +1,10 @@
 import { getData } from '../constants/index.js';
+import { t } from '../constants/i18n.js';
 import { renderInteractiveTechLogos, renderSkillBadges } from '../data/icons.js';
 import { SKILLS_CATEGORY_MAPPING, SKILLS_CATEGORY_ICONS, SKILLS_PRIORITY_ORDER } from '../constants/config.js';
 
 export function renderSkillsSection() {
   const data = getData();
-  const ui = data.ui_extras || {};
-  const skillsUi = ui.skills || {};
 
   // Build categories dynamically from technicalSkillsFull
   const categories = [];
@@ -13,7 +12,7 @@ export function renderSkillsSection() {
   // Add personal skills first
   if (data.personalSkills && data.personalSkills.length > 0) {
     categories.push({
-      title: skillsUi.categories.personal,
+      title: t('skills.categories.personal'),
       icon: 'person-outline',
       items: data.personalSkills,
       isTech: false,
@@ -27,7 +26,7 @@ export function renderSkillsSection() {
       if (Array.isArray(items) && items.length > 0) {
         const isNonTechCategory = SKILLS_PRIORITY_ORDER.includes(key) && key !== 'personal';
         categories.push({
-          title: skillsUi.categories[key],
+          title: t(`skills.categories.${key}`),
           icon: SKILLS_CATEGORY_ICONS[key],
           items,
           isTech: !isNonTechCategory,
@@ -62,9 +61,9 @@ export function renderSkillsSection() {
   });
 
   return `
-    <header id="skills-section" class="animate-entry" style="margin-bottom: 2rem; text-align: left; animation-delay: 0s;">
+    <header id="skills-section" class="animate-entry" style="margin-bottom: 2rem; animation-delay: 0s;">
       <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 1.5rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
-        ${skillsUi.title}
+        ${t('skills.title')}
       </h1>
     </header>
     <section class="skills">

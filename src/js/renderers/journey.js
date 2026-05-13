@@ -1,8 +1,9 @@
 import { getData } from '../constants/index.js';
-import { t } from '../constants/i18n.js';
+import { t, isRTL as checkRTL } from '../constants/i18n.js';
 
 export function generateTimelineSVG(filter = 'all') {
   const data = getData();
+  const isRTL = checkRTL();
   const journey = data.professionalJourney;
   const allItems = [
     ...journey.education.map(item => ({ ...item, category: 'education' })),
@@ -34,18 +35,26 @@ export function generateTimelineSVG(filter = 'all') {
     }
   }
   const svgWidth = 1800;
-  const svgHeight = 750; // Increased height to prevent overlap
-  const margin = { top: 150, right: 80, bottom: 50, left: 220 };
+  const svgHeight = 750;
+  const margin = isRTL 
+    ? { top: 150, right: 350, bottom: 50, left: 100 }
+    : { top: 150, right: 100, bottom: 50, left: 280 };
   const chartWidth = svgWidth - margin.left - margin.right;
   const chartHeight = svgHeight - margin.top - margin.bottom;
 
   const getXPosition = (dateStr) => {
-    if (!dateStr) return margin.left;
+    if (!dateStr) return isRTL ? margin.left + chartWidth : margin.left;
     const date = new Date(dateStr);
-    if (isNaN(date.getTime())) return margin.left;
+    if (isNaN(date.getTime())) return isRTL ? margin.left + chartWidth : margin.left;
     const totalTime = new Date(endYear, 0, 1).getTime() - new Date(startYear, 0, 1).getTime();
     const currentTime = date.getTime() - new Date(startYear, 0, 1).getTime();
-    return margin.left + (Math.max(0, Math.min(1, currentTime / totalTime)) * chartWidth);
+    const progress = Math.max(0, Math.min(1, currentTime / totalTime));
+    
+    // In RTL, 0 progress (start date) is on the RIGHT (margin.left + chartWidth)
+    // 1 progress (end date) is on the LEFT (margin.left)
+    return isRTL 
+      ? margin.left + ((1 - progress) * chartWidth)
+      : margin.left + (progress * chartWidth);
   };
 
   const getYPosition = (item) => {
@@ -56,128 +65,140 @@ export function generateTimelineSVG(filter = 'all') {
   };
 
   return `
-    <svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}" class="timeline-svg">
+    <svg width="${svgWidth}" height="${svgHeight}" viewBox="0 0 ${svgWidth} ${svgHeight}" class="timeline-svg" overflow="visible">
       <defs>
         <filter id="premiumGlow" x="-50%" y="-50%" width="200%" height="200%">
           <feGaussianBlur stdDeviation="5" result="blur" />
           <feComposite in="SourceGraphic" in2="blur" operator="over" />
         </filter>
-        <linearGradient id="axisGradient" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" stop-color="#fff" stop-opacity="0" />
-          <stop offset="15%" stop-color="#fff" stop-opacity="0.2" />
-          <stop offset="85%" stop-color="#fff" stop-opacity="0.2" />
-          <stop offset="100%" stop-color="#fff" stop-opacity="0" />
-        </linearGradient>
       </defs>
 
       <!-- Timeline Title -->
       <text x="${svgWidth / 2}" y="40" text-anchor="middle" fill="var(--text-primary)" 
-        font-size="36" font-weight="800" style="letter-spacing: -0.02em; opacity: 0.9;">${data.ui_extras?.journey?.timelineTitle}</text>
+        font-size="36" font-weight="800" style="letter-spacing: -0.02em; opacity: 0.9;">${t('journey.timelineTitle')}</text>
 
       <!-- Time Grid -->
       ${Array.from({ length: (endYear - startYear) + 1 }, (_, i) => {
-    const year = startYear + i;
-    const x = getXPosition(`${year}-01-01`);
-    const xHalf = getXPosition(`${year}-07-01`);
-    return `
+        const year = startYear + i;
+        const x = getXPosition(`${year}-01-01`);
+        const xHalf = getXPosition(`${year}-07-01`);
+        return `
           <!-- Full Year Line -->
           <line x1="${x}" y1="${margin.top - 40}" x2="${x}" y2="${margin.top + chartHeight + 40}" 
                 stroke="var(--accent)" stroke-width="1.2" opacity="0.2" />
           <text x="${x}" y="${margin.top - 60}" text-anchor="middle" fill="var(--text-primary)" 
                 font-size="22" font-weight="800" font-family="var(--font-mono)" opacity="0.9">${year}</text>
           
-          <!-- Mid-Year Line (Half-year intersection) -->
+          <!-- Mid-Year Line -->
           ${(() => {
-        if (year >= endYear) return '';
-        const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
-        const midLineColor = isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.25)';
-        return `<line x1="${xHalf}" y1="${margin.top - 40}" x2="${xHalf}" y2="${margin.top + chartHeight + 40}" 
-                      stroke="${midLineColor}" stroke-width="1.5" stroke-dasharray="2,4" />`;
-      })()}
+            if (year >= endYear) return '';
+            const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+            const midLineColor = isDark ? 'rgba(255, 255, 255, 0.2)' : 'rgba(0, 0, 0, 0.25)';
+            return `<line x1="${xHalf}" y1="${margin.top - 40}" x2="${xHalf}" y2="${margin.top + chartHeight + 40}" 
+                          stroke="${midLineColor}" stroke-width="1.5" stroke-dasharray="2,4" />`;
+          })()}
         `;
-  }).join('')}
+      }).join('')}
 
-      <!-- Category Tracks (Horizontal Lines) -->
+      <!-- Category Tracks -->
       ${(() => {
-      if (filter === 'all') {
-        return ['Education', 'Internships', 'Career', 'Certifications'].map((cat, i) => {
-          const y = margin.top + ((i + 1) * (chartHeight / 5));
+        const categories = [
+          { key: 'education', label: t('journey.filters.education') },
+          { key: 'internships', label: t('journey.filters.internships') },
+          { key: 'career', label: t('journey.filters.career') },
+          { key: 'certifications', label: t('journey.filters.certifications') }
+        ];
+
+        if (filter === 'all') {
+          return categories.map((cat, i) => {
+            const y = margin.top + ((i + 1) * (chartHeight / 5));
+            const lineX1 = 60;
+            const lineX2 = svgWidth - 60;
+            const labelX = isRTL ? svgWidth - 60 : 60;
+            const labelAnchor = 'start';
+            return `
+                <line x1="${lineX1}" y1="${y}" x2="${lineX2}" y2="${y}" 
+                      stroke="var(--text-secondary)" stroke-width="1.5" opacity="0.3" />
+                <text x="${labelX}" y="${y - 15}" text-anchor="${labelAnchor}" dominant-baseline="middle" 
+                      fill="var(--text-primary)" font-size="20" font-weight="800" opacity="1">${cat.label}</text>
+              `;
+          }).join('');
+        } else {
+          const activeCat = categories.find(c => c.key === filter);
+          const label = activeCat ? activeCat.label : filter;
+          const y = margin.top + chartHeight / 2;
+          const lineX1 = 60;
+          const lineX2 = svgWidth - 60;
+          const labelX = isRTL ? svgWidth - 60 : 60;
+          const labelAnchor = 'start';
           return `
-              <line x1="40" y1="${y}" x2="${margin.left + chartWidth}" y2="${y}" 
-                    stroke="var(--text-secondary)" stroke-width="1.5" opacity="0.5" />
-              <text x="40" y="${y - 15}" text-anchor="start" dominant-baseline="middle" 
-                    fill="var(--text-primary)" font-size="18" font-weight="800" opacity="1">${cat}</text>
+              <line x1="${lineX1}" y1="${y}" x2="${lineX2}" y2="${y}" 
+                    stroke="var(--text-secondary)" stroke-width="1.5" opacity="0.3" />
+              <text x="${labelX}" y="${y - 15}" text-anchor="${labelAnchor}" dominant-baseline="middle" 
+                    fill="var(--text-primary)" font-size="20" font-weight="800" opacity="1">${label}</text>
             `;
-        }).join('');
-      } else {
-        const catName = filter.charAt(0).toUpperCase() + filter.slice(1);
-        const y = margin.top + chartHeight / 2;
-        return `
-            <line x1="40" y1="${y}" x2="${margin.left + chartWidth}" y2="${y}" 
-                  stroke="var(--text-secondary)" stroke-width="1.5" opacity="0.5" />
-            <text x="40" y="${y - 15}" text-anchor="start" dominant-baseline="middle" 
-                  fill="var(--text-primary)" font-size="18" font-weight="800" opacity="1">${catName}</text>
-          `;
-      }
-    })()}
+        }
+      })()}
 
       <!-- Data Layer -->
       ${filteredItems.map(item => {
-      const x = getXPosition(item.startDate || item.date);
-      const y = getYPosition(item);
-      const isCurrent = item.current || (!item.endDate && new Date() < new Date(item.endDate));
-      const colorMap = {
-        education: '#2980b9', // Dark Blue
-        internships: '#e67e22', // Orange
-        career: '#27ae60', // Green
-        certifications: '#d63031' // Red
-      };
-      const color = colorMap[item.category] || 'var(--accent)';
-      const isBar = ['education', 'internships', 'career'].includes(item.category);
-      const endX = isBar && item.endDate ? getXPosition(item.endDate) : (isCurrent ? getXPosition(new Date()) : x);
+        const startX = getXPosition(item.startDate || item.date);
+        const y = getYPosition(item);
+        const isCurrent = item.current || (!item.endDate && new Date() < new Date(item.endDate));
+        const colorMap = {
+          education: '#2980b9',
+          internships: '#e67e22',
+          career: '#27ae60',
+          certifications: '#d63031'
+        };
+        const color = colorMap[item.category] || 'var(--accent)';
+        const isBar = ['education', 'internships', 'career'].includes(item.category);
+        const endX = isBar && item.endDate ? getXPosition(item.endDate) : (isCurrent ? getXPosition(new Date()) : startX);
 
-      const formatShortDate = (dateStr) => {
-        if (!dateStr) return '';
-        const date = new Date(dateStr);
-        if (isNaN(date.getTime())) return dateStr;
-        return date.toLocaleDateString('en-US', { month: 'short', year: 'numeric' });
-      };
+        const formatShortDate = (dateStr) => {
+          if (!dateStr) return '';
+          const date = new Date(dateStr);
+          if (isNaN(date.getTime())) return dateStr;
+          return date.toLocaleDateString(isRTL ? 'ar-SA' : 'en-US', { month: 'short', year: 'numeric' });
+        };
 
-      if (isBar) {
-        const barWidth = Math.max(40, endX - x);
-        const barHeight = 22;
-        const start = formatShortDate(item.startDate || item.date);
-        const end = isCurrent ? 'Present' : formatShortDate(item.endDate);
-        const dateRange = `${start}${end ? ' - ' + end : ''}`;
+        if (isBar) {
+          // In RTL, startX > endX if startDate < endDate
+          const x = isRTL ? endX : startX;
+          const barWidth = Math.abs(endX - startX);
+          const barHeight = 22;
+          const start = formatShortDate(item.startDate || item.date);
+          const end = isCurrent ? (isRTL ? 'الحالي' : 'Present') : formatShortDate(item.endDate);
+          const dateRange = `${start} — ${end}`;
 
-        return `
-            <g class="timeline-bar-group timeline-item-trigger" 
-               data-title="${item.title}" 
-               data-subtitle="${item.company || item.institution || item.issuer || ''}" 
-               data-date="${dateRange}"
-               style="cursor: pointer;">
-              <rect x="${x}" y="${y - (barHeight / 2)}" width="${barWidth}" height="${barHeight}" rx="${barHeight / 2}"
-                    fill="${color}" opacity="${isCurrent ? '1' : '0.8'}" />
-            </g>
-          `;
-      } else {
-        return `
-            <circle cx="${x}" cy="${y}" r="11" fill="${color}" opacity="0.9" 
-                    class="timeline-item-trigger"
-                    data-title="${item.title}" 
-                    data-subtitle="${item.company || item.institution || item.issuer || ''}" 
-                    data-date="${formatShortDate(item.date)}"
-                    style="cursor: pointer;" />
-          `;
-      }
-    }).join('')}
+          return `
+              <g class="timeline-bar-group timeline-item-trigger" 
+                 data-title="${item.title}" 
+                 data-subtitle="${item.company || item.institution || item.issuer || ''}" 
+                 data-date="${dateRange}"
+                 style="cursor: pointer;">
+                <rect x="${x}" y="${y - (barHeight / 2)}" width="${Math.max(40, barWidth)}" height="${barHeight}" rx="${barHeight / 2}"
+                      fill="${color}" opacity="${isCurrent ? '1' : '0.8'}" />
+              </g>
+            `;
+        } else {
+          return `
+              <circle cx="${startX}" cy="${y}" r="11" fill="${color}" opacity="0.9" 
+                      class="timeline-item-trigger"
+                      data-title="${item.title}" 
+                      data-subtitle="${item.company || item.institution || item.issuer || ''}" 
+                      data-date="${formatShortDate(item.date)}"
+                      style="cursor: pointer;" />
+            `;
+        }
+      }).join('')}
 
       <!-- Vertical Current Date Marker -->
       ${(() => {
-      const currentX = getXPosition(new Date().toISOString().split('T')[0]);
-      return `<line x1="${currentX}" y1="${margin.top - 40}" x2="${currentX}" y2="${margin.top + chartHeight + 40}" 
-                    stroke="#ff4d4d" stroke-width="3" stroke-dasharray="8,4" opacity="0.8" />`;
-    })()}
+        const currentX = getXPosition(new Date().toISOString().split('T')[0]);
+        return `<line x1="${currentX}" y1="${margin.top - 40}" x2="${currentX}" y2="${margin.top + chartHeight + 40}" 
+                      stroke="#ff4d4d" stroke-width="3" stroke-dasharray="8,4" opacity="0.8" />`;
+      })()}
     </svg>
 `;
 }
@@ -186,17 +207,16 @@ window.generateTimelineSVG = generateTimelineSVG;
 
 export function renderProfessionalJourneySection() {
   const data = getData();
+  const isRTL = checkRTL();
   const journey = data.professionalJourney;
-  const ui = data.ui_extras || {};
-  const journeyUi = ui.journey || {};
   const svgContent = window.generateTimelineSVG('all');
 
   return `
-    <header class="animate-entry" style="margin-bottom: 1.2rem; text-align: left; animation-delay: 0s;">
+    <header class="animate-entry" style="margin-bottom: 1.2rem; text-align: ${isRTL ? 'right' : 'left'}; animation-delay: 0s;">
       <h1 style="font-size: 2.2rem; font-weight: 800; color: var(--text-primary); margin-bottom: 0.75rem; font-family: var(--font-sans); position: relative; letter-spacing: -0.02em;">
         ${t('journey.title')}
       </h1>
-      <p class="section-subtitle" style="font-size: 1.15rem; line-height: 1.7; color: var(--text-secondary); max-width: 850px; font-family: var(--font-sans);">
+      <p class="section-subtitle" style="font-size: 1.15rem; line-height: 1.7; color: var(--text-secondary); max-width: 850px; font-family: var(--font-sans); margin-left: ${isRTL ? 'auto' : '0'};">
         ${t('journey.subtitle')}
       </p>
     </header>

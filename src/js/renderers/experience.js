@@ -82,7 +82,7 @@ export function renderExperienceCardContent(job) {
         <div class="experience-overview" style="margin: 0 0 1.5rem 0;">
           <div class="overview-header">
             <ion-icon name="information-circle-outline"></ion-icon>
-            <span>Role Overview</span>
+            <span>${t('experience.roleOverview')}</span>
           </div>
           <p class="overview-text">${job.roleOverview}</p>
         </div>
@@ -95,7 +95,7 @@ export function renderExperienceCardContent(job) {
           <div class="experience-section">
             <h4 class="experience-section-title">
               <ion-icon name="${sectionIcon}"></ion-icon>
-              ${sectionTitle}
+              ${t(`experience.sections.${sectionName}`) || sectionTitle}
             </h4>
             <ul class="experience-points">
               ${points.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -106,7 +106,7 @@ export function renderExperienceCardContent(job) {
         <div class="experience-section">
           <h4 class="experience-section-title">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
-            ${getData().ui_extras?.experience?.keyResponsibilities}
+            ${t('experience.keyResponsibilities')}
           </h4>
           <ul class="experience-points">
             ${job.points.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -116,7 +116,7 @@ export function renderExperienceCardContent(job) {
           <div class="experience-section">
             <h4 class="experience-section-title">
               <ion-icon name="build-outline"></ion-icon>
-              ${getData().ui_extras?.experience?.keyProjects}
+              ${t('experience.keyProjects')}
             </h4>
             <ul class="experience-points">
               ${job.keyProjects.map(project => `<li class="experience-point">${project}</li>`).join('')}
@@ -200,7 +200,7 @@ export function renderInternshipCardContent(intern) {
           <div class="experience-meta-row">
             <div class="meta-pill date-pill">
               <ion-icon name="calendar-outline"></ion-icon>
-              <span>${shortenDate(intern.startDate)} - ${shortenDate(intern.endDate)}</span>
+              <span>${shortenDate(intern.startDate)} — ${shortenDate(intern.endDate)}</span>
             </div>
             <div class="meta-pill location-pill">
               <ion-icon name="location-outline"></ion-icon>
@@ -215,7 +215,7 @@ export function renderInternshipCardContent(intern) {
         <div class="experience-overview" style="margin: 0 0 1.5rem 0;">
           <div class="overview-header">
             <ion-icon name="information-circle-outline"></ion-icon>
-            <span>Role Overview</span>
+            <span>${t('experience.roleOverview')}</span>
           </div>
           <p class="overview-text">${intern.roleOverview}</p>
         </div>
@@ -256,7 +256,7 @@ export function renderEducationCardContent(edu) {
       ${edu.certificate ? `
           <a href="${edu.certificate}" target="_blank" class="header-action-btn">
           <ion-icon name="document-text-outline"></ion-icon>
-          <span>${getData().ui_extras?.experience?.view}</span>
+          <span>${t('experience.view')}</span>
         </a>` : ''}
     </div>
 
@@ -279,7 +279,7 @@ export function renderEducationCardContent(edu) {
         <div class="experience-section">
           <h4 class="experience-section-title">
             <ion-icon name="school-outline"></ion-icon>
-            ${getData().ui_extras?.experience?.educationHighlights}
+            ${t('experience.educationHighlights')}
           </h4>
           <ul class="experience-points">
             ${edu.description.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -306,15 +306,15 @@ export function renderCertificationCardContent(cert) {
           </p>
           <div class="experience-meta-row">
              ${cert.id ? `<div class="meta-pill"><ion-icon name="${cert.type === 'License' ? 'document-text-outline' : 'ribbon-outline'}"></ion-icon> ID: ${cert.id}</div>` : ''}
-             ${cert.issued ? `<div class="meta-pill"><ion-icon name="calendar-outline"></ion-icon> Issued: ${shortenDate(cert.issued)}</div>` : ''}
-             ${cert.expires ? `<div class="meta-pill" style="${isExpired ? 'color: #ef4444;' : ''}"><ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon> ${isExpired ? (getData().ui_extras?.experience?.expired) + ' ' + shortenDate(cert.expires) : (getData().ui_extras?.experience?.expires) + ' ' + shortenDate(cert.expires)}</div>` : ''}
+             ${cert.issued ? `<div class="meta-pill"><ion-icon name="calendar-outline"></ion-icon> ${t('experience.issued')} ${shortenDate(cert.issued)}</div>` : ''}
+             ${cert.expires ? `<div class="meta-pill" style="${isExpired ? 'color: #ef4444;' : ''}"><ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon> ${isExpired ? (t('experience.expired')) + ' ' + shortenDate(cert.expires) : (t('experience.expires')) + ' ' + shortenDate(cert.expires)}</div>` : ''}
           </div>
         </div>
       </div>
       ${cert.pdfUrl ? `
         <a href="${cert.pdfUrl}" target="_blank" class="header-action-btn">
           <ion-icon name="document-text-outline"></ion-icon>
-          <span>View</span>
+          <span>${t('experience.view')}</span>
         </a>` : ''}
     </div>
     ${cert.description ? `
@@ -322,7 +322,7 @@ export function renderCertificationCardContent(cert) {
       <div class="experience-section">
         <h4 class="experience-section-title">
           <ion-icon name="information-circle-outline"></ion-icon>
-          About This Credential
+          ${t('experience.aboutThisCredential')}
         </h4>
         <ul class="experience-points">
           ${cert.description.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -332,7 +332,7 @@ export function renderCertificationCardContent(cert) {
     ${cert.courses ? `
       <div class="experience-card-content" style="margin-top: 1rem;">
          <div class="experience-section">
-            <h4 class="experience-section-title"><ion-icon name="book-outline"></ion-icon> Courses</h4>
+            <h4 class="experience-section-title"><ion-icon name="book-outline"></ion-icon> ${t('experience.courses')}</h4>
             <div class="cert-courses" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
               ${cert.courses.map(course => `<span class="cert-course-item">${course}</span>`).join('')}
             </div>
@@ -355,12 +355,10 @@ export function generateSectionHTML({
   hideHeader = false
 }) {
   const iconName = SECTION_ICONS[title] || 'layers-outline';
-  const ui = getData().ui_extras || {};
-  const expUi = ui.experience || {};
-  const displayTitle = title === 'Career' ? (expUi.career || title)
-    : title === 'Internships' ? (expUi.internships || title)
-      : title === 'Education' ? (expUi.education || title)
-        : title === 'Certifications & Licenses' ? (expUi.certifications || title)
+  const displayTitle = title === 'Career' ? t('journey.filters.career')
+    : title === 'Internships' ? t('journey.filters.internships')
+      : title === 'Education' ? t('journey.filters.education')
+        : title === 'Certifications & Licenses' ? t('journey.filters.certifications')
           : title;
 
   // 1. Grid View (Sidebar) - ACTIVE by default
