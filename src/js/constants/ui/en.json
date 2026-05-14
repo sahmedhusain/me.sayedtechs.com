@@ -48,13 +48,15 @@
     "backToArticles": "Back to Articles",
     "articleNotFound": "Article not found",
     "noArticlesFound": "Something's brewing! ☕ No articles here yet, but stay tuned for fresh insights.",
-    "categories": [
-      "All",
-      "Technology",
-      "Engineering",
-      "Career",
-      "Life"
-    ],
+    "categories": {
+      "All": "All",
+      "Technology": "Technology",
+      "Engineering": "Engineering",
+      "Events": "Events",
+      "Business": "Business",
+      "Career": "Career",
+      "Life": "Life"
+    },
     "viewOn": "View content on",
     "code": "Code",
     "date": "Date",

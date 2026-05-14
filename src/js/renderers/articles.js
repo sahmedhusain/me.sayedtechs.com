@@ -2,16 +2,52 @@ import { getData } from '../constants/index.js';
 import { t } from '../constants/i18n.js';
 import { resolvePath } from '../utils/paths.js';
 
+// LinkedIn Embed Auto-Resize Support
+window.addEventListener('message', function(e) {
+  if (e.origin.includes('linkedin.com')) {
+    try {
+      const data = typeof e.data === 'string' ? JSON.parse(e.data) : e.data;
+      if (data.type === 'resize' || data.height) {
+        const iframes = document.querySelectorAll('iframe[src*="linkedin.com/embed"]');
+        for (const iframe of iframes) {
+          if (iframe.contentWindow === e.source) {
+            const newHeight = data.height || data.scrollHeight;
+            if (newHeight) {
+              iframe.style.height = (newHeight + 50) + 'px';
+              // Also update parent container if needed
+              if (iframe.parentElement) iframe.parentElement.style.height = 'auto';
+            }
+            break;
+          }
+        }
+      }
+    } catch (err) {}
+  }
+}, false);
+
 /**
  * Renders the main Articles list page.
  */
 export function renderArticlesSection() {
   const data = getData();
-  const categories = t('articles.categories');
+  const categoryMapping = t('articles.categories') || {};
+  const staticCategoryKeys = Object.keys(categoryMapping);
+  const articleCategoryKeys = [...new Set(data.articles.map(article => article.category))];
+  
+  // Combine all unique keys, preserving order of static keys
+  const categoryKeys = [...staticCategoryKeys];
+  articleCategoryKeys.forEach(key => {
+    if (!categoryKeys.includes(key)) {
+      categoryKeys.push(key);
+    }
+  });
 
-  const categoryTabs = categories.map((cat, index) => `
-    <button class="article-tab ${index === 0 ? 'active' : ''}" data-filter="${index === 0 ? 'all' : cat.toLowerCase()}">${cat}</button>
-  `).join('');
+  const categoryTabs = categoryKeys.map((key, index) => {
+    const label = categoryMapping[key] || key;
+    return `
+      <button class="article-tab ${index === 0 ? 'active' : ''}" data-filter="${index === 0 ? 'all' : key.toLowerCase()}">${label}</button>
+    `;
+  }).join('');
 
   const noArticlesMessage = `<div id="noArticlesMessage" class="no-content-message animate-entry" style="grid-column: 1 / -1; text-align: center; padding: 4rem 2rem; color: var(--text-secondary); font-style: italic; border: 1px dashed var(--card-border); border-radius: 1.5rem; ${data.articles.length > 0 ? 'display: none;' : ''}">
          <ion-icon name="document-text-outline" style="font-size: 3rem; margin-bottom: 1rem; opacity: 0.5;"></ion-icon>
@@ -32,7 +68,7 @@ export function renderArticlesSection() {
           <div class="article-meta">
             <span class="article-date">${new Date(article.date).toLocaleDateString(document.documentElement.dir === 'rtl' ? 'ar-SA' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
             <span class="article-dot">•</span>
-            <span class="article-category">${article.category}</span>
+            <span class="article-category">${categoryMapping[article.category] || article.category}</span>
             ${(article.embeds && article.embeds.length > 0) ? `
               <span class="article-dot">•</span>
               <span class="article-platform-inline" title="${article.embeds[0].platform || article.embeds[0].provider}">
@@ -89,6 +125,7 @@ export function renderArticleDetail(id) {
   const data = getData();
   const ui = data.ui_extras || {};
   const articlesUi = ui.articles || {};
+  const categoryMapping = t('articles.categories') || {};
   const article = data.articles.find(a => String(a.id) === String(id));
   
   if (!article) {
@@ -114,7 +151,7 @@ export function renderArticleDetail(id) {
           </button>
           
           <div class="project-title-box">
-             <div class="project-detail-category">${article.category}</div>
+             <div class="project-detail-category">${categoryMapping[article.category] || article.category}</div>
              <h2 class="project-detail-title">${article.title}</h2>
              <p class="project-detail-subtitle">${article.desc}</p>
           </div>
@@ -168,7 +205,7 @@ function renderArticleContent(blocks) {
       }
 
       case 'image': {
-        const src = block.src || '';
+        const src = resolvePath(block.src || '');
         const captionHtml = block.caption
           ? `<figcaption class="article-caption">${block.caption}</figcaption>`
           : '';
@@ -222,8 +259,16 @@ function renderEmbed(block) {
     case 'linkedin':
       const linkedinUrl = block.url || block.src || '';
       return `
-        <div class="embed-container linkedin">
-          <iframe src="${linkedinUrl}" height="500" width="100%" frameborder="0" allowfullscreen></iframe>
+        <div class="embed-wrapper linkedin-wrapper">
+          <div class="embed-container linkedin">
+            <iframe 
+              src="${linkedinUrl}" 
+              style="width: 100%; height: 1000px; border: none; display: block; transition: height 0.5s ease-in-out;"
+              frameborder="0" 
+              allowfullscreen="" 
+              scrolling="no"
+              title="LinkedIn Post"></iframe>
+          </div>
           ${captionHtml}
         </div>
       `;

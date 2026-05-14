@@ -1,3 +1,662 @@
 [
-  
+  {
+    "id": 1,
+    "title": "The Evolution of JavaScript and Modern Web Frameworks",
+    "date": "2025-10-15T10:00:00.000Z",
+    "category": "Technology",
+    "image": "",
+    "desc": "A deep dive into how modern frontend frameworks have revolutionized DOM manipulation, and my strategic approach to choosing the right tool for scalable enterprise UIs.",
+    "readTime": "4 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "The frontend landscape moves at breakneck speed. Moving from vanilla JavaScript to modern frameworks has completely shifted how we think about state management and component reusability. In this post, I break down the core philosophies behind today's leading frameworks and how they impact development velocity and application performance."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7410753185163857920",
+        "caption": "Join the discussion on frontend architectures."
+      }
+    ]
+  },
+  {
+    "id": 2,
+    "title": "Scaling Full-Stack Applications with Go and WebSockets",
+    "date": "2025-10-14T10:00:00.000Z",
+    "category": "Technology",
+    "image": "",
+    "desc": "Technical insights on leveraging Go's concurrency model alongside WebSockets to build highly responsive, low-latency applications.",
+    "readTime": "5 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "When building real-time features like live chat or system monitoring dashboards, standard HTTP polling just doesn't cut it. Utilizing Go (Golang) and its lightweight Goroutines alongside WebSockets allows us to handle thousands of concurrent connections with minimal memory overhead. Here is a look at my recent implementation."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7410745307053047809",
+        "caption": "My technical breakdown of Go WebSockets."
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "title": "Mastering the Modern Stack: React, TypeScript, and GraphQL",
+    "date": "2025-10-13T10:00:00.000Z",
+    "category": "Technology",
+    "image": "https://images.unsplash.com/photo-1633356122544-f134324a6cee?auto=format&fit=crop&q=80&w=800",
+    "desc": "Why combining React's UI components, TypeScript's strict typing, and GraphQL's precise data fetching creates the ultimate developer experience.",
+    "readTime": "6 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Over-fetching data is a common bottleneck in REST APIs. By integrating GraphQL with React and wrapping the entire ecosystem in TypeScript, we achieve end-to-end type safety and highly optimized data payloads. This combination has drastically reduced runtime errors in my recent projects."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7410730690222374912",
+        "caption": "Insights on the React + GraphQL ecosystem."
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "title": "Architecting Real-Time Systems in Go",
+    "date": "2025-10-12T10:00:00.000Z",
+    "category": "Technology",
+    "image": "",
+    "desc": "A comprehensive look at backend engineering with Go, focusing on building resilient real-time communication layers for web apps.",
+    "readTime": "4 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Real-time web development requires a shift in how we handle server resources. Go provides the perfect standard library for this. From channels to mutexes, I explored how to safely manage shared state across multiple concurrent real-time web clients without causing race conditions."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7410727203031748608",
+        "caption": "Read my thoughts on Go backend engineering."
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "title": "Key Takeaways from AICS 2025: Cybersecurity in Bahrain",
+    "date": "2025-09-10T10:00:00.000Z",
+    "category": "Events",
+    "image": "",
+    "desc": "Reflecting on the Arab International Cybersecurity Summit (AICS) 2025 in Bahrain, exploring zero-trust architecture and regional threat intelligence.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "The AICS 2025 summit brought together top minds to tackle the evolving digital threat landscape. It was fascinating to see the convergence of AI-driven threat detection and robust networking protocols, emphasizing that security must be integrated at the code level, not just as an afterthought."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7393166957514158080",
+        "caption": "My highlights from AICS 2025 in Bahrain."
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "title": "Startup 2025 - Bahrain Team Building",
+    "date": "2025-08-20T10:00:00.000Z",
+    "category": "Events",
+    "image": "",
+    "desc": "Sharing a recent professional update and key insights from my journey.",
+    "readTime": "1 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Startup 2025 - Bahrain Team Building was a fantastic event that brought together talented individuals to connect, collaborate, and grow. It was a great opportunity to network with like-minded people and learn from each other's experiences."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7384192120150020096",
+        "caption": "Startup Bahrain Event"
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "title": "Exploring Innovations at Intersec Saudi Arabia, Riyadh",
+    "date": "2025-07-15T10:00:00.000Z",
+    "category": "Events",
+    "image": "",
+    "desc": "An insider’s perspective on the cutting-edge fire safety and security technologies showcased by top exhibitors in Riyadh.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Intersec Saudi Arabia serves as a massive hub for technological advancements in safety. From smart fire detection grids to IoT-integrated alarm systems, the technological leap in life safety systems presented by top exhibitors in Riyadh was truly inspiring."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7379394277543440384",
+        "caption": "My review of Intersec Saudi Arabia."
+      }
+    ]
+  },
+  {
+    "id": 8,
+    "title": "LIFECO UK: Action-Packed Day 2 at Intersec KSA 2025",
+    "date": "2025-07-14T10:00:00.000Z",
+    "category": "Events",
+    "image": "src/assets/lifeco_uk_logo.jpeg",
+    "desc": "A recap of a highly successful Day 2 representing LIFECO UK, engaging with industry leaders on advanced fire protection engineering.",
+    "readTime": "2 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Day 2 at the LIFECO UK booth was phenomenal. We had the opportunity to demonstrate our UL-listed and FM-approved fire pump controllers and extinguishing systems to key contractors and consultants shaping the future infrastructure of Saudi Arabia."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7378847183082725376",
+        "caption": "Day 2 highlights from the LIFECO UK booth."
+      }
+    ]
+  },
+  {
+    "id": 9,
+    "title": "Showcasing LIFECO UK's Fire Safety Excellence",
+    "date": "2025-07-13T10:00:00.000Z",
+    "category": "Engineering",
+    "image": "",
+    "desc": "Highlighting our commitment to life preservation through LIFECO UK's state-of-the-art fire safety systems at Intersec KSA.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Safety is an uncompromising field. Exhibiting LIFECO UK’s comprehensive range of fire protection systems reinforced our global mission. We showcased everything from intelligent addressable fire alarm panels to robust mechanical suppression systems designed for extreme environments."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7378359836616527872",
+        "caption": "Showcasing LIFECO UK's systems."
+      }
+    ]
+  },
+  {
+    "id": 10,
+    "title": "Achieving a New Professional Certification",
+    "date": "2025-03-10T10:00:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "Celebrating a new milestone in continuous learning, expanding my technical toolkit with a newly obtained certification.",
+    "readTime": "2 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "In the tech and engineering sectors, resting on your laurels is not an option. I am thrilled to announce the completion of my latest certification, representing months of rigorous study, practical labs, and a commitment to staying at the forefront of industry standards."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7305244121508589572",
+        "caption": "Sharing my new certification on LinkedIn."
+      }
+    ]
+  },
+  {
+    "id": 11,
+    "title": "LIFECO at Intersec 2025: Leading the Global Safety Standard",
+    "date": "2025-01-15T10:00:00.000Z",
+    "category": "Events",
+    "image": "",
+    "desc": "A comprehensive overview of LIFECO's dominant presence at Intersec 2025, setting the benchmark for the fire and safety industry.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Intersec 2025 was a monumental event for LIFECO. It provided an unparalleled platform to demonstrate our leadership in the fire safety domain. From engaging with global distributors to unveiling our newest product lines, the momentum was incredible."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7285689079474626560",
+        "caption": "LIFECO's global presence at Intersec 2025."
+      }
+    ]
+  },
+  {
+    "id": 12,
+    "title": "Unforgettable Highlights from the LIFECO UK Booth",
+    "date": "2025-01-14T10:00:00.000Z",
+    "category": "Events",
+    "image": "",
+    "desc": "A visual recap and summary of the key client interactions and product demonstrations at LIFECO UK’s Intersec 2025 exhibition.",
+    "readTime": "2 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Connecting face-to-face with industry professionals is irreplaceable. These highlights capture the vibrant energy of our booth as we discussed complex safety requirements and engineered solutions with delegates from around the world."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7285675866527817729",
+        "caption": "Highlights from our Intersec exhibition."
+      }
+    ]
+  },
+  {
+    "id": 13,
+    "title": "Networking and Innovations: LIFECO UK Moments",
+    "date": "2025-01-13T10:00:00.000Z",
+    "category": "Events",
+    "image": "",
+    "desc": "Reflecting on the valuable partnerships forged and technical discussions held during the Intersec 2025 trade show.",
+    "readTime": "2 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Behind every great engineering solution is a strong partnership. Sharing moments from Intersec where we sat down with contractors and engineers to deeply understand their challenges and align them with LIFECO UK’s robust product portfolio."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7285338454077362178",
+        "caption": "Valuable networking moments at Intersec."
+      }
+    ]
+  },
+  {
+    "id": 14,
+    "title": "The Strength Behind the Brand: The LIFECO UK Team",
+    "date": "2025-01-12T10:00:00.000Z",
+    "category": "Events",
+    "image": "",
+    "desc": "A tribute to the hard work, technical expertise, and dedication of the LIFECO UK team that made Intersec 2025 a massive success.",
+    "readTime": "2 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Products don't sell themselves; people do. The success of our exhibition was driven entirely by the relentless dedication of the LIFECO UK team. It was an honor to stand shoulder-to-shoulder with such a talented group of professionals."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7284945954246463490",
+        "caption": "Proud of the LIFECO UK team."
+      }
+    ]
+  },
+  {
+    "id": 15,
+    "title": "Advancing Fire Safety Standards in KSA",
+    "date": "2024-10-15T10:00:00.000Z",
+    "category": "Engineering",
+    "image": "",
+    "desc": "Insights from collaborative discussions on enhancing fire safety protocols and implementing robust systems in the Saudi market.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "With the rapid infrastructure expansion in Saudi Arabia, maintaining world-class safety standards is critical. Engaging in deep technical discussions alongside colleagues like Samer Al Khatib highlighted how LIFECO UK is actively shaping these safety protocols."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7248381637770571777",
+        "caption": "Collaborative discussions in KSA."
+      }
+    ]
+  },
+  {
+    "id": 16,
+    "title": "Strategic Partnership: LIFECO UK & Almoayyed Air Conditioning",
+    "date": "2024-09-20T10:00:00.000Z",
+    "category": "Business",
+    "image": "",
+    "desc": "Announcing a major business milestone as LIFECO UK partners with Almoayyed Air Conditioning to expand operations in Bahrain.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Integrating top-tier fire safety systems with leading HVAC solutions is a game-changer for building management. I am immensely proud to announce LIFECO UK's strategic partnership with Almoayyed Air Conditioning, a collaboration set to elevate safety and building infrastructure standards across Bahrain."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7242858703568224258",
+        "caption": "Announcing our partnership with Almoayyed."
+      }
+    ]
+  },
+  {
+    "id": 17,
+    "title": "Celebrating Success: The Joint Corporate Event in Bahrain",
+    "date": "2024-09-18T10:00:00.000Z",
+    "category": "Events",
+    "image": "",
+    "desc": "Inside the launch event celebrating the powerful synergy between LIFECO UK and Almoayyed Air Conditioning.",
+    "readTime": "2 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "The corporate launch event in Bahrain was a tremendous success. Gathering engineers, project managers, and stakeholders under one roof allowed us to outline our shared vision: delivering seamless, integrated life safety and climate control solutions to the region's most ambitious construction projects."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7242505700084510720",
+        "caption": "Highlights from our joint corporate event."
+      }
+    ]
+  },
+  {
+    "id": 18,
+    "title": "Embarking on a New Professional Chapter",
+    "date": "2024-06-05T10:00:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "Announcing the start of a new role, marking a significant transition in my engineering and technology career path.",
+    "readTime": "2 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Growth often requires stepping into new environments and embracing fresh challenges. I am thrilled to officially announce my new position. I look forward to bringing my background in systems engineering and software development to this new team to drive impactful results."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7204034995810656256",
+        "caption": "Sharing my career update."
+      }
+    ]
+  },
+  {
+    "id": 19,
+    "title": "Diving into the Startup 2024 - Bahrain Ecosystem",
+    "date": "2024-05-20T10:00:00.000Z",
+    "category": "Business",
+    "image": "",
+    "desc": "An analysis of the vibrant entrepreneurship and digital innovation ecosystem cultivated by Startup Bahrain.",
+    "readTime": "4 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Bahrain is rapidly positioning itself as a premier tech hub in the region. Attending and engaging with the Startup Bahrain community revealed a highly supportive ecosystem for founders and software developers alike. From fintech to sustainable tech, the drive for digital transformation here is palpable."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7198036689225732097",
+        "caption": "Exploring Startup Bahrain."
+      }
+    ]
+  },
+  {
+    "id": 20,
+    "title": "Graduation Day",
+    "date": "2023-01-20T10:00:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "Celebrating the successful completion of my academic journey and the transition to a professional career.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Graduation marks the end of an incredible academic chapter and the beginning of a lifelong professional journey. The discipline, analytical thinking, and problem-solving skills honed during my studies have prepared me to tackle complex engineering and software challenges in the real world."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:7023224873925718016",
+        "caption": "Graduation Day."
+      }
+    ]
+  },
+  {
+    "id": 21,
+    "title": "Mastering AI in Business: Certification Complete",
+    "date": "2021-08-12T10:00:00.000Z",
+    "category": "Technology",
+    "image": "",
+    "desc": "Earning the 'AI in Business Essential' certification to better integrate machine learning strategies into enterprise operations.",
+    "readTime": "2 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Artificial intelligence is shifting from a buzzword to a core business utility. Completing the AI in Business Essential program has equipped me with the strategic framework needed to identify where automation and predictive modeling can generate the most ROI in technical operations."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6831496640658997248",
+        "caption": "My AI in Business certification."
+      }
+    ]
+  },
+  {
+    "id": 22,
+    "title": "The Pragmatic Reality of Artificial Intelligence",
+    "date": "2021-08-12T11:00:00.000Z",
+    "category": "Technology",
+    "image": "",
+    "desc": "Separating hype from reality: How AI is practically applied today to solve complex engineering and data problems.",
+    "readTime": "4 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "While science fiction paints a dramatic picture of AI, the pragmatic reality is much more foundational. It's about data sanitization, algorithm selection, and optimizing everyday workflows. Here are my thoughts on how industries should realistically approach AI adoption."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6831496679414366208",
+        "caption": "My perspective on AI evolution."
+      }
+    ]
+  },
+  {
+    "id": 23,
+    "title": "The Engineer's Guide to Interpersonal Communication",
+    "date": "2021-07-30T10:00:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "Why technical brilliance isn't enough, and how developing strong communication skills is vital for project success.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "The best code or engineering design means little if you cannot communicate its value to stakeholders. I've realized that actively working on interpersonal communication and empathy bridges the gap between complex technical execution and high-level business goals."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6826799165570449409",
+        "caption": "Thoughts on communication skills."
+      }
+    ]
+  },
+  {
+    "id": 24,
+    "title": "Leading With Purpose: Aligning Vision and Execution",
+    "date": "2021-06-25T14:00:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "Key takeaways from the 'Leading with Purpose' course on how intentionality transforms team dynamics.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Management is about processes; leadership is about purpose. Completing the 'Leading with Purpose' course fundamentally shifted how I approach team alignment. When a team understands the 'why' behind a project, the 'how' becomes remarkably more efficient."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6813537465182261248",
+        "caption": "Completed 'Leading with Purpose'."
+      }
+    ]
+  },
+  {
+    "id": 25,
+    "title": "Self-Confidence as a Pillar of Executive Leadership",
+    "date": "2021-06-25T12:00:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "Examining how authentic self-confidence enables decisive executive action during times of technical or business uncertainty.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Executive leadership often requires making high-stakes decisions with incomplete information. Authentic self-confidence allows leaders to act decisively, trust their technical intuition, and navigate their teams safely through periods of ambiguity."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6813489163204104192",
+        "caption": "Discussing executive leadership."
+      }
+    ]
+  },
+  {
+    "id": 26,
+    "title": "Personnel Leadership: Investing in Your Team",
+    "date": "2021-06-25T11:00:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "Why the true measure of a leader is found in the growth and success of the personnel they manage.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Your most valuable asset isn't the technology stack; it's the engineers and staff utilizing it. Personnel leadership requires active mentorship, providing psychological safety, and removing roadblocks so individuals can reach their highest technical potential."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6813476966486822912",
+        "caption": "My approach to personnel leadership."
+      }
+    ]
+  },
+  {
+    "id": 27,
+    "title": "Mastering Time Management and Workload Prioritization",
+    "date": "2021-06-25T10:30:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "Practical strategies for filtering noise, identifying critical path tasks, and optimizing daily productivity.",
+    "readTime": "4 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Being busy is not the same as being productive. By strictly categorizing tasks by urgency and impact, and ruthlessly eliminating busywork, we can carve out the deep-focus time required for complex software architecture and engineering design."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6813462818155720704",
+        "caption": "Tips on optimizing workload."
+      }
+    ]
+  },
+  {
+    "id": 28,
+    "title": "The Art of Professional Relationship Building",
+    "date": "2021-06-25T10:00:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "How cultivating genuine, trust-based relationships within the industry leads to sustained career and business growth.",
+    "readTime": "3 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Networking isn't about collecting business cards; it's about mutual value creation. Building genuine relationships with clients, vendors, and colleagues creates a foundation of trust that proves invaluable when navigating difficult projects or seeking new opportunities."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6813455423958466560",
+        "caption": "The importance of relationship building."
+      }
+    ]
+  },
+  {
+    "id": 29,
+    "title": "Committing to Continuous Leadership Development",
+    "date": "2021-06-25T09:00:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "Why an investment in ongoing leadership education is the highest-yield activity for a technical professional.",
+    "readTime": "2 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "The skills that make someone a great engineer do not automatically make them a great leader. Consciously investing in leadership development frameworks has been essential in allowing me to transition from individual technical contributor to strategic manager."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6813404429543460865",
+        "caption": "My commitment to leadership development."
+      }
+    ]
+  },
+  {
+    "id": 30,
+    "title": "Taking Ownership: Career Management and Leadership",
+    "date": "2021-06-25T08:00:00.000Z",
+    "category": "Career",
+    "image": "",
+    "desc": "Strategies for taking proactive control of your career trajectory through intentional planning and self-advocacy.",
+    "readTime": "4 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "No one will manage your career for you. Taking ownership means setting clear multi-year objectives, actively seeking out challenging projects, and advocating for your own professional development. You must be the CEO of your own career."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:activity:6813392779012538368",
+        "caption": "Thoughts on career management."
+      }
+    ]
+  }
 ]

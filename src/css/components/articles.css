@@ -272,6 +272,23 @@
   background: rgba(0, 0, 0, 0.05);
 }
 
+.embed-container.linkedin {
+  background: #fff;
+  border: 1px solid #e0e0e0;
+  max-width: 100%;
+  margin: 0 auto;
+  box-shadow: var(--shadow-md);
+}
+
+.linkedin-wrapper {
+  margin: 3.5rem 0;
+}
+
+[data-theme="dark"] .embed-container.linkedin {
+  background: #1d2226;
+  border-color: #38434f;
+}
+
 .embed-container iframe { width: 100%; display: block; }
 .embed-container.youtube { aspect-ratio: 16/9; }
 
@@ -281,7 +298,7 @@
   font-size: 0.85rem;
   color: var(--text-secondary);
   font-style: italic;
-  border-top: 1px solid var(--card-border);
+  margin-top: 0.5rem;
 }
 
 .embed-link {

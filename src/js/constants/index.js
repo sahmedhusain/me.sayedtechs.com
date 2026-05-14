@@ -208,7 +208,7 @@ function resolveAssetKey(key, assets) {
   }
 
   // Try direct top-level key
-  if (assets[key]) return assets[key];
+  if (assets[key]) return resolvePath(assets[key]);
 
   // Try dot notation
   const parts = key.split('.');
@@ -217,7 +217,7 @@ function resolveAssetKey(key, assets) {
     value = value?.[p];
     if (value === undefined) return key; // Not found, return original key
   }
-  return value || key;
+  return (typeof value === 'string') ? resolvePath(value) : (value || key);
 }
 
 /**
