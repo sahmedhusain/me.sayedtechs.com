@@ -1,0 +1,113 @@
+{
+  "name": "Sayed Ahmed Husain",
+  "title": "",
+  "nationality": "Bahrain",
+  "address": "Kingdom of Bahrain | Eastern Kingdom of Saudi Arabia",
+  "qualification": "Bachelor Degree",
+  "email": "sayedahmed97.sad@gmail.com",
+  "about": "I like to build things that (hopefully) don't break 🏗️. My career path wasn't exactly a straight line. I actually started out designing life-safety electrical and fire systems for massive industrial plants ⚡🧯. In that world, a \"bug\" means a literal disaster. Today, I build full-stack web applications and backend architectures—where a \"bug\" just means I spend three hours shouting at my monitor before realizing I missed a semicolon 🤬💻.\n\nBut I’ll let you in on a secret 🤫: before I was deep in enterprise software, I survived the absolute frontlines of customer service and retail operations at Zain and STC 📞. If you want to understand human psychology, don't read a textbook—try explaining a telecom bill to a furious customer 😤. That experience basically gave me an unofficial PhD in human behavior 🧠. It taught me how to read attitudes, handle absolutely anyone, and stay cool under pressure (well, most of the time 🧘‍♂️).\n\nPersonality-wise, I’m a bit of a walking contradiction 🎭. I like to describe myself as \"short-long\"—short patience for bad code, but a very long attention span for the things I love ⏳. I can be a little moody, occasionally loud when I'm passionate (or debugging), and my YouTube \"Watch Later\" playlist is a terrifying black hole of thousands of videos that I will absolutely, definitely, 100% watch... someday 📺🕳️. Probably. (No, I won't 🤷‍♂️).\n\nWhen I’m not hand-coding system architectures or pretending I don't use AI to fix my typos 🤖, I run on excessive amounts of tea and pure summer vibes ☕☀️. I'm currently teaching myself how to play the piano 🎹—very basic stuff, but we’re getting there. If I'm away from the keyboard, I'm probably swimming 🏊‍♂️, cruising around in my silver Jeep Wrangler 🚙, trying to get my Home Assistant server to turn on my lights perfectly 💡, or configuring retro emulators to play the arcade games of my childhood 🕹️.\n\nI built this space because I wanted a corner of the internet that's just mine 🌍. It’s not just a professional portfolio; it’s a place where I plan to share the real stuff—life challenges, tech struggles, weird hardware experiments, and funny facts I pick up along the way 🚀.\n\nSo grab a cup of tea 🍵, take a look around, and if you want to talk about software, hardware, or how to psychoanalyze people, drop me a line!✌️",
+  "ui": {
+    "greeting": "Hi, I'm Sayed. 👋",
+    "icons": {
+      "x": "𝕏"
+    },
+    "downloadResume": "Download Resume",
+    "contactDetails": "Contact Details",
+    "contactLabels": {
+      "email": "Email",
+      "phone": "Phone",
+      "nationality": "Nationality",
+      "address": "Address"
+    },
+    "follow": {
+      "github": "Follow on GitHub",
+      "linkedin": "Follow on LinkedIn",
+      "x": "Follow on X",
+      "medium": "Read on Medium"
+    }
+  },
+  "ui_extras": {
+    "articles": {
+      "readFullStory": "Read full story",
+      "notFound": "Article not found",
+      "backToList": "Back to articles"
+    },
+    "contact": {
+      "qrPlaceholder": "QR Code will appear here",
+      "qrGenerating": "Generating QR Code...",
+      "download": "Download",
+      "copy": "Copy"
+    },
+    "experience": {
+      "keyResponsibilities": "Key Responsibilities",
+      "keyProjects": "Key Projects",
+      "educationHighlights": "Education Highlights",
+      "view": "View",
+      "expired": "Expired:",
+      "expires": "Expires:"
+    },
+    "journey": {
+      "timelineTitle": "Professional Timeline"
+    },
+    "projects": {
+      "backToPortfolio": "Back to Portfolio",
+      "readmeFetching": "Fetching technical documentation from GitHub...",
+      "readmeTitle": "README.md",
+      "notFound": "Project not found",
+      "overviewTitle": "Project Overview",
+      "readmeNotice": "Note: Unable to load live documentation from GitHub. Showing project summary instead."
+    },
+    "skills": {
+      "title": "Skills and Technologies",
+      "categories": {
+        "personal": "Personal Skills",
+        "languages": "Programming & Markup Languages",
+        "frameworks": "Frameworks & Libraries",
+        "databases": "Databases",
+        "networking": "Networking, Web & Protocols",
+        "devops": "Software, DevOps & Tools",
+        "os": "OS & Environments",
+        "testing": "Testing & Code Quality",
+        "cs": "Computer Science & Architecture",
+        "cad": "Engineering CAD & Simulation",
+        "hardware": "Hardware & Core Engineering"
+      }
+    }
+  },
+  "phones": [
+    {
+      "label": "Bahrain",
+      "countryCode": "+973",
+      "number": "33115351",
+      "flag": "🇧🇭",
+      "whatsapp": true,
+      "primary": true
+    },
+    {
+      "label": "Saudi Arabia",
+      "countryCode": "+966",
+      "number": "590305575",
+      "flag": "🇸🇦",
+      "whatsapp": true,
+      "primary": false
+    }
+  ],
+  "social": {
+    "linkedin": "https://linkedin.com/in/97ahm",
+    "github": "https://github.com/sahmedhusain",
+    "x": "https://x.com/_97ahm",
+    "discord": "https://discord.com/users/s_97ahm",
+    "medium": "https://medium.com/@s97ahm",
+    "website": "https://sahmedhusain.github.io/me"
+  },
+  "featured": {
+    "source": "education",
+    "id": 1,
+    "overrides": {
+      "title": "Bachelor of Science - BS, Electrical Engineering",
+      "subtitle": "University of Bahrain",
+      "image": "graduation_certificate",
+      "link": "/journey"
+    }
+  }
+}

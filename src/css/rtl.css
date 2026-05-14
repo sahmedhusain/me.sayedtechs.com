@@ -1,0 +1,695 @@
+/* ============================================
+   RTL SUPPORT (Right-to-Left)
+   ============================================ */
+
+[dir="rtl"],
+[dir="rtl"]
+  *:not(code):not(pre):not(kbd):not(samp):not(ion-icon):not(i):not(.fa):not(
+    .fab
+  ):not(.fas):not(.devicon) {
+  font-family: var(--font-arabic) !important;
+}
+
+[dir="rtl"] {
+  text-align: right;
+}
+
+[dir="rtl"] h1,
+[dir="rtl"] h2,
+[dir="rtl"] h3,
+[dir="rtl"] h4,
+[dir="rtl"] h5,
+[dir="rtl"] h6,
+[dir="rtl"] .h1,
+[dir="rtl"] .h2,
+[dir="rtl"] .h3,
+[dir="rtl"] .h4 {
+  text-align: right;
+}
+
+/* --- Layout Flips --- */
+[dir="rtl"] .main-content {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+/* --- Navbar Flips --- */
+[dir="rtl"] #nav-avatar-container {
+  left: auto !important;
+  right: 3rem !important;
+}
+
+[dir="rtl"] .nav-controls {
+  left: 3rem !important;
+  right: auto !important;
+  justify-content: flex-start !important;
+}
+
+[dir="rtl"] #theme-toggle-btn {
+  right: auto !important;
+  left: 3rem !important;
+}
+
+[dir="rtl"] #lang-dropdown-wrapper {
+  right: auto !important;
+  left: 7.5rem !important;
+  align-items: flex-start !important;
+}
+
+[dir="rtl"] #lang-menu {
+  right: auto !important;
+  left: 0 !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .lang-option {
+  text-align: right !important;
+  flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] #nav-resume-wrapper {
+  left: auto !important;
+  right: calc(100% + 1rem) !important;
+}
+
+/* --- Typography Flips --- */
+[dir="rtl"] .section-subtitle,
+[dir="rtl"] .about-text,
+[dir="rtl"] .project-small-description,
+[dir="rtl"] .skills-subtitle,
+[dir="rtl"] .journey-subtitle {
+  text-align: right;
+}
+
+/* --- About Header Alignment --- */
+[dir="rtl"] .about-profile-header {
+  align-items: flex-start !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .about-avatar-section {
+  justify-content: flex-start !important;
+  text-align: right !important;
+  width: 100% !important;
+}
+
+[dir="rtl"] .about-profile-header > div {
+  align-self: flex-start !important;
+  text-align: right !important;
+  width: 100% !important;
+  margin-left: auto !important;
+  margin-right: 0 !important;
+}
+
+[dir="rtl"] .home-profile-socials {
+  width: 100% !important;
+  flex-direction: row-reverse !important;
+  justify-content: flex-start !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .home-profile-socials {
+  justify-content: flex-end !important;
+}
+
+/* --- Skill Sections --- */
+[dir="rtl"] .skill-card-header {
+  flex-direction: row;
+  /* Ensure flex flow doesn't break if already correct, but alignments might */
+}
+
+[dir="rtl"] .skill-icon-container {
+  margin-right: 0;
+  margin-left: 1.2rem;
+}
+
+[dir="rtl"] .badge-icon {
+  margin-right: 0;
+  margin-left: 0.5rem;
+}
+
+[dir="rtl"] .skill-bullets {
+  padding-right: 0;
+}
+
+[dir="rtl"] .skill-bullets li {
+  padding-left: 0;
+  text-align: right;
+  flex-direction: row;
+}
+
+[dir="rtl"] .skill-bullets li ion-icon {
+  margin-right: 0;
+  margin-left: 0.8rem;
+}
+
+/* --- Experience & Journey --- */
+[dir="rtl"] .experience-tabs {
+  grid-template-columns: 1fr 200px;
+}
+
+[dir="rtl"] .tab-btn {
+  border-left: none;
+  border-right: 2px solid var(--card-border);
+  text-align: right;
+}
+
+[dir="rtl"] .tab-btn:hover,
+[dir="rtl"] .tab-btn.active {
+  border-right-color: var(--accent);
+  border-left-color: transparent;
+}
+
+[dir="rtl"] .job-description li {
+  padding-left: 0;
+  padding-right: 2rem;
+  text-align: right;
+}
+
+[dir="rtl"] .job-description li::before {
+  left: auto;
+  right: 0;
+}
+
+[dir="rtl"] .section-tabs-wrapper {
+  grid-template-columns: 1fr 320px;
+}
+
+[dir="rtl"] .section-sidebar-list {
+  border-right: none;
+  border-left: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+[dir="rtl"] .section-sidebar-btn {
+  text-align: right;
+}
+
+[dir="rtl"] .sidebar-indicator-active,
+[dir="rtl"] .sidebar-indicator-hover {
+  left: 0;
+  right: 0;
+}
+
+[dir="rtl"] .timeline-item {
+  padding-left: 0;
+  padding-right: 2.5rem;
+  border-left: none;
+  border-right: 2px solid var(--card-border);
+  text-align: right;
+}
+
+[dir="rtl"] .timeline-item::before {
+  left: auto;
+  right: -7px;
+}
+
+/* --- Project Detail --- */
+[dir="rtl"] .project-detail-wrapper {
+  padding: 0 0 6rem 2rem;
+}
+
+@media (min-width: 1001px) {
+  [dir="rtl"] .project-header-main {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: space-between !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  [dir="rtl"] .project-header-main {
+    display: grid !important;
+    justify-items: end !important;
+  }
+  [dir="rtl"] .project-header-links {
+    justify-content: flex-start !important;
+  }
+}
+
+[dir="rtl"] .project-title-box {
+  text-align: right !important;
+}
+
+@media (min-width: 1001px) {
+  [dir="rtl"] .back-btn-minimal {
+    margin-right: 0 !important;
+    margin-left: 1.5rem !important;
+    transform: rotate(180deg) !important;
+  }
+  [dir="rtl"] .back-btn-minimal:hover {
+    transform: rotate(180deg) translateX(-5px) !important;
+  }
+}
+
+@media (max-width: 1000px) {
+  [dir="rtl"] .back-btn-minimal {
+    margin: 0 0 0.5rem 0 !important;
+    transform: rotate(180deg) !important;
+  }
+}
+
+[dir="rtl"] .back-btn-minimal ion-icon {
+  display: inline-block !important;
+}
+
+@media (min-width: 1001px) {
+  [dir="rtl"] .project-header-links {
+    margin-left: 0 !important;
+    margin-right: auto !important;
+  }
+}
+
+[dir="rtl"] .info-group-tech {
+  text-align: right !important;
+}
+
+@media (max-width: 1000px) {
+  [dir="rtl"] .project-tech-logos-detail,
+  [dir="rtl"] .project-detail-libraries-chips {
+    justify-content: center !important; /* Centered in RTL */
+  }
+}
+
+@media (min-width: 769px) {
+  [dir="rtl"] .project-detail-tech-container {
+    flex-direction: row !important;
+  }
+}
+
+[dir="rtl"] .project-detail-libraries {
+  padding-left: 0;
+  padding-right: 2rem;
+  border-left: none;
+  border-right: 1px solid var(--card-border);
+}
+
+/* Force README to stay LTR and use English typography even in Arabic mode, except for Articles */
+[dir="rtl"] .markdown-body-raw:not(.article-body),
+[dir="rtl"] .readme-loading {
+  direction: ltr !important;
+  font-family:
+    "Inter",
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif !important;
+  text-align: left;
+  /* Default alignment */
+}
+
+/* Allow markdown-internal alignments (like centered images/badges) to work */
+[dir="rtl"] .markdown-body-raw:not(.article-body) * {
+  font-family: inherit !important;
+  text-align: inherit;
+}
+
+/* Ensure the justified look from English is maintained for paragraphs/lists */
+[dir="rtl"] .markdown-body-raw:not(.article-body) p,
+[dir="rtl"] .markdown-body-raw:not(.article-body) li {
+  text-align: justify;
+}
+
+/* Ensure centered elements in markdown stay centered */
+[dir="rtl"] .markdown-body-raw:not(.article-body) p:has(img),
+[dir="rtl"] .markdown-body-raw:not(.article-body) [align="center"] {
+  text-align: center !important;
+}
+
+[dir="rtl"] .markdown-body-raw:not(.article-body) code,
+[dir="rtl"] .markdown-body-raw:not(.article-body) pre,
+[dir="rtl"] .markdown-body-raw:not(.article-body) kbd,
+[dir="rtl"] .markdown-body-raw:not(.article-body) samp {
+  font-family: var(--font-mono) !important;
+}
+
+/* Arabic Project Summaries (Fallback when no README): RTL and Justified */
+[dir="rtl"] .project-summary-raw,
+[dir="rtl"] .raw-points-list {
+  direction: rtl !important;
+  text-align: justify !important;
+}
+
+[dir="rtl"] .raw-points-list li {
+  padding-left: 0 !important;
+  padding-right: 2rem !important;
+  text-align: justify !important;
+}
+
+[dir="rtl"] .raw-points-list li::before {
+  left: auto !important;
+  right: 0 !important;
+}
+
+/* Arabic Articles: RTL and Justified */
+[dir="rtl"] .article-body {
+  direction: rtl !important;
+  text-align: justify !important;
+  text-justify: inter-word;
+}
+
+[dir="rtl"] .article-body * {
+  text-align: inherit !important;
+}
+
+[dir="rtl"] .markdown-body-raw:not(.article-body) blockquote {
+  border-left: 4px solid var(--accent) !important;
+  border-right: none !important;
+  padding: 1.5rem 2rem !important;
+  border-radius: 0 16px 16px 0 !important;
+}
+
+[dir="rtl"] .article-body blockquote {
+  border-right: 4px solid var(--accent) !important;
+  border-left: none !important;
+  padding: 1.5rem 2rem !important;
+  border-radius: 16px 0 0 16px !important;
+}
+
+[dir="rtl"] .article-detail-page .project-detail-subtitle {
+  text-align: justify !important;
+  direction: rtl !important;
+}
+
+/* --- Journey & Experience --- */
+[dir="rtl"] .section-tabs-wrapper {
+  grid-template-columns: 320px 1fr !important;
+  /* Sidebar (320px) on right, Content (1fr) on left in RTL */
+}
+
+[dir="rtl"] .section-sidebar-list {
+  border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
+  border-right: none !important;
+  overflow: visible !important;
+}
+
+[dir="rtl"] .sidebar-items-container {
+  padding-right: 0 !important;
+  padding-left: 4px !important;
+  overflow: visible !important;
+}
+
+[dir="rtl"] .section-sidebar-btn {
+  text-align: right !important;
+  flex-direction: column !important;
+  align-items: flex-start !important;
+}
+
+[dir="rtl"] .sidebar-btn-title,
+[dir="rtl"] .sidebar-btn-subtitle {
+  width: 100% !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .experience-header-main {
+  text-align: right !important;
+  align-items: flex-start !important;
+}
+
+[dir="rtl"] .experience-job-title,
+[dir="rtl"] .experience-company-name {
+  text-align: right !important;
+}
+
+[dir="rtl"] .experience-company-info {
+  flex-direction: row !important;
+  /* Logo on right, text on left */
+}
+
+[dir="rtl"] .experience-meta-row {
+  justify-content: flex-start !important;
+  flex-direction: row !important;
+}
+
+[dir="rtl"] .experience-point {
+  padding-left: 0 !important;
+  padding-right: 1.8rem !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .experience-point::before {
+  left: auto !important;
+  right: 0 !important;
+}
+
+[dir="rtl"] .experience-section-title,
+[dir="rtl"] .overview-header {
+  flex-direction: row !important;
+  justify-content: flex-start !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .experience-section-title ion-icon,
+[dir="rtl"] .overview-header ion-icon {
+  order: 1 !important;
+}
+
+[dir="rtl"] .experience-section-title span,
+[dir="rtl"] .overview-header span {
+  order: 2 !important;
+}
+
+[dir="rtl"] .certificate-link {
+  right: auto !important;
+  left: 1.5rem !important;
+}
+
+[dir="rtl"] .sidebar-separator {
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  ) !important;
+  margin: 0.5rem 0 1rem !important;
+}
+
+[dir="rtl"]:not([data-theme="dark"]) .sidebar-separator,
+[dir="rtl"][data-theme="light"] .sidebar-separator {
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.1),
+    transparent
+  ) !important;
+  margin: 0.5rem 0 1rem !important;
+}
+
+[dir="rtl"] .journey-link:hover {
+  transform: translateX(-5px) !important;
+}
+
+[dir="rtl"] .experience-card-header {
+  flex-direction: row !important;
+}
+
+[dir="rtl"] .meta-pill {
+  flex-direction: row !important;
+  direction: rtl !important;
+}
+
+[dir="rtl"] .timeline-tooltip {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .tooltip-date {
+  direction: rtl !important;
+  unicode-bidi: embed;
+}
+
+/* Light mode overrides for RTL */
+[dir="rtl"][data-theme="light"] .section-sidebar-list,
+[dir="rtl"]:not([data-theme="dark"]) .section-sidebar-list {
+  border-left: 1px solid rgba(0, 0, 0, 0.05) !important;
+  border-right: none !important;
+}
+
+/* --- Contact Modal --- */
+[dir="rtl"] .contact-modal-content {
+  text-align: right;
+}
+
+[dir="rtl"] .modal-close {
+  left: 1.5rem;
+  right: auto;
+}
+
+[dir="rtl"] .country-dropdown-glass {
+  left: 0 !important;
+  right: auto !important;
+}
+
+[dir="rtl"] .selected-country {
+  direction: ltr !important;
+  flex-direction: row !important;
+}
+
+[dir="rtl"] .country-item {
+  direction: ltr !important;
+  flex-direction: row !important;
+  text-align: left !important;
+}
+
+[dir="rtl"] .country-code-val {
+  direction: ltr !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .liquid-phone-input {
+  direction: ltr !important;
+  /* Force left-to-right flow for internal parts */
+  flex-direction: row !important;
+}
+
+[dir="rtl"] .selected-code {
+  direction: ltr !important;
+  display: inline-block;
+}
+
+[dir="rtl"] .dropdown-search {
+  flex-direction: row-reverse !important;
+}
+
+[dir="rtl"] .dropdown-search input {
+  text-align: right !important;
+}
+
+[dir="rtl"] input,
+[dir="rtl"] textarea {
+  direction: rtl !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] input::placeholder,
+[dir="rtl"] textarea::placeholder {
+  text-align: right !important;
+}
+
+/* --- Footer --- */
+[dir="rtl"] .footer-content {
+  flex-direction: row-reverse;
+}
+
+/* --- Icons that should be flipped --- */
+[dir="rtl"] ion-icon[name$="-forward-outline"],
+[dir="rtl"] ion-icon[name$="-back-outline"],
+[dir="rtl"] ion-icon[name$="-forward"],
+[dir="rtl"] ion-icon[name$="-back"] {
+  transform: rotate(180deg) !important;
+  display: inline-block !important;
+}
+
+/* Semantic arrows handled in JS - Disable CSS mirroring to prevent double-flipping */
+[dir="rtl"] .read-article-btn ion-icon,
+[dir="rtl"] .read-more-link ion-icon,
+[dir="rtl"] .action-btn-glass ion-icon,
+[dir="rtl"] .btn-outline ion-icon,
+[dir="rtl"] .project-btn-icon ion-icon {
+  transform: none !important;
+  display: inline-block !important;
+}
+
+/* Hover effects for directional icons in RTL - Must move LEFT */
+[dir="rtl"] .read-article-btn:hover ion-icon,
+[dir="rtl"] .read-more-link:hover ion-icon,
+[dir="rtl"] .btn-outline:hover ion-icon,
+[dir="rtl"] .action-btn-glass:hover ion-icon {
+  transform: translateX(-5px) !important;
+}
+
+[dir="rtl"] .project-links {
+  right: auto !important;
+  left: 1.5rem !important;
+}
+
+[dir="rtl"] .go-to-project-btn:hover {
+  transform: translateX(-5px) !important;
+}
+
+/* --- Home Feed Specifics --- */
+[dir="rtl"] .about-profile-header {
+  align-items: flex-start !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .about-avatar-section {
+  justify-content: flex-start !important;
+  text-align: right !important;
+}
+
+[dir="rtl"] .home-profile-socials {
+  justify-content: flex-end !important;
+}
+
+[dir="rtl"] .flat-post-item {
+  text-align: right;
+}
+
+[dir="rtl"] .read-more-link {
+  flex-direction: row;
+}
+
+/* --- Mobile Fixes --- */
+@media (max-width: 850px) {
+  [dir="rtl"] .experience-tabs,
+  [dir="rtl"] .section-tabs-wrapper {
+    grid-template-columns: 1fr;
+  }
+
+  [dir="rtl"] .tab-btn {
+    border-right: none;
+    border-bottom: 2px solid var(--card-border);
+  }
+
+  [dir="rtl"] .about-profile-header {
+    align-items: flex-start !important;
+    text-align: right !important;
+  }
+
+  [dir="rtl"] .about-avatar-section {
+    align-items: flex-start !important;
+    text-align: right !important;
+    flex-direction: column !important;
+  }
+
+  [dir="rtl"] .about-profile-info {
+    max-width: 100% !important;
+    width: 100% !important;
+    text-align: right !important;
+  }
+
+  [dir="rtl"] .about-profile-info h1,
+  [dir="rtl"] .about-tagline {
+    white-space: normal !important;
+    display: block !important;
+  }
+
+  [dir="rtl"] .about-tagline {
+    margin-right: 0 !important;
+  }
+
+  [dir="rtl"] .nav-controls {
+    left: 1.5rem !important;
+    right: auto !important;
+  }
+
+  [dir="rtl"] #nav-avatar-container {
+    right: 5.7rem !important;
+    left: auto !important;
+  }
+
+  [dir="rtl"] .main-content {
+    padding-left: 1.5rem !important;
+    padding-right: 1.5rem !important;
+  }
+
+  [dir="rtl"] #nav-resume-wrapper {
+    left: 50% !important;
+    right: auto !important;
+    transform: translateX(-50%) !important;
+  }
+}
+
+/* --- Back to Top --- */
+[dir="rtl"] .back-to-top-btn {
+  right: auto !important;
+  left: 2rem !important;
+}

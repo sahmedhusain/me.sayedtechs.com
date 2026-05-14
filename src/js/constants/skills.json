@@ -1,0 +1,146 @@
+{
+  "technicalSkills": {
+    "programmingAndMarkupLanguages": [
+      {
+        "name": "JavaScript",
+        "proficiency": 90
+      },
+      {
+        "name": "TypeScript",
+        "proficiency": 85
+      },
+      {
+        "name": "Golang",
+        "proficiency": 80
+      },
+      {
+        "name": "Python",
+        "proficiency": 70
+      },
+      {
+        "name": "Rust",
+        "proficiency": 55
+      },
+      {
+        "name": "C++",
+        "proficiency": 50
+      },
+      {
+        "name": "Dart",
+        "proficiency": 40
+      },
+      {
+        "name": "HTML5",
+        "proficiency": 95
+      },
+      {
+        "name": "CSS3",
+        "proficiency": 90
+      }
+    ],
+    "databases": [
+      {
+        "name": "SQLite",
+        "proficiency": 75
+      },
+      {
+        "name": "MongoDB",
+        "proficiency": 75
+      },
+      {
+        "name": "PostgreSQL",
+        "proficiency": 60
+      },
+      {
+        "name": "MySQL",
+        "proficiency": 60
+      }
+    ],
+    "frameworksAndLibraries": [
+      "React",
+      "Next.js",
+      "Node.js",
+      "Tailwind CSS",
+      "GraphQL",
+      "Apollo Client",
+      "Vite",
+      "Flutter"
+    ],
+    "testingAndCodeQuality": [
+      "Jest",
+      "ESLint"
+    ],
+    "networkingWebAndProtocols": [
+      "REST APIs",
+      "WebSockets",
+      "HTTP",
+      "JSON",
+      "TCP/IP",
+      "OAuth2",
+      "JWT"
+    ],
+    "softwareDevOpsAndTools": [
+      "Git",
+      "GitHub",
+      "VS Code",
+      "PyCharm",
+      "Docker",
+      "Cloudflare",
+      "AWS",
+      "Unix",
+      "Bash",
+      "Postman",
+      "Figma",
+      "Mermaid",
+      "Markdown",
+      "Xcode",
+      "Android Studio"
+    ],
+    "operatingSystemsAndEnvironments": [
+      "Linux",
+      "macOS",
+      "Windows",
+      "Android",
+      "Raspberry Pi"
+    ],
+    "computerScienceAndArchitecture": [
+      "Algorithms & Data Structures",
+      "Graph Algorithms & Pathfinding",
+      "Virtual DOM",
+      "State Management",
+      "Concurrency & Parallelism",
+      "Authentication & Session Management",
+      "Object-Oriented Programming",
+      "Machine Learning"
+    ],
+    "engineeringCadAndSimulation": [
+      "AutoCAD",
+      "ArchiCAD",
+      "MATLAB",
+      "Circuit Verse",
+      "Everycircuit",
+      "SolidWorks",
+      "Fusion 360"
+    ],
+    "hardwareAndCoreEngineering": [
+      "Fire Protections Systems",
+      "Electrical Installation",
+      "Electrical Testing Equipment",
+      "Solar PV Systems",
+      "Digital Circuits Design (Arduino, Pi)",
+      "Power Electronics"
+    ]
+  },
+  "personalSkills": [
+    "Fast Learner",
+    "Adaptability",
+    "Teamwork",
+    "Communication",
+    "Problem-solving",
+    "Decision Making",
+    "Time Management",
+    "Project Management",
+    "Leadership",
+    "Continuous Learning"
+  ]
+}

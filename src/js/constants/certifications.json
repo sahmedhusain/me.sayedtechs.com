@@ -1,0 +1,115 @@
+[
+  {
+    "name": "NOCN Level 3 Award for Solar PV Installer and Operator",
+    "type": "Certificate",
+    "issuingAuthority": "NOCN",
+    "location": "Bahrain",
+    "id": "48282023",
+    "issued": "Apr 2024",
+    "pdfUrl": "pdfs.solar_pv_nocn",
+    "description": [
+      "Comprehensive certification for solar photovoltaic system installation and operation.",
+      "Covers design, installation, commissioning, and maintenance of solar PV systems.",
+      "Demonstrates expertise in renewable energy technology and industry standards."
+    ]
+  },
+  {
+    "name": "Certificate of Acknowledgement (Solar PV)",
+    "type": "Certificate",
+    "issuingAuthority": "Ministry of Electricity and Water Affairs",
+    "location": "Bahrain",
+    "id": "MEWA Certificate No: 2024-21",
+    "issued": "Jul 2024",
+    "expires": "Jul 2029",
+    "pdfUrl": "pdfs.solar_pv_mewa",
+    "description": [
+      "Official recognition from Bahrain's Ministry of Electricity and Water Affairs.",
+      "Validates competence in solar photovoltaic system design and implementation.",
+      "Required certification for professional solar PV work in Bahrain."
+    ]
+  },
+  {
+    "name": "CRPEP License (Electrical)",
+    "type": "License",
+    "issuingAuthority": "The Council for Regulating the Practice of Engineering Professions",
+    "location": "Bahrain",
+    "id": "EPP/C4597/EL/01-D",
+    "issued": "Dec 2022",
+    "expires": "Dec 2023",
+    "pdfUrl": "pdfs.crpep",
+    "description": [
+      "Professional engineering license for electrical engineering practice in Bahrain.",
+      "Issued by the regulatory body overseeing engineering professions in the country.",
+      "Required for legal practice of electrical engineering in Bahrain."
+    ]
+  },
+  {
+    "name": "Electrical Installation License",
+    "type": "License",
+    "issuingAuthority": "Electricity and Water Authority",
+    "location": "Bahrain",
+    "id": "W2402010",
+    "issued": "Feb 2024",
+    "expires": "Feb 2029",
+    "description": [
+      "Authorization to perform electrical installation work in Bahrain.",
+      "Issued by the national electricity and water authority.",
+      "Covers residential, commercial, and industrial electrical installations."
+    ]
+  },
+  {
+    "name": "Basic Life Support (BLS)",
+    "type": "License",
+    "issuingAuthority": "American Heart Association (AHA)",
+    "location": "Bahrain",
+    "id": "225607015422",
+    "issued": "Jul 2022",
+    "expires": "Jul 2024",
+    "pdfUrl": "pdfs.bls",
+    "description": [
+      "Healthcare provider level CPR and basic life support certification.",
+      "Internationally recognized certification from the American Heart Association.",
+      "Covers CPR, AED use, and emergency response for adults, children, and infants."
+    ]
+  },
+  {
+    "name": "B2B Sales Fundamentals",
+    "type": "Course Certificate",
+    "issuingAuthority": "Golden Trust Institute",
+    "location": "Bahrain",
+    "issued": "Nov 2019",
+    "description": [
+      "Professional training in business-to-business sales techniques and strategies.",
+      "Covers sales process, customer relationship management, and negotiation skills.",
+      "Essential training for sales professionals in corporate environments."
+    ]
+  },
+  {
+    "name": "Emotional Intelligence",
+    "type": "Course Certificate",
+    "issuingAuthority": "Golden Trust Institute",
+    "location": "Bahrain",
+    "issued": "Aug 2019",
+    "description": [
+      "Training in emotional intelligence and interpersonal skills development.",
+      "Covers self-awareness, social skills, and relationship management.",
+      "Important for leadership, team management, and professional communication."
+    ]
+  },
+  {
+    "name": "Online Learning Courses",
+    "type": "Course Certificates",
+    "issuingAuthority": "LinkedIn Learning",
+    "location": "Bahrain",
+    "courses": [
+      "AI in Business Essentials",
+      "Leading with Innovation",
+      "Critical Thinking"
+    ],
+    "description": [
+      "Professional development courses on cutting-edge business topics.",
+      "Covers artificial intelligence applications, innovative leadership, and critical thinking skills.",
+      "Demonstrates commitment to continuous learning and professional growth."
+    ]
+  }
+]

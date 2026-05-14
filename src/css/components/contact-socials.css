@@ -20,7 +20,7 @@ body.contact-active .side-element {
   justify-content: center;
   width: 45px;
   height: 45px;
-  background: rgba(100, 255, 218, 0.05);
+  background: rgba(161, 161, 170, 0.05);
   border: 1px solid var(--card-border);
   border-radius: 50%;
   font-size: 1.5rem;

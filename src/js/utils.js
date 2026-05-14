@@ -1,3 +1,6 @@
+import { getData } from './constants/index.js';
+import { t } from './constants/i18n.js';
+
 // Image Error Handling Function
 export function handleImageError(img) {
   // Prevent infinite loops
@@ -16,68 +19,124 @@ export function handleImageError(img) {
   }
 }
 
-
-// Helper: prefer local workspace logo files where available
-export function getLocalLogoFor(name) {
-  const n = (name || '').toLowerCase();
-  if (n.includes('lichfield') || n.includes('lifeco')) return 'src/assets/lifeco_uk_logo.jpeg';
-  if (n.includes('super fire')) return 'src/assets/super_fire_and_safety_services_logo.jpeg';
-  if (n.includes('channels by stc') || n.includes('channels')) return 'src/assets/channels_by_stc_bahrain_logo.jpeg';
-  if (n.includes('zain')) return 'src/assets/zain_logo.jpeg';
-  if (n.includes('megger')) return 'src/assets/megger_logo.jpeg';
-  if (n.includes('university of bahrain')) return 'src/assets/university_of_bahrain_logo.jpeg';
-  if (n.includes('reboot')) return 'src/assets/reboot_logo.jpeg';
-  if (n.includes('nocn')) return 'src/assets/nocn_logo.jpeg';
-  if (n.includes('american heart')) return 'src/assets/american_heart_association_logo.jpeg';
-  if (n.includes('linkedin')) return 'src/assets/LinkedIn_icon.svg';
-  if (n.includes('golden trust')) return 'src/assets/golden_trust_logo.jpeg';
-  if (n.includes('crpep')) return 'src/assets/crpep_logo.jpeg';
-  if (n.includes('council') || n.includes('engineering professions')) return 'src/assets/crpep_logo.jpeg';
-  if (n.includes('electricity and water') || n.includes('ministry of electricity')) return 'src/assets/mewa.jpeg';
-  if (n.includes('sheikh isa') || n.includes('secondary school')) return 'src/assets/moe_highschool.jpeg';
-  // Add more mappings here as you add image files to the repo
-  return null;
-}
-
+/**
+ * Get a logo path for a given entity name.
+ * Uses the centralized assets.json logo_match_rules for resolution.
+ */
 export function getLogo(name, fallback) {
   const local = getLocalLogoFor(name);
   if (local) return local;
 
   // Specific fallbacks for missing local files
   const n = (name || '').toLowerCase();
-  if (n.includes('linkedin')) return 'https://cdn.simpleicons.org/linkedin'; // Use SVG icon as fallback
+  if (n.includes('linkedin')) return 'https://cdn.simpleicons.org/linkedin';
 
   return fallback || 'https://placehold.co/48x48/e1e3e2/3f4948?text=LOGO';
 }
 
-// Get a sensible destination for a given entity (company, institution, certificate issuer).
-// If you prefer specific URLs for some entities, add them to `entityUrlMap` below.
-export function getEntityUrl(name) {
+/**
+ * Look up a local logo file for a given entity name using assets.json match rules.
+ */
+export function getLocalLogoFor(name) {
   const n = (name || '').toLowerCase();
-  const entityUrlMap = {
-    'lichfield': 'https://www.lifeco-uk.com',
-    'lifeco': 'https://www.lifeco-uk.com',
-    'super fire': 'https://www.linkedin.com/company/super-fire-and-safety-services/',
-    'channels by stc': 'https://channels.com.sa/home',
-    'channels': 'https://channels.com.sa/home',
-    'zain': 'https://eshop.bh.zain.com/',
-    'megger': 'https://www.megger.com',
-    'university of bahrain': 'https://www.uob.edu.bh',
-    'reboot': 'https://reboot01.com',
-    'nocn': 'https://www.nocn.org.uk',
-    'american heart': 'https://www.heart.org',
-    'crpep': 'https://www.crpep.bh/',
-    'ministry of electricity': 'https://www.linkedin.com/company/mewa-bah/',
-    'electricity and water': 'https://www.ewa.bh/',
-    'golden trust': 'https://www.linkedin.com/company/golden-trust-group/',
-    'linkedin learning': 'https://www.linkedin.com/learning/'
-  };
+  let assets;
 
-  for (const key in entityUrlMap) {
-    if (n.includes(key)) return entityUrlMap[key];
+  try {
+    assets = getData().assets;
+  } catch {
+    return null;
   }
 
-  // Fallback to a safe Google search for the entity name
+  if (!assets || !assets.logo_match_rules) {
+    return null;
+  }
+
+  // Use the match rules from assets.json
+  for (const rule of assets.logo_match_rules) {
+    for (const match of rule.match) {
+      if (n.includes(match)) {
+        return assets.logos?.[rule.logo] || null;
+      }
+    }
+  }
+
+  return null;
+}
+
+/**
+ * Get a sensible destination URL for a given entity name.
+ * Uses the centralized assets.json entity_urls for resolution.
+ */
+export function getEntityUrl(name) {
+  const n = (name || '').toLowerCase();
+
+  let assets;
+  try {
+    assets = getData().assets;
+  } catch {
+    return '#';
+  }
+
+  if (!assets || !assets.logo_match_rules) {
+    return '#';
+  }
+
+  // Use match rules to find URL key
+  for (const rule of assets.logo_match_rules) {
+    for (const match of rule.match) {
+      if (n.includes(match)) {
+        const urlKey = rule.url;
+        if (urlKey && assets.entity_urls?.[urlKey]) {
+          return assets.entity_urls[urlKey];
+        }
+      }
+    }
+  }
+
+  // Direct lookup in entity_urls
+  for (const key in assets.entity_urls) {
+    if (n.includes(key.replace(/_/g, ' '))) {
+      return assets.entity_urls[key];
+    }
+  }
+
+  // Fallback to Google search
   if (n.trim()) return `https://www.google.com/search?q=${encodeURIComponent(name)}`;
   return '#';
+}
+
+/**
+ * Calculate relative time string from a date.
+ * Uses i18n strings for localization support.
+ * @param {string} dateStr - ISO date string
+ * @returns {string} Relative time string (e.g. "3 days ago")
+ */
+export function timeAgo(dateStr) {
+  const seconds = Math.floor((new Date() - new Date(dateStr)) / 1000);
+  if (seconds < 0) return t('time.justNow');
+  if (seconds < 60) return t('time.justNow');
+  
+  if (seconds < 3600) {
+    const n = Math.floor(seconds / 60);
+    return n === 1 ? t('time.minuteAgo') : t('time.minutesAgo', { n });
+  }
+  if (seconds < 86400) {
+    const n = Math.floor(seconds / 3600);
+    return n === 1 ? t('time.hourAgo') : t('time.hoursAgo', { n });
+  }
+  if (seconds < 172800) return t('time.yesterday');
+  if (seconds < 604800) {
+    const n = Math.floor(seconds / 86400);
+    return n === 1 ? t('time.dayAgo') : t('time.daysAgo', { n });
+  }
+  if (seconds < 2592000) {
+    const n = Math.floor(seconds / 604800);
+    return n === 1 ? t('time.weekAgo') : t('time.weeksAgo', { n });
+  }
+  if (seconds < 31536000) {
+    const n = Math.floor(seconds / 2592000);
+    return n === 1 ? t('time.monthAgo') : t('time.monthsAgo', { n });
+  }
+  const n = Math.floor(seconds / 31536000);
+  return n === 1 ? t('time.yearAgo') : t('time.yearsAgo', { n });
 }

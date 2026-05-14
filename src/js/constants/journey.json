@@ -1,0 +1,144 @@
+{
+  "education": [
+    {
+      "title": "High School (Physics and Mathematics)",
+      "institution": "H.E Sheikh Isa bin Ali Secondary School, Bahrain",
+      "location": "Bahrain",
+      "startDate": "2012-09-01",
+      "endDate": "2015-06-30",
+      "description": "Completed high school with a focus on Physics and Mathematics.",
+      "icon": "school-outline"
+    },
+    {
+      "title": "Bachelor of Science - BS, Electrical Engineering",
+      "institution": "University of Bahrain",
+      "location": "Bahrain",
+      "startDate": "2015-09-01",
+      "endDate": "2022-06-30",
+      "description": "Completed Bachelor's degree in Electrical Engineering.",
+      "icon": "school-outline"
+    },
+    {
+      "title": "Professional and Specialized Skill Intensive 2-Year Program, Fullstack developer",
+      "institution": "Reboot Coding Institute",
+      "location": "Bahrain",
+      "startDate": "2024-03-01",
+      "endDate": "2026-09-30",
+      "description": "Specialized program in full-stack development.",
+      "icon": "code-slash-outline",
+      "current": true
+    }
+  ],
+  "internships": [
+    {
+      "title": "Electrical Engineering Intern",
+      "company": "Megger",
+      "location": "Remote",
+      "roleOverview": "Remote Technical Internship: Focused on the operational fundamentals and diagnostics of high-precision electrical test equipment.",
+      "startDate": "2020-07-01",
+      "endDate": "2020-09-30",
+      "description": "Gained hands-on familiarity with advanced diagnostic procedures including grounding resistivity, CT, VT, and protective relay testing. Analyzed electric motor performance through precise measurement and calibration protocols.",
+      "icon": "construct-outline"
+    },
+    {
+      "title": "Operations Trainee",
+      "company": "Zain Bahrain B.S.C",
+      "location": "Bahrain",
+      "roleOverview": "Operational Excellence: Mastered technical support and retail fundamentals, resulting in an immediate transition to a full-time leadership track.",
+      "startDate": "2018-12-10",
+      "endDate": "2019-01-15",
+      "description": "Acquired deep insights into telecommunications retail operations and product life-cycles. Developed core technical troubleshooting skills and customer engagement strategies that set the foundation for subsequent branch management roles.",
+      "icon": "construct-outline"
+    }
+  ],
+  "career": [
+    {
+      "title": "Acting Branch Manager & Retail Operations",
+      "company": "Zain Bahrain B.S.C",
+      "location": "Bahrain",
+      "startDate": "2019-02-01",
+      "endDate": "2022-03-31",
+      "description": "Served as Acting Branch Manager, overseeing sales team performance and optimizing retail shop operations to meet company standards. Consistently exceeded targets by cross-selling and upselling telecommunication services and products as a frontline agent. Acted as a Service Center Representative, troubleshooting service issues and resolving technical claims to minimize downtime for customers. Resolved high-volume customer complaints and requests with a focus on problem resolution and conducted outbound tele-sales calls to drive promotion uptake.",
+      "icon": "storefront-outline"
+    },
+    {
+      "title": "Retail Sales Specialist",
+      "company": "Channels by STC",
+      "location": "Bahrain",
+      "startDate": "2022-04-01",
+      "endDate": "2022-09-30",
+      "description": "Served as a Retail Sales Advisor, expertly executing cross-selling and upselling strategies for a wide range of telecommunications products and services. Managed complex customer inquiries and resolved complaints efficiently using the Oracle CRM enterprise system, ensuring high levels of customer satisfaction and retention.",
+      "icon": "storefront-outline"
+    },
+    {
+      "title": "Electrical Project Engineer",
+      "company": "Super Fire and Safety Services W.L.L",
+      "location": "Bahrain",
+      "startDate": "2022-10-01",
+      "endDate": "2023-10-31",
+      "description": "Completed detailed Fire Alarm System Designs and technical drawings utilizing current Bahrain CDFSD, GCC Fire Codes, NFPA standards, and project specifications. Directed electrical teams in the installation, programming, maintenance, testing, and commissioning of fire alarm control panels and suppression systems, ensuring full compliance with NFPA and EWA regulations. Conducted rigorous inspections and system tests to ensure all components met Electrical Engineering safety requirements and performance standards.",
+      "icon": "flash-outline"
+    },
+    {
+      "title": "Business Development & Public Relations In-Charge",
+      "company": "Lichfield Fire and Safety Equipment FZE",
+      "location": "Bahrain & United Arab Emirates",
+      "startDate": "2024-05-01",
+      "endDate": "2026-02-28",
+      "description": "Formulate and execute comprehensive Strategic Sales plans and quotas for the Bahrain market, ensuring strict alignment with corporate management objectives. Drive profitability by analyzing market dynamics, tracking competitor activities, and identifying new opportunities to increase revenue and market share. Lead and mentor sales teams, setting clear targets and monitoring performance to ensure sales goals are consistently met or exceeded. Secure high-value deals with public and private sectors by actively managing bids on the Bahrain Tender Board and Procural (Tenders & Auctions Platform). Oversee the end-to-end Vendor Management process, obtaining and maintaining industrial vendor pre-qualifications with key government and private entities. Identify and pursue public and private Government Tenders, managing the submission process to ensure compliance and competitiveness. Cultivate robust relationships with key accounts and expand the customer base by identifying and counseling district sales representatives. Conduct regular client visits to diagnose evolving needs, assess relationship quality, and negotiate pricing to close and renew orders. Establish and nurture critical relationships with Civil Defense and government ministries to facilitate smooth project execution and compliance. Monitor key economic indicators, emerging market trends, and supply and demand shifts to optimize product mix and sales volume. Recommend new product lines and service improvements based on comprehensive market analysis and consumer needs surveys. Maintain technical expertise by participating in professional networks and reviewing industry publications to stay ahead of the curve.",
+      "icon": "business-outline",
+      "current": false
+    }
+  ],
+  "certifications": [
+    {
+      "title": "Corporate Sales Fundamentals",
+      "issuer": "Golden Trust",
+      "date": "2019-11-01",
+      "description": "Certification in Corporate Sales Fundamentals",
+      "icon": "ribbon-outline"
+    },
+    {
+      "title": "Emotional Intelligence",
+      "issuer": "Golden Trust",
+      "date": "2019-08-01",
+      "description": "Certification in Emotional Intelligence",
+      "icon": "ribbon-outline"
+    },
+    {
+      "title": "Basic Life Support (BLS)",
+      "issuer": "American Heart Association",
+      "date": "2022-07-01",
+      "description": "Certification in Basic Life Support (BLS)",
+      "icon": "ribbon-outline"
+    },
+    {
+      "title": "Engineering License (Electrical)",
+      "issuer": "CRPEP",
+      "date": "2022-12-01",
+      "description": "Engineering License (Electrical)",
+      "icon": "ribbon-outline"
+    },
+    {
+      "title": "Electrical Installation Wireman",
+      "issuer": "EWA Bahrain",
+      "date": "2024-02-01",
+      "description": "Electrical Installation Wireman License",
+      "icon": "ribbon-outline"
+    },
+    {
+      "title": "NOCN Level 3 Award — Solar PV Installer and Operator",
+      "issuer": "NOCN Group",
+      "date": "2024-03-01",
+      "description": "NOCN Level 3 Award for Solar PV Installer and Operator",
+      "icon": "ribbon-outline"
+    },
+    {
+      "title": "NOCN Level 3 Award — Solar PV Installer and Operator",
+      "issuer": "EWA Acknowledgment",
+      "date": "2024-07-01",
+      "description": "NOCN Level 3 Award for Solar PV Installer and Operator (EWA Acknowledgment)",
+      "icon": "ribbon-outline"
+    }
+  ]
+}

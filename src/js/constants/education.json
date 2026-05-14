@@ -1,0 +1,47 @@
+[
+  {
+    "degree": "Full stack developer",
+    "institution": "Reboot Coding Institute",
+    "location": "Bahrain",
+    "date": "March 2024 — September 2026",
+    "sections": {
+      "educationHighlights": [
+        "Intensive 2-year program focused on modern web development technologies and software engineering practices.",
+        "Comprehensive curriculum covering full-stack development, system design, and industry-standard tools.",
+        "Hands-on projects and real-world applications building scalable web applications and systems."
+      ],
+      "activitiesAndSocieties": [
+        "Active member of the Linux Community Club, collaborating on system-level projects, environments, and open-source methodologies."
+      ]
+    }
+  },
+  {
+    "degree": "Bachelor of Science - BS, Electrical Engineering",
+    "institution": "University of Bahrain",
+    "location": "Bahrain",
+    "date": "June 2022",
+    "certificate": "graduation_certificate",
+    "sections": {
+      "educationHighlights": [
+        "Comprehensive engineering education covering electrical systems, power electronics, and control systems.",
+        "Specialized coursework in renewable energy, automation, and digital circuit design."
+      ],
+      "capstoneProject": [
+        "Architected an IoT-based \"Smart Streetlight\" system utilizing Arduino microcontrollers and motion sensors, simulating a 40% reduction in energy consumption."
+      ]
+    }
+  },
+  {
+    "degree": "High School (Physics and Mathematics)",
+    "institution": "H.E Sheikh Isa bin Ali Secondary School",
+    "location": "Bahrain",
+    "date": "May 2015",
+    "sections": {
+      "educationHighlights": [
+        "Advanced secondary education with focus on Physics and Mathematics streams.",
+        "Strong foundation in scientific principles, mathematical reasoning, and analytical thinking.",
+        "Developed problem-solving skills and technical aptitude that formed the basis for engineering studies."
+      ]
+    }
+  }
+]

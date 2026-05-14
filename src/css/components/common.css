@@ -48,7 +48,7 @@
 .action-btn.primary {
   background: var(--accent);
   color: var(--primary);
-  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+  box-shadow: 0 4px 15px rgba(161, 161, 170, 0.3);
 }
 
 .action-btn.primary::before {
@@ -71,7 +71,7 @@
 
 .action-btn.primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(100, 255, 218, 0.4);
+  box-shadow: 0 8px 25px rgba(161, 161, 170, 0.4);
 }
 
 .action-btn.primary:active {
@@ -79,7 +79,7 @@
 }
 
 .action-btn.secondary {
-  background: rgba(100, 255, 218, 0.1);
+  background: rgba(161, 161, 170, 0.1);
   color: var(--accent);
   border: 2px solid var(--accent);
 }
@@ -88,7 +88,7 @@
   background: var(--accent);
   color: var(--primary);
   transform: translateY(-2px);
-  box-shadow: 0 8px 25px rgba(100, 255, 218, 0.4);
+  box-shadow: 0 8px 25px rgba(161, 161, 170, 0.4);
 }
 
 .action-btn.secondary:active {
@@ -120,11 +120,11 @@
   border-radius: 16px;
   background: linear-gradient(
     135deg,
-    rgba(100, 255, 218, 0.1),
+    rgba(161, 161, 170, 0.1),
     rgba(17, 34, 64, 0.8)
   );
-  border: 2px solid rgba(100, 255, 218, 0.2);
-  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(100, 255, 218, 0.1);
+  border: 2px solid rgba(161, 161, 170, 0.2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3), 0 0 0 1px rgba(161, 161, 170, 0.1);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
   position: relative;
   overflow: hidden;
@@ -139,7 +139,7 @@
   background: linear-gradient(
     45deg,
     transparent 30%,
-    rgba(100, 255, 218, 0.1) 50%,
+    rgba(161, 161, 170, 0.1) 50%,
     transparent 70%
   );
   opacity: 0;
@@ -170,12 +170,12 @@
 }
 .logo-link:hover {
   transform: translateY(-6px) scale(1.08);
-  box-shadow: 0 16px 48px rgba(100, 255, 218, 0.4);
+  box-shadow: 0 16px 48px rgba(161, 161, 170, 0.4);
 }
 .logo-link:hover .org-logo {
-  border-color: rgba(100, 255, 218, 0.6);
+  border-color: rgba(161, 161, 170, 0.6);
   box-shadow: 0 16px 48px rgba(0, 0, 0, 0.5),
-    0 0 0 3px rgba(100, 255, 218, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+    0 0 0 3px rgba(161, 161, 170, 0.25), inset 0 1px 0 rgba(255, 255, 255, 0.2);
   transform: scale(1.05);
 }
 
@@ -200,7 +200,7 @@
   visibility: hidden;
   transform: translateY(20px);
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 15px rgba(100, 255, 218, 0.3);
+  box-shadow: 0 4px 15px rgba(161, 161, 170, 0.3);
 }
 
 .back-to-top-btn.active {
@@ -212,7 +212,7 @@
 .back-to-top-btn:hover {
   background-color: var(--accent-hover);
   transform: translateY(-5px);
-  box-shadow: 0 8px 25px rgba(100, 255, 218, 0.5);
+  box-shadow: 0 8px 25px rgba(161, 161, 170, 0.5);
 }
 
 .back-to-top-btn ion-icon {
