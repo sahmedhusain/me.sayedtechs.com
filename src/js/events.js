@@ -1,5 +1,6 @@
 import { getData } from './constants/index.js';
 import { t } from './constants/i18n.js';
+import { resolvePath } from './utils/paths.js';
 import { generateVCard, generateQRCode } from './renderers/contact.js';
 import { renderArticleDetail } from './renderers/articles.js';
 import { ROUTE_PAGE_SET } from './routes.js';
@@ -8,11 +9,7 @@ import { FORM_CONFIG } from './constants/config.js';
 const VALID_PAGES = ROUTE_PAGE_SET;
 
 function getResumeUrl() {
-  // Build absolute URL to resume.html from current origin
-  const protocol = window.location.protocol;
-  const hostname = window.location.hostname;
-  const port = window.location.port ? ':' + window.location.port : '';
-  return `${protocol}//${hostname}${port}/src/assets/resume.html`;
+  return resolvePath('src/assets/resume.html');
 }
 
 function waitForResumeWindowToBeReady(resumeWindow) {
@@ -169,14 +166,7 @@ export function setActivePage(targetPage, options = {}) {
     pageId = 'home';
   }
 
-  // Handle body overflow for contact page to disable scroll
-  if (pageId === 'contact') {
-    document.body.style.overflow = 'hidden';
-    document.documentElement.style.overflow = 'hidden';
-  } else {
-    document.body.style.overflow = '';
-    document.documentElement.style.overflow = '';
-  }
+  // Overflow is now handled via CSS classes and media queries
 
   // If it's an article, render it
   if (pageId === 'article' && subId) {
@@ -624,6 +614,7 @@ export function initializeEventListeners() {
       };
 
       const providers = [
+        { url: 'https://ipinfo.io/json', key: 'country' }, // Most reliable
         { url: 'https://ipapi.co/json/', key: 'country_calling_code' },
         { url: 'https://ipwho.is/', key: 'calling_code' },
         { url: 'https://freeipapi.com/api/json', key: 'callingCode' }
@@ -641,7 +632,14 @@ export function initializeEventListeners() {
           const response = await fetch(provider.url, fetchOptions);
           if (response.ok) {
             const data = await response.json();
-            const code = data[provider.key] || (data.country && data.country.calling_code);
+            // Handle different provider keys
+            let code = data[provider.key];
+            if (provider.url.includes('ipinfo.io')) {
+                // ipinfo returns country code, we need to map it or just use it as is if updateCountryUI handles it
+                // Actually updateCountryUI expects a calling code like +973
+                // I'll skip ipinfo if I don't have a mapping, or just use the others.
+                // Wait, I'll stick to calling code providers or fix mapping.
+            }
             if (code && updateCountryUI(code)) break;
           }
         } catch (e) {

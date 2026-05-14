@@ -1,5 +1,6 @@
 import { loadData, getData } from './src/js/constants/index.js';
 import { handleImageError, getLogo, getEntityUrl } from './src/js/utils.js';
+import { resolvePath } from './src/js/utils/paths.js';
 import { renderNavbar } from './src/js/renderers/navbar.js';
 import { renderAboutSection, renderHomeFeed } from './src/js/renderers/about.js';
 import { renderExperienceSection } from './src/js/renderers/experience.js';
@@ -17,19 +18,6 @@ window.getEntityUrl = getEntityUrl;
 
 
 
-function computeBasePathname() {
-  const path = window.location.pathname;
-  const segments = path.split('/').filter(Boolean);
-  const routes = ['home', 'about', 'articles', 'article', 'journey', 'portfolio', 'contact'];
-  
-  const baseSegments = [];
-  for (let i = 0; i < segments.length; i++) {
-    if (routes.includes(segments[i]) || segments[i] === 'index.html') break;
-    baseSegments.push(segments[i]);
-  }
-  
-  return baseSegments.length ? `/${baseSegments.join('/')}` : '';
-}
 
 function restorePathFromFallbackQuery() {
   const redirected = window.location.search.match(/[?&]p=([^&]+)/);
@@ -106,7 +94,7 @@ loadResources();
 
 if ('serviceWorker' in navigator) {
   window.addEventListener('load', () => {
-    navigator.serviceWorker.register('sw.js', { scope: './' }).catch((err) => {
+    navigator.serviceWorker.register(resolvePath('sw.js'), { scope: resolvePath('./') }).catch((err) => {
     });
   });
 }
@@ -124,7 +112,7 @@ async function initApp() {
   
   // Render the complete app
   app.innerHTML = `
-    <div class="main-content" style="max-width: 1024px; margin: 0 auto; padding-top: 10rem;">
+    <div class="main-content">
       ${renderNavbar()}
       <article class="home active" data-page="home">
         ${renderHomeFeed()}

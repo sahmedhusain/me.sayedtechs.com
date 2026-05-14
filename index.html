@@ -167,7 +167,7 @@
   <link rel="icon" type="image/svg+xml" href="src/assets/favicon.svg">
   <link rel="alternate icon" type="image/png" href="src/assets/IMG_2174.PNG">
   <link rel="apple-touch-icon" sizes="180x180" href="src/assets/IMG_2174.PNG">
-  <link rel="manifest" href="site.webmanifest">
+  <link rel="manifest" href="site.webmanifest" id="manifest-link">
 
   <script>
     (function () {
@@ -200,6 +200,14 @@
       }
 
       ['src/css/main.css', 'src/css/components/project-detail.css'].forEach(f => injectAsset(f, 'css'));
+
+      // Fix manifest and icon links
+      var manifestLink = document.getElementById('manifest-link');
+      if (manifestLink) manifestLink.href = (basePath + '/site.webmanifest').replace(/\/+/g, '/');
+      
+      document.querySelectorAll('link[href^="src/assets/"]').forEach(function(link) {
+        link.href = (basePath + '/' + link.getAttribute('href')).replace(/\/+/g, '/');
+      });
 
       function startApp() { injectAsset('main.js', 'js'); }
       if (document.readyState === 'loading') {

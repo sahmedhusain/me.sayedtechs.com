@@ -6,6 +6,7 @@
  */
 
 import { loadLocale } from './i18n.js';
+import { resolvePath } from '../utils/paths.js';
 
 let data = null;
 
@@ -21,7 +22,7 @@ export async function loadData() {
 
   const suffix = savedLang === 'ar' ? '_ar' : '';
 
-    const [profile, assets, experience, education, certifications, skills,
+  const [profile, assets, experience, education, certifications, skills,
     projects, articles_en, articles_ar, journey] = await Promise.all([
       fetchJSON(`src/js/constants/profile${suffix}.json`),
       fetchJSON(`src/js/constants/assets${suffix}.json`),
@@ -106,12 +107,12 @@ export async function loadData() {
     // Social links
     social: profile.social || {},
 
-    // Assets
-    assets,
-    avatar: assets.avatar,
-    cvUrl: assets.cv,
-    vCardUrl: assets.vcard,
-    graduationCertificate: assets.graduation_certificate,
+    // Assets (All resolved to absolute paths)
+    assets: resolveAllAssetPaths(assets),
+    avatar: resolvePath(assets.avatar),
+    cvUrl: resolvePath(assets.cv),
+    vCardUrl: resolvePath(assets.vcard),
+    graduationCertificate: resolvePath(assets.graduation_certificate),
 
     // Data collections
     experience,
@@ -157,7 +158,7 @@ export function getAsset(key) {
 
 async function fetchJSON(url) {
   try {
-    const res = await fetch(url);
+    const res = await fetch(resolvePath(url));
     if (!res.ok) throw new Error(`Failed to fetch ${url}: ${res.status}`);
     return await res.json();
   } catch (err) {
@@ -197,8 +198,12 @@ function resolveFeatured(config, collections, assets) {
 function resolveAssetKey(key, assets) {
   if (!key || typeof key !== 'string') return key;
 
-  // If it looks like a URL or file path, return as-is
-  if (key.startsWith('http') || key.startsWith('src/') || key.startsWith('/') || key.startsWith('./')) {
+  // If it looks like a local file path, resolve it to absolute
+  if (key.startsWith('src/') || key.startsWith('./')) {
+    return resolvePath(key);
+  }
+  
+  if (key.startsWith('http') || key.startsWith('/') || key.startsWith('data:')) {
     return key;
   }
 
@@ -229,5 +234,30 @@ function extractSkillNames(techSkills) {
       );
     }
   }
+  return result;
+}
+
+/**
+ * Recursively resolves all relative paths in an assets object to absolute ones.
+ */
+function resolveAllAssetPaths(obj) {
+  if (!obj || typeof obj !== 'object') return obj;
+  
+  const result = Array.isArray(obj) ? [] : {};
+  
+  for (const [key, value] of Object.entries(obj)) {
+    if (typeof value === 'string') {
+      if (value.startsWith('src/') || value.startsWith('./')) {
+        result[key] = resolvePath(value);
+      } else {
+        result[key] = value;
+      }
+    } else if (typeof value === 'object') {
+      result[key] = resolveAllAssetPaths(value);
+    } else {
+      result[key] = value;
+    }
+  }
+  
   return result;
 }

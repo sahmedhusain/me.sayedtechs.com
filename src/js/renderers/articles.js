@@ -1,5 +1,6 @@
 import { getData } from '../constants/index.js';
 import { t } from '../constants/i18n.js';
+import { resolvePath } from '../utils/paths.js';
 
 /**
  * Renders the main Articles list page.
@@ -45,7 +46,7 @@ export function renderArticlesSection() {
           <p class="article-desc">${article.desc}</p>
           <div class="article-footer">
             <span class="article-read-time"><ion-icon name="time-outline"></ion-icon> ${article.readTime}</span>
-            <a href="articles/${article.id}" data-nav-link="articles/${article.id}" class="read-article-btn">
+            <a href="${resolvePath(`articles/${article.id}`)}" data-nav-link="articles/${article.id}" class="read-article-btn">
               ${t('articles.readFullArticle')} <ion-icon name="${document.documentElement.dir === 'rtl' ? 'arrow-back-outline' : 'arrow-forward-outline'}"></ion-icon>
             </a>
           </div>

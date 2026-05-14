@@ -522,7 +522,49 @@ html:not([data-theme="dark"]) .nav-pill-container,
   }
 
   .navbar {
-    padding: 0 1rem;
+    padding: 0 1.5rem;
+  }
+
+  #nav-mobile-toggle-wrapper {
+    left: 1.5rem !important;
+    right: auto !important;
+  }
+
+  #nav-avatar-container {
+    left: 5.7rem !important;
+    right: auto !important;
+  }
+
+  [dir="rtl"] #nav-mobile-toggle-wrapper {
+    left: auto !important;
+    right: 1.5rem !important;
+  }
+
+  [dir="rtl"] #nav-avatar-container {
+    left: auto !important;
+    right: 5.7rem !important;
+  }
+
+  .nav-controls {
+    right: 1.5rem !important;
+    left: auto !important;
+  }
+
+  #nav-mobile-toggle {
+    position: static;
+    margin: 0;
+  }
+
+  #nav-resume-wrapper {
+    position: absolute !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    margin-top: 0 !important;
+  }
+
+  .nav-resume-btn {
+    padding: 0.7rem 1.2rem !important;
+    font-size: 0.8rem !important;
   }
 
   .navbar.is-mobile-menu-open .nav-controls > :not(#nav-mobile-toggle) {

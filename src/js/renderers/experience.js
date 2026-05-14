@@ -398,6 +398,24 @@ export function generateSectionHTML({
     </div>
   `;
 
+  const listViewHtml = `
+    <div class="section-list-container" id="${idPrefix}-list-view" data-journey-section="${idPrefix}">
+      <div class="section-list-header">
+        <ion-icon name="${iconName}"></ion-icon>
+        <span>${displayTitle}</span>
+      </div>
+      <div class="section-list-items">
+        ${items.map((item, i) => `
+          <div class="section-list-card" data-list-index="${i}">
+            <div class="experience-card">
+              ${renderCard(item)}
+            </div>
+          </div>
+        `).join('')}
+      </div>
+    </div>
+  `;
+
   return `
     <div class="journey-section-wrapper animate-entry" data-journey-section="${idPrefix}" style="animation-delay: 0.3s;">
       ${hideHeader ? '' : `
@@ -407,6 +425,7 @@ export function generateSectionHTML({
       </header>
       `}
       ${gridViewHtml}
+      ${listViewHtml}
     </div>
   `;
 }

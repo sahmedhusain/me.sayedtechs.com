@@ -1,6 +1,7 @@
 import { getData } from '../constants/index.js';
 import { t } from '../constants/i18n.js';
 import { getLogo, timeAgo } from '../utils.js';
+import { resolvePath } from '../utils/paths.js';
 import { getPlatformIcon } from './articles.js';
 
 export function renderSidebar() {
@@ -87,7 +88,7 @@ export function renderAboutSection() {
     .map(p => `<p style="margin-bottom: 1.5rem;">${p.replace(/\n/g, '<br/>')}</p>`)
     .join('');
   return `
-    <div style="display: flex; flex-direction: row; justify-content: space-between; align-items: flex-start; gap: 4rem; width: 100%; flex-wrap: wrap;">
+    <div class="about-section-container">
       
       <!-- Left Column: Title and Description -->
       <div class="animate-entry" style="flex: 2; min-width: 300px; display: flex; flex-direction: column; align-items: flex-start; animation-delay: 0s;">
@@ -192,8 +193,8 @@ export function renderHomeFeed() {
       
       <!-- Info & Socials -->
       <div>
-        <h1 style="font-size: 2.1rem; font-weight: 800; color: var(--accent); margin-bottom: 0.5rem; font-family: var(--font-sans); white-space: nowrap;">${t('home.welcome')}</h1>
-        <p class="about-tagline" style="font-size: 1.05rem; color: var(--text-secondary); margin: 0 0 1.2rem 0; line-height: 1.6; font-weight: 400; font-style: italic; font-family: var(--font-sans); display: block;">${t('home.tagline')}</p>
+        <h1 class="home-welcome-title">${t('home.welcome')}</h1>
+        <p class="about-tagline">${t('home.tagline')}</p>
         
         <style>
           .home-profile-socials { position: relative; z-index: 50; }
@@ -275,7 +276,7 @@ export function renderHomeFeed() {
       </div>
     </div>
 
-    <div class="animate-entry" style="display: flex; flex-direction: row; flex-wrap: wrap; gap: 5rem; align-items: flex-start; justify-content: space-between; width: 100%; animation-delay: 0.1s;">
+    <div class="home-feed-container animate-entry" style="animation-delay: 0.1s;">
       
       <section style="flex: 1.5; min-width: 300px;">
         <ul style="list-style:none; padding:0; display:flex; flex-direction:column; gap:2.5rem;">
@@ -296,7 +297,7 @@ export function renderHomeFeed() {
                     </div>
                     <h3 style="font-size: 1.25rem; font-weight: 700; color: var(--text-primary); margin-bottom: 0.6rem; transition: color 0.2s;">${post.title}</h3>
                     <p style="color: var(--text-secondary); margin: 0 0 1.2rem 0; font-size: 1rem; line-height: 1.6; flex-grow: 1;">${post.desc}</p>
-                    <a href="articles/${post.id}" data-nav-link="articles/${post.id}" class="read-more-link" style="color: var(--accent); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; text-decoration: none; width: fit-content; margin-top: auto;">
+                    <a href="${resolvePath(`articles/${post.id}`)}" data-nav-link="articles/${post.id}" class="read-more-link" style="color: var(--accent); font-size: 0.9rem; font-weight: 600; display: flex; align-items: center; gap: 0.4rem; text-decoration: none; width: fit-content; margin-top: auto;">
                       ${t('home.readFullArticle')} <ion-icon name="${document.documentElement.dir === 'rtl' ? 'arrow-back-outline' : 'arrow-forward-outline'}"></ion-icon>
                     </a>
                   </li>

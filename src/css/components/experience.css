@@ -205,10 +205,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg,
-      transparent,
-      rgba(161, 161, 170, 0.1),
-      transparent);
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(161, 161, 170, 0.1),
+    transparent
+  );
   transform: translateX(-100%);
   transition: transform 0.5s ease;
 }
@@ -251,6 +253,15 @@
 }
 
 /* Timeline Components */
+.timeline-title-fixed {
+  text-align: center;
+  font-size: 1.9rem;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--text-primary);
+  margin: 0 0 1rem;
+}
+
 .timeline-chart-container {
   display: flex;
   justify-content: center;
@@ -258,6 +269,8 @@
   margin: 1.5rem 0;
   overflow-x: auto;
   padding: 2.5rem 1.5rem;
+  scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
   background: rgba(255, 255, 255, 0.05);
   backdrop-filter: blur(25px) saturate(180%);
   -webkit-backdrop-filter: blur(25px) saturate(180%);
@@ -265,6 +278,14 @@
   border: 1px solid rgba(255, 255, 255, 0.12);
   box-shadow: none;
   width: 100%;
+}
+
+@media (max-width: 768px) {
+  .timeline-chart-container {
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding: 2rem 1rem;
+  }
 }
 
 .timeline-svg {
@@ -456,6 +477,58 @@
   display: block;
 }
 
+.section-list-container {
+  display: none;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(25px) saturate(180%);
+  -webkit-backdrop-filter: blur(25px) saturate(180%);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2.5rem;
+  padding: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.section-list-header {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  font-size: 1.2rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  margin-bottom: 1.25rem;
+}
+
+.section-list-items {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.section-list-card .experience-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 2.5rem;
+  box-shadow: none;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .section-view-container {
+    display: none;
+  }
+
+  .section-view-container.active {
+    display: none;
+  }
+
+  .section-list-container {
+    display: block;
+  }
+
+  .section-tabs-wrapper {
+    height: auto;
+  }
+}
+
 /* Sidebar List Styles (Grid View) */
 .section-sidebar-list {
   display: flex;
@@ -478,7 +551,6 @@
 .section-sidebar-btn:hover {
   /* Let the indicator handle hover background */
 }
-
 
 .sidebar-btn-title {
   display: block;
@@ -542,7 +614,9 @@
 .sidebar-indicator-active {
   background: rgba(255, 255, 255, 0.12);
   border: 1px solid rgba(255, 255, 255, 0.2);
-  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  box-shadow:
+    0 8px 32px rgba(0, 0, 0, 0.1),
+    inset 0 1px 1px rgba(255, 255, 255, 0.2);
 }
 
 .sidebar-indicator-hover {
@@ -887,9 +961,11 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
   transform: translateX(8px);
   box-shadow: 0 4px 20px rgba(161, 161, 170, 0.25);
   border-color: var(--accent);
-  background: linear-gradient(135deg,
-      rgba(161, 161, 170, 0.12),
-      var(--gradient-end));
+  background: linear-gradient(
+    135deg,
+    rgba(161, 161, 170, 0.12),
+    var(--gradient-end)
+  );
 }
 
 .timeline-item-title {
@@ -1139,7 +1215,6 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
   overflow: hidden;
 }
 
-
 .experience-company-info {
   display: flex;
   align-items: flex-start;
@@ -1287,8 +1362,6 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
   transform: translateY(-2px);
   box-shadow: 0 10px 20px rgba(161, 161, 170, 0.2);
 }
-
-
 
 .experience-section {
   padding: 1rem 0;
@@ -1439,6 +1512,25 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
   .experience-company-name {
     text-align: center;
   }
+
+  .section-list-container .experience-company-info {
+    flex-direction: row;
+    align-items: flex-start;
+    text-align: inherit;
+  }
+
+  .section-list-container .experience-card .experience-company-logo {
+    align-self: flex-start;
+  }
+
+  .section-list-container .experience-job-title,
+  .section-list-container .experience-company-name {
+    text-align: inherit;
+  }
+
+  .section-list-container .experience-meta-row {
+    justify-content: flex-start;
+  }
 }
 
 /* --- Shared Pill Style (Navbar Matching) --- */
@@ -1524,7 +1616,9 @@ html:not([data-theme="dark"]) .sidebar-indicator-active,
 [data-theme="light"] .sidebar-indicator-active {
   background: rgba(0, 0, 0, 0.05) !important;
   border-color: rgba(0, 0, 0, 0.08) !important;
-  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.05), inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
+  box-shadow:
+    0 4px 15px rgba(0, 0, 0, 0.05),
+    inset 0 1px 1px rgba(255, 255, 255, 0.8) !important;
 }
 
 html:not([data-theme="dark"]) .pill-indicator-hover,
@@ -1534,10 +1628,23 @@ html:not([data-theme="dark"]) .sidebar-indicator-hover,
   background: rgba(0, 0, 0, 0.02) !important;
 }
 
-
 /* --- CONSOLIDATED LIGHT MODE OVERRIDES --- */
 html:not([data-theme="dark"]) .section-tabs-wrapper,
 [data-theme="light"] .section-tabs-wrapper {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08) !important;
+}
+
+html:not([data-theme="dark"]) .section-list-container,
+[data-theme="light"] .section-list-container {
+  background: rgba(255, 255, 255, 0.95) !important;
+  border: 1px solid rgba(0, 0, 0, 0.1) !important;
+  box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08) !important;
+}
+
+html:not([data-theme="dark"]) .section-list-card .experience-card,
+[data-theme="light"] .section-list-card .experience-card {
   background: rgba(255, 255, 255, 0.95) !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08) !important;
@@ -1562,7 +1669,11 @@ html:not([data-theme="dark"]) .sidebar-section-header,
 
 html:not([data-theme="dark"]) .sidebar-separator,
 [data-theme="light"] .sidebar-separator {
-  background: linear-gradient(90deg, rgba(0, 0, 0, 0.1), transparent) !important;
+  background: linear-gradient(
+    90deg,
+    rgba(0, 0, 0, 0.1),
+    transparent
+  ) !important;
   height: 1px !important;
   margin: 0.8rem 0 1.2rem !important;
   display: block !important;
@@ -1663,7 +1774,9 @@ html:not([data-theme="dark"]) .timeline-svg text,
   opacity: 0.8 !important;
 }
 
-html:not([data-theme="dark"]) .timeline-svg line[stroke*="var(--text-secondary)"],
+html:not([data-theme="dark"])
+  .timeline-svg
+  line[stroke*="var(--text-secondary)"],
 html:not([data-theme="dark"]) .timeline-svg line[opacity="0.2"],
 [data-theme="light"] .timeline-svg line[stroke*="var(--text-secondary)"],
 [data-theme="light"] .timeline-svg line[opacity="0.2"] {

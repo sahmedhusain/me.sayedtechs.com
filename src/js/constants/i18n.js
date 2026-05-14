@@ -5,6 +5,8 @@
  * for translating UI strings throughout the application.
  */
 
+import { resolvePath } from '../utils/paths.js';
+
 let currentLocale = 'en';
 let strings = {};
 let loaded = false;
@@ -15,8 +17,8 @@ export async function loadLocale(locale) {
   try {
     // Always load both for cross-language search support
     const [enRes, arRes] = await Promise.all([
-      fetch(`src/js/constants/ui/en.json`),
-      fetch(`src/js/constants/ui/ar.json`)
+      fetch(resolvePath(`src/js/constants/ui/en.json`)),
+      fetch(resolvePath(`src/js/constants/ui/ar.json`))
     ]);
     
     dualStrings.en = await enRes.json();

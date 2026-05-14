@@ -1,5 +1,6 @@
 import { getData } from '../constants/index.js';
 import { t } from '../constants/i18n.js';
+import { resolvePath } from '../utils/paths.js';
 import { renderTechLogos, getCategoryIcon, getIconForLibraryItem } from '../data/icons.js';
 import { renderSkillsSection } from './skills.js';
 import { FALLBACK_CATEGORIES, INTERNAL_CATEGORIES, CATEGORY_ICONS } from '../constants/config.js';
@@ -361,7 +362,7 @@ export function renderProjectsSection() {
               <p class="project-small-description">
                 ${project.subtitle || (project.points && project.points.length > 0 ? project.points[0] : '')}
               </p>
-              <a href="projects/${project.id}" data-nav-link="projects/${project.id}" class="go-to-project-btn">
+              <a href="${resolvePath(`projects/${project.id}`)}" data-nav-link="projects/${project.id}" class="go-to-project-btn">
                 <span>${t('projects.viewProject')}</span>
                 <span class="project-btn-icon">
                   <ion-icon name="${document.documentElement.dir === 'rtl' ? 'arrow-back-outline' : 'arrow-forward-outline'}"></ion-icon>

@@ -14,6 +14,19 @@ export function renderNavbar() {
     <nav class="navbar" id="navbar" style="position:fixed; top: 0; left: 0; right: 0; height: 100px; display:flex; justify-content:center; align-items:center; z-index: 9999; padding: 0 3rem; pointer-events: none; transition: var(--transition-smooth);">
       
       <!-- Left Side Profile Picture Toggle -->
+      <div id="nav-mobile-toggle-wrapper" style="position:absolute; left: 1rem; display:flex; align-items:center; gap: 0.75rem; margin-top: 1.5rem; pointer-events: auto;">
+        <button
+          id="nav-mobile-toggle"
+          class="nav-mobile-toggle"
+          type="button"
+          aria-label="Toggle navigation menu"
+          aria-controls="nav-mobile-tabs"
+          aria-expanded="false"
+          style="display:none; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border:1px solid rgba(255, 255, 255, 0.1); cursor:pointer; color:var(--text-primary); height: 52px; width: 52px; align-items:center; justify-content:center; border-radius:50%; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto; padding: 0;">
+          <ion-icon id="nav-mobile-toggle-icon" name="menu-outline" style="font-size: 1.45rem;"></ion-icon>
+        </button>
+      </div>
+
       <div id="nav-avatar-container" style="position:absolute; left: 3rem; display:flex; align-items:center; opacity:0; pointer-events:none; transform: scale(0.8); transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1); margin-top: 1.5rem;">
         <button data-nav-link="home" style="background: transparent; border: none; padding: 0; cursor: pointer; display: flex; align-items: center; justify-content: center; width: 52px; height: 52px; border-radius: 50%; pointer-events: auto;">
           <img src="${data.avatar}" alt="Return Home" style="width: 52px; height: 52px; border-radius: 50%; object-fit: cover; border: none !important; box-shadow: none !important;">
@@ -77,16 +90,6 @@ export function renderNavbar() {
           <ion-icon name="moon-outline" class="dark-icon"></ion-icon>
         </button>
 
-        <button
-          id="nav-mobile-toggle"
-          class="nav-mobile-toggle"
-          type="button"
-          aria-label="Toggle navigation menu"
-          aria-controls="nav-mobile-tabs"
-          aria-expanded="false"
-          style="display:none; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border:1px solid rgba(255, 255, 255, 0.1); cursor:pointer; color:var(--text-primary); height: 52px; width: 52px; align-items:center; justify-content:center; border-radius:50%; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto; padding: 0;">
-          <ion-icon id="nav-mobile-toggle-icon" name="menu-outline" style="font-size: 1.45rem;"></ion-icon>
-        </button>
       </div>
 
       <div class="nav-mobile-overlay" id="nav-mobile-overlay" aria-hidden="true"></div>

@@ -105,20 +105,25 @@
   color: var(--accent) !important;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   .filter-list {
     border-radius: 20px;
-    padding: 0.75rem;
-    width: 100%;
+    padding: 0.5rem;
+    width: fit-content;
+    max-width: 100%;
     margin-bottom: 2.5rem;
+    overflow-x: auto;
+    scrollbar-width: none;
   }
   
-  .filter-btn .filter-text {
+  .pill-btn .filter-text {
     display: none;
   }
   
-  .filter-btn {
-    padding: 0.75rem;
+  .pill-btn {
+    padding: 0.8rem;
+    min-width: 44px;
+    justify-content: center;
   }
 }
 

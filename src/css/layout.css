@@ -56,17 +56,16 @@ body::before {
   margin-left: 0;
   min-height: 100vh;
   padding-top: calc(var(--nav-height) + 1rem);
-  max-width: 1500px;
+  max-width: var(--container-max);
   margin: 0 auto;
   padding-left: 2rem;
   padding-right: 2rem;
-  padding-top: calc(var(--nav-height) + 1rem);
 }
 
 @media (max-width: 768px) {
   .main-content {
-    padding-left: 1rem;
-    padding-right: 1rem;
+    padding-left: 1.5rem;
+    padding-right: 1.5rem;
   }
 }
 
