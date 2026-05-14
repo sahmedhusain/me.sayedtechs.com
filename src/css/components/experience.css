@@ -1429,6 +1429,8 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
   color: var(--accent);
   margin: 0 0 1rem 0;
   text-transform: capitalize;
+  overflow-wrap: anywhere;
+  word-break: break-word;
 }
 
 .experience-section-title ion-icon {
@@ -1473,6 +1475,50 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
 @media (max-width: 768px) {
   .experience-card {
     padding: 1.5rem;
+  }
+
+  .section-list-container,
+  .section-list-card,
+  .experience-card,
+  .experience-card-header,
+  .experience-company-info,
+  .experience-header-main,
+  .experience-meta-row {
+    width: 100%;
+    max-width: 100%;
+  }
+
+  .section-list-items {
+    max-width: 100%;
+  }
+
+  .experience-company-info,
+  .experience-header-main,
+  .experience-meta-row {
+    min-width: 0;
+  }
+
+  .experience-job-title,
+  .experience-company-name,
+  .company-link {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: break-word;
+  }
+
+  .experience-meta-row {
+    width: 100%;
+  }
+
+  .meta-pill {
+    width: fit-content;
+    max-width: 100%;
+    white-space: normal;
+  }
+
+  .meta-pill .date-text,
+  .meta-pill span {
+    overflow-wrap: anywhere;
   }
 
   .experience-company-info {
@@ -1638,7 +1684,7 @@ html:not([data-theme="dark"]) .section-tabs-wrapper,
 
 html:not([data-theme="dark"]) .section-list-container,
 [data-theme="light"] .section-list-container {
-  background: rgba(255, 255, 255, 0.95) !important;
+  background: transparent !important;
   border: 1px solid rgba(0, 0, 0, 0.1) !important;
   box-shadow: 0 15px 45px rgba(0, 0, 0, 0.08) !important;
 }

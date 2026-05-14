@@ -308,11 +308,13 @@ export function setActivePage(targetPage, options = {}) {
   // --- Sync Indicators ---
   const activeIndicator = document.getElementById('nav-indicator-active');
   if (activeIndicator && activeTopBarLink) {
-    const rect = activeTopBarLink.getBoundingClientRect();
-    const parentRect = document.querySelector('.nav-pill-container').getBoundingClientRect();
-    activeIndicator.style.width = `${rect.width}px`;
-    activeIndicator.style.left = `${rect.left - parentRect.left}px`;
-    activeIndicator.style.top = `${rect.top - parentRect.top}px`;
+    const isMobileNav = window.matchMedia('(max-width: 850px)').matches;
+    const fixedWidth = isMobileNav ? 280 : activeTopBarLink.offsetWidth;
+    
+    activeIndicator.style.width = `${fixedWidth}px`;
+    activeIndicator.style.height = `${activeTopBarLink.offsetHeight}px`;
+    activeIndicator.style.left = `${activeTopBarLink.offsetLeft + (activeTopBarLink.offsetWidth - fixedWidth) / 2}px`;
+    activeIndicator.style.top = `${activeTopBarLink.offsetTop}px`;
     activeIndicator.style.opacity = targetPage === 'home' ? '0' : '1';
   } else if (activeIndicator) {
     activeIndicator.style.opacity = '0';
@@ -391,7 +393,9 @@ export function initializeEventListeners() {
       if (!langIndicator || !btn) return;
       const rect = btn.getBoundingClientRect();
       const parentRect = langMenu.getBoundingClientRect();
+      langIndicator.style.width = `${rect.width}px`;
       langIndicator.style.height = `${rect.height}px`;
+      langIndicator.style.left = `${rect.left - parentRect.left}px`;
       langIndicator.style.top = `${rect.top - parentRect.top}px`;
       langIndicator.style.opacity = '1';
     };
@@ -665,7 +669,9 @@ export function initializeEventListeners() {
     const indicator = container.querySelector(indicatorClass);
     if (indicator) {
       indicator.style.width = `${btn.offsetWidth}px`;
+      indicator.style.height = `${btn.offsetHeight}px`;
       indicator.style.left = `${btn.offsetLeft}px`;
+      indicator.style.top = `${btn.offsetTop}px`;
       indicator.style.opacity = opacity;
     }
   };
@@ -675,7 +681,12 @@ export function initializeEventListeners() {
     if (!container) return;
     const indicator = container.querySelector(indicatorClass);
     if (indicator) {
+      const isMobile = window.innerWidth <= 768;
+      const fixedWidth = isMobile ? 220 : 270;
+      
+      indicator.style.width = `${fixedWidth}px`;
       indicator.style.height = `${btn.offsetHeight}px`;
+      indicator.style.left = `${btn.offsetLeft + (btn.offsetWidth - fixedWidth) / 2}px`;
       indicator.style.top = `${btn.offsetTop}px`;
       indicator.style.opacity = opacity;
     }
@@ -928,11 +939,14 @@ export function initializeEventListeners() {
   if (navContainer) {
     const moveIndicator = (indicator, target, opacity = 1) => {
       if (!indicator || !target) return;
-      const rect = target.getBoundingClientRect();
-      const parentRect = navContainer.getBoundingClientRect();
-      indicator.style.width = `${rect.width}px`;
-      indicator.style.left = `${rect.left - parentRect.left}px`;
-      indicator.style.top = `${rect.top - parentRect.top}px`;
+      
+      const isMobileNav = window.matchMedia('(max-width: 850px)').matches;
+      const fixedWidth = isMobileNav ? 280 : target.offsetWidth;
+      
+      indicator.style.width = `${fixedWidth}px`;
+      indicator.style.height = `${target.offsetHeight}px`;
+      indicator.style.left = `${target.offsetLeft + (target.offsetWidth - fixedWidth) / 2}px`;
+      indicator.style.top = `${target.offsetTop}px`;
       indicator.style.opacity = opacity;
     };
 

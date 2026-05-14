@@ -172,7 +172,7 @@
 }
 
 [dir="rtl"] .section-tabs-wrapper {
-  grid-template-columns: 1fr 320px;
+  grid-template-columns: 320px 1fr !important;
 }
 
 [dir="rtl"] .section-sidebar-list {
@@ -373,19 +373,16 @@
 /* --- Journey & Experience --- */
 [dir="rtl"] .section-tabs-wrapper {
   grid-template-columns: 320px 1fr !important;
-  /* Sidebar (320px) on right, Content (1fr) on left in RTL */
 }
 
 [dir="rtl"] .section-sidebar-list {
   border-left: 1px solid rgba(255, 255, 255, 0.08) !important;
   border-right: none !important;
-  overflow: visible !important;
 }
 
 [dir="rtl"] .sidebar-items-container {
-  padding-right: 0 !important;
-  padding-left: 4px !important;
-  overflow: visible !important;
+  padding-left: 0 !important;
+  padding-right: 4px !important;
 }
 
 [dir="rtl"] .section-sidebar-btn {
@@ -432,19 +429,22 @@
 }
 
 [dir="rtl"] .experience-section-title,
-[dir="rtl"] .overview-header {
+[dir="rtl"] .overview-header,
+[dir="rtl"] .sidebar-section-header {
   flex-direction: row !important;
   justify-content: flex-start !important;
   text-align: right !important;
 }
 
 [dir="rtl"] .experience-section-title ion-icon,
-[dir="rtl"] .overview-header ion-icon {
+[dir="rtl"] .overview-header ion-icon,
+[dir="rtl"] .sidebar-section-header ion-icon {
   order: 1 !important;
 }
 
 [dir="rtl"] .experience-section-title span,
-[dir="rtl"] .overview-header span {
+[dir="rtl"] .overview-header span,
+[dir="rtl"] .sidebar-section-header span {
   order: 2 !important;
 }
 

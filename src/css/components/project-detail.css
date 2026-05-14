@@ -189,6 +189,16 @@
   line-height: 1.8;
   font-size: 1.15rem;
   width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
+  word-break: break-word;
+  overflow-wrap: break-word;
+}
+
+.project-main-content {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden;
 }
 
 .markdown-body-raw h1,
@@ -224,6 +234,31 @@
 
 .markdown-body-raw li {
   margin-bottom: 0.8rem;
+}
+
+.markdown-body-raw table {
+  display: block;
+  width: 100%;
+  overflow-x: auto;
+  border-collapse: collapse;
+  margin-bottom: 2rem;
+  -webkit-overflow-scrolling: touch;
+}
+
+.markdown-body-raw th,
+.markdown-body-raw td {
+  padding: 0.75rem 1rem;
+  border: 1px solid var(--card-border);
+  text-align: left;
+}
+
+[dir="rtl"] .markdown-body-raw th,
+[dir="rtl"] .markdown-body-raw td {
+  text-align: right;
+}
+
+.markdown-body-raw tr:nth-child(even) {
+  background: rgba(var(--accent-rgb), 0.02);
 }
 
 .markdown-body-raw a {

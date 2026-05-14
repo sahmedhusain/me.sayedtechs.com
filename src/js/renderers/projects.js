@@ -47,7 +47,7 @@ export function renderProjectDetail(id) {
     <section class="project-detail-wrapper animate-entry">
       <header class="project-detail-header">
         <div class="project-header-main">
-          <button class="back-btn-minimal" onclick="window.history.back()" title="${t('projects.backToPortfolio')}">
+          <button class="back-btn-minimal" data-nav-link="portfolio" title="${t('projects.backToPortfolio')}">
             <ion-icon name="arrow-back-outline"></ion-icon>
           </button>
           <div class="project-icon-large">

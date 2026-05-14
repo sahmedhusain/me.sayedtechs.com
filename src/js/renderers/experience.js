@@ -95,7 +95,7 @@ export function renderExperienceCardContent(job) {
           <div class="experience-section">
             <h4 class="experience-section-title">
               <ion-icon name="${sectionIcon}"></ion-icon>
-              ${t(`experience.sections.${sectionName}`) || sectionTitle}
+              <span>${t(`experience.sections.${sectionName}`) || sectionTitle}</span>
             </h4>
             <ul class="experience-points">
               ${points.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -106,7 +106,7 @@ export function renderExperienceCardContent(job) {
         <div class="experience-section">
           <h4 class="experience-section-title">
             <ion-icon name="checkmark-circle-outline"></ion-icon>
-            ${t('experience.keyResponsibilities')}
+            <span>${t('experience.keyResponsibilities')}</span>
           </h4>
           <ul class="experience-points">
             ${job.points.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -116,7 +116,7 @@ export function renderExperienceCardContent(job) {
           <div class="experience-section">
             <h4 class="experience-section-title">
               <ion-icon name="build-outline"></ion-icon>
-              ${t('experience.keyProjects')}
+              <span>${t('experience.keyProjects')}</span>
             </h4>
             <ul class="experience-points">
               ${job.keyProjects.map(project => `<li class="experience-point">${project}</li>`).join('')}
@@ -279,7 +279,7 @@ export function renderEducationCardContent(edu) {
         <div class="experience-section">
           <h4 class="experience-section-title">
             <ion-icon name="school-outline"></ion-icon>
-            ${t('experience.educationHighlights')}
+            <span>${t('experience.educationHighlights')}</span>
           </h4>
           <ul class="experience-points">
             ${edu.description.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -322,7 +322,7 @@ export function renderCertificationCardContent(cert) {
       <div class="experience-section">
         <h4 class="experience-section-title">
           <ion-icon name="information-circle-outline"></ion-icon>
-          ${t('experience.aboutThisCredential')}
+          <span>${t('experience.aboutThisCredential')}</span>
         </h4>
         <ul class="experience-points">
           ${cert.description.map(point => `<li class="experience-point">${point}</li>`).join('')}
@@ -332,7 +332,7 @@ export function renderCertificationCardContent(cert) {
     ${cert.courses ? `
       <div class="experience-card-content" style="margin-top: 1rem;">
          <div class="experience-section">
-            <h4 class="experience-section-title"><ion-icon name="book-outline"></ion-icon> ${t('experience.courses')}</h4>
+            <h4 class="experience-section-title"><ion-icon name="book-outline"></ion-icon> <span>${t('experience.courses')}</span></h4>
             <div class="cert-courses" style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
               ${cert.courses.map(course => `<span class="cert-course-item">${course}</span>`).join('')}
             </div>

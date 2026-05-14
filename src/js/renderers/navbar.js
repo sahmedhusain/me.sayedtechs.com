@@ -37,18 +37,41 @@ export function renderNavbar() {
       <div id="nav-center-wrapper" style="display: flex; align-items: center; justify-content: center; position: relative; margin-top: 1.5rem; pointer-events: auto;">
         
         <!-- Navigation Pill -->
-        <div class="nav-pill-container nav-tabs-container" id="nav-mobile-tabs" style="display: flex; gap: 0.5rem; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.5rem; border-radius: 999px; position: relative; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto;">
+        <div class="nav-pill-container nav-tabs-container" id="nav-mobile-tabs" style="display: flex; gap: 0.5rem; border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.5rem; border-radius: 999px; position: relative; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); pointer-events: auto;">
           <!-- Active Selection Indicator (Pinned) -->
           <div id="nav-indicator-active" style="position: absolute; height: calc(100% - 1rem); background: rgba(255, 255, 255, 0.12); border: 1px solid rgba(255, 255, 255, 0.2); border-radius: 999px; transition: all 0.6s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; z-index: 0; box-shadow: inset 0 1px 1px rgba(255, 255, 255, 0.1);"></div>
           
           <!-- Hover Indicator (Fluid) -->
           <div id="nav-indicator-hover" style="position: absolute; height: calc(100% - 1rem); background: rgba(255, 255, 255, 0.06); border-radius: 999px; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); pointer-events: none; z-index: 0; opacity: 0;"></div>
 
-          <button class="nav-link" data-nav-link="about" style="padding: 0.8rem 1.6rem; border-radius: 999px; background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-weight:600; font-size:0.92rem; color:var(--text-primary); transition: color 0.2s; position: relative; z-index: 1;">${t('nav.about')}</button>
-          <button class="nav-link" data-nav-link="articles" style="padding: 0.8rem 1.6rem; border-radius: 999px; background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-weight:600; font-size:0.92rem; color:var(--text-primary); transition: color 0.2s; position: relative; z-index: 1;">${t('nav.articles')}</button>
-          <button class="nav-link" data-nav-link="journey" style="padding: 0.8rem 1.6rem; border-radius: 999px; background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-weight:600; font-size:0.92rem; color:var(--text-primary); transition: color 0.2s; position: relative; z-index: 1;">${t('nav.journey')}</button>
-          <button class="nav-link" data-nav-link="portfolio" style="padding: 0.8rem 1.6rem; border-radius: 999px; background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-weight:600; font-size:0.92rem; color:var(--text-primary); transition: color 0.2s; position: relative; z-index: 1;">${t('nav.projects')}</button>
-          <button class="nav-link" data-nav-link="contact" style="padding: 0.8rem 1.6rem; border-radius: 999px; background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-weight:600; font-size:0.92rem; color:var(--text-primary); transition: color 0.2s; position: relative; z-index: 1;">${t('nav.contact')}</button>
+          <!-- Mobile Modal Header -->
+          <div class="nav-modal-header" style="padding: 1rem 0 0.5rem 0; margin-bottom: 0.5rem; text-align: center; display: flex; justify-content: center;">
+            <h2 style="font-family: var(--font-sans); font-size: 1.3rem; font-weight: 700; color: var(--text-primary); margin: 0; line-height: 1.3; text-align: center;">${data.name}</h2>
+          </div>
+
+          <div class="nav-tabs-list">
+            <button class="nav-link" data-nav-link="about" style="padding: 0.8rem 1.6rem; border-radius: 999px; background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-weight:600; font-size:0.92rem; color:var(--text-primary); transition: color 0.2s; position: relative; z-index: 1;"><span>${t('nav.about')}</span></button>
+            <button class="nav-link" data-nav-link="articles" style="padding: 0.8rem 1.6rem; border-radius: 999px; background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-weight:600; font-size:0.92rem; color:var(--text-primary); transition: color 0.2s; position: relative; z-index: 1;"><span>${t('nav.articles')}</span></button>
+            <button class="nav-link" data-nav-link="journey" style="padding: 0.8rem 1.6rem; border-radius: 999px; background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-weight:600; font-size:0.92rem; color:var(--text-primary); transition: color 0.2s; position: relative; z-index: 1;"><span>${t('nav.journey')}</span></button>
+            <button class="nav-link" data-nav-link="portfolio" style="padding: 0.8rem 1.6rem; border-radius: 999px; background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-weight:600; font-size:0.92rem; color:var(--text-primary); transition: color 0.2s; position: relative; z-index: 1;"><span>${t('nav.projects')}</span></button>
+            <button class="nav-link" data-nav-link="contact" style="padding: 0.8rem 1.6rem; border-radius: 999px; background:transparent; border:none; cursor:pointer; font-family:var(--font-sans); font-weight:600; font-size:0.92rem; color:var(--text-primary); transition: color 0.2s; position: relative; z-index: 1;"><span>${t('nav.contact')}</span></button>
+          </div>
+
+          <!-- Mobile Modal Footer -->
+          <div class="nav-modal-footer" style="margin-top: auto; padding: 1rem 0 0; display: flex; gap: 1.2rem; justify-content: center; align-items: center;">
+            <a href="${data.social.linkedin}" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn Profile" style="display: flex; align-items: center; justify-content: center; color: var(--text-primary); text-decoration: none; transition: color 0.3s; font-size: 1.4rem;">
+              <ion-icon name="logo-linkedin"></ion-icon>
+            </a>
+            <a href="${data.social.github}" target="_blank" rel="noopener noreferrer" aria-label="GitHub Profile" style="display: flex; align-items: center; justify-content: center; color: var(--text-primary); text-decoration: none; transition: color 0.3s; font-size: 1.4rem;">
+              <ion-icon name="logo-github"></ion-icon>
+            </a>
+            <a href="${data.social.medium}" target="_blank" rel="noopener noreferrer" aria-label="Medium Blog" style="display: flex; align-items: center; justify-content: center; color: var(--text-primary); text-decoration: none; transition: color 0.3s; font-size: 1.4rem;">
+              <ion-icon name="logo-medium"></ion-icon>
+            </a>
+            <a href="${data.social.x}" target="_blank" rel="noopener noreferrer" aria-label="X Profile" style="display: flex; align-items: center; justify-content: center; color: var(--text-primary); text-decoration: none; transition: color 0.3s; font-family: var(--font-sans); font-weight: bold; font-size: 1.1rem;">
+              <span>𝕏</span>
+            </a>
+          </div>
         </div>
 
         <!-- Resume Button (Positioned absolutely so it doesn't affect the pill's centering) -->
