@@ -3,7 +3,10 @@
    ============================================ */
 
 [dir="rtl"],
-[dir="rtl"] *:not(code):not(pre):not(kbd):not(samp):not(ion-icon):not(i):not(.fa):not(.fab):not(.fas):not(.devicon) {
+[dir="rtl"]
+  *:not(code):not(pre):not(kbd):not(samp):not(ion-icon):not(i):not(.fa):not(
+    .fab
+  ):not(.fas):not(.devicon) {
   font-family: var(--font-arabic) !important;
 }
 
@@ -451,17 +454,21 @@
 }
 
 [dir="rtl"] .sidebar-separator {
-  background: linear-gradient(to left,
-      rgba(255, 255, 255, 0.1),
-      transparent) !important;
+  background: linear-gradient(
+    to left,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  ) !important;
   margin: 0.5rem 0 1rem !important;
 }
 
 [dir="rtl"]:not([data-theme="dark"]) .sidebar-separator,
 [dir="rtl"][data-theme="light"] .sidebar-separator {
-  background: linear-gradient(to left,
-      rgba(0, 0, 0, 0.1),
-      transparent) !important;
+  background: linear-gradient(
+    to left,
+    rgba(0, 0, 0, 0.1),
+    transparent
+  ) !important;
   margin: 0.5rem 0 1rem !important;
 }
 
@@ -622,7 +629,6 @@
 
 /* --- Mobile Fixes --- */
 @media (max-width: 850px) {
-
   [dir="rtl"] .experience-tabs,
   [dir="rtl"] .section-tabs-wrapper {
     grid-template-columns: 1fr;
