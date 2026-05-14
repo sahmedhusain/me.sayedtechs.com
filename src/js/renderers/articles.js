@@ -263,10 +263,10 @@ function renderEmbed(block) {
           <div class="embed-container linkedin">
             <iframe 
               src="${linkedinUrl}" 
-              style="width: 100%; height: 1000px; border: none; display: block; transition: height 0.5s ease-in-out;"
+              style="width: 100%; height: 800px; border: none; display: block; transition: height 0.5s ease-in-out;"
               frameborder="0" 
               allowfullscreen="" 
-              scrolling="no"
+              scrolling="yes"
               title="LinkedIn Post"></iframe>
           </div>
           ${captionHtml}
