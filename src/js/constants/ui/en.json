@@ -60,7 +60,10 @@
     "viewOn": "View content on",
     "code": "Code",
     "date": "Date",
-    "readTime": "Read Time"
+    "readTime": "Read Time",
+    "readFullStory": "Read full story",
+    "mediumDeepDive": "Dive deeper into this topic on my Medium blog.",
+    "mediumDefaultTitle": "Read my full article on Medium"
   },
   "journey": {
     "title": "Professional Journey ✨",

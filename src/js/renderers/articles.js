@@ -286,8 +286,23 @@ function renderEmbed(block) {
 
     case 'medium':
       return `
-        <div class="embed-container medium">
-          <iframe src="${block.url}" width="100%" height="400" frameborder="0"></iframe>
+        <div class="embed-container medium-card-wrapper">
+          <a href="${block.url}" target="_blank" class="medium-embed-card">
+            <div class="medium-card-content">
+              <div class="medium-card-header">
+                <ion-icon name="logo-medium" class="medium-logo"></ion-icon>
+                <span>MEDIUM.COM</span>
+              </div>
+              <h4 class="medium-card-title">${block.title || t('articles.mediumDefaultTitle')}</h4>
+              <p class="medium-card-desc">${block.description || block.caption || t('articles.mediumDeepDive')}</p>
+              <div class="medium-card-footer">
+                <span class="medium-read-link">
+                  ${t('articles.readFullStory')} <ion-icon name="${document.documentElement.dir === 'rtl' ? 'arrow-back-outline' : 'arrow-forward-outline'}"></ion-icon>
+                </span>
+                <span class="medium-card-meta">medium.com</span>
+              </div>
+            </div>
+          </a>
           ${captionHtml}
         </div>
       `;

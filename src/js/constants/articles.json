@@ -1,5 +1,52 @@
 [
   {
+    "id": 31,
+    "title": "I Didn't Quit Engineering — I Upgraded It: How a Licensed Engineer Thinks Differently in Software",
+    "date": "2024-05-16T10:00:00.000Z",
+    "category": "Engineering",
+    "image": "",
+    "desc": "A reflection on the transition from traditional electrical and fire safety engineering to software development, and why the engineering mindset is the ultimate upgrade.",
+    "readTime": "10 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "People hear my story and they almost always land on the same question. “Why did you change fields?” Or, more accurately, “Why did you throw away a stable career in electrical engineering to become a software developer?”"
+      },
+      {
+        "type": "paragraph",
+        "text": "From the inside, it is the most logical sequence of events I have ever lived through. I didn’t quit engineering; I simply upgraded the medium in which I build. The principles of safety, precision, and systems architecture remain identical—only the tools have changed."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "The Stakes of Precision"
+      },
+      {
+        "type": "paragraph",
+        "text": "In the world of life-safety systems, a 'bug' isn't a minor inconvenience; it's a potential disaster. Designing fire alarm grids for industrial plants taught me a level of rigor that most web developers never have to face. When you are responsible for systems that protect thousands of lives, you learn to triple-check every calculation and anticipate every failure mode."
+      },
+      {
+        "type": "paragraph",
+        "text": "Moving into software, I brought that same 'safety-first' mentality. Whether I'm building a backend API or a complex UI interaction, I approach it with the same structural integrity I used for electrical circuits. Scalability, resilience, and edge-case handling aren't just features—they are requirements."
+      },
+      {
+        "type": "heading",
+        "level": 2,
+        "text": "The Engineering Upgrade"
+      },
+      {
+        "type": "paragraph",
+        "text": "Software development is the ultimate engineering playground. The feedback loop is instantaneous. In traditional engineering, you wait months to see your designs implemented. In software, you can ideate, architect, and deploy in a single day. This agility, combined with engineering discipline, is where real innovation happens."
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "medium",
+        "url": "https://s97ahm.medium.com/794f4d145d66"
+      }
+    ]
+  },
+  {
     "id": 1,
     "title": "The Evolution of JavaScript and Modern Web Frameworks",
     "date": "2025-10-15T10:00:00.000Z",

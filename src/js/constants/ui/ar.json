@@ -60,7 +60,10 @@
     "viewOn": "اقرأ المحتوى في",
     "code": "الكود",
     "date": "التاريخ",
-    "readTime": "وقت القراءة"
+    "readTime": "وقت القراءة",
+    "readFullStory": "اقرأ القصة كاملة",
+    "mediumDeepDive": "تعمق في هذا الموضوع من خلال مدونتي على Medium.",
+    "mediumDefaultTitle": "اقرأ مقالي الكامل على Medium"
   },
   "journey": {
     "title": "رحلتي المهنية ✨",
