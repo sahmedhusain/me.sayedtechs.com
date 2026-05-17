@@ -42,12 +42,12 @@
   },
   "articles": {
     "title": "مقالاتي ✍️",
-    "subtitle": "سوالف وأفكار في الهندسة، البرمجة، والتطور المهني.",
+    "subtitle": "سوالف وأفكار في الهندسة، البرمجة، والتطور المهني وغيرها من المواضيع اللي تهمني. خذ لك لفة في مقالاتي – من التحليلات التقنية، لأفكاري الشخصية عن الحياة والعمل.",
     "searchPlaceholder": "دوّر في المقالات...",
     "readFullArticle": "اقرأ المقال كامل",
     "backToArticles": "الرجوع للمقالات",
     "articleNotFound": "هالمقال مو موجود",
-    "noArticlesFound": "قاعد أطبخ لكم شي رهيب! ☕ للحين ما نزّلت مقالات هنا، بس خلوكم قريبين.",
+    "noArticlesFound": "قاعد أطبخ لكم شي رهيب! ☕ للحين ما نزّلت مقالات هني، بس ترقب.",
     "categories": {
       "All": "الكل",
       "Technology": "التقنية",
@@ -67,7 +67,7 @@
   },
   "journey": {
     "title": "رحلتي المهنية ✨",
-    "subtitle": "هنا أشارككم محطاتي – من المشاريع اللي اشتغلت عليها والأدوار القيادية، للتجارب العلمية والعملية اللي كونت خبرتي.",
+    "subtitle": "هنا أشارككم محطاتي – من المسيرة المهنية والأدوار القيادية، للتجارب العلمية اللي كونت خبرتي.",
     "filters": {
       "all": "الكل",
       "education": "الدراسة",
@@ -129,21 +129,21 @@
     "title": "المهارات والتقنيات",
     "categories": {
       "personal": "مهارات شخصية",
-      "programmingAndMarkupLanguages": "لغات البرمجة والترميز",
+      "programmingAndMarkupLanguages": "لغات البرمجة",
       "frameworksAndLibraries": "أطر العمل والمكتبات",
       "databases": "قواعد البيانات",
       "networkingWebAndProtocols": "الشبكات وبروتوكولات الويب",
-      "softwareDevOpsAndTools": "البرمجيات وأدوات التطوير (DevOps)",
+      "softwareDevOpsAndTools": "(DevOps) والأدوات البرمجية",
       "operatingSystemsAndEnvironments": "أنظمة التشغيل وبيئات العمل",
-      "testingAndCodeQuality": "اختبار الكود وجودته",
+      "testingAndCodeQuality": "أدوات الاختبار وجودة الكود",
       "computerScienceAndArchitecture": "علوم الحاسب وهندسة البرمجيات",
-      "engineeringCadAndSimulation": "برامج الهندسة والمحاكاة (CAD)",
-      "hardwareAndCoreEngineering": "هندسة الأجهزة والمعدات (Hardware)"
+      "engineeringCadAndSimulation": "برامج الهندسة والمحاكاة",
+      "hardwareAndCoreEngineering": "أساسيات الهندسة"
     }
   },
   "contact": {
     "title": "حياك تواصل معي 🕊️",
-    "subtitle": "خلونا نبني شي رهيب مع بعض.",
+    "subtitle": "سواء حابب تتواصل لأغراض مهنية، تعاون في مشروع، أو حتى بس تحب تسولف عن التقنية والحياة – أنا موجود. تقدر تملأ بيانات التواصل هنا، أو تختار الطريقة اللي تناسبك.",
     "businessCard": "بيانات التواصل",
     "fullName": "الاسم الكريم",
     "fullNamePlaceholder": "سيد أحمد",
@@ -152,7 +152,7 @@
     "phoneNumber": "رقم التلفون",
     "phonePlaceholder": "3XXXXXXX",
     "yourMessage": "إيش حاب تقول؟",
-    "messagePlaceholder": "اكتب اللي بخاطرك هنا...",
+    "messagePlaceholder": "اكتب اللي بخاطرك...",
     "sendMessage": "أرسل",
     "searchCountry": "ابحث...",
     "saveContactCard": "احفظ رقمي",

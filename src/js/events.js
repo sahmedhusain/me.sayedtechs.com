@@ -310,7 +310,7 @@ export function setActivePage(targetPage, options = {}) {
   if (activeIndicator && activeTopBarLink) {
     const isMobileNav = window.matchMedia('(max-width: 850px)').matches;
     const fixedWidth = isMobileNav ? 280 : activeTopBarLink.offsetWidth;
-    
+
     activeIndicator.style.width = `${fixedWidth}px`;
     activeIndicator.style.height = `${activeTopBarLink.offsetHeight}px`;
     activeIndicator.style.left = `${activeTopBarLink.offsetLeft + (activeTopBarLink.offsetWidth - fixedWidth) / 2}px`;
@@ -405,7 +405,7 @@ export function initializeEventListeners() {
     if (langText) {
       langText.textContent = savedLang === 'ar' ? 'Language' : 'اللغة';
     }
-    
+
     // Apply direction on load
     if (savedLang === 'ar') {
       document.documentElement.setAttribute('lang', 'ar');
@@ -475,7 +475,7 @@ export function initializeEventListeners() {
           // Trigger layout changes only AFTER loader starts appearing to prevent flicker
           setTimeout(() => {
             loader.classList.add('active');
-            
+
             // Hide menu
             langMenu.style.opacity = '0';
             langMenu.style.transform = 'translateY(-10px)';
@@ -568,7 +568,7 @@ export function initializeEventListeners() {
         const browserLang = (navigator.language || navigator.userLanguage || '').toLowerCase();
         if (browserLang.startsWith('ar')) {
           if (safeSetItem('lang', 'ar')) {
-            window.location.reload(); 
+            window.location.reload();
             return;
           }
         }
@@ -579,20 +579,20 @@ export function initializeEventListeners() {
       const updateCountryUI = (code) => {
         if (!code) return false;
         const cleanCode = code.startsWith('+') ? code : `+${code}`;
-        
+
         const applyToDOM = () => {
           const countrySelector = document.getElementById('countryCodeInput');
           const countryItem = document.querySelector(`.country-item[data-country-code="${cleanCode}"]`);
-          
+
           if (countrySelector && countryItem) {
             const flag = countryItem.getAttribute('data-country-flag');
             const selectedFlag = document.querySelector('.selected-flag');
             const selectedCode = document.querySelector('.selected-code');
-            
+
             if (selectedFlag) selectedFlag.textContent = flag;
             if (selectedCode) selectedCode.textContent = cleanCode;
             countrySelector.value = cleanCode;
-            
+
             document.querySelectorAll('.country-item').forEach(li => {
               li.classList.remove('active');
               const tick = li.querySelector('.selection-tick');
@@ -632,17 +632,17 @@ export function initializeEventListeners() {
             setTimeout(() => controller.abort(), 3000);
             fetchOptions.signal = controller.signal;
           }
-          
+
           const response = await fetch(provider.url, fetchOptions);
           if (response.ok) {
             const data = await response.json();
             // Handle different provider keys
             let code = data[provider.key];
             if (provider.url.includes('ipinfo.io')) {
-                // ipinfo returns country code, we need to map it or just use it as is if updateCountryUI handles it
-                // Actually updateCountryUI expects a calling code like +973
-                // I'll skip ipinfo if I don't have a mapping, or just use the others.
-                // Wait, I'll stick to calling code providers or fix mapping.
+              // ipinfo returns country code, we need to map it or just use it as is if updateCountryUI handles it
+              // Actually updateCountryUI expects a calling code like +973
+              // I'll skip ipinfo if I don't have a mapping, or just use the others.
+              // Wait, I'll stick to calling code providers or fix mapping.
             }
             if (code && updateCountryUI(code)) break;
           }
@@ -659,7 +659,7 @@ export function initializeEventListeners() {
   setTimeout(() => {
     try {
       detectPreferences();
-    } catch (e) {}
+    } catch (e) { }
   }, 100);
 
   // --- Generic View Toggle Logic (List vs Grid) ---
@@ -683,7 +683,7 @@ export function initializeEventListeners() {
     if (indicator) {
       const isMobile = window.innerWidth <= 768;
       const fixedWidth = isMobile ? 220 : 270;
-      
+
       indicator.style.width = `${fixedWidth}px`;
       indicator.style.height = `${btn.offsetHeight}px`;
       indicator.style.left = `${btn.offsetLeft + (btn.offsetWidth - fixedWidth) / 2}px`;
@@ -871,7 +871,7 @@ export function initializeEventListeners() {
         const vCard = await generateVCard();
         await navigator.clipboard.writeText(vCard);
         const originalText = copyVCardBtn.querySelector('span').textContent;
-        copyVCardBtn.querySelector('span').textContent = 'Copied!';
+        copyVCardBtn.querySelector('span').textContent = t('contact.copied');
         setTimeout(() => {
           copyVCardBtn.querySelector('span').textContent = originalText;
         }, 2000);
@@ -939,10 +939,10 @@ export function initializeEventListeners() {
   if (navContainer) {
     const moveIndicator = (indicator, target, opacity = 1) => {
       if (!indicator || !target) return;
-      
+
       const isMobileNav = window.matchMedia('(max-width: 850px)').matches;
       const fixedWidth = isMobileNav ? 280 : target.offsetWidth;
-      
+
       indicator.style.width = `${fixedWidth}px`;
       indicator.style.height = `${target.offsetHeight}px`;
       indicator.style.left = `${target.offsetLeft + (target.offsetWidth - fixedWidth) / 2}px`;
@@ -1050,12 +1050,12 @@ export function initializeEventListeners() {
     // Remove active from all buttons
     filterBtns.forEach(b => b.classList.remove('active'));
     btn.classList.add('active');
-    
+
     // Update liquid indicator
     if (typeof updatePillIndicator === 'function') {
       updatePillIndicator(btn);
     }
-    
+
     // Hide hover indicator on click
     const container = btn.closest('.navbar-style-pill');
     if (container) {
@@ -1066,7 +1066,7 @@ export function initializeEventListeners() {
     // Filter items with a smooth fade effect
     filterItems.forEach(item => {
       const itemCategory = item.getAttribute('data-category');
-      
+
       if (filter === 'all' || itemCategory === filter) {
         item.style.display = 'flex';
         setTimeout(() => {
@@ -1158,12 +1158,12 @@ export function initializeEventListeners() {
   document.addEventListener('click', (e) => {
     const anchor = e.target.closest('a');
     if (!anchor) return;
-    
+
     const href = anchor.getAttribute('href');
     if (href && href.startsWith('#')) {
       const targetId = href.substring(1);
       const targetElement = document.getElementById(targetId);
-      
+
       if (targetElement) {
         e.preventDefault();
         targetElement.scrollIntoView({ behavior: 'smooth', block: 'start' });
@@ -1255,7 +1255,7 @@ export function initializeEventListeners() {
         const web3FormData = new FormData(form);
         web3FormData.append("access_key", web3Config.accessKey);
         web3FormData.append("subject", `New Contact from Portfolio: ${data.fullname}`);
-        
+
         const web3Promise = fetch("https://api.web3forms.com/submit", {
           method: "POST",
           body: web3FormData
@@ -1363,7 +1363,7 @@ export function initializeEventListeners() {
     });
 
     const listScroll = countryTrigger.querySelector('.country-list-scroll');
-    
+
     document.addEventListener('click', (e) => {
       if (!countryTrigger.contains(e.target)) {
         countryTrigger.classList.remove('active');
@@ -1512,9 +1512,9 @@ export function initializeEventListeners() {
         const titleAr = card.getAttribute('data-title-ar') || '';
         const descAr = card.getAttribute('data-desc-ar') || '';
 
-        if (titleText.includes(query) || descText.includes(query) || 
-            titleEn.includes(query) || descEn.includes(query) ||
-            titleAr.includes(query) || descAr.includes(query)) {
+        if (titleText.includes(query) || descText.includes(query) ||
+          titleEn.includes(query) || descEn.includes(query) ||
+          titleAr.includes(query) || descAr.includes(query)) {
           card.style.display = 'flex';
           card.style.opacity = '1';
           visibleCount++;
