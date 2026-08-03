@@ -69,6 +69,40 @@
     ]
   },
   {
+    "id": 31,
+    "title": "Evoha Secures 2nd Place at StartUp Bahrain Pitch Night",
+    "date": "2026-08-03T10:00:00.000Z",
+    "category": "Events",
+    "image": "",
+    "desc": "Thrilled to announce that our team at Evoha has secured 2nd place at the StartUp Bahrain Pitch night! Exploring our AI-powered energy management platform and celebrating this milestone with Tamkeen and StartUp Bahrain.",
+    "readTime": "2 min read",
+    "content": [
+      {
+        "type": "paragraph",
+        "text": "Thrilled to announce that our team at Evoha has secured 2nd place at the StartUp Bahrain Pitch night! 🥈"
+      },
+      {
+        "type": "paragraph",
+        "text": "A massive thank you to Tamkeen and StartUp Bahrain for their continuous support and for organizing such an inspiring platform for innovation."
+      },
+      {
+        "type": "paragraph",
+        "text": "Most importantly, a special thanks to my colleagues and the entire team at Evoha. Your relentless effort, dedication, and shared vision made this opportunity and achievement possible."
+      },
+      {
+        "type": "paragraph",
+        "text": "Learn more about our AI-powered energy management platform at our website: evoha.ai"
+      }
+    ],
+    "embeds": [
+      {
+        "platform": "linkedin",
+        "url": "https://www.linkedin.com/embed/feed/update/urn:li:ugcPost:7478252250528649216",
+        "caption": "Securing 2nd place at StartUp Bahrain Pitch Night with Evoha."
+      }
+    ]
+  },
+  {
     "id": 6,
     "title": "Startup 2025 - Bahrain Team Building",
     "date": "2026-01-16T10:00:00.000Z",
