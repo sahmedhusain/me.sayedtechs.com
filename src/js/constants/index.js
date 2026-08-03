@@ -36,6 +36,18 @@ export async function loadData() {
       fetchJSON(`src/js/constants/journey${suffix}.json`),
     ]);
 
+  // Sort articles by date descending (newest first)
+  articles_en.sort((a, b) => {
+    const dateA = a.date ? new Date(a.date) : 0;
+    const dateB = b.date ? new Date(b.date) : 0;
+    return dateB - dateA;
+  });
+  articles_ar.sort((a, b) => {
+    const dateA = a.date ? new Date(a.date) : 0;
+    const dateB = b.date ? new Date(b.date) : 0;
+    return dateB - dateA;
+  });
+
   // Resolve featured reference from profile config
   const currentArticles = savedLang === 'ar' ? articles_ar : articles_en;
   const allCollections = { experience, education, certifications, projects, articles: currentArticles };
