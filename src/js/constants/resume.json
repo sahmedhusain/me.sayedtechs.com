@@ -1,6 +1,6 @@
 {
   "profileImage": {
-    "web": "https://sahmedhusain.github.io/me/src/assets/IMG_2501.jpg",
+    "web": "https://me.sayedtechs.com/src/assets/IMG_2501.jpg",
     "local": "../assets/IMG_2501.jpg",
     "alt": "Sayed Ahmed Husain"
   },
@@ -53,7 +53,7 @@
     "location": "Bahrain & Eastern KSA",
     "nationality": "GCC (Bahrain)",
     "linkedin": "https://linkedin.com/in/97ahm",
-    "website": "https://sahmedhusain.github.io/me/"
+    "website": "https://me.sayedtechs.com/"
   },
   "topSkills": [
     "Software Engineering",
@@ -68,19 +68,15 @@
     "English - Fluent"
   ],
   "summary": {
-    "intro": "I am a multidisciplinary engineer bridging the physical and digital worlds—combining the zero-failure precision of Electrical and Fire Safety Engineering with the scalable architecture of Full-Stack Software Development.\n\nWith a background spanning complex industrial infrastructure, strategic vendor management, and modern web development, I build systems that are secure, highly reliable, and commercially viable. My technical philosophy is rooted in deep architectural ownership: I hand-engineer core system logic and frameworks, leveraging AI strictly for development velocity and auditing.\n\nWhether leading technical procurement for multi-million-dollar government contracts or developing highly concurrent software systems, my ultimate goal is to drive measurable business impact.\n\n**Key Highlights:**",
-    "bullets": [
-      "**Commercial Impact:** Secured $1M+ in enterprise contracts through strategic technical bidding and vendor management.",
-      "**Engineering Precision:** Delivered zero-failure, strictly compliant electrical and life-safety systems for critical industrial infrastructure.",
-      "**Software Architecture:** Architected highly concurrent full-stack applications and custom state-management frameworks."
-    ],
-    "outro": "I thrive at the intersection of robust physical engineering, modern software architecture, and strategic operations. If you are looking for an engineer who understands the hardware, the codebase, and the balance sheet—let’s connect."
+    "intro": "I am a multidisciplinary engineer bridging electrical and fire-life-safety engineering, solar PV, business development, and full-stack software development.\n\nMy experience spans delivering GCC- and NFPA-compliant life-safety systems for industrial clients, coordinating technical projects and commissioning teams, and managing vendor pre-qualifications and Bahrain Tender Board bids that contributed to more than $1M in revenue. I work comfortably between technical requirements, client needs, regulatory stakeholders, and project delivery—always focused on safety, reliability, and measurable results.\n\nAlongside my Electrical Engineering background and professional licenses, I build modern software products using Go, TypeScript, JavaScript, React, Next.js, Node.js, REST APIs, WebSockets, SQL, Docker, and Linux. My projects include real-time applications, concurrent back-end services, learning analytics dashboards, IoT smart-streetlight systems, and custom front-end frameworks.\n\nI hold a BSc in Electrical Engineering from the University of Bahrain and am completing an intensive Full-Stack Developer program at Reboot Coding Institute. I am also a CRPEP-licensed Electrical Engineer, an EWA Electrical Installation Wireman, and hold the NOCN Level 3 Award for Solar PV Installer and Operator.\n\nI am interested in opportunities where engineering discipline, digital systems, commercial awareness, and practical problem-solving can create dependable solutions—from infrastructure and energy to software platforms and technical business development.",
+    "bullets": [],
+    "outro": ""
   },
   "experience": [
     {
       "company": "Lichfield Fire and Safety Equipment FZE",
       "link": "https://www.lifeco-uk.com",
-      "logoWeb": "https://sahmedhusain.github.io/me/src/assets/lifeco_uk_logo.jpeg",
+      "logoWeb": "https://me.sayedtechs.com/src/assets/lifeco_uk_logo.jpeg",
       "logoLocal": "../assets/lifeco_uk_logo.jpeg",
       "logoAlt": "Lichfield Fire and Safety Equipment FZE",
       "title": "Business Development & Public Relations In-Charge",
@@ -94,7 +90,7 @@
     {
       "company": "Super Fire and Safety Services W.L.L",
       "link": "https://www.linkedin.com/company/super-fire-and-safety-services/",
-      "logoWeb": "https://sahmedhusain.github.io/me/src/assets/super_fire_and_safety_services_logo.jpeg",
+      "logoWeb": "https://me.sayedtechs.com/src/assets/super_fire_and_safety_services_logo.jpeg",
       "logoLocal": "../assets/super_fire_and_safety_services_logo.jpeg",
       "logoAlt": "Super Fire and Safety Services W.L.L",
       "title": "Electrical Project Engineer",
@@ -108,7 +104,7 @@
     {
       "company": "Channels by STC",
       "link": "https://channels.com.sa/home",
-      "logoWeb": "https://sahmedhusain.github.io/me/src/assets/channels_by_stc_bahrain_logo.jpeg",
+      "logoWeb": "https://me.sayedtechs.com/src/assets/channels_by_stc_bahrain_logo.jpeg",
       "logoLocal": "../assets/channels_by_stc_bahrain_logo.jpeg",
       "logoAlt": "Channels by STC",
       "title": "Retail Sales Specialist",
@@ -122,7 +118,7 @@
     {
       "company": "Zain Bahrain",
       "link": "https://eshop.bh.zain.com/",
-      "logoWeb": "https://sahmedhusain.github.io/me/src/assets/zain_logo.jpeg",
+      "logoWeb": "https://me.sayedtechs.com/src/assets/zain_logo.jpeg",
       "logoAlt": "Zain Bahrain",
       "title": "Acting Branch Manager & Retail Operations",
       "meta": "Feb 2019 — Mar 2022 \nBahrain",
@@ -137,7 +133,7 @@
     {
       "company": "Megger",
       "link": "https://www.megger.com",
-      "logoWeb": "https://sahmedhusain.github.io/me/src/assets/megger_logo.jpeg",
+      "logoWeb": "https://me.sayedtechs.com/src/assets/megger_logo.jpeg",
       "logoLocal": "../assets/megger_logo.jpeg",
       "logoAlt": "Megger",
       "title": "Electrical Engineering Intern",
@@ -150,7 +146,7 @@
     {
       "company": "Zain Bahrain",
       "link": "https://eshop.bh.zain.com/",
-      "logoWeb": "https://sahmedhusain.github.io/me/src/assets/zain_logo.jpeg",
+      "logoWeb": "https://me.sayedtechs.com/src/assets/zain_logo.jpeg",
       "logoAlt": "Zain Bahrain",
       "title": "Operations Trainee",
       "meta": "Dec 2018 — Feb 2019\nBahrain",
@@ -161,7 +157,7 @@
   ],
   "education": [
     {
-      "logoWeb": "https://sahmedhusain.github.io/me/src/assets/reboot_logo.jpeg",
+      "logoWeb": "https://me.sayedtechs.com/src/assets/reboot_logo.jpeg",
       "logoLocal": "../assets/reboot_logo.jpeg",
       "institution": "Reboot Coding Institute",
       "title": "Professional and Specialized Skill Intensive 2-Year Program, Fullstack developer",
@@ -172,7 +168,7 @@
       ]
     },
     {
-      "logoWeb": "https://sahmedhusain.github.io/me/src/assets/university_of_bahrain_logo.jpeg",
+      "logoWeb": "https://me.sayedtechs.com/src/assets/university_of_bahrain_logo.jpeg",
       "logoLocal": "../assets/university_of_bahrain_logo.jpeg",
       "institution": "University of Bahrain",
       "title": "Bachelor of Science - BS, Electrical Engineering",
@@ -186,22 +182,22 @@
   "certifications": [
     {
       "text": "NOCN Level 3 Award — Solar PV Installer and Operator (ID: 48282023)",
-      "link": "https://sahmedhusain.github.io/me/src/assets/SolarPV-NOCN.pdf"
+      "link": "https://me.sayedtechs.com/src/assets/SolarPV-NOCN.pdf"
     },
     {
       "text": "Certificate of Acknowledgement (Solar PV) — MEWA",
-      "link": "https://sahmedhusain.github.io/me/src/assets/solar-pv-mewa.pdf"
+      "link": "https://me.sayedtechs.com/src/assets/solar-pv-mewa.pdf"
     },
     {
       "text": "CRPEP License (Electrical) — Council for Regulating Engineering Professions, Bahrain",
-      "link": "https://sahmedhusain.github.io/me/src/assets/crpep.pdf"
+      "link": "https://me.sayedtechs.com/src/assets/crpep.pdf"
     },
     {
       "text": "Electrical Installation License — Electricity and Water Authority (EWA), Bahrain"
     },
     {
       "text": "Basic Life Support (BLS) — American Heart Association (AHA)",
-      "link": "https://sahmedhusain.github.io/me/src/assets/BLS.pdf"
+      "link": "https://me.sayedtechs.com/src/assets/BLS.pdf"
     },
     {
       "text": "B2B Sales Fundamentals — Golden Trust Institute"
@@ -219,11 +215,11 @@
       "links": [
         {
           "text": "Thesis",
-          "url": "https://sahmedhusain.github.io/me/src/assets/Smart_Street_Lights_-_Final_Report.pdf"
+          "url": "https://me.sayedtechs.com/src/assets/Smart_Street_Lights_-_Final_Report.pdf"
         },
         {
           "text": "Poster",
-          "url": "https://sahmedhusain.github.io/me/src/assets/Smart_Streetligts_poster.pdf"
+          "url": "https://me.sayedtechs.com/src/assets/Smart_Streetligts_poster.pdf"
         }
       ]
     },
@@ -295,7 +291,7 @@
       "links": [
         {
           "text": "Website",
-          "url": "https://sahmedhusain.github.io/me/"
+          "url": "https://me.sayedtechs.com/"
         }
       ]
     }
