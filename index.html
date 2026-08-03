@@ -175,7 +175,7 @@
   <script>
     (function () {
       var isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1' || window.location.port !== '';
-      var basePath = isLocal ? '/' : '/me/';
+      var basePath = '/';
 
       var searchParams = new URLSearchParams(window.location.search);
       var p = searchParams.get('p');
