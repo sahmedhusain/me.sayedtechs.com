@@ -32,14 +32,9 @@ export function renderProjectDetail(id) {
   if (!project) return `<div class="animate-entry"><p>${t('projects.notFound')}</p></div>`;
 
   const primaryCat = project.category || 'Web Applications';
-  const primaryKey = resolveCategoryKey(primaryCat);
   const catList = Array.isArray(project.categories) && project.categories.length > 0
     ? project.categories
     : [primaryCat];
-  const categoryKeys = [...new Set(catList.map(resolveCategoryKey))];
-  if (!categoryKeys.includes(primaryKey)) {
-    categoryKeys.unshift(primaryKey);
-  }
   const githubLink = project.links.find(l => l.url.includes('github.com'));
 
   setTimeout(() => {
@@ -58,13 +53,6 @@ export function renderProjectDetail(id) {
           <button class="back-btn-minimal" data-nav-link="portfolio" title="${t('projects.backToPortfolio')}">
             <ion-icon name="arrow-back-outline"></ion-icon>
           </button>
-          <div class="project-icons-large-row">
-            ${categoryKeys.map(k => `
-              <div class="project-icon-large" title="${k}">
-                <ion-icon name="${getCategoryIcon(k)}"></ion-icon>
-              </div>
-            `).join('')}
-          </div>
           <div class="project-title-box">
              <div class="project-detail-category">${catList.join(' • ')}</div>
              <h2 class="h2 project-detail-title">${project.name}</h2>

@@ -1,4 +1,4 @@
-const CACHE_NAME = 'me-spa-v2';
+const CACHE_NAME = 'me-spa-v3';
 const APP_SHELL = [
   './',
   './index.html',
