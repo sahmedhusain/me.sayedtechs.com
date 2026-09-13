@@ -692,3 +692,14 @@
   right: auto !important;
   left: 2rem !important;
 }
+
+/* --- Mobile Filter Dropdown RTL --- */
+[dir="rtl"] .mobile-filter-option {
+  text-align: right;
+}
+
+[dir="rtl"] .mobile-filter-dropdown-btn .dropdown-chevron,
+[dir="rtl"] .mobile-filter-option .option-check {
+  margin-right: 0.5rem;
+  margin-left: 0;
+}

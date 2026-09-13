@@ -1584,13 +1584,15 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
 /* --- Shared Pill Style (Navbar Matching) --- */
 .journey-filters-wrapper {
   display: flex;
-  justify-content: center;
+  justify-content: safe center;
   align-items: center;
   width: 100%;
-  margin: 0 auto 2.5rem;
+  margin: 0 auto 2.2rem;
   overflow-x: auto;
   scrollbar-width: none;
   -webkit-overflow-scrolling: touch;
+  padding: 12px 20px;
+  box-sizing: border-box;
 }
 
 .journey-filters-wrapper::-webkit-scrollbar {
@@ -1612,8 +1614,9 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
   box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
   pointer-events: auto;
   width: fit-content;
-  max-width: 100%;
+  max-width: none;
   height: 44px;
+  box-sizing: border-box;
 }
 
 .pill-indicator,

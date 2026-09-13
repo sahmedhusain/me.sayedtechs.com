@@ -113,6 +113,20 @@ export function syncActiveIndicators(scope = document) {
       }
     }
   });
+
+  // 3. Sync any mobile filter dropdown in scope to its active option
+  const dropdownWrappers = scope.querySelectorAll ? scope.querySelectorAll('.mobile-filter-dropdown-wrapper') : [];
+  dropdownWrappers.forEach(wrapper => {
+    const activeOpt = wrapper.querySelector('.mobile-filter-option.active');
+    if (activeOpt) {
+      const activeIcon = wrapper.querySelector('.dropdown-active-icon');
+      const activeText = wrapper.querySelector('.dropdown-active-text');
+      const icon = activeOpt.getAttribute('data-icon');
+      const text = activeOpt.querySelector('span')?.innerText;
+      if (activeIcon && icon) activeIcon.setAttribute('name', icon);
+      if (activeText && text) activeText.innerText = text;
+    }
+  });
 }
 
 // Set active page function
@@ -1021,6 +1035,25 @@ export function initializeEventListeners() {
       if (hoverIndicator) hoverIndicator.style.opacity = '0';
     }
 
+    // Sync mobile dropdown if present
+    const mobileProjectDropdown = document.getElementById('project-category-dropdown');
+    if (mobileProjectDropdown) {
+      const mobileOpts = mobileProjectDropdown.querySelectorAll('.mobile-filter-option');
+      mobileOpts.forEach(opt => {
+        if (opt.getAttribute('data-mobile-filter-btn') === filter) {
+          opt.classList.add('active');
+          const icon = opt.getAttribute('data-icon');
+          const text = opt.querySelector('.option-content span')?.innerText || opt.querySelector('span')?.innerText;
+          const activeIcon = mobileProjectDropdown.querySelector('.dropdown-active-icon');
+          const activeText = mobileProjectDropdown.querySelector('.dropdown-active-text');
+          if (activeIcon && icon) activeIcon.setAttribute('name', icon);
+          if (activeText && text) activeText.innerText = text;
+        } else {
+          opt.classList.remove('active');
+        }
+      });
+    }
+
     // Filter items with a smooth fade effect
     filterItems.forEach(item => {
       const itemCategoryStr = item.getAttribute('data-category') || '';
@@ -1060,6 +1093,25 @@ export function initializeEventListeners() {
         // Hide hover indicator on click
         const hoverIndicator = this.closest('.navbar-style-pill').querySelector('.pill-indicator-hover');
         if (hoverIndicator) hoverIndicator.style.opacity = '0';
+
+        // Sync mobile journey dropdown if present
+        const mobileJourneyDropdown = document.getElementById('journey-filter-dropdown');
+        if (mobileJourneyDropdown) {
+          const mobileOpts = mobileJourneyDropdown.querySelectorAll('.mobile-filter-option');
+          mobileOpts.forEach(opt => {
+            if (opt.getAttribute('data-mobile-journey-btn') === filter) {
+              opt.classList.add('active');
+              const icon = opt.getAttribute('data-icon');
+              const text = opt.querySelector('.option-content span')?.innerText || opt.querySelector('span')?.innerText;
+              const activeIcon = mobileJourneyDropdown.querySelector('.dropdown-active-icon');
+              const activeText = mobileJourneyDropdown.querySelector('.dropdown-active-text');
+              if (activeIcon && icon) activeIcon.setAttribute('name', icon);
+              if (activeText && text) activeText.innerText = text;
+            } else {
+              opt.classList.remove('active');
+            }
+          });
+        }
 
         if (window.generateTimelineSVG) {
           timelineChartContainer.innerHTML = window.generateTimelineSVG(filter);
@@ -1101,6 +1153,73 @@ export function initializeEventListeners() {
       });
     });
   }
+
+  // Mobile Filter Dropdown Toggle & Selection Handlers
+  document.addEventListener('click', function (e) {
+    const dropdownBtn = e.target.closest('.mobile-filter-dropdown-btn');
+    if (dropdownBtn) {
+      e.stopPropagation();
+      const wrapper = dropdownBtn.closest('.mobile-filter-dropdown-wrapper');
+      const isCurrentlyOpen = wrapper.classList.contains('open');
+
+      // Close any other open mobile filter dropdowns
+      document.querySelectorAll('.mobile-filter-dropdown-wrapper.open').forEach(w => {
+        if (w !== wrapper) {
+          w.classList.remove('open');
+          w.querySelector('.mobile-filter-dropdown-btn')?.setAttribute('aria-expanded', 'false');
+        }
+      });
+
+      if (isCurrentlyOpen) {
+        wrapper.classList.remove('open');
+        dropdownBtn.setAttribute('aria-expanded', 'false');
+      } else {
+        wrapper.classList.add('open');
+        dropdownBtn.setAttribute('aria-expanded', 'true');
+      }
+      return;
+    }
+
+    // Handle Project Category mobile option click
+    const projectOpt = e.target.closest('[data-mobile-filter-btn]');
+    if (projectOpt) {
+      const filter = projectOpt.getAttribute('data-mobile-filter-btn');
+      const wrapper = projectOpt.closest('.mobile-filter-dropdown-wrapper');
+      if (wrapper) {
+        wrapper.classList.remove('open');
+        wrapper.querySelector('.mobile-filter-dropdown-btn')?.setAttribute('aria-expanded', 'false');
+      }
+      const desktopBtn = document.querySelector(`[data-filter-btn="${filter}"]`);
+      if (desktopBtn) {
+        desktopBtn.click();
+      }
+      return;
+    }
+
+    // Handle Journey Timeline mobile option click
+    const journeyOpt = e.target.closest('[data-mobile-journey-btn]');
+    if (journeyOpt) {
+      const filter = journeyOpt.getAttribute('data-mobile-journey-btn');
+      const wrapper = journeyOpt.closest('.mobile-filter-dropdown-wrapper');
+      if (wrapper) {
+        wrapper.classList.remove('open');
+        wrapper.querySelector('.mobile-filter-dropdown-btn')?.setAttribute('aria-expanded', 'false');
+      }
+      const desktopBtn = document.querySelector(`.journey-filters .pill-btn[data-filter="${filter}"]`);
+      if (desktopBtn) {
+        desktopBtn.click();
+      }
+      return;
+    }
+
+    // Close dropdowns when clicking outside
+    if (!e.target.closest('.mobile-filter-dropdown-menu')) {
+      document.querySelectorAll('.mobile-filter-dropdown-wrapper.open').forEach(w => {
+        w.classList.remove('open');
+        w.querySelector('.mobile-filter-dropdown-btn')?.setAttribute('aria-expanded', 'false');
+      });
+    }
+  });
 
   // Global initial pill and sidebar positioner
   setTimeout(() => {

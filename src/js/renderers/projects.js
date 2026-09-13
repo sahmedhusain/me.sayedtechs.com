@@ -373,6 +373,32 @@ export function renderProjectsSection() {
         `}).join('')}
       </div>
     </div>
+
+    <!-- Mobile Category Dropdown Selector (<= 768px) -->
+    <div class="mobile-filter-dropdown-wrapper" id="project-category-dropdown">
+      <button class="mobile-filter-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="listbox">
+        <span class="dropdown-btn-content">
+          <ion-icon name="${CATEGORY_ICONS[0] || 'grid-outline'}" class="dropdown-active-icon"></ion-icon>
+          <span class="dropdown-active-text">${categories[0] || 'All'}</span>
+        </span>
+        <ion-icon name="chevron-down-outline" class="dropdown-chevron"></ion-icon>
+      </button>
+      <div class="mobile-filter-dropdown-menu" role="listbox">
+        ${categories.map((cat, i) => {
+          const internalCat = INTERNAL_CATEGORIES[i] || 'all';
+          const icon = CATEGORY_ICONS[i] || 'grid-outline';
+          return `
+            <button type="button" class="mobile-filter-option ${i === 0 ? 'active' : ''}" data-mobile-filter-btn="${internalCat}" data-icon="${icon}" role="option">
+              <div class="option-content">
+                <ion-icon name="${icon}"></ion-icon>
+                <span>${cat}</span>
+              </div>
+              <ion-icon name="checkmark-outline" class="option-check"></ion-icon>
+            </button>
+          `;
+        }).join('')}
+      </div>
+    </div>
     <ul class="project-list">
       ${projects.map(project => `
         <li class="project-item active" data-filter-item data-category="${project.categoryKeys}">

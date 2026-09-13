@@ -217,7 +217,7 @@ export function renderProfessionalJourneySection() {
       </p>
     </header>
     <section class="professional-journey" id="professional-journey">
-      <div class="journey-filters-wrapper animate-entry" style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 0 auto 2.5rem; animation-delay: 0.1s;">
+      <div class="journey-filters-wrapper animate-entry" style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 0 auto 2.2rem; animation-delay: 0.1s;">
         <div class="journey-filters navbar-style-pill">
           <div class="pill-indicator"></div>
           <div class="pill-indicator-hover"></div>
@@ -240,6 +240,54 @@ export function renderProfessionalJourneySection() {
           <button class="pill-btn" data-filter="certifications">
             <ion-icon name="ribbon-outline"></ion-icon>
             <span class="filter-text">${t('journey.filters.certifications')}</span>
+          </button>
+        </div>
+      </div>
+
+      <!-- Mobile Journey Filter Dropdown (<= 768px) -->
+      <div class="mobile-filter-dropdown-wrapper animate-entry" id="journey-filter-dropdown" style="animation-delay: 0.1s;">
+        <button class="mobile-filter-dropdown-btn" type="button" aria-expanded="false" aria-haspopup="listbox">
+          <span class="dropdown-btn-content">
+            <ion-icon name="apps-outline" class="dropdown-active-icon"></ion-icon>
+            <span class="dropdown-active-text">${t('journey.filters.all')}</span>
+          </span>
+          <ion-icon name="chevron-down-outline" class="dropdown-chevron"></ion-icon>
+        </button>
+        <div class="mobile-filter-dropdown-menu" role="listbox">
+          <button type="button" class="mobile-filter-option active" data-mobile-journey-btn="all" data-icon="apps-outline" role="option">
+            <div class="option-content">
+              <ion-icon name="apps-outline"></ion-icon>
+              <span>${t('journey.filters.all')}</span>
+            </div>
+            <ion-icon name="checkmark-outline" class="option-check"></ion-icon>
+          </button>
+          <button type="button" class="mobile-filter-option" data-mobile-journey-btn="education" data-icon="school-outline" role="option">
+            <div class="option-content">
+              <ion-icon name="school-outline"></ion-icon>
+              <span>${t('journey.filters.education')}</span>
+            </div>
+            <ion-icon name="checkmark-outline" class="option-check"></ion-icon>
+          </button>
+          <button type="button" class="mobile-filter-option" data-mobile-journey-btn="career" data-icon="business-outline" role="option">
+            <div class="option-content">
+              <ion-icon name="business-outline"></ion-icon>
+              <span>${t('journey.filters.career')}</span>
+            </div>
+            <ion-icon name="checkmark-outline" class="option-check"></ion-icon>
+          </button>
+          <button type="button" class="mobile-filter-option" data-mobile-journey-btn="internships" data-icon="briefcase-outline" role="option">
+            <div class="option-content">
+              <ion-icon name="briefcase-outline"></ion-icon>
+              <span>${t('journey.filters.internships')}</span>
+            </div>
+            <ion-icon name="checkmark-outline" class="option-check"></ion-icon>
+          </button>
+          <button type="button" class="mobile-filter-option" data-mobile-journey-btn="certifications" data-icon="ribbon-outline" role="option">
+            <div class="option-content">
+              <ion-icon name="ribbon-outline"></ion-icon>
+              <span>${t('journey.filters.certifications')}</span>
+            </div>
+            <ion-icon name="checkmark-outline" class="option-check"></ion-icon>
           </button>
         </div>
       </div>
