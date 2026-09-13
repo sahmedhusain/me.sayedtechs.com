@@ -171,48 +171,55 @@
   transform: translateY(-8px) rotate(-45deg);
 }
 
-@media (max-width: 968px) {
+.nav-tabs-list {
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  white-space: nowrap;
+  flex-wrap: nowrap;
+  gap: 0.25rem;
+}
+
+.nav-tabs-list .nav-link {
+  white-space: nowrap;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* --- Intermediate Desktop Viewports (969px to 1200px) --- */
+@media (min-width: 969px) and (max-width: 1200px) {
   .navbar {
-    padding: 0 1.5rem;
+    padding: 0 1.5rem !important;
   }
 
-  .nav-toggle {
-    display: flex;
+  #nav-avatar-container {
+    left: 1.5rem !important;
   }
 
-  .nav-links {
-    position: fixed;
-    top: 0;
-    right: -100%;
-    width: min(75%, 350px);
-    height: 100vh;
-    background: rgba(17, 34, 64, 0.98);
-    -webkit-backdrop-filter: blur(20px);
-    backdrop-filter: blur(20px);
-    flex-direction: column;
-    justify-content: center;
-    gap: 2.5rem;
-    padding: 2rem;
-    box-shadow: 0 0 50px rgba(0, 0, 0, 0.5);
-    transition: right 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55);
-    border-left: 2px solid var(--accent);
+  .nav-controls {
+    right: 1.5rem !important;
+    gap: 0.5rem !important;
   }
 
-  .nav-links.active {
-    right: 0;
+  .nav-pill-container {
+    padding: 0.35rem 0.6rem !important;
+    gap: 0.2rem !important;
   }
 
-  .nav-link {
-    font-size: 1.2rem;
-    width: 100%;
-    text-align: center;
-    padding: 1rem;
-    border-radius: var(--radius-sm);
-    transition: all 0.3s ease;
+  .nav-tabs-list .nav-link {
+    padding: 0.65rem 1.05rem !important;
+    font-size: 0.85rem !important;
   }
 
-  .nav-link:hover {
-    background: rgba(161, 161, 170, 0.1);
+  .nav-resume-btn {
+    padding: 0.65rem 1.05rem !important;
+    font-size: 0.82rem !important;
+    gap: 0.45rem !important;
+  }
+
+  #nav-resume-wrapper {
+    left: calc(100% + 0.65rem) !important;
   }
 }
 
@@ -488,7 +495,7 @@ html:not([data-theme="dark"]) #lang-indicator-liquid,
   transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
-/* --- Responsive Mobile Sidebar Nav (<= 850px) --- */
+/* --- Responsive Mobile Sidebar Nav (<= 968px) --- */
 .nav-controls {
   z-index: 10002;
 }
@@ -547,7 +554,7 @@ html:not([data-theme="dark"]) #lang-indicator-liquid,
   pointer-events: auto;
 }
 
-@media (max-width: 850px) {
+@media (max-width: 968px) {
   body.mobile-nav-open {
     overflow: hidden;
   }

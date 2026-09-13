@@ -626,8 +626,26 @@
   flex-direction: row;
 }
 
+/* --- Intermediate Desktop RTL (969px to 1200px) --- */
+@media (min-width: 969px) and (max-width: 1200px) {
+  [dir="rtl"] #nav-avatar-container {
+    left: auto !important;
+    right: 1.5rem !important;
+  }
+
+  [dir="rtl"] .nav-controls {
+    left: 1.5rem !important;
+    right: auto !important;
+  }
+
+  [dir="rtl"] #nav-resume-wrapper {
+    left: auto !important;
+    right: calc(100% + 0.65rem) !important;
+  }
+}
+
 /* --- Mobile Fixes --- */
-@media (max-width: 850px) {
+@media (max-width: 968px) {
   [dir="rtl"] .experience-tabs,
   [dir="rtl"] .section-tabs-wrapper {
     grid-template-columns: 1fr;

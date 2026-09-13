@@ -120,7 +120,7 @@ export function renderNavbar() {
   `;
 }
 
-const MOBILE_NAV_BREAKPOINT_QUERY = '(max-width: 850px)';
+const MOBILE_NAV_BREAKPOINT_QUERY = '(max-width: 968px)';
 
 function isMobileNavbarViewport() {
   return window.matchMedia(MOBILE_NAV_BREAKPOINT_QUERY).matches;

@@ -296,7 +296,7 @@ export function setActivePage(targetPage, options = {}) {
   // --- Sync Indicators ---
   const activeIndicator = document.getElementById('nav-indicator-active');
   if (activeIndicator && activeTopBarLink) {
-    const isMobileNav = window.matchMedia('(max-width: 850px)').matches;
+    const isMobileNav = window.matchMedia('(max-width: 968px)').matches;
     const fixedWidth = isMobileNav ? 280 : activeTopBarLink.offsetWidth;
 
     activeIndicator.style.width = `${fixedWidth}px`;
@@ -912,7 +912,7 @@ export function initializeEventListeners() {
     const moveIndicator = (indicator, target, opacity = 1) => {
       if (!indicator || !target) return;
 
-      const isMobileNav = window.matchMedia('(max-width: 850px)').matches;
+      const isMobileNav = window.matchMedia('(max-width: 968px)').matches;
       const fixedWidth = isMobileNav ? 280 : target.offsetWidth;
 
       indicator.style.width = `${fixedWidth}px`;
