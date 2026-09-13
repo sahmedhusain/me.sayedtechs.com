@@ -8,89 +8,6 @@ import { FORM_CONFIG } from './constants/config.js';
 
 const VALID_PAGES = ROUTE_PAGE_SET;
 
-function getResumeUrl() {
-  return resolvePath('src/assets/resume.html');
-}
-
-function waitForResumeWindowToBeReady(resumeWindow) {
-  return new Promise(resolve => {
-    const poll = () => {
-      if (!resumeWindow || resumeWindow.closed) {
-        resolve(false);
-        return;
-      }
-
-      try {
-        const resumeDocument = resumeWindow.document;
-        const resumeName = resumeDocument.querySelector('.name')?.textContent.trim() || '';
-        const resumeItems = resumeDocument.querySelectorAll('.item').length;
-        const summaryText = resumeDocument.querySelector('.summary-text')?.textContent.trim() || '';
-        const contentReady = resumeDocument.readyState === 'complete' && resumeName.length > 0 && (resumeItems > 0 || summaryText.length > 0);
-
-        if (contentReady) {
-          resolve(true);
-          return;
-        }
-      } catch (error) {
-        // same-origin access can lag until the page is fully loaded
-      }
-
-      setTimeout(poll, 150);
-    };
-
-    poll();
-  });
-}
-
-async function openResumePrintWindow() {
-  const resumeWindow = window.open(getResumeUrl(), '_blank');
-
-  if (!resumeWindow) {
-    return;
-  }
-
-  const ready = await waitForResumeWindowToBeReady(resumeWindow);
-  if (!ready) {
-    return;
-  }
-
-  try {
-    resumeWindow.focus();
-
-    // Check if mobile device
-    const isMobile = /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-
-    if (isMobile && resumeWindow.html2pdf) {
-      // Use html2pdf for mobile devices
-      setTimeout(() => {
-        const element = resumeWindow.document.querySelector('.resume-wrapper');
-        const opt = {
-          margin: 0,
-          filename: 'Resume — Sayed Ahmed Husain.pdf',
-          image: { type: 'jpeg', quality: 0.98 },
-          html2canvas: { scale: 2 },
-          jsPDF: { format: 'a4', orientation: 'portrait' }
-        };
-        resumeWindow.html2pdf().set(opt).from(element).save();
-        setTimeout(() => {
-          if (!resumeWindow.closed) {
-            resumeWindow.close();
-          }
-        }, 1000);
-      }, 500);
-    } else {
-      // Use print dialog for desktop
-      resumeWindow.onafterprint = () => {
-        if (!resumeWindow.closed) {
-          resumeWindow.close();
-        }
-      };
-      resumeWindow.print();
-    }
-  } catch (error) {
-  }
-}
-
 function normalizePathname(pathname) {
   if (!pathname) return '/';
   if (pathname.length > 1 && pathname.endsWith('/')) {
@@ -857,9 +774,12 @@ export function initializeEventListeners() {
 
   const resumeBtn = document.getElementById('nav-resume-btn');
   if (resumeBtn) {
-    resumeBtn.addEventListener('click', async (e) => {
-      e.preventDefault();
-      await openResumePrintWindow();
+    resumeBtn.addEventListener('click', (e) => {
+      const data = getData();
+      const pdfUrl = data.resumeUrl || data.cvUrl;
+      if (pdfUrl) {
+        window.open(pdfUrl, '_blank');
+      }
     });
   }
 
@@ -1065,9 +985,10 @@ export function initializeEventListeners() {
 
     // Filter items with a smooth fade effect
     filterItems.forEach(item => {
-      const itemCategory = item.getAttribute('data-category');
+      const itemCategoryStr = item.getAttribute('data-category') || '';
+      const itemCategories = itemCategoryStr.split(/\s+/);
 
-      if (filter === 'all' || itemCategory === filter) {
+      if (filter === 'all' || itemCategories.includes(filter)) {
         item.style.display = 'flex';
         setTimeout(() => {
           item.classList.add('active');

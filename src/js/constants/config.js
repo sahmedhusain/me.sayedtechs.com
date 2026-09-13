@@ -1,12 +1,29 @@
-export const FALLBACK_CATEGORIES = ['All', 'Web Development', 'Engineering', 'Games', 'CLI/Algorithms', 'UI concepts'];
-export const INTERNAL_CATEGORIES = ['all', 'webdevelopment', 'engineering', 'games', 'clialgorithms', 'uiconcepts'];
+export const FALLBACK_CATEGORIES = [
+  'All',
+  'Systems & Infrastructure',
+  'Web Applications',
+  'UI & State Management',
+  'CLI & Algorithms',
+  'Games & Simulation',
+  'Engineering & IoT'
+];
+export const INTERNAL_CATEGORIES = [
+  'all',
+  'systems',
+  'webdevelopment',
+  'uiconcepts',
+  'clialgorithms',
+  'games',
+  'engineering'
+];
 export const CATEGORY_ICONS = [
   'grid-outline',
+  'server-outline',
   'globe-outline',
-  'construct-outline',
-  'game-controller-outline',
+  'color-palette-outline',
   'terminal-outline',
-  'color-palette-outline'
+  'game-controller-outline',
+  'hardware-chip-outline'
 ];
 
 export const SKILLS_CATEGORY_MAPPING = {

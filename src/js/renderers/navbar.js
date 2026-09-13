@@ -76,7 +76,7 @@ export function renderNavbar() {
 
         <!-- Resume Button (Positioned absolutely so it doesn't affect the pill's centering) -->
         <div id="nav-resume-wrapper" style="position: absolute; left: calc(100% + 1rem); display: flex; align-items: center; white-space: nowrap;">
-          <a href="${data.resumeUrl || '#'}" download class="nav-resume-btn" id="nav-resume-btn" style="display:none; align-items:center; gap:0.6rem; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.8rem 1.4rem; border-radius: 999px; color: var(--text-primary); text-decoration:none; font-family: var(--font-sans); font-weight: 700; font-size: 0.85rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; transform: translateX(10px);">
+          <a href="${data.resumeUrl || '#'}" download="Sayed_Ahmed_Husain_CV_Solutions_Engineer.pdf" target="_blank" class="nav-resume-btn" id="nav-resume-btn" style="display:none; align-items:center; gap:0.6rem; background: rgba(255, 255, 255, 0.04); backdrop-filter: blur(30px); -webkit-backdrop-filter: blur(30px); border: 1px solid rgba(255, 255, 255, 0.1); padding: 0.8rem 1.4rem; border-radius: 999px; color: var(--text-primary); text-decoration:none; font-family: var(--font-sans); font-weight: 700; font-size: 0.85rem; box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15); transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1); opacity: 0; transform: translateX(10px);">
             <ion-icon name="download-outline" style="font-size: 1.1rem; color: var(--accent);"></ion-icon>
             <span>${t('nav.resume')}</span>
           </a>

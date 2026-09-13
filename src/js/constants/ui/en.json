@@ -83,11 +83,12 @@
     "subtitle": "Explore my <strong>portfolio</strong> – from <a href=\"#projects-section\"><strong>projects</strong></a> and <a href=\"#skills-section\"><strong>technical skills</strong></a> that showcase my technical expertise and problem-solving skills.",
     "categories": [
       "All",
-      "Web Development",
-      "Engineering",
-      "Games",
-      "CLI/Algorithms",
-      "UI concepts"
+      "Systems & Infrastructure",
+      "Web Applications",
+      "UI & State Management",
+      "CLI & Algorithms",
+      "Games & Simulation",
+      "Engineering & IoT"
     ],
     "comingSoon": "Coming Soon",
     "comingSoonDesc": "Exciting UI/UX design concepts and interactive prototypes are in development. Stay tuned for innovative user interface designs and experiences.",

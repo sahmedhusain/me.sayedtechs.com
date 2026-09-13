@@ -3,7 +3,7 @@
     "id": "betting-game",
     "name": "Hand Betting Game",
     "subtitle": "Real-Time Mahjong Prediction Engine",
-    "category": "Games",
+    "category": "Games & Simulation",
     "hasGithubRepo": true,
     "links": [
       {
@@ -29,13 +29,18 @@
       "WebSocket",
       "DDD"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Games & Simulation",
+      "UI & State Management",
+      "Web Applications"
+    ]
   },
   {
     "id": "flowgrid",
     "name": "FlowGrid",
     "subtitle": "Autonomous Intersection Simulation (Rust + SDL2)",
-    "category": "Engineering",
+    "category": "Games & Simulation",
     "hasGithubRepo": true,
     "links": [
       {
@@ -59,13 +64,18 @@
       "Geometric Math",
       "Performance Analytics"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Games & Simulation",
+      "Engineering & IoT",
+      "CLI & Algorithms"
+    ]
   },
   {
     "id": "blast-arena",
     "name": "Blast Arena",
     "subtitle": "Multiplayer Bomb-Battle Arena",
-    "category": "Games",
+    "category": "Games & Simulation",
     "hasGithubRepo": true,
     "links": [
       {
@@ -88,14 +98,18 @@
       "CSS3 Animations",
       "Game Logic"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "Games & Simulation",
+      "UI & State Management"
+    ]
   },
   {
     "id": "smart-streetlights",
     "name": "Smart Streetlights",
     "subtitle": "IoT-Based Intelligent Road Lighting System",
     "type": "University Graduation Project",
-    "category": "Engineering",
+    "category": "Engineering & IoT",
     "hasGithubRepo": false,
     "links": [
       {
@@ -123,13 +137,16 @@
       "IoT",
       "Motion Sensors",
       "LED Technology"
+    ],
+    "categories": [
+      "Engineering & IoT"
     ]
   },
   {
     "id": "gigabit",
     "name": "GigaBit",
     "subtitle": "Real-Time Social Network (Go + Next.js)",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -158,13 +175,17 @@
       "Gorilla Mux",
       "Docker"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Web Applications",
+      "UI & State Management"
+    ]
   },
   {
     "id": "01-dashboard",
     "name": "01 Dashboard",
     "subtitle": "Personal Learning Analytics Platform (React + Typescript + GraphQL)",
-    "category": "Web Development",
+    "category": "UI & State Management",
     "hasGithubRepo": true,
     "links": [
       {
@@ -191,13 +212,17 @@
       "JWT",
       "SVG Charts"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "UI & State Management",
+      "Web Applications"
+    ]
   },
   {
     "id": "connecthub-rt",
     "name": "Connecthub RT",
     "subtitle": "Real-Time Forum & Chat Application",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -224,13 +249,17 @@
       "Docker",
       "Jest",
       "Playwright"
+    ],
+    "categories": [
+      "Web Applications",
+      "Systems & Infrastructure"
     ]
   },
   {
     "id": "picojs-framework",
     "name": "PicoJS Framework",
     "subtitle": "Reactive UI Framework (JavaScript)",
-    "category": "Web Development",
+    "category": "UI & State Management",
     "hasGithubRepo": true,
     "links": [
       {
@@ -256,13 +285,17 @@
       "History API Routing",
       "Zero Dependencies"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "UI & State Management",
+      "Web Applications"
+    ]
   },
   {
     "id": "01-connecthub",
     "name": "01 ConnectHub",
     "subtitle": "Full-Stack Web Forum Application",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -288,13 +321,16 @@
       "Gorilla Sessions",
       "bcrypt",
       "Docker"
+    ],
+    "categories": [
+      "Web Applications"
     ]
   },
   {
     "id": "harmonyhub",
     "name": "HarmonyHub",
     "subtitle": "Music & Concert Discovery Platform",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -316,13 +352,16 @@
       "REST API",
       "HTML Templates",
       "JSON"
+    ],
+    "categories": [
+      "Web Applications"
     ]
   },
   {
     "id": "antfinder",
     "name": "AntFinder",
     "subtitle": "Graph Pathfinding Simulation in Go",
-    "category": "CLI/Algorithms",
+    "category": "CLI & Algorithms",
     "hasGithubRepo": true,
     "links": [
       {
@@ -342,13 +381,16 @@
       "DFS",
       "Graph Traversal",
       "Pathfinding"
+    ],
+    "categories": [
+      "CLI & Algorithms"
     ]
   },
   {
     "id": "gotalk",
     "name": "GoTalk",
     "subtitle": "Concurrent TCP Chat Server",
-    "category": "CLI/Algorithms",
+    "category": "Systems & Infrastructure",
     "hasGithubRepo": true,
     "links": [
       {
@@ -369,13 +411,17 @@
       "Channels",
       "Networking",
       "File I/O"
+    ],
+    "categories": [
+      "Systems & Infrastructure",
+      "CLI & Algorithms"
     ]
   },
   {
     "id": "space-blaster",
     "name": "Space Blaster",
     "subtitle": "Browser-Based Arcade Game",
-    "category": "Games",
+    "category": "Games & Simulation",
     "hasGithubRepo": true,
     "links": [
       {
@@ -397,13 +443,16 @@
       "DOM Manipulation",
       "Audio API",
       "Game Development"
+    ],
+    "categories": [
+      "Games & Simulation"
     ]
   },
   {
     "id": "ascii-forge",
     "name": "ASCII Forge",
     "subtitle": "ASCII Art Generator Web Application",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -425,13 +474,17 @@
       "Docker",
       "Text Processing",
       "File I/O"
+    ],
+    "categories": [
+      "Web Applications",
+      "CLI & Algorithms"
     ]
   },
   {
     "id": "personal-website",
     "name": "This personal Website",
     "subtitle": "Interactive Portfolio & Resume Website",
-    "category": "Web Development",
+    "category": "UI & State Management",
     "hasGithubRepo": false,
     "links": [],
     "points": [
@@ -450,13 +503,17 @@
       "Web Animations",
       "Contact Integration"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "UI & State Management",
+      "Web Applications"
+    ]
   },
   {
     "id": "oxide-shell",
     "name": "OxideShell",
     "subtitle": "Standalone Unix Shell in Pure Rust",
-    "category": "CLI/Algorithms",
+    "category": "Systems & Infrastructure",
     "hasGithubRepo": true,
     "links": [
       {
@@ -477,13 +534,17 @@
       "Lexical Parsing",
       "Signal Handling"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Systems & Infrastructure",
+      "CLI & Algorithms"
+    ]
   },
   {
     "id": "apex-vault",
     "name": "ApexVault",
     "subtitle": "Terminal Financial Management & Banking Engine",
-    "category": "Engineering",
+    "category": "CLI & Algorithms",
     "hasGithubRepo": true,
     "links": [
       {
@@ -504,7 +565,12 @@
       "Financial Algorithms",
       "Make"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "CLI & Algorithms",
+      "Engineering & IoT",
+      "UI & State Management"
+    ]
   },
   {
     "id": "chronos-vault",
@@ -531,7 +597,11 @@
       "File I/O",
       "Tar Archiving"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "Systems & Infrastructure",
+      "CLI & Algorithms"
+    ]
   },
   {
     "id": "linux-sysadmin-lab",
@@ -562,13 +632,16 @@
       "Bash",
       "Networking"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Systems & Infrastructure"
+    ]
   },
   {
     "id": "visionpulse",
     "name": "VisionPulse",
     "subtitle": "Real-Time Computer Vision & Visual Analytics (FastAPI + YOLOv8 + Win98 UI)",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -592,13 +665,17 @@
       "SQLite",
       "SVG Charts"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Web Applications",
+      "UI & State Management"
+    ]
   },
   {
     "id": "gridtactix",
     "name": "GridTactix",
     "subtitle": "Algorithmic Territory Control Game Bot",
-    "category": "CLI/Algorithms",
+    "category": "CLI & Algorithms",
     "hasGithubRepo": true,
     "links": [
       {
@@ -619,13 +696,17 @@
       "Euclidean Math",
       "Docker"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "CLI & Algorithms",
+      "Games & Simulation"
+    ]
   },
   {
     "id": "omni-knowledge",
     "name": "OmniKnowledge",
     "subtitle": "Enterprise RAG Assistant (FastAPI + FAISS + React + Ollama)",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -650,7 +731,10 @@
       "Ollama",
       "RAG"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Web Applications"
+    ]
   },
   {
     "id": "servoxide",
@@ -679,13 +763,17 @@
       "CGI",
       "Systems Programming"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Systems & Infrastructure",
+      "Web Applications"
+    ]
   },
   {
     "id": "mindquest",
     "name": "MindQuest",
     "subtitle": "Interactive Assessment & Quiz Management Platform",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -707,13 +795,16 @@
       "Bootstrap",
       "MVC"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "Web Applications"
+    ]
   },
   {
     "id": "vector-maze-3d",
     "name": "VectorMaze3D",
     "subtitle": "Multiplayer 3D Raycasting FPS Game (Rust + Macroquad + UDP)",
-    "category": "Games",
+    "category": "Games & Simulation",
     "hasGithubRepo": true,
     "links": [
       {
@@ -735,13 +826,17 @@
       "3D Game Engine",
       "Networking"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Games & Simulation",
+      "Systems & Infrastructure"
+    ]
   },
   {
     "id": "fixlink",
     "name": "FixLink",
     "subtitle": "Home Services Marketplace Platform (Django + Bootstrap)",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -763,13 +858,16 @@
       "Web Development",
       "ORM"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "Web Applications"
+    ]
   },
   {
     "id": "stacksort",
     "name": "StackSort",
     "subtitle": "Dual-Stack Sorting Algorithm Generator & Verifier",
-    "category": "CLI/Algorithms",
+    "category": "CLI & Algorithms",
     "hasGithubRepo": true,
     "links": [
       {
@@ -790,13 +888,16 @@
       "Data Structures",
       "CLI"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "CLI & Algorithms"
+    ]
   },
   {
     "id": "raycraft-3d",
     "name": "RayCraft3D",
     "subtitle": "Concurrent 3D Ray Tracer in Pure Rust",
-    "category": "Engineering",
+    "category": "Games & Simulation",
     "hasGithubRepo": true,
     "links": [
       {
@@ -817,13 +918,17 @@
       "3D Optics",
       "Physics Engine"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Games & Simulation",
+      "Engineering & IoT"
+    ]
   },
   {
     "id": "marketpulse",
     "name": "MarketPulse",
     "subtitle": "Full-Stack E-Commerce Marketplace (Rails + Bulma)",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -845,13 +950,16 @@
       "SQLite",
       "Devise"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "Web Applications"
+    ]
   },
   {
     "id": "resourceflow",
     "name": "ResourceFlow",
     "subtitle": "Process Scheduling & Resource Allocation Simulator",
-    "category": "CLI/Algorithms",
+    "category": "CLI & Algorithms",
     "hasGithubRepo": true,
     "links": [
       {
@@ -872,13 +980,16 @@
       "Optimization",
       "CLI"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "CLI & Algorithms"
+    ]
   },
   {
     "id": "syspulse",
     "name": "SysPulse",
     "subtitle": "Cross-Platform System Performance Dashboard (C++ + ImGui + SDL2)",
-    "category": "Engineering",
+    "category": "Systems & Infrastructure",
     "hasGithubRepo": true,
     "links": [
       {
@@ -900,13 +1011,18 @@
       "System Call APIs",
       "Cross-Platform"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Systems & Infrastructure",
+      "Engineering & IoT",
+      "UI & State Management"
+    ]
   },
   {
     "id": "tetraopt",
     "name": "TetraOpt",
     "subtitle": "Backtracking Shape Optimization & Polyomino Packer",
-    "category": "CLI/Algorithms",
+    "category": "CLI & Algorithms",
     "hasGithubRepo": true,
     "links": [
       {
@@ -927,13 +1043,16 @@
       "Optimization",
       "CLI"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "CLI & Algorithms"
+    ]
   },
   {
     "id": "fetchcraft",
     "name": "FetchCraft",
     "subtitle": "Command-Line File Retrieval & Website Mirroring Engine",
-    "category": "CLI/Algorithms",
+    "category": "Systems & Infrastructure",
     "hasGithubRepo": true,
     "links": [
       {
@@ -955,13 +1074,17 @@
       "Rate Limiting",
       "Concurrent Goroutines"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "Systems & Infrastructure",
+      "CLI & Algorithms"
+    ]
   },
   {
     "id": "taski",
     "name": "TaskI",
     "subtitle": "Secure Task Management Application (Go + React)",
-    "category": "Web Development",
+    "category": "Web Applications",
     "hasGithubRepo": true,
     "links": [
       {
@@ -985,6 +1108,9 @@
       "JWT",
       "REST API"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "Web Applications"
+    ]
   }
 ]

@@ -298,13 +298,15 @@ export function getIcon(text) {
   return 'open-outline';
 }
 
-function resolveCategoryKey(category) {
+export function resolveCategoryKey(category) {
   if (!category) return 'webdevelopment';
-  const lower = category.toLowerCase();
-  if (lower.includes('game') || lower.includes('ألعاب')) return 'games';
-  if (lower.includes('engineering') || lower.includes('هندسة')) return 'engineering';
-  if (lower.includes('cli') || lower.includes('algorithm') || lower.includes('خوارزميات') || lower.includes('system') || lower.includes('infrastructure') || lower.includes('أنظمة') || lower.includes('بنية')) return 'clialgorithms';
-  if (lower.includes('ui') || lower.includes('تصميم')) return 'uiconcepts';
+  const lower = category.toLowerCase().trim();
+  if (lower === 'all' || lower === 'الكل') return 'all';
+  if (lower.includes('system') || lower.includes('أنظمة') || lower.includes('infrastructure') || lower.includes('بنية تحتية') || lower.includes('sysadmin') || lower.includes('شبكات')) return 'systems';
+  if (lower.includes('ui') || lower.includes('state') || lower.includes('واجهات') || lower.includes('إدارة الحالة') || lower.includes('تصاميم') || lower.includes('frontend')) return 'uiconcepts';
+  if (lower.includes('game') || lower.includes('ألعاب') || lower.includes('simulation') || lower.includes('محاكاة')) return 'games';
+  if (lower.includes('cli') || lower.includes('algorithm') || lower.includes('خوارزميات') || lower.includes('أدوات')) return 'clialgorithms';
+  if (lower.includes('engineering') || lower.includes('هندسة') || lower.includes('iot') || lower.includes('إنترنت الأشياء') || lower.includes('hardware')) return 'engineering';
   if (lower.includes('web') || lower.includes('ويب')) return 'webdevelopment';
   return 'webdevelopment';
 }
@@ -317,12 +319,29 @@ export function renderProjectsSection() {
   }
 
   const projects = data.projects.map(p => {
-    const jsonCategory = p.category || 'Web Development';
-    const categoryKey = resolveCategoryKey(jsonCategory);
-    let catIndex = INTERNAL_CATEGORIES.indexOf(categoryKey);
-    if (catIndex === -1) catIndex = 1;
-    const displayCategory = categories[catIndex];
-    return { ...p, categoryKey, displayCategory };
+    const primaryCat = p.category || 'Web Applications';
+    const primaryKey = resolveCategoryKey(primaryCat);
+
+    // Support multi-category: p.categories array or fallback to [p.category]
+    const catList = Array.isArray(p.categories) && p.categories.length > 0
+      ? p.categories
+      : [primaryCat];
+
+    const categoryKeys = [...new Set(catList.map(resolveCategoryKey))];
+    if (!categoryKeys.includes(primaryKey)) {
+      categoryKeys.unshift(primaryKey);
+    }
+
+    let catIndex = INTERNAL_CATEGORIES.indexOf(primaryKey);
+    if (catIndex === -1) catIndex = 2; // Web Applications fallback
+    const displayCategory = categories[catIndex] || primaryCat;
+
+    return {
+      ...p,
+      categoryKey: primaryKey,
+      categoryKeys: categoryKeys.join(' '),
+      displayCategory
+    };
   }).sort((a, b) => a.name.localeCompare(b.name));
 
   return `
@@ -349,7 +368,7 @@ export function renderProjectsSection() {
     </ul>
     <ul class="project-list">
       ${projects.map(project => `
-        <li class="project-item active" data-filter-item data-category="${project.categoryKey}">
+        <li class="project-item active" data-filter-item data-category="${project.categoryKeys}">
             <div class="project-item-icon-box">
               <ion-icon name="${getCategoryIcon(project.categoryKey)}"></ion-icon>
             </div>
@@ -371,18 +390,6 @@ export function renderProjectsSection() {
             </div>
         </li>
       `).join('')}
-      <li class="project-item ui-concepts-coming-soon" data-filter-item data-category="uiconcepts">
-        <div class="coming-soon-content">
-          <div class="coming-soon-icon">
-            <ion-icon name="color-palette-outline"></ion-icon>
-          </div>
-          <h3 class="coming-soon-title">${t('projects.categories')[5]}</h3>
-          <p class="coming-soon-text">${t('projects.comingSoon')}</p>
-          <div class="coming-soon-description">
-            ${t('projects.comingSoonDesc')}
-          </div>
-        </div>
-      </li>
     </ul>
     </section>
   `;

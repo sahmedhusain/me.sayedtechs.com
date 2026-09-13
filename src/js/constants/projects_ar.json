@@ -3,7 +3,7 @@
     "id": "betting-game",
     "name": "لعبة مراهنة اليد (Mahjong)",
     "subtitle": "محرك حساب وتنبؤ مباشر للعبة Mahjong",
-    "category": "ألعاب",
+    "category": "ألعاب ومحاكاة",
     "hasGithubRepo": true,
     "links": [
       {
@@ -29,13 +29,18 @@
       "WebSocket",
       "DDD"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "ألعاب ومحاكاة",
+      "واجهات وإدارة الحالة",
+      "تطبيقات الويب"
+    ]
   },
   {
     "id": "flowgrid",
     "name": "FlowGrid",
     "subtitle": "محاكاة تقاطعات ذكية للسيارات ذاتية القيادة (Rust + SDL2)",
-    "category": "هندسة",
+    "category": "ألعاب ومحاكاة",
     "hasGithubRepo": true,
     "links": [
       {
@@ -59,13 +64,18 @@
       "Geometric Math",
       "Performance Analytics"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "ألعاب ومحاكاة",
+      "هندسة وإنترنت الأشياء",
+      "أدوات وخوارزميات"
+    ]
   },
   {
     "id": "blast-arena",
     "name": "Blast Arena",
     "subtitle": "ساحة قتال جماعية بالقنابل",
-    "category": "ألعاب",
+    "category": "ألعاب ومحاكاة",
     "hasGithubRepo": true,
     "links": [
       {
@@ -88,14 +98,18 @@
       "CSS3 Animations",
       "Game Logic"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "ألعاب ومحاكاة",
+      "واجهات وإدارة الحالة"
+    ]
   },
   {
     "id": "smart-streetlights",
     "name": "أعمدة الإنارة الذكية",
     "subtitle": "نظام إنارة طرق ذكي يعتمد على إنترنت الأشياء (IoT)",
     "type": "مشروع تخرج جامعي",
-    "category": "هندسة",
+    "category": "هندسة وإنترنت الأشياء",
     "hasGithubRepo": false,
     "links": [
       {
@@ -123,13 +137,16 @@
       "IoT",
       "Motion Sensors",
       "LED Technology"
+    ],
+    "categories": [
+      "هندسة وإنترنت الأشياء"
     ]
   },
   {
     "id": "gigabit",
     "name": "GigaBit",
     "subtitle": "شبكة اجتماعية متكاملة ومباشرة (Go + Next.js)",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -158,13 +175,17 @@
       "Gorilla Mux",
       "Docker"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "تطبيقات الويب",
+      "واجهات وإدارة الحالة"
+    ]
   },
   {
     "id": "01-dashboard",
     "name": "01 Dashboard",
     "subtitle": "منصة تحليلات ومتابعة المستوى الدراسي (React + Typescript + GraphQL)",
-    "category": "تطوير الويب",
+    "category": "واجهات وإدارة الحالة",
     "hasGithubRepo": true,
     "links": [
       {
@@ -191,13 +212,17 @@
       "JWT",
       "SVG Charts"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "واجهات وإدارة الحالة",
+      "تطبيقات الويب"
+    ]
   },
   {
     "id": "connecthub-rt",
     "name": "Connecthub RT",
     "subtitle": "منتدى ودردشة وتواصل مباشر",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -224,13 +249,17 @@
       "Docker",
       "Jest",
       "Playwright"
+    ],
+    "categories": [
+      "تطبيقات الويب",
+      "أنظمة وبنية تحتية"
     ]
   },
   {
     "id": "picojs-framework",
     "name": "إطار عمل PicoJS",
     "subtitle": "إطار عمل لبناء واجهات تفاعلية (JavaScript)",
-    "category": "تطوير الويب",
+    "category": "واجهات وإدارة الحالة",
     "hasGithubRepo": true,
     "links": [
       {
@@ -255,13 +284,17 @@
       "History API Routing",
       "Zero Dependencies"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "واجهات وإدارة الحالة",
+      "تطبيقات الويب"
+    ]
   },
   {
     "id": "01-connecthub",
     "name": "01 ConnectHub",
     "subtitle": "منتدى ويب متكامل",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -287,13 +320,16 @@
       "Gorilla Sessions",
       "bcrypt",
       "Docker"
+    ],
+    "categories": [
+      "تطبيقات الويب"
     ]
   },
   {
     "id": "harmonyhub",
     "name": "HarmonyHub",
     "subtitle": "منصة لاكتشاف الموسيقى والفنانين",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -315,13 +351,16 @@
       "REST API",
       "HTML Templates",
       "JSON"
+    ],
+    "categories": [
+      "تطبيقات الويب"
     ]
   },
   {
     "id": "antfinder",
     "name": "AntFinder",
     "subtitle": "محاكاة خوارزميات البحث عن المسار بلغة Go",
-    "category": "خوارزميات وأدوات",
+    "category": "أدوات وخوارزميات",
     "hasGithubRepo": true,
     "links": [
       {
@@ -341,13 +380,16 @@
       "DFS",
       "Graph Traversal",
       "Pathfinding"
+    ],
+    "categories": [
+      "أدوات وخوارزميات"
     ]
   },
   {
     "id": "gotalk",
     "name": "GoTalk",
     "subtitle": "سيرفر دردشة سريع (TCP)",
-    "category": "خوارزميات وأدوات",
+    "category": "أنظمة وبنية تحتية",
     "hasGithubRepo": true,
     "links": [
       {
@@ -368,13 +410,17 @@
       "Channels",
       "Networking",
       "File I/O"
+    ],
+    "categories": [
+      "أنظمة وبنية تحتية",
+      "أدوات وخوارزميات"
     ]
   },
   {
     "id": "space-blaster",
     "name": "Space Blaster",
     "subtitle": "لعبة أركيد حرب الفضاء على المتصفح",
-    "category": "ألعاب",
+    "category": "ألعاب ومحاكاة",
     "hasGithubRepo": true,
     "links": [
       {
@@ -396,13 +442,16 @@
       "DOM Manipulation",
       "Audio API",
       "Game Development"
+    ],
+    "categories": [
+      "ألعاب ومحاكاة"
     ]
   },
   {
     "id": "ascii-forge",
     "name": "ASCII Forge",
     "subtitle": "تطبيق ويب لتوليد الفنون النصية (ASCII)",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -424,13 +473,17 @@
       "Docker",
       "Text Processing",
       "File I/O"
+    ],
+    "categories": [
+      "تطبيقات الويب",
+      "أدوات وخوارزميات"
     ]
   },
   {
     "id": "personal-website",
     "name": "هالموقع الشخصي اللي تتصفحه",
     "subtitle": "معرض أعمال وسيرة ذاتية تفاعلية",
-    "category": "تطوير الويب",
+    "category": "واجهات وإدارة الحالة",
     "hasGithubRepo": false,
     "links": [],
     "points": [
@@ -449,13 +502,17 @@
       "Web Animations",
       "Contact Integration"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "واجهات وإدارة الحالة",
+      "تطبيقات الويب"
+    ]
   },
   {
     "id": "oxide-shell",
     "name": "OxideShell",
     "subtitle": "موجّه أوامر Unix خفيف ومبني بالكامل بلغة Rust",
-    "category": "خوارزميات وأدوات",
+    "category": "أنظمة وبنية تحتية",
     "hasGithubRepo": true,
     "links": [
       {
@@ -476,13 +533,17 @@
       "Lexical Parsing",
       "Signal Handling"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "أنظمة وبنية تحتية",
+      "أدوات وخوارزميات"
+    ]
   },
   {
     "id": "apex-vault",
     "name": "ApexVault",
     "subtitle": "نظام إدارة حسابات بنكية على الطرفية (C)",
-    "category": "هندسة",
+    "category": "أدوات وخوارزميات",
     "hasGithubRepo": true,
     "links": [
       {
@@ -503,7 +564,12 @@
       "Financial Algorithms",
       "Make"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "أدوات وخوارزميات",
+      "هندسة وإنترنت الأشياء",
+      "واجهات وإدارة الحالة"
+    ]
   },
   {
     "id": "chronos-vault",
@@ -530,7 +596,11 @@
       "File I/O",
       "Tar Archiving"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "أنظمة وبنية تحتية",
+      "أدوات وخوارزميات"
+    ]
   },
   {
     "id": "linux-sysadmin-lab",
@@ -561,13 +631,16 @@
       "Bash",
       "Networking"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "أنظمة وبنية تحتية"
+    ]
   },
   {
     "id": "visionpulse",
     "name": "VisionPulse",
     "subtitle": "منصة تحليل الفيديو واكتشاف الأشخاص بالذكاء الاصطناعي",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -591,13 +664,17 @@
       "SQLite",
       "SVG Charts"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "تطبيقات الويب",
+      "واجهات وإدارة الحالة"
+    ]
   },
   {
     "id": "gridtactix",
     "name": "GridTactix",
     "subtitle": "بوت ذكاء اصطناعي للتحكم في الشبكات والمنافسة",
-    "category": "خوارزميات وأدوات",
+    "category": "أدوات وخوارزميات",
     "hasGithubRepo": true,
     "links": [
       {
@@ -618,13 +695,17 @@
       "Euclidean Math",
       "Docker"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "أدوات وخوارزميات",
+      "ألعاب ومحاكاة"
+    ]
   },
   {
     "id": "omni-knowledge",
     "name": "OmniKnowledge",
     "subtitle": "مساعد معرفي ذكي للشركات (RAG + FAISS + React)",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -649,7 +730,10 @@
       "Ollama",
       "RAG"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "تطبيقات الويب"
+    ]
   },
   {
     "id": "servoxide",
@@ -678,13 +762,17 @@
       "CGI",
       "Systems Programming"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "أنظمة وبنية تحتية",
+      "تطبيقات الويب"
+    ]
   },
   {
     "id": "mindquest",
     "name": "MindQuest",
     "subtitle": "منصة اختبارات وتقييم تفاعلية متكاملة (Laravel)",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -706,13 +794,16 @@
       "Bootstrap",
       "MVC"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "تطبيقات الويب"
+    ]
   },
   {
     "id": "vector-maze-3d",
     "name": "VectorMaze3D",
     "subtitle": "لعبة تصويب ثلاثية الأبعاد جماعية (Rust + UDP)",
-    "category": "ألعاب",
+    "category": "ألعاب ومحاكاة",
     "hasGithubRepo": true,
     "links": [
       {
@@ -734,13 +825,17 @@
       "3D Game Engine",
       "Networking"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "ألعاب ومحاكاة",
+      "أنظمة وبنية تحتية"
+    ]
   },
   {
     "id": "fixlink",
     "name": "FixLink",
     "subtitle": "منصة خدمات منزلية وصيانة متكاملة (Django)",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -762,13 +857,16 @@
       "Web Development",
       "ORM"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "تطبيقات الويب"
+    ]
   },
   {
     "id": "stacksort",
     "name": "StackSort",
     "subtitle": "محرك ترتيب مصفوفات باستخدام المكدسات (Go)",
-    "category": "خوارزميات وأدوات",
+    "category": "أدوات وخوارزميات",
     "hasGithubRepo": true,
     "links": [
       {
@@ -789,13 +887,16 @@
       "Data Structures",
       "CLI"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "أدوات وخوارزميات"
+    ]
   },
   {
     "id": "raycraft-3d",
     "name": "RayCraft3D",
     "subtitle": "محرك تتبع الأشعة ثلاثي الأبعاد بلغة Rust",
-    "category": "هندسة",
+    "category": "ألعاب ومحاكاة",
     "hasGithubRepo": true,
     "links": [
       {
@@ -816,13 +917,17 @@
       "3D Optics",
       "Physics Engine"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "ألعاب ومحاكاة",
+      "هندسة وإنترنت الأشياء"
+    ]
   },
   {
     "id": "marketpulse",
     "name": "MarketPulse",
     "subtitle": "متجر إلكتروني وسوق مفتوح (Rails + Bulma)",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -844,13 +949,16 @@
       "SQLite",
       "Devise"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "تطبيقات الويب"
+    ]
   },
   {
     "id": "resourceflow",
     "name": "ResourceFlow",
     "subtitle": "محاكي جدولة وتوزيع الموارد والعمليات (Go)",
-    "category": "خوارزميات وأدوات",
+    "category": "أدوات وخوارزميات",
     "hasGithubRepo": true,
     "links": [
       {
@@ -871,13 +979,16 @@
       "Optimization",
       "CLI"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "أدوات وخوارزميات"
+    ]
   },
   {
     "id": "syspulse",
     "name": "SysPulse",
     "subtitle": "برنامج مراقبة أداء الكمبيوتر والموارد (C++ + ImGui)",
-    "category": "هندسة",
+    "category": "أنظمة وبنية تحتية",
     "hasGithubRepo": true,
     "links": [
       {
@@ -899,13 +1010,18 @@
       "System Call APIs",
       "Cross-Platform"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "أنظمة وبنية تحتية",
+      "هندسة وإنترنت الأشياء",
+      "واجهات وإدارة الحالة"
+    ]
   },
   {
     "id": "tetraopt",
     "name": "TetraOpt",
     "subtitle": "خوارزمية ترتيب الأشكال وتجميعها في أصغر مربع (Go)",
-    "category": "خوارزميات وأدوات",
+    "category": "أدوات وخوارزميات",
     "hasGithubRepo": true,
     "links": [
       {
@@ -926,13 +1042,16 @@
       "Optimization",
       "CLI"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "أدوات وخوارزميات"
+    ]
   },
   {
     "id": "fetchcraft",
     "name": "FetchCraft",
     "subtitle": "أداة تحميل وتفريغ المواقع من موجه الأوامر (Go)",
-    "category": "خوارزميات وأدوات",
+    "category": "أنظمة وبنية تحتية",
     "hasGithubRepo": true,
     "links": [
       {
@@ -954,13 +1073,17 @@
       "Rate Limiting",
       "Concurrent Goroutines"
     ],
-    "featured": false
+    "featured": false,
+    "categories": [
+      "أنظمة وبنية تحتية",
+      "أدوات وخوارزميات"
+    ]
   },
   {
     "id": "taski",
     "name": "TaskI",
     "subtitle": "تطبيق إدارة المهام اليومية (Go + React)",
-    "category": "تطوير الويب",
+    "category": "تطبيقات الويب",
     "hasGithubRepo": true,
     "links": [
       {
@@ -984,6 +1107,9 @@
       "JWT",
       "REST API"
     ],
-    "featured": true
+    "featured": true,
+    "categories": [
+      "تطبيقات الويب"
+    ]
   }
 ]

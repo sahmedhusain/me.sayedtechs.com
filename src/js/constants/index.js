@@ -123,6 +123,7 @@ export async function loadData() {
     assets: resolveAllAssetPaths(assets),
     avatar: resolvePath(assets.avatar),
     cvUrl: resolvePath(assets.cv),
+    resumeUrl: resolvePath(assets.cv),
     vCardUrl: resolvePath(assets.vcard),
     graduationCertificate: resolvePath(assets.graduation_certificate),
 

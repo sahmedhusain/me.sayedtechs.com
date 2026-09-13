@@ -129,11 +129,13 @@ export function getIconForLibraryItem(item) {
 
 export function getCategoryIcon(category) {
   const iconMap = {
+    'all': 'grid-outline',
+    'systems': 'server-outline',
     'webdevelopment': 'globe-outline',
-    'engineering': 'construct-outline',
-    'games': 'game-controller-outline',
+    'uiconcepts': 'color-palette-outline',
     'clialgorithms': 'terminal-outline',
-    'uiconcepts': 'color-palette-outline'
+    'games': 'game-controller-outline',
+    'engineering': 'hardware-chip-outline'
   };
   return iconMap[category] || 'folder-outline';
 }
