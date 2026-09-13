@@ -51,10 +51,24 @@
     "id": "W2402010",
     "issued": "Feb 2024",
     "expires": "Feb 2029",
+    "pdfUrl": "pdfs.wireman",
     "description": [
       "Authorization to perform electrical installation work in Bahrain.",
       "Issued by the national electricity and water authority.",
       "Covers residential, commercial, and industrial electrical installations."
+    ]
+  },
+  {
+    "name": "Getting Started with Cisco Packet Tracer",
+    "type": "Course Certificate",
+    "issuingAuthority": "Cisco Networking Academy",
+    "location": "Online",
+    "issued": "Aug 2026",
+    "pdfUrl": "pdfs.cisco_packet_tracer",
+    "description": [
+      "Foundational course covering network simulation, topology design, and device configuration using Cisco Packet Tracer.",
+      "Hands-on skills in configuring routers, switches, and network protocols in simulated environments.",
+      "Official certificate issued by Cisco Networking Academy."
     ]
   },
   {

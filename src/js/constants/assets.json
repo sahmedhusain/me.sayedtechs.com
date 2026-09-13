@@ -19,11 +19,14 @@
     "crpep": "src/assets/crpep_logo.jpeg",
     "mewa": "src/assets/mewa.jpeg",
     "moe_highschool": "src/assets/moe_highschool.jpeg",
-    "ewa": "src/assets/electricity_and_water_authority_bahrain_logo.jpeg"
+    "ewa": "src/assets/electricity_and_water_authority_bahrain_logo.jpeg",
+    "cisco": "src/assets/CISCO NETWORKING ACADEMY.jpg"
   },
   "pdfs": {
     "bls": "src/assets/BLS.pdf",
     "crpep": "src/assets/crpep.pdf",
+    "wireman": "src/assets/Wireman-970707568.pdf",
+    "cisco_packet_tracer": "src/assets/Getting_Started_with_Cisco_Packet_Tracer_certificate_sayedahmed97-sad-gmail-com_29e230b9-382b-4540-b179-37d46ca17fd4.pdf",
     "solar_pv_nocn": "src/assets/SolarPV-NOCN.pdf",
     "solar_pv_mewa": "src/assets/solar-pv-mewa.pdf",
     "smart_streetlights_report": "src/assets/Smart_Street_Lights_-_Final_Report.pdf",
@@ -47,9 +50,18 @@
     "ewa": "https://www.ewa.bh/",
     "electricity_and_water": "https://www.ewa.bh/",
     "golden_trust": "https://www.linkedin.com/company/golden-trust-group/",
-    "linkedin_learning": "https://www.linkedin.com/learning/"
+    "linkedin_learning": "https://www.linkedin.com/learning/",
+    "cisco": "https://www.netacad.com/"
   },
   "logo_match_rules": [
+    {
+      "match": [
+        "cisco",
+        "cisco networking academy"
+      ],
+      "logo": "cisco",
+      "url": "cisco"
+    },
     {
       "match": [
         "lichfield",
