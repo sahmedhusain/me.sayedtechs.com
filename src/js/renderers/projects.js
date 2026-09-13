@@ -31,7 +31,15 @@ export function renderProjectDetail(id) {
   const project = data.projects.find(p => p.id === id);
   if (!project) return `<div class="animate-entry"><p>${t('projects.notFound')}</p></div>`;
 
-  const categoryKey = resolveCategoryKey(project.category);
+  const primaryCat = project.category || 'Web Applications';
+  const primaryKey = resolveCategoryKey(primaryCat);
+  const catList = Array.isArray(project.categories) && project.categories.length > 0
+    ? project.categories
+    : [primaryCat];
+  const categoryKeys = [...new Set(catList.map(resolveCategoryKey))];
+  if (!categoryKeys.includes(primaryKey)) {
+    categoryKeys.unshift(primaryKey);
+  }
   const githubLink = project.links.find(l => l.url.includes('github.com'));
 
   setTimeout(() => {
@@ -50,11 +58,15 @@ export function renderProjectDetail(id) {
           <button class="back-btn-minimal" data-nav-link="portfolio" title="${t('projects.backToPortfolio')}">
             <ion-icon name="arrow-back-outline"></ion-icon>
           </button>
-          <div class="project-icon-large">
-            <ion-icon name="${getCategoryIcon(categoryKey)}"></ion-icon>
+          <div class="project-icons-large-row">
+            ${categoryKeys.map(k => `
+              <div class="project-icon-large" title="${k}">
+                <ion-icon name="${getCategoryIcon(k)}"></ion-icon>
+              </div>
+            `).join('')}
           </div>
           <div class="project-title-box">
-             <div class="project-detail-category">${project.category}</div>
+             <div class="project-detail-category">${catList.join(' • ')}</div>
              <h2 class="h2 project-detail-title">${project.name}</h2>
              <p class="project-detail-subtitle">${project.subtitle}</p>
           </div>
@@ -332,13 +344,20 @@ export function renderProjectsSection() {
       categoryKeys.unshift(primaryKey);
     }
 
-    let catIndex = INTERNAL_CATEGORIES.indexOf(primaryKey);
-    if (catIndex === -1) catIndex = 2; // Web Applications fallback
-    const displayCategory = categories[catIndex] || primaryCat;
+    const categoryNamesMap = {};
+    categoryKeys.forEach(k => {
+      let catIndex = INTERNAL_CATEGORIES.indexOf(k);
+      if (catIndex === -1) catIndex = 2; // Web Applications fallback
+      categoryNamesMap[k] = categories[catIndex] || k;
+    });
+
+    const displayCategory = categoryKeys.map(k => categoryNamesMap[k] || k).join(' • ');
 
     return {
       ...p,
       categoryKey: primaryKey,
+      categoryKeyList: categoryKeys,
+      categoryNamesMap,
       categoryKeys: categoryKeys.join(' '),
       displayCategory
     };
@@ -351,26 +370,30 @@ export function renderProjectsSection() {
       </h1>
     </header>
     <section>
-    <ul class="filter-list navbar-style-pill">
-      <div class="pill-indicator"></div>
-      <div class="pill-indicator-hover"></div>
-      ${categories.map((cat, i) => {
-    const internalCat = INTERNAL_CATEGORIES[i] || 'all';
-    const icon = CATEGORY_ICONS[i] || 'grid-outline';
-    return `
-        <li class="filter-item">
+    <div class="filter-list-wrapper">
+      <div class="filter-list navbar-style-pill">
+        <div class="pill-indicator"></div>
+        <div class="pill-indicator-hover"></div>
+        ${categories.map((cat, i) => {
+      const internalCat = INTERNAL_CATEGORIES[i] || 'all';
+      const icon = CATEGORY_ICONS[i] || 'grid-outline';
+      return `
           <button class="pill-btn ${i === 0 ? 'active' : ''}" data-filter-btn="${internalCat}">
             <ion-icon name="${icon}"></ion-icon>
             <span class="filter-text">${cat}</span>
           </button>
-        </li>
-      `}).join('')}
-    </ul>
+        `}).join('')}
+      </div>
+    </div>
     <ul class="project-list">
       ${projects.map(project => `
         <li class="project-item active" data-filter-item data-category="${project.categoryKeys}">
-            <div class="project-item-icon-box">
-              <ion-icon name="${getCategoryIcon(project.categoryKey)}"></ion-icon>
+            <div class="project-item-icons-row">
+              ${project.categoryKeyList.map(k => `
+                <div class="project-item-icon-box" title="${project.categoryNamesMap[k] || ''}">
+                  <ion-icon name="${getCategoryIcon(k)}"></ion-icon>
+                </div>
+              `).join('')}
             </div>
             <div class="project-links">
               ${project.links && project.links.length > 0 ? project.links.map(link => `<a href="${link.url}" target="_blank" class="project-link-btn" title="${link.text}"><ion-icon name="${getIcon(link.text)}"></ion-icon> <span>${link.text}</span></a>`).join('') : ''}

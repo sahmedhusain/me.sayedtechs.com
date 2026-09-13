@@ -186,8 +186,7 @@
 
 [dir="rtl"] .sidebar-indicator-active,
 [dir="rtl"] .sidebar-indicator-hover {
-  left: 0;
-  right: 0;
+  right: auto;
 }
 
 [dir="rtl"] .timeline-item {

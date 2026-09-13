@@ -58,6 +58,63 @@ export function getPageFromLocation() {
   return 'home';
 }
 
+export const updatePillIndicator = (btn, indicatorClass = '.pill-indicator', opacity = 1) => {
+  if (!btn) return;
+  const container = btn.closest('.navbar-style-pill');
+  if (!container) return;
+  const indicator = container.querySelector(indicatorClass);
+  if (indicator) {
+    if (btn.offsetWidth === 0 && btn.offsetHeight === 0) return;
+    indicator.style.width = `${btn.offsetWidth}px`;
+    indicator.style.height = `${btn.offsetHeight}px`;
+    indicator.style.left = `${btn.offsetLeft}px`;
+    indicator.style.top = `${btn.offsetTop}px`;
+    indicator.style.opacity = opacity;
+  }
+};
+
+export const updateSidebarIndicator = (btn, indicatorClass = '.sidebar-indicator-active', opacity = 1) => {
+  if (!btn) return;
+  const container = btn.closest('.section-sidebar-list');
+  if (!container) return;
+  const indicator = container.querySelector(indicatorClass);
+  if (indicator) {
+    if (btn.offsetWidth === 0 && btn.offsetHeight === 0) return;
+    // Precisely match the button dimensions and position to prevent negative left offset obstruction
+    indicator.style.width = `${btn.offsetWidth}px`;
+    indicator.style.height = `${btn.offsetHeight}px`;
+    indicator.style.left = `${btn.offsetLeft}px`;
+    indicator.style.top = `${btn.offsetTop}px`;
+    indicator.style.opacity = opacity;
+  }
+};
+
+export function syncActiveIndicators(scope = document) {
+  if (!scope) scope = document;
+
+  // 1. Sync all visible navbar-style-pill containers in scope
+  const pillContainers = scope.querySelectorAll ? scope.querySelectorAll('.navbar-style-pill') : [];
+  pillContainers.forEach(container => {
+    if (container.offsetWidth > 0 || container.offsetHeight > 0) {
+      const activeBtn = container.querySelector('.pill-btn.active');
+      if (activeBtn) {
+        updatePillIndicator(activeBtn, '.pill-indicator', 1);
+      }
+    }
+  });
+
+  // 2. Sync all visible section-sidebar-list containers in scope
+  const sidebars = scope.querySelectorAll ? scope.querySelectorAll('.section-sidebar-list') : [];
+  sidebars.forEach(sidebar => {
+    if (sidebar.offsetWidth > 0 || sidebar.offsetHeight > 0) {
+      const activeBtn = sidebar.querySelector('.section-sidebar-btn.active');
+      if (activeBtn) {
+        updateSidebarIndicator(activeBtn, '.sidebar-indicator-active', 1);
+      }
+    }
+  });
+}
+
 // Set active page function
 export function setActivePage(targetPage, options = {}) {
   const { updateHistory = true, replaceHistory = false } = options;
@@ -235,6 +292,17 @@ export function setActivePage(targetPage, options = {}) {
     activeIndicator.style.opacity = targetPage === 'home' ? '0' : '1';
   } else if (activeIndicator) {
     activeIndicator.style.opacity = '0';
+  }
+
+  // Sync in-page tab indicators (Pills & Sidebars)
+  if (page) {
+    const sync = () => syncActiveIndicators(page);
+    requestAnimationFrame(() => {
+      requestAnimationFrame(sync);
+    });
+    setTimeout(sync, 50);
+    setTimeout(sync, 150);
+    setTimeout(sync, 350);
   }
 
   // Update Document Title
@@ -578,36 +646,6 @@ export function initializeEventListeners() {
       detectPreferences();
     } catch (e) { }
   }, 100);
-
-  // --- Generic View Toggle Logic (List vs Grid) ---
-  const updatePillIndicator = (btn, indicatorClass = '.pill-indicator', opacity = 1) => {
-    const container = btn.closest('.navbar-style-pill');
-    if (!container) return;
-    const indicator = container.querySelector(indicatorClass);
-    if (indicator) {
-      indicator.style.width = `${btn.offsetWidth}px`;
-      indicator.style.height = `${btn.offsetHeight}px`;
-      indicator.style.left = `${btn.offsetLeft}px`;
-      indicator.style.top = `${btn.offsetTop}px`;
-      indicator.style.opacity = opacity;
-    }
-  };
-
-  const updateSidebarIndicator = (btn, indicatorClass = '.sidebar-indicator-active', opacity = 1) => {
-    const container = btn.closest('.section-sidebar-list');
-    if (!container) return;
-    const indicator = container.querySelector(indicatorClass);
-    if (indicator) {
-      const isMobile = window.innerWidth <= 768;
-      const fixedWidth = isMobile ? 220 : 270;
-
-      indicator.style.width = `${fixedWidth}px`;
-      indicator.style.height = `${btn.offsetHeight}px`;
-      indicator.style.left = `${btn.offsetLeft + (btn.offsetWidth - fixedWidth) / 2}px`;
-      indicator.style.top = `${btn.offsetTop}px`;
-      indicator.style.opacity = opacity;
-    }
-  };
 
   const pillBtns = document.querySelectorAll('.pill-btn');
   pillBtns.forEach(btn => {
@@ -1043,6 +1081,7 @@ export function initializeEventListeners() {
             setTimeout(() => {
               section.style.transition = 'opacity 0.4s ease';
               section.style.opacity = '1';
+              syncActiveIndicators(section);
             }, 10);
           } else {
             const sectionType = section.getAttribute('data-journey-section');
@@ -1052,6 +1091,7 @@ export function initializeEventListeners() {
               setTimeout(() => {
                 section.style.transition = 'opacity 0.4s ease';
                 section.style.opacity = '1';
+                syncActiveIndicators(section);
               }, 10);
             } else {
               section.style.display = 'none';
@@ -1062,18 +1102,29 @@ export function initializeEventListeners() {
     });
   }
 
-  // Global initial pill positioner
+  // Global initial pill and sidebar positioner
   setTimeout(() => {
-    document.querySelectorAll('.navbar-style-pill').forEach(pill => {
-      const activeBtn = pill.querySelector('.pill-btn.active');
-      if (activeBtn) updatePillIndicator(activeBtn);
-    });
+    syncActiveIndicators();
+  }, 100);
+  setTimeout(() => {
+    syncActiveIndicators();
+  }, 400);
 
-    document.querySelectorAll('.section-sidebar-list').forEach(sidebar => {
-      const activeBtn = sidebar.querySelector('.section-sidebar-btn.active');
-      if (activeBtn) updateSidebarIndicator(activeBtn);
+  // Responsive sync on window resize
+  let resizeTimer;
+  window.addEventListener('resize', () => {
+    clearTimeout(resizeTimer);
+    resizeTimer = setTimeout(() => {
+      syncActiveIndicators();
+    }, 100);
+  });
+
+  // Re-sync after web fonts finish loading so exact pill widths are respected
+  if (document.fonts && document.fonts.ready) {
+    document.fonts.ready.then(() => {
+      syncActiveIndicators();
     });
-  }, 500);
+  }
 
   // Handle anchor links in README (Table of Contents) smoothly without breaking SPA
   document.addEventListener('click', (e) => {
