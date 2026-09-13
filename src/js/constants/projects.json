@@ -451,5 +451,509 @@
       "Contact Integration"
     ],
     "featured": true
+  },
+  {
+    "id": "oxide-shell",
+    "name": "OxideShell",
+    "subtitle": "Standalone Unix Shell in Pure Rust",
+    "category": "CLI/Algorithms",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/oxide-shell"
+      }
+    ],
+    "points": [
+      "Architected a minimalist, Unix-like command shell implemented entirely from scratch in Rust.",
+      "Engineered zero-dependency internal command execution paths for pwd, cd, echo, ls, cat, cp, mv, rm, and mkdir.",
+      "Implemented robust state-machine lexical parsing for single/double quotes, escape characters, and environment variables.",
+      "Handled POSIX signal traps (SIGINT / Ctrl+C) to prevent shell crashes during active sessions."
+    ],
+    "tech": [
+      "Rust",
+      "Systems Programming",
+      "POSIX API",
+      "Lexical Parsing",
+      "Signal Handling"
+    ],
+    "featured": true
+  },
+  {
+    "id": "apex-vault",
+    "name": "ApexVault",
+    "subtitle": "Terminal Financial Management & Banking Engine",
+    "category": "Engineering",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/apex-vault"
+      }
+    ],
+    "points": [
+      "Developed a robust terminal-based banking and account management system in C.",
+      "Built a centered Text User Interface (TUI) featuring double-line ASCII borders, arrow-key navigation, and instant ESC cancellation.",
+      "Implemented secure user authentication with password masking and multi-account ledger persistence (Savings, Fixed, Current).",
+      "Engineered financial deposit/withdrawal routines with real-time balance validation and dynamic monthly interest calculations."
+    ],
+    "tech": [
+      "C",
+      "TUI",
+      "Data Persistence",
+      "Financial Algorithms",
+      "Make"
+    ],
+    "featured": false
+  },
+  {
+    "id": "chronos-vault",
+    "name": "ChronosVault",
+    "subtitle": "Automated Background Backup Daemon & Scheduler",
+    "category": "Systems & Infrastructure",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/chronos-vault"
+      }
+    ],
+    "points": [
+      "Engineered an automated Python background backup daemon and schedule orchestration manager.",
+      "Implemented a non-blocking background daemon loop that polls schedule queues and executes timed compressed archiving.",
+      "Created a CLI suite for schedule creation, queue inspection, deletion, and daemon lifecycle management (start/stop).",
+      "Built process PID file tracking (.chronos_daemon.pid) and structured operational logging for CLI and daemon transactions."
+    ],
+    "tech": [
+      "Python",
+      "Daemon",
+      "Process Management",
+      "File I/O",
+      "Tar Archiving"
+    ],
+    "featured": false
+  },
+  {
+    "id": "visionpulse",
+    "name": "VisionPulse",
+    "subtitle": "Real-Time Computer Vision & Visual Analytics (FastAPI + YOLOv8 + Win98 UI)",
+    "category": "Web Development",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/visionpulse"
+      }
+    ],
+    "points": [
+      "Developed an industrial-grade computer vision monitoring suite powered by FastAPI, YOLOv8, and a retro Windows 98 React frontend.",
+      "Implemented multi-source video ingestion supporting hardware webcams, IP/RTSP streams, file uploads, and benchmark datasets.",
+      "Engineered a real-time Web Audio Synthesizer and visual alert system for zone occupancy threshold breaches.",
+      "Built interactive telemetry dashboards with pure SVG vector trend lines, 24-hour crowd histograms, and SQLite historical CSV logging."
+    ],
+    "tech": [
+      "FastAPI",
+      "YOLOv8",
+      "OpenCV",
+      "React",
+      "TypeScript",
+      "Vite",
+      "SQLite",
+      "SVG Charts"
+    ],
+    "featured": true
+  },
+  {
+    "id": "gridtactix",
+    "name": "GridTactix",
+    "subtitle": "Algorithmic Territory Control Game Bot",
+    "category": "CLI/Algorithms",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/gridtactix"
+      }
+    ],
+    "points": [
+      "Engineered a competitive algorithmic game bot in Rust for spatial grid territory domination.",
+      "Implemented a dynamic greedy strategy tracking opponent Center of Mass to choke expansion trajectories.",
+      "Utilized Euclidean distance predictors sqrt(dx^2 + dy^2) to select optimal piece placements across dynamic coordinate planes.",
+      "Enforced strict mathematical overlap rules (Rule of One, Rule of Zero, boundary checks) over STDIN/STDOUT stream protocols."
+    ],
+    "tech": [
+      "Rust",
+      "Algorithms",
+      "Greedy Search",
+      "Euclidean Math",
+      "Docker"
+    ],
+    "featured": false
+  },
+  {
+    "id": "omni-knowledge",
+    "name": "OmniKnowledge",
+    "subtitle": "Enterprise RAG Assistant (FastAPI + FAISS + React + Ollama)",
+    "category": "Web Development",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/omni-knowledge"
+      }
+    ],
+    "points": [
+      "Built an enterprise Retrieval-Augmented Generation (RAG) assistant combining local FAISS vector search and FastAPI.",
+      "Designed a dual in-memory embedding cache with MD5 document chunk hashing in SQLite, achieving 100% cache hits for unchanged files.",
+      "Rendered interactive inline citations ([1], [2]) that dynamically highlight source document cards and raw text snippets.",
+      "Supported multi-provider LLM backends including OpenAI, Gemini, and 100% offline local inference via Ollama (Llama 3.2)."
+    ],
+    "tech": [
+      "FastAPI",
+      "FAISS",
+      "Python",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "SQLite",
+      "Ollama",
+      "RAG"
+    ],
+    "featured": true
+  },
+  {
+    "id": "servoxide",
+    "name": "ServOxide",
+    "subtitle": "Single-Threaded Non-Blocking HTTP/1.1 Web Server in Rust",
+    "category": "Systems & Infrastructure",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/servoxide"
+      }
+    ],
+    "points": [
+      "Architected a single-threaded, non-blocking HTTP/1.1 web server in Rust using pure libc system calls.",
+      "Engineered a single OS multiplexed event loop (epoll on Linux, kqueue on macOS) enforcing one read/write per tick.",
+      "Built a hand-written NGINX-style configuration parser supporting virtual hosts, static routing, autoindexing, and custom error pages.",
+      "Implemented a CGI process spawner (fork + execve) with pipe I/O, environment mapping, and 128-bit session cookie tracking."
+    ],
+    "tech": [
+      "Rust",
+      "libc",
+      "epoll",
+      "kqueue",
+      "HTTP/1.1",
+      "CGI",
+      "Systems Programming"
+    ],
+    "featured": true
+  },
+  {
+    "id": "mindquest",
+    "name": "MindQuest",
+    "subtitle": "Interactive Assessment & Quiz Management Platform",
+    "category": "Web Development",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/mindquest"
+      }
+    ],
+    "points": [
+      "Built a full-stack assessment platform and quiz management system engineered with PHP and Laravel.",
+      "Implemented secure user authentication, profile dashboards, and role-based quiz creation workflows.",
+      "Engineered question bank models with multiple-choice options, real-time score grading, and attempt history.",
+      "Constructed dynamic global leaderboards ranking top user performances across quiz categories."
+    ],
+    "tech": [
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "Blade Templates",
+      "Bootstrap",
+      "MVC"
+    ],
+    "featured": false
+  },
+  {
+    "id": "vector-maze-3d",
+    "name": "VectorMaze3D",
+    "subtitle": "Multiplayer 3D Raycasting FPS Game (Rust + Macroquad + UDP)",
+    "category": "Games",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/vector-maze-3d"
+      }
+    ],
+    "points": [
+      "Developed a retro multiplayer 3D first-person shooter in Rust using the Macroquad engine and custom DDA raycasting.",
+      "Engineered custom raycasting wall projections and wireframe diamond avatars without external 3D engine libraries.",
+      "Implemented a low-latency UDP network loop synchronizing player positions, lasers, and scoreboards at a 30Hz tick rate.",
+      "Built a graphical connection launcher with host history persistence, match lobby controls, and smart AI bot fillers."
+    ],
+    "tech": [
+      "Rust",
+      "Macroquad",
+      "UDP Sockets",
+      "DDA Raycasting",
+      "3D Game Engine",
+      "Networking"
+    ],
+    "featured": true
+  },
+  {
+    "id": "fixlink",
+    "name": "FixLink",
+    "subtitle": "Home Services Marketplace Platform (Django + Bootstrap)",
+    "category": "Web Development",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/fixlink"
+      }
+    ],
+    "points": [
+      "Engineered a full-stack home services marketplace web platform using Python, Django, and Bootstrap.",
+      "Architected dual persona workflows for Customer Accounts and Service Provider Companies.",
+      "Built service catalog management, quote requests, appointment scheduling, and order status tracking (Pending -> Completed).",
+      "Designed a relational SQLite data model with Django ORM binding customers, company profiles, and requested service orders."
+    ],
+    "tech": [
+      "Python",
+      "Django",
+      "Bootstrap 5",
+      "SQLite",
+      "Web Development",
+      "ORM"
+    ],
+    "featured": false
+  },
+  {
+    "id": "stacksort",
+    "name": "StackSort",
+    "subtitle": "Dual-Stack Sorting Algorithm Generator & Verifier",
+    "category": "CLI/Algorithms",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/stacksort"
+      }
+    ],
+    "points": [
+      "Engineered a high-efficiency dual-stack sorting algorithm generator and verifier in Go.",
+      "Calculated minimal instruction sequences (pa, pb, sa, sb, ra, rb, rra, rrb) to sort integer lists across two stacks.",
+      "Achieved strict algorithmic constraints (<=3 ops for 3 elements, <=12 for 5, <=1500 for 100, <=11500 for 500).",
+      "Built a companion verification binary (checker) that executes instruction streams against initial stack states."
+    ],
+    "tech": [
+      "Go",
+      "Algorithms",
+      "Sorting",
+      "Data Structures",
+      "CLI"
+    ],
+    "featured": false
+  },
+  {
+    "id": "raycraft-3d",
+    "name": "RayCraft3D",
+    "subtitle": "Concurrent 3D Ray Tracer in Pure Rust",
+    "category": "Engineering",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/raycraft-3d"
+      }
+    ],
+    "points": [
+      "Engineered a concurrent 3D ray tracing engine in pure Rust without external math or graphics crates.",
+      "Implemented multithreaded row-parallel rendering using CPU-scoped threads (std::thread::scope).",
+      "Developed Blinn-Phong specular shading, direct shadows, metallic reflections, and Snell's law glass refractions.",
+      "Created procedural checkerboard textures, sinusoidal fluid normal wave maps, and a custom .rt scene file parser."
+    ],
+    "tech": [
+      "Rust",
+      "Concurrency",
+      "Ray Tracing",
+      "3D Optics",
+      "Physics Engine"
+    ],
+    "featured": true
+  },
+  {
+    "id": "marketpulse",
+    "name": "MarketPulse",
+    "subtitle": "Full-Stack E-Commerce Marketplace (Rails + Bulma)",
+    "category": "Web Development",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/marketpulse"
+      }
+    ],
+    "points": [
+      "Built a full-stack e-commerce marketplace web application using Ruby on Rails and Bulma CSS.",
+      "Implemented authentication and seller ad creation with CarrierWave product image uploads.",
+      "Designed storefront product grid cards featuring direct seller attribution and strict ownership authorization guards.",
+      "Engineered session-persistent shopping carts (CurrentCart concern), quantity adjustments, and simulated checkout flows."
+    ],
+    "tech": [
+      "Ruby",
+      "Ruby on Rails",
+      "Bulma CSS",
+      "CarrierWave",
+      "SQLite",
+      "Devise"
+    ],
+    "featured": false
+  },
+  {
+    "id": "resourceflow",
+    "name": "ResourceFlow",
+    "subtitle": "Process Scheduling & Resource Allocation Simulator",
+    "category": "CLI/Algorithms",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/resourceflow"
+      }
+    ],
+    "points": [
+      "Developed a process scheduling and resource allocation optimization simulator in Go.",
+      "Parsed process dependency manifests defining initial stock levels, cycle durations, input prerequisites, and output yields.",
+      "Engineered a virtual demand scheduler to unblock dependent downstream processes and prevent inventory starvation.",
+      "Built cycle-accurate event log tracing (.log output) and a companion log validation checker binary."
+    ],
+    "tech": [
+      "Go",
+      "Process Scheduling",
+      "Resource Allocation",
+      "Optimization",
+      "CLI"
+    ],
+    "featured": false
+  },
+  {
+    "id": "syspulse",
+    "name": "SysPulse",
+    "subtitle": "Cross-Platform System Performance Dashboard (C++ + ImGui + SDL2)",
+    "category": "Engineering",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/syspulse"
+      }
+    ],
+    "points": [
+      "Engineered a cross-platform desktop system monitor utility in C++ using Dear ImGui and SDL2/OpenGL3.",
+      "Interfaced directly with OS kernel APIs (macOS mach/sysctl/IOKit, Linux /proc, Windows Win32/psapi).",
+      "Built interactive process tables with multi-column sorting, PID search filtering, and memory consumption metrics.",
+      "Rendered 60 FPS visual trend line graphs for CPU utilization, thermal sensors (°C), fan RPMs, and network RX/TX traffic."
+    ],
+    "tech": [
+      "C++",
+      "Dear ImGui",
+      "SDL2",
+      "OpenGL3",
+      "System Call APIs",
+      "Cross-Platform"
+    ],
+    "featured": true
+  },
+  {
+    "id": "tetraopt",
+    "name": "TetraOpt",
+    "subtitle": "Backtracking Shape Optimization & Polyomino Packer",
+    "category": "CLI/Algorithms",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/tetraopt"
+      }
+    ],
+    "points": [
+      "Developed a backtracking polyomino shape optimization engine in Go.",
+      "Parsed ASCII grid tetromino descriptors, validating connectivity using Depth-First Search (DFS) graph algorithms.",
+      "Generated unique rotational symmetry variations while filtering redundant spatial orientations.",
+      "Implemented a recursive backtracking solver finding the minimal 2D square grid fit starting from theoretical lower bounds."
+    ],
+    "tech": [
+      "Go",
+      "Backtracking",
+      "Graph Search",
+      "Optimization",
+      "CLI"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fetchcraft",
+    "name": "FetchCraft",
+    "subtitle": "Command-Line File Retrieval & Website Mirroring Engine",
+    "category": "CLI/Algorithms",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/fetchcraft"
+      }
+    ],
+    "points": [
+      "Built a command-line file downloader and website mirroring utility written in Go.",
+      "Implemented real-time progress bar rendering with ANSI escape sequences, byte formatting, speed tracking, and ETA calculations.",
+      "Designed a rate-limiting reader wrapper for bandwidth throttling (--rate-limit) and background daemonization (-B).",
+      "Engineered a BFS website crawler for recursive mirroring (--mirror) with path exclusions (-X) and relative link conversion."
+    ],
+    "tech": [
+      "Go",
+      "CLI",
+      "Web Crawler",
+      "Networking",
+      "Rate Limiting",
+      "Concurrent Goroutines"
+    ],
+    "featured": false
+  },
+  {
+    "id": "taski",
+    "name": "TaskI",
+    "subtitle": "Secure Task Management Application (Go + React)",
+    "category": "Web Development",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/taski"
+      }
+    ],
+    "points": [
+      "Built a secure, modular ToDo application featuring a concurrent Go REST API backend and a responsive React frontend.",
+      "Architected robust authentication with rate-limiting, temporary IP-based lockouts, and stateful JWT revocation on logout.",
+      "Utilized PostgreSQL with schema migration versioning and clean Domain-Driven Design (DDD) backend layering.",
+      "Containerized application stack with Docker Compose for seamless environment parity."
+    ],
+    "tech": [
+      "Go",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Docker",
+      "JWT",
+      "REST API"
+    ],
+    "featured": true
   }
 ]

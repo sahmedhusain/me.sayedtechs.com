@@ -450,5 +450,509 @@
       "Contact Integration"
     ],
     "featured": true
+  },
+  {
+    "id": "oxide-shell",
+    "name": "OxideShell",
+    "subtitle": "موجّه أوامر Unix خفيف ومبني بالكامل بلغة Rust",
+    "category": "خوارزميات وأدوات",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/oxide-shell"
+      }
+    ],
+    "points": [
+      "صممت موجّه أوامر (Shell) خفيف ومبني بالكامل من الصفر بلغة Rust بدون أي الاعتماد على برامج خارجية.",
+      "نفذت أوامر النظام الأساسية (pwd, cd, echo, ls, cat, cp, mv, rm, mkdir) بشكل مباشر داخل ذاكرة البرنامج.",
+      "بنيت محرك تحليل نصوص يتعامل مع الإشارات، الأقواس المزدوجة والمفردة، والرموز الخاصة بكل دقة.",
+      "ضفت حماية وإدارة لإشارات النظام (Ctrl+C / SIGINT) عشان نضمن عدم إغلاق الموجّه أثناء العمل."
+    ],
+    "tech": [
+      "Rust",
+      "Systems Programming",
+      "POSIX API",
+      "Lexical Parsing",
+      "Signal Handling"
+    ],
+    "featured": true
+  },
+  {
+    "id": "apex-vault",
+    "name": "ApexVault",
+    "subtitle": "نظام إدارة حسابات بنكية على الطرفية (C)",
+    "category": "هندسة",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/apex-vault"
+      }
+    ],
+    "points": [
+      "طورت نظام بنكي متكامل ومحرك حسابات يشتغل على الطرفية بلغة C.",
+      "صممت واجهة نصية (TUI) مريحة وموسّطة بالكامل مع إمكانية التنقل بأسهم الكيبورد والإلغاء بـ ESC.",
+      "بنيت نظام دخول آمن مع إخفاء الباسوورد وحفظ بيانات الحسابات المختلفة (توفير، ثابت، عادي).",
+      "سويت خوارزميات الإيداع والسحب مع التحقق المباشر من الرصيد وحساب الأرباح والفوائد الشهرية."
+    ],
+    "tech": [
+      "C",
+      "TUI",
+      "Data Persistence",
+      "Financial Algorithms",
+      "Make"
+    ],
+    "featured": false
+  },
+  {
+    "id": "chronos-vault",
+    "name": "ChronosVault",
+    "subtitle": "نظام أتمتة وجدولة النسخ الاحتياطي في الخلفية",
+    "category": "أنظمة وبنية تحتية",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/chronos-vault"
+      }
+    ],
+    "points": [
+      "صممت نظام أتمتة لجدولة النسخ الاحتياطي للملفات والمجلدات بلغة Python.",
+      "بنيت خدمة خلفية (Daemon) تعمل بشكل دائم لمراقبة المواعيد وضغط الملفات بصيغة tar.gz تلقائياً.",
+      "طورت أداة موجه أوامر (CLI) لإضافة وإلغاء المواعيد والتحكم في تشغيل وإيقاف الخدمة.",
+      "ضفت نظام تتبع لـ PID وسجلات تفصيلية لعمليات النسخ والخدمة."
+    ],
+    "tech": [
+      "Python",
+      "Daemon",
+      "Process Management",
+      "File I/O",
+      "Tar Archiving"
+    ],
+    "featured": false
+  },
+  {
+    "id": "visionpulse",
+    "name": "VisionPulse",
+    "subtitle": "منصة تحليل الفيديو واكتشاف الأشخاص بالذكاء الاصطناعي",
+    "category": "تطوير الويب",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/visionpulse"
+      }
+    ],
+    "points": [
+      "طورت نظام مراقبة وتحليلات حشود متقدم يعتمد على FastAPI و YOLOv8 وواجهة React بستايل Win98.",
+      "يدعم النظام استقبال الفيديو من الكاميرات المباشرة، روابط IP/RTSP، رفع الملفات، وعينات الاختبار.",
+      "بنيت نظام تنبيه صوتي (Audio Synthesizer) وشاشات إنذار تعمل فور تجاوز الكثافة المسموحة.",
+      "سويت لوحة تحليلات رسومية بـ SVG تعطي تقارير خطية وتوزيعات زمنية وتصدير ملفات CSV."
+    ],
+    "tech": [
+      "FastAPI",
+      "YOLOv8",
+      "OpenCV",
+      "React",
+      "TypeScript",
+      "Vite",
+      "SQLite",
+      "SVG Charts"
+    ],
+    "featured": true
+  },
+  {
+    "id": "gridtactix",
+    "name": "GridTactix",
+    "subtitle": "بوت ذكاء اصطناعي للتحكم في الشبكات والمنافسة",
+    "category": "خوارزميات وأدوات",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/gridtactix"
+      }
+    ],
+    "points": [
+      "برمجت بوت لعبة تنافسي بلغة Rust يعتمد على خوارزميات الاستحواذ المكاني وتغطية المساحات.",
+      "سويت استراتيجية ذكية تحسب مركز كتلة الخصم (Center of Mass) وتتحرك لتضييق المساحة عليه.",
+      "استخدمت معادلات المسافة الإقليدية لتحديد أفضل حركة في كل دور في أجزاء من الثانية.",
+      "طبقت شروط المطابقة الدقيقة على مخرجات STDIN/STDOUT وركبت البيئة في Docker."
+    ],
+    "tech": [
+      "Rust",
+      "Algorithms",
+      "Greedy Search",
+      "Euclidean Math",
+      "Docker"
+    ],
+    "featured": false
+  },
+  {
+    "id": "omni-knowledge",
+    "name": "OmniKnowledge",
+    "subtitle": "مساعد معرفي ذكي للشركات (RAG + FAISS + React)",
+    "category": "تطوير الويب",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/omni-knowledge"
+      }
+    ],
+    "points": [
+      "بنيت نظام مساعد معرفي (RAG) يربط بين البحث المتجهي المحلي FAISS وسرعة الاستجابة.",
+      "صممت نظام تخزين مؤقت للـ Embeddings في SQLite يضمن 100% كفاءة ويقلل تكاليف الـ API.",
+      "ضفت ميزة المصادر التفاعلية ([1], [2]) التي تبرز النص المستند عليه مباشرة من المستندات.",
+      "يدعم التشغيل الكامل بدون إنترنت باستخدام Ollama (Llama 3.2) أو نماذج OpenAI و Gemini."
+    ],
+    "tech": [
+      "FastAPI",
+      "FAISS",
+      "Python",
+      "React",
+      "TypeScript",
+      "Tailwind CSS",
+      "SQLite",
+      "Ollama",
+      "RAG"
+    ],
+    "featured": true
+  },
+  {
+    "id": "servoxide",
+    "name": "ServOxide",
+    "subtitle": "سيرفر ويب HTTP/1.1 أحادي الخيط وسريع بـ Rust",
+    "category": "أنظمة وبنية تحتية",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/servoxide"
+      }
+    ],
+    "points": [
+      "صممت سيرفر ويب HTTP/1.1 أحادي الخيط وغير حاجب (Non-blocking) باستخدام مكتبة libc فقط في Rust.",
+      "بنيت الحلقة الرئيسية (Event Loop) باستخدام epoll على Linux و kqueue على macOS بكل كفاءة.",
+      "طورت محرك قراءة ملفات الإعدادات بستايل NGINX يدعم النطاقات الوهمية والصفحات المخصصة.",
+      "يدعم تشغيل سكربتات CGI (Python) وإدارة الجلسات والكوكيز بشكل آمن."
+    ],
+    "tech": [
+      "Rust",
+      "libc",
+      "epoll",
+      "kqueue",
+      "HTTP/1.1",
+      "CGI",
+      "Systems Programming"
+    ],
+    "featured": true
+  },
+  {
+    "id": "mindquest",
+    "name": "MindQuest",
+    "subtitle": "منصة اختبارات وتقييم تفاعلية متكاملة (Laravel)",
+    "category": "تطوير الويب",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/mindquest"
+      }
+    ],
+    "points": [
+      "بنيت منصة إدارة وتأدية الاختبارات الإلكترونية باستخدام PHP و Laravel.",
+      "سويت نظام تسجيل دخول متكامل وصلاحيات للمستخدمين ولوحات التحكم.",
+      "طورت محرك أسئلة يدعم الخيارات المتعددة والتصحيح الفوري لحساب الدرجات.",
+      "أنشأت لوحة متصدرين (Leaderboards) تعرض أعلى التقييمات حسب الأقسام."
+    ],
+    "tech": [
+      "PHP",
+      "Laravel",
+      "MySQL",
+      "Blade Templates",
+      "Bootstrap",
+      "MVC"
+    ],
+    "featured": false
+  },
+  {
+    "id": "vector-maze-3d",
+    "name": "VectorMaze3D",
+    "subtitle": "لعبة تصويب ثلاثية الأبعاد جماعية (Rust + UDP)",
+    "category": "ألعاب",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/vector-maze-3d"
+      }
+    ],
+    "points": [
+      "طورت لعبة تصويب جماعية ثلاثية الأبعاد بستايل ريترو بلغة Rust ومكتبة Macroquad.",
+      "بنيت محرك رسم ثلاثي الأبعاد (Raycaster) من الصفر بدون استخدام مكتبات 3D خارجية.",
+      "سويت نظام شبكة UDP سريع لتزامن اللاعبين والأعيرة النارية بتردد 30Hz.",
+      "ضفت واجهة دخول تحفظ السيرفرات السابقة، ولوبي مع بوتات ذكاء اصطناعي."
+    ],
+    "tech": [
+      "Rust",
+      "Macroquad",
+      "UDP Sockets",
+      "DDA Raycasting",
+      "3D Game Engine",
+      "Networking"
+    ],
+    "featured": true
+  },
+  {
+    "id": "fixlink",
+    "name": "FixLink",
+    "subtitle": "منصة خدمات منزلية وصيانة متكاملة (Django)",
+    "category": "تطوير الويب",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/fixlink"
+      }
+    ],
+    "points": [
+      "طورت موقع خدمات منزلية وصيانة يربط العملاء بشركات الفنيين باستخدام Python و Django.",
+      "صممت واجهتين مختلفتين: واجهة للعملاء لطلب الخدمات، وواجهة للشركات لإدارة الطلبات.",
+      "بنيت نظام متابعة حالة الطلب (معلق -> مقبول -> جاري التنفيذ -> مكتمل).",
+      "استخدمت SQLite مع Django ORM لإدارة العلاقات بين المستخدمين والشركات والخدمات."
+    ],
+    "tech": [
+      "Python",
+      "Django",
+      "Bootstrap 5",
+      "SQLite",
+      "Web Development",
+      "ORM"
+    ],
+    "featured": false
+  },
+  {
+    "id": "stacksort",
+    "name": "StackSort",
+    "subtitle": "محرك ترتيب مصفوفات باستخدام المكدسات (Go)",
+    "category": "خوارزميات وأدوات",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/stacksort"
+      }
+    ],
+    "points": [
+      "بنيت أداة خوارزمية عالية الكفاءة لترتيب الأرقام باستخدام مكدسين (Stack A & B) بلغة Go.",
+      "سويت برنامج يحسب أقل عدد ممكن من الأوامر (pa, pb, sa, ra, rra) لترتيب الأرقام.",
+      "حققت حدوداً دقيقة في عدد الأوامر (أقل من 1500 حركة لـ 100 رقم).",
+      "أنشأت أداة فحص (checker) تتأكد من صحة تنفيذ الأوامر وترتيب المصفوفة."
+    ],
+    "tech": [
+      "Go",
+      "Algorithms",
+      "Sorting",
+      "Data Structures",
+      "CLI"
+    ],
+    "featured": false
+  },
+  {
+    "id": "raycraft-3d",
+    "name": "RayCraft3D",
+    "subtitle": "محرك تتبع الأشعة ثلاثي الأبعاد بلغة Rust",
+    "category": "هندسة",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/raycraft-3d"
+      }
+    ],
+    "points": [
+      "صممت محرك تتبع أشعة (Ray Tracer) ثلاثي الأبعاد بلغة Rust وبدون أي مكتبات خارجية.",
+      "استخدمت نظام المعالجة المتعددة (Scoped Threads) لتقسيم الأسطر على أنوية المعالج.",
+      "طبقت معادلات الإضاءة المتقدمة (Blinn-Phong)، الظلال المباشرة، الانعكاسات، والانكسارات.",
+      "ضفت خامات الشطرنج، الأمواج المائية، ومحلل ملفات المشاهد (.rt)."
+    ],
+    "tech": [
+      "Rust",
+      "Concurrency",
+      "Ray Tracing",
+      "3D Optics",
+      "Physics Engine"
+    ],
+    "featured": true
+  },
+  {
+    "id": "marketpulse",
+    "name": "MarketPulse",
+    "subtitle": "متجر إلكتروني وسوق مفتوح (Rails + Bulma)",
+    "category": "تطوير الويب",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/marketpulse"
+      }
+    ],
+    "points": [
+      "بنيت تطبيق متجر وسوق إلكتروني متكامل باستخدام Ruby on Rails و Bulma CSS.",
+      "سويت نظام إضافة إعلانات المنتجات مع رفع الصور وإدارة حسابات البائعين.",
+      "ضفت حماية تضمن إن البائع بس يقدر يغير أو يحذف الإعلان الخاص فيه.",
+      "بنيت سلة تسوق تحفظ المنتجات حتى لو ما سجلت دخول وتنقله للمستخدم بعد الدخول."
+    ],
+    "tech": [
+      "Ruby",
+      "Ruby on Rails",
+      "Bulma CSS",
+      "CarrierWave",
+      "SQLite",
+      "Devise"
+    ],
+    "featured": false
+  },
+  {
+    "id": "resourceflow",
+    "name": "ResourceFlow",
+    "subtitle": "محاكي جدولة وتوزيع الموارد والعمليات (Go)",
+    "category": "خوارزميات وأدوات",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/resourceflow"
+      }
+    ],
+    "points": [
+      "طورت محاكي لجدولة العمليات وتحسين توزيع الموارد والمخزون بلغة Go.",
+      "يقرأ البرنامج ملفات الإعدادات ويحسب الاعتماديات وأوقات الإنتاج والمواد المطلوبة.",
+      "بنيت نظام طلب افتراضي يمنع توقف العمليات الناتجة ويحسب الوقت الأمثل.",
+      "سويت نظام سجلات تفصيلي وأداة فحص للتأكد من صحة النتائج."
+    ],
+    "tech": [
+      "Go",
+      "Process Scheduling",
+      "Resource Allocation",
+      "Optimization",
+      "CLI"
+    ],
+    "featured": false
+  },
+  {
+    "id": "syspulse",
+    "name": "SysPulse",
+    "subtitle": "برنامج مراقبة أداء الكمبيوتر والموارد (C++ + ImGui)",
+    "category": "هندسة",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/syspulse"
+      }
+    ],
+    "points": [
+      "بنيت برنامج مراقبة أداء الكمبيوتر والموارد بلغة C++ باستخدام Dear ImGui و SDL2.",
+      "يربط البرنامج مباشرة مع نظام التشغيل (macOS, Linux, Windows) لسحب البيانات بسرعة.",
+      "سويت جدول عمليات تفاعلي يفرز البرامج حسب استهلاك الذاكرة أو المعالج.",
+      "يعرض الرسوم البيانية لاستخدام المعالج، الحرارة، سرعة المروحة، وشبكة النت."
+    ],
+    "tech": [
+      "C++",
+      "Dear ImGui",
+      "SDL2",
+      "OpenGL3",
+      "System Call APIs",
+      "Cross-Platform"
+    ],
+    "featured": true
+  },
+  {
+    "id": "tetraopt",
+    "name": "TetraOpt",
+    "subtitle": "خوارزمية ترتيب الأشكال وتجميعها في أصغر مربع (Go)",
+    "category": "خوارزميات وأدوات",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/tetraopt"
+      }
+    ],
+    "points": [
+      "طورت محرك ترتيب أشكال خوارزمي (Backtracking) بلغة Go.",
+      "يقرأ الأشكال من الملفات ويتأكد من اتصال أجزائها باستخدام خوارزميات البحث (DFS).",
+      "يولد التدويرات المختلفة للأشكال بدون تكرار لتسريع عملية البحث.",
+      "يضع الأشكال في أصغر مربع ممكن ويطبع النتيجة مرتبة بالأحرف."
+    ],
+    "tech": [
+      "Go",
+      "Backtracking",
+      "Graph Search",
+      "Optimization",
+      "CLI"
+    ],
+    "featured": false
+  },
+  {
+    "id": "fetchcraft",
+    "name": "FetchCraft",
+    "subtitle": "أداة تحميل وتفريغ المواقع من موجه الأوامر (Go)",
+    "category": "خوارزميات وأدوات",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/fetchcraft"
+      }
+    ],
+    "points": [
+      "بنيت أداة موجه أوامر لتحميل الملفات وتنسيق أخذ نسخ من المواقع بلغة Go.",
+      "سويت شريط تقدم مباشر يوضح السرعة والنسبة والوقت المتبقي بشكل مرتب.",
+      "تدعم تحديد السرعة (--rate-limit) والتشغيل في الخلفية (Backgrounding).",
+      "بنيت نظام زاحف (Crawler) ينسخ الموقع بالكامل ويعدل الروابط لتعمل بدون إنترنت."
+    ],
+    "tech": [
+      "Go",
+      "CLI",
+      "Web Crawler",
+      "Networking",
+      "Rate Limiting",
+      "Concurrent Goroutines"
+    ],
+    "featured": false
+  },
+  {
+    "id": "taski",
+    "name": "TaskI",
+    "subtitle": "تطبيق إدارة المهام اليومية (Go + React)",
+    "category": "تطوير الويب",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "الكود",
+        "url": "https://github.com/sahmedhusain/taski"
+      }
+    ],
+    "points": [
+      "بنيت تطبيق إدارة مهام آمن ومنظم يربط بين واجهة React وسيرفر Go سريع.",
+      "سويت نظام دخول آمن مع تحديد عدد المحاولات وإغلاق الـ IP مؤقتاً عند السبام.",
+      "استخدمت PostgreSQL مع تقسيم الكود بنظام (DDD) لسهولة التعديل والصيانة.",
+      "حطيت التطبيق كامل في (Docker Compose) عشان يشتغل بكل سهولة في أي بيئة."
+    ],
+    "tech": [
+      "Go",
+      "React",
+      "TypeScript",
+      "PostgreSQL",
+      "Tailwind CSS",
+      "Docker",
+      "JWT",
+      "REST API"
+    ],
+    "featured": true
   }
 ]
