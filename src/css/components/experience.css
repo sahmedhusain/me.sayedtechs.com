@@ -1769,9 +1769,12 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
 
 /* Light mode overrides for pills */
 html:not([data-theme="dark"]) .navbar-style-pill,
-[data-theme="light"] .navbar-style-pill {
-  background: rgba(255, 255, 255, 0.6) !important;
-  border-color: rgba(0, 0, 0, 0.05) !important;
+[data-theme="light"] .navbar-style-pill,
+html:not([data-theme="dark"]) .journey-filters,
+[data-theme="light"] .journey-filters {
+  background: rgba(255, 255, 255, 0.75) !important;
+  border-color: rgba(0, 0, 0, 0.06) !important;
+  box-shadow: 0 4px 18px rgba(0, 0, 0, 0.05) !important;
 }
 
 html:not([data-theme="dark"]) .pill-indicator,
