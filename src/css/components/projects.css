@@ -41,7 +41,8 @@
 }
 
 .filter-list.navbar-style-pill {
-  display: inline-flex;
+  display: flex;
+  margin: 0 auto;
   align-items: center;
   gap: 0.3rem;
   background: rgba(255, 255, 255, 0.04);

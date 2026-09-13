@@ -217,29 +217,31 @@ export function renderProfessionalJourneySection() {
       </p>
     </header>
     <section class="professional-journey" id="professional-journey">
-      <div class="journey-filters navbar-style-pill animate-entry" style="width: fit-content; margin: 0 auto 2.5rem; animation-delay: 0.1s;">
-        <div class="pill-indicator"></div>
-        <div class="pill-indicator-hover"></div>
-        <button class="pill-btn active" data-filter="all">
-          <ion-icon name="apps-outline"></ion-icon>
-          <span class="filter-text">${t('journey.filters.all')}</span>
-        </button>
-        <button class="pill-btn" data-filter="education">
-          <ion-icon name="school-outline"></ion-icon>
-          <span class="filter-text">${t('journey.filters.education')}</span>
-        </button>
-        <button class="pill-btn" data-filter="career">
-          <ion-icon name="business-outline"></ion-icon>
-          <span class="filter-text">${t('journey.filters.career')}</span>
-        </button>
-        <button class="pill-btn" data-filter="internships">
-          <ion-icon name="briefcase-outline"></ion-icon>
-          <span class="filter-text">${t('journey.filters.internships')}</span>
-        </button>
-        <button class="pill-btn" data-filter="certifications">
-          <ion-icon name="ribbon-outline"></ion-icon>
-          <span class="filter-text">${t('journey.filters.certifications')}</span>
-        </button>
+      <div class="journey-filters-wrapper animate-entry" style="display: flex; justify-content: center; align-items: center; width: 100%; margin: 0 auto 2.5rem; animation-delay: 0.1s;">
+        <div class="journey-filters navbar-style-pill">
+          <div class="pill-indicator"></div>
+          <div class="pill-indicator-hover"></div>
+          <button class="pill-btn active" data-filter="all">
+            <ion-icon name="apps-outline"></ion-icon>
+            <span class="filter-text">${t('journey.filters.all')}</span>
+          </button>
+          <button class="pill-btn" data-filter="education">
+            <ion-icon name="school-outline"></ion-icon>
+            <span class="filter-text">${t('journey.filters.education')}</span>
+          </button>
+          <button class="pill-btn" data-filter="career">
+            <ion-icon name="business-outline"></ion-icon>
+            <span class="filter-text">${t('journey.filters.career')}</span>
+          </button>
+          <button class="pill-btn" data-filter="internships">
+            <ion-icon name="briefcase-outline"></ion-icon>
+            <span class="filter-text">${t('journey.filters.internships')}</span>
+          </button>
+          <button class="pill-btn" data-filter="certifications">
+            <ion-icon name="ribbon-outline"></ion-icon>
+            <span class="filter-text">${t('journey.filters.certifications')}</span>
+          </button>
+        </div>
       </div>
       <div class="timeline-title-fixed animate-entry" style="animation-delay: 0.2s;">
         ${t('journey.timelineTitle')}

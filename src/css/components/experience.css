@@ -1578,8 +1578,24 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
 }
 
 /* --- Shared Pill Style (Navbar Matching) --- */
+.journey-filters-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin: 0 auto 2.5rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+.journey-filters-wrapper::-webkit-scrollbar {
+  display: none;
+}
+
 .navbar-style-pill {
-  display: inline-flex;
+  display: flex;
+  margin: 0 auto;
   align-items: center;
   gap: 0.3rem;
   background: rgba(255, 255, 255, 0.04);
