@@ -63,6 +63,7 @@
     "type": "Course Certificate",
     "issuingAuthority": "Cisco Networking Academy",
     "location": "Online",
+    "id": "29e230b9-382b-4540-b179-37d46ca17fd4",
     "issued": "Aug 2026",
     "pdfUrl": "pdfs.cisco_packet_tracer",
     "description": [

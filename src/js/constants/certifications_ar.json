@@ -63,6 +63,7 @@
     "type": "شهادة دورة",
     "issuingAuthority": "أكاديمية سيسكو للشبكات (Cisco Networking Academy)",
     "location": "أونلاين",
+    "id": "29e230b9-382b-4540-b179-37d46ca17fd4",
     "issued": "أغسطس 2026",
     "pdfUrl": "pdfs.cisco_packet_tracer",
     "description": [
