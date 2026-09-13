@@ -476,7 +476,7 @@
 }
 
 [dir="rtl"] .experience-card-header {
-  flex-direction: row !important;
+  flex-direction: column !important;
 }
 
 [dir="rtl"] .meta-pill {

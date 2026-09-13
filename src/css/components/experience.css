@@ -491,10 +491,16 @@
   display: flex;
   align-items: center;
   gap: 0.75rem;
-  font-size: 1.2rem;
-  font-weight: 800;
+  font-size: 1.25rem;
+  font-weight: 700;
   color: var(--text-primary);
-  margin-bottom: 1.25rem;
+  margin-bottom: 1rem;
+}
+
+.section-list-header ion-icon {
+  font-size: 1.35rem;
+  color: var(--accent);
+  flex-shrink: 0;
 }
 
 .section-list-items {
@@ -1516,10 +1522,20 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
 /* Responsive Design */
 @media (max-width: 768px) {
   .section-list-container {
-    padding: 0.8rem 0.25rem;
+    padding: 1.25rem 0.35rem 0.85rem;
+    border-radius: 2rem;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
+  }
+
+  .section-list-header {
+    padding: 0.2rem 1.15rem 0.4rem 1.15rem;
+    margin-bottom: 0.85rem;
+  }
+
+  .section-list-card .experience-card {
+    border-radius: 1.6rem;
   }
 
   .section-list-card,
@@ -1810,6 +1826,8 @@ html:not([data-theme="dark"]) .experience-card-header,
   border-bottom: 1px solid rgba(0, 0, 0, 0.05) !important;
 }
 
+html:not([data-theme="dark"]) .section-list-header,
+[data-theme="light"] .section-list-header,
 html:not([data-theme="dark"]) .sidebar-section-header,
 [data-theme="light"] .sidebar-section-header {
   color: #000 !important;
