@@ -756,14 +756,22 @@
 }
 
 .experience-card-header {
-  padding: 2.5rem;
+  padding: 2.2rem 2.5rem;
   background: rgba(255, 255, 255, 0.02);
   border-bottom: 1px solid rgba(255, 255, 255, 0.05);
   position: relative; /* Context for action button */
   flex-shrink: 0;
   display: flex;
+  flex-direction: column;
+  gap: 1.1rem;
+}
+
+.experience-card-header-top {
+  display: flex;
   justify-content: space-between;
   align-items: flex-start;
+  width: 100%;
+  gap: 1.5rem;
 }
 
 .experience-card-content {
@@ -1307,35 +1315,68 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
 .experience-meta-row {
   display: flex;
   flex-wrap: wrap;
-  gap: 0.7rem;
+  align-items: center;
+  gap: 0.65rem;
   margin-top: 0.2rem;
 }
 
+.experience-card-header .experience-meta-row {
+  margin-left: calc(64px + 1.5rem);
+  margin-top: 0;
+}
+
+[dir="rtl"] .experience-card-header .experience-meta-row {
+  margin-left: 0;
+  margin-right: calc(64px + 1.5rem);
+}
+
 .meta-pill {
-  display: flex;
+  display: inline-flex;
   align-items: center;
-  gap: 0.6rem;
-  padding: 0.45rem 1rem;
+  gap: 0.55rem;
+  padding: 0.38rem 0.95rem;
   background: rgba(255, 255, 255, 0.04);
   border: 1px solid rgba(255, 255, 255, 0.08);
   border-radius: 999px;
-  font-size: 0.85rem;
+  font-size: 0.84rem;
   color: var(--text-secondary);
   font-weight: 500;
   transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-  white-space: nowrap;
+  white-space: nowrap !important;
+  height: 34px;
+  box-sizing: border-box;
+  flex-shrink: 0;
+  max-width: 100%;
 }
 
 .meta-pill ion-icon {
   font-size: 1.05rem;
   color: var(--accent);
+  flex-shrink: 0;
 }
 
-.meta-separator {
-  width: 1px;
-  height: 12px;
-  background: rgba(255, 255, 255, 0.15);
-  margin: 0 0.1rem;
+.meta-pill span {
+  white-space: nowrap;
+}
+
+.meta-pill.id-pill {
+  max-width: 100%;
+}
+
+.meta-pill.id-pill .id-text {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.meta-pill.duration-pill {
+  color: var(--accent);
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.meta-pill.duration-pill ion-icon {
+  color: var(--accent);
 }
 
 .duration-text {
@@ -1474,109 +1515,137 @@ html:not([data-theme="dark"]) .experience-card-content::-webkit-scrollbar-thumb,
 
 /* Responsive Design */
 @media (max-width: 768px) {
-  .experience-card {
-    padding: 1.5rem;
-  }
-
-  .section-list-container,
-  .section-list-card,
-  .experience-card,
-  .experience-card-header,
-  .experience-company-info,
-  .experience-header-main,
-  .experience-meta-row {
+  .section-list-container {
+    padding: 0.8rem 0.25rem;
     width: 100%;
     max-width: 100%;
+    box-sizing: border-box;
+  }
+
+  .section-list-card,
+  .experience-card {
+    width: 100%;
+    max-width: 100%;
+    padding: 0;
+    box-sizing: border-box;
   }
 
   .section-list-items {
     max-width: 100%;
-  }
-
-  .experience-company-info,
-  .experience-header-main,
-  .experience-meta-row {
-    min-width: 0;
-  }
-
-  .experience-job-title,
-  .experience-company-name,
-  .company-link {
-    max-width: 100%;
-    overflow-wrap: anywhere;
-    word-break: break-word;
-  }
-
-  .experience-meta-row {
     width: 100%;
+    gap: 1.25rem;
   }
 
-  .meta-pill {
-    width: fit-content;
-    max-width: 100%;
-    white-space: normal;
+  .experience-card-header {
+    padding: 1.25rem 1rem;
+    gap: 0.85rem;
+    width: 100%;
+    box-sizing: border-box;
   }
 
-  .meta-pill .date-text,
-  .meta-pill span {
-    overflow-wrap: anywhere;
+  .experience-card-header-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    width: 100%;
+    gap: 0.75rem;
   }
 
   .experience-company-info {
-    flex-direction: column;
-    text-align: center;
-    gap: 1rem;
-  }
-
-  .experience-card .experience-company-logo {
-    align-self: center;
-  }
-
-  .experience-meta {
-    justify-content: center;
-  }
-
-  .experience-section {
-    padding: 1rem;
-  }
-
-  /* Centering Fixes for Mobile Cards */
-  .experience-company-info {
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-  }
-
-  .experience-company-details {
-    padding-right: 0;
-  }
-
-  .experience-meta {
-    justify-content: center;
-  }
-
-  .experience-job-title,
-  .experience-company-name {
-    text-align: center;
-  }
-
-  .section-list-container .experience-company-info {
+    display: flex;
     flex-direction: row;
     align-items: flex-start;
     text-align: inherit;
+    gap: 0.85rem;
+    flex: 1;
+    min-width: 0;
   }
 
-  .section-list-container .experience-card .experience-company-logo {
+  .experience-card .experience-company-logo {
+    width: 44px;
+    height: 44px;
+    flex-shrink: 0;
     align-self: flex-start;
   }
 
-  .section-list-container .experience-job-title,
-  .section-list-container .experience-company-name {
+  .experience-header-main {
+    flex: 1;
+    min-width: 0;
     text-align: inherit;
   }
 
+  .experience-job-title {
+    font-size: 1.08rem;
+    line-height: 1.35;
+    margin-bottom: 0.25rem;
+    word-break: break-word;
+    text-align: inherit;
+  }
+
+  .experience-company-name,
+  .company-link {
+    font-size: 0.88rem;
+    margin-bottom: 0;
+    word-break: break-word;
+    text-align: inherit;
+  }
+
+  .experience-card-header .experience-meta-row,
   .section-list-container .experience-meta-row {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
     justify-content: flex-start;
+    gap: 0.45rem;
+    box-sizing: border-box;
+  }
+
+  .meta-pill {
+    height: 32px !important;
+    padding: 0 0.8rem !important;
+    font-size: 0.8rem !important;
+    white-space: nowrap !important;
+    max-width: 100% !important;
+    flex-shrink: 0;
+    box-sizing: border-box;
+    display: inline-flex !important;
+    align-items: center !important;
+    gap: 0.45rem;
+  }
+
+  .meta-pill ion-icon {
+    font-size: 0.98rem;
+    flex-shrink: 0;
+  }
+
+  .meta-pill span,
+  .meta-pill .date-text,
+  .meta-pill .duration-text {
+    white-space: nowrap !important;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .meta-pill.id-pill {
+    max-width: 100% !important;
+  }
+
+  .meta-pill.id-pill .id-text {
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap !important;
+    max-width: 100%;
+  }
+
+  .experience-card-content {
+    padding: 1.25rem 1rem;
+  }
+
+  .experience-section {
+    padding: 0.85rem;
   }
 }
 

@@ -51,30 +51,36 @@ export function renderExperienceCardContent(job) {
 
   return `
     <div class="experience-card-header">
-      <div class="experience-company-info">
-        <div class="experience-company-logo">
-          <img src="${getLogo(job.company, '')}" alt="${job.company} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
-        </div>
-        <div class="experience-header-main">
-          <h3 class="experience-job-title">${job.title}</h3>
-          <p class="experience-company-name">
-            <a href="${getEntityUrl(job.company)}" target="_blank" rel="noopener noreferrer" class="company-link">${job.company}</a>
-          </p>
-          <div class="experience-meta-row">
-            <div class="meta-pill date-pill">
-              <ion-icon name="calendar-outline"></ion-icon>
-              <span class="date-text">${shortenDate(job.date)}</span>
-              ${duration ? `
-                <span class="meta-separator"></span>
-                <span class="duration-text">${duration.replace(' · ', '')}</span>
-              ` : ''}
-            </div>
-            <div class="meta-pill location-pill">
-              <ion-icon name="location-outline"></ion-icon>
-              <span>${job.location}</span>
-            </div>
+      <div class="experience-card-header-top">
+        <div class="experience-company-info">
+          <div class="experience-company-logo">
+            <img src="${getLogo(job.company, '')}" alt="${job.company} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
+          </div>
+          <div class="experience-header-main">
+            <h3 class="experience-job-title">${job.title}</h3>
+            <p class="experience-company-name">
+              <a href="${getEntityUrl(job.company)}" target="_blank" rel="noopener noreferrer" class="company-link">${job.company}</a>
+            </p>
           </div>
         </div>
+      </div>
+      <div class="experience-meta-row">
+        <div class="meta-pill date-pill">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <span class="date-text">${shortenDate(job.date)}</span>
+        </div>
+        ${duration ? `
+          <div class="meta-pill duration-pill">
+            <ion-icon name="time-outline"></ion-icon>
+            <span class="duration-text">${duration.replace(' · ', '')}</span>
+          </div>
+        ` : ''}
+        ${job.location ? `
+          <div class="meta-pill location-pill">
+            <ion-icon name="location-outline"></ion-icon>
+            <span>${job.location}</span>
+          </div>
+        ` : ''}
       </div>
     </div>
     <div class="experience-card-content">
@@ -188,26 +194,30 @@ export function renderInternshipCardContent(intern) {
   // Reusing the experience card style for consistency
   return `
     <div class="experience-card-header">
-      <div class="experience-company-info">
-        <div class="experience-company-logo">
-          <img src="${getLogo(intern.company, '')}" alt="${intern.company} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
-        </div>
-        <div class="experience-header-main">
-          <h3 class="experience-job-title">${intern.title}</h3>
-          <p class="experience-company-name">
-            <a href="${getEntityUrl(intern.company)}" target="_blank" rel="noopener noreferrer" class="company-link">${intern.company}</a>
-          </p>
-          <div class="experience-meta-row">
-            <div class="meta-pill date-pill">
-              <ion-icon name="calendar-outline"></ion-icon>
-              <span>${shortenDate(intern.startDate)} — ${shortenDate(intern.endDate)}</span>
-            </div>
-            <div class="meta-pill location-pill">
-              <ion-icon name="location-outline"></ion-icon>
-              <span>${intern.location}</span>
-            </div>
+      <div class="experience-card-header-top">
+        <div class="experience-company-info">
+          <div class="experience-company-logo">
+            <img src="${getLogo(intern.company, '')}" alt="${intern.company} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
+          </div>
+          <div class="experience-header-main">
+            <h3 class="experience-job-title">${intern.title}</h3>
+            <p class="experience-company-name">
+              <a href="${getEntityUrl(intern.company)}" target="_blank" rel="noopener noreferrer" class="company-link">${intern.company}</a>
+            </p>
           </div>
         </div>
+      </div>
+      <div class="experience-meta-row">
+        <div class="meta-pill date-pill">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <span class="date-text">${shortenDate(intern.startDate)} — ${shortenDate(intern.endDate)}</span>
+        </div>
+        ${intern.location ? `
+          <div class="meta-pill location-pill">
+            <ion-icon name="location-outline"></ion-icon>
+            <span>${intern.location}</span>
+          </div>
+        ` : ''}
       </div>
     </div>
     <div class="experience-card-content">
@@ -232,32 +242,36 @@ export function renderInternshipCardContent(intern) {
 export function renderEducationCardContent(edu) {
   return `
     <div class="experience-card-header">
-      <div class="experience-company-info">
-        <div class="experience-company-logo">
-          <img src="${getLogo(edu.institution || edu.degree, '')}" alt="${edu.institution} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
-        </div>
-        <div class="experience-header-main">
-          <h3 class="experience-job-title">${edu.degree}</h3>
-          <p class="experience-company-name">
-            <a href="${getEntityUrl(edu.institution)}" target="_blank" rel="noopener noreferrer" class="company-link">${edu.institution}</a>
-          </p>
-          <div class="experience-meta-row">
-            <div class="meta-pill date-pill">
-              <ion-icon name="calendar-outline"></ion-icon>
-              <span>${shortenDate(edu.date)}</span>
-            </div>
-            <div class="meta-pill location-pill">
-              <ion-icon name="location-outline"></ion-icon>
-              <span>${edu.location}</span>
-            </div>
+      <div class="experience-card-header-top">
+        <div class="experience-company-info">
+          <div class="experience-company-logo">
+            <img src="${getLogo(edu.institution || edu.degree, '')}" alt="${edu.institution} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
+          </div>
+          <div class="experience-header-main">
+            <h3 class="experience-job-title">${edu.degree}</h3>
+            <p class="experience-company-name">
+              <a href="${getEntityUrl(edu.institution)}" target="_blank" rel="noopener noreferrer" class="company-link">${edu.institution}</a>
+            </p>
           </div>
         </div>
-      </div>
-      ${edu.certificate ? `
+        ${edu.certificate ? `
           <a href="${edu.certificate}" target="_blank" class="header-action-btn">
-          <ion-icon name="document-text-outline"></ion-icon>
-          <span>${t('experience.view')}</span>
-        </a>` : ''}
+            <ion-icon name="document-text-outline"></ion-icon>
+            <span>${t('experience.view')}</span>
+          </a>` : ''}
+      </div>
+      <div class="experience-meta-row">
+        <div class="meta-pill date-pill">
+          <ion-icon name="calendar-outline"></ion-icon>
+          <span class="date-text">${shortenDate(edu.date)}</span>
+        </div>
+        ${edu.location ? `
+          <div class="meta-pill location-pill">
+            <ion-icon name="location-outline"></ion-icon>
+            <span>${edu.location}</span>
+          </div>
+        ` : ''}
+      </div>
     </div>
 
     <div class="experience-card-content">
@@ -295,27 +309,41 @@ export function renderCertificationCardContent(cert) {
   const isExpired = cert.expires && new Date(cert.expires) < new Date();
   return `
     <div class="experience-card-header">
-      <div class="experience-company-info">
-        <div class="experience-company-logo">
-          <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
-        </div>
-        <div class="experience-header-main">
-          <h3 class="experience-job-title">${cert.name}</h3>
-          <p class="experience-company-name">
-            <a href="${getEntityUrl(cert.issuingAuthority)}" target="_blank" rel="noopener noreferrer" class="company-link">${cert.issuingAuthority}</a>
-          </p>
-          <div class="experience-meta-row">
-             ${cert.id ? `<div class="meta-pill"><ion-icon name="${cert.type === 'License' ? 'document-text-outline' : 'ribbon-outline'}"></ion-icon> ID: ${cert.id}</div>` : ''}
-             ${cert.issued ? `<div class="meta-pill"><ion-icon name="calendar-outline"></ion-icon> ${t('experience.issued')} ${shortenDate(cert.issued)}</div>` : ''}
-             ${cert.expires ? `<div class="meta-pill" style="${isExpired ? 'color: #ef4444;' : ''}"><ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon> ${isExpired ? (t('experience.expired')) + ' ' + shortenDate(cert.expires) : (t('experience.expires')) + ' ' + shortenDate(cert.expires)}</div>` : ''}
+      <div class="experience-card-header-top">
+        <div class="experience-company-info">
+          <div class="experience-company-logo">
+            <img src="${getLogo(cert.issuingAuthority, '')}" alt="${cert.issuingAuthority} logo" class="org-logo" loading="lazy" onerror="handleImageError(this)" />
+          </div>
+          <div class="experience-header-main">
+            <h3 class="experience-job-title">${cert.name}</h3>
+            <p class="experience-company-name">
+              <a href="${getEntityUrl(cert.issuingAuthority)}" target="_blank" rel="noopener noreferrer" class="company-link">${cert.issuingAuthority}</a>
+            </p>
           </div>
         </div>
+        ${cert.pdfUrl ? `
+          <a href="${cert.pdfUrl}" target="_blank" class="header-action-btn">
+            <ion-icon name="document-text-outline"></ion-icon>
+            <span>${t('experience.view')}</span>
+          </a>` : ''}
       </div>
-      ${cert.pdfUrl ? `
-        <a href="${cert.pdfUrl}" target="_blank" class="header-action-btn">
-          <ion-icon name="document-text-outline"></ion-icon>
-          <span>${t('experience.view')}</span>
-        </a>` : ''}
+      <div class="experience-meta-row">
+        ${cert.id ? `
+          <div class="meta-pill id-pill" title="ID: ${cert.id}">
+            <ion-icon name="${cert.type === 'License' ? 'document-text-outline' : 'ribbon-outline'}"></ion-icon>
+            <span class="id-text">ID: ${cert.id}</span>
+          </div>` : ''}
+        ${cert.issued ? `
+          <div class="meta-pill date-pill">
+            <ion-icon name="calendar-outline"></ion-icon>
+            <span class="date-text">${t('experience.issued')} ${shortenDate(cert.issued)}</span>
+          </div>` : ''}
+        ${cert.expires ? `
+          <div class="meta-pill date-pill ${isExpired ? 'expired-pill' : ''}" style="${isExpired ? 'color: #ef4444;' : ''}">
+            <ion-icon name="time-outline" style="${isExpired ? 'color: #ef4444;' : ''}"></ion-icon>
+            <span class="date-text">${isExpired ? (t('experience.expired')) + ' ' + shortenDate(cert.expires) : (t('experience.expires')) + ' ' + shortenDate(cert.expires)}</span>
+          </div>` : ''}
+      </div>
     </div>
     ${cert.description ? `
     <div class="experience-card-content">
