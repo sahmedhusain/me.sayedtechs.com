@@ -15,7 +15,7 @@
       "experience": "Experience",
       "internships": "Internships",
       "education": "Education",
-      "certifications": "Certifications",
+      "certifications": "Certifications & Licenses",
       "projects": "Projects",
       "technicalSkills": "Technical Skills"
     },
@@ -56,22 +56,18 @@
     "website": "https://me.sayedtechs.com/"
   },
   "topSkills": [
-    "Software Engineering",
-    "Solar PV Systems",
-    "Business Development",
-    "Electrical Engineering",
-    "Fire Protection Systems",
-    "CRPEP Licensed Engineer"
+    "Full-Stack Software Engineering",
+    "Go & Rust Systems",
+    "Electrical Engineering & Solar PV",
+    "Fire-Life-Safety Engineering",
+    "CRPEP Licensed Electrical Engineer",
+    "Technical Business Development"
   ],
   "languages": [
     "Arabic - Native",
     "English - Fluent"
   ],
-  "summary": {
-    "intro": "I am a multidisciplinary engineer bridging electrical and fire-life-safety engineering, solar PV, business development, and full-stack software development.\n\nMy experience spans delivering GCC- and NFPA-compliant life-safety systems for industrial clients, coordinating technical projects and commissioning teams, and managing vendor pre-qualifications and Bahrain Tender Board bids that contributed to more than $1M in revenue. I work comfortably between technical requirements, client needs, regulatory stakeholders, and project delivery—always focused on safety, reliability, and measurable results.\n\nAlongside my Electrical Engineering background and professional licenses, I build modern software products using Go, TypeScript, JavaScript, React, Next.js, Node.js, REST APIs, WebSockets, SQL, Docker, and Linux. My projects include real-time applications, concurrent back-end services, learning analytics dashboards, IoT smart-streetlight systems, and custom front-end frameworks.\n\nI hold a BSc in Electrical Engineering from the University of Bahrain and am completing an intensive Full-Stack Developer program at Reboot Coding Institute. I am also a CRPEP-licensed Electrical Engineer, an EWA Electrical Installation Wireman, and hold the NOCN Level 3 Award for Solar PV Installer and Operator.\n\nI am interested in opportunities where engineering discipline, digital systems, commercial awareness, and practical problem-solving can create dependable solutions—from infrastructure and energy to software platforms and technical business development.",
-    "bullets": [],
-    "outro": ""
-  },
+  "summary": "I am a multidisciplinary engineer bridging the gap between physical infrastructure and digital architecture. With a zero-failure mindset rooted in electrical and fire-life-safety engineering, I bring rigorous discipline to full-stack software development and technical business operations.\n\n**CORE ENGINEERING & COMMERCIAL IMPACT**\n• **Project Delivery:** Engineered and commissioned GCC- and NFPA-compliant life-safety systems for major industrial giants (including ALBA and Bahrain Steel), achieving zero safety failures during final inspections.\n• **Business Development:** Managed complex vendor pre-qualifications and Bahrain Tender Board bids, directly contributing to over $1M in generated revenue.\n• **Operations:** Coordinated cross-functional teams of 15+ technicians, optimizing workflows to reduce commissioning time by 15% and accelerate execution pipelines by 20%.\n\n**SOFTWARE ARCHITECTURE & DEVELOPMENT**\nAlongside my electrical engineering background, I architect modern, highly concurrent software systems. My technical philosophy centers on deep architectural ownership—I handwrite core framework architecture and logic to ensure peak performance and maintainability.\n• **Tech Stack:** Go, TypeScript, JavaScript, React, Next.js, Node.js, REST APIs, WebSockets, PostgreSQL, Docker, and Linux.\n• **Selected Projects:** Architected concurrent back-end services (supporting 1,000+ live users with sub-50ms latency), developed a handwritten virtual DOM and reactive state-management framework (PicoJS), and built IoT smart-streetlight systems.\n\n**CREDENTIALS**\nI hold a **BSc in Electrical Engineering** from the University of Bahrain and am completing an intensive **Full-Stack Developer** program at Reboot Coding Institute. I am a **CRPEP-licensed** Electrical Engineer, an **EWA Electrical Installation Wireman**, and hold an NOCN Level 3 Award for Solar PV.\n\n*I am currently seeking opportunities where engineering discipline, digital architecture, and commercial awareness intersect to create scalable, dependable solutions.*",
   "experience": [
     {
       "company": "Lichfield Fire and Safety Equipment FZE",
@@ -160,7 +156,7 @@
       "logoWeb": "https://me.sayedtechs.com/src/assets/reboot_logo.jpeg",
       "logoLocal": "../assets/reboot_logo.jpeg",
       "institution": "Reboot Coding Institute",
-      "title": "Professional and Specialized Skill Intensive 2-Year Program, Fullstack developer",
+      "title": "Professional & Specialized Skill Intensive 2-Year Program, Fullstack Developer",
       "meta": "Mar 2024 — Sep 2026\nBahrain",
       "context": "Focus & Activities: Intensive, project-based software engineering program focusing on Go, Rust, and modern system architecture.",
       "bullets": [
@@ -185,18 +181,23 @@
       "link": "https://me.sayedtechs.com/src/assets/SolarPV-NOCN.pdf"
     },
     {
-      "text": "Certificate of Acknowledgement (Solar PV) — MEWA",
+      "text": "Certificate of Acknowledgement (Solar PV) — Ministry of Electricity and Water Affairs (MEWA) (ID: 2024-21)",
       "link": "https://me.sayedtechs.com/src/assets/solar-pv-mewa.pdf"
     },
     {
-      "text": "CRPEP License (Electrical) — Council for Regulating Engineering Professions, Bahrain",
+      "text": "CRPEP License (Electrical) — Council for Regulating Engineering Professions, Bahrain (ID: EPP/C4597/EL/01-D)",
       "link": "https://me.sayedtechs.com/src/assets/crpep.pdf"
     },
     {
-      "text": "Electrical Installation License — Electricity and Water Authority (EWA), Bahrain"
+      "text": "Electrical Installation License (Wireman) — Electricity and Water Authority (EWA), Bahrain (ID: W2402010)",
+      "link": "https://me.sayedtechs.com/src/assets/Wireman-970707568.pdf"
     },
     {
-      "text": "Basic Life Support (BLS) — American Heart Association (AHA)",
+      "text": "Getting Started with Cisco Packet Tracer — Cisco Networking Academy (ID: 29e230b9-382b-4540-b179-37d46ca17fd4)",
+      "link": "https://me.sayedtechs.com/src/assets/Getting_Started_with_Cisco_Packet_Tracer_certificate_sayedahmed97-sad-gmail-com_29e230b9-382b-4540-b179-37d46ca17fd4.pdf"
+    },
+    {
+      "text": "Basic Life Support (BLS) — American Heart Association (AHA) (ID: 225607015422)",
       "link": "https://me.sayedtechs.com/src/assets/BLS.pdf"
     },
     {
@@ -211,7 +212,7 @@
   ],
   "projects": [
     {
-      "title": "Smart Streetlights | IOT Optimization",
+      "title": "Smart Streetlights | IoT-Based Intelligent Road Lighting System",
       "links": [
         {
           "text": "Thesis",
@@ -224,7 +225,7 @@
       ]
     },
     {
-      "title": "GigaBit | Real-Time Social Network",
+      "title": "GigaBit | Real-Time Social Network (Go + Next.js)",
       "links": [
         {
           "text": "Repository",
@@ -233,16 +234,52 @@
       ]
     },
     {
-      "title": "01 Dashboard | Learning Analytics Platform",
+      "title": "OmniKnowledge | Enterprise RAG Knowledge Assistant (FastAPI + FAISS + React)",
       "links": [
         {
           "text": "Repository",
-          "url": "https://github.com/sahmedhusain/01-Dashboard"
+          "url": "https://github.com/sahmedhusain/omni-knowledge"
         }
       ]
     },
     {
-      "title": "FlowGrid | Autonomous Intersection Simulation",
+      "title": "ServOxide | Single-Threaded Non-Blocking HTTP/1.1 Server in Pure Rust (libc)",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/servoxide"
+        }
+      ]
+    },
+    {
+      "title": "VisionPulse | Real-Time Computer Vision & Visual Analytics (YOLOv8 + FastAPI)",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/visionpulse"
+        }
+      ]
+    },
+    {
+      "title": "VectorMaze3D | Multiplayer 3D Raycasting FPS Game (Rust + Macroquad + UDP)",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/vector-maze-3d"
+        }
+      ]
+    },
+    {
+      "title": "RayCraft3D | Concurrent 3D Ray Tracer in Pure Rust",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/raycraft-3d"
+        }
+      ]
+    },
+    {
+      "title": "FlowGrid | Autonomous Intersection Simulation (Rust + SDL2)",
       "links": [
         {
           "text": "Repository",
@@ -251,16 +288,16 @@
       ]
     },
     {
-      "title": "Blast Arena | Multiplayer Bomb-Battle Arena",
+      "title": "01 Dashboard | Personal Learning Analytics Platform (React + GraphQL)",
       "links": [
         {
           "text": "Repository",
-          "url": "https://github.com/sahmedhusain/blast-arena"
+          "url": "https://github.com/sahmedhusain/01-Dashboard"
         }
       ]
     },
     {
-      "title": "PicoJS Framework | Reactive UI Framework",
+      "title": "PicoJS Framework | Lightweight Reactive UI Framework & Virtual DOM Engine",
       "links": [
         {
           "text": "Repository",
@@ -269,7 +306,124 @@
       ]
     },
     {
-      "title": "GoTalk | Concurrent TCP Chat Server",
+      "title": "StackSort | Dual-Stack Sorting Algorithm Generator & Verifier in Go",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/stacksort"
+        }
+      ]
+    },
+    {
+      "title": "GridTactix | Algorithmic Territory Control Game Bot in Rust",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/gridtactix"
+        }
+      ]
+    },
+    {
+      "title": "ResourceFlow | Algorithmic Process Scheduling & Inventory Simulator in Go",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/resourceflow"
+        }
+      ]
+    },
+    {
+      "title": "SysPulse | Cross-Platform Hardware & Telemetry Dashboard in C++ (ImGui)",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/syspulse"
+        }
+      ]
+    },
+    {
+      "title": "TetraOpt | Shape Packing & Backtracking Optimization Engine in Go",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/tetraopt"
+        }
+      ]
+    },
+    {
+      "title": "FetchCraft | File Retrieval & Website Mirroring Engine in Go",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/fetchcraft"
+        }
+      ]
+    },
+    {
+      "title": "FixLink | Home Services Marketplace Platform (Django + Bootstrap)",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/fixlink"
+        }
+      ]
+    },
+    {
+      "title": "MarketPulse | Full-Stack E-Commerce Marketplace (Rails + Bulma)",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/marketpulse"
+        }
+      ]
+    },
+    {
+      "title": "MindQuest | Interactive Assessment & Quiz Platform (PHP + Laravel)",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/mindquest"
+        }
+      ]
+    },
+    {
+      "title": "ChronosVault | Automated Background Backup Daemon in Python",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/chronos-vault"
+        }
+      ]
+    },
+    {
+      "title": "ApexVault | Terminal Financial Management Engine in C",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/apex-vault"
+        }
+      ]
+    },
+    {
+      "title": "OxideShell | Standalone Unix Shell in Pure Rust",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/oxide-shell"
+        }
+      ]
+    },
+    {
+      "title": "Blast Arena | Multiplayer Bomb-Battle Arena (Node.js + WebSockets)",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/blast-arena"
+        }
+      ]
+    },
+    {
+      "title": "GoTalk | Concurrent TCP Chat Server in Go",
       "links": [
         {
           "text": "Repository",
@@ -278,16 +432,7 @@
       ]
     },
     {
-      "title": "Betting Game - Card betting engine",
-      "links": [
-        {
-          "text": "Repository",
-          "url": "https://github.com/sahmedhusain/Betting-Game"
-        }
-      ]
-    },
-    {
-      "title": "Personal Portfolio Website",
+      "title": "Personal Portfolio & Interactive CV Website",
       "links": [
         {
           "text": "Website",
@@ -300,12 +445,13 @@
     {
       "category": "Programming & Markup Languages",
       "items": [
-        "JavaScript",
-        "TypeScript",
-        "Python",
         "Golang",
+        "TypeScript",
+        "JavaScript",
         "Rust",
+        "Python",
         "C++",
+        "C",
         "Dart",
         "HTML5",
         "CSS3"
@@ -317,7 +463,16 @@
         "React",
         "Next.js",
         "Node.js",
+        "PicoJS",
+        "FastAPI",
+        "Django",
+        "Laravel",
+        "Ruby on Rails",
+        "Macroquad",
+        "SDL2",
+        "ImGui",
         "Tailwind CSS",
+        "Bootstrap",
         "GraphQL",
         "Apollo Client",
         "Vite",
@@ -338,11 +493,13 @@
       "items": [
         "REST APIs",
         "WebSockets",
-        "HTTP",
-        "TCP/IP",
+        "UDP / TCP Sockets",
+        "HTTP/1.1",
         "JSON",
         "OAuth2",
-        "JWT"
+        "JWT",
+        "FAISS (Vector DB)",
+        "Ollama (Local LLM)"
       ]
     },
     {
@@ -350,17 +507,14 @@
       "items": [
         "Git",
         "GitHub",
-        "VS Code",
-        "PyCharm",
         "Docker",
-        "Unix",
+        "Linux / Unix",
         "Bash",
+        "VS Code",
         "Postman",
         "Figma",
         "Mermaid",
-        "Markdown",
-        "Xcode",
-        "Android Studio"
+        "Markdown"
       ]
     },
     {
@@ -377,13 +531,13 @@
       "category": "Computer Science & Architecture",
       "items": [
         "Algorithms & Data Structures",
-        "Graph Algorithms & Pathfinding",
-        "Virtual DOM",
-        "State Management",
-        "Concurrency & Parallelism",
-        "Authentication & Session Management",
-        "Object-Oriented Programming",
-        "Machine Learning"
+        "Graph Traversal & Pathfinding (DFS/BFS)",
+        "Virtual DOM & Reactive State",
+        "Concurrency & Multithreading",
+        "Systems Programming & POSIX Syscalls",
+        "Domain-Driven Design (DDD)",
+        "DDA Raycasting & 3D Optics",
+        "Object-Oriented Programming"
       ]
     },
     {
@@ -392,8 +546,8 @@
         "AutoCAD",
         "ArchiCAD",
         "MATLAB",
-        "Circuit Verse",
-        "Everycircuit",
+        "CircuitVerse",
+        "EveryCircuit",
         "SolidWorks",
         "Fusion 360"
       ]
@@ -401,25 +555,22 @@
     {
       "category": "Hardware & Core Engineering",
       "items": [
-        "Fire Protections Systems",
-        "Electrical Installation",
-        "Electrical Testing Equipment",
-        "Solar PV Systems",
-        "Digital Circuits Design (Arduino, Pi)",
+        "Fire Protection & Life Safety Systems (GCC/NFPA)",
+        "Electrical Installation (EWA Wireman)",
+        "High-Precision Electrical Testing & Diagnostics (Megger)",
+        "Solar PV Systems (NOCN Level 3)",
+        "Digital Circuits Design (Arduino, Raspberry Pi)",
         "Power Electronics"
       ]
     }
   ],
   "personalSkills": [
-    "Fast Learner",
-    "Adaptability",
-    "Teamwork",
-    "Communication",
-    "Problem-solving",
-    "Decision Making",
-    "Time Management",
-    "Project Management",
-    "Leadership",
+    "Zero-Failure Mindset",
+    "Multidisciplinary Ownership",
+    "Adaptability & Speed",
+    "Cross-Functional Leadership",
+    "Technical Problem-Solving",
+    "Commercial & Tender Operations",
     "Continuous Learning"
   ]
 }

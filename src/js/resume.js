@@ -138,7 +138,7 @@ async function loadResumeJSON() {
         // Summary - handle structured object (intro, bullets, outro)
         const summary = document.querySelector('.summary-text');
         if (summary && c.summary) {
-            const formatInline = (text) => (text || '').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>');
+            const formatInline = (text) => (text || '').replace(/\*\*(.*?)\*\*/g, '<b>$1</b>').replace(/\*(.*?)\*/g, '<i>$1</i>');
             let html = '';
 
             if (typeof c.summary === 'string') {
