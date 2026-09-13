@@ -80,10 +80,10 @@ export const updateSidebarIndicator = (btn, indicatorClass = '.sidebar-indicator
   const indicator = container.querySelector(indicatorClass);
   if (indicator) {
     if (btn.offsetWidth === 0 && btn.offsetHeight === 0) return;
-    // Precisely match the button dimensions and position to prevent negative left offset obstruction
+    // Precisely match the button dimensions and position, ensuring non-negative left offset
     indicator.style.width = `${btn.offsetWidth}px`;
     indicator.style.height = `${btn.offsetHeight}px`;
-    indicator.style.left = `${btn.offsetLeft}px`;
+    indicator.style.left = `${Math.max(0, btn.offsetLeft)}px`;
     indicator.style.top = `${btn.offsetTop}px`;
     indicator.style.opacity = opacity;
   }

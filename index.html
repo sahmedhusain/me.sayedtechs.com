@@ -186,9 +186,10 @@
         window.history.replaceState(null, null, newUrl);
       }
 
+      var APP_VERSION = '2.1.1';
       function injectAsset(file, type) {
         var path = (basePath + '/' + file).replace(/\/+/g, '/');
-        var absoluteUrl = window.location.origin + path;
+        var absoluteUrl = window.location.origin + path + '?v=' + APP_VERSION;
         var el;
         if (type === 'css') {
           el = document.createElement('link');
