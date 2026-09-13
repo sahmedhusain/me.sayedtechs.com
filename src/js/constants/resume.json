@@ -396,6 +396,15 @@
       ]
     },
     {
+      "title": "Linux Sysadmin Lab | Virtual Subnetting, SSH Hardening & Security Audit",
+      "links": [
+        {
+          "text": "Repository",
+          "url": "https://github.com/sahmedhusain/linux-sysadmin-lab"
+        }
+      ]
+    },
+    {
       "title": "ApexVault | Terminal Financial Management Engine in C",
       "links": [
         {

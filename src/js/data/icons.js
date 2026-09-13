@@ -38,7 +38,7 @@ export const renderTechLogos = (techArr = []) => {
       // Uniform size for all logos
       const size = 'width: 2rem; height: 2rem;';
       // Make specific logos invert dynamically based on theme
-      const whiteSrcs = ['rust', 'socketdotio', 'github', 'jsonwebtokens', 'markdown', 'apple', 'dns', 'key', 'bash', 'framermotion', 'framer'];
+      const whiteSrcs = ['rust', 'socketdotio', 'github', 'jsonwebtokens', 'markdown', 'apple', 'dns', 'key', 'bash', 'framermotion', 'framer', 'ssh'];
       const isWhite = whiteSrcs.some(s => entry.src.includes(s));
       const filter = isWhite ? 'filter: var(--mono-logo-filter);' : '';
       iconHtml = `<img src="${entry.src}" alt="${orig}" class="tech-logo-svg" style="${size}${filter ? ' ' + filter : ''}" loading="lazy" />`;

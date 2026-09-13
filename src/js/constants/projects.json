@@ -534,6 +534,37 @@
     "featured": false
   },
   {
+    "id": "linux-sysadmin-lab",
+    "name": "Linux Sysadmin Lab",
+    "subtitle": "Virtual Subnetting, SSH Hardening & Network Auditing Lab",
+    "category": "Systems & Infrastructure",
+    "hasGithubRepo": true,
+    "links": [
+      {
+        "text": "Repository",
+        "url": "https://github.com/sahmedhusain/linux-sysadmin-lab"
+      }
+    ],
+    "points": [
+      "Architected a multi-node virtualized infrastructure environment on Debian Linux using UTM/QEMU hypervisor.",
+      "Engineered an isolated host-only virtual subnet (192.168.64.0/24) with static IP reservations and gateway routing.",
+      "Hardened Linux operating systems, user privilege namespaces, and terminal session security (multi-TTY signal trapping).",
+      "Configured host port-forwarding and hardened OpenSSH daemons to non-standard ports (4242) with strict UFW firewall policies.",
+      "Conducted network reconnaissance and penetration testing audits using arp-scan, Nmap TCP SYN sweeps, and service fingerprinting."
+    ],
+    "tech": [
+      "Linux",
+      "Debian",
+      "QEMU",
+      "SSH",
+      "UFW",
+      "Nmap",
+      "Bash",
+      "Networking"
+    ],
+    "featured": true
+  },
+  {
     "id": "visionpulse",
     "name": "VisionPulse",
     "subtitle": "Real-Time Computer Vision & Visual Analytics (FastAPI + YOLOv8 + Win98 UI)",

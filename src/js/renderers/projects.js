@@ -303,7 +303,7 @@ function resolveCategoryKey(category) {
   const lower = category.toLowerCase();
   if (lower.includes('game') || lower.includes('ألعاب')) return 'games';
   if (lower.includes('engineering') || lower.includes('هندسة')) return 'engineering';
-  if (lower.includes('cli') || lower.includes('algorithm') || lower.includes('خوارزميات')) return 'clialgorithms';
+  if (lower.includes('cli') || lower.includes('algorithm') || lower.includes('خوارزميات') || lower.includes('system') || lower.includes('infrastructure') || lower.includes('أنظمة') || lower.includes('بنية')) return 'clialgorithms';
   if (lower.includes('ui') || lower.includes('تصميم')) return 'uiconcepts';
   if (lower.includes('web') || lower.includes('ويب')) return 'webdevelopment';
   return 'webdevelopment';
