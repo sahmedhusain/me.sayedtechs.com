@@ -139,6 +139,13 @@
       "date": "2024-07-01",
       "description": "شهادة اعتماد رسمية لمقاولي الطاقة الشمسية",
       "icon": "ribbon-outline"
+    },
+    {
+      "title": "مقدمة في Cisco Packet Tracer",
+      "issuer": "أكاديمية سيسكو للشبكات (Cisco)",
+      "date": "2026-08-14",
+      "description": "شهادة معتمدة في محاكاة وإعداد الشبكات من سيسكو",
+      "icon": "ribbon-outline"
     }
   ]
 }

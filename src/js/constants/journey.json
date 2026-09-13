@@ -139,6 +139,13 @@
       "date": "2024-07-01",
       "description": "NOCN Level 3 Award for Solar PV Installer and Operator (EWA Acknowledgment)",
       "icon": "ribbon-outline"
+    },
+    {
+      "title": "Getting Started with Cisco Packet Tracer",
+      "issuer": "Cisco Networking Academy",
+      "date": "2026-08-14",
+      "description": "Certification in Network Simulation & Configuration using Cisco Packet Tracer",
+      "icon": "ribbon-outline"
     }
   ]
 }
