@@ -1,0 +1,145 @@
+/* ============================================
+   MOTION POLISH
+   Lightweight, GPU-friendly (transform/opacity only), CSS-only.
+   Everything here is disabled under prefers-reduced-motion.
+   ============================================ */
+
+@media (prefers-reduced-motion: no-preference) {
+  /* Smooth page-to-page entrance */
+  article.active:not(.contact-animate) {
+    animation: pageEnter 0.55s cubic-bezier(0.16, 1, 0.3, 1) backwards;
+  }
+
+  /* Press feedback on interactive controls */
+  .pill-btn,
+  .action-btn,
+  .header-action-btn,
+  .project-link-btn,
+  .go-to-project-btn,
+  .read-article-btn,
+  .article-tab,
+  .back-to-top-btn,
+  .social-link,
+  .home-profile-socials a {
+    transition-property: transform, background-color, border-color, box-shadow, color, opacity;
+  }
+
+  .pill-btn:active,
+  .action-btn:active,
+  .header-action-btn:active,
+  .project-link-btn:active,
+  .go-to-project-btn:active,
+  .read-article-btn:active,
+  .article-tab:active,
+  .back-to-top-btn:active {
+    transform: scale(0.96);
+    transition-duration: 0.1s;
+  }
+
+  /* Social icons: springy lift */
+  .home-profile-socials a,
+  .social-link {
+    transition-timing-function: cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .home-profile-socials a:hover,
+  .social-link:hover {
+    transform: translateY(-3px) scale(1.12);
+  }
+
+  /* Logos and avatars: gentle zoom */
+  .org-logo,
+  .timeline-logo {
+    transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+
+  .career-item:hover .org-logo,
+  .timeline-item:hover .org-logo,
+  .experience-card:hover .org-logo,
+  .cert-item:hover .org-logo {
+    transform: scale(1.1) rotate(-3deg);
+  }
+
+  /* Career / feed rows: slide hint on hover */
+  .career-item,
+  .flat-post-item {
+    transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+  }
+
+  .career-item:hover {
+    transform: translateX(4px);
+  }
+
+  /* Tech badges: pop */
+  .skill-badge,
+  .tech-logo-item,
+  .meta-pill {
+    transition: transform 0.25s cubic-bezier(0.34, 1.56, 0.64, 1), border-color 0.25s ease, box-shadow 0.25s ease;
+  }
+
+  .skill-badge:hover,
+  .tech-logo-item:hover {
+    transform: translateY(-3px) scale(1.06);
+  }
+
+  /* Scroll progress line (pseudo-element, no extra DOM) */
+  @supports (animation-timeline: auto) {
+    body::after {
+      content: "";
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: var(--accent);
+      transform: scaleX(0);
+      transform-origin: 0 50%;
+      z-index: 1100;
+      pointer-events: none;
+      animation: scrollProgress linear both;
+      animation-timeline: scroll(root block);
+    }
+
+    [dir="rtl"] body::after {
+      transform-origin: 100% 50%;
+    }
+  }
+
+  /* Scroll reveal: cards ease in as they enter the viewport.
+     Progressive enhancement; unsupported browsers just show content. */
+  @supports (animation-timeline: auto) {
+    .article-card,
+    .project-item,
+    .experience-card,
+    .cert-item,
+    .featured-card,
+    .service-item,
+    .stat-item,
+    .flat-post-item,
+    .section-header-glass {
+      animation: revealUp linear backwards;
+      animation-timeline: view();
+      animation-range: entry 0% entry 35%;
+    }
+  }
+}
+
+@keyframes pageEnter {
+  from {
+    opacity: 0;
+    transform: translateY(14px);
+  }
+}
+
+@keyframes revealUp {
+  from {
+    opacity: 0;
+    transform: translateY(28px) scale(0.98);
+  }
+}
+
+@keyframes scrollProgress {
+  to {
+    transform: scaleX(1);
+  }
+}

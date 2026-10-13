@@ -10,7 +10,7 @@ export function renderSidebar() {
     <aside class="sidebar" data-sidebar>
       <div class="sidebar-info">
         <figure class="avatar-box">
-          <img src="${data.avatar}" alt="${data.name}" width="80" loading="lazy" onerror="handleImageError(this)">
+          <img src="${data.avatar}" alt="${data.name}" width="80" fetchpriority="high" decoding="async" onerror="handleImageError(this)">
         </figure>
         <div class="action-buttons">
           <button class="action-btn primary">
@@ -187,7 +187,7 @@ export function renderHomeFeed() {
       <!-- Picture -->
       <div class="about-avatar-section">
         <div id="home-main-avatar" class="home-avatar-box" style="margin: 0; width: 80px; height: 80px; min-width: 80px; min-height: 80px; flex-shrink: 0; display: block; border-radius: 50%; overflow: hidden; aspect-ratio: 1 / 1; transition: all 0.5s cubic-bezier(0.16, 1, 0.3, 1);">
-          <img src="${data.avatar}" alt="${data.name}" style="width:100%; height:100%; display:block; object-fit:cover;" loading="lazy" onerror="handleImageError(this)">
+          <img src="${data.avatar}" alt="${data.name}" style="width:100%; height:100%; display:block; object-fit:cover;" fetchpriority="high" decoding="async" onerror="handleImageError(this)">
         </div>
       </div>
       
@@ -422,7 +422,7 @@ export function renderHomeFeed() {
           <div style="display: flex; flex-direction: column; gap: 1.2rem;">
             ${data.featured.map(item => `
               <div class="featured-card" style="cursor: pointer; background: var(--apple-glass-bg); border: 1px solid var(--card-border); border-radius: 1.2rem; overflow: hidden; transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);">
-                ${item.image ? `<div style="height: 110px; overflow: hidden;"><img src="${item.image}" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;" onerror="this.src='${data.avatar}'"></div>` : ''}
+                ${item.image ? `<div style="height: 110px; overflow: hidden;"><img src="${item.image}" loading="lazy" decoding="async" alt="${item.title}" style="width: 100%; height: 100%; object-fit: cover; transition: transform 0.6s ease;" onerror="this.src='${data.avatar}'"></div>` : ''}
                 <div style="padding: 1.2rem;">
                   <div style="display: flex; align-items: center; gap: 0.5rem; margin-bottom: 0.6rem;">
                     <ion-icon name="${item.type === 'project' ? 'code-slash-outline' : item.type === 'article' ? 'document-text-outline' : 'ribbon-outline'}" style="color: var(--accent); font-size: 0.9rem;"></ion-icon>

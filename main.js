@@ -68,26 +68,11 @@ function loadResources() {
   simpleIcons.rel = 'stylesheet';
   document.head.appendChild(simpleIcons);
 
-  // Vis.js Timeline CSS
-  const visCss = document.createElement('link');
-  visCss.href = 'https://visjs.github.io/vis-timeline/styles/vis-timeline-graph2d.min.css';
-  visCss.rel = 'stylesheet';
-  visCss.type = 'text/css';
-  document.head.appendChild(visCss);
-
   // Font Awesome for versatile iconography
   const fontAwesome = document.createElement('link');
   fontAwesome.href = 'https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css';
   fontAwesome.rel = 'stylesheet';
   document.head.appendChild(fontAwesome);
-
-  // EmailJS, QRCode.js and Vis.js Timeline runtime
-  loadExternalScript('https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js');
-  loadExternalScript('https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js');
-  loadExternalScript('https://visjs.github.io/vis-timeline/standalone/umd/vis-timeline-graph2d.min.js');
-
-
-
 }
 
 loadResources();
